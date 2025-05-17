@@ -1,0 +1,162 @@
+const swiper = new Swiper(".home-header .mySwiper", {
+  loop: true,
+  effect: "fade",
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: false,
+  },
+  navigation: {
+    nextEl: ".home-header .swiper-button-next",
+    prevEl: ".home-header .swiper-button-prev",
+  },
+  pagination: {
+    el: ".home-header .swiper-pagination",
+    clickable: true,
+  },
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const playButton = document.getElementById("playButton");
+  const textContent = document.getElementById("textContent");
+  const videoContainer = document.getElementById("videoContainer");
+  const youtubeVideo = document.getElementById("youtubeVideo");
+
+  playButton.addEventListener("click", function () {
+    textContent.classList.add("hidden");
+
+    playButton.style.display = "none";
+
+    videoContainer.style.display = "block";
+
+    const videoSrc = youtubeVideo.src;
+
+    youtubeVideo.src = videoSrc + "&autoplay=1";
+  });
+
+  const dropdowns = document.querySelectorAll(".dropdown");
+  const dropdownBackground = document.querySelector(".dropdown-background");
+
+  dropdowns.forEach((dropdown) => {
+    dropdown.addEventListener("mouseenter", function () {
+      dropdownBackground.style.display = "block";
+      dropdownBackground.style.visibility = "visible";
+      dropdownBackground.style.opacity = "1";
+    });
+
+    dropdown.addEventListener("mouseleave", function (e) {
+      const relatedTarget = e.relatedTarget;
+      if (
+        !dropdown.contains(relatedTarget) &&
+        relatedTarget !== dropdownBackground &&
+        !dropdownBackground.contains(relatedTarget)
+      ) {
+        hideDropdownBackground();
+      }
+    });
+  });
+
+  dropdownBackground.addEventListener("mouseleave", function (e) {
+    const relatedTarget = e.relatedTarget;
+    let isInDropdown = false;
+
+    dropdowns.forEach((dropdown) => {
+      if (dropdown.contains(relatedTarget)) {
+        isInDropdown = true;
+      }
+    });
+
+    if (!isInDropdown) {
+      hideDropdownBackground();
+    }
+  });
+
+  function hideDropdownBackground() {
+    dropdownBackground.style.visibility = "hidden";
+    dropdownBackground.style.opacity = "0";
+    setTimeout(() => {
+      if (dropdownBackground.style.opacity === "0") {
+        dropdownBackground.style.display = "none";
+      }
+    }, 100);
+  }
+
+  checkScroll();
+
+  window.addEventListener("scroll", checkScroll);
+
+  function checkScroll() {
+    const sections = document.querySelectorAll(".section");
+
+    sections.forEach((section) => {
+      const sectionTop = section.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+
+      if (sectionTop < windowHeight * 0.85) {
+        section.classList.add("active");
+      } else {
+        section.classList.remove("active");
+      }
+    });
+  }
+  const swiperGallery = new Swiper(".gallery-section .labSwiper", {
+    slidesPerView: "auto",
+    centeredSlides: true,
+    spaceBetween: 30,
+    loop: true,
+    speed: 800,
+    navigation: {
+      nextEl: ".gallery-section .swiper-button-next",
+      prevEl: ".gallery-section .swiper-button-prev",
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 1.2,
+        spaceBetween: 10,
+      },
+      640: {
+        slidesPerView: 2.2,
+        spaceBetween: 15,
+      },
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+      },
+    },
+    on: {
+      slideChange: function () {
+        const slides = document.querySelectorAll(
+          ".gallery-section .swiper-slide"
+        );
+
+        slides.forEach((slide) => {
+          const img = slide.querySelector("img");
+          img.style.width = "100%";
+        });
+
+        setTimeout(() => {
+          const activeSlide = document.querySelector(
+            ".gallery-section .swiper-slide-active"
+          );
+          if (activeSlide) {
+            const activeImg = activeSlide.querySelector(
+              ".gallery-section .swiper-slide-active img"
+            );
+            activeImg.style.width = "200vh";
+          }
+        }, 10);
+      },
+    },
+  });
+
+  setTimeout(() => {
+    const activeSlide = document.querySelector(
+      ".gallery-section .swiper-slide-active"
+    );
+    if (activeSlide) {
+      const activeImg = activeSlide.querySelector(
+        ".gallery-section .swiper-slide-active img"
+      );
+      activeImg.style.width = "200vh";
+    }
+  }, 100);
+});
