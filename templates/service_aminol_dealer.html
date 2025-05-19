@@ -1,0 +1,292 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<nav>
+  <div class="navbar navbar-blur">
+    <div class="container">
+      <div class="navbar-left">
+        <img src="{% static '/images/aminol-logo.svg' %}" alt="" />
+      </div>
+      <div class="navbar-right">
+        <div class="nav-section">
+          <div class="nav-top">
+            <ul>
+              <li><a href="">News</a></li>
+              <li><a href="">Brand Portal</a></li>
+              <li><a href="">Career</a></li>
+              <li><a href="">Contact</a></li>
+              <li class="lang-btn">
+                <button class="btn-az">AZ</button>
+                <button class="btn-en">EN</button>
+              </li>
+            </ul>
+          </div>
+          <div class="nav-bottom">
+            <ul>
+              <li><a href="">About us</a></li>
+              <li class="dropdown">
+                <a href="">Products<i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                  <a class="active" href="">Aminol official dealer</a>
+                  <a href="">Aminol Laboratory</a>
+                  <a href="">Aminol Logistics</a>
+                </div>
+              </li>
+              <li class="dropdown">
+                <a href="">Markets<i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                  <a href="">Aminol official dealer</a>
+                  <a href="">Aminol Laboratory</a>
+                  <a href="">Aminol Logistics</a>
+                </div>
+              </li>
+              <li class="dropdown">
+                <a href="">Services<i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                  <a href="">Aminol official dealer</a>
+                  <a href="">Aminol Laboratory</a>
+                  <a href="">Aminol Logistics</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <button class="search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="dropdown-background"></div>
+</nav>
+<div class="service-aminol-dealer">
+  <header class="page-header"></header>
+</div>
+
+<!-- Breadcrumb -->
+<div class="breadcrumb container">
+  <span>Home page</span>| <span>Services</span>|
+  <a href="">Aminol official dealer</a>
+</div>
+
+<div class="shared-images-section">
+  <div class="container">
+    <div class="shared-images-container">
+      <div class="vertical-line"></div>
+      <!-- First Row -->
+      <div class="section-row row-reverse">
+        <div class="image-container">
+          <div class="circular-image">
+            <img
+              src="{% static '/images/services-aminol-1.jpg' %}"
+              alt="Strengthen your business"
+            />
+          </div>
+        </div>
+        <div class="text-container text-left">
+          <h2>Strengthen your business</h2>
+          <p>
+            If you choose Aminol, you choose for the growth of your business. As
+            an Aminol dealer, we offer you a wide range of technical and
+            commercial support, specifically designed to strengthen your
+            operations.
+          </p>
+        </div>
+      </div>
+
+      <img
+        src="{% static '/images/yellow-point.svg' %}"
+        class="droplet droplet-1"
+        alt="Yellow Point"
+      />
+
+      <!-- Second Row -->
+      <div class="section-row">
+        <div class="image-container">
+          <div class="circular-image">
+            <img
+              src="{% static '/images/services-aminol-2.jpg' %}"
+              alt="Availability"
+            />
+          </div>
+        </div>
+        <div class="text-container">
+          <h2>Availability</h2>
+          <p>
+            The Aminol Official Dealer formula is growing rapidly and is
+            available in more and more countries. Depending on the country, the
+            content of the formula can vary. Please contact Sales International
+            for availability in your country.
+          </p>
+        </div>
+      </div>
+
+      <img
+        src="{% static '/images/yellow-point.svg' %}"
+        class="droplet droplet-2"
+        alt="Yellow Point"
+      />
+
+      <!-- Third Row -->
+      <div class="section-row row-reverse">
+        <div class="image-container">
+          <div class="circular-image">
+            <img
+              src="{% static '/images/services-aminol-3.jpg' %}"
+              alt="AMINOL Factory Workers"
+            />
+          </div>
+        </div>
+        <div class="text-container text-left">
+          <h2>Support for Distributors</h2>
+          <p>
+            Support for Distributors Aminol provides strong support at every
+            stage — from product selection to market development and sales
+            organization. We offer: A dedicated account manager for each partner
+            — your go-to person for everything. Training and product knowledge
+            materials — so your team can confidently promote Aminol products.
+            Opportunities for exclusive sales rights — based on region and
+            market potential.
+          </p>
+        </div>
+      </div>
+
+      <img
+        src="{% static '/images/yellow-point.svg' %}"
+        class="droplet droplet-3"
+        alt="Yellow Point"
+      />
+    </div>
+  </div>
+</div>
+
+<div class="services-offer-section container">
+  <div class="text-container text-left">
+    <h2>What we offer for marketing:</h2>
+    <p>
+      We understand that strong marketing is key to driving sales and building
+      trust in your market. That’s why we provide our distributors with full
+      marketing support tailored to their region and audience. Ready-to-use
+      marketing materialsProduct catalogs, brochures, posters, display visuals,
+      and branded merchandise – all customizable for your region.
+    </p>
+  </div>
+  <div class="services-offer-image">
+    <img
+      src="{% static '/images/services-aminol-4.jpg' %}"
+      alt="Service Offer Image"
+    />
+  </div>
+</div>
+
+<div class="container">
+  <img
+    class="aminol-large-image"
+    src="{% static '/images/services-aminol-5.jpg' %}"
+    alt="Service Aminol"
+  />
+</div>
+
+<div class="aminol-contact-form container">
+  <div class="form-content">
+    <h2>Contact form</h2>
+    <p>
+      Do you need a specific solution or are you interested in a partnership?<br />
+      Please contact us here.
+    </p>
+
+    <form action="#" method="POST">
+      <div class="form-row">
+        <div class="form-group select-form-group">
+          <label for="helpType">How can we help you?*</label>
+          <div class="custom-select-wrapper">
+            <div class="custom-select" id="selected-enquiry">Select</div>
+            <div class="custom-options">
+              <div class="custom-option" data-value="">
+                I would like to buy Aminol products
+              </div>
+              <div class="custom-option" data-value="">
+                I would like more information
+              </div>
+              <div class="custom-option" data-value="">Others</div>
+            </div>
+            <input
+              type="hidden"
+              name="helpType"
+              id="helpType"
+              value=""
+              required
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            id="company"
+            class="form-control"
+            placeholder="Company name*"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <textarea
+          id="question"
+          class="form-control"
+          placeholder="Your question, wish and/or clarification*"
+          required
+        ></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <input
+            type="text"
+            id="firstName"
+            class="form-control"
+            placeholder="First name*"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <input
+            type="text"
+            id="lastName"
+            class="form-control"
+            placeholder="Last name*"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            placeholder="Email address*"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <input
+            type="tel"
+            id="phone"
+            class="form-control"
+            placeholder="Phone number*"
+            required
+          />
+        </div>
+      </div>
+
+      <button type="submit" class="btn-send">
+        Send
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}
