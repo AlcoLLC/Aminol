@@ -278,11 +278,13 @@ nav {
   position: relative;
 }
 
-.home-header .swiper-slide_one, .home-header .swiper-slide_three {
+.home-header .swiper-slide_one,
+.home-header .swiper-slide_three {
   background-image: url("../../images/home-slider.jpg");
 }
 
-.home-header .swiper-slide_two, .home-header .swiper-slide_four {
+.home-header .swiper-slide_two,
+.home-header .swiper-slide_four {
   background-image: url("../../images/home-slider2.png");
 }
 
@@ -366,7 +368,6 @@ nav {
 .innovation-technology .button-style:hover {
   background-color: #d40108;
 }
-
 
 .section-header {
   text-align: center;
@@ -579,7 +580,7 @@ nav {
 }
 
 .aminol-worldwide img {
-  width: 27vw;
+  width: 100%;
 }
 
 .aminol-worldwide .aminol-worldwide-content {
@@ -831,10 +832,12 @@ nav {
   margin-bottom: 24px;
 }
 
+.news-section {
+  margin: 100px auto;
+}
 .latest-news {
   padding: 150px 0 60px 0;
-
-  margin: 30px auto;
+  margin-top: 30px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -843,18 +846,19 @@ nav {
 
 .latest-news .news-cards {
   display: flex;
-  gap: 25px;
+  gap: 20px;
 }
 
 .latest-news .news-cards .news-card {
   position: relative;
   padding: 15px;
   height: 300px;
-  width: 55vh;
+  width: 33.3%;
   display: flex;
   align-items: flex-end;
   border-radius: 6px;
   border: 1px solid #f6f9ff;
+  background-color: #012762;
 }
 
 .latest-news .news-card img {
@@ -907,90 +911,110 @@ nav {
   color: #012762;
 }
 
-
-
-
 .gallery-section .swiper {
-      width: 100%;
-      padding: 60px 0;
-    }
-    
-    .gallery-section .swiper-wrapper {
-      align-items: center;
-    }
-    
-    .gallery-section .swiper-slide {
-      width: 100%;
-      height: 400px;
-      transition: all 0.5s ease;
-      border-radius: 8px;
-      overflow: hidden;
-      background-color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .gallery-section .swiper-slide img {
-      width: 100% ;
-      height: 100%;
-      object-fit: cover;
-      transition: all 0.5s ease;
-    }
-    
-    
-    .gallery-section .swiper-slide:not(.swiper-slide-active) img {
-      width: 50% !important;
-    }
-    
-    .gallery-section .swiper-slide-active {
-      z-index: 10;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    }
-    
-    .gallery-section .swiper-button-next,
-    .gallery-section .swiper-button-prev {
-      width: 40px;
-      height: 40px;
-      background-color: rgba(255, 255, 255, 0.9);
-      border-radius: 50%;
-      color: #333;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-    
-    .gallery-section .swiper-button-next:after,
-    .gallery-section .swiper-button-prev:after {
-      font-size: 16px;
-      font-weight: bold;
-    }
-
-
-
-
-
-.brochure img {
-  width: 60vw;
+  width: 100%;
+  padding-top: 60px;
 }
 
-.section-content h2{
+.gallery-section .swiper-wrapper {
+  align-items: center;
+}
+
+.gallery-section .swiper-slide {
+  width: 100%;
+  height: 400px;
+  transition: all 0.5s ease;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-section .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.5s ease;
+}
+
+.gallery-section .swiper-slide:not(.swiper-slide-active) img {
+  width: 50% !important;
+}
+
+.gallery-section .swiper-slide-active {
+  z-index: 10;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-section .swiper-button-next,
+.gallery-section .swiper-button-prev {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  color: #333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-section .swiper-button-next:after,
+.gallery-section .swiper-button-prev:after {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.brochure {
+  position: relative;
+  z-index: -5;
+  width: 80%;
+  margin-top: -60px;
+}
+
+.brochure img {
+  width: 100%;
+}
+
+.section-content h2 {
   font-weight: 600;
   font-size: 42px;
   line-height: 48px;
   letter-spacing: 0px;
   text-align: center;
-  color: #001c5c;
+  color: #001c5c;
 }
 
 .partners-section {
-  margin: 30px auto;
+  margin-top: 50px;
+  margin-bottom: 150px;
+}
+
+.home-main .partners-section {
+  margin-bottom: 0 !important;
+  width: 100%;
+  height: 1200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-main .partners-section::before {
+  content: "";
+  position: absolute;
+  top: 500px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../images/shutterstock.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  z-index: 0;
 }
 
 .partners-section-content {
   position: relative;
-
 }
 
-.partners-section .section-content{
+.partners-section .section-content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1003,11 +1027,11 @@ nav {
 }
 
 .partners-section .section-content p {
-font-weight: 500;
-font-size: 24px;
-line-height: 30px;
-letter-spacing: 0px;
-text-align: center;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: 0px;
+  text-align: center;
   color: #012762;
 }
 
@@ -1019,23 +1043,10 @@ text-align: center;
   gap: 30px;
 }
 
-.partners-section .oil {
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  z-index: -12;
-}
-
-.partners-section .oil img{
-  width: 100%;
-  position: absolute;
-  top: -110px;
-}
-
 .whatsapp-section {
   position: relative;
   bottom: 80px;
-  background-color: #F92B3F;
+  background-color: #f92b3f;
   width: 100%;
   height: 25vh;
   display: flex;
@@ -1048,14 +1059,14 @@ text-align: center;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background-color: #F6F9FF;
-font-weight: 600;
-font-size: 24px;
-line-height: 58px;
-letter-spacing: 0px;
-color: #012762;
-padding: 10px 20px;
-border-radius: 6px;
+  background-color: #f6f9ff;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 58px;
+  letter-spacing: 0px;
+  color: #012762;
+  padding: 10px 20px;
+  border-radius: 6px;
 }
 
 .whatsapp-section a img {
@@ -1076,16 +1087,16 @@ border-radius: 6px;
   gap: 20px;
 }
 
-.footer-content > div:first-of-type img{
+.footer-content > div:first-of-type img {
   width: 28vh;
 }
 
 .footer-content > div:first-of-type p {
-font-weight: 600;
-font-size: 16px;
-line-height: 24px;
-letter-spacing: 0px;
-color: #012762;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  color: #012762;
 }
 
 .footer-content > div:last-of-type {
@@ -1102,25 +1113,24 @@ color: #012762;
   display: flex;
   flex-direction: column;
   gap: 7px;
-font-weight: 400;
-font-size: 14px;
-line-height: 24.03px;
-letter-spacing: 0px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24.03px;
+  letter-spacing: 0px;
   color: #012762;
 }
 
 .footer-content ul li h5 {
-font-weight: 600;
+  font-weight: 600;
 }
 
-.footer-content ul li a{
+.footer-content ul li a {
   color: #012762;
-
 }
 
 .footer-content > div:last-of-type button {
-  color: #F6F9FF;
-  background-color: #F92B3F;
+  color: #f6f9ff;
+  background-color: #f92b3f;
   width: 41px;
   height: 41px;
   border-radius: 3px;
@@ -1129,10 +1139,10 @@ font-weight: 600;
 }
 
 footer .custom-hr {
-  border: none;             
-  height: 0.5px;               
+  border: none;
+  height: 0.5px;
   background-color: #012762;
-  border-radius: 2px;    
+  border-radius: 2px;
 }
 
 footer .footer-contact {
@@ -1152,19 +1162,19 @@ footer .footer-contact > div:first-of-type p:first-of-type {
   max-width: 38%;
 }
 
-footer .footer-contact > div:first-of-type p{
+footer .footer-contact > div:first-of-type p {
   display: flex;
   flex-direction: column;
   font-family: Poppins;
-font-weight: 400;
-font-size: 14px;
-line-height: 20px;
-letter-spacing: 0%;
-color: #012762;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: #012762;
 }
 
 footer .footer-contact > div:first-of-type a {
- color: #012762;
+  color: #012762;
 }
 
 footer .footer-contact > div:last-of-type {
@@ -1186,9 +1196,9 @@ footer .alco-privacy {
 }
 
 footer .alco-privacy p {
-font-weight: 400;
-font-size: 14px;
-line-height: 150%;
-letter-spacing: 0%;
-color: #012762;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: 0%;
+  color: #012762;
 }

@@ -22,7 +22,7 @@
           </div>
           <div class="nav-bottom">
             <ul>
-              <li><a href="">About us</a></li>
+              <li><a href="/about">About us</a></li>
               <li class="dropdown">
                 <a href="">Products<i class="fa-solid fa-chevron-down"></i></a>
                 <div class="dropdown-content">
@@ -42,7 +42,7 @@
               <li class="dropdown">
                 <a href="">Services<i class="fa-solid fa-chevron-down"></i></a>
                 <div class="dropdown-content">
-                  <a href="">Aminol official dealer</a>
+                  <a href="/">Aminol official dealer</a>
                   <a href="">Aminol Laboratory</a>
                   <a href="">Aminol Logistics</a>
                 </div>
@@ -58,424 +58,312 @@
   </div>
   <div class="dropdown-background"></div>
 </nav>
-
-<header class="placeholder-header home-header">
-  <div class="swiper mySwiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide swiper-slide_one">
-        <div class="slide-content">
-          <h2>Passenger car lubricants</h2>
-          <p>
-            Manufacturer of Lubricants, Lubricant Additive Packages & Deionised
-            Fluids. Proudly Made in Azerbaijan
-          </p>
-          <a href="#" class="button-style">Discover more</a>
+<div class="home-main">
+  <header class="placeholder-header home-header">
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide swiper-slide_one">
+          <div class="slide-content">
+            <h2>Passenger car lubricants</h2>
+            <p>
+              Manufacturer of Lubricants, Lubricant Additive Packages & Deionised
+              Fluids. Proudly Made in Azerbaijan
+            </p>
+            <a href="#" class="button-style">Discover more</a>
+          </div>
+        </div>
+        <div class="swiper-slide swiper-slide_two">
+          <div class="slide-content">
+            <h2>Industrial lubricants</h2>
+            <p>
+              Manufacturer of Lubricants, Lubricant Additive Packages & Deionised
+              Fluids. Proudly Made in Azerbaijan
+            </p>
+            <a href="#" class="button-style">Discover more</a>
+          </div>
+        </div>
+        <div class="swiper-slide swiper-slide_three">
+          <div class="slide-content">
+            <h2>Passenger car lubricants</h2>
+            <p>
+              Manufacturer of Lubricants, Lubricant Additive Packages & Deionised
+              Fluids. Proudly Made in Azerbaijan
+            </p>
+            <a href="#" class="button-style">Discover more</a>
+          </div>
+        </div>
+        <div class="swiper-slide swiper-slide_four">
+          <div class="slide-content">
+            <h2>Industrial lubricants</h2>
+            <p>
+              Manufacturer of Lubricants, Lubricant Additive Packages & Deionised
+              Fluids. Proudly Made in Azerbaijan
+            </p>
+            <a href="#" class="button-style">Discover more</a>
+          </div>
         </div>
       </div>
-      <div class="swiper-slide swiper-slide_two">
-        <div class="slide-content">
-          <h2>Industrial lubricants</h2>
-          <p>
-            Manufacturer of Lubricants, Lubricant Additive Packages & Deionised
-            Fluids. Proudly Made in Azerbaijan
-          </p>
-          <a href="#" class="button-style">Discover more</a>
-        </div>
+      <div class="swiper-button-prev">
+        <i class="fa-solid fa-chevron-left"></i>
       </div>
-      <div class="swiper-slide swiper-slide_three">
-        <div class="slide-content">
-          <h2>Passenger car lubricants</h2>
-          <p>
-            Manufacturer of Lubricants, Lubricant Additive Packages & Deionised
-            Fluids. Proudly Made in Azerbaijan
-          </p>
-          <a href="#" class="button-style">Discover more</a>
-        </div>
-      </div>
-      <div class="swiper-slide swiper-slide_four">
-        <div class="slide-content">
-          <h2>Industrial lubricants</h2>
-          <p>
-            Manufacturer of Lubricants, Lubricant Additive Packages & Deionised
-            Fluids. Proudly Made in Azerbaijan
-          </p>
-          <a href="#" class="button-style">Discover more</a>
-        </div>
+      <div class="swiper-button-next">
+        <i class="fa-solid fa-chevron-right"></i>
       </div>
     </div>
-    <div class="swiper-button-prev">
-      <i class="fa-solid fa-chevron-left"></i>
+  </header>
+  <div class="product-categories">
+    <div class="section-header">
+      <h2>PRODUCT CATEGORIES</h2>
     </div>
-    <div class="swiper-button-next">
-      <i class="fa-solid fa-chevron-right"></i>
+    <div class="container categories-grid">
+      <div class="category-card">
+        <a href="">
+          <div class="category-image">
+            <img src="{% static 'images_folder/pcmo.svg' %}" alt="Passenger Car Motor Oil" />
+          </div>
+          <div class="category-content">
+            <h3 class="category-title">PCMO</h3>
+            <p class="category-desc">Passenger Car Motor Oil</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="category-card">
+        <a href="">
+          <div class="category-image">
+            <img src="{% static 'images_folder/hdeo.svg' %}" alt="Heavy Duty Engine Oil" />
+          </div>
+          <div class="category-content">
+            <h3 class="category-title">HDEO</h3>
+            <p class="category-desc">Heavy Duty Engine Oil</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="category-card">
+        <a href="">
+          <div class="category-image">
+            <img src="{% static 'images_folder/motorbike.svg' %}" alt="Motorcycle Engine Oil" />
+          </div>
+          <div class="category-content">
+            <h3 class="category-title">MOTORBIKE</h3>
+            <p class="category-desc">Motorcycle Engine Oil and fluids</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="category-card">
+        <a href="">
+          <div class="category-image">
+            <img src="{% static 'images_folder/gear.svg' %}" alt="Transmission lubricants" />
+          </div>
+          <div class="category-content">
+            <h3 class="category-title">GEAR</h3>
+            <p class="category-desc">Transmission lubricants</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="category-card">
+        <a href="">
+          <div class="category-image">
+            <img src="{% static 'images_folder/INDUSTRIAL.svg' %}" alt="Industrial products" />
+          </div>
+          <div class="category-content">
+            <h3 class="category-title">INDUSTRIAL</h3>
+            <p class="category-desc">Industrial products</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="category-card">
+        <a href="">
+          <div class="category-image">
+            <img src="{% static 'images_folder/marine.svg' %}" alt="Marine lubricants" />
+          </div>
+          <div class="category-content">
+            <h3 class="category-title">MARINE</h3>
+            <p class="category-desc">Marine lubricants</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="category-card">
+        <a href="">
+          <div class="category-image">
+            <img src="{% static 'images_folder/greases.svg' %}" alt="Greases" />
+          </div>
+          <div class="category-content">
+            <h3 class="category-title">GREASES</h3>
+            <p class="category-desc">Greases</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="category-card">
+        <a href="">
+          <div class="category-image">
+            <img src="{% static 'images_folder/sf.svg' %}" alt="Special Fluids" />
+          </div>
+          <div class="category-content">
+            <h3 class="category-title">SPECIAL FLUIDS</h3>
+            <p class="category-desc">Special Fluids</p>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
-</header>
-<div class="product-categories">
-  <div class="section-header">
-    <h2>PRODUCT CATEGORIES</h2>
-  </div>
-  <div class="container categories-grid">
-    <div class="category-card">
-      <a href="">
-        <div class="category-image">
-          <img
-            src="{% static 'images_folder/pcmo.svg' %}"
-            alt="Passenger Car Motor Oil"
-          />
-        </div>
-        <div class="category-content">
-          <h3 class="category-title">PCMO</h3>
-          <p class="category-desc">Passenger Car Motor Oil</p>
-        </div>
-      </a>
-    </div>
-
-    <div class="category-card">
-      <a href="">
-        <div class="category-image">
-          <img
-            src="{% static 'images_folder/hdeo.svg' %}"
-            alt="Heavy Duty Engine Oil"
-          />
-        </div>
-        <div class="category-content">
-          <h3 class="category-title">HDEO</h3>
-          <p class="category-desc">Heavy Duty Engine Oil</p>
-        </div>
-      </a>
-    </div>
-
-    <div class="category-card">
-      <a href="">
-        <div class="category-image">
-          <img
-            src="{% static 'images_folder/motorbike.svg' %}"
-            alt="Motorcycle Engine Oil"
-          />
-        </div>
-        <div class="category-content">
-          <h3 class="category-title">MOTORBIKE</h3>
-          <p class="category-desc">Motorcycle Engine Oil and fluids</p>
-        </div>
-      </a>
-    </div>
-
-    <div class="category-card">
-      <a href="">
-        <div class="category-image">
-          <img
-            src="{% static 'images_folder/gear.svg' %}"
-            alt="Transmission lubricants"
-          />
-        </div>
-        <div class="category-content">
-          <h3 class="category-title">GEAR</h3>
-          <p class="category-desc">Transmission lubricants</p>
-        </div>
-      </a>
-    </div>
-
-    <div class="category-card">
-      <a href="">
-        <div class="category-image">
-          <img
-            src="{% static 'images_folder/INDUSTRIAL.svg' %}"
-            alt="Industrial products"
-          />
-        </div>
-        <div class="category-content">
-          <h3 class="category-title">INDUSTRIAL</h3>
-          <p class="category-desc">Industrial products</p>
-        </div>
-      </a>
-    </div>
-
-    <div class="category-card">
-      <a href="">
-        <div class="category-image">
-          <img
-            src="{% static 'images_folder/marine.svg' %}"
-            alt="Marine lubricants"
-          />
-        </div>
-        <div class="category-content">
-          <h3 class="category-title">MARINE</h3>
-          <p class="category-desc">Marine lubricants</p>
-        </div>
-      </a>
-    </div>
-
-    <div class="category-card">
-      <a href="">
-        <div class="category-image">
-          <img src="{% static 'images_folder/greases.svg' %}" alt="Greases" />
-        </div>
-        <div class="category-content">
-          <h3 class="category-title">GREASES</h3>
-          <p class="category-desc">Greases</p>
-        </div>
-      </a>
-    </div>
-
-    <div class="category-card">
-      <a href="">
-        <div class="category-image">
-          <img src="{% static 'images_folder/sf.svg' %}" alt="Special Fluids" />
-        </div>
-        <div class="category-content">
-          <h3 class="category-title">SPECIAL FLUIDS</h3>
-          <p class="category-desc">Special Fluids</p>
-        </div>
-      </a>
-    </div>
-  </div>
-</div>
-<div class="our-values bg-blue">
-  <div class="container our-values-section">
-    <div>
-      <img src="{% static 'images_folder/curve text.svg' %}" alt="" />
-      <img src="{% static 'images_folder/values.svg' %}" alt="" />
-    </div>
-    <div class="values-content">
-      <h3>Our Values</h3>
-      <p>
-        The modernization of industry and renewal of equipment have increased
-        demand for high-quality lubricants in Azerbaijan. To meet this, AMINOL
-        Lubricants opened on December 15, 2017, in Sumgayit Chemical Industrial
-        Park with a $20 million investment. The plant produces 150,000 tons
-        annually, focusing on motor, hydraulic, transmission, compressor,
-        turbine, and marine oils, along with antifreeze and AdBlue.
-      </p>
-      <a class="button-style">Discover more</a>
-    </div>
-  </div>
-</div>
-<div class="aminol-worldwide container">
-  <div>
-    <img src="{% static 'images_folder/Ellipse_1863.svg' %}" alt="" />
-  </div>
-  <div class="aminol-worldwide-content">
-    <h2>Aminol Is Available Worldwide</h2>
-    <p>
-      Sales network in more than 50 countries in four continents. <br />
-      Would you like to buy our products or are you interested in a partnership?
-    </p>
-    <a class="button-style">Get in contact</a>
-  </div>
-</div>
-<div class="container">
-  <section class="production-section">
-    <div class="section-background"></div>
-    <div class="section-container">
-      <div class="section-content" id="textContent">
-        <h2>Learn more<br />about production</h2>
+  <div class="our-values bg-blue">
+    <div class="container our-values-section">
+      <div>
+        <img src="{% static 'images_folder/curve text.svg' %}" alt="" />
+        <img src="{% static 'images_folder/values.svg' %}" alt="" />
+      </div>
+      <div class="values-content">
+        <h3>Our Values</h3>
         <p>
-          Aminol Lubricants produces and packages high-quality oils using
-          premium imported base oils and additives, formulated by expert
-          engineers.
+          The modernization of industry and renewal of equipment have increased
+          demand for high-quality lubricants in Azerbaijan. To meet this, AMINOL
+          Lubricants opened on December 15, 2017, in Sumgayit Chemical Industrial
+          Park with a $20 million investment. The plant produces 150,000 tons
+          annually, focusing on motor, hydraulic, transmission, compressor,
+          turbine, and marine oils, along with antifreeze and AdBlue.
         </p>
+        <a class="button-style">Discover more</a>
       </div>
-      <div class="play-button" id="playButton">
-        <i>►</i>
+    </div>
+  </div>
+  <div class="aminol-worldwide container">
+    <div>
+      <img src="{% static 'images_folder/Ellipse_1863.svg' %}" alt="" />
+    </div>
+    <div class="aminol-worldwide-content">
+      <h2>Aminol Is Available Worldwide</h2>
+      <p>
+        Sales network in more than 50 countries in four continents. <br />
+        Would you like to buy our products or are you interested in a partnership?
+      </p>
+      <a class="button-style">Get in contact</a>
+    </div>
+  </div>
+  <div class="container">
+    <section class="production-section">
+      <div class="section-background"></div>
+      <div class="section-container">
+        <div class="section-content" id="textContent">
+          <h2>Learn more<br />about production</h2>
+          <p>
+            Aminol Lubricants produces and packages high-quality oils using
+            premium imported base oils and additives, formulated by expert
+            engineers.
+          </p>
+        </div>
+        <div class="play-button" id="playButton">
+          <i>►</i>
+        </div>
+        <div class="video-container" id="videoContainer">
+          <iframe id="youtubeVideo" src="https://www.youtube.com/embed/05qm1jBfnsM?si=znjB-ROF2heWOwCh"
+            title="Aminol Production Process"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
       </div>
-      <div class="video-container" id="videoContainer">
-        <iframe
-          id="youtubeVideo"
-          src="https://www.youtube.com/embed/05qm1jBfnsM?si=znjB-ROF2heWOwCh"
-          title="Aminol Production Process"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        >
-        </iframe>
+    </section>
+  </div>
+  <div class="innovation">
+    <div class="section-header">
+      <h2>INNOVATION & TECHNOLOGY</h2>
+    </div>
+    <div class="container innovation-technology">
+      <div class="section slide-right">
+        <div class="content">
+          <h2>Hybrid & EV lubricants</h2>
+          <p>Choose sustainability with our Hybrid & EV lubricants</p>
+          <a href="#" class="button-style">Discover more</a>
+        </div>
+        <div class="image-container">
+          <img class="slide-under-img" src="{% static 'images_folder/Mask group.svg' %}" alt="" />
+          <img class="innovation-image" src="{% static 'images_folder/image.png' %}" alt="Hybrid & EV Lubricants" />
+        </div>
+      </div>
+
+      <div class="section slide-left">
+        <div class="content">
+          <h2>Additives</h2>
+          <p>
+            Protect and keep your vehicle in top condition with our unique range
+            of additives.
+          </p>
+          <a href="#" class="button-style">Discover more</a>
+        </div>
+        <div class="image-container">
+          <img class="innovation-image" src="{% static 'images_folder/FR4A9609 1.png' %}" alt="Additives" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="news-section">
+    <div class="section-header">
+      <h2>LATEST NEWS</h2>
+    </div>
+    <div class="bg-blue">
+      <div class="container latest-news">
+        <div class="news-cards">
+          <div class="news-card">
+            <div class="news-image">
+              <img src="{% static 'images_folder/zavod.svg' %}" alt="" />
+            </div>
+            <div class="news-content">
+              <h5>ALCO LLC: Enhancing Eurozone Energy Security</h5>
+              <p>
+                The company has aimed to produce materials on par or exceeding
+                international standards, particularly because there is a deficit
+                of fairly...
+              </p>
+              <a href="">Read more <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+          </div>
+          <div class="news-card">
+            <div class="news-image">
+              <img src="{% static 'images_folder/image (1).svg' %}" alt="" />
+            </div>
+            <div class="news-content">
+              <h5>Certified and approved for use in Mercedes Benz engines</h5>
+              <p>
+                ALCO aims to demonstrate to consumers around the world that
+                lubricants manufactured in Azerbaijan are on par or exceed OEM...
+              </p>
+              <a href="">Read more <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+          </div>
+          <div class="news-card">
+            <div class="news-image">
+              <img src="{% static 'images_folder/image.svg' %}" alt="" />
+            </div>
+            <div class="news-content">
+              <h5>
+                First company in Azerbaijan to produce wind turbine lubricants
+              </h5>
+              <p>
+                Industrial gear oils have always been a position of interest for
+                ALCO. The company’s focus on producing in line with international
+                trends has...
+              </p>
+              <a href="">Read more <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <a class="button-style" href="">Discover more</a>
       </div>
     </div>
   </section>
-</div>
-<div class="innovation">
-  <div class="section-header">
-    <h2>INNOVATION & TECHNOLOGY</h2>
-  </div>
-  <div class="container innovation-technology">
-    <div class="section slide-right">
-      <div class="content">
-        <h2>Hybrid & EV lubricants</h2>
-        <p>Choose sustainability with our Hybrid & EV lubricants</p>
-        <a href="#" class="button-style">Discover more</a>
-      </div>
-      <div class="image-container">
-        <img
-          class="slide-under-img"
-          src="{% static 'images_folder/Mask group.svg' %}"
-          alt=""
-        />
-        <img
-          class="innovation-image"
-          src="{% static 'images_folder/image.png' %}"
-          alt="Hybrid & EV Lubricants"
-        />
-      </div>
-    </div>
 
-    <div class="section slide-left">
-      <div class="content">
-        <h2>Additives</h2>
-        <p>
-          Protect and keep your vehicle in top condition with our unique range
-          of additives.
-        </p>
-        <a href="#" class="button-style">Discover more</a>
-      </div>
-      <div class="image-container">
-        <img
-          class="innovation-image"
-          src="{% static 'images_folder/FR4A9609 1.png' %}"
-          alt="Additives"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-<section class="news-section">
-  <div class="section-header">
-    <h2>LATEST NEWS</h2>
-  </div>
-  <div class="bg-blue">
-    <div class="container latest-news">
-      <div class="news-cards">
-        <div class="news-card">
-          <div class="news-image">
-            <img src="{% static 'images_folder/zavod.svg' %}" alt="" />
-          </div>
-          <div class="news-content">
-            <h5>ALCO LLC: Enhancing Eurozone Energy Security</h5>
-            <p>
-              The company has aimed to produce materials on par or exceeding
-              international standards, particularly because there is a deficit
-              of fairly...
-            </p>
-            <a href="">Read more <i class="fa-solid fa-chevron-right"></i></a>
-          </div>
-        </div>
-        <div class="news-card">
-          <div class="news-image">
-            <img src="{% static 'images_folder/image (1).svg' %}" alt="" />
-          </div>
-          <div class="news-content">
-            <h5>Certified and approved for use in Mercedes Benz engines</h5>
-            <p>
-              ALCO aims to demonstrate to consumers around the world that
-              lubricants manufactured in Azerbaijan are on par or exceed OEM...
-            </p>
-            <a href="">Read more <i class="fa-solid fa-chevron-right"></i></a>
-          </div>
-        </div>
-        <div class="news-card">
-          <div class="news-image">
-            <img src="{% static 'images_folder/image.svg' %}" alt="" />
-          </div>
-          <div class="news-content">
-            <h5>
-              First company in Azerbaijan to produce wind turbine lubricants
-            </h5>
-            <p>
-              Industrial gear oils have always been a position of interest for
-              ALCO. The company’s focus on producing in line with international
-              trends has...
-            </p>
-            <a href="">Read more <i class="fa-solid fa-chevron-right"></i></a>
-          </div>
-        </div>
-      </div>
-      <a class="button-style" href="">Discover more</a>
-    </div>
-  </div>
-</section>
-<section class="gallery-section">
-  <div class="section-header">
-    <h2>GALLERY</h2>
-  </div>
-  <div class="swiper labSwiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <img
-          src="{% static 'images_folder/8Z3A7218.png' %}"
-          alt="Laboratuvar ekipmanı"
-        />
-      </div>
-      <div class="swiper-slide">
-        <img
-          src="{% static 'images_folder/8Z3A7274 (1).png' %}"
-          alt="Laboratuvarda bilim insanı"
-        />
-      </div>
-      <div class="swiper-slide">
-        <img
-          src="{% static 'images_folder/8Z3A7274.png' %}"
-          alt="Ekipmanlı laboratuvar"
-        />
-      </div>
-      <div class="swiper-slide">
-        <img
-          src="{% static 'images_folder/FR4A9403.svg' %}"
-          alt="Modern laboratuvar"
-        />
-      </div>
-      <div class="swiper-slide">
-        <img
-          src="{% static 'images_folder/8Z3A7218.png' %}"
-          alt="Laboratuvar test düzeneği"
-        />
-      </div>
-    </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-  </div>
-</section>
-<div class="container brochure">
-  <img src="{% static 'images_folder/aminol broshur cvr 1.svg' %}" alt="" />
-</div>
+  {% include 'components/gallery.html' %}
 
-<div class="partners-section">
-  <div class="container partners-section-content">
-    <div class="section-content">
-      <h2>We Are Powered By Our Partners</h2>
-      <p>
-        Remittance acts as a bridge, connecting loved ones and making the world
-        a little smaller. We are dedicated to forging strategic partnerships
-        which help us help you send money around the globe quickly, safely and
-        affordably.
-      </p>
-    </div>
-    <div class="partners-section-images">
-      <img src="{% static 'images_folder/lubrizol-large 1.svg' %}" alt="" />
-      <img src="{% static 'images_folder/inf 1.svg' %}" alt="" />
-      <img src="{% static 'images_folder/aft 1.svg' %}" alt="" />
-      <img src="{% static 'images_folder/basf 1.svg' %}" alt="" />
-      <img src="{% static 'images_folder/chev 1.svg' %}" alt="" />
-      <img src="{% static 'images_folder/youbase 1.svg' %}" alt="" />
-      <img src="{% static 'images_folder/eni 1.svg' %}" alt="" />
-      <img src="{% static 'images_folder/neste 1.svg' %}" alt="" />
-      <img src="{% static 'images_folder/dowpol 1.svg' %}" alt="" />
-      <img src="{% static 'images_folder/sasol 1.svg' %}" alt="" />
-      <img src="{% static 'images_folder/clariant 1.svg' %}" alt="" />
-      <img src="{% static 'images_folder/exxon 1.svg' %}" alt="" />
-      <img src="{% static 'images_folder/Emery_1 1.svg' %}" alt="" />
-      <img src="{% static 'images_folder/Evonik_logo_2020 1.png" alt="" />
-      <img src="{% static 'images_folder/logo-italmatch 1.svg' %}" alt="" />
-      <img src="{% static 'images_folder/mauser 1.svg' %}" alt="" />
-      <img src="{% static 'images_folder/munzing 1.svg' %}" alt="" />
-    </div>
-  </div>
-  <div class="oil">
-    <img src="{% static 'images_folder/shutterstock_2425198899 1.svg' %}" alt="" />
-  </div>
-  <div class="whatsapp-section">
-    <a href=""
-      >Ask your question on Whatsapp
-      <img src="{% static 'images_folder/Vector.svg' %}" alt="" />
-    </a>
-  </div>
+  {% include 'components/brochure.html' %}
+
 </div>
 
 
