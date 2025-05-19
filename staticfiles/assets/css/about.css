@@ -1,0 +1,273 @@
+.about-section {
+  margin-bottom: 100px;
+}
+
+.about-section .about-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+}
+
+.about-section .tab {
+  white-space: nowrap;
+  padding: 10px;
+  border: 1.9px solid #012762;
+  border-radius: 50px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #012762;
+  flex: 1;
+  text-align: center;
+  transition: all 0.5s ease;
+}
+
+.tab.active {
+  background-color: #f6f9ff;
+  color: #012762;
+}
+
+.about-content .tab-content {
+  display: none;
+}
+
+.about-content .tab-content.active {
+  display: block;
+}
+
+/* Guarantee section */
+
+.guarantee-section .guarantee-main-container {
+  width: 100vw;
+  height: 80vh;
+  margin-top: 70px;
+  position: relative;
+  overflow: hidden;
+}
+
+.guarantee-section .guarantee-main-container::before {
+  content: "";
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("images/shutterstock.png");
+  background-size: 120%;
+  background-repeat: no-repeat;
+  transform: scaleX(-1);
+  z-index: 0;
+}
+
+.guarantee-section .guarantee-row {
+  align-items: start;
+  justify-content: center;
+  display: flex;
+  gap: 20px;
+}
+
+.guarantee-section .row-item {
+  width: 25%;
+  color: #012762;
+  padding: 20px;
+  padding-bottom: 40px;
+}
+
+.guarantee-section .row-item span {
+  font-size: 45px;
+  font-weight: 600;
+  line-height: 52px;
+}
+
+.guarantee-section .row-item h3 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 27px;
+  margin: 8px 0;
+}
+
+.guarantee-section .row-item p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.guarantee-section .row-item-2 {
+  background-color: #012762;
+  color: #fff;
+  border-radius: 8px;
+}
+
+.guarantee-section .row-item-2 span {
+  color: #ffd936;
+}
+
+/* Certifications section */
+
+.certifications-container {
+  width: 100%;
+  height: 400px;
+  margin-top: 40px;
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+.certifications-container img {
+  position: absolute;
+  top: 50%;
+  left: 51.5%;
+  transform: translate(-50%, -50%);
+  width: 117.5%;
+  height: auto;
+  z-index: -1;
+}
+
+.certifications-container h3 {
+  padding-top: 5%;
+  width: 50%;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 46px;
+  letter-spacing: 0px;
+}
+
+.certifications-container p {
+  width: 75%;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0px;
+}
+
+.certifications-logos {
+  margin: 35px 0;
+  width: 100%;
+  height: 120px;
+  background-color: #f6f9ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.certifications-logos img {
+  width: 90%;
+  height: auto;
+  background-color: #f6f9ff;
+  object-fit: cover;
+}
+
+/* Sustainability Section */
+.sustainability-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+}
+
+.sustainability-container {
+  width: 100%;
+  height: 360px;
+  position: relative;
+  margin: 40px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  overflow: visible;
+}
+
+.sustainability-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/sustainability.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.sustainability-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(17, 53, 2, 0.8);
+  z-index: 1;
+}
+
+.sustainability-circle-wrapper {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  overflow: hidden;
+  left: 20%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.sustainability-circle-img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-size: top;
+}
+
+
+.circle-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.curved-text-img {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+.content-wrapper {
+  width: 100%;
+  padding-left: 470px;
+  padding-right: 25px;
+  text-align: left;
+  position: relative;
+  z-index: 5;
+}
+
+.content-wrapper p {
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+letter-spacing: 0px;
+text-transform: capitalize;
+}
+
+
+.about-page .page-header {
+  background-image: url("../../images/page-header.jpg");
+}
