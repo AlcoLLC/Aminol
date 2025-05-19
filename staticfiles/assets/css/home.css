@@ -659,6 +659,8 @@ nav {
   line-height: 38px;
   letter-spacing: 0%;
   margin-bottom: 1rem;
+  color: #fff;
+  text-align: left;
 }
 
 .production-section .section-content p {
