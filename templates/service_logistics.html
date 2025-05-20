@@ -1,0 +1,128 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+{% include 'components/navbar.html' %}
+
+<div class="main-service-logistics">
+  <header class="page-header"></header>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb container">
+    <a href="/">Home page</a>| <span>Services</span>|
+    <p>Aminol logistics</p>
+  </div>
+
+  <div class="container">
+    <img class="aminol-large-image" src="{% static '/images/logistics-map.png' %}" alt="Service Aminol" />
+  </div>
+
+  <div class="shared-images-section">
+    <div class="container">
+      <div class="shared-images-container">
+        <div class="vertical-line"></div>
+        <!-- First Row -->
+        <div class="section-row row-reverse">
+          <div class="image-container">
+            <div class="circular-image">
+              <img src="{% static '/images/service-logistics-1.jpg' %}" alt="Strengthen your business" />
+            </div>
+          </div>
+          <div class="text-container text-left">
+            <h2>Reliable and precise</h2>
+            <p>
+              We are capable of carrying out reliable tests – to the accuracy of
+              a millionth of a particle. We have installed the necessary
+              equipment to allow us to test lubricants for literally any
+              parameter required. We take every opportunity we have to randomly
+              test our products against ATIEL, ISO, API and OEM standards. Our
+              laboratory is independent of the management structure and delivers
+              impartial results.
+            </p>
+          </div>
+        </div>
+
+        <!-- Second Row -->
+        <div class="section-row">
+          <div class="image-container">
+            <div class="circular-image">
+              <img src="{% static '/images/service-logistics-2.jpg' %}" alt="Availability" />
+            </div>
+          </div>
+          <div class="text-container">
+            <h2>Research and development</h2>
+            <p>
+              Our personnel is encouraged to carry out tests that show where our
+              products lack. We use these tests to improve the tribological
+              characteristics of our products while optimizing our formulas. We
+              also use analyses and tests to develop new products which have
+              never been carried out in Azerbaijan and sometimes in the CIS
+              region as a whole.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <section class="news-section">
+    <div class="section-header">
+      <h2>LATEST NEWS</h2>
+    </div>
+
+    <div class="container latest-news">
+      <div class="news-cards">
+        <div class="news-card">
+          <div class="news-image">
+            <img src="{% static 'images_folder/zavod.svg' %}" alt="" />
+          </div>
+          <div class="news-content">
+            <h5>ALCO LLC: Enhancing Eurozone Energy Security</h5>
+            <p>
+              The company has aimed to produce materials on par or exceeding
+              international standards, particularly because there is a deficit
+              of fairly...
+            </p>
+            <a href="">Read more <i class="fa-solid fa-chevron-right"></i></a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="news-image">
+            <img src="{% static 'images_folder/image (1).svg' %}" alt="" />
+          </div>
+          <div class="news-content">
+            <h5>Certified and approved for use in Mercedes Benz engines</h5>
+            <p>
+              ALCO aims to demonstrate to consumers around the world that
+              lubricants manufactured in Azerbaijan are on par or exceed OEM...
+            </p>
+            <a href="">Read more <i class="fa-solid fa-chevron-right"></i></a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="news-image">
+            <img src="{% static 'images_folder/image.svg' %}" alt="" />
+          </div>
+          <div class="news-content">
+            <h5>
+              First company in Azerbaijan to produce wind turbine lubricants
+            </h5>
+            <p>
+              Industrial gear oils have always been a position of interest for
+              ALCO. The company’s focus on producing in line with international
+              trends has...
+            </p>
+            <a href="">Read more <i class="fa-solid fa-chevron-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <a class="button-style" href="">Discover more</a>
+    </div>
+
+  </section>
+
+
+</div>
+{% include 'components/whatsapp.html' %}
+
+{% endblock %}

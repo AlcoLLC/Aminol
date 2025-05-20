@@ -76,6 +76,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.4s ease;
 }
 
 nav {
@@ -325,7 +326,19 @@ nav {
   background-color: #f51b21;
   color: white;
   border: none;
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
+}
+
+.main-service-laboratory .latest-news .button-style,
+.main-service-logistics .latest-news .button-style{
+  background-color: #012762 !important;
+  color: white;
+  border: none;
+}
+
+.main-service-laboratory .latest-news .button-style:hover,
+.main-service-logistics .latest-news .button-style:hover {
+  background-color: #f51b21 !important;
 }
 
 .home-header .swiper-button-prev,
@@ -835,6 +848,7 @@ nav {
 .news-section {
   margin: 100px auto;
 }
+
 .latest-news {
   padding: 150px 0 60px 0;
   margin-top: 30px auto;

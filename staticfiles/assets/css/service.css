@@ -231,9 +231,12 @@
 }
 
 .main-service-laboratory .page-header {
-  background-image: url('../../images/page-header-services1.jpg');
+  background-image: url('../../images/page-header-service-2.jpg');
 }
 
+.main-service-logistics .page-header {
+  background-image: url('../../images/page-header-service-33.jpg');
+}
 .service-aminol-dealer .page-header {
   background-image: url('../../images/page-header-services1.jpg');
 }
