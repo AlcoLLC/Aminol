@@ -65,6 +65,23 @@
     </div>
 </div>
 
+<div class="container">
+    <div class="market-logos">
+        <img src="{% static '/images/market-logos.png' %}" alt="" />
+    </div>
+</div>
+
+<div class="services-offer-section container">
+    <div class="text-container text-left">
+        <h2>{{ shipping_service.title }}</h2>
+        <p>
+           {{ industrshipping_serviceial_service.description }}
+        </p>
+    </div>
+    <div class="services-offer-image">
+        <img src="{{ shipping_service.image.url }}" alt="{{ industrial_service.title }}" />
+    </div>
+</div>
 
 <!-- Shared Section -->
 <div class="shared-section">
