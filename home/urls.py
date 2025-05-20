@@ -6,4 +6,5 @@ urlpatterns = [
     path('markets_automotive/', markets_automotive_view, name='markets_automotive'),
     path('markets_industrial/', markets_industrial_view, name='markets_industrial'),
     path('markets_shipping/', markets_shipping_view, name='markets_shipping'),
+    path('contact/', contact_view, name='contact'),
 ]
