@@ -1,9 +1,6 @@
 from django.urls import path
-<<<<<<< HEAD
-from .views import home_view, service_aminol_dealer_view, service_laboratory_view, service_logistics_view, markets_automotive_view, markets_industrial_view, markets_shipping_view, contact_view
-=======
-from .views import home_view, markets_automotive_view, markets_industrial_view, markets_shipping_view
->>>>>>> f376d9a5a1ed5d56cba2a883510474d7facae5e8
+from .views import home_view, markets_automotive_view, markets_industrial_view, markets_shipping_view, contact_view
+
 
 urlpatterns = [
     path("", home_view),
