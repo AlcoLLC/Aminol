@@ -256,14 +256,14 @@
         <div class="shared-images-container">
           <div class="vertical-line"></div>
           {% for content in sustainability_contents %}
-          <div class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}">
-            {% if content.has_image and content.image %}
+          <div
+            class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}"
+          >
             <div class="image-container">
               <div class="circular-image">
                 <img src="{{ content.image.url }}" alt="{{ content.title }}" />
               </div>
             </div>
-            {% endif %}
             <div class="text-container">
               <h2>{{ content.title }}</h2>
               <p>{{ content.description }}</p>
