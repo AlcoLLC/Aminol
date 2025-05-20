@@ -1,0 +1,88 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+{% include 'components/navbar.html' %}
+
+<div class="markets-shipping">
+    <header class="page-header">
+        <div class="header-content">
+            <h2>Shipping & Offshore</h2>
+            <p>Lubricants for marine equipments</p>
+        </div>
+    </header>
+</div>
+
+<!-- Breadcrumb -->
+
+<div class="breadcrumb container">
+    <a href="/">Home page</a>| <span>Markets</span>|
+    <p>Shipping & Offshore</p>
+</div>
+
+<div class="shared-images-section">
+    <div class="container">
+        <div class="shared-images-container">
+            <div class="vertical-line"></div>
+
+            <div class="section-row ">
+                <div class="image-container">
+                    <div class="circular-image">
+                        <img src="{% static '/images/services-aminol-1.jpg' %}" alt="Strengthen your business" />
+                    </div>
+                </div>
+                <div class="text-container">
+                    <h2>Strengthen your business</h2>
+                    <p>
+                        If you choose Aminol, you choose for the growth of your business. As
+                        an Aminol dealer, we offer you a wide range of technical and
+                        commercial support, specifically designed to strengthen your
+                        operations.
+                    </p>
+                </div>
+            </div>
+
+            <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-1" alt="Yellow Point" />
+
+            <div class="section-row row-reverse">
+                <div class="image-container">
+                    <div class="circular-image">
+                        <img src="{% static '/images/services-aminol-2.jpg' %}" alt="Availability" />
+                    </div>
+                </div>
+                <div class="text-container text-left">
+                    <h2>Availability</h2>
+                    <p>
+                        The Aminol Official Dealer formula is growing rapidly and is
+                        available in more and more countries. Depending on the country, the
+                        content of the formula can vary. Please contact Sales International
+                        for availability in your country.
+                    </p>
+                </div>
+            </div>
+
+            <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-2" alt="Yellow Point" />
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Shared Section -->
+<div class="shared-section">
+    <div class="shared-background"></div>
+    <div class="container">
+        <img src="{% static '/images/shared-image1.png' %}" alt="">
+        <div class="shared-description">
+            <h3>Knowledge and support</h3>
+            <span>Our experienced team is ready to assist you with advice, technical and commercial support, and the
+                latest
+                industry developments. Discover our wide range of services and workshop materials on our service page.
+            </span>
+            <a href="#" class="button-style">Our Services</a>
+        </div>
+    </div>
+</div>
+
+{% include 'components/gallery.html' %}
+{% include 'components/brochure.html' %}
+
+{% endblock %}

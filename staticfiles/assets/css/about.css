@@ -270,3 +270,64 @@
 .about-page .page-header {
   background-image: url("../../images/page-header.jpg");
 }
+
+/* Market Sections */
+
+.market-logos {
+  margin-bottom: 50px;
+  width: 100%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.market-logos img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.market-buttons {
+  margin: 40px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.market-buttons .button-style {
+  color: #fff !important;
+}
+
+.market-buttons .button-style.left {
+  background-color: #012762;
+}
+
+.market-buttons .button-style.right {
+  background-color: #ec1c31;
+}
+
+.markets-comprehensive-section {
+  margin: 100px auto;
+}
+
+.markets-comprehensive-section .section-grid {
+  margin: 50px auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  justify-content: space-between;
+  justify-content: center;
+  gap: 15px;
+}
+
+.markets-comprehensive-section .section-grid .grid-item {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: #28315e;
+  padding: 12px;
+  background-color: #f6f9ff;
+  border-radius: 90px;
+}
