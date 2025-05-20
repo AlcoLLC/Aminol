@@ -1,72 +1,15 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 
-<nav>
-  <div class="navbar navbar-blur">
-    <div class="container">
-      <div class="navbar-left">
-        <img src="{% static '/images/aminol-logo.svg' %}" alt="" />
-      </div>
-      <div class="navbar-right">
-        <div class="nav-section">
-          <div class="nav-top">
-            <ul>
-              <li><a href="">News</a></li>
-              <li><a href="">Brand Portal</a></li>
-              <li><a href="">Career</a></li>
-              <li><a href="">Contact</a></li>
-              <li class="lang-btn">
-                <button class="btn-az">AZ</button>
-                <button class="btn-en">EN</button>
-              </li>
-            </ul>
-          </div>
-          <div class="nav-bottom">
-            <ul>
-              <li><a href="">About us</a></li>
-              <a class="dropdown">
-                <a href="">Products<i class="fa-solid fa-chevron-down"></i></a>
-                <div class="dropdown-content">
-                  <a class="active" href="">Aminol official dealer</a>
-                  <a href="">Aminol Laboratory</a>
-                  <a href="">Aminol Logistics</a>
-                </div>
-              </li>
-              <li class="dropdown">
-                <a href="">Markets<i class="fa-solid fa-chevron-down"></i></a>
-                <div class="dropdown-content">
-                  <a href="">Aminol official dealer</a>
-                  <a href="">Aminol Laboratory</a>
-                  <a href="">Aminol Logistics</a>
-                </div>
-              </li>
-              <li class="dropdown">
-                <a href="">Services<i class="fa-solid fa-chevron-down"></i></a>
-                <div class="dropdown-content">
-                  <a href="">Aminol official dealer</a>
-                  <a href="">Aminol Laboratory</a>
-                  <a href="">Aminol Logistics</a>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <button class="search">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-  <div class="dropdown-background"></div>
-</nav>
+{% include 'components/navbar.html' %}
+
 <div class="main-service-laboratory">
-  <header
-    class="page-header"
-  ></header>
+  <header class="page-header"></header>
 
   <!-- Breadcrumb -->
+
   <div class="breadcrumb container">
-    <span>Home page</span>| <span>Services</span>|
-    <a href="">Aminol laboratory</a>
+    <a href="/">Home page</a>| <span>Services</span>|
+    <p>Aminol laboratory</p>
   </div>
 
   <div class="shared-images-section">
@@ -77,10 +20,7 @@
         <div class="section-row row-reverse">
           <div class="image-container">
             <div class="circular-image">
-              <img
-                src="{% static '/images/service-laboratory-1.jpg' %}"
-                alt="Strengthen your business"
-              />
+              <img src="{% static '/images/service-laboratory-1.jpg' %}" alt="Strengthen your business" />
             </div>
           </div>
           <div class="text-container text-left">
@@ -121,10 +61,7 @@
         <div class="section-row row-reverse">
           <div class="image-container">
             <div class="circular-image">
-              <img
-                src="{% static '/images/service-laboratory-3.jpg' %}"
-                alt="AMINOL Factory Workers"
-              />
+              <img src="{% static '/images/service-laboratory-3.jpg' %}" alt="AMINOL Factory Workers" />
             </div>
           </div>
           <div class="text-container">
@@ -145,11 +82,65 @@
     </div>
   </div>
 
-  <div class="section-header">
-    <h2>LATEST NEWS</h2>
-  </div>
 
-  
+  <section class="news-section">
+    <div class="section-header">
+      <h2>LATEST NEWS</h2>
+    </div>
+
+    <div class="container latest-news">
+      <div class="news-cards">
+        <div class="news-card">
+          <div class="news-image">
+            <img src="{% static 'images_folder/zavod.svg' %}" alt="" />
+          </div>
+          <div class="news-content">
+            <h5>ALCO LLC: Enhancing Eurozone Energy Security</h5>
+            <p>
+              The company has aimed to produce materials on par or exceeding
+              international standards, particularly because there is a deficit
+              of fairly...
+            </p>
+            <a href="">Read more <i class="fa-solid fa-chevron-right"></i></a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="news-image">
+            <img src="{% static 'images_folder/image (1).svg' %}" alt="" />
+          </div>
+          <div class="news-content">
+            <h5>Certified and approved for use in Mercedes Benz engines</h5>
+            <p>
+              ALCO aims to demonstrate to consumers around the world that
+              lubricants manufactured in Azerbaijan are on par or exceed OEM...
+            </p>
+            <a href="">Read more <i class="fa-solid fa-chevron-right"></i></a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="news-image">
+            <img src="{% static 'images_folder/image.svg' %}" alt="" />
+          </div>
+          <div class="news-content">
+            <h5>
+              First company in Azerbaijan to produce wind turbine lubricants
+            </h5>
+            <p>
+              Industrial gear oils have always been a position of interest for
+              ALCO. The company’s focus on producing in line with international
+              trends has...
+            </p>
+            <a href="">Read more <i class="fa-solid fa-chevron-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <a class="button-style" href="">Discover more</a>
+    </div>
+
+  </section>
+
+
 </div>
+{% include 'components/whatsapp.html' %}
 
 {% endblock %}
