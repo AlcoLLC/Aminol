@@ -26,7 +26,6 @@ class AboutSectionContent(models.Model):
 
 
 class Quality(models.Model):
-    # Single instance for quality overview
     pass
 
     def __str__(self):
@@ -60,7 +59,6 @@ class WeGuarantee(models.Model):
 
 
 class Production(models.Model):
-    # Single instance for production overview
     pass
 
     def __str__(self):
@@ -100,7 +98,6 @@ class SustainabilityContent(models.Model):
     description = models.TextField()
     image = models.ImageField(
         upload_to='sustainability/', blank=True, null=True)
-
 
     def __str__(self):
         return f"{self.title}"
