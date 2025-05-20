@@ -232,7 +232,7 @@ nav {
 }
 
 .dropdown-content a.active {
-    color: #f92b3f !important;
+  color: #f92b3f !important;
   font-weight: 600 !important;
 }
 
@@ -384,7 +384,7 @@ nav {
 }
 
 .main-service-laboratory .shared-images-section .circular-image,
-.main-service-logistics .shared-images-section .circular-image{
+.main-service-logistics .shared-images-section .circular-image {
   width: 380px;
   height: 380px;
 }
