@@ -166,6 +166,11 @@ nav {
   transition: color 0.3s ease !important;
 }
 
+
+.navbar .nav-section .nav-bottom ul li a:hover{
+  
+}
+
 .navbar .nav-section .nav-bottom ul li a i {
   margin-left: 5px;
 }

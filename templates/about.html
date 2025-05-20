@@ -78,8 +78,8 @@
   <div class="tab-content active" id="about-aminol">
     <!-- Breadcrumb -->
     <div class="breadcrumb container">
-      <span>Home page</span>|
-      <a href="">About us</a>
+      <a href="/">Home page</a>|
+      <p>About us</p>
     </div>
 
     <!-- Shared Section -->
@@ -110,26 +110,19 @@
         <div class="shared-images-container">
           <div class="vertical-line"></div>
           {% for section in about_sections %}
-          <div
-            class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}"
-          >
+          <div class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}">
             <div class="image-container">
               <div class="circular-image">
                 <img src="{{ section.image.url }}" alt="{{ section.title }}" />
               </div>
             </div>
-            <div
-              class="text-container {% if forloop.counter|divisibleby:2 %}text-left{% endif %}"
-            >
+            <div class="text-container {% if forloop.counter|divisibleby:2 %}text-left{% endif %}">
               <h2>{{ section.title }}</h2>
               <p>{{ section.description }}</p>
             </div>
           </div>
-          <img
-            src="{% static '/images/yellow-point.svg' %}"
-            class="droplet droplet-{{ forloop.counter }}"
-            alt="Yellow Point"
-          />
+          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-{{ forloop.counter }}"
+            alt="Yellow Point" />
           {% endfor %}
         </div>
         {% endif %}
@@ -141,8 +134,8 @@
   <div class="tab-content" id="quality">
     <!-- Breadcrumb -->
     <div class="breadcrumb container">
-      <span>Home page</span>| <span>About us</span>|
-      <a href="">Quality</a>
+      <a href="/">Home page</a>| <span>About us</span>|
+      <p>Quality</p>
     </div>
 
     <div class="section-header">
@@ -155,9 +148,7 @@
         <div class="shared-images-container">
           <div class="vertical-line"></div>
           {% for content in quality_contents %}
-          <div
-            class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}"
-          >
+          <div class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}">
             <div class="image-container">
               <div class="circular-image">
                 <img src="{{ content.image.url }}" alt="{{ content.title }}" />
@@ -168,11 +159,8 @@
               <p>{{ content.description }}</p>
             </div>
           </div>
-          <img
-            src="{% static '/images/yellow-point.svg' %}"
-            class="droplet droplet-{{ forloop.counter }}"
-            alt="Yellow Point"
-          />
+          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-{{ forloop.counter }}"
+            alt="Yellow Point" />
           {% endfor %}
         </div>
         {% endif %}
@@ -217,9 +205,10 @@
   <!-- Production Tab -->
   <div class="tab-content" id="production">
     <!-- Breadcrumb -->
+
     <div class="breadcrumb container">
-      <span>Home page</span>| <span>About Aminol</span>|
-      <a href="">Production</a>
+      <a href="/">Home page</a>| <span>About Aminol</span>|
+      <p>Production</p>
     </div>
 
     <div class="section-header">
@@ -232,9 +221,7 @@
         <div class="shared-images-container">
           <div class="vertical-line"></div>
           {% for content in production_contents %}
-          <div
-            class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}"
-          >
+          <div class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}">
             <div class="image-container">
               <div class="circular-image">
                 <img src="{{ content.image.url }}" alt="{{ content.title }}" />
@@ -247,11 +234,8 @@
           </div>
 
           <!-- Yellow Point Droplet -->
-          <img
-            src="{% static '/images/yellow-point.svg' %}"
-            class="droplet droplet-{{ forloop.counter }}"
-            alt="Yellow Point"
-          />
+          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-{{ forloop.counter }}"
+            alt="Yellow Point" />
           {% endfor %}
         </div>
         {% endif %}
@@ -263,8 +247,8 @@
   <div class="tab-content" id="documents">
     <!-- Breadcrumb -->
     <div class="breadcrumb container">
-      <span>Home page</span>| <span>About Aminol</span>|
-      <a href="">Documents & Certifications</a>
+      <a href="/">Home page</a>| <span>About Aminol</span>|
+      <p>Documents & Certifications</p>
     </div>
 
     <div class="section-header">
@@ -293,9 +277,10 @@
   <!-- Sustainability Tab -->
   <div class="tab-content" id="sustainability">
     <!-- Breadcrumb -->
+
     <div class="breadcrumb container">
-      <span>Home page</span>| <span>About Aminol</span>|
-      <a href="">Sustainability</a>
+      <a href="/">Home page</a>| <span>About Aminol</span>|
+      <p>Sustainability</p>
     </div>
 
     <div class="section-header">
@@ -308,16 +293,10 @@
       <div class="container sustainability-content">
         <div class="sustainability-circle-wrapper">
           <div class="sustainability-circle-img">
-            <img
-              class="circle-img"
-              src="{% static '/images/sustainability-circle.png' %}"
-              alt="Sustainability Circle"
-            />
-            <img
-              class="curved-text-img"
-              src="{% static '/images/curve text.svg' %}"
-              alt="Core of Innovation Sustainability"
-            />
+            <img class="circle-img" src="{% static '/images/sustainability-circle.png' %}"
+              alt="Sustainability Circle" />
+            <img class="curved-text-img" src="{% static '/images/curve text.svg' %}"
+              alt="Core of Innovation Sustainability" />
           </div>
         </div>
         <div class="content-wrapper">
@@ -333,9 +312,7 @@
         <div class="shared-images-container">
           <div class="vertical-line"></div>
           {% for content in sustainability_contents %}
-          <div
-            class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}"
-          >
+          <div class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}">
             {% if content.has_image and content.image %}
             <div class="image-container">
               <div class="circular-image">
@@ -348,11 +325,8 @@
               <p>{{ content.description }}</p>
             </div>
           </div>
-          <img
-            src="{% static '/images/yellow-point.svg' %}"
-            class="droplet droplet-{{ forloop.counter }}"
-            alt="Yellow Point"
-          />
+          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-{{ forloop.counter }}"
+            alt="Yellow Point" />
           {% endfor %}
         </div>
         {% endif %}
