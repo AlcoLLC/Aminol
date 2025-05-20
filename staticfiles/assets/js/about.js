@@ -1,20 +1,47 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const tabs = document.querySelectorAll('.tab');
-    const tabContents = document.querySelectorAll('.tab-content');
+document.addEventListener("DOMContentLoaded", function () {
+  const tabs = document.querySelectorAll(".tab");
+  const tabContents = document.querySelectorAll(".tab-content");
 
-    tabs.forEach(tab => {
-        tab.addEventListener('click', function () {
-            tabs.forEach(t => t.classList.remove('active'));
-            tabContents.forEach(c => c.classList.remove('active'));
+  function positionDroplets(activeTabId) {
+    const droplets = document.querySelectorAll(`#${activeTabId} .droplet`);
+    const baseTop = 140;
+    const interval = 360;
 
-            this.classList.add('active');
-
-            const tabId = this.getAttribute('data-tab');
-            document.getElementById(tabId).classList.add('active');
-
-            const url = new URL(window.location);
-            url.searchParams.set('tab', tabId);
-            window.history.pushState({}, '', url);
-        });
+    droplets.forEach((droplet, index) => {
+      const topPosition = baseTop + index * interval;
+      droplet.style.top = `${topPosition}px`;
+      console.log(`Droplet ${index + 1} in ${activeTabId}: ${topPosition}px`);
     });
+  }
+
+  function switchTab(tabId) {
+    // Hide all tab contents
+    tabContents.forEach((content) => {
+      content.classList.remove("active");
+    });
+
+    tabs.forEach((tab) => {
+      tab.classList.remove("active");
+    });
+
+    const selectedContent = document.getElementById(tabId);
+    selectedContent.classList.add("active");
+
+    document.querySelector(`[data-tab="${tabId}"]`).classList.add("active");
+
+    positionDroplets(tabId);
+  }
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", function () {
+      const tabId = this.getAttribute("data-tab");
+      switchTab(tabId);
+    });
+  });
+
+  const activeTab = document.querySelector(".tab.active");
+  if (activeTab) {
+    const activeTabId = activeTab.getAttribute("data-tab");
+    positionDroplets(activeTabId);
+  }
 });
