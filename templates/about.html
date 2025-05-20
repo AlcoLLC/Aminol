@@ -1,63 +1,7 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 
-<nav>
-  <div class="navbar navbar-blur">
-    <div class="container">
-      <div class="navbar-left">
-        <img src="{% static '/images/aminol-logo.svg' %}" alt="" />
-      </div>
-      <div class="navbar-right">
-        <div class="nav-section">
-          <div class="nav-top">
-            <ul>
-              <li><a href="">News</a></li>
-              <li><a href="">Brand Portal</a></li>
-              <li><a href="">Career</a></li>
-              <li><a href="">Contact</a></li>
-              <li class="lang-btn">
-                <button class="btn-az">AZ</button>
-                <button class="btn-en">EN</button>
-              </li>
-            </ul>
-          </div>
-          <div class="nav-bottom">
-            <ul>
-              <li><a href="">About us</a></li>
-              <li class="dropdown">
-                <a href="">Products<i class="fa-solid fa-chevron-down"></i></a>
-                <div class="dropdown-content">
-                  <a class="active" href="">Aminol official dealer</a>
-                  <a href="">Aminol Laboratory</a>
-                  <a href="">Aminol Logistics</a>
-                </div>
-              </li>
-              <li class="dropdown">
-                <a href="">Markets<i class="fa-solid fa-chevron-down"></i></a>
-                <div class="dropdown-content">
-                  <a href="">Aminol official dealer</a>
-                  <a href="">Aminol Laboratory</a>
-                  <a href="">Aminol Logistics</a>
-                </div>
-              </li>
-              <li class="dropdown">
-                <a href="">Services<i class="fa-solid fa-chevron-down"></i></a>
-                <div class="dropdown-content">
-                  <a href="">Aminol official dealer</a>
-                  <a href="">Aminol Laboratory</a>
-                  <a href="">Aminol Logistics</a>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <button class="search">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-  <div class="dropdown-background"></div>
-</nav>
+{% include 'components/navbar.html' %}
+
 <div class="about-page">
   <header class="page-header"></header>
 </div>
@@ -109,10 +53,7 @@
           <div class="section-row">
             <div class="image-container">
               <div class="circular-image">
-                <img
-                  src="{% static '/images/about1.jpg' %}"
-                  alt="AMINOL Factory Workers"
-                />
+                <img src="{% static '/images/about1.jpg' %}" alt="AMINOL Factory Workers" />
               </div>
             </div>
             <div class="text-container">
@@ -129,20 +70,13 @@
             </div>
           </div>
 
-          <img
-            src="{% static '/images/yellow-point.svg' %}"
-            class="droplet droplet-1"
-            alt="Yellow Point"
-          />
+          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-1" alt="Yellow Point" />
 
           <!-- Second Row -->
           <div class="section-row row-reverse">
             <div class="image-container">
               <div class="circular-image">
-                <img
-                  src="{% static '/images/about2.jpg' %}"
-                  alt="AMINOL Factory Interior"
-                />
+                <img src="{% static '/images/about2.jpg' %}" alt="AMINOL Factory Interior" />
               </div>
             </div>
             <div class="text-container text-left">
@@ -159,20 +93,13 @@
             </div>
           </div>
 
-          <img
-            src="{% static '/images/yellow-point.svg' %}"
-            class="droplet droplet-2"
-            alt="Yellow Point"
-          />
+          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-2" alt="Yellow Point" />
 
           <!-- Third Row -->
           <div class="section-row">
             <div class="image-container">
               <div class="circular-image">
-                <img
-                  src="{% static '/images/about3.jpg' %}"
-                  alt="AMINOL Laboratory"
-                />
+                <img src="{% static '/images/about3.jpg' %}" alt="AMINOL Laboratory" />
               </div>
             </div>
             <div class="text-container">
@@ -188,11 +115,7 @@
               </p>
             </div>
           </div>
-          <img
-            src="{% static '/images/yellow-point.svg' %}"
-            class="droplet droplet-3"
-            alt="Yellow Point"
-          />
+          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-3" alt="Yellow Point" />
         </div>
       </div>
     </div>
@@ -217,10 +140,7 @@
           <div class="section-row">
             <div class="image-container">
               <div class="circular-image">
-                <img
-                  src="{% static '/images/quality1.png' %}"
-                  alt="AMINOL Factory Workers"
-                />
+                <img src="{% static '/images/quality1.png' %}" alt="AMINOL Factory Workers" />
               </div>
             </div>
             <div class="text-container">
@@ -238,20 +158,13 @@
             </div>
           </div>
 
-          <img
-            src="{% static '/images/yellow-point.svg' %}"
-            class="droplet droplet-1"
-            alt="Yellow Point"
-          />
+          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-1" alt="Yellow Point" />
 
           <!-- Second Row -->
           <div class="section-row row-reverse">
             <div class="image-container">
               <div class="circular-image">
-                <img
-                  src="{% static '/images/quality2.png' %}"
-                  alt="AMINOL Factory Interior"
-                />
+                <img src="{% static '/images/quality2.png' %}" alt="AMINOL Factory Interior" />
               </div>
             </div>
             <div class="text-container text-left">
@@ -269,11 +182,7 @@
             </div>
           </div>
 
-          <img
-            src="{% static '/images/yellow-point.svg' %}"
-            class="droplet droplet-2"
-            alt="Yellow Point"
-          />
+          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-2" alt="Yellow Point" />
         </div>
       </div>
     </div>
@@ -337,10 +246,7 @@
           <div class="section-row">
             <div class="image-container">
               <div class="circular-image">
-                <img
-                  src="{% static '/images/production-1.png' %}"
-                  alt="AMINOL Factory Workers"
-                />
+                <img src="{% static '/images/production-1.png' %}" alt="AMINOL Factory Workers" />
               </div>
             </div>
             <div class="text-container">
@@ -360,20 +266,13 @@
             </div>
           </div>
 
-          <img
-            src="{% static '/images/yellow-point.svg' %}"
-            class="droplet droplet-1"
-            alt="Yellow Point"
-          />
+          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-1" alt="Yellow Point" />
 
           <!-- Second Row -->
           <div class="section-row row-reverse">
             <div class="image-container">
               <div class="circular-image">
-                <img
-                  src="{% static '/images/production-2.jpg' %}"
-                  alt="AMINOL Factory Interior"
-                />
+                <img src="{% static '/images/production-2.jpg' %}" alt="AMINOL Factory Interior" />
               </div>
             </div>
             <div class="text-container text-left">
@@ -393,20 +292,13 @@
             </div>
           </div>
 
-          <img
-            src="{% static '/images/yellow-point.svg' %}"
-            class="droplet droplet-2"
-            alt="Yellow Point"
-          />
+          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-2" alt="Yellow Point" />
 
           <!-- Third Row -->
           <div class="section-row">
             <div class="image-container">
               <div class="circular-image">
-                <img
-                  src="{% static '/images/production-3.jpg' %}"
-                  alt="AMINOL Factory Workers"
-                />
+                <img src="{% static '/images/production-3.jpg' %}" alt="AMINOL Factory Workers" />
               </div>
             </div>
             <div class="text-container">
@@ -423,11 +315,7 @@
             </div>
           </div>
 
-          <img
-            src="{% static '/images/yellow-point.svg' %}"
-            class="droplet droplet-3"
-            alt="Yellow Point"
-          />
+          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-3" alt="Yellow Point" />
         </div>
       </div>
     </div>
@@ -483,16 +371,10 @@
       <div class="container sustainability-content">
         <div class="sustainability-circle-wrapper">
           <div class="sustainability-circle-img">
-            <img
-              class="circle-img"
-              src="{% static '/images/sustainability-circle.png' %}"
-              alt="Sustainability Circle"
-            />
-            <img
-              class="curved-text-img"
-              src="{% static '/images/curve text.svg' %}"
-              alt="Core of Innovation Sustainability"
-            />
+            <img class="circle-img" src="{% static '/images/sustainability-circle.png' %}"
+              alt="Sustainability Circle" />
+            <img class="curved-text-img" src="{% static '/images/curve text.svg' %}"
+              alt="Core of Innovation Sustainability" />
           </div>
         </div>
         <div class="content-wrapper">
@@ -541,20 +423,13 @@
             </div>
           </div>
 
-          <img
-            src="{% static '/images/yellow-point.svg' %}"
-            class="droplet droplet-1"
-            alt="Yellow Point"
-          />
+          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-1" alt="Yellow Point" />
 
           <!-- Second Row -->
           <div class="section-row">
             <div class="image-container">
               <div class="circular-image">
-                <img
-                  src="{% static '/images/sustainability1.png' %}"
-                  alt="AMINOL Factory Interior"
-                />
+                <img src="{% static '/images/sustainability1.png' %}" alt="AMINOL Factory Interior" />
               </div>
             </div>
             <div class="text-container">
@@ -570,20 +445,13 @@
             </div>
           </div>
 
-          <img
-            src="{% static '/images/yellow-point.svg' %}"
-            class="droplet droplet-2"
-            alt="Yellow Point"
-          />
+          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-2" alt="Yellow Point" />
 
           <!-- Third Row -->
           <div class="section-row row-reverse">
             <div class="image-container">
               <div class="circular-image">
-                <img
-                  src="{% static '/images/sustainability2.png' %}"
-                  alt="AMINOL Factory Workers"
-                />
+                <img src="{% static '/images/sustainability2.png' %}" alt="AMINOL Factory Workers" />
               </div>
             </div>
             <div class="text-container text-left">
@@ -599,15 +467,13 @@
             </div>
           </div>
 
-          <img
-            src="{% static '/images/yellow-point.svg' %}"
-            class="droplet droplet-3"
-            alt="Yellow Point"
-          />
+          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-3" alt="Yellow Point" />
         </div>
       </div>
     </div>
   </div>
 </div>
+{% include 'components/gallery.html' %}
+{% include 'components/brochure.html' %}
 
 {% endblock %}
