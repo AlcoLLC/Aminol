@@ -1,7 +1,63 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 
-{% include 'components/navbar.html' %}
-
+<nav>
+  <div class="navbar navbar-blur">
+    <div class="container">
+      <div class="navbar-left">
+        <img src="{% static '/images/aminol-logo.svg' %}" alt="" />
+      </div>
+      <div class="navbar-right">
+        <div class="nav-section">
+          <div class="nav-top">
+            <ul>
+              <li><a href="">News</a></li>
+              <li><a href="">Brand Portal</a></li>
+              <li><a href="">Career</a></li>
+              <li><a href="">Contact</a></li>
+              <li class="lang-btn">
+                <button class="btn-az">AZ</button>
+                <button class="btn-en">EN</button>
+              </li>
+            </ul>
+          </div>
+          <div class="nav-bottom">
+            <ul>
+              <li><a href="">About us</a></li>
+              <li class="dropdown">
+                <a href="">Products<i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                  <a class="active" href="">Aminol official dealer</a>
+                  <a href="">Aminol Laboratory</a>
+                  <a href="">Aminol Logistics</a>
+                </div>
+              </li>
+              <li class="dropdown">
+                <a href="">Markets<i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                  <a href="">Aminol official dealer</a>
+                  <a href="">Aminol Laboratory</a>
+                  <a href="">Aminol Logistics</a>
+                </div>
+              </li>
+              <li class="dropdown">
+                <a href="">Services<i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                  <a href="">Aminol official dealer</a>
+                  <a href="">Aminol Laboratory</a>
+                  <a href="">Aminol Logistics</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <button class="search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="dropdown-background"></div>
+</nav>
 <div class="about-page">
   <header class="page-header"></header>
 </div>
@@ -18,6 +74,7 @@
 </section>
 
 <div class="about-content">
+  <!-- About Aminol Tab -->
   <div class="tab-content active" id="about-aminol">
     <!-- Breadcrumb -->
     <div class="breadcrumb container">
@@ -26,20 +83,22 @@
     </div>
 
     <!-- Shared Section -->
+    {% if about_aminol %}
     <div class="shared-section">
       <div class="shared-background"></div>
       <div class="container">
-        <img src="{% static '/images/shared-image1.png' %}" alt="" />
+        <img src="{{ about_aminol.shared_image.url }}" alt="About Aminol" />
         <div class="shared-description">
-          <p>Founded in 2017</p>
-          <p>Based in Azerbaijan</p>
-          <p>Located in Sumgait Chemical Industrial Park (SCIP)</p>
-          <p>Exporting to 50+ countries</p>
-          <p>Production capacity 100,000 tons per year</p>
-          <p>Workforce 195 employees</p>
+          <p>Founded in {{ about_aminol.founded_year }}</p>
+          <p>Based in {{ about_aminol.based_in }}</p>
+          <p>Located in {{ about_aminol.location }}</p>
+          <p>Exporting to {{ about_aminol.exporting_to }}</p>
+          <p>Production capacity {{ about_aminol.production_capacity }}</p>
+          <p>Workforce {{ about_aminol.workforce }}</p>
         </div>
       </div>
     </div>
+    {% endif %}
 
     <div class="shared-images-section">
       <div class="section-header">
@@ -47,80 +106,38 @@
       </div>
 
       <div class="container">
+        {% if about_sections %}
         <div class="shared-images-container">
           <div class="vertical-line"></div>
-          <!-- First Row -->
-          <div class="section-row">
+          {% for section in about_sections %}
+          <div
+            class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}"
+          >
             <div class="image-container">
               <div class="circular-image">
-                <img src="{% static '/images/about1.jpg' %}" alt="AMINOL Factory Workers" />
+                <img src="{{ section.image.url }}" alt="{{ section.title }}" />
               </div>
             </div>
-            <div class="text-container">
-              <h2>How we started</h2>
-              <p>
-                The modernization of industry and renewal of equipment have
-                increased demand for high-quality lubricants in Azerbaijan. To
-                meet this, AMINOL Lubricants opened on December 15, 2017, in
-                Sumgayit Chemical Industrial Park with a $20 million investment.
-                The plant produces 150,000 tons annually, focusing on motor,
-                hydraulic, transmission, compressor, turbine, and marine oils,
-                along with antifreeze and AdBlue.
-              </p>
+            <div
+              class="text-container {% if forloop.counter|divisibleby:2 %}text-left{% endif %}"
+            >
+              <h2>{{ section.title }}</h2>
+              <p>{{ section.description }}</p>
             </div>
           </div>
-
-          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-1" alt="Yellow Point" />
-
-          <!-- Second Row -->
-          <div class="section-row row-reverse">
-            <div class="image-container">
-              <div class="circular-image">
-                <img src="{% static '/images/about2.jpg' %}" alt="AMINOL Factory Interior" />
-              </div>
-            </div>
-            <div class="text-container text-left">
-              <h2>The power of innovation</h2>
-              <p>
-                AMINOL Lubricants ensures competitiveness with ISO 9001, ISO
-                14001, ISO 17025, API, and ATIEL certifications. To boost
-                exports, it secured approvals from major brands like
-                Mercedes-Benz, General Electric, Volvo, Mack, and Renault.
-                Benefiting from tax cuts in Sumgayit Chemical Industrial Park,
-                it produces high-quality, eco-friendly products at competitive
-                prices, delivering globally with a door-to-door approach.
-              </p>
-            </div>
-          </div>
-
-          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-2" alt="Yellow Point" />
-
-          <!-- Third Row -->
-          <div class="section-row">
-            <div class="image-container">
-              <div class="circular-image">
-                <img src="{% static '/images/about3.jpg' %}" alt="AMINOL Laboratory" />
-              </div>
-            </div>
-            <div class="text-container">
-              <h2>Trusted Specialist</h2>
-              <p>
-                AMINOL Lubricants produces and packages high-quality oils using
-                premium imported base oils and additives, formulated by expert
-                engineers. A strict quality assurance policy ensures compliance
-                with international standards. AMINOL Lubricants enhances engine
-                and equipment performance with reliable starts, improved fuel
-                economy, sustainability, and extended longevity through superior
-                corrosion resistance.
-              </p>
-            </div>
-          </div>
-          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-3" alt="Yellow Point" />
+          <img
+            src="{% static '/images/yellow-point.svg' %}"
+            class="droplet droplet-{{ forloop.counter }}"
+            alt="Yellow Point"
+          />
+          {% endfor %}
         </div>
+        {% endif %}
       </div>
     </div>
   </div>
 
+  <!-- Quality Tab -->
   <div class="tab-content" id="quality">
     <!-- Breadcrumb -->
     <div class="breadcrumb container">
@@ -134,99 +151,70 @@
 
     <div class="shared-images-section">
       <div class="container">
+        {% if quality_contents %}
         <div class="shared-images-container">
           <div class="vertical-line"></div>
-          <!-- First Row -->
-          <div class="section-row">
+          {% for content in quality_contents %}
+          <div
+            class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}"
+          >
             <div class="image-container">
               <div class="circular-image">
-                <img src="{% static '/images/quality1.png' %}" alt="AMINOL Factory Workers" />
+                <img src="{{ content.image.url }}" alt="{{ content.title }}" />
               </div>
             </div>
             <div class="text-container">
-              <h2>Laboratory Testing</h2>
-              <p>
-                Our laboratory services specialize in precision testing
-                solutions tailored for automotive oils. Utilizing
-                state-of-the-art equipment and expert analysis, we meticulously
-                evaluate the quality and performance of each oil sample. From
-                viscosity measurements to chemical composition analysis, our
-                comprehensive testing ensures that our products meet the
-                strictest standards of excellence, enhancing the performance and
-                longevity of your engines.
-              </p>
+              <h2>{{ content.title }}</h2>
+              <p>{{ content.description }}</p>
             </div>
           </div>
-
-          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-1" alt="Yellow Point" />
-
-          <!-- Second Row -->
-          <div class="section-row row-reverse">
-            <div class="image-container">
-              <div class="circular-image">
-                <img src="{% static '/images/quality2.png' %}" alt="AMINOL Factory Interior" />
-              </div>
-            </div>
-            <div class="text-container text-left">
-              <h2>Reliable and Precise</h2>
-              <p>
-                We adhere to ISO standards in our laboratory practices, ensuring
-                the highest levels of quality and reliability. Our commitment to
-                compliance guarantees consistent and accurate analysis results,
-                meeting industry benchmarks for excellence. With
-                state-of-the-art equipment and advanced testing methodologies,
-                we ensure accurate and reliable analysis results. Our
-                cutting-edge technology allows us to deliver precise
-                measurements and valuable insights into oil properties.
-              </p>
-            </div>
-          </div>
-
-          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-2" alt="Yellow Point" />
+          <img
+            src="{% static '/images/yellow-point.svg' %}"
+            class="droplet droplet-{{ forloop.counter }}"
+            alt="Yellow Point"
+          />
+          {% endfor %}
         </div>
+        {% endif %}
       </div>
     </div>
 
+    <!-- We Guarantee Section -->
+    {% if guarantee %}
     <div class="guarantee-section">
       <div class="section-content">
-        <h2>We guarantee</h2>
+        <h2>{{ guarantee.title }}</h2>
       </div>
 
       <div class="guarantee-main-container">
         <div class="guarantee-row container">
           <div class="row-item">
             <span>1.</span>
-            <h3>Higher production capacity</h3>
-            <p>Longer maintenance intervals, fewer faults and downtime. </p>
+            <h3>{{ guarantee.sub_title_one }}</h3>
+            <p>{{ guarantee.sub_description_one }}</p>
           </div>
           <div class="row-item row-item-2">
             <span>2.</span>
-            <h3>Lower maintenance costs</h3>
-            <p>
-              Fewer maintenance hours, longer machinery and equipment service
-              lives. 
-            </p>
+            <h3>{{ guarantee.sub_title_two }}</h3>
+            <p>{{ guarantee.sub_description_two }}</p>
           </div>
           <div class="row-item">
             <span>3.</span>
-            <h3>Friendly to people and environment</h3>
-            <p>
-              Most Eurol Specialty products avoid micro-plastics and chlorinated
-              paraffins for safety and environmental care. 
-            </p>
+            <h3>{{ guarantee.sub_title_three }}</h3>
+            <p>{{ guarantee.sub_description_three }}</p>
           </div>
           <div class="row-item row-item-2">
             <span>4.</span>
-            <h3>Reduced energy consumption</h3>
-            <p>
-              Reduced energy loss thanks to optimal lubrication in all
-              circumstances. 
-            </p>
+            <h3>{{ guarantee.sub_title_four }}</h3>
+            <p>{{ guarantee.sub_description_four }}</p>
           </div>
         </div>
       </div>
     </div>
+    {% endif %}
   </div>
+
+  <!-- Production Tab -->
   <div class="tab-content" id="production">
     <!-- Breadcrumb -->
     <div class="breadcrumb container">
@@ -240,86 +228,38 @@
 
     <div class="shared-images-section">
       <div class="container">
+        {% if production_contents %}
         <div class="shared-images-container">
           <div class="vertical-line"></div>
-          <!-- First Row -->
-          <div class="section-row">
+          {% for content in production_contents %}
+          <div
+            class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}"
+          >
             <div class="image-container">
               <div class="circular-image">
-                <img src="{% static '/images/production-1.png' %}" alt="AMINOL Factory Workers" />
+                <img src="{{ content.image.url }}" alt="{{ content.title }}" />
               </div>
             </div>
             <div class="text-container">
-              <h2>Manufacturing processes</h2>
-              <p>
-                Aminol has the largest blender in the Caucasus region with an
-                installed capacity of approximately 100 000 metric tonnes. The
-                equipment used for manufacutring is sourced from well known
-                international companies based in Europe, with proven track
-                records in field operation. All manufacuring processes are
-                automatically controlled and involve minimal outside
-                involvement, which contributes to the homogeneity and stability
-                of our product. The plant was projected, built and comissioned
-                by a team of European engineers with deep experience in
-                comissioning blending facilities in Europe and the CIS.
-              </p>
+              <h2>{{ content.title }}</h2>
+              <p>{{ content.description }}</p>
             </div>
           </div>
 
-          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-1" alt="Yellow Point" />
-
-          <!-- Second Row -->
-          <div class="section-row row-reverse">
-            <div class="image-container">
-              <div class="circular-image">
-                <img src="{% static '/images/production-2.jpg' %}" alt="AMINOL Factory Interior" />
-              </div>
-            </div>
-            <div class="text-container text-left">
-              <h2>Our capacity</h2>
-              <p>
-                The plant includes within it a facility for blowmoulding plastic
-                containers for oil and other deionised fluids blending facility,
-                as well as storage warehouses, recreational area and an office
-                building. At full capacity the plant can store over 40,000
-                metric tonnes of base oil in stationary tanks, and 8,000 metric
-                tonnes in mobile railway tankers. The plant is an occupant of
-                the Sumgait Chemical Industrial Park, located in the Republic of
-                Azerbaijan. It is based on a total of 4,0 hectares of land. With
-                its own railway line, and bulk loading and unloading equipment,
-                the plant fulfills all the requirements of an in-land terminal.
-              </p>
-            </div>
-          </div>
-
-          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-2" alt="Yellow Point" />
-
-          <!-- Third Row -->
-          <div class="section-row">
-            <div class="image-container">
-              <div class="circular-image">
-                <img src="{% static '/images/production-3.jpg' %}" alt="AMINOL Factory Workers" />
-              </div>
-            </div>
-            <div class="text-container">
-              <h2>Focus on Innovation</h2>
-              <p>
-                AMINOL Lubricants produces and packages high-quality oils using
-                premium imported base oils and additives, formulated by expert
-                engineers. A strict quality assurance policy ensures compliance
-                with international standards. AMINOL Lubricants enhances engine
-                and equipment performance with reliable starts, improved fuel
-                economy, sustainability, and extended longevity through superior
-                corrosion resistance.
-              </p>
-            </div>
-          </div>
-
-          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-3" alt="Yellow Point" />
+          <!-- Yellow Point Droplet -->
+          <img
+            src="{% static '/images/yellow-point.svg' %}"
+            class="droplet droplet-{{ forloop.counter }}"
+            alt="Yellow Point"
+          />
+          {% endfor %}
         </div>
+        {% endif %}
       </div>
     </div>
   </div>
+
+  <!-- Documents & Certifications Tab -->
   <div class="tab-content" id="documents">
     <!-- Breadcrumb -->
     <div class="breadcrumb container">
@@ -330,20 +270,13 @@
     <div class="section-header">
       <h2>DOCUMENTS AND CERTIFICATION</h2>
     </div>
+
+    {% if documents_cert %}
     <div class="container">
       <div class="certifications-container">
         <img src="{% static '/images/certifications.png' %}" alt="" />
-        <h3>Certifications and International Standards</h3>
-        <p>
-          As a trusted partner to many Original Equipment Manufacturers (OEMs),
-          including Mercedes-Benz, BMW, Audi, Volkswagen, Porshce,Toyota, Honda,
-          Hyundai, Ford, Nissan, General Motors and other leading global
-          automakers, our products consistently meet the stringent requirements
-          needed to ensure optimal performance, durability, and efficiency for
-          modern vehicles. Our OEM endorsements confirm that AMINOL lubricants
-          undergo rigorous testing, ensuring compatibility and superior
-          performance.
-        </p>
+        <h3>{{ documents_cert.title }}</h3>
+        <p>{{ documents_cert.description }}</p>
       </div>
 
       <div class="certifications-logos">
@@ -354,7 +287,10 @@
         <img src="{% static '/images/certifications-logos-2.png' %}" alt="" />
       </div>
     </div>
+    {% endif %}
   </div>
+
+  <!-- Sustainability Tab -->
   <div class="tab-content" id="sustainability">
     <!-- Breadcrumb -->
     <div class="breadcrumb container">
@@ -366,114 +302,63 @@
       <h2>SUSTAINABILITY</h2>
     </div>
 
+    {% if sustainability %}
     <div class="sustainability-container">
       <div class="sustainability-background"></div>
       <div class="container sustainability-content">
         <div class="sustainability-circle-wrapper">
           <div class="sustainability-circle-img">
-            <img class="circle-img" src="{% static '/images/sustainability-circle.png' %}"
-              alt="Sustainability Circle" />
-            <img class="curved-text-img" src="{% static '/images/curve text.svg' %}"
-              alt="Core of Innovation Sustainability" />
+            <img
+              class="circle-img"
+              src="{% static '/images/sustainability-circle.png' %}"
+              alt="Sustainability Circle"
+            />
+            <img
+              class="curved-text-img"
+              src="{% static '/images/curve text.svg' %}"
+              alt="Core of Innovation Sustainability"
+            />
           </div>
         </div>
         <div class="content-wrapper">
-          <p>
-            As a leading manufacturer of high-quality lubricants, we are
-            committed to delivering solutions that align with global
-            environmental standards and customer needs. This commitment drives
-            our collaborations and investments in eco-friendly technologies and
-            practices.
-          </p>
+          <p>{{ sustainability.main_description }}</p>
         </div>
       </div>
     </div>
+    {% endif %}
 
     <div class="shared-images-section">
       <div class="container">
+        {% if sustainability_contents %}
         <div class="shared-images-container">
           <div class="vertical-line"></div>
-          <!-- First Row -->
-          <div class="section-row">
-            <div class="text-container text-left">
-              <h2>Advanced Additive Solutions</h2>
-              <p>
-                Aminol partners with global leaders in additive technology, such
-                as Lubrizol, Chevron, Infenium, and Afton to integrate advanced
-                low-SAPS (Sulphated Ash, Phosphorus, and Sulfur) additive
-                packages into our formulations. These solutions are designed to
-                reduce emissions, enhance fuel efficiency, and protect modern
-                engines, meeting the demands of increasingly stringent
-                environmental regulations.
-              </p>
-            </div>
-            <div class="text-container">
-              <h2>Research and Development</h2>
-              <p>
-                Beyond working with industry-leading additive suppliers, Aminol
-                invests heavily in its research and development (R&D) programs
-                to pioneer eco-friendly innovations. Our R&D initiatives focus
-                on: Creating formulations tailored for hybrid and electric
-                vehicles, as well as high-performance engines. Developing
-                longer-lasting lubricants to reduce waste and minimize
-                environmental impact. Exploring renewable and biodegradable
-                components to advance sustainability in every stage of
-                production.
-              </p>
-            </div>
-          </div>
-
-          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-1" alt="Yellow Point" />
-
-          <!-- Second Row -->
-          <div class="section-row">
+          {% for content in sustainability_contents %}
+          <div
+            class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}"
+          >
+            {% if content.has_image and content.image %}
             <div class="image-container">
               <div class="circular-image">
-                <img src="{% static '/images/sustainability1.png' %}" alt="AMINOL Factory Interior" />
+                <img src="{{ content.image.url }}" alt="{{ content.title }}" />
               </div>
             </div>
+            {% endif %}
             <div class="text-container">
-              <h2>Our Vision for the Future</h2>
-              <p>
-                Sustainability is embedded in Aminol’s DNA. Through
-                collaborative efforts, advanced R&D, and a commitment to
-                innovation, we aim to lead the lubricant industry into a
-                cleaner, greener future. Every product we deliver reflects our
-                dedication to minimizing environmental impact while maximizing
-                performance and reliability.
-              </p>
+              <h2>{{ content.title }}</h2>
+              <p>{{ content.description }}</p>
             </div>
           </div>
-
-          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-2" alt="Yellow Point" />
-
-          <!-- Third Row -->
-          <div class="section-row row-reverse">
-            <div class="image-container">
-              <div class="circular-image">
-                <img src="{% static '/images/sustainability2.png' %}" alt="AMINOL Factory Workers" />
-              </div>
-            </div>
-            <div class="text-container text-left">
-              <h2>Commitment to Excellence</h2>
-              <p>
-                Aminol’s close partnerships with the main global additive
-                manufacturers allow us to stay ahead of the curve, incorporating
-                the latest advancements in additive technology. By leveraging
-                these innovations, we provide high-performance solutions that
-                meet both the environmental and operational needs of our
-                customers.
-              </p>
-            </div>
-          </div>
-
-          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-3" alt="Yellow Point" />
+          <img
+            src="{% static '/images/yellow-point.svg' %}"
+            class="droplet droplet-{{ forloop.counter }}"
+            alt="Yellow Point"
+          />
+          {% endfor %}
         </div>
+        {% endif %}
       </div>
     </div>
   </div>
 </div>
-{% include 'components/gallery.html' %}
-{% include 'components/brochure.html' %}
 
 {% endblock %}
