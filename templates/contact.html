@@ -1,0 +1,104 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+{% include 'components/navbar.html' %}
+
+<div class="contact-page">
+    <header class="page-header">
+        <div class="header-content">
+            <h2>Contact</h2>
+            <p>We are ready for your question</p>
+        </div>
+    </header>
+</div>
+
+<!-- Breadcrumb -->
+<div class="breadcrumb container">
+    <a href="/">Home page</a>|<p>Contact</p>
+</div>
+
+
+<div class="container">
+    <div class="contact-top-content">
+        <h2>Get in touch</h2>
+        <p>For questions or comments, please get in touch with one of our departments. You can find our company
+            details and directions at the bottom of this page.</p>
+    </div>
+</div>
+
+
+<!-- Contact From Section -->
+
+
+<div class="contact-grid-content container">
+    <div class="contact-image-item">
+        <div class="item">
+            <h3>Aminol headquarters</h3>
+            <p>Vali Mammadov Street 1/3, Old City, Baku, Azerbaijan, AZ1000</p>
+            <a href="" class="button-style">Location
+                <img src="{% static '/images/contact-icon.svg' %}" alt="Contact Icon"></a>
+
+        </div>
+        <div class="right-item">
+            <img src="{% static '/images/contact-location-1.jpg' %}" alt="">
+        </div>
+    </div>
+
+    <div class="contact-image-item">
+        <div class="item">
+            <h2>Aminol factory</h2>
+            <p>Kimyachilar Street 1, SCIP,
+                Sumgait, Azerbaijan, AZ5002</p>
+            <a href="" class="button-style">Location
+                <img src="{% static '/images/contact-icon.svg' %}" alt="Contact Icon"></a>
+        </div>
+        <div class="right-item">
+            <img src="{% static '/images/contact-location-1.jpg' %}" alt="">
+        </div>
+    </div>
+</div>
+
+<div class="contact-flex-content container">
+    <div class="item">
+        <h2>Registers</h2>
+        <div>
+            <p>WIPO | Madrid-International Trademark System</p>
+            <p>Registration No.: 1 662 156</p>
+            <p>VAT number: 1403415131</p>
+            <p>D-U-N-S registrated</p>
+        </div>
+    </div>
+
+    <div class="item">
+        <h2>Available world wide </h2>
+        <p>Find your nearest Aminol Dealer or Aminol Service Point.</p>
+        <a href="" class="button-style">To dealers <i class="fa-solid fa-arrow-right-long"></i> </a>
+    </div>
+</div>
+
+<div class="contact-bottom-content  container">
+    <h2>Contact</h2>
+    <div class="contact-bottom">
+        <div class="item">
+            <h3>Address</h3>
+            <div>
+                <p>Aminol head office:</p>
+                <p>Vali Mammadov Street 1/3, Old City, Baku, Azerbaijan, AZ1000</p>
+            </div>
+        </div>
+
+        <div class="right-item">
+            <div>
+                <h3>Phone number</h3>
+                <p>Aminol head office:</p>
+            </div>
+            <div>
+                <h3>E-mail adress</h3>
+                <p>info@aminol.az</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'components/whatsapp.html' %}
+
+{% endblock %}

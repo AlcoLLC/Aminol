@@ -26,3 +26,6 @@ def markets_industrial_view(request):
 
 def markets_shipping_view(request):
     return render(request, 'markets_shipping.html')
+
+def contact_view(request):
+    return render(request, 'contact.html')

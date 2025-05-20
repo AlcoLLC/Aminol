@@ -1,0 +1,137 @@
+.contact-top-content {
+  margin: 50px auto;
+  color: #28315e;
+}
+
+.contact-top-content h2 {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 48px;
+  letter-spacing: -1%;
+}
+
+.contact-top-content p {
+  max-width: 62%;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0px;
+}
+
+.contact-grid-content {
+  margin: 50px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  color: #28315e;
+}
+
+.contact-flex-content {
+  margin: 50px auto;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 30px;
+  color: #28315e;
+}
+
+.contact-grid-content .contact-image-item {
+  width: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.contact-grid-content .item,
+.contact-flex-content .item {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 20px;
+  padding: 10px 0;
+}
+
+.contact-grid-content h2,
+.contact-flex-content h2,
+.contact-bottom-content h2 {
+  color: #28315e;
+  white-space: nowrap;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: -1%;
+}
+
+.contact-grid-content p,
+.contact-flex-content p,
+.contact-bottom-content p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0%;
+}
+
+.contact-grid-content .button-style,
+.contact-flex-content .button-style {
+  width: 55%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #f92b3f !important;
+}
+
+.contact-flex-content .button-style {
+  width: 40%;
+}
+
+.contact-grid-content .right-item {
+  width: 40%;
+  height: 266px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.contact-grid-content .right-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contact-bottom {
+    margin-top: 20px;
+  margin-bottom: 200px;
+  color: #28315e;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  gap: 40px;
+}
+
+.contact-bottom  h3{
+font-weight: 600;
+font-size: 14px;
+line-height: 20px;
+letter-spacing: 0%;
+}
+
+.contact-bottom .item {
+  width: 100%;
+}
+
+.contact-bottom .item p {
+  width: 60%;
+  line-height: 20px;
+
+}
+.contact-bottom .right-item {
+  width: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 40px;
+}
