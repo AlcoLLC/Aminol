@@ -18,114 +18,28 @@
     </div>
 
     <section class="faq-section container">
-        <div class="section-grid">
-            <div class="grid-item">
-                <div class="question">
-                    <i class="fa-solid fa-circle"></i>
-                    <h3>How do I place an order?</h3>
-                    <img class="plus-icon" src="{% static '/images/Add_round_duotone.svg' %}" alt="">
-                    <img class="minus-icon" src="{% static '/images/minus_round_duotone.svg' %}" alt="">
-                </div>
-                <div class="answer">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book.</p>
-                </div>
+    <div class="section-grid">
+        {% for faq in faqs %}
+        <div class="grid-item">
+            <div class="question">
+                <i class="fa-solid fa-circle"></i>
+                <h3>{{ faq.question }}</h3>
+                <img class="plus-icon" src="{% static '/images/Add_round_duotone.svg' %}" alt="">
+                <img class="minus-icon" src="{% static '/images/minus_round_duotone.svg' %}" alt="">
             </div>
-            <div class="grid-item">
-                <div class="question">
-                    <i class="fa-solid fa-circle"></i>
-                    <h3>How do I become a distributor?</h3>
-                    <img class="plus-icon" src="{% static '/images/Add_round_duotone.svg' %}" alt="">
-                    <img class="minus-icon" src="{% static '/images/minus_round_duotone.svg' %}" alt="">
-                </div>
-                <div class="answer">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book.</p>
-                </div>
-            </div>
-            <div class="grid-item">
-                <div class="question">
-                    <i class="fa-solid fa-circle"></i>
-                    <h3>How do I know my order has been confirmed?</h3>
-                    <img class="plus-icon" src="{% static '/images/Add_round_duotone.svg' %}" alt="">
-                    <img class="minus-icon" src="{% static '/images/minus_round_duotone.svg' %}" alt="">
-                </div>
-                <div class="answer">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book.</p>
-                </div>
-            </div>
-            <div class="grid-item">
-                <div class="question">
-                    <i class="fa-solid fa-circle"></i>
-                    <h3>How do I order special products made just for my company?</h3>
-                    <img class="plus-icon" src="{% static '/images/Add_round_duotone.svg' %}" alt="">
-                    <img class="minus-icon" src="{% static '/images/minus_round_duotone.svg' %}" alt="">
-                </div>
-                <div class="answer">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book.</p>
-                </div>
-            </div>
-            <div class="grid-item">
-                <div class="question">
-                    <i class="fa-solid fa-circle"></i>
-                    <h3>How does the order progress after I've made my payment?</h3>
-                    <img class="plus-icon" src="{% static '/images/Add_round_duotone.svg' %}" alt="">
-                    <img class="minus-icon" src="{% static '/images/minus_round_duotone.svg' %}" alt="">
-                </div>
-                <div class="answer">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book.</p>
-                </div>
-            </div>
-            <div class="grid-item">
-                <div class="question">
-                    <i class="fa-solid fa-circle"></i>
-                    <h3>What if products are too expensive? Can I reformulate?</h3>
-                    <img class="plus-icon" src="{% static '/images/Add_round_duotone.svg' %}" alt="">
-                    <img class="minus-icon" src="{% static '/images/minus_round_duotone.svg' %}" alt="">
-                </div>
-                <div class="answer">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book.</p>
-                </div>
-            </div>
-            <div class="grid-item">
-                <div class="question">
-                    <i class="fa-solid fa-circle"></i>
-                    <h3>How can I get marketing support?</h3>
-                    <img class="plus-icon" src="{% static '/images/Add_round_duotone.svg' %}" alt="">
-                    <img class="minus-icon" src="{% static '/images/minus_round_duotone.svg' %}" alt="">
-                </div>
-                <div class="answer">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book.</p>
-                </div>
-            </div>
-            <div class="grid-item">
-                <div class="question">
-                    <i class="fa-solid fa-circle"></i>
-                    <h3>How can I get more photos of products?</h3>
-                    <img class="plus-icon" src="{% static '/images/Add_round_duotone.svg' %}" alt="">
-                    <img class="minus-icon" src="{% static '/images/minus_round_duotone.svg' %}" alt="">
-                </div>
-                <div class="answer">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book.</p>
-                </div>
+            <div class="answer">
+                <p>{{ faq.answer }}</p>
             </div>
         </div>
-    </section>
+        {% empty %}
+        <div class="no-faq">
+            <p>No FAQs available at the moment.</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
 
+{% include 'components/contactcomponent.html' %}
 
     <!-- Contact form  section-->
 

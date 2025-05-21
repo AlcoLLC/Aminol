@@ -3,7 +3,7 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.contrib import messages 
 from django.conf import settings
-from .models import Contact
+from .models import Contact, ContactInfo
 from .forms import ContactForm
 import logging  
 
@@ -100,11 +100,12 @@ Aminol Support Team
         else:
             logger.warning(f"Form validation errors: {form.errors}")
             messages.error(request, "Please correct the errors in the form.")
+
+    contact_info = ContactInfo.objects.last()
     
     context = {
         'help_choices': help_choices,
+        'contact_info': contact_info,
     }
     
-    print("Context help_choices:", context['help_choices'])
-
-    return render(request, 'service_aminol_dealer.html', context)
+    return render(request, 'contact.html', context)
