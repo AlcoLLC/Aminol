@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Contact
+from .models import Contact, ContactInfo
 
 
 @admin.register(Contact)
@@ -21,5 +21,30 @@ class ContactAdmin(admin.ModelAdmin):
         }),
         ('Additional Information', {
             'fields': ('created_at',)
+        }),
+    )
+
+@admin.register(ContactInfo)
+class ContactInfoAdmin(admin.ModelAdmin):
+    """
+    Admin configuration for the ContactInfo model with location fields.
+    """
+    list_display = ('title', 'contact_email', 'contact_phone')
+    search_fields = ('title', 'description', 'contact_email')
+    fieldsets = (
+        ('General Information', {
+            'fields': ('title', 'description')
+        }),
+        ('Headquarters Information', {
+            'fields': ('aminol_headquarters', 'aminol_headquarters_location', 'aminol_headquarters_image')
+        }),
+        ('Factory Information', {
+            'fields': ('aminol_factory', 'aminol_factory_location', 'aminol_factory_image')
+        }),
+        ('Registration Information', {
+            'fields': ('registers',)
+        }),
+        ('Contact Details', {
+            'fields': ('contact_address', 'contact_phone', 'contact_email')
         }),
     )

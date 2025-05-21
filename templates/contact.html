@@ -19,81 +19,65 @@
 
 <div class="container">
     <div class="contact-top-content">
-        <h2>Get in touch</h2>
-        <p>For questions or comments, please get in touch with one of our departments. You can find our company
-            details and directions at the bottom of this page.</p>
+        <h2>{{ contact_info.title }}</h2>
+        <p>{{ contact_info.description }}</p>
     </div>
 </div>
 
+{% include 'components/contactcomponent.html' %}
 
 <!-- Contact From Section -->
 
 
 <div class="contact-grid-content container">
-    <div class="contact-image-item">
-        <div class="item">
-            <h3>Aminol headquarters</h3>
-            <p>Vali Mammadov Street 1/3, Old City, Baku, Azerbaijan, AZ1000</p>
-            <a href="" class="button-style">Location
-                <img src="{% static '/images/contact-icon.svg' %}" alt="Contact Icon"></a>
+    <div class="item">
+    <h3>Aminol headquarters</h3>
+    <p>{{ contact_info.aminol_headquarters }}</p>
+    <a href="{% if contact_info.aminol_headquarters_location %}{{ contact_info.aminol_headquarters_location }}{% else %}https://maps.google.com/?q={{ contact_info.aminol_headquarters|urlencode }}{% endif %}" 
+       class="button-style" target="_blank">
+        Location
+        <img src="{% static '/images/contact-icon.svg' %}" alt="Contact Icon">
+    </a>
+</div>
 
-        </div>
-        <div class="right-item">
-            <img src="{% static '/images/contact-location-1.jpg' %}" alt="">
-        </div>
-    </div>
-
-    <div class="contact-image-item">
-        <div class="item">
-            <h2>Aminol factory</h2>
-            <p>Kimyachilar Street 1, SCIP,
-                Sumgait, Azerbaijan, AZ5002</p>
-            <a href="" class="button-style">Location
-                <img src="{% static '/images/contact-icon.svg' %}" alt="Contact Icon"></a>
-        </div>
-        <div class="right-item">
-            <img src="{% static '/images/contact-location-1.jpg' %}" alt="">
-        </div>
-    </div>
+   <div class="item">
+    <h2>Aminol factory</h2>
+    <p>{{ contact_info.aminol_factory }}</p>
+    <a href="{% if contact_info.aminol_factory_location %}{{ contact_info.aminol_factory_location }}{% else %}https://maps.google.com/?q={{ contact_info.aminol_factory|urlencode }}{% endif %}" 
+       class="button-style" target="_blank">
+        Location
+        <img src="{% static '/images/contact-icon.svg' %}" alt="Contact Icon">
+    </a>
+</div>
 </div>
 
 <div class="contact-flex-content container">
     <div class="item">
         <h2>Registers</h2>
         <div>
-            <p>WIPO | Madrid-International Trademark System</p>
-            <p>Registration No.: 1 662 156</p>
-            <p>VAT number: 1403415131</p>
-            <p>D-U-N-S registrated</p>
+            {{ contact_info.registers|linebreaks }}
         </div>
-    </div>
-
-    <div class="item">
-        <h2>Available world wide </h2>
-        <p>Find your nearest Aminol Dealer or Aminol Service Point.</p>
-        <a href="" class="button-style">To dealers <i class="fa-solid fa-arrow-right-long"></i> </a>
     </div>
 </div>
 
-<div class="contact-bottom-content  container">
+<div class="contact-bottom-content container">
     <h2>Contact</h2>
     <div class="contact-bottom">
         <div class="item">
             <h3>Address</h3>
             <div>
-                <p>Aminol head office:</p>
-                <p>Vali Mammadov Street 1/3, Old City, Baku, Azerbaijan, AZ1000</p>
+                {{ contact_info.contact_address|linebreaks }}
             </div>
         </div>
 
         <div class="right-item">
             <div>
                 <h3>Phone number</h3>
-                <p>Aminol head office:</p>
+                <p>{{ contact_info.contact_phone }}</p>
             </div>
             <div>
-                <h3>E-mail adress</h3>
-                <p>info@aminol.az</p>
+                <h3>E-mail address</h3>
+                <p>{{ contact_info.contact_email }}</p>
             </div>
         </div>
     </div>

@@ -3,7 +3,7 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.contrib import messages 
 from django.conf import settings
-from .models import Contact
+from .models import Contact, ContactInfo
 from .forms import ContactForm
 import logging  
 
@@ -105,6 +105,13 @@ Aminol Support Team
         'help_choices': help_choices,
     }
     
-    print("Context help_choices:", context['help_choices'])
+    return render(request, 'contact.html', context)
 
-    return render(request, 'service_aminol_dealer.html', context)
+def contact_page(request):
+    contact_info = ContactInfo.objects.first()
+    
+    context = {
+        'contact_info': contact_info,
+    }
+    
+    return render(request, 'contact.html', context)
