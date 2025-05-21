@@ -1,0 +1,299 @@
+{% extends 'base.html' %} {% load static %} {% block content %} 
+{% include 'components/navbar.html' %}
+
+<div class="about-page">
+  <header class="page-header"></header>
+</div>
+
+<!-- Breadcrumb -->
+<div class="breadcrumb container">
+  <a href="/">Home page</a>|
+  <p>Product Range</p>
+</div>
+
+<div class="container">
+  <div class="product-content">
+    <h2>All products</h2>
+    <p>
+      Here you will find our wide range of mineral, semi-synthetic, and fully
+      synthetic motor oils in various viscosities and specifications, for
+      gasoline cars, diesel cars, and hybrid vehicles.
+    </p>
+  </div>
+</div>
+
+<section class="products-section container">
+  <div class="products-container">
+    <div class="filter-container">
+      <div class="search-bar">
+        <input type="text" placeholder="Search" class="search-input" />
+        <a class="search-button" href="">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </a>
+      </div>
+
+      <div class="filter-section">
+        <div class="filter-header">
+          <div class="filter-title ">Product group</div>
+          <div class="filter-icon">
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+        </div>
+        <div class="filter-content">
+          <label class="checkbox-group">
+            <input type="checkbox" />
+            <span class="checkbox-label">Engine oil</span>
+          </label>
+          <label class="checkbox-group">
+            <input type="checkbox" />
+            <span class="checkbox-label">Transmission & Gear oil</span>
+          </label>
+          <label class="checkbox-group">
+            <input type="checkbox" />
+            <span class="checkbox-label">Industrial oil</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Segments Filter -->
+      <div class="filter-section">
+        <div class="filter-header">
+          <div class="filter-title">Segments</div>
+          <div class="filter-icon">
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+        </div>
+        <div class="filter-content">
+          <label class="checkbox-group">
+            <input type="checkbox" />
+            <span class="checkbox-label">Automotive</span>
+          </label>
+          <label class="checkbox-group">
+            <input type="checkbox" />
+            <span class="checkbox-label">Agricultural</span>
+          </label>
+
+        </div>
+      </div>
+
+      <!-- Oil Type Filter -->
+      <div class="filter-section">
+        <div class="filter-header">
+          <div class="filter-title">Oil type</div>
+          <div class="filter-icon">
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+        </div>
+        <div class="filter-content">
+          <label class="checkbox-group">
+            <input type="checkbox" />
+            <span class="checkbox-label">Full-synthetic</span>
+          </label>
+          <label class="checkbox-group">
+            <input type="checkbox" />
+            <span class="checkbox-label">Semi-synthetic</span>
+          </label>
+          <label class="checkbox-group">
+            <input type="checkbox" />
+            <span class="checkbox-label">Synthetic technology</span>
+          </label>
+          <label class="checkbox-group">
+            <input type="checkbox" />
+            <span class="checkbox-label">Mineral</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Viscosity Filter -->
+      <div class="filter-section">
+        <div class="filter-header">
+          <div class="filter-title">Viscosity</div>
+          <div class="filter-icon">
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+        </div>
+        <div class="filter-content">
+          <label class="checkbox-group">
+            <input type="checkbox" />
+            <span class="checkbox-label">0W-8</span>
+          </label>
+          <label class="checkbox-group">
+            <input type="checkbox" />
+            <span class="checkbox-label">0W-16</span>
+          </label>
+          <label class="checkbox-group">
+            <input type="checkbox" />
+            <span class="checkbox-label">0W-20</span>
+          </label>
+          <label class="checkbox-group">
+            <input type="checkbox" />
+            <span class="checkbox-label">0W-30</span>
+          </label>
+          <label class="checkbox-group">
+            <input type="checkbox" />
+            <span class="checkbox-label">0W-40</span>
+          </label>
+          <label class="checkbox-group">
+            <input type="checkbox" />
+            <span class="checkbox-label">5W-20</span>
+          </label>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="products-list">
+      <div class="product-card">
+        <div class="product-image">
+          <img
+            src="{% static 'images/product-image.png' %}"
+            alt="Product Image"
+          />
+        </div>
+        <div class="product-info">
+          <div>
+            <h2 class="product-title">
+              Special Generation SLG 9 5W30 SP/GF-6A
+            </h2>
+            <div class="product-description">
+              <p class="product-id">AL/EO-0009</p>
+              <a href="#" class="btn-more"
+                >More
+                <i class="fa-solid fa-chevron-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <img
+            src="{% static 'images/product-image.png' %}"
+            alt="Product Image"
+          />
+        </div>
+        <div class="product-info">
+          <div>
+            <h2 class="product-title">
+              Special Generation SLG 9 5W30 SP/GF-6A
+            </h2>
+            <div class="product-description">
+              <p class="product-id">AL/EO-0009</p>
+              <a href="#" class="btn-more"
+                >More
+                <i class="fa-solid fa-chevron-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <img
+            src="{% static 'images/product-image.png' %}"
+            alt="Product Image"
+          />
+        </div>
+        <div class="product-info">
+          <div>
+            <h2 class="product-title">
+              Special Generation SLG 9 5W30 SP/GF-6A
+            </h2>
+            <div class="product-description">
+              <p class="product-id">AL/EO-0009</p>
+              <a href="#" class="btn-more"
+                >More
+                <i class="fa-solid fa-chevron-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <img
+            src="{% static 'images/product-image.png' %}"
+            alt="Product Image"
+          />
+        </div>
+        <div class="product-info">
+          <div>
+            <h2 class="product-title">
+              Special Generation SLG 9 5W30 SP/GF-6A
+            </h2>
+            <div class="product-description">
+              <p class="product-id">AL/EO-0009</p>
+              <a href="#" class="btn-more"
+                >More
+                <i class="fa-solid fa-chevron-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pagination-container">
+  <button class="pagination-arrow prev" id="prevPage">
+    <i class="fa-solid fa-chevron-left"></i>
+  </button>
+  
+  <div class="pagination-numbers" id="paginationNumbers">
+    <a href="#" class="page-number active">1</a>
+    <a href="#" class="page-number">2</a>
+    <a href="#" class="page-number">3</a>
+    <span class="ellipsis">...</span>
+    <a href="#" class="page-number">5</a>
+  </div>
+  
+  <button class="pagination-arrow next" id="nextPage">
+    <i class="fa-solid fa-chevron-right"></i>
+  </button>
+</div>
+</section>
+
+
+<!-- Pagination section -->
+
+
+<div class="innovation">
+    <div class="section-header">
+      <h2>INNOVATION & TECHNOLOGY</h2>
+    </div>
+    <div class="container innovation-technology">
+      <div class="section slide-right">
+        <div class="content">
+          <h2>Hybrid & EV lubricants</h2>
+          <p>Choose sustainability with our Hybrid & EV lubricants</p>
+          <a href="#" class="button-style">Discover more</a>
+        </div>
+        <div class="image-container">
+          <img class="slide-under-img" src="{% static 'images_folder/Mask group.svg' %}" alt="" />
+          <img class="innovation-image" src="{% static 'images_folder/image.png' %}" alt="Hybrid & EV Lubricants" />
+        </div>
+      </div>
+
+      <div class="section slide-left">
+        <div class="content">
+          <h2>Additives</h2>
+          <p>
+            Protect and keep your vehicle in top condition with our unique range
+            of additives.
+          </p>
+          <a href="#" class="button-style">Discover more</a>
+        </div>
+        <div class="image-container">
+          <img class="innovation-image" src="{% static 'images_folder/FR4A9609 1.png' %}" alt="Additives" />
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+
+     {% include 'components/gallery.html' %}
+     {% include 'components/brochure.html' %}
+
+{% endblock %}

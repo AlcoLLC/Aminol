@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import home_view, contact_view, brand_portal_view, faq_view, news_view, career_view
+from .views import home_view, contact_view, brand_portal_view, faq_view, news_view, career_view, product_view
 
 
 urlpatterns = [
@@ -9,4 +9,5 @@ urlpatterns = [
     path('faq/', faq_view, name='faq'),
     path('news/', news_view, name='news'),
     path('career/', career_view, name='career'),
+    path('product/', product_view, name='product'),
 ]

@@ -18,3 +18,6 @@ def career_view(request):
 
 def news_view(request):
     return render(request, 'news.html')
+
+def product_view(request):
+    return render(request, 'product.html')

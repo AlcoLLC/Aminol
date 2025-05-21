@@ -1,19 +1,3 @@
-const swiper = new Swiper(".home-header .mySwiper", {
-  loop: true,
-  effect: "fade",
-  autoplay: {
-    delay: 5000,
-    disableOnInteraction: false,
-  },
-  navigation: {
-    nextEl: ".home-header .swiper-button-next",
-    prevEl: ".home-header .swiper-button-prev",
-  },
-  pagination: {
-    el: ".home-header .swiper-pagination",
-    clickable: true,
-  },
-});
 
 document.addEventListener("DOMContentLoaded", function () {
   const playButton = document.getElementById("playButton");
