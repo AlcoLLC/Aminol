@@ -1,0 +1,72 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="news-page">
+    {% include 'components/navbar_dark.html' %}
+
+    <header class="page-header">
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb container">
+        <a href="/">Home page</a>|<p>Brand Portal</p>
+    </div>
+
+
+    <div class="container">
+        <div class="news-top-content">
+            <h2>Brand portal</h2>
+            <p>Tools for the Aminol brand</p>
+        </div>
+    </div>
+
+    <div class="services-offer-section container">
+        <div class="text-container text-left">
+            <h2></h2>
+            <p>
+                We are building a strong international brand, and consistent application is essential: the proper use of
+                the Aminol logo, fonts, and colors. On the Aminol Brand Portal, you will find our brand identity
+                guidelines and relevant information for the correct and consistent application of our brand materials.
+                There, you will also find downloads of various assets, including logos, photos, brochures.
+                Any questions? Please contact Marketing & Communications using the contact form below.
+            </p>
+        </div>
+        <div class="services-offer-image">
+            <img src="{% static '/images/market-industrial.jpg' %}" alt="Service Offer Image" />
+        </div>
+    </div>
+
+
+    <div class="brand-section container">
+        <div class="brand-item">
+            <div class="text-container">
+                <h2>Corporate Identity</h2>
+                <p>
+                    Our brand identity including downloads of Aminol logo variations and guidelines
+                </p>
+            </div>
+            <div class="brand-image">
+                <img src="{% static '/images/market-industrial.jpg' %}" alt="Service Offer Image" />
+                <a href="#" class="read-more">Read more</a>
+            </div>
+        </div>
+
+        <div class="brand-item">
+            <div class="text-container">
+                <h2>Corporate Identity</h2>
+                <p>
+                    Our brand identity including downloads of Aminol logo variations and guidelines
+                </p>
+            </div>
+            <div class="brand-image">
+                <img src="{% static '/images/market-industrial.jpg' %}" alt="Service Offer Image" />
+                <a href="#" class="read-more">Read more</a>
+            </div>
+        </div>
+    </div>
+
+
+
+    {% include 'components/whatsapp.html' %}
+
+</div>
+
+{% endblock %}
