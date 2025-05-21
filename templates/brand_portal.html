@@ -14,56 +14,44 @@
     <div class="container">
         <div class="news-top-content">
             <h2>Brand portal</h2>
-            <p>Tools for the Aminol brand</p>
+            <p>{{ brand.title }}</p>
         </div>
     </div>
 
-    <div class="services-offer-section container">
+    <div class="services-offer-section brand-portal-section container">
         <div class="text-container text-left">
-            <h2></h2>
             <p>
-                We are building a strong international brand, and consistent application is essential: the proper use of
-                the Aminol logo, fonts, and colors. On the Aminol Brand Portal, you will find our brand identity
-                guidelines and relevant information for the correct and consistent application of our brand materials.
-                There, you will also find downloads of various assets, including logos, photos, brochures.
-                Any questions? Please contact Marketing & Communications using the contact form below.
+               {{ brand.description }}
             </p>
         </div>
         <div class="services-offer-image">
-            <img src="{% static '/images/market-industrial.jpg' %}" alt="Service Offer Image" />
+            <img src="{{ brand.image.url }}" alt="Service Offer Image" />
         </div>
     </div>
 
 
-    <div class="brand-section container">
+     <div class="brand-section container">
+        {% for content in brand_contents %}
         <div class="brand-item">
             <div class="text-container">
-                <h2>Corporate Identity</h2>
-                <p>
-                    Our brand identity including downloads of Aminol logo variations and guidelines
-                </p>
+                <h2>{{ content.title }}</h2>
+                <p>{{ content.description }}</p>
             </div>
             <div class="brand-image">
-                <img src="{% static '/images/market-industrial.jpg' %}" alt="Service Offer Image" />
-                <a href="#" class="read-more">Read more</a>
+                {% if content.image %}
+                    <img src="{{ content.image.url }}" alt="{{ content.title }}" />
+                {% else %}
+                    <img src="{% static '/images/market-industrial.jpg' %}" alt="Service Offer Image" />
+                {% endif %}
+                <a class="read-more">Read more</a>
             </div>
         </div>
-
-        <div class="brand-item">
-            <div class="text-container">
-                <h2>Corporate Identity</h2>
-                <p>
-                    Our brand identity including downloads of Aminol logo variations and guidelines
-                </p>
-            </div>
-            <div class="brand-image">
-                <img src="{% static '/images/market-industrial.jpg' %}" alt="Service Offer Image" />
-                <a href="#" class="read-more">Read more</a>
-            </div>
+        {% empty %}
+        <div class="no-content">
+            <p>No brand content available at the moment.</p>
         </div>
+        {% endfor %}
     </div>
-
-
 
     {% include 'components/whatsapp.html' %}
 

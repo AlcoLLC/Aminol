@@ -5,6 +5,8 @@ from .models import (
     Aminol_Labaratory,
     Aminol_Logistics
 )
+from news.models import News
+
 
 def aminol_dealer_view(request):
     dealer = Aminol_Official_Dealer.objects.last()
@@ -19,18 +21,22 @@ def aminol_dealer_view(request):
 
 def aminol_laboratory_view(request):
     laboratories = Aminol_Labaratory.objects.all()
+    latest_news = News.objects.filter(is_active=True)[:3]
     
     context = {
         'laboratories': laboratories,
+        'latest_news': latest_news,
     }
     
     return render(request, 'service_laboratory.html', context)
 
 def aminol_logistics_view(request):
     logistics = Aminol_Logistics.objects.all()
+    latest_news = News.objects.filter(is_active=True)[:3]
     
     context = {
         'logistics': logistics,
+        'latest_news': latest_news,
     }
     
     return render(request, 'service_logistics.html', context)

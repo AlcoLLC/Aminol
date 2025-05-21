@@ -320,3 +320,6 @@
   font-weight: 400;
 }
 
+.brand-portal-section {
+  align-items: flex-start;
+}

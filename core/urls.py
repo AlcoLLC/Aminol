@@ -26,5 +26,6 @@ urlpatterns = [
     path('', include('markets.urls')),
     path('', include('faq.urls')),
     path('', include('news.urls')),
+    path('', include('brands.urls')),
     path('ckeditor5/', include('django_ckeditor_5.urls')),
 ]
