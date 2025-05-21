@@ -298,7 +298,6 @@
   padding: 5px 20px;
   color: white;
   background-color: #f92b3f;
-
 }
 
 .brand-section .text-container {
@@ -311,7 +310,7 @@
   font-size: 24px;
   line-height: 22px;
   letter-spacing: -1%;
-  margin-bottom: 20px;
+      margin-bottom: 20px;
 }
 
 .brand-section .text-container p {

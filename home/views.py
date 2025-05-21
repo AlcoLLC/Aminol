@@ -6,3 +6,6 @@ def home_view(request):
 
 def career_view(request):
     return render(request, 'career.html')
+
+def product_view(request):
+    return render(request, 'product.html')
