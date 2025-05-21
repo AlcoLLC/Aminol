@@ -100,17 +100,11 @@ Aminol Support Team
         else:
             logger.warning(f"Form validation errors: {form.errors}")
             messages.error(request, "Please correct the errors in the form.")
+
+    contact_info = ContactInfo.objects.last()
     
     context = {
         'help_choices': help_choices,
-    }
-    
-    return render(request, 'contact.html', context)
-
-def contact_page(request):
-    contact_info = ContactInfo.objects.first()
-    
-    context = {
         'contact_info': contact_info,
     }
     
