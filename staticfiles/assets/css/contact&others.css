@@ -103,7 +103,7 @@
 }
 
 .contact-bottom {
-    margin-top: 20px;
+  margin-top: 20px;
   margin-bottom: 200px;
   color: #28315e;
   display: flex;
@@ -112,11 +112,11 @@
   gap: 40px;
 }
 
-.contact-bottom  h3{
-font-weight: 600;
-font-size: 14px;
-line-height: 20px;
-letter-spacing: 0%;
+.contact-bottom h3 {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0%;
 }
 
 .contact-bottom .item {
@@ -126,7 +126,6 @@ letter-spacing: 0%;
 .contact-bottom .item p {
   width: 60%;
   line-height: 20px;
-
 }
 .contact-bottom .right-item {
   width: 100%;
@@ -134,4 +133,93 @@ letter-spacing: 0%;
   align-items: start;
   justify-content: space-between;
   gap: 40px;
+}
+
+/* NEWS SECTION */
+
+.news-top-content {
+  margin: 50px auto;
+}
+
+.news-top-content h2 {
+  color: #28315e;
+  font-weight: 600;
+  font-size: 42px;
+  line-height: 75px;
+  letter-spacing: -1%;
+}
+
+.news-top-content p {
+  color: #28315e;
+  max-width: 350px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: 0px;
+}
+
+.news-page .whatsapp-section {
+  margin-top: 250px !important;
+}
+
+/* FAQ SECTION */
+
+.faq-section {
+  margin: 100px auto;
+}
+
+.faq-section .section-grid {
+  margin: 50px auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-content: space-between;
+  justify-content: center;
+  gap: 15px;
+}
+.faq-section .section-grid .grid-item {
+  width: 100%;
+  height: 10vh;
+  background-color: #f6f9ff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.faq-section .section-grid .question {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.faq-section .section-grid .question h3 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #28315e;
+  padding: 5px;
+  background-color: #f6f9ff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 70%;
+}
+
+.faq-section .section-grid .question i {
+  font-size: 6px;
+}
+
+.faq-section .section-grid .question img {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+}
+
+.faq-section .section-grid .question .plus-icon {
+  display: block;
+}
+
+.faq-section .section-grid .question .minus-icon {
+  display: none;
 }
