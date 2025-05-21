@@ -17,3 +17,16 @@ def markets_shipping_view(request):
 
 def contact_view(request):
     return render(request, 'contact.html')
+
+
+def brand_portal_view(request):
+    return render(request, 'brand_portal.html')
+
+def faq_view(request):
+    return render(request, 'faq.html')
+
+def career_view(request):
+    return render(request, 'career.html')
+
+def news_view(request):
+    return render(request, 'news.html')

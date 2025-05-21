@@ -59,6 +59,20 @@ nav {
   background-color: #fff;
 }
 
+.navbar .aminol-logo-light {
+  display: none;
+}
+
+.navbar-dark {
+  background-color: #012762;
+}
+.navbar-dark .aminol-logo {
+  display: none !important;
+}
+.navbar-dark .aminol-logo-light {
+  display: block !important;
+}
+
 .navbar-blur {
   background-color: rgba(255, 255, 255, 0.9) !important;
   backdrop-filter: blur(10px) !important;
@@ -110,11 +124,19 @@ nav {
   transition: color 0.3s ease !important;
 }
 
+.navbar-dark ul li a {
+  color: #fff !important;
+}
+
 .navbar .nav-section ul li a:hover {
   color: #f92b3f !important;
 }
 .navbar .nav-section ul li a.active:hover {
   color: #012762 !important;
+}
+
+.navbar-dark .nav-section ul li a.active:hover {
+  color: #fff !important;
 }
 
 .navbar .nav-section ul li a.active {
@@ -130,7 +152,15 @@ nav {
   background-color: #012762;
 }
 
-.navbar .nav-section ul .dropdown a.active:not(.dropdown-content a.active)::after {
+.navbar-dark .nav-section ul li a.active:not(.dropdown-content a.active)::after {
+  background-color: #fff !important;
+}
+
+.navbar
+  .nav-section
+  ul
+  .dropdown
+  a.active:not(.dropdown-content a.active)::after {
   width: 78% !important;
 }
 
@@ -149,7 +179,7 @@ nav {
   cursor: pointer;
 }
 .navbar .nav-section .nav-top .lang-btn .btn-en {
-  border: none;
+  border: 1px solid #fff;
   border-radius: 12px;
   background-color: #012762;
   color: #fff;
@@ -221,6 +251,10 @@ nav {
   transition: opacity 0.3s ease, visibility 0.3s ease;
   opacity: 0;
   visibility: hidden;
+}
+
+.navbar-dark .dropdown-background {
+  background-color: #012762 !important;
 }
 
 .dropdown-content a {
@@ -460,6 +494,10 @@ nav {
   position: relative;
 }
 
+.news-page .page-header {
+  height: 8vh;
+}
+
 .page-header::after {
   content: "";
   position: absolute;
@@ -518,7 +556,6 @@ nav {
 .markets-shipping .page-header {
   background-image: url("../../images/page-header-market-3.jpg");
 }
-
 
 .contact-page .page-header {
   background-image: url("../../images/page-header-contact.jpg");

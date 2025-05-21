@@ -1,0 +1,71 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="news-page">
+    {% include 'components/navbar_dark.html' %}
+
+    <header class="page-header">
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb container">
+        <a href="/">Home page</a>|<p>FAQ</p>
+    </div>
+
+
+    <div class="container">
+        <div class="news-top-content">
+            <h2>Frequently asked questions</h2>
+        </div>
+    </div>
+
+    <section class="faq-section container">
+
+        <div class="section-grid">
+            <div class="grid-item">
+                <div class="question">
+                    <i class="fa-solid fa-circle"></i>
+                    <h3>How do I place an order?</h3>
+                    <img class="plus-icon" src="{% static '/images/Add_round_duotone.svg' %}" alt="">
+                    <img class="minus-icon" src="{% static '/images/minus_round_duotone.svg' %}" alt="">
+                </div>
+                <div class="answer">
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                        of type and scrambled it to make a type specimen book.</p>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="question">
+                    <i class="fa-solid fa-circle"></i>
+                    <h3>How do I place an order?</h3>
+                    <img class="plus-icon" src="{% static '/images/Add_round_duotone.svg' %}" alt="">
+                    <img class="minus-icon" src="{% static '/images/minus_round_duotone.svg' %}" alt="">
+                </div>
+                <div class="answer">
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                        of type and scrambled it to make a type specimen book.</p>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="question">
+                    <i class="fa-solid fa-circle"></i>
+                    <h3>How do I know my order has been confirmed?</h3>
+                    <img class="plus-icon" src="{% static '/images/Add_round_duotone.svg' %}" alt="">
+                    <img class="minus-icon" src="{% static '/images/minus_round_duotone.svg' %}" alt="">
+                </div>
+                <div class="answer">
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                        of type and scrambled it to make a type specimen book.</p>
+                </div>
+            </div>
+           
+        </div>
+    </section>
+
+    <!-- Contact form  section-->
+    {% include 'components/whatsapp.html' %}
+
+</div>
+
+{% endblock %}
