@@ -25,6 +25,7 @@ class Markets_Industrial(models.Model):
     description = models.TextField()
     industries_title = models.CharField(max_length=255)
     industries_description = models.TextField()
+    
 
     def __str__(self):
         return f"{self.title}"

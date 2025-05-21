@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 answer.style.display = 'none';
                 plusIcon.style.display = 'block';
                 minusIcon.style.display = 'none';
-                gridItem.style.height = '11vh';
             } else {
                 answer.style.display = 'block';
                 plusIcon.style.display = 'none';
