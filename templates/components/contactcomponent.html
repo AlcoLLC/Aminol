@@ -1,0 +1,109 @@
+{% load static %}
+
+<div class="aminol-contact-form container">
+    <div class="form-content">
+      <h2>Contact form</h2>
+      <p>
+        Do you need a specific solution or are you interested in a partnership?<br />
+        Please contact us here.
+      </p>
+
+      <form action="{% url 'contact' %}" method="POST">
+        {% csrf_token %}
+        <div class="form-row">
+          <div class="form-group select-form-group">
+            <label for="helpType">How can we help you?*</label>
+            <div class="custom-select-wrapper">
+              <div class="custom-select" id="selected-enquiry">I would like to buy Aminol products.</div>
+              <div class="custom-options">
+                {% for value, text in help_choices %}
+                <div class="custom-option" data-value="{{ value }}">{{ text }}</div>
+                {% endfor %}
+              </div>
+              <input
+                type="hidden"
+                name="helpType"
+                id="helpType"
+                value="buy"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              id="company"
+              name="company"
+              class="form-control"
+              placeholder="Company name*"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <textarea
+            id="question"
+            name="question"
+            class="form-control"
+            placeholder="Your question, wish and/or clarification*"
+            required
+          ></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              class="form-control"
+              placeholder="First name*"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              class="form-control"
+              placeholder="Last name*"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-control"
+              placeholder="Email address*"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              class="form-control"
+              placeholder="Phone number*"
+              required
+            />
+          </div>
+        </div>
+
+        <button type="submit" class="btn-send">
+          Send
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+  

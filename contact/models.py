@@ -21,3 +21,20 @@ class Contact(models.Model):
     
     def __str__(self):
         return f"{self.first_name} {self.last_name} - {self.company_name}"
+    
+class ContactInfo(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    aminol_headquarters = models.TextField()
+    aminol_headquarters_location = models.URLField(blank=True, help_text="URL for headquarters location (Google Maps link)")
+    aminol_factory = models.TextField()
+    aminol_factory_location = models.URLField(blank=True, help_text="URL for factory location (Google Maps link)")
+    aminol_headquarters_image = models.ImageField(upload_to='aminol_headquarters/')
+    aminol_factory_image = models.ImageField(upload_to='aminol_factory/')
+    registers = models.TextField()
+    contact_address = models.TextField()
+    contact_phone = models.CharField(max_length=20)
+    contact_email = models.EmailField()
+    
+    def __str__(self):
+        return f"{self.title}"
