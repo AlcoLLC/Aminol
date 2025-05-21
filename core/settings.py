@@ -62,7 +62,8 @@ INSTALLED_APPS = [
     'contact',
     'markets',
     'faq',
-    'news'
+    'news',
+    'brands'
 ]
 
 MIDDLEWARE = [

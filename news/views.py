@@ -2,7 +2,6 @@ from django.shortcuts import render
 from .models import News
 
 def news_list(request):
-    """View for displaying all news articles"""
     all_news = News.objects.filter(is_active=True)
     latest_news = News.objects.filter(is_active=True)[:3]
     
