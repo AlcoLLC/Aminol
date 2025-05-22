@@ -13,247 +13,210 @@
 
 <div class="container">
   <div class="product-content">
-    <h2>All products</h2>
-    <p>
-      Here you will find our wide range of mineral, semi-synthetic, and fully
-      synthetic motor oils in various viscosities and specifications, for
-      gasoline cars, diesel cars, and hybrid vehicles.
-    </p>
+    {% if selected_product_groups|length == 1 %}
+      {% for group in product_groups %}
+        {% if group.slug in selected_product_groups %}
+          <h2>{{ group.title }}</h2>
+          <p>{{ group.description }}</p>
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      <h2>All products</h2>
+      <p>
+        Here you will find our wide range of mineral, semi-synthetic, and fully
+        synthetic motor oils in various viscosities and specifications, for
+        gasoline cars, diesel cars, and hybrid vehicles.
+      </p>
+    {% endif %}
   </div>
 </div>
 
 <section class="products-section container">
   <div class="products-container">
     <div class="filter-container">
-      <div class="search-bar">
-        <input type="text" placeholder="Search" class="search-input" />
-        <a class="search-button" href="">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </a>
-      </div>
+      <form method="GET" id="filterForm">
+        <div class="search-bar">
+          <input type="text" name="search" placeholder="Search" class="search-input" value="{{ search_query }}" />
+          <button type="submit" class="search-button">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
 
-      <div class="filter-section">
-        <div class="filter-header">
-          <div class="filter-title ">Product group</div>
-          <div class="filter-icon">
-            <i class="fa-solid fa-chevron-down"></i>
+        <!-- Product Group Filter -->
+        <div class="filter-section">
+          <div class="filter-header">
+            <div class="filter-title">Product group</div>
+            <div class="filter-icon">
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+          </div>
+          <div class="filter-content">
+            {% for group in product_groups %}
+            <label class="checkbox-group">
+              <input type="checkbox" name="product_group" value="{{ group.slug }}"
+                     {% if group.slug in selected_product_groups %}checked{% endif %} />
+              <span class="checkbox-label {% if group.slug in selected_product_groups %}selected-item{% endif %}">{{ group.title }}</span>
+            </label>
+            {% endfor %}
           </div>
         </div>
-        <div class="filter-content">
-          <label class="checkbox-group">
-            <input type="checkbox" />
-            <span class="checkbox-label">Engine oil</span>
-          </label>
-          <label class="checkbox-group">
-            <input type="checkbox" />
-            <span class="checkbox-label">Transmission & Gear oil</span>
-          </label>
-          <label class="checkbox-group">
-            <input type="checkbox" />
-            <span class="checkbox-label">Industrial oil</span>
-          </label>
-        </div>
-      </div>
 
-      <!-- Segments Filter -->
-      <div class="filter-section">
-        <div class="filter-header">
-          <div class="filter-title">Segments</div>
-          <div class="filter-icon">
-            <i class="fa-solid fa-chevron-down"></i>
+        <!-- Segments Filter -->
+        <div class="filter-section">
+          <div class="filter-header">
+            <div class="filter-title">Segments</div>
+            <div class="filter-icon">
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+          </div>
+          <div class="filter-content">
+            {% for segment in segments %}
+            <label class="checkbox-group">
+              <input type="checkbox" name="segments" value="{{ segment.slug }}"
+                     {% if segment.slug in selected_segments %}checked{% endif %} />
+              <span class="checkbox-label {% if segment.slug in selected_segments %}selected-item{% endif %}">{{ segment.title }}</span>
+            </label>
+            {% endfor %}
           </div>
         </div>
-        <div class="filter-content">
-          <label class="checkbox-group">
-            <input type="checkbox" />
-            <span class="checkbox-label">Automotive</span>
-          </label>
-          <label class="checkbox-group">
-            <input type="checkbox" />
-            <span class="checkbox-label">Agricultural</span>
-          </label>
 
-        </div>
-      </div>
-
-      <!-- Oil Type Filter -->
-      <div class="filter-section">
-        <div class="filter-header">
-          <div class="filter-title">Oil type</div>
-          <div class="filter-icon">
-            <i class="fa-solid fa-chevron-down"></i>
+        <!-- Oil Type Filter -->
+        <div class="filter-section">
+          <div class="filter-header">
+            <div class="filter-title">Oil type</div>
+            <div class="filter-icon">
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+          </div>
+          <div class="filter-content">
+            {% for oil_type in oil_types %}
+            <label class="checkbox-group">
+              <input type="checkbox" name="oil_type" value="{{ oil_type.slug }}"
+                     {% if oil_type.slug in selected_oil_types %}checked{% endif %} />
+              <span class="checkbox-label {% if oil_type.slug in selected_oil_types %}selected-item{% endif %}">{{ oil_type.title }}</span>
+            </label>
+            {% endfor %}
           </div>
         </div>
-        <div class="filter-content">
-          <label class="checkbox-group">
-            <input type="checkbox" />
-            <span class="checkbox-label">Full-synthetic</span>
-          </label>
-          <label class="checkbox-group">
-            <input type="checkbox" />
-            <span class="checkbox-label">Semi-synthetic</span>
-          </label>
-          <label class="checkbox-group">
-            <input type="checkbox" />
-            <span class="checkbox-label">Synthetic technology</span>
-          </label>
-          <label class="checkbox-group">
-            <input type="checkbox" />
-            <span class="checkbox-label">Mineral</span>
-          </label>
-        </div>
-      </div>
 
-      <!-- Viscosity Filter -->
-      <div class="filter-section">
-        <div class="filter-header">
-          <div class="filter-title">Viscosity</div>
-          <div class="filter-icon">
-            <i class="fa-solid fa-chevron-down"></i>
+        <!-- Viscosity Filter -->
+        <div class="filter-section">
+          <div class="filter-header">
+            <div class="filter-title">Viscosity</div>
+            <div class="filter-icon">
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+          </div>
+          <div class="filter-content">
+            {% for viscosity in viscosity_options %}
+            <label class="checkbox-group">
+              <input type="checkbox" name="viscosity" value="{{ viscosity.slug }}"
+                     {% if viscosity.slug in selected_viscosity %}checked{% endif %} />
+              <span class="checkbox-label {% if viscosity.slug in selected_viscosity %}selected-item{% endif %}">{{ viscosity.title }}</span>
+            </label>
+            {% endfor %}
           </div>
         </div>
-        <div class="filter-content">
-          <label class="checkbox-group">
-            <input type="checkbox" />
-            <span class="checkbox-label">0W-8</span>
-          </label>
-          <label class="checkbox-group">
-            <input type="checkbox" />
-            <span class="checkbox-label">0W-16</span>
-          </label>
-          <label class="checkbox-group">
-            <input type="checkbox" />
-            <span class="checkbox-label">0W-20</span>
-          </label>
-          <label class="checkbox-group">
-            <input type="checkbox" />
-            <span class="checkbox-label">0W-30</span>
-          </label>
-          <label class="checkbox-group">
-            <input type="checkbox" />
-            <span class="checkbox-label">0W-40</span>
-          </label>
-          <label class="checkbox-group">
-            <input type="checkbox" />
-            <span class="checkbox-label">5W-20</span>
-          </label>
-          </label>
-        </div>
-      </div>
+        
+        <!-- Hidden input to maintain page number -->
+        <input type="hidden" name="page" value="1">
+      </form>
     </div>
 
     <div class="products-list">
+      {% for product in products %}
       <div class="product-card">
         <div class="product-image">
-          <img
-            src="{% static 'images/product-image.png' %}"
-            alt="Product Image"
-          />
+          <img src="{% static 'images/product-image.png' %}" alt="{{ product.title }}" />
         </div>
         <div class="product-info">
           <div>
-            <h2 class="product-title">
-              Special Generation SLG 9 5W30 SP/GF-6A
-            </h2>
+            <h2 class="product-title">{{ product.title }}</h2>
             <div class="product-description">
-              <p class="product-id">AL/EO-0009</p>
-              <a href="#" class="btn-more"
-                >More
-                <i class="fa-solid fa-chevron-right"></i>
+              <p class="product-id">{{ product.product_id }}</p>
+              <a href="{% url 'products:product_detail' slug=product.slug %}" class="btn-more">
+                More <i class="fa-solid fa-chevron-right"></i>
               </a>
             </div>
           </div>
         </div>
       </div>
-      <div class="product-card">
-        <div class="product-image">
-          <img
-            src="{% static 'images/product-image.png' %}"
-            alt="Product Image"
-          />
-        </div>
-        <div class="product-info">
-          <div>
-            <h2 class="product-title">
-              Special Generation SLG 9 5W30 SP/GF-6A
-            </h2>
-            <div class="product-description">
-              <p class="product-id">AL/EO-0009</p>
-              <a href="#" class="btn-more"
-                >More
-                <i class="fa-solid fa-chevron-right"></i>
-              </a>
-            </div>
-          </div>
-        </div>
+      {% empty %}
+      <div class="no-products">
+        <p>No products found matching your criteria.</p>
       </div>
-      <div class="product-card">
-        <div class="product-image">
-          <img
-            src="{% static 'images/product-image.png' %}"
-            alt="Product Image"
-          />
-        </div>
-        <div class="product-info">
-          <div>
-            <h2 class="product-title">
-              Special Generation SLG 9 5W30 SP/GF-6A
-            </h2>
-            <div class="product-description">
-              <p class="product-id">AL/EO-0009</p>
-              <a href="#" class="btn-more"
-                >More
-                <i class="fa-solid fa-chevron-right"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="product-card">
-        <div class="product-image">
-          <img
-            src="{% static 'images/product-image.png' %}"
-            alt="Product Image"
-          />
-        </div>
-        <div class="product-info">
-          <div>
-            <h2 class="product-title">
-              Special Generation SLG 9 5W30 SP/GF-6A
-            </h2>
-            <div class="product-description">
-              <p class="product-id">AL/EO-0009</p>
-              <a href="#" class="btn-more"
-                >More
-                <i class="fa-solid fa-chevron-right"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 
-  <div class="pagination-container">
-  <button class="pagination-arrow prev" id="prevPage">
-    <i class="fa-solid fa-chevron-left"></i>
-  </button>
-  
-  <div class="pagination-numbers" id="paginationNumbers">
-    <a href="#" class="page-number active">1</a>
-    <a href="#" class="page-number">2</a>
-    <a href="#" class="page-number">3</a>
-    <span class="ellipsis">...</span>
-    <a href="#" class="page-number">5</a>
+
+
+  <!-- Always show pagination for testing -->
+    <div class="pagination-container">
+      <button class="pagination-arrow prev" id="prevPage" {% if not page_obj.has_previous %}disabled{% endif %}>
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+    
+    <div class="pagination-numbers" id="paginationNumbers">
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a href="#" class="page-number active" data-page="{{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a href="#" class="page-number" data-page="{{ num }}">{{ num }}</a>
+        {% elif num == 1 %}
+          <a href="#" class="page-number" data-page="{{ num }}">{{ num }}</a>
+          {% if page_obj.number > 4 %}
+            <span class="ellipsis">...</span>
+          {% endif %}
+        {% elif num == page_obj.paginator.num_pages %}
+          {% if page_obj.number < page_obj.paginator.num_pages|add:'-3' %}
+            <span class="ellipsis">...</span>
+          {% endif %}
+          <a href="#" class="page-number" data-page="{{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+    </div>
+    
+    <button class="pagination-arrow next" id="nextPage" {% if not page_obj.has_next %}disabled{% endif %}>
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
   </div>
-  
-  <button class="pagination-arrow next" id="nextPage">
-    <i class="fa-solid fa-chevron-right"></i>
-  </button>
-</div>
+
+  <!-- Original pagination with condition -->
+  {% if page_obj.has_other_pages %}
+  <div class="pagination-container">
+    <button class="pagination-arrow prev" id="prevPage" {% if not page_obj.has_previous %}disabled{% endif %}>
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    
+    <div class="pagination-numbers" id="paginationNumbers">
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a href="#" class="page-number active" data-page="{{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a href="#" class="page-number" data-page="{{ num }}">{{ num }}</a>
+        {% elif num == 1 %}
+          <a href="#" class="page-number" data-page="{{ num }}">{{ num }}</a>
+          {% if page_obj.number > 4 %}
+            <span class="ellipsis">...</span>
+          {% endif %}
+        {% elif num == page_obj.paginator.num_pages %}
+          {% if page_obj.number < page_obj.paginator.num_pages|add:'-3' %}
+            <span class="ellipsis">...</span>
+          {% endif %}
+          <a href="#" class="page-number" data-page="{{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+    </div>
+    
+    <button class="pagination-arrow next" id="nextPage" {% if not page_obj.has_next %}disabled{% endif %}>
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+  </div>
+  {% endif %}
 </section>
 
-<!-- Pagination section -->
+<!-- Innovation section -->
 <div class="innovation">
     <div class="section-header">
       <h2>INNOVATION & TECHNOLOGY</h2>
@@ -287,8 +250,6 @@
     </div>
 </div>
 
-
-     {% include 'components/gallery.html' %}
-     {% include 'components/brochure.html' %}
-
+{% include 'components/gallery.html' %}
+{% include 'components/brochure.html' %}
 {% endblock %}
