@@ -1,62 +1,7 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 
-<nav>
-  <div class="navbar">
-    <div class="container">
-      <a href="/" class="navbar-left">
-        <img class="aminol-logo" src="{% static '/images/aminol-logo.svg' %}" alt="Aminol logo">
-        <img class="aminol-logo-light" src="{% static '/images/aminol-logo-light.svg' %}" alt="Aminol logo light">
-      </a>
-      <div class="navbar-right">
-        <div class="nav-section">
-          <div class="nav-top">
-            <ul>
-              <li><a class="" href="/news">News</a></li>
-              <li><a href="/brand_portal">Brand Portal</a></li>
-              <li><a href="/career">Career</a></li>
-              <li><a href="/contact">Contact</a></li>
-              <li class="lang-btn">
-                <button class="btn-az">AZ</button>
-                <button class="btn-en">EN</button>
-              </li>
-            </ul>
-          </div>
-          <div class="nav-bottom">
-            <ul>
-              <li><a class="active" href="/about">About us</a></li>
-              <li><a class="" href="/product">Products</a>
-                <!-- <div class="dropdown-content">
-                                    <a class="active" href="">Aminol official dealer</a>
-                                    <a href="">Aminol Laboratory</a>
-                                    <a href="">Aminol Logistics</a>
-                                </div> -->
-              </li>
-              <li class="dropdown"><a class=" " href="">Markets<i class="fa-solid fa-chevron-down"></i></a>
-                <div class="dropdown-content">
-                  <a href="/markets_automotive">Automotive</a>
-                  <a href="/markets_industrial">Industrial</a>
-                  <a href="/markets_shipping">Shipping & Offshore</a>
-                  <!-- <a href="/">Agricultural</a> -->
-                </div>
-              </li>
-              <li class="dropdown"><a class=" " href="">Services<i class="fa-solid fa-chevron-down"></i></a>
-                <div class="dropdown-content">
-                  <a class="active" href="/service_aminol_dealer">Aminol official dealer</a>
-                  <a href="/service_laboratory">Aminol Laboratory</a>
-                  <a href="/service_logistics">Aminol Logistics</a>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <button class="search">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-      </div>
-    </div>
-    <div class="dropdown-background"></div>
-      </div>
-</nav>
+{% include 'components/navbar.html' %}
+
 
 <div class="home-main">
   <header class="placeholder-header home-header">
