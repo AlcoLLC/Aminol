@@ -1,9 +1,10 @@
 {% extends 'base.html' %} {% load static %} {% block content %} 
 
-{% include 'components/navbar.html' %}
+
 
 {% if product.product_group %}
-<div class="product-detail-page">
+{% include 'components/navbar.html' %}
+<div class="news-page">
   <header class="page-header">
     <div class="header-content container">
       <h2>{{ product.product_group.title }}</h2>
@@ -12,6 +13,12 @@
       </p>
     </div>
   </header>
+</div>
+{% else %}
+{% include 'components/navbar_dark.html' %}
+<div class="news-page">
+  <header class="page-header">
+    </header>
 </div>
 {% endif %}
 
