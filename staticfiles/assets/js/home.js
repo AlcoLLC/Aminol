@@ -21,29 +21,24 @@ document.addEventListener("DOMContentLoaded", function () {
   const videoContainer = document.getElementById("videoContainer");
   const youtubeVideo = document.getElementById("youtubeVideo");
 
-  playButton.addEventListener("click", function () {
-    textContent.classList.add("hidden");
-
-    playButton.style.display = "none";
-
-    videoContainer.style.display = "block";
-
-    const videoSrc = youtubeVideo.src;
-
-    youtubeVideo.src = videoSrc + "&autoplay=1";
-  });
+  if (playButton) {
+    playButton.addEventListener("click", function () {
+      textContent.classList.add("hidden");
+      playButton.style.display = "none";
+      videoContainer.style.display = "block";
+      const videoSrc = youtubeVideo.src;
+      youtubeVideo.src = videoSrc + "&autoplay=1";
+    });
+  }
 
   checkScroll();
-
   window.addEventListener("scroll", checkScroll);
 
   function checkScroll() {
     const sections = document.querySelectorAll(".section");
-
     sections.forEach((section) => {
       const sectionTop = section.getBoundingClientRect().top;
       const windowHeight = window.innerHeight;
-
       if (sectionTop < windowHeight * 0.85) {
         section.classList.add("active");
       } else {
@@ -51,10 +46,12 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
+  
   const swiperGallery = new Swiper(".gallery-section .labSwiper", {
-    slidesPerView: "auto",
+    slidesPerView: 2.5,
     centeredSlides: true,
-    spaceBetween: 30,
+    spaceBetween: 20,
     loop: true,
     speed: 800,
     navigation: {
@@ -63,53 +60,40 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     breakpoints: {
       320: {
-        slidesPerView: 1.2,
-        spaceBetween: 10,
+        slidesPerView: 1.3,
+        spaceBetween: 15,
       },
       640: {
-        slidesPerView: 2.2,
+        slidesPerView: 1.8,
         spaceBetween: 15,
       },
       1024: {
-        slidesPerView: 3,
+        slidesPerView: 2.2,
         spaceBetween: 20,
       },
     },
     on: {
+      init: function() {
+        updateSlideScaling();
+      },
       slideChange: function () {
-        const slides = document.querySelectorAll(
-          ".gallery-section .swiper-slide"
-        );
-
-        slides.forEach((slide) => {
-          const img = slide.querySelector("img");
-          img.style.width = "100%";
-        });
-
-        setTimeout(() => {
-          const activeSlide = document.querySelector(
-            ".gallery-section .swiper-slide-active"
-          );
-          if (activeSlide) {
-            const activeImg = activeSlide.querySelector(
-              ".gallery-section .swiper-slide-active img"
-            );
-            activeImg.style.width = "200vh";
-          }
-        }, 10);
+        updateSlideScaling();
       },
     },
   });
 
-  setTimeout(() => {
-    const activeSlide = document.querySelector(
-      ".gallery-section .swiper-slide-active"
-    );
-    if (activeSlide) {
-      const activeImg = activeSlide.querySelector(
-        ".gallery-section .swiper-slide-active img"
-      );
-      activeImg.style.width = "200vh";
-    }
-  }, 100);
+  function updateSlideScaling() {
+    const slides = document.querySelectorAll(".gallery-section .swiper-slide");
+    
+    slides.forEach((slide) => {
+      slide.classList.remove('active-slide');
+    });
+
+    setTimeout(() => {
+      const activeSlide = document.querySelector(".gallery-section .swiper-slide-active");
+      if (activeSlide) {
+        activeSlide.classList.add('active-slide');
+      }
+    }, 50);
+  }
 });
