@@ -505,6 +505,8 @@
   line-height: 20px;
   letter-spacing: 0px;
   margin-bottom: 1rem;
+  color: #fff !important;
+  text-align: left !important;
 }
 
 .production-section .play-button {
