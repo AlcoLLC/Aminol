@@ -2,76 +2,78 @@
 
 {% include 'components/navbar.html' %}
 
+{% if product.product_group %}
 <div class="product-detail-page">
   <header class="page-header">
     <div class="header-content container">
-      <h2>Passenger car engine oil (PCMO)</h2>
+      <h2>{{ product.product_group.title }}</h2>
       <p>
-        Here you will find our wide range of mineral, semi-synthetic, and fully
-        synthetic motor oils in various viscosities and specifications, for
-        gasoline cars, diesel cars, and hybrid vehicles.
+        {{ product.product_group.description }}
       </p>
     </div>
   </header>
 </div>
+{% endif %}
 
-<!-- Breadcrumb -->
 <div class="breadcrumb container">
-  <a href="/product">Back to the overview</a>|
-  <p>Aminol Special Generation SLG9</p>
+  <a href="{% url 'products:product_list' %}">Back to the overview</a>|
+  <p>{{ product.title }}</p>
 </div>
 
 <section class="product-detail-section container">
   <div class="product-detail-container">
     <div class="product-details">
-      <h2>Aminol Special Generation SLG 9 5W30 SP/GF-6A</h2>
-      <p class="product-id">AL/EO-0009</p>
+      <h2>{{ product.title }}</h2>
+      <p class="product-id">{{ product.product_id }}</p>
       <p class="product-description">
-        Aminol™ Special Generation SLG9 5W-30 SP/GF-6A is a contemporary
-        synthetic motor oil with low viscosity, designed to meet the increased
-        demands of the latest generation gasoline engines. It exhibits
-        exceptional performance in new generation turbocharged gasoline
-        direct-injection engines (T-GDI), effectively preventing occurrences of
-        low-speed pre-ignition (LSPI) and formation of high-temperature
-        deposits.
+        {{ product.description|linebreaksbr }}
       </p>
-
       <div class="product-detail-row">
         <div class="specification">
           <h3>Specification:</h3>
-          <p>API <span>SP</span></p>
-          <p>ILSAG <span>GF-6A</span></p>
-          <p>GM <span>dexos1 Gen 2</span></p>
-          <p>GM <span>6094M</span></p>
-          <p>Chrysler <span>MS-6395</span></p>
-          <p>Ford <span>WSS-M2C946-B1</span></p>
-          <p>Ford <span>WSS-M2C961-A1</span></p>
+          {% if product.api %}
+          <p>API <span>{{ product.api }}</span></p>
+          {% endif %}
+          {% if product.ilsag %}
+          <p>ILSAC <span>{{ product.ilsag }}</span></p>
+          {% endif %}
+          {% if product.acea %}
+          <p>ACEA <span>{{ product.acea }}</span></p>
+          {% endif %}
+          {% if product.jaso %}
+          <p>JASO <span>{{ product.jaso }}</span></p>
+          {% endif %}
+          {% for segment in product.segments.all %}
+          <p>Segment <span>{{ segment.title }}</span></p>
+          {% endfor %}
+          {% if product.oem_sertification %}
+          <p>{{ product.oem_sertification|linebreaksbr }}</p>
+          {% endif %}
         </div>
-
         <div class="recommendations">
           <h3>Recommendations:</h3>
-          <p>Chrysler <span>MS-13340</span></p>
-          <p>Fiat <span>9.55535-CR1</span></p>
-          <p>Ford <span>WSS-M2C945-A</span></p>
-          <p>Ford <span>WSS-M2C947-A</span></p>
-          <p>VW <span>530 34</span></p>
+          {% if product.reccommendations %}
+          <div class="recommendations-content">
+            {{ product.reccommendations|linebreaksbr }}
+          </div>
+          {% else %}
+          <p>No specific recommendations available.</p>
+          {% endif %}
         </div>
       </div>
     </div>
-
     <div class="product-image">
-      <img src="{% static 'images/product-image.png' %}" alt="Product Image" />
+      <img src="{% static 'images/product-image.png' %}" alt="{{ product.title }}" />
     </div>
   </div>
+  
+  {% if available_liters %}
   <div class="product-litre">
-    <span>1L</span>
-    <span>4L</span>
-    <span>5L</span>
-    <span>6L</span>
-    <span>7L</span>
-    <span>20L</span>
-    <span>200L</span>
+    {% for liter in available_liters %}
+    <span>{{ liter.volume }}L</span>
+    {% endfor %}
   </div>
+  {% endif %}
 </section>
 
 <section class="product-table-section container">

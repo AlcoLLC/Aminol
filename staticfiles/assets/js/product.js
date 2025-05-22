@@ -5,11 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
     filterHeaders.forEach(header => {
         header.addEventListener('click', function () {
             this.classList.toggle('active');
-
             const content = this.nextElementSibling;
-
             content.classList.toggle('open');
-
             const icon = this.querySelector('.filter-icon i');
             if (content.classList.contains('open')) {
                 icon.classList.remove('fa-chevron-down');
@@ -21,39 +18,60 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Checkbox selection highlight
+    // Auto-submit form when filters change
     const checkboxes = document.querySelectorAll('.checkbox-group input[type="checkbox"]');
+    const searchInput = document.querySelector('input[name="search"]');
+    
     checkboxes.forEach(checkbox => {
         const label = checkbox.nextElementSibling;
-
-        if (checkbox.checked) {
-            label.classList.add('selected-item');
-        }
-
+        
         checkbox.addEventListener('change', function () {
             if (this.checked) {
                 label.classList.add('selected-item');
             } else {
                 label.classList.remove('selected-item');
             }
+            // Reset to page 1 when filtering
+            const pageInput = document.querySelector('input[name="page"]');
+            if (pageInput) {
+                pageInput.value = 1;
+            }
+            const form = document.getElementById('filterForm');
+            if (form) {
+                form.submit();
+            }
         });
     });
 
-    // Animation on scroll for sections
-    checkScroll();
-    window.addEventListener("scroll", checkScroll);
+    // Search input - only submit on Enter key press
+    if (searchInput) {
+        searchInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault(); // Prevent default form submission
+                const pageInput = document.querySelector('input[name="page"]');
+                if (pageInput) {
+                    pageInput.value = 1;
+                }
+                const form = document.getElementById('filterForm');
+                if (form) {
+                    form.submit();
+                }
+            }
+        });
+    }
 
-    function checkScroll() {
-        const sections = document.querySelectorAll(".section");
-
-        sections.forEach((section) => {
-            const sectionTop = section.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-
-            if (sectionTop < windowHeight * 0.85) {
-                section.classList.add("active");
-            } else {
-                section.classList.remove("active");
+    // Search button click handler
+    const searchButton = document.querySelector('.search-button');
+    if (searchButton) {
+        searchButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            const pageInput = document.querySelector('input[name="page"]');
+            if (pageInput) {
+                pageInput.value = 1;
+            }
+            const form = document.getElementById('filterForm');
+            if (form) {
+                form.submit();
             }
         });
     }
@@ -61,86 +79,67 @@ document.addEventListener('DOMContentLoaded', function () {
     // Pagination functionality
     const prevButton = document.getElementById('prevPage');
     const nextButton = document.getElementById('nextPage');
-    const paginationNumbers = document.getElementById('paginationNumbers');
-    let currentPage = 1;
-    const totalPages = 5; 
-
-    initPagination();
-
-    if (prevButton && nextButton) {
+    const pageNumbers = document.querySelectorAll('.page-number');
+    
+    if (prevButton) {
         prevButton.addEventListener('click', function() {
-            if (currentPage > 1) {
-                navigateToPage(currentPage - 1);
+            if (!this.disabled) {
+                const currentPageSpan = document.querySelector('.page-number.active');
+                if (currentPageSpan) {
+                    const currentPage = parseInt(currentPageSpan.getAttribute('data-page'));
+                    if (currentPage > 1) {
+                        navigateToPage(currentPage - 1);
+                    }
+                }
             }
         });
+    }
 
+    if (nextButton) {
         nextButton.addEventListener('click', function() {
-            if (currentPage < totalPages) {
-                navigateToPage(currentPage + 1);
+            if (!this.disabled) {
+                const currentPageSpan = document.querySelector('.page-number.active');
+                if (currentPageSpan) {
+                    const currentPage = parseInt(currentPageSpan.getAttribute('data-page'));
+                    navigateToPage(currentPage + 1);
+                }
             }
         });
     }
 
-    function initPagination() {
-        if (!paginationNumbers) return;
-        
-        updatePaginationUI();
-        attachPageNumberListeners();
-    }
-
-    function updatePaginationUI() {
-        if (!prevButton || !nextButton || !paginationNumbers) return;
-        
-        prevButton.disabled = currentPage === 1;
-        nextButton.disabled = currentPage === totalPages;
-
-        let paginationHTML = '';
-        
-        for (let i = 1; i <= totalPages; i++) {
-            if (
-                i === 1 || 
-                i === totalPages || 
-                i === currentPage || 
-                i === currentPage - 1 || 
-                i === currentPage + 1
-            ) {
-                const activeClass = i === currentPage ? 'active' : '';
-                paginationHTML += `<a href="#" class="page-number ${activeClass}" data-page="${i}">${i}</a>`;
-            } 
-            else if (
-                (i === currentPage - 2 && currentPage > 3) || 
-                (i === currentPage + 2 && currentPage < totalPages - 2)
-            ) {
-                paginationHTML += `<span class="ellipsis">...</span>`;
-            }
-        }
-        
-        paginationNumbers.innerHTML = paginationHTML;
-        
-        attachPageNumberListeners();
-    }
-
-    function attachPageNumberListeners() {
-        const pageNumbers = document.querySelectorAll('.page-number');
-        pageNumbers.forEach(number => {
-            number.addEventListener('click', function(e) {
-                e.preventDefault();
-                const pageNum = parseInt(this.getAttribute('data-page'));
+    pageNumbers.forEach(number => {
+        number.addEventListener('click', function(e) {
+            e.preventDefault();
+            const pageNum = parseInt(this.getAttribute('data-page'));
+            if (pageNum) {
                 navigateToPage(pageNum);
-            });
+            }
         });
-    }
+    });
 
     function navigateToPage(pageNum) {
-        if (pageNum < 1 || pageNum > totalPages || pageNum === currentPage) {
-            return;
+        const form = document.getElementById('filterForm');
+        const pageInput = document.querySelector('input[name="page"]');
+        if (pageInput && form) {
+            pageInput.value = pageNum;
+            form.submit();
         }
-
-        currentPage = pageNum;
-        updatePaginationUI();
-        
-        loadProductsForPage(currentPage);
     }
 
-    
+    // Animation on scroll for sections
+    checkScroll();
+    window.addEventListener("scroll", checkScroll);
+
+    function checkScroll() {
+        const sections = document.querySelectorAll(".section");
+        sections.forEach((section) => {
+            const sectionTop = section.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            if (sectionTop < windowHeight * 0.85) {
+                section.classList.add("active");
+            } else {
+                section.classList.remove("active");
+            }
+        });
+    }
 });

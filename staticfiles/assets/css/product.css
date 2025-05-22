@@ -37,6 +37,14 @@
   gap: 20px;
 }
 
+.products-section .products-list .no-products p {
+      color: #28315e;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24.03px;
+    letter-spacing: 0px;
+}
+
 .products-section .product-card {
   width: 100%;
   display: flex;
