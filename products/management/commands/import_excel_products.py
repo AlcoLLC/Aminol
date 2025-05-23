@@ -79,7 +79,7 @@ def process_all_excel_files(folder_path):
                     'title': product_data['title'],
                     'description': full_description,
                     'slug': slug,
-                    'reccommendations': product_data.get('recommendations', ''),
+                    'recommendations': product_data.get('recommendations', ''),
                     'api': product_data.get('api', ''),
                     'ilsag': product_data.get('ilsac', ''),
                     'acea': product_data.get('acea', ''),
