@@ -15,6 +15,7 @@ class Brand_Portal_Content(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     image = models.ImageField(upload_to='brand_portal_content/')
+    pdf = models.FileField(upload_to='brand_portal_pdfs/', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

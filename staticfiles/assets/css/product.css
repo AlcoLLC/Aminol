@@ -517,9 +517,7 @@ font-weight: 300;
  gap: 10px;
 }
 
-
-
-.product-table-section .table-btns button {
+.product-table-section .table-btns a {
   color: #28315E;
  font-weight: 500;
  font-size: 16px;
@@ -532,7 +530,7 @@ font-weight: 300;
  cursor: pointer;
 }
 
-.product-table-section .table-btns button:hover {
+.product-table-section .table-btns a:hover {
  background-color: #f1f5ff;
 }
 

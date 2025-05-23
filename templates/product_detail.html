@@ -91,29 +91,47 @@
           <th>Property</th>
           <th>Unit</th>
           <th>Test method</th>
-          <th>Typicalvalue</th>
+          <th>Typical value</th>
         </tr>
       </thead>
       <tbody>
+        {% for property in properties %}
         <tr>
-          <td>KinematicViscosityat 100 °C</td>
-          <td>cst</td>
-          <td>ASTM D 445</td>
-          <td>19.5 0</td>
+          <td>{{ property.property_name }}</td>
+          <td>{{ property.unit|default:"-" }}</td>
+          <td>{{ property.test_method }}</td>
+          <td>{{ property.typical_value }}</td>
         </tr>
+        {% empty %}
         <tr>
-          <td>KinematicViscosityat 100 °C</td>
-          <td>cst</td>
-          <td>ASTM D 445</td>
-          <td>19.5 0</td>
+          <td colspan="4" class="text-center">Bu məhsul üçün xüsusiyyət məlumatı mövcud deyil.</td>
         </tr>
+        {% endfor %}
       </tbody>
     </table>
   </div>
   <div class="table-btns">
-    <button>PDS <i class="fa-solid fa-download"></i></button>
-    <button>SDS <i class="fa-solid fa-download"></i></button>
+    {% if product.pds_url %}
+      <a href="{{ product.pds_url }}" target="_blank">
+        PDS <i class="fa-solid fa-download"></i>
+      </a>
+    {% else %}
+      <button disabled class="">
+        PDS <i class="fa-solid fa-download"></i>
+      </button>
+    {% endif %}
+    
+    {% if product.sds_url %}
+      <a href="{{ product.sds_url }}" target="_blank">
+        SDS <i class="fa-solid fa-download"></i>
+      </a>
+    {% else %}
+      <button disabled class="">
+        SDS <i class="fa-solid fa-download"></i>
+      </button>
+    {% endif %}
   </div>
 </section>
 
-{% include 'components/whatsapp.html' %} {% endblock %}
+{% include 'components/whatsapp.html' %}
+ {% endblock %}

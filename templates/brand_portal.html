@@ -43,7 +43,8 @@
                 {% else %}
                     <img src="{% static '/images/market-industrial.jpg' %}" alt="Service Offer Image" />
                 {% endif %}
-                <a class="read-more">Read more</a>
+                <a class="read-more" href="{% url 'services:view_brand_content_pdf' content.id %}" target="_blank">Read more</a>
+
             </div>
         </div>
         {% empty %}

@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 from django.core.paginator import Paginator
-from .models import Product, Product_group, Segments, Oil_Types, Viscosity, Liter
-
+from .models import Product, Product_group, Segments, Oil_Types, Viscosity, ProductProperty
+from django.http import JsonResponse
 
 def product_list(request):
     products = Product.objects.all()
@@ -61,12 +61,38 @@ def product_list(request):
 
 def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug)
-    
+    properties = ProductProperty.objects.filter(product=product).order_by('order', 'id')
+
     available_liters = product.liters.all().order_by('volume')
     
     context = {
         'product': product,
         'available_liters': available_liters,
+        'properties': properties,
     }
     
     return render(request, 'product_detail.html', context)
+
+def product_properties_ajax(request, product_id):
+    if request.is_ajax():
+        product = get_object_or_404(Product, id=product_id)
+        properties = ProductProperty.objects.filter(product=product).order_by('order', 'id')
+        
+        properties_data = []
+        for prop in properties:
+            properties_data.append({
+                'property_name': prop.property_name,
+                'unit': prop.unit or '',
+                'test_method': prop.test_method,
+                'typical_value': prop.typical_value,
+            })
+        
+        return JsonResponse({
+            'success': True,
+            'properties': properties_data,
+            'product_title': product.title,
+            'pds_url': product.pds_url or '',
+            'sds_url': product.sds_url or '',
+        })
+    
+    return JsonResponse({'success': False, 'error': 'Invalid request'})
