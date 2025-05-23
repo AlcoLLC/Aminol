@@ -54,44 +54,36 @@ def process_all_excel_files(folder_path):
             print("İlk 5 sətir:")
             print(df_raw.head())
             
-            # Header satırını tap (row 1 - 0-indexed)
-            headers = df_raw.iloc[1].fillna("").tolist()
-            print(f"Headers (row 2): {headers}")
+            # Header satırları: row 1 (main) və row 2 (sub)
+            main_headers = df_raw.iloc[1].fillna("").tolist()
+            sub_headers = df_raw.iloc[2].fillna("").tolist()
             
-            # Clean up headers - remove empty ones and fix naming
-            clean_headers = []
-            for i, header in enumerate(headers):
-                header_str = str(header).strip()
-                if header_str and header_str != "nan":
-                    clean_headers.append(header_str)
+            print(f"Main headers (row 2): {main_headers}")
+            print(f"Sub headers (row 3): {sub_headers}")
+            
+            # Final headers yaradırıq - performance sütunları üçün xüsusi məntiq
+            final_headers = []
+            for i, h in enumerate(main_headers):
+                h_str = str(h).strip()
+                sub_h_str = str(sub_headers[i]).strip() if i < len(sub_headers) else ""
+                
+                if h_str == "Performance" and sub_h_str and sub_h_str != "nan":
+                    # Performance alt başlığını istifadə et
+                    final_headers.append(sub_h_str)
+                elif h_str and h_str != "nan":
+                    # Ana başlığı istifadə et
+                    final_headers.append(h_str)
+                elif sub_h_str and sub_h_str != "nan":
+                    # Ana başlıq boşdursa, alt başlığı istifadə et
+                    final_headers.append(sub_h_str)
                 else:
-                    clean_headers.append(f"Column_{i}")
+                    final_headers.append(f"Column_{i}")
             
-            print(f"Clean headers: {clean_headers}")
+            print(f"Final headers: {final_headers}")
             
-            # Performance sütunlarını tap və düzəlt
-            performance_start_idx = None
-            for i, header in enumerate(clean_headers):
-                if "Performance" in str(header) or header in ["API", "ILSAC", "ACEA", "JASO", "OEM specifications"]:
-                    if performance_start_idx is None:
-                        performance_start_idx = i
-                    # Performance sütunlarını adlandır
-                    if header == "API":
-                        clean_headers[i] = "Performance API"
-                    elif header == "ILSAC":
-                        clean_headers[i] = "Performance ILSAC"
-                    elif header == "ACEA":
-                        clean_headers[i] = "Performance ACEA"
-                    elif header == "JASO":
-                        clean_headers[i] = "Performance JASO"
-                    elif header == "OEM specifications":
-                        clean_headers[i] = "Performance OEM specifications"
-            
-            print(f"Final headers: {clean_headers}")
-            
-            # Datanı 2ci sətirdən başlat (row 2 - 0-indexed, yəni 3cü sətir)
-            df = df_raw.iloc[2:].copy()
-            df.columns = clean_headers[:len(df.columns)]
+            # Datanı 3cü sətirdən başlat (row 3 - 0-indexed, yəni 4cü sətir)
+            df = df_raw.iloc[3:].copy()
+            df.columns = final_headers[:len(df.columns)]
             df = df.reset_index(drop=True)
             df = df.dropna(how='all').reset_index(drop=True)
             
@@ -134,26 +126,28 @@ def process_all_excel_files(folder_path):
                 oem_specs = ""
                 
                 for col in df.columns:
-                    col_str = str(col).strip().lower()
+                    col_str = str(col).strip()
+                    col_lower = col_str.lower()
                     value = str(row[col]).strip() if pd.notna(row[col]) and str(row[col]).strip() != 'nan' else ''
                     
-                    if "description" in col_str and not description:
+                    if "description" in col_lower and not description:
                         description = value
-                    elif "features" in col_str or "benefits" in col_str:
+                    elif "features" in col_lower or "benefits" in col_lower:
                         features = value
-                    elif "application" in col_str and not application:
+                    elif "application" in col_lower and not application:
                         application = value
-                    elif "recommendation" in col_str:
+                    elif "recommendation" in col_lower:
                         recommendation = value
-                    elif "performance api" in col_str or col_str == "api":
+                    # Performance sütunlarını daha dəqiq yoxla
+                    elif col_str == "API" or "api" == col_lower:
                         api = value
-                    elif "performance ilsac" in col_str or col_str == "ilsac":
+                    elif col_str == "ILSAC" or "ilsac" == col_lower:
                         ilsac = value
-                    elif "performance acea" in col_str or col_str == "acea":
+                    elif col_str == "ACEA" or "acea" == col_lower:
                         acea = value
-                    elif "performance jaso" in col_str or col_str == "jaso":
+                    elif col_str == "JASO" or "jaso" == col_lower:
                         jaso = value
-                    elif "performance oem" in col_str or "oem specifications" in col_str:
+                    elif "oem" in col_lower and ("specification" in col_lower or "spec" in col_lower):
                         oem_specs = value
                 
                 product_data = {
@@ -208,6 +202,7 @@ def process_all_excel_files(folder_path):
                 full_description += f"\n\nApplication:\n{product_data['application']}"
             
             print(f"  Creating/updating with slug: {slug}")
+            print(f"  Performance data - API: '{product_data.get('api')}', ILSAC: '{product_data.get('ilsac')}', ACEA: '{product_data.get('acea')}', JASO: '{product_data.get('jaso')}', OEM: '{product_data.get('oem_specifications')}'")
             
             product, created = Product.objects.update_or_create(
                 product_id=product_data['product_id'] if product_data['product_id'] else None,
@@ -218,7 +213,7 @@ def process_all_excel_files(folder_path):
                     'slug': slug,
                     'recommendations': product_data.get('recommendations', ''),
                     'api': product_data.get('api', ''),
-                    'ilsag': product_data.get('ilsac', ''),  # Model field adı ilsag-dır
+                    'ilsac': product_data.get('ilsac', ''),
                     'acea': product_data.get('acea', ''),
                     'jaso': product_data.get('jaso', ''),
                     'oem_sertification': product_data.get('oem_specifications', ''),
