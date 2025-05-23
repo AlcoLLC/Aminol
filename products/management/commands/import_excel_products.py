@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 from django.utils.text import slugify
+from django.db import transaction
 import glob
 from products.models import Product
 
@@ -59,64 +60,124 @@ def process_all_excel_files(folder_path):
                 processed_rows += 1
                                 
         except Exception as e:
+            print(f"Excel dosyası işlenirken hata: {file_path}")
             import traceback
             traceback.print_exc()
             continue
     
     if len(all_products) == 0:
+        print("İşlenecek ürün bulunamadı")
         return
     
     created_count = 0
     updated_count = 0
     error_count = 0
+    
+    try:
+        with transaction.atomic():
+            for i, product_data in enumerate(all_products):
+                try:
+                    base_slug = slugify(product_data['title'])
+                    slug = base_slug
+                    counter = 1
+                    while Product.objects.filter(slug=slug).exclude(product_id=product_data['product_id']).exists():
+                        slug = f"{base_slug}-{counter}"
+                        counter += 1
+                    
+                    full_description = product_data['description']
+                    if product_data.get('features'):
+                        full_description += f"\n\nFeatures & Benefits:\n{product_data['features']}"
+                    if product_data.get('application'):
+                        full_description += f"\n\nApplication:\n{product_data['application']}"
+                    
+                    defaults_data = {
+                        'title': product_data['title'],
+                        'description': full_description,
+                        'slug': slug,
+                        'recommendations': product_data.get('recommendations', ''), 
+                        'api': product_data.get('api', ''),
+                        'ilsac': product_data.get('ilsac', ''), 
+                        'acea': product_data.get('acea', ''),
+                        'jaso': product_data.get('jaso', ''),
+                        'oem_specifications': product_data.get('oem_specifications', ''), 
+                    }
+                    
+                    if product_data['product_id']:
+                        product, created = Product.objects.update_or_create(
+                            product_id=product_data['product_id'],
+                            defaults=defaults_data
+                        )
+                    else:
+                        product, created = Product.objects.get_or_create(
+                            title=product_data['title'],
+                            defaults=defaults_data
+                        )
+                        if not created:
+                            for key, value in defaults_data.items():
+                                setattr(product, key, value)
+                            product.save()
+                    
+                    if created:
+                        created_count += 1
+                        print(f"Yeni ürün oluşturuldu: {product_data['title']}")
+                    else:
+                        updated_count += 1
+                        print(f"Ürün güncellendi: {product_data['title']}")
+                        
+                except Exception as e:
+                    error_count += 1
+                    print(f"Ürün işlenirken hata [{i+1}]: {product_data.get('title', 'Bilinmeyen')} - {str(e)}")
+                    import traceback
+                    traceback.print_exc()
+                    continue
+                    
+        print(f"\n=== İmport Sonucu ===")
+        print(f"Toplam işlenen: {len(all_products)}")
+        print(f"Yeni oluşturulan: {created_count}")
+        print(f"Güncellenen: {updated_count}")
+        print(f"Hata: {error_count}")
         
-    for i, product_data in enumerate(all_products):
-        try:
-            base_slug = slugify(product_data['title'])
-            slug = base_slug
-            counter = 1
-            while Product.objects.filter(slug=slug).exclude(product_id=product_data['product_id']).exists():
-                slug = f"{base_slug}-{counter}"
-                counter += 1
-            
-            full_description = product_data['description']
-            if product_data.get('features'):
-                full_description += f"\n\nFeatures & Benefits:\n{product_data['features']}"
-            if product_data.get('application'):
-                full_description += f"\n\nApplication:\n{product_data['application']}"
-            
-            product, created = Product.objects.update_or_create(
-                product_id=product_data['product_id'],
-                defaults={
-                    'product_id': product_data['product_id'],
-                    'title': product_data['title'],
-                    'description': full_description,
-                    'slug': slug,
-                    'reccommendations': product_data.get('recommendations', ''),
-                    'api': product_data.get('api', ''),
-                    'ilsag': product_data.get('ilsac', ''),
-                    'acea': product_data.get('acea', ''),
-                    'jaso': product_data.get('jaso', ''),
-                    'oem_sertification': product_data.get('oem_specifications', ''),
-                }
-            )
-
-            if created:
-                created_count += 1
-            else:
-                updated_count += 1
-                
-        except Exception as e:
-            error_count += 1
-            import traceback
-            traceback.print_exc()
-            continue
-        
-    print(f"Import tamamlandı: {created_count} yeni, {updated_count} güncellendi, {error_count} hata")
+    except Exception as e:
+        print(f"Transaction hatası: {str(e)}")
+        import traceback
+        traceback.print_exc()
 
 def import_excel_products(folder_path):
     if not os.path.exists(folder_path):
-        print(f"Folder mövcud deyil: {folder_path}")
+        print(f"Klasör bulunamadı: {folder_path}")
         return
     
+    print(f"Excel dosyaları işleniyor: {folder_path}")
     process_all_excel_files(folder_path)
+
+def test_database_connection():
+    try:
+        from django.db import connection
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT 1")
+            print("Veritabanı bağlantısı başarılı")
+            return True
+    except Exception as e:
+        print(f"Veritabanı bağlantı hatası: {str(e)}")
+        return False
+
+def validate_product_model():
+    try:
+        from products.models import Product
+        product = Product()
+        fields = [f.name for f in Product._meta.get_fields()]
+        print(f"Product model fields: {fields}")
+        
+        required_fields = ['title', 'description', 'slug', 'product_id']
+        missing_fields = [field for field in required_fields if field not in fields]
+        
+        if missing_fields:
+            print(f"Eksik field'lar: {missing_fields}")
+            return False
+        else:
+            print("Tüm gerekli field'lar mevcut")
+            return True
+            
+    except Exception as e:
+        print(f"Model validation hatası: {str(e)}")
+        return False
