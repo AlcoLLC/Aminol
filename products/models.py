@@ -41,7 +41,7 @@ class Product(models.Model):
     product_id = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=255, unique=True)
     api = models.CharField(max_length=255, blank=True, null=True)
-    ilsag = models.CharField(max_length=255, blank=True, null=True)
+    ilsac = models.CharField(max_length=255, blank=True, null=True)
     acea = models.CharField(max_length=255, blank=True, null=True)
     jaso = models.CharField(max_length=255, blank=True, null=True)
     oem_sertification = models.TextField(blank=True, null=True)
