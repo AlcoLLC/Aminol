@@ -10,26 +10,49 @@ def process_all_excel_files(folder_path):
     
     for file_path in excel_files:
         try:
-            df = pd.read_excel(file_path, header=[2, 3])
-            df.columns = [' '.join(col).strip() for col in df.columns.values]
+            df_raw = pd.read_excel(file_path, sheet_name=0, header=None)
+            
+            main_headers = df_raw.iloc[2].fillna("").tolist()
+            
+            sub_headers = df_raw.iloc[3].fillna("").tolist()
+            
+            final_headers = []
+            for i, h in enumerate(main_headers):
+                if str(h).strip() == "Performance" and i < len(sub_headers) and str(sub_headers[i]).strip():
+                    final_headers.append(f"Performance {str(sub_headers[i]).strip()}") 
+                elif h and str(h).strip():
+                    final_headers.append(str(h).strip())
+                elif i < len(sub_headers) and str(sub_headers[i]).strip(): 
+                    final_headers.append(str(sub_headers[i]).strip())
+                else:
+                    final_headers.append(f"Column_{i}")
+            
+            df = df_raw.iloc[4:].copy()
+            df.columns = final_headers[:len(df.columns)] 
+            df = df.reset_index(drop=True)
+            
+            df = df.dropna(how='all').reset_index(drop=True)
                   
             processed_rows = 0
             for index, row in df.iterrows():
                 product_id = str(row.get('Product ID', '')).strip() if pd.notna(row.get('Product ID')) else ''
                 title = str(row.get('Product name', '')).strip() if pd.notna(row.get('Product name')) else ''
                 
+                if not title:
+                    continue
+                
                 product_data = {
                     'product_id': product_id,
                     'title': title,
-                    'description': str(row.get('Description', '')).strip(),
-                    'features': str(row.get('Features & Benefits', '')).strip(),
-                    'application': str(row.get('Application', '')).strip(),
-                    'recommendations': str(row.get('Recommendation', '')).strip(),
-                    'api': str(row.get('Performance API', '')).strip(),
-                    'ilsac': str(row.get('Performance ILSAC', '')).strip(),
-                    'acea': str(row.get('Performance ACEA', '')).strip(),
-                    'jaso': str(row.get('Performance JASO', '')).strip(),
-                    'oem_specifications': str(row.get('Performance OEM specifications', '')).strip(),
+                    'description': str(row.get('Description', '')).strip() if pd.notna(row.get('Description')) else '',
+                    'features': str(row.get('Features & Benefits', '')).strip() if pd.notna(row.get('Features & Benefits')) else '',
+                    'application': str(row.get('Application', '')).strip() if pd.notna(row.get('Application')) else '',
+                    'recommendations': str(row.get('Recommendation', '')).strip() if pd.notna(row.get('Recommendation')) else '',
+                    'api': str(row.get('Performance API', '')).strip() if pd.notna(row.get('Performance API')) else '',
+                    'ilsac': str(row.get('Performance ILSAC', '')).strip() if pd.notna(row.get('Performance ILSAC')) else '',
+                    'acea': str(row.get('Performance ACEA', '')).strip() if pd.notna(row.get('Performance ACEA')) else '',
+                    'jaso': str(row.get('Performance JASO', '')).strip() if pd.notna(row.get('Performance JASO')) else '',
+                    'oem_specifications': str(row.get('Performance OEM specifications', '')).strip() if pd.notna(row.get('Performance OEM specifications')) else '',
                 }
 
                 all_products.append(product_data)
@@ -62,7 +85,7 @@ def process_all_excel_files(folder_path):
             if product_data.get('application'):
                 full_description += f"\n\nApplication:\n{product_data['application']}"
             
-            created = Product.objects.update_or_create(
+            product, created = Product.objects.update_or_create(
                 product_id=product_data['product_id'],
                 defaults={
                     'product_id': product_data['product_id'],
@@ -88,9 +111,12 @@ def process_all_excel_files(folder_path):
             import traceback
             traceback.print_exc()
             continue
+        
+    print(f"Import tamamlandı: {created_count} yeni, {updated_count} güncellendi, {error_count} hata")
 
 def import_excel_products(folder_path):
     if not os.path.exists(folder_path):
+        print(f"Folder mövcud deyil: {folder_path}")
         return
     
     process_all_excel_files(folder_path)
