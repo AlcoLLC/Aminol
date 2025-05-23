@@ -62,7 +62,7 @@ class ProductAdmin(admin.ModelAdmin):
             'fields': ('title', 'slug', 'product_id', 'description')
         }),
         ('Specifications', {
-            'fields': ('api', 'ilsag', 'acea', 'jaso', 'oem_sertification', 'reccommendations')
+            'fields': ('api', 'ilsag', 'acea', 'jaso', 'oem_sertification', 'recommendations')
         }),
         ('Categories', {
             'fields': ('product_group', 'segments', 'oil_type', 'viscosity', 'liters')
