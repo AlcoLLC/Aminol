@@ -54,29 +54,44 @@ def process_all_excel_files(folder_path):
             print("İlk 5 sətir:")
             print(df_raw.head())
             
-            # Headerları tap
-            main_headers = df_raw.iloc[2].fillna("").tolist()
-            sub_headers = df_raw.iloc[3].fillna("").tolist()
+            # Header satırını tap (row 1 - 0-indexed)
+            headers = df_raw.iloc[1].fillna("").tolist()
+            print(f"Headers (row 2): {headers}")
             
-            print(f"Main headers (row 3): {main_headers}")
-            print(f"Sub headers (row 4): {sub_headers}")
-            
-            final_headers = []
-            for i, h in enumerate(main_headers):
-                if str(h).strip() == "Performance" and i < len(sub_headers) and str(sub_headers[i]).strip():
-                    final_headers.append(f"Performance {str(sub_headers[i]).strip()}") 
-                elif h and str(h).strip():
-                    final_headers.append(str(h).strip())
-                elif i < len(sub_headers) and str(sub_headers[i]).strip(): 
-                    final_headers.append(str(sub_headers[i]).strip())
+            # Clean up headers - remove empty ones and fix naming
+            clean_headers = []
+            for i, header in enumerate(headers):
+                header_str = str(header).strip()
+                if header_str and header_str != "nan":
+                    clean_headers.append(header_str)
                 else:
-                    final_headers.append(f"Column_{i}")
+                    clean_headers.append(f"Column_{i}")
             
-            print(f"Final headers: {final_headers}")
+            print(f"Clean headers: {clean_headers}")
             
-            # Datanı başdan təyin et
-            df = df_raw.iloc[4:].copy()
-            df.columns = final_headers[:len(df.columns)] 
+            # Performance sütunlarını tap və düzəlt
+            performance_start_idx = None
+            for i, header in enumerate(clean_headers):
+                if "Performance" in str(header) or header in ["API", "ILSAC", "ACEA", "JASO", "OEM specifications"]:
+                    if performance_start_idx is None:
+                        performance_start_idx = i
+                    # Performance sütunlarını adlandır
+                    if header == "API":
+                        clean_headers[i] = "Performance API"
+                    elif header == "ILSAC":
+                        clean_headers[i] = "Performance ILSAC"
+                    elif header == "ACEA":
+                        clean_headers[i] = "Performance ACEA"
+                    elif header == "JASO":
+                        clean_headers[i] = "Performance JASO"
+                    elif header == "OEM specifications":
+                        clean_headers[i] = "Performance OEM specifications"
+            
+            print(f"Final headers: {clean_headers}")
+            
+            # Datanı 2ci sətirdən başlat (row 2 - 0-indexed, yəni 3cü sətir)
+            df = df_raw.iloc[2:].copy()
+            df.columns = clean_headers[:len(df.columns)]
             df = df.reset_index(drop=True)
             df = df.dropna(how='all').reset_index(drop=True)
             
@@ -85,29 +100,74 @@ def process_all_excel_files(folder_path):
             if not df.empty:
                 print(df.iloc[0].to_dict())
             
+            # Hər sətiri process et
             processed_rows = 0
             for index, row in df.iterrows():
-                product_id = str(row.get('Product ID', '')).strip() if pd.notna(row.get('Product ID')) else ''
-                title = str(row.get('Product name', '')).strip() if pd.notna(row.get('Product name')) else ''
+                # Product ID və Product name sütunlarını tap
+                product_id = None
+                product_name = None
                 
-                print(f"Row {index}: Product ID='{product_id}', Title='{title}'")
+                # Sütun adlarını yoxla
+                for col in df.columns:
+                    col_str = str(col).strip().lower()
+                    if "product id" in col_str and product_id is None:
+                        product_id = str(row[col]).strip() if pd.notna(row[col]) else ''
+                    elif "product name" in col_str and product_name is None:
+                        product_name = str(row[col]).strip() if pd.notna(row[col]) else ''
                 
-                if not title:
-                    print(f"  Skipping row {index}: No title")
+                print(f"Row {index}: Product ID='{product_id}', Product Name='{product_name}'")
+                
+                # Əgər product name yoxdursa, skip et
+                if not product_name or product_name == 'nan':
+                    print(f"  Skipping row {index}: No product name")
                     continue
                 
+                # Digər sütunları tap
+                description = ""
+                features = ""
+                application = ""
+                recommendation = ""
+                api = ""
+                ilsac = ""
+                acea = ""
+                jaso = ""
+                oem_specs = ""
+                
+                for col in df.columns:
+                    col_str = str(col).strip().lower()
+                    value = str(row[col]).strip() if pd.notna(row[col]) and str(row[col]).strip() != 'nan' else ''
+                    
+                    if "description" in col_str and not description:
+                        description = value
+                    elif "features" in col_str or "benefits" in col_str:
+                        features = value
+                    elif "application" in col_str and not application:
+                        application = value
+                    elif "recommendation" in col_str:
+                        recommendation = value
+                    elif "performance api" in col_str or col_str == "api":
+                        api = value
+                    elif "performance ilsac" in col_str or col_str == "ilsac":
+                        ilsac = value
+                    elif "performance acea" in col_str or col_str == "acea":
+                        acea = value
+                    elif "performance jaso" in col_str or col_str == "jaso":
+                        jaso = value
+                    elif "performance oem" in col_str or "oem specifications" in col_str:
+                        oem_specs = value
+                
                 product_data = {
-                    'product_id': product_id,
-                    'title': title,
-                    'description': str(row.get('Description', '')).strip() if pd.notna(row.get('Description')) else '',
-                    'features': str(row.get('Features & Benefits', '')).strip() if pd.notna(row.get('Features & Benefits')) else '',
-                    'application': str(row.get('Application', '')).strip() if pd.notna(row.get('Application')) else '',
-                    'recommendations': str(row.get('Recommendation', '')).strip() if pd.notna(row.get('Recommendation')) else '',
-                    'api': str(row.get('Performance API', '')).strip() if pd.notna(row.get('Performance API')) else '',
-                    'ilsac': str(row.get('Performance ILSAC', '')).strip() if pd.notna(row.get('Performance ILSAC')) else '',
-                    'acea': str(row.get('Performance ACEA', '')).strip() if pd.notna(row.get('Performance ACEA')) else '',
-                    'jaso': str(row.get('Performance JASO', '')).strip() if pd.notna(row.get('Performance JASO')) else '',
-                    'oem_specifications': str(row.get('Performance OEM specifications', '')).strip() if pd.notna(row.get('Performance OEM specifications')) else '',
+                    'product_id': product_id or '',
+                    'title': product_name,
+                    'description': description,
+                    'features': features,
+                    'application': application,
+                    'recommendations': recommendation,
+                    'api': api,
+                    'ilsac': ilsac,
+                    'acea': acea,
+                    'jaso': jaso,
+                    'oem_specifications': oem_specs,
                 }
 
                 print(f"  Product data: {product_data}")
@@ -140,6 +200,7 @@ def process_all_excel_files(folder_path):
                 slug = f"{base_slug}-{counter}"
                 counter += 1
             
+            # Full description yaratmaq
             full_description = product_data['description']
             if product_data.get('features'):
                 full_description += f"\n\nFeatures & Benefits:\n{product_data['features']}"
@@ -149,7 +210,7 @@ def process_all_excel_files(folder_path):
             print(f"  Creating/updating with slug: {slug}")
             
             product, created = Product.objects.update_or_create(
-                product_id=product_data['product_id'],
+                product_id=product_data['product_id'] if product_data['product_id'] else None,
                 defaults={
                     'product_id': product_data['product_id'],
                     'title': product_data['title'],
@@ -157,10 +218,10 @@ def process_all_excel_files(folder_path):
                     'slug': slug,
                     'recommendations': product_data.get('recommendations', ''),
                     'api': product_data.get('api', ''),
-                    'ilsag': product_data.get('ilsac', ''),  # Typo düzəldin: ilsac -> ilsag
+                    'ilsag': product_data.get('ilsac', ''),  # Model field adı ilsag-dır
                     'acea': product_data.get('acea', ''),
                     'jaso': product_data.get('jaso', ''),
-                    'oem_sertification': product_data.get('oem_specifications', ''),  # Typo: certification
+                    'oem_sertification': product_data.get('oem_specifications', ''),
                 }
             )
 
