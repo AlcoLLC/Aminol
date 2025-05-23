@@ -19,20 +19,47 @@ class Command(BaseCommand):
             return
 
         self.stdout.write(self.style.SUCCESS(f"Processing folder: {folder_path}"))
+        
+        # Excel fayllarının mövcudluğunu yoxla
+        excel_files = glob.glob(os.path.join(folder_path, "*.xlsx")) + glob.glob(os.path.join(folder_path, "*.xls"))
+        
+        if not excel_files:
+            self.stdout.write(self.style.ERROR(f"No Excel files found in: {folder_path}"))
+            return
+        
+        self.stdout.write(self.style.SUCCESS(f"Found {len(excel_files)} Excel files"))
+        for file in excel_files:
+            self.stdout.write(f"  - {file}")
+        
         process_all_excel_files(folder_path)
         self.stdout.write(self.style.SUCCESS("Done!"))
 
 def process_all_excel_files(folder_path):    
-    excel_files = glob.glob(os.path.join(folder_path, "*.xlsx")) + glob.glob(os.path.join(folder_path, "*.xls"))    
+    excel_files = glob.glob(os.path.join(folder_path, "*.xlsx")) + glob.glob(os.path.join(folder_path, "*.xls"))
+    
+    print(f"Excel fayllar tapıldı: {len(excel_files)}")
+    for file in excel_files:
+        print(f"  - {file}")
+    
     all_products = []
     
     for file_path in excel_files:
+        print(f"\nProcessing file: {file_path}")
         try:
+            # Excel faylını oxu
             df_raw = pd.read_excel(file_path, sheet_name=0, header=None)
+            print(f"Excel shape: {df_raw.shape}")
             
+            # İlk bir neçə sətiri göstər
+            print("İlk 5 sətir:")
+            print(df_raw.head())
+            
+            # Headerları tap
             main_headers = df_raw.iloc[2].fillna("").tolist()
-            
             sub_headers = df_raw.iloc[3].fillna("").tolist()
+            
+            print(f"Main headers (row 3): {main_headers}")
+            print(f"Sub headers (row 4): {sub_headers}")
             
             final_headers = []
             for i, h in enumerate(main_headers):
@@ -45,18 +72,28 @@ def process_all_excel_files(folder_path):
                 else:
                     final_headers.append(f"Column_{i}")
             
+            print(f"Final headers: {final_headers}")
+            
+            # Datanı başdan təyin et
             df = df_raw.iloc[4:].copy()
             df.columns = final_headers[:len(df.columns)] 
             df = df.reset_index(drop=True)
-            
             df = df.dropna(how='all').reset_index(drop=True)
-                  
+            
+            print(f"Data shape after processing: {df.shape}")
+            print("İlk data sətiri:")
+            if not df.empty:
+                print(df.iloc[0].to_dict())
+            
             processed_rows = 0
             for index, row in df.iterrows():
                 product_id = str(row.get('Product ID', '')).strip() if pd.notna(row.get('Product ID')) else ''
                 title = str(row.get('Product name', '')).strip() if pd.notna(row.get('Product name')) else ''
                 
+                print(f"Row {index}: Product ID='{product_id}', Title='{title}'")
+                
                 if not title:
+                    print(f"  Skipping row {index}: No title")
                     continue
                 
                 product_data = {
@@ -73,15 +110,20 @@ def process_all_excel_files(folder_path):
                     'oem_specifications': str(row.get('Performance OEM specifications', '')).strip() if pd.notna(row.get('Performance OEM specifications')) else '',
                 }
 
+                print(f"  Product data: {product_data}")
                 all_products.append(product_data)
                 processed_rows += 1
                                 
         except Exception as e:
+            print(f"Error processing file {file_path}: {str(e)}")
             import traceback
             traceback.print_exc()
             continue
     
+    print(f"\nTotal products collected: {len(all_products)}")
+    
     if len(all_products) == 0:
+        print("No products to process!")
         return
     
     created_count = 0
@@ -89,6 +131,7 @@ def process_all_excel_files(folder_path):
     error_count = 0
         
     for i, product_data in enumerate(all_products):
+        print(f"\nProcessing product {i+1}: {product_data['title']}")
         try:
             base_slug = slugify(product_data['title']).lower()
             slug = base_slug
@@ -103,6 +146,8 @@ def process_all_excel_files(folder_path):
             if product_data.get('application'):
                 full_description += f"\n\nApplication:\n{product_data['application']}"
             
+            print(f"  Creating/updating with slug: {slug}")
+            
             product, created = Product.objects.update_or_create(
                 product_id=product_data['product_id'],
                 defaults={
@@ -112,25 +157,33 @@ def process_all_excel_files(folder_path):
                     'slug': slug,
                     'recommendations': product_data.get('recommendations', ''),
                     'api': product_data.get('api', ''),
-                    'ilsag': product_data.get('ilsac', ''),
+                    'ilsag': product_data.get('ilsac', ''),  # Typo düzəldin: ilsac -> ilsag
                     'acea': product_data.get('acea', ''),
                     'jaso': product_data.get('jaso', ''),
-                    'oem_sertification': product_data.get('oem_specifications', ''),
+                    'oem_sertification': product_data.get('oem_specifications', ''),  # Typo: certification
                 }
             )
 
             if created:
                 created_count += 1
+                print(f"  ✓ Created new product: {product.title}")
             else:
                 updated_count += 1
+                print(f"  ✓ Updated existing product: {product.title}")
                 
         except Exception as e:
             error_count += 1
+            print(f"  ✗ Error: {str(e)}")
             import traceback
             traceback.print_exc()
             continue
         
-    print(f"Import tamamlandı: {created_count} yeni, {updated_count} güncellendi, {error_count} hata")
+    print(f"\n{'='*50}")
+    print(f"Import completed:")
+    print(f"  Created: {created_count}")
+    print(f"  Updated: {updated_count}")
+    print(f"  Errors: {error_count}")
+    print(f"{'='*50}")
 
 def import_excel_products(folder_path):
     if not os.path.exists(folder_path):
