@@ -207,7 +207,7 @@
         Would you like to buy our products or are you interested in a
         partnership?
       </p>
-      <a class="button-style">Get in contact</a>
+      <a href="/contact/" class="button-style">Get in contact</a>
     </div>
   </div>
   <div class="container">
@@ -287,56 +287,35 @@
     <div class="section-header">
       <h2>LATEST NEWS</h2>
     </div>
-    <div class="bg-blue">
-      <div class="container latest-news">
-        <div class="news-cards">
-          <div class="news-card">
-            <div class="news-image">
-              <img src="{% static 'images_folder/zavod.svg' %}" alt="" />
-            </div>
-            <div class="news-content">
-              <h5>ALCO LLC: Enhancing Eurozone Energy Security</h5>
-              <p>
-                The company has aimed to produce materials on par or exceeding
-                international standards, particularly because there is a deficit
-                of fairly...
-              </p>
-              <a href="">Read more <i class="fa-solid fa-chevron-right"></i></a>
-            </div>
+
+    <div class="container latest-news">
+      <div class="news-cards">
+        {% for news in latest_news %}
+        <div class="news-card">
+          <div class="news-image">
+            {% if news.image %}
+            <img src="{{ news.image.url }}" alt="{{ news.title }}" />
+            {% else %}
+            <img src="{% static 'images_folder/default-news.svg' %}" alt="{{ news.title }}" />
+            {% endif %}
           </div>
-          <div class="news-card">
-            <div class="news-image">
-              <img src="{% static 'images_folder/image (1).svg' %}" alt="" />
-            </div>
-            <div class="news-content">
-              <h5>Certified and approved for use in Mercedes Benz engines</h5>
-              <p>
-                ALCO aims to demonstrate to consumers around the world that
-                lubricants manufactured in Azerbaijan are on par or exceed
-                OEM...
-              </p>
-              <a href="">Read more <i class="fa-solid fa-chevron-right"></i></a>
-            </div>
-          </div>
-          <div class="news-card">
-            <div class="news-image">
-              <img src="{% static 'images_folder/image.svg' %}" alt="" />
-            </div>
-            <div class="news-content">
-              <h5>
-                First company in Azerbaijan to produce wind turbine lubricants
-              </h5>
-              <p>
-                Industrial gear oils have always been a position of interest for
-                ALCO. The company’s focus on producing in line with
-                international trends has...
-              </p>
-              <a href="">Read more <i class="fa-solid fa-chevron-right"></i></a>
-            </div>
+          <div class="news-content">
+            <h5>{{ news.title }}</h5>
+            <p>
+              {{ news.content|truncatechars:150 }}
+            </p>
+            <a>Read more <i class="fa-solid fa-chevron-right"></i></a>
           </div>
         </div>
-        <a class="button-style" href="">Discover more</a>
+        {% empty %}
+        <div class="news-card">
+          <div class="news-content">
+            <h5>No news available at the moment</h5>
+          </div>
+        </div>
+        {% endfor %}
       </div>
+      <a class="button-style">Discover more</a>
     </div>
   </section>
 
