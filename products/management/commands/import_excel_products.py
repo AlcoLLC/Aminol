@@ -1,186 +1,193 @@
-import pandas as pd
 import os
-from pathlib import Path
-from django.core.management.base import BaseCommand, CommandError
-from django.conf import settings
-from products.models import Product  # Replace with your actual model import
-
+import pandas as pd
+from django.utils.text import slugify
+import glob
+from products.models import Product
+from django.core.management.base import BaseCommand
 
 class Command(BaseCommand):
-    help = 'Import products from Excel files'
+    help = 'Import Excel files from a folder and update Product database.'
 
     def add_arguments(self, parser):
-        parser.add_argument(
-            '--directory',
-            type=str,
-            help='Directory containing Excel files',
-            default='excel_files'
-        )
-        parser.add_argument(
-            '--clear',
-            action='store_true',
-            help='Clear existing products before import',
-        )
+        parser.add_argument('folder_path', type=str, help='Path to folder containing Excel files')
 
-    def handle(self, *args, **options):
-        directory = options['directory']
-        clear_existing = options['clear']
+    def handle(self, *args, **kwargs):
+        folder_path = kwargs['folder_path']
+
+        if not os.path.exists(folder_path):
+            self.stdout.write(self.style.ERROR(f"Folder not found: {folder_path}"))
+            return
+
+        self.stdout.write(self.style.SUCCESS(f"Processing folder: {folder_path}"))
         
-        # Clear existing products if requested
-        if clear_existing:
-            self.stdout.write('Clearing existing products...')
-            Product.objects.all().delete()
-            self.stdout.write(self.style.SUCCESS('Existing products cleared.'))
-        
-        # Get Excel files directory
-        if not os.path.isabs(directory):
-            directory = os.path.join(settings.BASE_DIR, directory)
-        
-        if not os.path.exists(directory):
-            raise CommandError(f'Directory does not exist: {directory}')
-        
-        # Find Excel files
-        excel_files = list(Path(directory).glob('*.xlsx'))
-        if not excel_files:
-            excel_files = list(Path(directory).glob('*.xls'))
+        # Excel fayllarının mövcudluğunu yoxla
+        excel_files = glob.glob(os.path.join(folder_path, "*.xlsx")) + glob.glob(os.path.join(folder_path, "*.xls"))
         
         if not excel_files:
-            raise CommandError(f'No Excel files found in: {directory}')
+            self.stdout.write(self.style.ERROR(f"No Excel files found in: {folder_path}"))
+            return
         
-        self.stdout.write(f'Found {len(excel_files)} Excel files')
+        self.stdout.write(self.style.SUCCESS(f"Found {len(excel_files)} Excel files"))
+        for file in excel_files:
+            self.stdout.write(f"  - {file}")
         
-        total_products = 0
-        
-        for excel_file in excel_files:
-            self.stdout.write(f'Processing: {excel_file.name}')
+        process_all_excel_files(folder_path)
+        self.stdout.write(self.style.SUCCESS("Done!"))
+
+def process_all_excel_files(folder_path):    
+    excel_files = glob.glob(os.path.join(folder_path, "*.xlsx")) + glob.glob(os.path.join(folder_path, "*.xls"))
+    
+    print(f"Excel fayllar tapıldı: {len(excel_files)}")
+    for file in excel_files:
+        print(f"  - {file}")
+    
+    all_products = []
+    
+    for file_path in excel_files:
+        print(f"\nProcessing file: {file_path}")
+        try:
+            # Excel faylını oxu
+            df_raw = pd.read_excel(file_path, sheet_name=0, header=None)
+            print(f"Excel shape: {df_raw.shape}")
             
-            try:
-                products_added = self.process_excel_file(excel_file)
-                total_products += products_added
-                self.stdout.write(
-                    self.style.SUCCESS(f'Added {products_added} products from {excel_file.name}')
-                )
-            except Exception as e:
-                self.stdout.write(
-                    self.style.ERROR(f'Error processing {excel_file.name}: {str(e)}')
-                )
-                continue
-        
-        self.stdout.write(
-            self.style.SUCCESS(f'Import completed. Total products added: {total_products}')
-        )
-
-    def process_excel_file(self, excel_file):
-        """Process a single Excel file"""
-        
-        # Read Excel file
-        df = pd.read_excel(excel_file, header=None)
-        
-        # Find header row
-        header_row = self.find_header_row(df)
-        if header_row is None:
-            self.stdout.write(f'No header found in {excel_file.name}, using row 1')
-            header_row = 1
-        
-        # Set headers
-        headers = df.iloc[header_row].fillna('').astype(str).str.strip()
-        
-        # Get data
-        data_df = df.iloc[header_row + 1:].copy()
-        data_df.columns = headers
-        data_df = data_df.dropna(how='all')
-        
-        products_added = 0
-        
-        for idx, row in data_df.iterrows():
-            try:
-                # Extract product data
-                product_data = self.extract_product_data(row, data_df.columns, excel_file)
+            # İlk bir neçə sətiri göstər
+            print("İlk 5 sətir:")
+            print(df_raw.head())
+            
+            # Headerları tap
+            main_headers = df_raw.iloc[2].fillna("").tolist()
+            sub_headers = df_raw.iloc[3].fillna("").tolist()
+            
+            print(f"Main headers (row 3): {main_headers}")
+            print(f"Sub headers (row 4): {sub_headers}")
+            
+            final_headers = []
+            for i, h in enumerate(main_headers):
+                if str(h).strip() == "Performance" and i < len(sub_headers) and str(sub_headers[i]).strip():
+                    final_headers.append(f"Performance {str(sub_headers[i]).strip()}") 
+                elif h and str(h).strip():
+                    final_headers.append(str(h).strip())
+                elif i < len(sub_headers) and str(sub_headers[i]).strip(): 
+                    final_headers.append(str(sub_headers[i]).strip())
+                else:
+                    final_headers.append(f"Column_{i}")
+            
+            print(f"Final headers: {final_headers}")
+            
+            # Datanı başdan təyin et
+            df = df_raw.iloc[4:].copy()
+            df.columns = final_headers[:len(df.columns)] 
+            df = df.reset_index(drop=True)
+            df = df.dropna(how='all').reset_index(drop=True)
+            
+            print(f"Data shape after processing: {df.shape}")
+            print("İlk data sətiri:")
+            if not df.empty:
+                print(df.iloc[0].to_dict())
+            
+            processed_rows = 0
+            for index, row in df.iterrows():
+                product_id = str(row.get('Product ID', '')).strip() if pd.notna(row.get('Product ID')) else ''
+                title = str(row.get('Product name', '')).strip() if pd.notna(row.get('Product name')) else ''
                 
-                if not product_data:
+                print(f"Row {index}: Product ID='{product_id}', Title='{title}'")
+                
+                if not title:
+                    print(f"  Skipping row {index}: No title")
                     continue
                 
-                # Create or update product
-                product, created = Product.objects.get_or_create(
-                    product_id=product_data['product_id'],
-                    defaults=product_data
-                )
-                
-                if created:
-                    products_added += 1
-                    self.stdout.write(f'  Added: {product_data["product_name"]}')
-                else:
-                    # Update existing product
-                    for key, value in product_data.items():
-                        setattr(product, key, value)
-                    product.save()
-                    self.stdout.write(f'  Updated: {product_data["product_name"]}')
-                
-            except Exception as e:
-                self.stdout.write(f'  Error processing row {idx}: {str(e)}')
-                continue
-        
-        return products_added
+                product_data = {
+                    'product_id': product_id,
+                    'title': title,
+                    'description': str(row.get('Description', '')).strip() if pd.notna(row.get('Description')) else '',
+                    'features': str(row.get('Features & Benefits', '')).strip() if pd.notna(row.get('Features & Benefits')) else '',
+                    'application': str(row.get('Application', '')).strip() if pd.notna(row.get('Application')) else '',
+                    'recommendations': str(row.get('Recommendation', '')).strip() if pd.notna(row.get('Recommendation')) else '',
+                    'api': str(row.get('Performance API', '')).strip() if pd.notna(row.get('Performance API')) else '',
+                    'ilsac': str(row.get('Performance ILSAC', '')).strip() if pd.notna(row.get('Performance ILSAC')) else '',
+                    'acea': str(row.get('Performance ACEA', '')).strip() if pd.notna(row.get('Performance ACEA')) else '',
+                    'jaso': str(row.get('Performance JASO', '')).strip() if pd.notna(row.get('Performance JASO')) else '',
+                    'oem_specifications': str(row.get('Performance OEM specifications', '')).strip() if pd.notna(row.get('Performance OEM specifications')) else '',
+                }
 
-    def find_header_row(self, df):
-        """Find the row that contains headers"""
-        for idx, row in df.iterrows():
-            if any(str(cell).strip().lower() in ['product id', 'product name'] 
-                   for cell in row if pd.notna(cell)):
-                return idx
-        return None
+                print(f"  Product data: {product_data}")
+                all_products.append(product_data)
+                processed_rows += 1
+                                
+        except Exception as e:
+            print(f"Error processing file {file_path}: {str(e)}")
+            import traceback
+            traceback.print_exc()
+            continue
+    
+    print(f"\nTotal products collected: {len(all_products)}")
+    
+    if len(all_products) == 0:
+        print("No products to process!")
+        return
+    
+    created_count = 0
+    updated_count = 0
+    error_count = 0
+        
+    for i, product_data in enumerate(all_products):
+        print(f"\nProcessing product {i+1}: {product_data['title']}")
+        try:
+            base_slug = slugify(product_data['title']).lower()
+            slug = base_slug
+            counter = 1
+            while Product.objects.filter(slug=slug).exclude(product_id=product_data['product_id']).exists():
+                slug = f"{base_slug}-{counter}"
+                counter += 1
+            
+            full_description = product_data['description']
+            if product_data.get('features'):
+                full_description += f"\n\nFeatures & Benefits:\n{product_data['features']}"
+            if product_data.get('application'):
+                full_description += f"\n\nApplication:\n{product_data['application']}"
+            
+            print(f"  Creating/updating with slug: {slug}")
+            
+            product, created = Product.objects.update_or_create(
+                product_id=product_data['product_id'],
+                defaults={
+                    'product_id': product_data['product_id'],
+                    'title': product_data['title'],
+                    'description': full_description,
+                    'slug': slug,
+                    'recommendations': product_data.get('recommendations', ''),
+                    'api': product_data.get('api', ''),
+                    'ilsag': product_data.get('ilsac', ''),  # Typo düzəldin: ilsac -> ilsag
+                    'acea': product_data.get('acea', ''),
+                    'jaso': product_data.get('jaso', ''),
+                    'oem_sertification': product_data.get('oem_specifications', ''),  # Typo: certification
+                }
+            )
 
-    def extract_product_data(self, row, columns, excel_file):
-        """Extract product data from a row"""
+            if created:
+                created_count += 1
+                print(f"  ✓ Created new product: {product.title}")
+            else:
+                updated_count += 1
+                print(f"  ✓ Updated existing product: {product.title}")
+                
+        except Exception as e:
+            error_count += 1
+            print(f"  ✗ Error: {str(e)}")
+            import traceback
+            traceback.print_exc()
+            continue
         
-        # Find product ID and name
-        product_id = None
-        product_name = None
-        
-        # Try to find by column names
-        for col in columns:
-            col_lower = str(col).lower().strip()
-            if 'product id' in col_lower or col_lower == 'id':
-                if pd.notna(row[col]) and str(row[col]).strip():
-                    product_id = str(row[col]).strip()
-            elif 'product name' in col_lower or col_lower == 'name':
-                if pd.notna(row[col]) and str(row[col]).strip():
-                    product_name = str(row[col]).strip()
-        
-        # Fallback to positional approach
-        if not product_id and len(row) > 1:
-            if pd.notna(row.iloc[1]) and str(row.iloc[1]).strip():
-                product_id = str(row.iloc[1]).strip()
-        
-        if not product_name and len(row) > 2:
-            if pd.notna(row.iloc[2]) and str(row.iloc[2]).strip():
-                product_name = str(row.iloc[2]).strip()
-        
-        # Validate required fields
-        if (not product_name or not product_id or 
-            str(product_id).lower() in ['nan', 'none', ''] or
-            str(product_name).lower() in ['nan', 'none', ''] or
-            product_name == 'Product name' or product_id == 'Product ID'):
-            return None
-        
-        # Extract other fields
-        def safe_extract(index, default=''):
-            if len(row) > index and pd.notna(row.iloc[index]):
-                value = str(row.iloc[index]).strip()
-                return value if value != 'nan' else default
-            return default
-        
-        return {
-            'product_id': product_id,
-            'product_name': product_name,
-            'description': safe_extract(3),
-            'features': safe_extract(4),
-            'applications': safe_extract(5),
-            'api_spec': safe_extract(6),
-            'ilsac_spec': safe_extract(7),
-            'acea_spec': safe_extract(8),
-            'jaso_spec': safe_extract(9),
-            'oem_specs': safe_extract(10),
-            'recommendations': safe_extract(11),
-            'file_source': excel_file.name
-        }
+    print(f"\n{'='*50}")
+    print(f"Import completed:")
+    print(f"  Created: {created_count}")
+    print(f"  Updated: {updated_count}")
+    print(f"  Errors: {error_count}")
+    print(f"{'='*50}")
+
+def import_excel_products(folder_path):
+    if not os.path.exists(folder_path):
+        print(f"Folder mövcud deyil: {folder_path}")
+        return
+    
+    process_all_excel_files(folder_path)
