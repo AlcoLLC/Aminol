@@ -1,193 +1,185 @@
-import os
 import pandas as pd
-from django.utils.text import slugify
-import glob
-from products.models import Product
-from django.core.management.base import BaseCommand
+import sqlite3
+import os
+from pathlib import Path
 
-class Command(BaseCommand):
-    help = 'Import Excel files from a folder and update Product database.'
-
-    def add_arguments(self, parser):
-        parser.add_argument('folder_path', type=str, help='Path to folder containing Excel files')
-
-    def handle(self, *args, **kwargs):
-        folder_path = kwargs['folder_path']
-
-        if not os.path.exists(folder_path):
-            self.stdout.write(self.style.ERROR(f"Folder not found: {folder_path}"))
-            return
-
-        self.stdout.write(self.style.SUCCESS(f"Processing folder: {folder_path}"))
-        
-        # Excel fayllarının mövcudluğunu yoxla
-        excel_files = glob.glob(os.path.join(folder_path, "*.xlsx")) + glob.glob(os.path.join(folder_path, "*.xls"))
-        
-        if not excel_files:
-            self.stdout.write(self.style.ERROR(f"No Excel files found in: {folder_path}"))
-            return
-        
-        self.stdout.write(self.style.SUCCESS(f"Found {len(excel_files)} Excel files"))
-        for file in excel_files:
-            self.stdout.write(f"  - {file}")
-        
-        process_all_excel_files(folder_path)
-        self.stdout.write(self.style.SUCCESS("Done!"))
-
-def process_all_excel_files(folder_path):    
-    excel_files = glob.glob(os.path.join(folder_path, "*.xlsx")) + glob.glob(os.path.join(folder_path, "*.xls"))
+def process_excel_files_to_sqlite(excel_directory, db_path):
+    """
+    Process Excel files and convert them to SQLite database
+    """
     
-    print(f"Excel fayllar tapıldı: {len(excel_files)}")
-    for file in excel_files:
-        print(f"  - {file}")
+    # Create database connection
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
     
-    all_products = []
+    # Create products table
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS products (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            product_id TEXT,
+            product_name TEXT,
+            description TEXT,
+            features TEXT,
+            applications TEXT,
+            api_spec TEXT,
+            ilsac_spec TEXT,
+            acea_spec TEXT,
+            jaso_spec TEXT,
+            oem_specs TEXT,
+            recommendations TEXT,
+            file_source TEXT
+        )
+    ''')
     
-    for file_path in excel_files:
-        print(f"\nProcessing file: {file_path}")
+    # Get all Excel files
+    excel_files = list(Path(excel_directory).glob('*.xlsx'))
+    if not excel_files:
+        excel_files = list(Path(excel_directory).glob('*.xls'))
+    
+    print(f"Excel faylları tapıldı: {len(excel_files)}")
+    
+    total_products = 0
+    
+    for excel_file in excel_files:
+        print(f"\nProcessing file: {excel_file}")
+        
         try:
-            # Excel faylını oxu
-            df_raw = pd.read_excel(file_path, sheet_name=0, header=None)
-            print(f"Excel shape: {df_raw.shape}")
+            # Read Excel file
+            df = pd.read_excel(excel_file, header=None)
+            print(f"Excel shape: {df.shape}")
             
-            # İlk bir neçə sətiri göstər
+            # Print first few rows to understand structure
             print("İlk 5 sətir:")
-            print(df_raw.head())
+            print(df.head())
             
-            # Headerları tap
-            main_headers = df_raw.iloc[2].fillna("").tolist()
-            sub_headers = df_raw.iloc[3].fillna("").tolist()
+            # Find the header row (usually contains "Product ID", "Product name", etc.)
+            header_row = None
+            for idx, row in df.iterrows():
+                if any(str(cell).strip().lower() in ['product id', 'product name'] for cell in row if pd.notna(cell)):
+                    header_row = idx
+                    break
             
-            print(f"Main headers (row 3): {main_headers}")
-            print(f"Sub headers (row 4): {sub_headers}")
+            if header_row is None:
+                print("Header tapılmadı, default olaraq 1-ci sətir istifadə edilir")
+                header_row = 1
             
-            final_headers = []
-            for i, h in enumerate(main_headers):
-                if str(h).strip() == "Performance" and i < len(sub_headers) and str(sub_headers[i]).strip():
-                    final_headers.append(f"Performance {str(sub_headers[i]).strip()}") 
-                elif h and str(h).strip():
-                    final_headers.append(str(h).strip())
-                elif i < len(sub_headers) and str(sub_headers[i]).strip(): 
-                    final_headers.append(str(sub_headers[i]).strip())
-                else:
-                    final_headers.append(f"Column_{i}")
+            print(f"Header row: {header_row}")
             
-            print(f"Final headers: {final_headers}")
+            # Set headers
+            headers = df.iloc[header_row].fillna('').astype(str).str.strip()
+            print(f"Headers: {headers.tolist()}")
             
-            # Datanı başdan təyin et
-            df = df_raw.iloc[4:].copy()
-            df.columns = final_headers[:len(df.columns)] 
-            df = df.reset_index(drop=True)
-            df = df.dropna(how='all').reset_index(drop=True)
+            # Get data starting from header_row + 1
+            data_df = df.iloc[header_row + 1:].copy()
+            data_df.columns = headers
             
-            print(f"Data shape after processing: {df.shape}")
-            print("İlk data sətiri:")
-            if not df.empty:
-                print(df.iloc[0].to_dict())
+            print(f"Data shape after processing: {data_df.shape}")
             
-            processed_rows = 0
-            for index, row in df.iterrows():
-                product_id = str(row.get('Product ID', '')).strip() if pd.notna(row.get('Product ID')) else ''
-                title = str(row.get('Product name', '')).strip() if pd.notna(row.get('Product name')) else ''
+            # Remove empty rows
+            data_df = data_df.dropna(how='all')
+            
+            # Process each row
+            products_added = 0
+            for idx, row in data_df.iterrows():
+                # Find product ID and name columns
+                product_id = None
+                product_name = None
                 
-                print(f"Row {index}: Product ID='{product_id}', Title='{title}'")
+                # Try to find product ID column
+                for col in data_df.columns:
+                    col_lower = str(col).lower().strip()
+                    if 'product id' in col_lower or 'id' in col_lower:
+                        if pd.notna(row[col]) and str(row[col]).strip():
+                            product_id = str(row[col]).strip()
+                            break
                 
-                if not title:
-                    print(f"  Skipping row {index}: No title")
+                # Try to find product name column
+                for col in data_df.columns:
+                    col_lower = str(col).lower().strip()
+                    if 'product name' in col_lower or 'name' in col_lower:
+                        if pd.notna(row[col]) and str(row[col]).strip():
+                            product_name = str(row[col]).strip()
+                            break
+                
+                # If we don't find explicit columns, use positional approach
+                if not product_id and len(data_df.columns) > 1:
+                    if pd.notna(row.iloc[1]) and str(row.iloc[1]).strip():
+                        product_id = str(row.iloc[1]).strip()
+                
+                if not product_name and len(data_df.columns) > 2:
+                    if pd.notna(row.iloc[2]) and str(row.iloc[2]).strip():
+                        product_name = str(row.iloc[2]).strip()
+                
+                print(f"Row {idx}: Product ID='{product_id}', Product Name='{product_name}'")
+                
+                # Skip if no product name or ID
+                if (not product_name or not product_id or 
+                    str(product_id).lower() in ['nan', 'none', ''] or
+                    str(product_name).lower() in ['nan', 'none', ''] or
+                    product_name == 'Product name' or product_id == 'Product ID'):
+                    print(f"  Skipping row {idx}: No valid product data")
                     continue
                 
-                product_data = {
-                    'product_id': product_id,
-                    'title': title,
-                    'description': str(row.get('Description', '')).strip() if pd.notna(row.get('Description')) else '',
-                    'features': str(row.get('Features & Benefits', '')).strip() if pd.notna(row.get('Features & Benefits')) else '',
-                    'application': str(row.get('Application', '')).strip() if pd.notna(row.get('Application')) else '',
-                    'recommendations': str(row.get('Recommendation', '')).strip() if pd.notna(row.get('Recommendation')) else '',
-                    'api': str(row.get('Performance API', '')).strip() if pd.notna(row.get('Performance API')) else '',
-                    'ilsac': str(row.get('Performance ILSAC', '')).strip() if pd.notna(row.get('Performance ILSAC')) else '',
-                    'acea': str(row.get('Performance ACEA', '')).strip() if pd.notna(row.get('Performance ACEA')) else '',
-                    'jaso': str(row.get('Performance JASO', '')).strip() if pd.notna(row.get('Performance JASO')) else '',
-                    'oem_specifications': str(row.get('Performance OEM specifications', '')).strip() if pd.notna(row.get('Performance OEM specifications')) else '',
-                }
-
-                print(f"  Product data: {product_data}")
-                all_products.append(product_data)
-                processed_rows += 1
-                                
-        except Exception as e:
-            print(f"Error processing file {file_path}: {str(e)}")
-            import traceback
-            traceback.print_exc()
-            continue
-    
-    print(f"\nTotal products collected: {len(all_products)}")
-    
-    if len(all_products) == 0:
-        print("No products to process!")
-        return
-    
-    created_count = 0
-    updated_count = 0
-    error_count = 0
-        
-    for i, product_data in enumerate(all_products):
-        print(f"\nProcessing product {i+1}: {product_data['title']}")
-        try:
-            base_slug = slugify(product_data['title']).lower()
-            slug = base_slug
-            counter = 1
-            while Product.objects.filter(slug=slug).exclude(product_id=product_data['product_id']).exists():
-                slug = f"{base_slug}-{counter}"
-                counter += 1
-            
-            full_description = product_data['description']
-            if product_data.get('features'):
-                full_description += f"\n\nFeatures & Benefits:\n{product_data['features']}"
-            if product_data.get('application'):
-                full_description += f"\n\nApplication:\n{product_data['application']}"
-            
-            print(f"  Creating/updating with slug: {slug}")
-            
-            product, created = Product.objects.update_or_create(
-                product_id=product_data['product_id'],
-                defaults={
-                    'product_id': product_data['product_id'],
-                    'title': product_data['title'],
-                    'description': full_description,
-                    'slug': slug,
-                    'recommendations': product_data.get('recommendations', ''),
-                    'api': product_data.get('api', ''),
-                    'ilsag': product_data.get('ilsac', ''),  # Typo düzəldin: ilsac -> ilsag
-                    'acea': product_data.get('acea', ''),
-                    'jaso': product_data.get('jaso', ''),
-                    'oem_sertification': product_data.get('oem_specifications', ''),  # Typo: certification
-                }
-            )
-
-            if created:
-                created_count += 1
-                print(f"  ✓ Created new product: {product.title}")
-            else:
-                updated_count += 1
-                print(f"  ✓ Updated existing product: {product.title}")
+                # Extract other fields
+                description = str(row.iloc[3]) if len(row) > 3 and pd.notna(row.iloc[3]) else ''
+                features = str(row.iloc[4]) if len(row) > 4 and pd.notna(row.iloc[4]) else ''
+                applications = str(row.iloc[5]) if len(row) > 5 and pd.notna(row.iloc[5]) else ''
+                api_spec = str(row.iloc[6]) if len(row) > 6 and pd.notna(row.iloc[6]) else ''
+                ilsac_spec = str(row.iloc[7]) if len(row) > 7 and pd.notna(row.iloc[7]) else ''
+                acea_spec = str(row.iloc[8]) if len(row) > 8 and pd.notna(row.iloc[8]) else ''
+                jaso_spec = str(row.iloc[9]) if len(row) > 9 and pd.notna(row.iloc[9]) else ''
+                oem_specs = str(row.iloc[10]) if len(row) > 10 and pd.notna(row.iloc[10]) else ''
+                recommendations = str(row.iloc[11]) if len(row) > 11 and pd.notna(row.iloc[11]) else ''
                 
+                # Clean up 'nan' values
+                fields = [description, features, applications, api_spec, ilsac_spec, 
+                         acea_spec, jaso_spec, oem_specs, recommendations]
+                cleaned_fields = [field if field != 'nan' else '' for field in fields]
+                
+                # Insert into database
+                cursor.execute('''
+                    INSERT INTO products (
+                        product_id, product_name, description, features, applications,
+                        api_spec, ilsac_spec, acea_spec, jaso_spec, oem_specs,
+                        recommendations, file_source
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ''', (
+                    product_id, product_name, *cleaned_fields, str(excel_file.name)
+                ))
+                
+                products_added += 1
+                print(f"  Added product: {product_name}")
+            
+            print(f"File {excel_file.name}: {products_added} products added")
+            total_products += products_added
+            
         except Exception as e:
-            error_count += 1
-            print(f"  ✗ Error: {str(e)}")
-            import traceback
-            traceback.print_exc()
+            print(f"Error processing {excel_file}: {str(e)}")
             continue
-        
-    print(f"\n{'='*50}")
-    print(f"Import completed:")
-    print(f"  Created: {created_count}")
-    print(f"  Updated: {updated_count}")
-    print(f"  Errors: {error_count}")
-    print(f"{'='*50}")
-
-def import_excel_products(folder_path):
-    if not os.path.exists(folder_path):
-        print(f"Folder mövcud deyil: {folder_path}")
-        return
     
-    process_all_excel_files(folder_path)
+    # Commit and close
+    conn.commit()
+    
+    # Print summary
+    cursor.execute("SELECT COUNT(*) FROM products")
+    total_count = cursor.fetchone()[0]
+    print(f"\nSUMMARY:")
+    print(f"Total products in database: {total_count}")
+    print(f"Products added this session: {total_products}")
+    
+    # Show sample products
+    cursor.execute("SELECT product_id, product_name, file_source FROM products LIMIT 5")
+    sample_products = cursor.fetchall()
+    print(f"\nSample products:")
+    for product in sample_products:
+        print(f"  {product[0]} - {product[1]} (from {product[2]})")
+    
+    conn.close()
+    print(f"\nDatabase saved to: {db_path}")
+
+# Usage
+if __name__ == "__main__":
+    excel_directory = "/path/to/excel/files"  # Excel fayllarının olduğu qovluq
+    database_path = "aminol_products.db"      # SQLite database faylının adı
+    
+    process_excel_files_to_sqlite(excel_directory, database_path)
