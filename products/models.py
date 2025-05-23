@@ -45,7 +45,7 @@ class Product(models.Model):
     acea = models.CharField(max_length=255, blank=True, null=True)
     jaso = models.CharField(max_length=255, blank=True, null=True)
     oem_sertification = models.TextField(blank=True, null=True)
-    reccommendations = models.TextField(blank=True, null=True)
+    recommendations = models.TextField(blank=True, null=True)
     liters = models.ManyToManyField('Liter', blank=True, related_name='products')
     product_group = models.ForeignKey('Product_group', on_delete=models.CASCADE, related_name='products', null=True)
     segments = models.ForeignKey('Segments', on_delete=models.CASCADE, blank=True, related_name='products', null=True)
@@ -59,7 +59,6 @@ class Product(models.Model):
         return self.title
 
 class ProductProperty(models.Model):
-    """Product xüsusiyyətləri üçün model"""
     product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='properties')
     property_name = models.CharField(max_length=255, verbose_name="Property")
     unit = models.CharField(max_length=50, blank=True, null=True, verbose_name="Unit")
