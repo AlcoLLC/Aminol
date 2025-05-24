@@ -188,6 +188,10 @@ nav {
   vertical-align: middle;
   transition: color 0.3s ease !important;
 }
+.navbar .nav-section .nav-bottom ul li .dropdown-head:hover {
+  color: #012762 !important;
+  cursor: default;
+}
 
 .navbar-dark ul li a {
   color: #fff !important;
@@ -201,6 +205,10 @@ nav {
 }
 
 .navbar-dark .nav-section ul li a.active:hover {
+  color: #fff !important;
+}
+
+.navbar-dark .nav-section .nav-bottom ul li .dropdown-head:hover {
   color: #fff !important;
 }
 
@@ -357,6 +365,37 @@ nav {
   visibility: visible;
   opacity: 1;
 }
+
+
+
+.navbar .menu-button {
+border: none;
+background-color: transparent;
+display: none;
+}
+
+.navbar .menu-button i {
+font-size: 25px;
+color: #012762;
+}
+
+
+@media  (max-width: 1024px) {
+  
+}
+
+@media  (max-width: 770px) {
+  
+}
+
+
+
+@media (max-width: 520px) {
+ 
+}
+
+
+
 
 /* BreadCrumb Section */
 
