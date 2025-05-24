@@ -15,6 +15,8 @@ const swiper = new Swiper(".home-header .mySwiper", {
   },
 });
 
+
+
 document.addEventListener("DOMContentLoaded", function () {
   const playButton = document.getElementById("playButton");
   const textContent = document.getElementById("textContent");
@@ -47,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  
+
   const swiperGallery = new Swiper(".gallery-section .labSwiper", {
     slidesPerView: 2.5,
     centeredSlides: true,
@@ -84,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function updateSlideScaling() {
     const slides = document.querySelectorAll(".gallery-section .swiper-slide");
-    
+
     slides.forEach((slide) => {
       slide.classList.remove('active-slide');
     });

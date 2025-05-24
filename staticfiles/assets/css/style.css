@@ -551,7 +551,7 @@ nav {
 /* WHATSAPP */
 .whatsapp-section {
   position: relative;
-  bottom: 80px;
+  bottom: 10px;
   background-color: #f92b3f;
   width: 100%;
   height: 25vh;
@@ -642,7 +642,7 @@ nav {
 .footer-content {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: flex-end;
   padding: 20px 0;
 }
 
