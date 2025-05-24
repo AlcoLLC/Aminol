@@ -11,3 +11,7 @@ def news_list(request):
     }
     
     return render(request, 'news.html', context)
+
+def news_detail_view(request):
+    return render(request, 'news_detail.html')
+

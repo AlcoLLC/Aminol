@@ -2,12 +2,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  column-gap: 80px;
+  column-gap: 30px;
+  margin: 50px auto;
+}
+
+.services-offer-section.reverse {
+  flex-direction: row-reverse;
 }
 
 .services-offer-section .services-offer-image {
-  width: 85%;
-  height: 260px;
+  width: 100%;
+  height: 290px;
   object-fit: cover;
   border-radius: 6px;
   overflow: hidden;
@@ -24,6 +29,9 @@
   color: #28315e;
   text-align: right;
   padding: 15px;
+}
+.services-offer-section.reverse .text-container {
+  text-align: left;
 }
 
 .services-offer-section .text-container h2 {
