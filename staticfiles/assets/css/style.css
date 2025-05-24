@@ -653,7 +653,7 @@ nav {
 }
 
 .footer-content>div:first-of-type img {
-  width: 28vh;
+  width: 25vh;
 }
 
 .footer-content>div:first-of-type p {
@@ -675,6 +675,7 @@ nav {
 }
 
 .footer-content ul li {
+  white-space: nowrap;
   display: flex;
   flex-direction: column;
   gap: 7px;
@@ -767,6 +768,123 @@ footer .alco-privacy p {
   letter-spacing: 0%;
   color: #012762;
 }
+
+
+
+
+@media  (max-width: 1024px) {
+  .footer-content>div:first-of-type p {
+  font-size: 15px;
+  line-height: 20px;
+  max-width: 90%;
+}
+
+.footer-content>div:last-of-type {
+  gap: 30px;
+}
+}
+
+@media  (max-width: 800px) {
+ .footer-content>div:first-of-type p {
+  display: none;
+}
+
+.footer-content>div:first-of-type img {
+  width: 20vh;
+}
+
+.footer-content>div:last-of-type button {
+  width: 35px;
+  height: 35px;
+}
+.footer-content>div:last-of-type button i{
+ font-size: 12px;
+}
+
+footer .footer-contact>div:first-of-type p {
+  font-size: 12px;
+}
+
+footer .footer-contact>div:first-of-type p:first-of-type {
+  max-width: 40%;
+}
+
+footer .alco-privacy p {
+  font-size: 12px;
+}
+
+footer .alco-privacy {
+  padding: 20px 0 30px 0;
+}
+}
+
+
+
+@media (max-width: 620px) {
+
+  .footer-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+.footer-content ul li{
+  line-height: 15px;
+}
+
+.footer-content>div:first-of-type img {
+  width: 18vh;
+  }
+
+.footer-content>div:last-of-type button {
+  width: 28px;
+  height: 28px;
+}
+
+.footer-content ul {
+  gap: 20px;
+}
+footer .footer-contact>div:first-of-type p:first-of-type {
+  max-width: 60%;
+}
+.footer-content .footer-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+footer .footer-contact {
+  align-items: flex-end;
+}
+
+footer .footer-contact>div:first-of-type  {
+  flex-direction: column;
+  width: 100%;
+  gap: 7px;
+}
+footer .alco-privacy {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+  padding: 20px 0 30px 0;
+}
+
+footer .alco-privacy {
+  flex-direction: column;
+}
+footer .alco-privacy p{
+  line-height: 15px;
+}
+}
+
+
+
+
+
+
+
+
 
 /* Page Header */
 
