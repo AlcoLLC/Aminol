@@ -1,3 +1,5 @@
+
+
 const swiper = new Swiper(".home-header .mySwiper", {
   loop: true,
   effect: "fade",
@@ -16,6 +18,12 @@ const swiper = new Swiper(".home-header .mySwiper", {
 });
 
 
+document.getElementById("scrollToTop").addEventListener("click", function () {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+ });
 
 document.addEventListener("DOMContentLoaded", function () {
   const playButton = document.getElementById("playButton");

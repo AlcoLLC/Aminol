@@ -1,0 +1,72 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="news-page">
+    {% include 'components/navbar_dark.html' %}
+
+    <header class="page-header">
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb container">
+        <a href="/">Home page</a>|<p>News</p>
+    </div>
+
+
+    <div class="container">
+        <div class="news-detail-top-content">
+            <h2>Certified Brands for Mercedes Benz and Internation</h2>
+            <p>March 24, 2023</p>
+        </div>
+    </div>
+
+    <div class="services-offer-section brand-portal-section container">
+        <div class="text-container text-left">
+            <p>
+               description 
+            </p>
+        </div>
+        <div class="services-offer-image">
+            <img src="{% static '/images/market-industrial.jpg' %}" alt="Service Offer Image" />
+        </div>
+    </div>
+
+    <div class="services-offer-section reverse brand-portal-section container">
+        <div class="text-container text-left">
+            <p>
+               description 
+            </p>
+        </div>
+        <div class="services-offer-image">
+            <img src="{% static '/images/market-industrial.jpg' %}" alt="Service Offer Image" />
+        </div>
+    </div>
+
+ <div class="container latest-news">
+            <div class="news-cards">
+                {% for news in all_news %}
+                    <div class="news-card">
+                        <div class="news-image">
+                            {% if news.image %}
+                                <img src="{{ news.image.url }}" alt="{{ news.title }}" />
+                            {% else %}
+                                <img src="{% static 'images_folder/zavod.svg' %}" alt="Default news image" />
+                            {% endif %}
+                        </div>
+                        <div class="news-content">
+                            <h5>{{ news.title }}</h5>
+                            <p>
+                                {{ news.content|truncatewords:20 }}
+                            </p>
+                            <a>Read more <i class="fa-solid fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                {% empty %}
+                    <p>No news articles available.</p>
+                {% endfor %}
+            </div>       
+        </div>
+
+    {% include 'components/whatsapp.html' %}
+
+</div>
+
+{% endblock %}
