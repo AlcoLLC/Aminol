@@ -38,6 +38,46 @@
   display: block;
 }
 
+
+
+
+@media (min-width: 770px) and (max-width: 1024px) {
+  .about-section .about-tabs {
+  gap: 8px;
+}
+
+.about-section .tab {
+  font-size: 13px;
+}
+
+}
+
+@media (min-width: 650px) and  (max-width: 770px) {
+    .about-section .about-tabs {
+  gap: 4px;
+}
+
+.about-section .tab {
+  padding: 8px 4px;
+  font-size: 11px;
+}
+
+}
+
+
+
+@media (max-width: 650px) {
+ .about-section .about-tabs {
+  flex-direction: column;
+  gap: 8px;
+}
+.about-section .tab {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+}
+}
+
 /* Guarantee section */
 
 .guarantee-section .guarantee-main-container {
