@@ -13,9 +13,22 @@
     <p>Aminol logistics</p>
   </div>
 
-  <div class="container">
-    <img class="aminol-large-image" src="{% static '/images/logistics-map.png' %}" alt="Logistics Map" />
-  </div>
+  <div class="container map-section">
+        <div class="map-header">
+            <h1>🌍 İnteraktif Dünya Haritası</h1>
+            <p>Ülke iconlarının üzerine gelin ve detayları görün</p>
+        </div>
+        
+        <div class="map-container">
+            <div class="world-map" id="worldMap"></div>
+            <div class="tooltip" id="tooltip"></div>
+        </div>
+        
+        <div class="country-list">
+            <h3>Haritadaki Ülkeler</h3>
+            <div class="countries-grid" id="countriesGrid"></div>
+        </div>
+    </div>
 
   <div class="shared-images-section">
     <div class="container">
@@ -82,5 +95,115 @@
 </div>
 
 {% include 'components/whatsapp.html' %}
+
+<script>
+   const countries = [
+            { name: 'Afganistan', x: 68, y: 35, flag: '🇦🇫' },
+            { name: 'Arnavutluk', x: 20, y: 41, flag: '🇦🇱' },
+            { name: 'Cezayir', x: 3, y: 28, flag: '🇩🇿' },
+            { name: 'Avusturya', x: 13, y: 47, flag: '🇦🇹' },
+            { name: 'Belarus', x: 28, y: 53, flag: '🇧🇾' },
+            { name: 'Brezilya', x: -55, y: -10, flag: '🇧🇷' },
+            { name: 'Bulgaristan', x: 25, y: 43, flag: '🇧🇬' },
+            { name: 'Kolombiya', x: -74, y: 4, flag: '🇨🇴' },
+            { name: 'Kıbrıs', x: 33, y: 35, flag: '🇨🇾' },
+            { name: 'Estonya', x: 26, y: 59, flag: '🇪🇪' },
+            { name: 'Gürcistan', x: 43, y: 42, flag: '🇬🇪' },
+            { name: 'Yunanistan', x: 22, y: 39, flag: '🇬🇷' },
+            { name: 'Irak', x: 44, y: 33, flag: '🇮🇶' },
+            { name: 'İsrail', x: 35, y: 31, flag: '🇮🇱' },
+            { name: 'İtalya', x: 12, y: 42, flag: '🇮🇹' },
+            { name: 'Ürdün', x: 36, y: 31, flag: '🇯🇴' },
+            { name: 'Lübnan', x: 36, y: 34, flag: '🇱🇧' },
+            { name: 'Libya', x: 17, y: 25, flag: '🇱🇾' },
+            { name: 'Moldova', x: 29, y: 47, flag: '🇲🇩' },
+            { name: 'Hollanda', x: 5, y: 52, flag: '🇳🇱' },
+            { name: 'Romanya', x: 25, y: 46, flag: '🇷🇴' },
+            { name: 'Rusya', x: 100, y: 60, flag: '🇷🇺' },
+            { name: 'Güney Afrika', x: 22, y: -30, flag: '🇿🇦' },
+            { name: 'Güney Sudan', x: 30, y: 8, flag: '🇸🇸' },
+            { name: 'İspanya', x: -4, y: 40, flag: '🇪🇸' },
+            { name: 'Tacikistan', x: 71, y: 39, flag: '🇹🇯' },
+            { name: 'Türkiye', x: 35, y: 39, flag: '🇹🇷' },
+            { name: 'Türkmenistan', x: 60, y: 40, flag: '🇹🇲' },
+            { name: 'Birleşik Krallık', x: -3, y: 54, flag: '🇬🇧' },
+            { name: 'Özbekistan', x: 64, y: 41, flag: '🇺🇿' },
+            { name: 'Venezuela', x: -67, y: 6, flag: '🇻🇪' },
+            { name: 'Yemen', x: 48, y: 15, flag: '🇾🇪' }
+        ];
+
+        function convertToPixels(longitude, latitude) {
+            const mapWidth = 900;
+            const mapHeight = 500;
+            
+            // Convert longitude (-180 to 180) to x coordinate (0 to mapWidth)
+            const x = ((longitude + 180) * mapWidth) / 360;
+            
+            // Convert latitude (90 to -90) to y coordinate (0 to mapHeight)
+            const y = ((90 - latitude) * mapHeight) / 180;
+            
+            return { x: Math.max(20, Math.min(mapWidth - 20, x)), y: Math.max(20, Math.min(mapHeight - 20, y)) };
+        }
+
+        function createCountryIcons() {
+            const worldMap = document.getElementById('worldMap');
+            const tooltip = document.getElementById('tooltip');
+            const countriesGrid = document.getElementById('countriesGrid');
+
+            countries.forEach(country => {
+                const coords = convertToPixels(country.x, country.y);
+                
+                // Create icon
+                const icon = document.createElement('div');
+                icon.className = 'country-icon';
+                icon.style.left = coords.x + 'px';
+                icon.style.top = coords.y + 'px';
+                
+                // Add hover events
+                icon.addEventListener('mouseenter', (e) => {
+                    tooltip.innerHTML = `${country.flag} ${country.name}`;
+                    tooltip.style.left = (e.target.offsetLeft + 10) + 'px';
+                    tooltip.style.top = (e.target.offsetTop - 40) + 'px';
+                    tooltip.classList.add('show');
+                });
+                
+                icon.addEventListener('mouseleave', () => {
+                    tooltip.classList.remove('show');
+                });
+                
+                icon.addEventListener('click', () => {
+                    alert(`${country.flag} ${country.name} seçildi!`);
+                });
+                
+                worldMap.appendChild(icon);
+                
+                // Create country tag in the list
+                const tag = document.createElement('div');
+                tag.className = 'country-tag';
+                tag.innerHTML = `${country.flag} ${country.name}`;
+                tag.addEventListener('click', () => {
+                    icon.style.animation = 'pulse 1s ease-in-out';
+                    setTimeout(() => {
+                        icon.style.animation = '';
+                    }, 1000);
+                });
+                
+                countriesGrid.appendChild(tag);
+            });
+        }
+
+        // Add pulse animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.5); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        createCountryIcons();
+</script>
 
 {% endblock %}

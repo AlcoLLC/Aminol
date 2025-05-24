@@ -57,7 +57,7 @@
     <div class="container categories-grid">
       {% for product_group in product_groups %}
       <div class="category-card">
-        <a href="">
+        <a href="{% url 'products:product_list' %}?product_group={{ product_group.slug }}">
           <div class="category-image">
             <img
               src="{{ product_group.image.url }}"
