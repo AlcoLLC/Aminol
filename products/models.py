@@ -3,6 +3,7 @@ from django.db import models
 class Product_group(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
+    image = models.ImageField(upload_to='product_group/')
     slug = models.SlugField(max_length=255, unique=True)
     
     def __str__(self):
@@ -38,6 +39,7 @@ class Liter(models.Model):
 class Product(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
+    image = models.ImageField(upload_to='product/')
     product_id = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=255, unique=True)
     api = models.CharField(max_length=255, blank=True, null=True)
