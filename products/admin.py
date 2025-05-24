@@ -4,7 +4,7 @@ from django.utils.html import format_html
 
 @admin.register(Product_group)
 class ProductGroupAdmin(admin.ModelAdmin):
-    list_display = ('title', 'slug')
+    list_display = ('title', 'slug', 'image')
     prepopulated_fields = {'slug': ('title',)}
     search_fields = ('title',)
 
@@ -59,7 +59,7 @@ class ProductAdmin(admin.ModelAdmin):
     
     fieldsets = (
         ('Basic Information', {
-            'fields': ('title', 'slug', 'product_id', 'description')
+            'fields': ('title', 'slug', 'product_id', 'description', 'image')
         }),
         ('Specifications', {
             'fields': ('api', 'ilsac', 'acea', 'jaso', 'oem_sertification', 'recommendations')

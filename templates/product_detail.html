@@ -3,24 +3,23 @@
 
 
 {% if product.product_group %}
-{% include 'components/navbar.html' %}
-<div class="news-page">
-  <header class="page-header">
-    <div class="header-content container">
-      <h2>{{ product.product_group.title }}</h2>
-      <p>
-        {{ product.product_group.description }}
-      </p>
-    </div>
-  </header>
-</div>
-{% else %}
-{% include 'components/navbar_dark.html' %}
-<div class="news-page">
-  <header class="page-header">
+  {% include 'components/navbar.html' %}
+  <div class="product-detail-page">
+    <header class="page-header">
+      <div class="header-content container">
+        <h2>{{ product.product_group.title }}</h2>
+        <p>{{ product.product_group.description }}</p>
+      </div>
     </header>
-</div>
+  </div>
+{% else %}
+  {% include 'components/navbar_dark.html' %}
+  <div class="news-page">
+    <header class="page-header">
+    </header>
+  </div>
 {% endif %}
+
 
 <div class="breadcrumb container">
   <a href="{% url 'products:product_list' %}">Back to the overview</a>|

@@ -517,8 +517,7 @@ font-weight: 300;
  gap: 10px;
 }
 
-.product-table-section .table-btns a {
-  color: #28315E;
+.product-table-section .table-btns a, .product-table-section .table-btns button{
  font-weight: 500;
  font-size: 16px;
  line-height: 24.03px;
@@ -527,7 +526,12 @@ font-weight: 300;
  border: 1px solid #f1f5ff ;
  border-radius: 8px;
  transition: all 0.3s ease;
+}
+
+.product-table-section .table-btns a{
+  color: #28315E;
  cursor: pointer;
+
 }
 
 .product-table-section .table-btns a:hover {
