@@ -39,7 +39,7 @@
                             <p>
                                 {{ news.content|truncatewords:20 }}
                             </p>
-                            <a>Read more <i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="{% url 'news:news_detail' news.pk %}">Read more <i class="fa-solid fa-chevron-right"></i></a>
                         </div>
                     </div>
                 {% empty %}
@@ -72,7 +72,7 @@
                                 <p>
                                     {{ news.content|truncatewords:20 }}
                                 </p>
-                                <a>Read more <i class="fa-solid fa-chevron-right"></i></a>
+                                <a href="{% url 'news:news_detail' news.pk %}">Read more <i class="fa-solid fa-chevron-right"></i></a>
                             </div>
                         </div>
                     {% empty %}
