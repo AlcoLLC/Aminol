@@ -7,7 +7,7 @@
 <div class="partners-section"> 
   <div class="container partners-section-content"> 
     <div class="section-content"> 
-      <h2>Tested. Proven. Trusted.</h2> 
+      <h2>We Are Powered By Our Partners</h2> 
       <p> 
         Remittance acts as a bridge, connecting loved ones and making the world 
         a little smaller. We are dedicated to forging strategic partnerships 
@@ -21,6 +21,11 @@
           <div id="content"> 
             {% for brand in brand_logos %}
               <img src="{{ brand.logo.url }}" class="item" alt="Brand Logo" />
+            {% endfor %}
+            
+            <!-- Optional: Add car logos as well if needed -->
+            {% for car in car_logos %}
+              <img src="{{ car.logo.url }}" class="item" alt="Car Logo" />
             {% endfor %}
           </div> 
         </div> 

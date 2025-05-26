@@ -39,6 +39,7 @@ function moveNext() {
     carousel.scrollBy({ left: scrollAmount });
 
     setTimeout(() => {
+
         if (carousel.scrollLeft >= content.scrollWidth) {
             carousel.style.scrollBehavior = 'auto';
             carousel.scrollLeft = 0;
