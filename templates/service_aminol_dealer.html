@@ -47,10 +47,12 @@
   </div>
 </div>
 
+{% endif %}
+{% if dealer %}
 <div class="services-offer-section container">
-  <div class="text-container text-left">
+  <div class="text-left">
     <h2>{{ dealer.title }}</h2>
-    <p>{{ dealer.description }}</p>
+    <p>{{ dealer.title_description }}</p>
   </div>
   <div class="services-offer-image">
     <img
@@ -59,6 +61,25 @@
     />
   </div>
 </div>
+
+<div class="container">
+  <img
+    class="aminol-large-image"
+    src="{% static '/images/services-aminol-5.jpg' %}"
+    alt="Service Aminol"
+  />
+</div>
+
+ <div class="services-offer-section reverse brand-portal-section container">
+        <div class="text-container text-left">
+            <p>
+               {{ dealer.description }} 
+            </p>
+        </div>
+        <div class="services-offer-image">
+            <img src="{% static '/images/market-industrial.jpg' %}" alt="Service Offer Image" />
+        </div>
+    </div>
 {% endif %}
 
 {% include 'components/contactcomponent.html' %}

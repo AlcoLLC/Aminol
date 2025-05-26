@@ -476,6 +476,39 @@ nav {
   display: none;
 }
 
+/* BreadCrumb Section */
+
+.breadcrumb {
+  color: #012762;
+  margin: 60px auto;
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb a {
+  color: #012762;
+  padding: 0 5px;
+  font-weight: 400;
+  opacity: 0.7;
+  padding: 0 6px;
+  transition: all 0.3s ease;
+}
+
+.breadcrumb a:hover {
+  opacity: 1;
+}
+
+.breadcrumb span {
+  font-weight: 400;
+  opacity: 0.7;
+  padding: 0 6px;
+}
+
+.breadcrumb p {
+  font-weight: 600;
+  padding: 0 5px;
+}
+
 @media screen and (max-width: 1024px) {
   .navbar img {
     width: 140px;
@@ -522,6 +555,24 @@ nav {
 
   .navbar .nav-section {
   height: 55px;
+}
+
+.breadcrumb {
+  margin: 50px auto;
+}
+
+.breadcrumb a {
+  padding: 0 4px;
+  font-size: 14px;
+}
+.breadcrumb span {
+  font-size: 14px;
+  padding: 0 4px;
+}
+
+.breadcrumb p {
+  font-size: 14px;
+  padding: 0 4px;
 }
 
 .dropdown-background {
@@ -587,6 +638,24 @@ nav {
   .hamburger {
     display: block !important;
   }
+
+  .breadcrumb {
+  margin: 3wh0px auto;
+}
+
+.breadcrumb a {
+  padding: 0 2px;
+  font-size: 12px;
+}
+.breadcrumb span {
+  font-size: 12px;
+  padding: 0 2px;
+}
+
+.breadcrumb p {
+  font-size: 12px;
+  padding: 0 2px;
+}
 }
 
 /* Content area */
@@ -600,37 +669,7 @@ nav {
   margin-bottom: 1rem;
 }
 
-/* BreadCrumb Section */
 
-.breadcrumb {
-  color: #012762;
-  margin: 60px auto;
-  display: flex;
-}
-
-.breadcrumb a {
-  color: #012762;
-  padding: 0 5px;
-  font-weight: 400;
-  opacity: 0.7;
-  padding: 0 6px;
-  transition: all 0.3s ease;
-}
-
-.breadcrumb a:hover {
-  opacity: 1;
-}
-
-.breadcrumb span {
-  font-weight: 400;
-  opacity: 0.7;
-  padding: 0 6px;
-}
-
-.breadcrumb p {
-  font-weight: 600;
-  padding: 0 5px;
-}
 
 /* SHARED SECTION */
 
@@ -837,17 +876,7 @@ nav {
   height: 35px;
 }
 
-.shared-images-section .droplet-1 {
-  top: 140px;
-}
 
-.shared-images-section .droplet-2 {
-  top: 500px;
-}
-
-.shared-images-section .droplet-3 {
-  top: 870px;
-}
 .shared-images-section .shared-images-container h2 {
   color: #012762;
   margin-bottom: 10px;
@@ -864,6 +893,7 @@ nav {
 .shared-images-section .shared-images-container .row-reverse {
   flex-direction: row-reverse;
 }
+
 
 
 /* Tablet üçün (768px - 1024px) */
@@ -1090,7 +1120,7 @@ nav {
 
 @media (max-width: 1024px) {
   .whatsapp-section {
-    height: 20vh;
+    height: 18vh;
   }
 
   .whatsapp-section a {
@@ -1108,32 +1138,32 @@ nav {
 
 @media (max-width: 770px) {
   .whatsapp-section {
-    height: 17vh;
+    height: 12vh;
   }
 
   .whatsapp-section a {
-    font-size: 20px;
+    font-size: 16px;
     line-height: 40px;
-    padding: 12px 20px;
+    padding: 8px 15px;
     gap: 10px;
   }
 
   .whatsapp-section a img {
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
   }
 }
 
 @media (max-width: 520px) {
   .whatsapp-section {
-    height: 15vh;
+    height: 10vh;
     padding: 15px 10px;
   }
 
   .whatsapp-section a {
     font-size: 14px;
     line-height: 26px;
-    padding: 12px 16px;
+    padding: 8px 10px;
     gap: 10px;
   }
 

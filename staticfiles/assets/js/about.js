@@ -1,96 +1,116 @@
-
-
 document.addEventListener("DOMContentLoaded", function () {
   const tabs = document.querySelectorAll(".tab");
   const tabContents = document.querySelectorAll(".tab-content");
 
-  function getResponsiveValues() {
-    const screenWidth = window.innerWidth;
+  function positionDropletsDynamically(container) {
+    const sectionRows = container.querySelectorAll('.section-row');
+    const droplets = container.querySelectorAll('.droplet');
 
-    if (screenWidth <= 400) {
-      return { baseTop: 90, interval: 210 };
-    }
-    else if (screenWidth <= 370) {
-      return { baseTop: 100, interval: 250 };
-    }
-    else if (screenWidth <= 422) {
-      return { baseTop: 100, interval: 300 };
-    }
-    else if (screenWidth <= 439) {
-      return { baseTop: 100, interval: 280 };
-    }
-    else if (screenWidth <= 440) {
-      return { baseTop: 100, interval: 300 };
-    }
-    else if (screenWidth <= 480) {
-      return { baseTop: 100, interval: 270 };
-    }
-    else if (screenWidth <= 540) {
-      return { baseTop: 120, interval: 330 };
-    }
-    else if (screenWidth <= 630) {
-      return { baseTop: 120, interval: 300 };
-    }
-    else if (screenWidth <= 670) {
-      return { baseTop: 120, interval: 285 };
-    }
-    else if (screenWidth <= 768) {
-      return { baseTop: 120, interval: 250 };
-    } else if (screenWidth <= 1024) {
-      return { baseTop: 130, interval: 320 };
-    } else {
-      return { baseTop: 140, interval: 360 };
-    }
-  }
+    sectionRows.forEach((row, index) => {
+      const droplet = droplets[index];
+      if (droplet && row) {
 
-  function positionDroplets(activeTabId) {
-    const droplets = document.querySelectorAll(`#${activeTabId} .droplet`);
-    const { baseTop, interval } = getResponsiveValues();
+        const rowRect = row.getBoundingClientRect();
+        const containerRect = container.getBoundingClientRect();
 
-    droplets.forEach((droplet, index) => {
-      const topPosition = baseTop + index * interval;
-      droplet.style.top = `${topPosition}px`;
-      console.log(`Droplet ${index + 1} in ${activeTabId}: ${topPosition}px`);
+        const relativeTop = rowRect.top - containerRect.top;
+        const rowHeight = rowRect.height;
+        
+        const dropletPosition = relativeTop + (rowHeight / 2) - 15; 
+        
+        droplet.style.top = `${dropletPosition}px`;
+        
+        console.log(`Droplet ${index + 1}: Row top: ${relativeTop}px, Row height: ${rowHeight}px, Droplet position: ${dropletPosition}px`);
+      }
     });
   }
 
-  function switchTab(tabId) {
-    // Hide all tab contents
-    tabContents.forEach((content) => {
-      content.classList.remove("active");
+  function positionDropletsForTab(activeTabId) {
+    const activeTabContent = document.getElementById(activeTabId);
+    if (activeTabContent) {
+      const container = activeTabContent.querySelector('.shared-images-container');
+      if (container) {
+        setTimeout(() => {
+          positionDropletsDynamically(container);
+        }, 100);
+      }
+    }
+  }
+
+  function positionAllDropletsDynamically() {
+    const containers = document.querySelectorAll('.shared-images-container');
+    
+    containers.forEach(container => {
+      setTimeout(() => {
+        positionDropletsDynamically(container);
+      }, 100);
     });
+  }
+
+  if (tabs.length > 0) {
+    function switchTab(tabId) {
+      tabContents.forEach((content) => {
+        content.classList.remove("active");
+      });
+
+      tabs.forEach((tab) => {
+        tab.classList.remove("active");
+      });
+
+      const selectedContent = document.getElementById(tabId);
+      selectedContent.classList.add("active");
+
+      document.querySelector(`[data-tab="${tabId}"]`).classList.add("active");
+
+      positionDropletsForTab(tabId);
+    }
 
     tabs.forEach((tab) => {
-      tab.classList.remove("active");
+      tab.addEventListener("click", function () {
+        const tabId = this.getAttribute("data-tab");
+        switchTab(tabId);
+      });
     });
 
-    const selectedContent = document.getElementById(tabId);
-    selectedContent.classList.add("active");
-
-    document.querySelector(`[data-tab="${tabId}"]`).classList.add("active");
-
-    positionDroplets(tabId);
-  }
-
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", function () {
-      const tabId = this.getAttribute("data-tab");
-      switchTab(tabId);
-    });
-  });
-
-  const activeTab = document.querySelector(".tab.active");
-  if (activeTab) {
-    const activeTabId = activeTab.getAttribute("data-tab");
-    positionDroplets(activeTabId);
-  }
-
-  // Resize event əlavə edildi
-  window.addEventListener('resize', function () {
     const activeTab = document.querySelector(".tab.active");
     if (activeTab) {
       const activeTabId = activeTab.getAttribute("data-tab");
-      positionDroplets(activeTabId);
+      positionDropletsForTab(activeTabId);
+    }
+
+    window.addEventListener('resize', function () {
+      const activeTab = document.querySelector(".tab.active");
+      if (activeTab) {
+        const activeTabId = activeTab.getAttribute("data-tab");
+        setTimeout(() => {
+          positionDropletsForTab(activeTabId);
+        }, 200);
+      }
+    });
+  } 
+  else {
+    positionAllDropletsDynamically();
+
+    window.addEventListener('resize', function () {
+      setTimeout(() => {
+        positionAllDropletsDynamically();
+      }, 200);
+    });
+  }
+
+  window.addEventListener('load', function() {
+    if (tabs.length > 0) {
+      const activeTab = document.querySelector(".tab.active");
+      if (activeTab) {
+        const activeTabId = activeTab.getAttribute("data-tab");
+        setTimeout(() => {
+          positionDropletsForTab(activeTabId);
+        }, 300);
+      }
+    } else {
+      setTimeout(() => {
+        positionAllDropletsDynamically();
+      }, 300);
     }
   });
 });
