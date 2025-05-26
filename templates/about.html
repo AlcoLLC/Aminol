@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 
+
 {% include 'components/navbar_blur.html' %}
 
 <div class="about-page">
@@ -54,19 +55,26 @@
         <div class="shared-images-container">
           <div class="vertical-line"></div>
           {% for section in about_sections %}
-          <div class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}">
+          <div
+            class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}"
+          >
             <div class="image-container">
               <div class="circular-image">
                 <img src="{{ section.image.url }}" alt="{{ section.title }}" />
               </div>
             </div>
-            <div class="text-container {% if forloop.counter|divisibleby:2 %}text-left{% endif %}">
+            <div
+              class="text-container {% if forloop.counter|divisibleby:2 %}text-left{% endif %}"
+            >
               <h2>{{ section.title }}</h2>
               <p>{{ section.description }}</p>
             </div>
           </div>
-          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-{{ forloop.counter }}"
-            alt="Yellow Point" />
+          <img
+            src="{% static '/images/yellow-point.svg' %}"
+            class="droplet droplet-{{ forloop.counter }}"
+            alt="Yellow Point"
+          />
           {% endfor %}
         </div>
         {% endif %}
@@ -75,7 +83,7 @@
   </div>
 
   <!-- Quality Tab -->
-  <div class="tab-content active" id="quality">
+  <div class="tab-content" id="quality">
     <!-- Breadcrumb -->
     <div class="breadcrumb container">
       <a href="/">Home page</a>| <span>About us</span>|
@@ -92,7 +100,9 @@
         <div class="shared-images-container">
           <div class="vertical-line"></div>
           {% for content in quality_contents %}
-          <div class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}">
+          <div
+            class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}"
+          >
             <div class="image-container">
               <div class="circular-image">
                 <img src="{{ content.image.url }}" alt="{{ content.title }}" />
@@ -103,8 +113,11 @@
               <p>{{ content.description }}</p>
             </div>
           </div>
-          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-{{ forloop.counter }}"
-            alt="Yellow Point" />
+          <img
+            src="{% static '/images/yellow-point.svg' %}"
+            class="droplet droplet-{{ forloop.counter }}"
+            alt="Yellow Point"
+          />
           {% endfor %}
         </div>
         {% endif %}
@@ -165,7 +178,9 @@
         <div class="shared-images-container">
           <div class="vertical-line"></div>
           {% for content in production_contents %}
-          <div class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}">
+          <div
+            class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}"
+          >
             <div class="image-container">
               <div class="circular-image">
                 <img src="{{ content.image.url }}" alt="{{ content.title }}" />
@@ -178,8 +193,11 @@
           </div>
 
           <!-- Yellow Point Droplet -->
-          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-{{ forloop.counter }}"
-            alt="Yellow Point" />
+          <img
+            src="{% static '/images/yellow-point.svg' %}"
+            class="droplet droplet-{{ forloop.counter }}"
+            alt="Yellow Point"
+          />
           {% endfor %}
         </div>
         {% endif %}
@@ -188,14 +206,14 @@
   </div>
 
   <!-- Documents & Certifications Tab -->
-  <div class="tab-content" id="documents">
+  <div class="tab-content " id="documents">
     <!-- Breadcrumb -->
     <div class="breadcrumb container">
       <a href="/">Home page</a>| <span>About Aminol</span>|
       <p>Documents & Certifications</p>
     </div>
 
-    <div class="section-header">
+    <div class="section-header certification">
       <h2>DOCUMENTS AND CERTIFICATION</h2>
     </div>
 
@@ -206,11 +224,129 @@
         <h3>{{ documents_cert.title }}</h3>
         <p>{{ documents_cert.description }}</p>
       </div>
+        <div class="hidden-description">{{ documents_cert.description }}</div>
 
-      <div class="certifications-logos">
-        <img src="{% static '/images/certifications-logos-1.png' %}" alt="" />
+      <div class="logos-section">
+        <div id="wrapper">
+          <div id="carousel">
+            <div id="content">
+              <img
+                src="{% static 'images_folder/lubrizol-large 1.svg' %}"
+                class="item"
+                alt=""
+              />
+              <img
+                src="{% static 'images_folder/inf 1.svg' %}"
+                class="item"
+                alt=""
+              />
+              <img
+                src="{% static 'images_folder/aft 1.svg' %}"
+                class="item"
+                alt=""
+              />
+              <img
+                src="{% static 'images_folder/basf 1.svg' %}"
+                class="item"
+                alt=""
+              />
+              <img
+                src="{% static 'images_folder/chev 1.svg' %}"
+                class="item"
+                alt=""
+              />
+              <img
+                src="{% static 'images_folder/youbase 1.svg' %}"
+                class="item"
+                alt=""
+              />
+              <img
+                src="{% static 'images_folder/eni 1.svg' %}"
+                class="item"
+                alt=""
+              />
+              <img
+                src="{% static 'images_folder/neste 1.svg' %}"
+                class="item"
+                alt=""
+              />
+              <img
+                src="{% static 'images_folder/dowpol 1.svg' %}"
+                class="item"
+                alt=""
+              />
+              <img
+                src="{% static 'images_folder/sasol 1.svg' %}"
+                class="item"
+                alt=""
+              />
+              <img
+                src="{% static 'images_folder/clariant 1.svg' %}"
+                class="item"
+                alt=""
+              />
+              <img
+                src="{% static 'images_folder/exxon 1.svg' %}"
+                class="item"
+                alt=""
+              />
+              <img
+                src="{% static 'images_folder/Emery_1 1.svg' %}"
+                class="item"
+                alt=""
+              />
+              <img
+                src="{% static 'images_folder/Evonik_logo_2020 1.png' %}"
+                class="item"
+                alt=""
+              />
+              <img
+                src="{% static 'images_folder/logo-italmatch 1.svg' %}"
+                class="item"
+                alt=""
+              />
+              <img
+                src="{% static 'images_folder/mauser 1.svg' %}"
+                class="item"
+                alt=""
+              />
+              <img
+                src="{% static 'images_folder/munzing 1.svg' %}"
+                class="item"
+                alt=""
+              />
+            </div>
+          </div>
+          <button id="prev">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path fill="none" d="M0 0h24v24H0V0z" />
+              <path
+                d="M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z"
+              />
+            </svg>
+          </button>
+          <button id="next">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path fill="none" d="M0 0h24v24H0V0z" />
+              <path
+                d="M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
-
+      
+     
       <div class="certifications-logos">
         <img src="{% static '/images/certifications-logos-2.png' %}" alt="" />
       </div>
@@ -237,10 +373,16 @@
       <div class="container sustainability-content">
         <div class="sustainability-circle-wrapper">
           <div class="sustainability-circle-img">
-            <img class="circle-img" src="{% static '/images/sustainability-circle.png' %}"
-              alt="Sustainability Circle" />
-            <img class="curved-text-img" src="{% static '/images/curve text.svg' %}"
-              alt="Core of Innovation Sustainability" />
+            <img
+              class="circle-img"
+              src="{% static '/images/sustainability-circle.png' %}"
+              alt="Sustainability Circle"
+            />
+            <img
+              class="curved-text-img"
+              src="{% static '/images/curve text.svg' %}"
+              alt="Core of Innovation Sustainability"
+            />
           </div>
         </div>
         <div class="content-wrapper">
@@ -269,8 +411,11 @@
               <p>{{ content.description }}</p>
             </div>
           </div>
-          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-{{ forloop.counter }}"
-            alt="Yellow Point" />
+          <img
+            src="{% static '/images/yellow-point.svg' %}"
+            class="droplet droplet-{{ forloop.counter }}"
+            alt="Yellow Point"
+          />
           {% endfor %}
         </div>
         {% endif %}
@@ -280,7 +425,5 @@
 </div>
 
 
-{% include 'components/gallery.html' %}
-{% include 'components/brochure.html' %}
-
+{% include 'components/gallery.html' %} {% include 'components/brochure.html' %}
 {% endblock %}
