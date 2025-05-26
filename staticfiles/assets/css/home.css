@@ -1046,6 +1046,16 @@
 
 /* İNNOVATİON SECTİON */
 
+/* Scroll problemini həll etmək üçün əsas container-a overflow */
+.innovation {
+  overflow-x: hidden;
+}
+
+.container {
+  width: 900px;
+  max-width: 95%;
+  margin: 0 auto;
+}
 
 .innovation-technology .section-header::before,
 .innovation-technology .section-header::after {
@@ -1088,8 +1098,9 @@
 
 .innovation-technology .image-container {
   width: 50%;
-  overflow: hidden;
   border-radius: 50%;
+  position: relative;
+  flex-shrink: 0;
 }
 
 .section:nth-child(odd) .image-container {
@@ -1107,6 +1118,7 @@
   height: 200px;
   top: -30px;
   right: 0;
+  max-width: calc(100vw - 40px);
 }
 
 .innovation-technology .image-container .innovation-image {
@@ -1115,6 +1127,7 @@
   object-fit: cover;
   display: block;
   border-radius: 50%;
+  max-width: calc(100vw - 40px);
 }
 
 .innovation-technology h2 {
@@ -1135,71 +1148,65 @@
   margin-bottom: 24px;
 }
 
-
-
-
-
 @media (max-width: 900px) {
+  .slide-under-img {
+    width: 140px;
+    height: 140px;
+    top: -30px;
+    right: 0;
+  }
 
-.slide-under-img {
-  width: 140px;
-  height: 140px;
-  top: -30px;
-  right: 0;
+  .innovation-technology .image-container {
+    width: 40%;
+  }
+
+  .innovation-technology .image-container .innovation-image {
+    width: 300px;
+    height: 300px;
+  }
+
+  .innovation-technology h2 {
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 44px;
+  }
 }
-.innovation-technology .image-container {
-  width: 40%;
-}
-.innovation-technology .image-container .innovation-image {
-  width: 300px;
-  height: 300px;
-}
-
-.innovation-technology h2 {
-  font-weight: 600;
-  font-size: 32px;
-  line-height: 44px;
-
-}
-
-}
-
-
 
 @media (max-width: 770px) {
+  .slide-under-img {
+    width: 120px;
+    height: 120px;
+    top: -30px;
+    right: 20px;
+  }
 
-.slide-under-img {
-  width: 120px;
-  height: 120px;
-  top: -30px;
-  right: 20px;
-}
-.innovation-technology .image-container {
-  width: 38%;
-  margin: 0 10px;
-}
-.innovation-technology .image-container .innovation-image {
-  width: 250px;
-  height: 250px;
-}
+  .innovation-technology .image-container {
+    width: 38%;
+    margin: 0 10px;
+  }
 
-.innovation-technology h2 {
-   font-size: 26px;
-  line-height: 36px;
-}
-.innovation-technology p {
-  font-size: 14px;
-}
-.innovation-technology .section {
-  margin: 50px 0;
-}
+  .innovation-technology .image-container .innovation-image {
+    width: 250px;
+    height: 250px;
+  }
 
-.innovation-technology .content {
-  padding: 0 20px;
-}
+  .innovation-technology h2 {
+    font-size: 26px;
+    line-height: 36px;
+  }
 
-}
+  .innovation-technology p {
+    font-size: 14px;
+  }
 
+  .innovation-technology .section {
+    margin: 50px 0;
+  }
+
+  .innovation-technology .content {
+    padding: 0 20px;
+  }
+}
 
 @media (max-width: 670px) {
   .innovation-technology .section {
@@ -1213,53 +1220,99 @@
     width: 70%;
   }
 
- .innovation-technology .section:nth-child(even) .content {
-  order: 1;
- }
+  .innovation-technology .section:nth-child(even) .content {
+    order: 1;
+  }
 
-.slide-under-img {
-  width: 140px;
-  height: 140px;
-  right: 160px;
-}
-.innovation-technology .image-container {
+  .slide-under-img {
+    width: 140px;
+    height: 140px;
+    right: 40px;
+  }
+
+  .innovation-technology .image-container {
     width: 100%;
     height: auto;
     max-width: 320px;
     margin: 20px auto;
-}
-.innovation-technology .image-container .innovation-image {
-  width: 300px;
-  height: 300px;
-}
+  }
 
-.innovation-technology h2 {
-  font-size: 24px;
-  line-height: 25px;
-}
+  .innovation-technology .image-container .innovation-image {
+    width: 300px;
+    height: 300px;
+  }
 
+  .innovation-technology h2 {
+    font-size: 24px;
+    line-height: 25px;
+  }
 }
 
 @media (max-width: 500px) {
+  .slide-under-img {
+    width: 110px;
+    height: 110px;
+    right: 40px;
+    top: -20px;
+  }
 
-.slide-under-img {
-  width: 110px;
-  height: 110px;
-  right:80px;
-  top: -20px;
-}
-.innovation-technology .image-container {
-  width: 60%;
-}
-.innovation-technology .image-container .innovation-image {
-  width: 250px;
-  height: 250px;
-}
+  .innovation-technology .image-container {
+    width: 60%;
+  }
+
+  .innovation-technology .image-container .innovation-image {
+    width: 250px;
+    height: 250px;
+  }
+
   .innovation-technology .section .content {
     width: 80%;
   }
 }
 
+@media (max-width: 480px) {
+  .innovation-technology .image-container .innovation-image {
+    width: 220px;
+    height: 220px;
+  }
+
+  .slide-under-img {
+    width: 100px;
+    height: 100px;
+    right: 30px;
+  }
+}
+
+@media (max-width: 400px) {
+  .innovation-technology .image-container .innovation-image {
+    width: 200px;
+    height: 200px;
+  }
+
+  .slide-under-img {
+    width: 90px;
+    height: 90px;
+    right: 30px;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 350px) {
+  .innovation-technology .image-container .innovation-image {
+    width: 180px;
+    height: 180px;
+  }
+
+  .slide-under-img {
+    width: 80px;
+    height: 80px;
+    right: 10px;
+  }
+}
 
 
 

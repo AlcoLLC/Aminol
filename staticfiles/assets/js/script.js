@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Dropdown background functionality
+
+
     const dropdowns = document.querySelectorAll('.dropdown');
     const dropdownBackground = document.querySelector('.dropdown-background');
+
 
     dropdowns.forEach(dropdown => {
         dropdown.addEventListener('mouseenter', function () {
@@ -46,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function setActiveLinks() {
         const currentPath = window.location.pathname;
         const allNavLinks = document.querySelectorAll('.navbar a[href]');
-        
+
         allNavLinks.forEach(link => {
             link.classList.remove('active');
         });
@@ -61,11 +63,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         dropdownLinks.forEach(dropdownLink => {
             const linkPath = dropdownLink.getAttribute('href');
-            
+
             if (linkPath === currentPath || (linkPath && linkPath !== '/' && currentPath.startsWith(linkPath))) {
 
                 dropdownLink.classList.add('active');
-                
+
                 const parentDropdown = dropdownLink.closest('.dropdown');
                 if (parentDropdown) {
                     const parentLink = parentDropdown.querySelector('> a');
@@ -80,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (!activeDropdownFound) {
             const regularNavLinks = document.querySelectorAll('.navbar a[href]:not(.dropdown-content a)');
-            
+
             regularNavLinks.forEach(link => {
                 const linkPath = link.getAttribute('href');
 
@@ -97,13 +99,13 @@ document.addEventListener('DOMContentLoaded', function () {
         handleSpecialDropdownCases(currentPath);
     }
 
-    function handleSpecialDropdownCases(currentPath) {
+    function handleSpecialDropdownCases(currentPath) {  
         const marketsPaths = ['/markets_automotive', '/markets_industrial', '/markets_shipping'];
-        
+
         if (marketsPaths.includes(currentPath)) {
             const marketsDropdown = Array.from(document.querySelectorAll('.dropdown > a'))
                 .find(link => link.textContent.trim().startsWith('Markets'));
-            
+
             if (marketsDropdown) {
                 marketsDropdown.classList.add('active');
             }
@@ -114,11 +116,11 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
         const servicesPaths = ['/service_aminol_dealer', '/service_laboratory', '/service_logistics'];
-        
+
         if (servicesPaths.includes(currentPath)) {
             const servicesDropdown = Array.from(document.querySelectorAll('.dropdown > a'))
                 .find(link => link.textContent.trim().startsWith('Services'));
-            
+
             if (servicesDropdown) {
                 servicesDropdown.classList.add('active');
             }
@@ -134,4 +136,50 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('popstate', setActiveLinks);
     window.updateActiveLinks = setActiveLinks;
     console.log('Active links set for path:', window.location.pathname);
+
+
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const hamburgerIcon = hamburger.querySelector('i');
+
+    hamburger.addEventListener('click', function () {
+        if (mobileMenu.classList.contains('active')) {
+            mobileMenu.classList.remove('active');
+            hamburgerIcon.className = 'fas fa-bars';
+        } else {
+            mobileMenu.classList.add('active');
+            hamburgerIcon.className = 'fas fa-xmark';
+        }
+    });
+
+
+
+    // Mobile dropdown toggle functionality
+    const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
+
+    mobileDropdowns.forEach(dropdown => {
+        const dropdownHead = dropdown.querySelector('.mobile-dropdown-head');
+        const dropdownIcon = dropdown.querySelector('i');
+
+        dropdownHead.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            dropdown.classList.toggle('active');
+
+            if (dropdown.classList.contains('active')) {
+                dropdownIcon.className = 'fa-solid fa-chevron-up';
+            } else {
+                dropdownIcon.className = 'fa-solid fa-chevron-down';
+            }
+
+            mobileDropdowns.forEach(otherDropdown => {
+                if (otherDropdown !== dropdown) {
+                    otherDropdown.classList.remove('active');
+                    const otherIcon = otherDropdown.querySelector('i');
+                    otherIcon.className = 'fa-solid fa-chevron-down';
+                }
+            });
+        });
+    });
+
 });
