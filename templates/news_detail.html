@@ -13,32 +13,22 @@
 
     <div class="container">
         <div class="news-detail-top-content">
-            <h2>Certified Brands for Mercedes Benz and Internation</h2>
-            <p>March 24, 2023</p>
+            <h2>{{ news.title }}</h2>
+            <p>{{ news.published_date|date:"F d, Y" }}</p>
         </div>
     </div>
 
-    <div class="services-offer-section brand-portal-section container">
+   
+{% for content in contents %}
+    <div class="services-offer-section {% if forloop.counter|divisibleby:2 %}reverse{% endif %} brand-portal-section container">
         <div class="text-container text-left">
-            <p>
-               description 
-            </p>
+            <p>{{ content.description }}</p>
         </div>
         <div class="services-offer-image">
-            <img src="{% static '/images/market-industrial.jpg' %}" alt="Service Offer Image" />
+            <img src="{{ content.image.url }}" alt="News Content Image" />
         </div>
     </div>
-
-    <div class="services-offer-section reverse brand-portal-section container">
-        <div class="text-container text-left">
-            <p>
-               description 
-            </p>
-        </div>
-        <div class="services-offer-image">
-            <img src="{% static '/images/market-industrial.jpg' %}" alt="Service Offer Image" />
-        </div>
-    </div>
+{% endfor %}
 
  <div class="container latest-news">
             <div class="news-cards">
@@ -56,7 +46,7 @@
                             <p>
                                 {{ news.content|truncatewords:20 }}
                             </p>
-                            <a>Read more <i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="{% url 'news:news_detail' news.pk %}">Read more <i class="fa-solid fa-chevron-right"></i></a>
                         </div>
                     </div>
                 {% empty %}

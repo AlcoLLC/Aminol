@@ -1,7 +1,12 @@
 # admin.py
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import News
+from .models import News, News_Content
+
+
+class NewsContentInline(admin.TabularInline):
+    model = News_Content
+    extra = 1
 
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
@@ -10,6 +15,7 @@ class NewsAdmin(admin.ModelAdmin):
     search_fields = ['title', 'content']
     list_editable = ['is_active']
     readonly_fields = ['published_date', 'image_preview']
+    inlines = [NewsContentInline]
     
     fieldsets = (
         ('News Information', {
