@@ -2,7 +2,7 @@ from django.db import models
 
 class Product_group(models.Model):
     title = models.CharField(max_length=255)
-    description = models.TextField()
+    description = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='product_group/')
     slug = models.SlugField(max_length=255, unique=True)
     
@@ -51,7 +51,7 @@ class Product(models.Model):
     liters = models.ManyToManyField('Liter', blank=True, related_name='products')
     product_group = models.ForeignKey('Product_group', on_delete=models.CASCADE, related_name='products', null=True)
     segments = models.ForeignKey('Segments', on_delete=models.CASCADE, blank=True, related_name='products', null=True)
-    oil_type = models.ForeignKey('Oil_Types', on_delete=models.CASCADE, related_name='products', null=True)
+    oil_type = models.ForeignKey('Oil_Types', on_delete=models.CASCADE, related_name='products', null=True, blank=True)
     viscosity = models.ForeignKey('Viscosity', on_delete=models.CASCADE, related_name='products', null=True)
     pds_url = models.URLField(blank=True, null=True, verbose_name="PDS Link")
     sds_url = models.URLField(blank=True, null=True, verbose_name="SDS Link")
