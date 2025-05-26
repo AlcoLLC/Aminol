@@ -148,7 +148,7 @@
 
 @media (max-width: 1024px) {
   .guarantee-section .guarantee-main-container {
-    height: 100vh;
+    height: 60vh;
   }
 
   .guarantee-section .guarantee-main-container::before {

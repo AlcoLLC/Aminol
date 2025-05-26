@@ -48,13 +48,13 @@
 
 @media (max-width: 1024px) {
   .section-content h2 {
-    font-size: 36px;
-    line-height: 42px;
+    font-size: 28px;
+    line-height: 36px;
   }
 
   .section-content h3 {
-    font-size: 30px;
-    line-height: 36px;
+    font-size: 28px;
+    line-height: 32px;
   }
 
   .section-content p {
@@ -69,29 +69,8 @@
 
 @media (max-width: 770px) {
   .section-content h2 {
-    font-size: 30px;
-    line-height: 36px;
-  }
-
-  .section-content h3 {
-    font-size: 24px;
-    line-height: 30px;
-  }
-
-  .section-content p {
-    font-size: 20px;
-  }
-
-  .section-header h2 {
-    font-size: 30px;
-    line-height: 36px;
-  }
-}
-
-@media (max-width: 520px) {
-  .section-content h2 {
-    font-size: 24px;
-    line-height: 30px;
+    font-size: 22px;
+    line-height: 32px;
   }
 
   .section-content h3 {
@@ -100,11 +79,32 @@
   }
 
   .section-content p {
-    font-size: 13px;
+    font-size: 20px;
   }
 
   .section-header h2 {
-    font-size: 24px;
+    font-size: 32px;
+    line-height: 36px;
+  }
+}
+
+@media (max-width: 520px) {
+  .section-content h2 {
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  .section-content h3 {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .section-content p {
+    font-size: 12px;
+  }
+
+  .section-header h2 {
+    font-size: 28px;
     line-height: 30px;
   }
 }
