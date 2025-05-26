@@ -17,9 +17,9 @@ class News(models.Model):
     
 class News_Content(models.Model):
     news = models.ForeignKey(
-        News, related_name='news', on_delete=models.CASCADE)
+        News, related_name='contents', on_delete=models.CASCADE)
     description = models.TextField()
     image = models.ImageField(upload_to='news/')
 
     def __str__(self):
-        return f"{self.title}"
+        return f"{self.news.title} Content"
