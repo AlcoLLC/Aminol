@@ -32,6 +32,8 @@
 </div>
 
 <section class="products-section container">
+
+   <button class="filter-mobile" id="filterMobileBtn">Filter</button>
   <div class="products-container">
     <div class="filter-container">
       <form method="GET" id="filterForm">
@@ -122,7 +124,6 @@
         <input type="hidden" name="page" value="1">
       </form>
     </div>
-
     <div class="products-list">
       {% for product in products %}
       <div class="product-card">
@@ -150,6 +151,199 @@
       </div>
       {% endfor %}
     </div>
+  
+   <div class="modal-overlay" id="filterModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Filtering</h2>
+                <button class="modal-close" id="modalClose">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            </div>
+
+            <div class="modal-filter-container">
+                <form method="GET" id="modalFilterForm">
+                    <div class="search-bar">
+                        <input type="text" name="search" placeholder="Search" class="search-input" />
+                        <button type="button" class="search-button">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+
+                    <!-- Product Group Filter -->
+                    <div class="filter-section">
+                        <div class="filter-header">
+                            <div class="filter-title">Product group</div>
+                            <div class="filter-icon">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="filter-content">
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="product_group" value="engine-oil" checked />
+                                <span class="checkbox-label selected-item">Engine oil</span>
+                            </label>
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="product_group" value="transmission-gear" />
+                                <span class="checkbox-label">Transmission & Gear oil</span>
+                            </label>
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="product_group" value="industrial" />
+                                <span class="checkbox-label">Industrial oil</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Segments Filter -->
+                    <div class="filter-section">
+                        <div class="filter-header">
+                            <div class="filter-title">Segments</div>
+                            <div class="filter-icon">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="filter-content">
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="segments" value="automotive" checked />
+                                <span class="checkbox-label selected-item">Automotive</span>
+                            </label>
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="segments" value="agricultural" />
+                                <span class="checkbox-label">Agricultural</span>
+                            </label>
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="segments" value="construction" />
+                                <span class="checkbox-label">Construction</span>
+                            </label>
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="segments" value="transport" />
+                                <span class="checkbox-label">Transport</span>
+                            </label>
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="segments" value="industrial" />
+                                <span class="checkbox-label">Industrial</span>
+                            </label>
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="segments" value="road-construction" />
+                                <span class="checkbox-label">Road construction & Hydraulic engineering</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Oil Type Filter -->
+                    <div class="filter-section">
+                        <div class="filter-header">
+                            <div class="filter-title">Oil type</div>
+                            <div class="filter-icon">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="filter-content">
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="oil_type" value="full-synthetic" checked />
+                                <span class="checkbox-label selected-item">Full-synthetic</span>
+                            </label>
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="oil_type" value="semi-synthetic" />
+                                <span class="checkbox-label">Semi-synthetic</span>
+                            </label>
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="oil_type" value="synthetic-technology" />
+                                <span class="checkbox-label">Synthetic technology</span>
+                            </label>
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="oil_type" value="mineral" />
+                                <span class="checkbox-label">Mineral</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Viscosity Filter -->
+                    <div class="filter-section">
+                        <div class="filter-header">
+                            <div class="filter-title">Viscosity</div>
+                            <div class="filter-icon">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="filter-content">
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="viscosity" value="0w-8" />
+                                <span class="checkbox-label">0W-8</span>
+                            </label>
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="viscosity" value="0w-16" />
+                                <span class="checkbox-label">0W-16</span>
+                            </label>
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="viscosity" value="0w-20" />
+                                <span class="checkbox-label">0W-20</span>
+                            </label>
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="viscosity" value="0w-30" />
+                                <span class="checkbox-label">0W-30</span>
+                            </label>
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="viscosity" value="0w-40" />
+                                <span class="checkbox-label">0W-40</span>
+                            </label>
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="viscosity" value="5w-20" />
+                                <span class="checkbox-label">5W-20</span>
+                            </label>
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="viscosity" value="5w-30" checked />
+                                <span class="checkbox-label selected-item">5W-30</span>
+                            </label>
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="viscosity" value="5w-40" />
+                                <span class="checkbox-label">5W-40</span>
+                            </label>
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="viscosity" value="5w-50" />
+                                <span class="checkbox-label">5W-50</span>
+                            </label>
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="viscosity" value="10w-30" />
+                                <span class="checkbox-label">10W-30</span>
+                            </label>
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="viscosity" value="10w-40" />
+                                <span class="checkbox-label">10W-40</span>
+                            </label>
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="viscosity" value="10w-60" />
+                                <span class="checkbox-label">10W-60</span>
+                            </label>
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="viscosity" value="15w-30" />
+                                <span class="checkbox-label">15W-30</span>
+                            </label>
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="viscosity" value="15w-40" />
+                                <span class="checkbox-label">15W-40</span>
+                            </label>
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="viscosity" value="15w-50" />
+                                <span class="checkbox-label">15W-50</span>
+                            </label>
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="viscosity" value="20w-50" />
+                                <span class="checkbox-label">20W-50</span>
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button class="search-results-button" id="searchResultsBtn">
+                    Search
+                </button>
+            </div>
+        </div>
+    </div>
+  
   </div>
 
 
@@ -197,7 +391,7 @@
         <div class="content">
           <h2>Hybrid & EV lubricants</h2>
           <p>Choose sustainability with our Hybrid & EV lubricants</p>
-          <a href="#" class="button-style">Discover more</a>
+          <!-- <a href="#" class="button-style">Discover more</a> -->
         </div>
         <div class="image-container">
           <img class="slide-under-img" src="{% static 'images_folder/Mask group.svg' %}" alt="" />
@@ -212,7 +406,7 @@
             Protect and keep your vehicle in top condition with our unique range
             of additives.
           </p>
-          <a href="#" class="button-style">Discover more</a>
+          <!-- <a href="#" class="button-style">Discover more</a> -->
         </div>
         <div class="image-container">
           <img class="innovation-image" src="{% static 'images_folder/FR4A9609 1.png' %}" alt="Additives" />
