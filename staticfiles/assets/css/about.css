@@ -346,6 +346,7 @@
   letter-spacing: 0px;
   font-size: 12px;
   line-height: 14px;
+  display: none;
 }
 
 .certifications-logos {
@@ -469,13 +470,6 @@
   line-height: 16px;
 }
 
-.certifications-container p {
-  display: none;
-}
-
-.hidden-description {
-  display: block;
-}
 .certifications-logos {
 
   height: 35px;
