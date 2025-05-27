@@ -1,5 +1,5 @@
-{% extends 'base.html' %} 
-{% load static %} 
+{% extends 'base.html' %}
+{% load static %}
 {% block content %}
 
 {% include 'components/navbar_blur.html' %}
@@ -19,7 +19,7 @@
   <div class="container">
     <div class="shared-images-container">
       <div class="vertical-line"></div>
-      
+
       {% for content in dealer_contents %}
       <!-- Content Row -->
       <div class="section-row {% if forloop.counter|divisibleby:2 %}{% else %}row-reverse{% endif %}">
@@ -50,7 +50,7 @@
 {% endif %}
 {% if dealer %}
 <div class="services-offer-section container">
-  <div class="text-left">
+  <div class="text-container text-left">
     <h2>{{ dealer.title }}</h2>
     <p>{{ dealer.title_description }}</p>
   </div>
@@ -70,10 +70,10 @@
   />
 </div>
 
- <div class="services-offer-section reverse brand-portal-section container">
+ <div class="services-offer-section reverse container">
         <div class="text-container text-left">
             <p>
-               {{ dealer.description }} 
+               {{ dealer.description }}
             </p>
         </div>
         <div class="services-offer-image">

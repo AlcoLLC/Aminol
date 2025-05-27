@@ -7,7 +7,7 @@
   text-decoration: none;
   list-style: none;
   font-family: "Poppins", sans-serif;
- 
+
 }
 
 .container {
@@ -1597,10 +1597,7 @@
 
 }
 
-.brochure {
-  width: 100%;
-  margin-top: -40px;
-}
+
 }
 
 @media (max-width: 520px) {
@@ -1626,11 +1623,6 @@
    .gallery-section .swiper-button-prev:after {
   font-size: 10px;
 
-}
-
-.brochure {
-  width: 100%;
-  margin-top: -10px;
 }
 
 }
@@ -1858,7 +1850,7 @@
 }
 
 @media (max-width: 480px) {
-  
+
   .logos-section #content {
     grid-gap: 28px;
   }
