@@ -5,6 +5,7 @@ class Product_group(models.Model):
     description = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='product_group/')
     slug = models.SlugField(max_length=255, unique=True)
+    in_home = models.BooleanField(default=False, verbose_name="In Home")
     
     def __str__(self):
         return self.title
@@ -58,7 +59,7 @@ class Product(models.Model):
     pds_url = models.URLField(blank=True, null=True, verbose_name="PDS Link")
     sds_url = models.URLField(blank=True, null=True, verbose_name="SDS Link")
     created_at = models.DateTimeField(auto_now_add=True)
-    in_home = models.BooleanField(default=False, verbose_name="In Home")
+    
     
     def __str__(self):
         return self.title
