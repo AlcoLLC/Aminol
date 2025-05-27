@@ -55,7 +55,7 @@
     </div>
     <div class="container categories-grid">
       {% for product_group in product_groups %}
-      <div class="category-card">
+      <div class="category-card {% if forloop.counter > 8 %}hidden{% endif %}">
         <a href="{% url 'products:product_list' %}?product_group={{ product_group.slug }}">
           <div class="category-image">
             <img
@@ -69,7 +69,6 @@
           </div>
         </a>
       </div>
-
       {% empty %}
         <div class="news-card">
           <div class="news-content">
@@ -78,7 +77,11 @@
         </div>
       {% endfor %}
     </div>
-  </div>
+    
+    {% if product_groups|length > 8 %}
+    <button class="button-style" id="seeMoreBtn">See more</button>
+    {% endif %}
+</div>
   <div class="our-values bg-blue">
     <div class="container our-values-section">
       <div>

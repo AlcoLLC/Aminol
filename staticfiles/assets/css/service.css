@@ -30,6 +30,7 @@
   text-align: right;
   padding: 15px;
 }
+
 .services-offer-section.reverse .text-container {
   text-align: left;
 }
@@ -93,10 +94,10 @@
     max-height: 220px;
   }
 
-.services-offer-section .text-container {
-  width:90% ;
-  margin: 0 auto;
-}
+  .services-offer-section .text-container {
+    width: 90%;
+    margin: 0 auto;
+  }
 }
 
 @media (max-width: 520px) {
@@ -124,7 +125,7 @@
     font-size: 12px;
     text-align: justify;
   }
-  
+
 }
 
 /* Aminol Contact Form */
@@ -353,9 +354,10 @@
   .aminol-contact-form p {
     font-size: 12px;
   }
+
   .aminol-contact-form .form-group label {
-  font-size: 14px;
- }
+    font-size: 14px;
+  }
 
   .aminol-contact-form .form-control,
   .aminol-contact-form .custom-select {
@@ -369,15 +371,15 @@
   }
 
   .aminol-contact-form .custom-options {
-  max-height: 160px;
-}
+    max-height: 160px;
+  }
 
 
-.aminol-contact-form .custom-option {
-  padding: 10px 12px;
-  font-size: 12px;
+  .aminol-contact-form .custom-option {
+    padding: 10px 12px;
+    font-size: 12px;
 
-}
+  }
 
 }
 
@@ -393,13 +395,13 @@
     width: 100%;
   }
 
-    .aminol-contact-form h2 {
+  .aminol-contact-form h2 {
     font-size: 16px;
     line-height: 20px;
   }
 
   .aminol-contact-form .btn-send {
-      font-size: 13px;
+    font-size: 13px;
     padding: 11px 30px;
     margin: 10px auto;
   }
@@ -544,7 +546,7 @@
 }
 
 
-        #map-container {
+#map-container {
   width: 1300px !important;
   max-width: 95%;
   margin: 0 auto;
@@ -559,44 +561,46 @@
 }
 
 
+@keyframes pulse {
 
-        @keyframes pulse {
-    0%, 100% { 
-        stroke-width: 2px; 
-        stroke-opacity: 1; 
-        stroke: #ffcc02;
-    }
-    50% { 
-        stroke-width: 5px; 
-        stroke-opacity: 0.6; 
-        stroke: #ffcc02;
-    }
+  0%,
+  100% {
+    stroke-width: 2px;
+    stroke-opacity: 1;
+    stroke: #ffcc02;
+  }
+
+  50% {
+    stroke-width: 5px;
+    stroke-opacity: 0.6;
+    stroke: #ffcc02;
+  }
 }
 
 .fm-map-container text {
-    color: #e22131 !important;
-    fill: #e22131 !important;
-    stroke: #ffcc02 !important;     
-    stroke-width: 2px !important;
-    animation: pulse 2s infinite !important;
+  color: #e22131 !important;
+  fill: #e22131 !important;
+  stroke: #ffcc02 !important;
+  stroke-width: 2px !important;
+  animation: pulse 2s infinite !important;
 }
 
 .fm-map-container .fm-item text {
-    color: #e22131 !important;
-    fill: #e22131 !important;
-    stroke: #ffcc02 !important;
-    stroke-width: 2px !important;
-    animation: pulse 2s infinite !important;
+  color: #e22131 !important;
+  fill: #e22131 !important;
+  stroke: #ffcc02 !important;
+  stroke-width: 2px !important;
+  animation: pulse 2s infinite !important;
 }
 
 .fm-tooltip-comment {
-   color: #223160 !important;
-    text-align: center !important;
-      font-family: Atyp Regular !important;
-    font-weight: 400 !important;
-    font-size: 15px !important;
-    line-height: 1 !important;
-    letter-spacing: 1px;
+  color: #223160 !important;
+  text-align: center !important;
+  font-family: Atyp Regular !important;
+  font-weight: 400 !important;
+  font-size: 15px !important;
+  line-height: 1 !important;
+  letter-spacing: 1px;
 }
 
 .fm-tooltip-comment span img {
@@ -604,9 +608,9 @@
 }
 
 .fm-tooltip-comment span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 7px;
-    text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  text-align: center;
 }
