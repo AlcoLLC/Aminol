@@ -4,6 +4,7 @@ from .models import (
     Markets_Industrial, Markets_Industrial_Content, Industries_Content,
     Markets_Shipping, Markets_Shipping_Content
 )
+from home.models import PartnerLogo, Gallery as GalleryImage, MarketLogo
 
 
 def automotive(request):
@@ -14,10 +15,15 @@ def automotive(request):
         automotive_contents = Markets_Automotive_Content.objects.filter(
             markets_automotive=automotive_service
         )
+
+    partner_logos = PartnerLogo.objects.all()
+    images = GalleryImage.objects.all().order_by('-created_at')
     
     context = {
         'automotive_service': automotive_service,
         'automotive_contents': automotive_contents,
+        'partner_logos': partner_logos,
+        'images': images,
     }
     return render(request, 'markets_automotive.html', context)
 
@@ -34,12 +40,19 @@ def industrial(request):
         industries = Industries_Content.objects.filter(
             markets_industrial=industrial_service
         )
+
+    images = GalleryImage.objects.all().order_by('-created_at')
+    market_logos = MarketLogo.objects.all()
+    partner_logos = PartnerLogo.objects.all()
     
     context = {
         'industrial_service': industrial_service,
         'industrial_contents': industrial_contents,
         'industries': industries,
         'automotive_service': automotive_service,
+        'images': images,
+        'market_logos': market_logos,
+        'partner_logos': partner_logos,
     }
     return render(request, 'markets_industrial.html', context)
 
@@ -47,6 +60,10 @@ def shipping(request):
     shipping_service = Markets_Shipping.objects.first()
     automotive_service = Markets_Automotive.objects.last() 
     shipping_contents = None
+
+    images = GalleryImage.objects.all().order_by('-created_at')
+    market_logos = MarketLogo.objects.all()
+    partner_logos = PartnerLogo.objects.all()
     
     if shipping_service:
         shipping_contents = Markets_Shipping_Content.objects.filter(
@@ -57,5 +74,8 @@ def shipping(request):
         'shipping_service': shipping_service,
         'shipping_contents': shipping_contents,
         'automotive_service': automotive_service,
+        'images': images,
+        'market_logos': market_logos,
+        'partner_logos': partner_logos,
     }
     return render(request, 'markets_shipping.html', context)
