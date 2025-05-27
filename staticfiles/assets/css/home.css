@@ -424,6 +424,7 @@
   transition: transform 0.3s ease;
   position: absolute;
   top: -15px;
+  border-radius: 6px;
 }
 
 .product-categories .category-card:hover .category-image img {
@@ -433,6 +434,8 @@
 .product-categories .category-content {
   padding: 15px;
   text-align: left;
+  top: 66px;
+    position: absolute;
 }
 
 .product-categories .category-title {
@@ -484,8 +487,7 @@
 
 
   .product-categories .category-image img {
-    width: 230px;
-    height: auto;
+    width: 88%;
   }
 }
 
@@ -505,9 +507,6 @@
     height: 150px;
   }
 
-  .product-categories .category-image img {
-    width: 180px;
-  }
 }
 
 
@@ -2201,6 +2200,10 @@
     margin-top: 5px ;
   }
 
+  .product-categories .category-card{
+    height: 194px;
+  }
+
 }
 
-
+@media (max-width: 450px) {}

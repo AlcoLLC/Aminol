@@ -16,11 +16,11 @@ class Aminol_Official_DealerAdmin(admin.ModelAdmin):
     search_fields = ('title',)
     inlines = [Aminol_Official_Dealer_ContentInline]
 
-@admin.register(Aminol_Official_Dealer_Content)
-class Aminol_Official_Dealer_ContentAdmin(admin.ModelAdmin):
-    list_display = ('title', 'aminol_official_dealer')
-    search_fields = ('title',)
-    list_filter = ('aminol_official_dealer',)
+# @admin.register(Aminol_Official_Dealer_Content)
+# class Aminol_Official_Dealer_ContentAdmin(admin.ModelAdmin):
+#     list_display = ('title', 'aminol_official_dealer')
+#     search_fields = ('title',)
+#     list_filter = ('aminol_official_dealer',)
 
 @admin.register(Aminol_Labaratory)
 class Aminol_LabaratoryAdmin(admin.ModelAdmin):

@@ -3,7 +3,7 @@ from .models import (
     AboutAminol, Quality, WeGuarantee, Production,
     DocumentsCertification, Sustainability
 )
-
+from home.models import BrandLogo, CarLogos
 
 def about_page_view(request):
     about_aminol = AboutAminol.objects.last()
@@ -33,6 +33,9 @@ def about_page_view(request):
     if sustainability:
         sustainability_contents = sustainability.contents.all()
 
+    brand_logos = BrandLogo.objects.all()
+    car_logos = CarLogos.objects.all()
+
     context = {
         'about_aminol': about_aminol,
         'about_sections': about_sections,
@@ -44,6 +47,8 @@ def about_page_view(request):
         'documents_cert': documents_cert,
         'sustainability': sustainability,
         'sustainability_contents': sustainability_contents,
+        'brand_logos': brand_logos,
+        'car_logos': car_logos,
     }
 
 

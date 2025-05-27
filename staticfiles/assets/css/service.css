@@ -542,3 +542,71 @@
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
+
+
+        #map-container {
+  width: 1300px !important;
+  max-width: 95%;
+  margin: 0 auto;
+  background-color: white;
+  padding: 10px;
+  border-radius: 50px;
+  margin-top: 30px;
+}
+
+.fm-map-container {
+  width: 1000px;
+}
+
+
+
+        @keyframes pulse {
+    0%, 100% { 
+        stroke-width: 2px; 
+        stroke-opacity: 1; 
+        stroke: #ffcc02;
+    }
+    50% { 
+        stroke-width: 5px; 
+        stroke-opacity: 0.6; 
+        stroke: #ffcc02;
+    }
+}
+
+.fm-map-container text {
+    color: #e22131 !important;
+    fill: #e22131 !important;
+    stroke: #ffcc02 !important;     
+    stroke-width: 2px !important;
+    animation: pulse 2s infinite !important;
+}
+
+.fm-map-container .fm-item text {
+    color: #e22131 !important;
+    fill: #e22131 !important;
+    stroke: #ffcc02 !important;
+    stroke-width: 2px !important;
+    animation: pulse 2s infinite !important;
+}
+
+.fm-tooltip-comment {
+   color: #223160 !important;
+    text-align: center !important;
+      font-family: Atyp Regular !important;
+    font-weight: 400 !important;
+    font-size: 15px !important;
+    line-height: 1 !important;
+    letter-spacing: 1px;
+}
+
+.fm-tooltip-comment span img {
+  width: 30px !important;
+}
+
+.fm-tooltip-comment span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    text-align: center;
+}

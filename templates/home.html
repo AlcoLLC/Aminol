@@ -210,7 +210,7 @@
             <p>
               {{ news.content|truncatechars:150 }}
             </p>
-            <a>Read more <i class="fa-solid fa-chevron-right"></i></a>
+            <a href="{% url 'news:news_detail' news.pk %}">Read more <i class="fa-solid fa-chevron-right"></i></a>
           </div>
         </div>
         {% empty %}
@@ -221,7 +221,7 @@
         </div>
         {% endfor %}
       </div>
-      <a class="button-style">Discover more</a>
+      <a href="/news/" class="button-style">Discover more</a>
     </div>
   </section>
 
