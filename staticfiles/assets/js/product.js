@@ -143,3 +143,154 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+
+// Modal overlay functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileFilterBtn = document.getElementById('filterMobileBtn');
+    const productFilterModal = document.getElementById('productFilterModal');
+    const productModalClose = document.getElementById('productModalClose');
+    const productSearchResultsBtn = document.getElementById('productSearchResultsBtn');
+
+    // Open modal
+    if (mobileFilterBtn) {
+        mobileFilterBtn.addEventListener('click', function() {
+            productFilterModal.classList.add('show-modal');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+
+    // Close modal function
+    function closeProductModal() {
+        productFilterModal.classList.remove('show-modal');
+        document.body.style.overflow = 'auto';
+    }
+
+    // Close modal button
+    if (productModalClose) {
+        productModalClose.addEventListener('click', closeProductModal);
+    }
+
+    // Close modal when clicking overlay
+    if (productFilterModal) {
+        productFilterModal.addEventListener('click', function(e) {
+            if (e.target === productFilterModal) {
+                closeProductModal();
+            }
+        });
+    }
+
+    // Close modal on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && productFilterModal.classList.contains('show-modal')) {
+            closeProductModal();
+        }
+    });
+
+    // Modal filter header toggle functionality
+    const modalFilterHeaders = document.querySelectorAll('.modal-filter-header');
+    modalFilterHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+            this.classList.toggle('modal-header-active');
+            const content = this.nextElementSibling;
+            content.classList.toggle('modal-content-open');
+            const icon = this.querySelector('.modal-filter-icon i');
+            if (content.classList.contains('modal-content-open')) {
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        });
+    });
+
+    // Modal checkbox functionality
+    const modalCheckboxes = document.querySelectorAll('.modal-checkbox-group input[type="checkbox"]');
+    modalCheckboxes.forEach(checkbox => {
+        const label = checkbox.nextElementSibling;
+        
+        checkbox.addEventListener('change', function() {
+            if (this.checked) {
+                label.classList.add('modal-selected-item');
+            } else {
+                label.classList.remove('modal-selected-item');
+            }
+        });
+    });
+
+    // Search results button - collect form data and submit
+    if (productSearchResultsBtn) {
+        productSearchResultsBtn.addEventListener('click', function() {
+            // Get the main form
+            const mainForm = document.getElementById('filterForm');
+            if (mainForm) {
+                // Sync modal form data with main form
+                const modalForm = document.getElementById('modalFilterForm');
+                if (modalForm) {
+                    // Clear existing selections in main form
+                    const mainCheckboxes = mainForm.querySelectorAll('input[type="checkbox"]');
+                    mainCheckboxes.forEach(cb => cb.checked = false);
+                    
+                    // Copy modal selections to main form
+                    const modalCheckboxes = modalForm.querySelectorAll('input[type="checkbox"]:checked');
+                    modalCheckboxes.forEach(modalCb => {
+                        const mainCb = mainForm.querySelector(`input[name="${modalCb.name}"][value="${modalCb.value}"]`);
+                        if (mainCb) {
+                            mainCb.checked = true;
+                            // Update visual state
+                            const label = mainCb.nextElementSibling;
+                            if (label) {
+                                label.classList.add('selected-item');
+                            }
+                        }
+                    });
+                    
+                    // Copy search input
+                    const modalSearchInput = modalForm.querySelector('input[name="search"]');
+                    const mainSearchInput = mainForm.querySelector('input[name="search"]');
+                    if (modalSearchInput && mainSearchInput) {
+                        mainSearchInput.value = modalSearchInput.value;
+                    }
+                    
+                    // Reset to page 1
+                    const pageInput = mainForm.querySelector('input[name="page"]');
+                    if (pageInput) {
+                        pageInput.value = 1;
+                    }
+                    
+                    // Submit main form
+                    mainForm.submit();
+                }
+            }
+            
+            // Close modal
+            closeProductModal();
+        });
+    }
+
+    // Modal search button
+    const modalSearchButton = document.querySelector('.modal-search-button');
+    const modalSearchInput = document.querySelector('.modal-search-input');
+    
+    if (modalSearchButton) {
+        modalSearchButton.addEventListener('click', function() {
+            // Trigger search results
+            if (productSearchResultsBtn) {
+                productSearchResultsBtn.click();
+            }
+        });
+    }
+
+    if (modalSearchInput) {
+        modalSearchInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                // Trigger search results
+                if (productSearchResultsBtn) {
+                    productSearchResultsBtn.click();
+                }
+            }
+        });
+    }
+});

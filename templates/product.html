@@ -152,198 +152,110 @@
       {% endfor %}
     </div>
   
-   <div class="modal-overlay" id="filterModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Filtering</h2>
-                <button class="modal-close" id="modalClose">
-                    <i class="fa-solid fa-times"></i>
-                </button>
-            </div>
+  <!-- Modal Overlay HTML -->
+<div class="product-modal-overlay" id="productFilterModal">
+    <div class="product-modal-content">
+        <div class="product-modal-header">
+            <h2 class="product-modal-title">Filtering</h2>
+            <button class="product-modal-close" id="productModalClose">
+                <i class="fa-solid fa-times"></i>
+            </button>
+        </div>
 
-            <div class="modal-filter-container">
-                <form method="GET" id="modalFilterForm">
-                    <div class="search-bar">
-                        <input type="text" name="search" placeholder="Search" class="search-input" />
-                        <button type="button" class="search-button">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
-                    </div>
+        <div class="product-modal-filter-container">
+            <form method="GET" id="modalFilterForm">
+                <div class="modal-search-bar">
+                    <input type="text" name="search" placeholder="Search" class="modal-search-input" value="{{ search_query }}" />
+                    <button type="button" class="modal-search-button">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
 
-                    <!-- Product Group Filter -->
-                    <div class="filter-section">
-                        <div class="filter-header">
-                            <div class="filter-title">Product group</div>
-                            <div class="filter-icon">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </div>
-                        </div>
-                        <div class="filter-content">
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="product_group" value="engine-oil" checked />
-                                <span class="checkbox-label selected-item">Engine oil</span>
-                            </label>
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="product_group" value="transmission-gear" />
-                                <span class="checkbox-label">Transmission & Gear oil</span>
-                            </label>
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="product_group" value="industrial" />
-                                <span class="checkbox-label">Industrial oil</span>
-                            </label>
+                <!-- Product Group Filter -->
+                <div class="modal-filter-section">
+                    <div class="modal-filter-header">
+                        <div class="modal-filter-title">Product group</div>
+                        <div class="modal-filter-icon">
+                            <i class="fa-solid fa-chevron-down"></i>
                         </div>
                     </div>
+                    <div class="modal-filter-content">
+                        {% for group in product_groups %}
+                        <label class="modal-checkbox-group">
+                            <input type="checkbox" name="product_group" value="{{ group.slug }}"
+                                   {% if group.slug in selected_product_groups %}checked{% endif %} />
+                            <span class="modal-checkbox-label {% if group.slug in selected_product_groups %}modal-selected-item{% endif %}">{{ group.title }}</span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                </div>
 
-                    <!-- Segments Filter -->
-                    <div class="filter-section">
-                        <div class="filter-header">
-                            <div class="filter-title">Segments</div>
-                            <div class="filter-icon">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </div>
-                        </div>
-                        <div class="filter-content">
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="segments" value="automotive" checked />
-                                <span class="checkbox-label selected-item">Automotive</span>
-                            </label>
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="segments" value="agricultural" />
-                                <span class="checkbox-label">Agricultural</span>
-                            </label>
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="segments" value="construction" />
-                                <span class="checkbox-label">Construction</span>
-                            </label>
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="segments" value="transport" />
-                                <span class="checkbox-label">Transport</span>
-                            </label>
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="segments" value="industrial" />
-                                <span class="checkbox-label">Industrial</span>
-                            </label>
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="segments" value="road-construction" />
-                                <span class="checkbox-label">Road construction & Hydraulic engineering</span>
-                            </label>
+                <!-- Segments Filter -->
+                <div class="modal-filter-section">
+                    <div class="modal-filter-header">
+                        <div class="modal-filter-title">Segments</div>
+                        <div class="modal-filter-icon">
+                            <i class="fa-solid fa-chevron-down"></i>
                         </div>
                     </div>
+                    <div class="modal-filter-content">
+                        {% for segment in segments %}
+                        <label class="modal-checkbox-group">
+                            <input type="checkbox" name="segments" value="{{ segment.slug }}"
+                                   {% if segment.slug in selected_segments %}checked{% endif %} />
+                            <span class="modal-checkbox-label {% if segment.slug in selected_segments %}modal-selected-item{% endif %}">{{ segment.title }}</span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                </div>
 
-                    <!-- Oil Type Filter -->
-                    <div class="filter-section">
-                        <div class="filter-header">
-                            <div class="filter-title">Oil type</div>
-                            <div class="filter-icon">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </div>
-                        </div>
-                        <div class="filter-content">
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="oil_type" value="full-synthetic" checked />
-                                <span class="checkbox-label selected-item">Full-synthetic</span>
-                            </label>
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="oil_type" value="semi-synthetic" />
-                                <span class="checkbox-label">Semi-synthetic</span>
-                            </label>
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="oil_type" value="synthetic-technology" />
-                                <span class="checkbox-label">Synthetic technology</span>
-                            </label>
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="oil_type" value="mineral" />
-                                <span class="checkbox-label">Mineral</span>
-                            </label>
+                <!-- Oil Type Filter -->
+                <div class="modal-filter-section">
+                    <div class="modal-filter-header">
+                        <div class="modal-filter-title">Oil type</div>
+                        <div class="modal-filter-icon">
+                            <i class="fa-solid fa-chevron-down"></i>
                         </div>
                     </div>
+                    <div class="modal-filter-content">
+                        {% for oil_type in oil_types %}
+                        <label class="modal-checkbox-group">
+                            <input type="checkbox" name="oil_type" value="{{ oil_type.slug }}"
+                                   {% if oil_type.slug in selected_oil_types %}checked{% endif %} />
+                            <span class="modal-checkbox-label {% if oil_type.slug in selected_oil_types %}modal-selected-item{% endif %}">{{ oil_type.title }}</span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                </div>
 
-                    <!-- Viscosity Filter -->
-                    <div class="filter-section">
-                        <div class="filter-header">
-                            <div class="filter-title">Viscosity</div>
-                            <div class="filter-icon">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </div>
-                        </div>
-                        <div class="filter-content">
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="viscosity" value="0w-8" />
-                                <span class="checkbox-label">0W-8</span>
-                            </label>
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="viscosity" value="0w-16" />
-                                <span class="checkbox-label">0W-16</span>
-                            </label>
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="viscosity" value="0w-20" />
-                                <span class="checkbox-label">0W-20</span>
-                            </label>
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="viscosity" value="0w-30" />
-                                <span class="checkbox-label">0W-30</span>
-                            </label>
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="viscosity" value="0w-40" />
-                                <span class="checkbox-label">0W-40</span>
-                            </label>
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="viscosity" value="5w-20" />
-                                <span class="checkbox-label">5W-20</span>
-                            </label>
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="viscosity" value="5w-30" checked />
-                                <span class="checkbox-label selected-item">5W-30</span>
-                            </label>
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="viscosity" value="5w-40" />
-                                <span class="checkbox-label">5W-40</span>
-                            </label>
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="viscosity" value="5w-50" />
-                                <span class="checkbox-label">5W-50</span>
-                            </label>
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="viscosity" value="10w-30" />
-                                <span class="checkbox-label">10W-30</span>
-                            </label>
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="viscosity" value="10w-40" />
-                                <span class="checkbox-label">10W-40</span>
-                            </label>
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="viscosity" value="10w-60" />
-                                <span class="checkbox-label">10W-60</span>
-                            </label>
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="viscosity" value="15w-30" />
-                                <span class="checkbox-label">15W-30</span>
-                            </label>
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="viscosity" value="15w-40" />
-                                <span class="checkbox-label">15W-40</span>
-                            </label>
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="viscosity" value="15w-50" />
-                                <span class="checkbox-label">15W-50</span>
-                            </label>
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="viscosity" value="20w-50" />
-                                <span class="checkbox-label">20W-50</span>
-                            </label>
+                <!-- Viscosity Filter -->
+                <div class="modal-filter-section">
+                    <div class="modal-filter-header">
+                        <div class="modal-filter-title">Viscosity</div>
+                        <div class="modal-filter-icon">
+                            <i class="fa-solid fa-chevron-down"></i>
                         </div>
                     </div>
-                </form>
-            </div>
+                    <div class="modal-filter-content">
+                        {% for viscosity in viscosity_options %}
+                        <label class="modal-checkbox-group">
+                            <input type="checkbox" name="viscosity" value="{{ viscosity.slug }}"
+                                   {% if viscosity.slug in selected_viscosity %}checked{% endif %} />
+                            <span class="modal-checkbox-label {% if viscosity.slug in selected_viscosity %}modal-selected-item{% endif %}">{{ viscosity.title }}</span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                </div>
+            </form>
+        </div>
 
-            <div class="modal-footer">
-                <button class="search-results-button" id="searchResultsBtn">
-                    Search
-                </button>
-            </div>
+        <div class="product-modal-footer">
+            <button class="product-search-results-button" id="productSearchResultsBtn">
+                View Result
+            </button>
         </div>
     </div>
-  
+</div>
   </div>
 
 

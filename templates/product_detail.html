@@ -1,26 +1,26 @@
-{% extends 'base.html' %} {% load static %} {% block content %} 
+{% extends 'base.html' %} {% load static %} {% block content %}
 
 {% if product.product_group %}
-  {% include 'components/navbar.html' %}
-  <div class="product-detail-page">
-    <header class="page-header">
+{% include 'components/navbar.html' %}
+<div class="product-detail-page">
+  <header class="page-header" style="background-image: url('{{ product.product_group.image.url }}');">
       <div class="header-content container">
         <h2>{{ product.product_group.title }}</h2>
         <p>{{ product.product_group.description }}</p>
       </div>
-    </header>
-  </div>
+    </header>
+</div>
 {% else %}
-  {% include 'components/navbar_dark.html' %}
-  <div class="news-page">
-    <header class="page-header">
-    </header>
-  </div>
+{% include 'components/navbar_dark.html' %}
+<div class="news-page">
+  <header class="page-header">
+  </header>
+</div>
 {% endif %}
 
 
 <div class="breadcrumb container">
-  <a href="{% url 'products:product_list' %}">Back to the overview</a>|
+  <a href="{% url 'products:product_list' %}">Back to the overview |</a>
   <p>{{ product.title }}</p>
 </div>
 
@@ -64,15 +64,25 @@
           <p>No specific recommendations available.</p>
           {% endif %}
         </div>
+
+        {% if available_liters %}
+        <div class="hidden-product-litre">
+          <h3>Available packages: </h3>
+          {% for liter in available_liters %}
+          <span>{{ liter.volume }}L</span>
+          {% endfor %}
+        </div>
+        {% endif %}
       </div>
     </div>
     <div class="product-image">
       <img src="{{ product.image.url }}" alt="{{ product.title }}" />
     </div>
   </div>
-  
+
   {% if available_liters %}
   <div class="product-litre">
+    <p>Available packages: </p>
     {% for liter in available_liters %}
     <span>{{ liter.volume }}L</span>
     {% endfor %}
@@ -109,26 +119,26 @@
   </div>
   <div class="table-btns">
     {% if product.pds_url %}
-      <a href="{{ product.pds_url }}" target="_blank">
-        PDS <i class="fa-solid fa-download"></i>
-      </a>
+    <a href="{{ product.pds_url }}" target="_blank">
+      PDS <i class="fa-solid fa-download"></i>
+    </a>
     {% else %}
-      <button disabled class="">
-        PDS <i class="fa-solid fa-download"></i>
-      </button>
+    <button disabled class="">
+      PDS <i class="fa-solid fa-download"></i>
+    </button>
     {% endif %}
-    
+
     {% if product.sds_url %}
-      <a href="{{ product.sds_url }}" target="_blank">
-        SDS <i class="fa-solid fa-download"></i>
-      </a>
+    <a href="{{ product.sds_url }}" target="_blank">
+      SDS <i class="fa-solid fa-download"></i>
+    </a>
     {% else %}
-      <button disabled class="">
-        SDS <i class="fa-solid fa-download"></i>
-      </button>
+    <button disabled class="">
+      SDS <i class="fa-solid fa-download"></i>
+    </button>
     {% endif %}
   </div>
 </section>
 
 {% include 'components/whatsapp.html' %}
- {% endblock %}
+{% endblock %}
