@@ -6,11 +6,13 @@ from .models import (
     Aminol_Logistics
 )
 from news.models import News
+from home.models import PartnerLogo, Gallery as GalleryImage
 
 
 def aminol_dealer_view(request):
     dealer = Aminol_Official_Dealer.objects.last()
     dealer_contents = Aminol_Official_Dealer_Content.objects.filter(aminol_official_dealer=dealer) if dealer else []
+    partner_logos = PartnerLogo.objects.all()
     
     context = {
         'dealer': dealer,

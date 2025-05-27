@@ -3,6 +3,7 @@ from django.db.models import Q
 from django.core.paginator import Paginator
 from .models import Product, Product_group, Segments, Oil_Types, Viscosity, ProductProperty
 from django.http import JsonResponse
+from home.models import PartnerLogo, Gallery as GalleryImage
 
 def product_list(request):
     products = Product.objects.all()
@@ -42,6 +43,9 @@ def product_list(request):
     oil_types = Oil_Types.objects.all()
     viscosity_options = Viscosity.objects.all()
     
+    images = GalleryImage.objects.all().order_by('-created_at')
+    partner_logos = PartnerLogo.objects.all()
+
     context = {
         'products': page_obj,  
         'page_obj': page_obj, 
@@ -54,6 +58,8 @@ def product_list(request):
         'selected_segments': selected_segments,
         'selected_oil_types': selected_oil_types,
         'selected_viscosity': selected_viscosity,
+        'images': images,
+        'partner_logos': partner_logos,
     }
     
     return render(request, 'product.html', context)
