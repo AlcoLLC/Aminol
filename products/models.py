@@ -31,7 +31,7 @@ class Viscosity(models.Model):
         return self.title
 
 class Liter(models.Model):
-    volume = models.PositiveIntegerField(unique=True) 
+    volume = models.FloatField(unique=True) 
 
     def __str__(self):
         return f"{self.volume} L"
