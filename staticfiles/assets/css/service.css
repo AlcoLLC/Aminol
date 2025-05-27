@@ -405,33 +405,6 @@
   }
 }
 
-
-.map-section {
-  position: relative;
-  margin: 0 auto;
-  border-radius: 10px;
-}
-
-.map-container {
-  position: relative;
-  width: 100%;
-  height: 600px;
-}
-
-.world-map {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 75%;
-  background-image: url("../../images/mapp.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 8px;
-}
-
 .country-icon {
   position: absolute;
   width: 20px;
@@ -494,19 +467,6 @@
   opacity: 1;
 }
 
-.map-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
-
-.map-header h1 {
-  margin: 0;
-  font-size: 24px;
-  font-weight: 300;
-}
-
 .country-list {
   padding: 20px;
   background: #f8f9fa;
@@ -557,26 +517,23 @@
 .fm-map-container {
   width: 1000px;
 }
-
-
-
         @keyframes pulse {
     0%, 100% { 
         stroke-width: 2px; 
         stroke-opacity: 1; 
-        stroke: #ffcc02;
+        stroke: #7798BA;
     }
     50% { 
         stroke-width: 5px; 
         stroke-opacity: 0.6; 
-        stroke: #ffcc02;
+        stroke: #7798BA;
     }
 }
 
 .fm-map-container text {
     color: #e22131 !important;
     fill: #e22131 !important;
-    stroke: #ffcc02 !important;     
+    stroke: #7798BA !important;     
     stroke-width: 2px !important;
     animation: pulse 2s infinite !important;
 }
@@ -584,7 +541,7 @@
 .fm-map-container .fm-item text {
     color: #e22131 !important;
     fill: #e22131 !important;
-    stroke: #ffcc02 !important;
+    stroke: #7798BA !important;
     stroke-width: 2px !important;
     animation: pulse 2s infinite !important;
 }

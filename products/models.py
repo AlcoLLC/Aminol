@@ -39,6 +39,8 @@ class Liter(models.Model):
 class Product(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
+    features_benefits = models.TextField(blank=True, null=True)
+    application = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='product/')
     product_id = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=255, unique=True)
@@ -50,12 +52,13 @@ class Product(models.Model):
     recommendations = models.TextField(blank=True, null=True)
     liters = models.ManyToManyField('Liter', blank=True, related_name='products')
     product_group = models.ForeignKey('Product_group', on_delete=models.CASCADE, related_name='products', null=True)
-    segments = models.ForeignKey('Segments', on_delete=models.CASCADE, blank=True, related_name='products', null=True)
+    segments = models.ManyToManyField('Segments', blank=True, related_name='products')
     oil_type = models.ForeignKey('Oil_Types', on_delete=models.CASCADE, related_name='products', null=True, blank=True)
     viscosity = models.ForeignKey('Viscosity', on_delete=models.CASCADE, related_name='products', null=True)
     pds_url = models.URLField(blank=True, null=True, verbose_name="PDS Link")
     sds_url = models.URLField(blank=True, null=True, verbose_name="SDS Link")
     created_at = models.DateTimeField(auto_now_add=True)
+    in_home = models.BooleanField(default=False, verbose_name="In Home")
     
     def __str__(self):
         return self.title
