@@ -107,3 +107,23 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 50);
   }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const seeMoreBtn = document.getElementById('seeMoreBtn');
+    const hiddenCards = document.querySelectorAll('.category-card.hidden');
+    
+    if (seeMoreBtn) {
+         seeMoreBtn.addEventListener('click', function() {
+    hiddenCards.forEach((card, index) => {
+        card.classList.remove('hidden');
+        card.classList.add('fade-in');
+        
+        setTimeout(() => {
+            card.classList.remove('fade-in');
+        }, index * 100); // Hər kart 100ms gecikməylə
+    });
+    seeMoreBtn.style.display = 'none';
+   });
+    }
+ 
+});

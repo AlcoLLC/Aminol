@@ -874,11 +874,13 @@
   gap: 100px;
 }
 
-.product-detail-section .product-detail-container .product-details .product-detail-row h3 {
+.product-detail-section .product-detail-container .product-details .product-detail-row h3,
+.product-detail-section .product-detail-container .product-details.featured-benefits h3{
   font-weight: 600;
 }
 
-.product-detail-section .product-detail-container .product-details .product-detail-row p {
+.product-detail-section .product-detail-container .product-details .product-detail-row p,
+.product-detail-section .product-detail-container .product-details.featured-benefits p{
   font-weight: 300;
 }
 
@@ -1052,16 +1054,25 @@
     margin: 30px auto;
     padding: 0 15px;
   }
+
+  .product-detail-section .product-detail-container .product-details{
+  gap: 15px;
+}
   
 
   .product-detail-section .product-detail-container .product-details h2 {
     font-size: 18px;
-    line-height: 30px;
+    line-height: 20px;
   }
 
-  .product-detail-section .product-detail-container .product-details {
-    font-size: 13px;
-    line-height: 22px;
+  .product-detail-section .product-detail-container .product-details .product-id {
+    font-size: 14px;
+    line-height: 10px;
+  }
+
+  .product-detail-section .product-detail-container .product-details p{
+    font-size: 12px;
+    line-height: 20px;
   }
 
   .product-table-section th,
