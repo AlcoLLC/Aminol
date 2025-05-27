@@ -3,12 +3,12 @@
 {% if product.product_group %}
 {% include 'components/navbar.html' %}
 <div class="product-detail-page">
-  <header class="page-header">
-    <div class="header-content container">
-      <h2>{{ product.product_group.title }}</h2>
-      <p>{{ product.product_group.description }}</p>
-    </div>
-  </header>
+  <header class="page-header" style="background-image: url('{{ product.product_group.image.url }}');">
+      <div class="header-content container">
+        <h2>{{ product.product_group.title }}</h2>
+        <p>{{ product.product_group.description }}</p>
+      </div>
+    </header>
 </div>
 {% else %}
 {% include 'components/navbar_dark.html' %}
