@@ -1,19 +1,23 @@
 from django.shortcuts import render
 from news.models import News
 from products.models import Product_group
-from .models import BrandLogo, CarLogos
+from .models import PartnerLogo, CarLogo, Gallery as GalleryImage
 
 def home_view(request): 
     latest_news = News.objects.filter(is_active=True)[:3] 
-    product_groups = Product_group.objects.all()
-    brand_logos = BrandLogo.objects.all()
-    car_logos = CarLogos.objects.all()
+    
+    product_groups = Product_group.objects.all().order_by('-in_home', 'title')
+    
+    partner_logos = PartnerLogo.objects.all()
+    car_logos = CarLogo.objects.all()
+    images = GalleryImage.objects.all().order_by('-created_at')
     
     context = { 
         'latest_news': latest_news, 
         'product_groups': product_groups,
-        'brand_logos': brand_logos,
+        'partner_logos': partner_logos,
         'car_logos': car_logos,
+        'images': images,
     } 
      
     return render(request, 'home.html', context)

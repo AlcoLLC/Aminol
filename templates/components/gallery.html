@@ -6,10 +6,12 @@
     </div>
     <div class="swiper labSwiper">
         <div class="swiper-wrapper">
+            {% for image in images %}
             <div class="swiper-slide">
-                <img src="{% static 'images_folder/8Z3A7218.png' %}" alt="Laboratuvar ekipmanı" />
+                <img src="{{ image.image.url }}" alt="Laboratuvar ekipmanı" />
             </div>
-            <div class="swiper-slide">
+            {% endfor %}
+            <!-- <div class="swiper-slide">
                 <img src="{% static 'images_folder/8Z3A7274 (1).png' %}" alt="Laboratuvarda bilim insanı" />
             </div>
             <div class="swiper-slide">
@@ -20,7 +22,7 @@
             </div>
             <div class="swiper-slide">
                 <img src="{% static 'images_folder/8Z3A7218.png' %}" alt="Laboratuvar test düzeneği" />
-            </div>
+            </div> -->
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
