@@ -7,7 +7,6 @@
   font-weight: 600;
   font-size: 24px;
   line-height: 48px;
-  letter-spacing: -1%;
 }
 
 .contact-top-content p {
@@ -15,69 +14,75 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
-  letter-spacing: 0px;
 }
 
-.contact-grid-content {
+.contact-grid-content,
+.contact-flex-content {
   margin: 50px auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: center;
-  justify-content: space-between;
   gap: 30px;
   color: #28315e;
+  align-items: start;
 }
 
 .contact-flex-content {
-  margin: 50px auto;
+  margin-bottom: 70px;
   display: flex;
-  align-items: start;
   justify-content: space-between;
-  gap: 30px;
-  color: #28315e;
+}
+
+.contact-flex-content .contact-left-content,
+.contact-flex-content .contact-right-content {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-flex-content .contact-left-content div {
+  width: 70%;
 }
 
 .contact-grid-content .contact-image-item {
-  width: 100%;
   display: flex;
   align-items: start;
   justify-content: space-between;
   gap: 20px;
 }
 
-.contact-grid-content .item,
-.contact-flex-content .item {
-  width: 60%;
+.contact-grid-content .item {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: start;
+  justify-content: space-between;
   gap: 20px;
   padding: 10px 0;
 }
 
+.contact-grid-content p {
+  width: 70%;
+
+}
+
 .contact-grid-content h2,
-.contact-flex-content h2,
-.contact-bottom-content h2 {
-  color: #28315e;
-  white-space: nowrap;
+.contact-flex-content h2 {
   font-weight: 600;
   font-size: 24px;
   line-height: 30px;
-  letter-spacing: -1%;
+  color: #28315e;
+  white-space: nowrap;
 }
 
 .contact-grid-content p,
-.contact-flex-content p,
-.contact-bottom-content p {
+.contact-flex-content p {
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  letter-spacing: 0%;
 }
 
-.contact-grid-content .button-style,
-.contact-flex-content .button-style {
-  width: 55%;
+.button-style {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -85,56 +90,125 @@
   background-color: #f92b3f !important;
 }
 
-.contact-flex-content .button-style {
-  width: 40%;
-}
 
-.contact-grid-content .right-item {
-  width: 40%;
-  height: 266px;
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.contact-grid-content .right-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
 
 .contact-bottom {
-  margin-top: 20px;
-  margin-bottom: 200px;
-  color: #28315e;
   display: flex;
   align-items: start;
-  justify-content: start;
-  gap: 40px;
+  justify-content: space-between;
+  gap: 30px;
+  color: #28315e;
 }
 
 .contact-bottom h3 {
   font-weight: 600;
   font-size: 14px;
-  line-height: 20px;
-  letter-spacing: 0%;
+  line-height: 25px;
 }
 
-.contact-bottom .item {
+.contact-bottom .item,
+.contact-bottom .right-item {
   width: 100%;
-}
-
-.contact-bottom .item p {
-  width: 60%;
-  line-height: 20px;
 }
 
 .contact-bottom .right-item {
-  width: 100%;
   display: flex;
-  align-items: start;
-  justify-content: space-between;
-  gap: 40px;
+  flex-direction: column;
+  gap: 10px;
 }
+
+/* ========== Responsive Design ========== */
+
+@media (max-width: 1024px) {
+  .contact-grid-content {
+    padding: 0 15px;
+  }
+
+  .contact-grid-content h2,
+  .contact-flex-content h2 {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .contact-grid-content p,
+  .contact-flex-content p {
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+
+  
+}
+
+@media (max-width: 770px) {
+  .contact-flex-content {
+    flex-direction: column;
+    gap: 40px;
+    padding: 0 15px;
+  }
+
+  .contact-flex-content .contact-left-content{
+    width: 90%;
+  }
+
+  .contact-flex-content .contact-right-content {
+    width: 100%;
+  }
+
+  .contact-flex-content .contact-left-content div {
+    width: 100%;
+  }
+
+  .contact-grid-content h2,
+  .contact-flex-content h2 {
+    font-size: 18px;
+    line-height: 14px;
+  }
+
+  .contact-grid-content p,
+  .contact-flex-content p {
+    font-size: 13px;
+    line-height: 18px;
+  }
+  .contact-top-content h2{
+    font-size: 22px;
+    line-height: 40px;
+  }
+ .contact-top-content p {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+ 
+
+}
+
+@media (max-width: 520px) {
+  .contact-grid-content h2,
+  .contact-flex-content h2 {
+    font-size: 16px;
+    line-height: 14px;
+  }
+
+  .contact-grid-content p,
+  .contact-flex-content p {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .contact-top-content h2{
+    font-size: 18px;
+    line-height: 30px; 
+    margin-bottom: 10px;
+  }
+ .contact-top-content p {
+    font-size: 12px;
+    line-height: 18px;
+    max-width: 90%
+  }
+
+}
+
 
 
 /* NEWS SECTION */
@@ -173,6 +247,7 @@ letter-spacing: -1%;
 width: 80%;
 margin-bottom: 50px;
 }
+
 .news-detail-top-content p{
 font-weight: 600;
 font-size: 16px;
@@ -182,9 +257,77 @@ letter-spacing: 0px;
   color: #28315e;
 }
 
-.news-page .whatsapp-section {
-  margin-top: 250px !important;
+@media (max-width: 1024px) {
+  .news-top-content h2,
+  .news-detail-top-content h2 {
+    font-size: 36px;
+    line-height: 50px;
+  }
+
+  .news-top-content p {
+    font-size: 20px;
+    line-height: 26px;
+    max-width: 100%;
+  }
+
+  .news-detail-top-content {
+    width: 90%;
+  }
+
+  .news-detail-top-content p {
+    font-size: 15px;
+  }
 }
+
+@media (max-width: 770px) {
+  .news-top-content h2,
+  .news-detail-top-content h2 {
+    font-size: 30px;
+    line-height: 42px;
+  }
+
+  .news-top-content p {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .news-detail-top-content p {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .news-top-content,
+  .news-detail-top-content {
+    width: 95%;
+    margin: 30px auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .news-top-content h2,
+  .news-detail-top-content h2 {
+    font-size: 24px;
+    line-height: 34px;
+  }
+
+  .news-top-content p {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .news-detail-top-content p {
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  .news-top-content,
+  .news-detail-top-content {
+    width: 100%;
+    padding: 0 15px;
+    margin: 20px auto;
+  }
+}
+
 
 /* FAQ SECTION */
 .faq-section {
@@ -345,3 +488,15 @@ letter-spacing: 0px;
 .brand-portal-section {
   align-items: flex-start;
 }
+
+
+
+
+
+
+
+
+
+
+
+
