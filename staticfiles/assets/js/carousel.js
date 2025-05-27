@@ -1,168 +1,326 @@
-const gap = 120;
-const itemWidth = 110;
-const scrollAmount = itemWidth + gap;
-const autoplayDelay = 2700;
-const transitionDuration = 1000;
-
-const carousel = document.getElementById("carousel");
-const content = document.getElementById("content");
-const next = document.getElementById("next");
-const prev = document.getElementById("prev");
-
-const cloneContent = content.cloneNode(true);
-cloneContent.setAttribute("aria-hidden", "true");
-content.appendChild(cloneContent);
-
-let isScrolling = false;
-let autoplayTimer;
-let startX = 0;
-let scrollLeft = 0;
-let isDragging = false;
-
-function startAutoplay() {
-  autoplayTimer = setInterval(() => {
-    if (!isScrolling && !isDragging) {
-      moveNext();
+// Carousel Class - Təkmilləşdirilmiş versiya
+class CarouselController {
+    constructor(options) {
+        this.gap = options.gap || 115;
+        this.itemWidth = options.itemWidth || 110;
+        this.scrollAmount = this.itemWidth + this.gap;
+        this.autoplayDelay = options.autoplayDelay || 2700;
+        this.transitionDuration = options.transitionDuration || 800;
+        
+        this.carousel = document.getElementById(options.carouselId);
+        this.content = document.getElementById(options.contentId);
+        this.next = document.getElementById(options.nextId);
+        this.prev = document.getElementById(options.prevId);
+        
+        if (!this.carousel || !this.content || !this.next || !this.prev) {
+            console.warn(`Carousel elementləri tapılmadı: ${options.carouselId}`);
+            return;
+        }
+        
+        // State variables - hər carousel üçün ayrı
+        this.isScrolling = false;
+        this.autoplayTimer = null;
+        this.startX = 0;
+        this.scrollLeft = 0;
+        this.isDragging = false;
+        this.scrollTimeout = null;
+        this.isInitialized = false;
+        this.totalWidth = 0;
+        
+        this.init();
     }
-  }, autoplayDelay);
-}
-
-function stopAutoplay() {
-  clearInterval(autoplayTimer);
-}
-
-function moveNext() {
-  if (isScrolling) return;
-  isScrolling = true;
-
-  carousel.style.scrollBehavior = "smooth";
-  carousel.scrollBy({ left: scrollAmount });
-
-  setTimeout(() => {
-    if (carousel.scrollLeft >= content.scrollWidth) {
-      carousel.style.scrollBehavior = "auto";
-      carousel.scrollLeft = 0;
-      carousel.style.scrollBehavior = "smooth";
+    
+    init() {
+        if (this.isInitialized) return;
+        
+        // İçeriyi 3 dəfə təkrarlayırıq
+        const originalContent = this.content.innerHTML;
+        this.content.innerHTML = originalContent + originalContent + originalContent;
+        
+        // Ölçüləri hesablayırıq
+        setTimeout(() => {
+            this.calculateDimensions();
+            this.setupEventListeners();
+            this.setupInitialPosition();
+            this.isInitialized = true;
+            
+            // Autoplay-i başladırıq
+            setTimeout(() => this.startAutoplay(), 1000);
+        }, 100);
     }
-    isScrolling = false;
-  }, transitionDuration);
-}
-
-function movePrev() {
-  if (isScrolling) return;
-  isScrolling = true;
-
-  carousel.style.scrollBehavior = "smooth";
-
-  if (carousel.scrollLeft <= 0) {
-    carousel.style.scrollBehavior = "auto";
-    carousel.scrollLeft = content.scrollWidth;
-    carousel.style.scrollBehavior = "smooth";
-    setTimeout(() => {
-      carousel.scrollBy({ left: -scrollAmount });
-    }, 10);
-  } else {
-    carousel.scrollBy({ left: -scrollAmount });
-  }
-
-  setTimeout(() => {
-    isScrolling = false;
-  }, transitionDuration);
-}
-
-next.addEventListener("click", () => {
-  stopAutoplay();
-  moveNext();
-  setTimeout(startAutoplay, 1000);
-});
-
-prev.addEventListener("click", () => {
-  stopAutoplay();
-  movePrev();
-  setTimeout(startAutoplay, 1000);
-});
-
-carousel.addEventListener("mousedown", startDrag);
-carousel.addEventListener("touchstart", startDrag, { passive: false });
-
-carousel.addEventListener("mousemove", drag);
-carousel.addEventListener("touchmove", drag, { passive: false });
-
-carousel.addEventListener("mouseup", endDrag);
-carousel.addEventListener("mouseleave", endDrag);
-carousel.addEventListener("touchend", endDrag);
-
-function startDrag(e) {
-  isDragging = true;
-  stopAutoplay();
-  carousel.style.scrollBehavior = "auto";
-
-  startX = e.type.includes("mouse") ? e.pageX : e.touches[0].pageX;
-  scrollLeft = carousel.scrollLeft;
-
-  carousel.style.cursor = "grabbing";
-  e.preventDefault();
-}
-
-function drag(e) {
-  if (!isDragging) return;
-  e.preventDefault();
-
-  const x = e.type.includes("mouse") ? e.pageX : e.touches[0].pageX;
-  const walk = (x - startX) * 2;
-  carousel.scrollLeft = scrollLeft - walk;
-}
-
-function endDrag() {
-  if (!isDragging) return;
-  isDragging = false;
-  carousel.style.cursor = "grab";
-  carousel.style.scrollBehavior = "smooth";
-
-  setTimeout(() => {
-    if (carousel.scrollLeft >= content.scrollWidth) {
-      carousel.style.scrollBehavior = "auto";
-      carousel.scrollLeft = 0;
-    } else if (carousel.scrollLeft <= 0) {
-      carousel.style.scrollBehavior = "auto";
-      carousel.scrollLeft = content.scrollWidth;
+    
+    calculateDimensions() {
+        this.totalWidth = this.content.scrollWidth / 3;
+        console.log(`Carousel ${this.carousel.id}: totalWidth = ${this.totalWidth}`);
     }
-    carousel.style.scrollBehavior = "smooth";
-  }, 100);
-
-  setTimeout(startAutoplay, 1000);
+    
+    setupInitialPosition() {
+        this.carousel.style.scrollBehavior = 'auto';
+        this.carousel.scrollLeft = this.totalWidth;
+        this.carousel.style.cursor = 'grab';
+        
+        setTimeout(() => {
+            this.carousel.style.scrollBehavior = 'smooth';
+        }, 50);
+    }
+    
+    setupEventListeners() {
+        // Button events - arrow function istifadə edirik ki, 'this' düzgün işləsin
+        this.next.addEventListener("click", (e) => {
+            e.preventDefault();
+            this.handleNextClick();
+        });
+        
+        this.prev.addEventListener("click", (e) => {
+            e.preventDefault();
+            this.handlePrevClick();
+        });
+        
+        // Drag events
+        this.carousel.addEventListener('mousedown', (e) => this.startDrag(e));
+        this.carousel.addEventListener('touchstart', (e) => this.startDrag(e), { passive: false });
+        
+        this.carousel.addEventListener('mousemove', (e) => this.drag(e));
+        this.carousel.addEventListener('touchmove', (e) => this.drag(e), { passive: false });
+        
+        this.carousel.addEventListener('mouseup', () => this.endDrag());
+        this.carousel.addEventListener('mouseleave', () => this.endDrag());
+        this.carousel.addEventListener('touchend', () => this.endDrag());
+        
+        // Hover events
+        this.carousel.addEventListener('mouseenter', () => {
+            this.stopAutoplay();
+        });
+        
+        this.carousel.addEventListener('mouseleave', () => {
+            if (!this.isDragging) {
+                setTimeout(() => this.startAutoplay(), 500);
+            }
+        });
+        
+        // Scroll event - debounced
+        this.carousel.addEventListener('scroll', () => {
+            this.handleScroll();
+        });
+    }
+    
+    handleNextClick() {
+        this.stopAutoplay();
+        this.moveNext();
+        setTimeout(() => this.startAutoplay(), 1500);
+    }
+    
+    handlePrevClick() {
+        this.stopAutoplay();
+        this.movePrev();
+        setTimeout(() => this.startAutoplay(), 1500);
+    }
+    
+    handleScroll() {
+        if (this.scrollTimeout) {
+            clearTimeout(this.scrollTimeout);
+        }
+        
+        this.scrollTimeout = setTimeout(() => {
+            if (!this.isDragging && !this.isScrolling) {
+                this.checkPosition();
+            }
+        }, 100);
+    }
+    
+    startAutoplay() {
+        if (!this.isInitialized) return;
+        
+        this.stopAutoplay(); // Əvvəlki timer-i təmizləyirik
+        
+        this.autoplayTimer = setInterval(() => {
+            if (!this.isScrolling && !this.isDragging && !document.hidden) {
+                this.moveNext();
+            }
+        }, this.autoplayDelay);
+    }
+    
+    stopAutoplay() {
+        if (this.autoplayTimer) {
+            clearInterval(this.autoplayTimer);
+            this.autoplayTimer = null;
+        }
+    }
+    
+    checkPosition() {
+        if (!this.totalWidth) {
+            this.calculateDimensions();
+        }
+        
+        const currentScroll = this.carousel.scrollLeft;
+        const threshold = 50; // Həssaslıq üçün threshold
+        
+        if (currentScroll >= (this.totalWidth * 2) - threshold) {
+            // Sona çatdıq, əvvələ qayıdırıq
+            this.carousel.style.scrollBehavior = 'auto';
+            this.carousel.scrollLeft = this.totalWidth;
+            setTimeout(() => {
+                this.carousel.style.scrollBehavior = 'smooth';
+            }, 10);
+        } else if (currentScroll <= threshold) {
+            // Əvvələ çatdıq, sona keçirik
+            this.carousel.style.scrollBehavior = 'auto';
+            this.carousel.scrollLeft = this.totalWidth;
+            setTimeout(() => {
+                this.carousel.style.scrollBehavior = 'smooth';
+            }, 10);
+        }
+    }
+    
+    moveNext() {
+        if (this.isScrolling || !this.isInitialized) return;
+        
+        this.isScrolling = true;
+        this.carousel.style.scrollBehavior = 'smooth';
+        
+        // Scroll miqdarını dəqiq hesablayırıq
+        this.carousel.scrollBy({ 
+            left: this.scrollAmount,
+            behavior: 'smooth'
+        });
+        
+        setTimeout(() => {
+            this.checkPosition();
+            this.isScrolling = false;
+        }, this.transitionDuration);
+    }
+    
+    movePrev() {
+        if (this.isScrolling || !this.isInitialized) return;
+        
+        this.isScrolling = true;
+        this.carousel.style.scrollBehavior = 'smooth';
+        
+        this.carousel.scrollBy({ 
+            left: -this.scrollAmount,
+            behavior: 'smooth'
+        });
+        
+        setTimeout(() => {
+            this.checkPosition();
+            this.isScrolling = false;
+        }, this.transitionDuration);
+    }
+    
+    startDrag(e) {
+        this.isDragging = true;
+        this.stopAutoplay();
+        this.carousel.style.scrollBehavior = 'auto';
+        
+        this.startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+        this.scrollLeft = this.carousel.scrollLeft;
+        
+        this.carousel.style.cursor = 'grabbing';
+        e.preventDefault();
+    }
+    
+    drag(e) {
+        if (!this.isDragging) return;
+        e.preventDefault();
+        
+        const x = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+        const walk = (x - this.startX) * 1.2; // Drag sürətini azaldırıq
+        this.carousel.scrollLeft = this.scrollLeft - walk;
+    }
+    
+    endDrag() {
+        if (!this.isDragging) return;
+        
+        this.isDragging = false;
+        this.carousel.style.cursor = 'grab';
+        this.carousel.style.scrollBehavior = 'smooth';
+        
+        setTimeout(() => {
+            this.checkPosition();
+        }, 100);
+        
+        setTimeout(() => this.startAutoplay(), 2000);
+    }
+    
+    destroy() {
+        this.stopAutoplay();
+        if (this.scrollTimeout) {
+            clearTimeout(this.scrollTimeout);
+        }
+        this.isInitialized = false;
+    }
 }
 
-carousel.addEventListener("mouseenter", stopAutoplay);
-carousel.addEventListener("mouseleave", () => {
-  if (!isDragging) {
-    setTimeout(startAutoplay, 500);
-  }
-});
+// Global carousel instances
+let carouselInstances = {};
 
-document.addEventListener("visibilitychange", () => {
-  if (document.hidden) {
-    stopAutoplay();
-  } else {
-    setTimeout(startAutoplay, 1000);
-  }
-});
+// Carousel yaratma funksiyası
+function createCarousel(id, config) {
+    if (carouselInstances[id]) {
+        carouselInstances[id].destroy();
+    }
+    
+    carouselInstances[id] = new CarouselController(config);
+    return carouselInstances[id];
+}
 
-carousel.style.cursor = "grab";
+// Səhifə yüklənəndə carousel-ları yaradırıq
+function initializeCarousels() {
+    // Partner logos carousel (brochure)
+    if (document.getElementById('carousel')) {
+        createCarousel('partner', {
+            carouselId: 'carousel',
+            contentId: 'content',
+            nextId: 'next',
+            prevId: 'prev',
+            gap: 115,
+            itemWidth: 110,
+            autoplayDelay: 3000, // Bir az yavaşladırıq
+            transitionDuration: 600
+        });
+    }
+    
+    // Car logos carousel (about page)
+    if (document.getElementById('carousel2')) {
+        createCarousel('car', {
+            carouselId: 'carousel2',
+            contentId: 'content2',
+            nextId: 'next2',
+            prevId: 'prev2',
+            gap: 115,
+            itemWidth: 110,
+            autoplayDelay: 3200, // Fərqli sürət
+            transitionDuration: 600
+        });
+    }
+}
 
-startAutoplay();
-
-let ticking = false;
-carousel.addEventListener("scroll", () => {
-  if (!ticking && !isDragging && !isScrolling) {
-    requestAnimationFrame(() => {
-      if (carousel.scrollLeft >= content.scrollWidth) {
-        carousel.style.scrollBehavior = "auto";
-        carousel.scrollLeft = 0;
-        carousel.style.scrollBehavior = "smooth";
-      }
-      ticking = false;
+// Page visibility API
+document.addEventListener('visibilitychange', () => {
+    Object.values(carouselInstances).forEach(instance => {
+        if (document.hidden) {
+            instance.stopAutoplay();
+        } else {
+            setTimeout(() => instance.startAutoplay(), 1000);
+        }
     });
-    ticking = true;
-  }
+});
+
+// DOM hazır olduqda başlat
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(initializeCarousels, 300);
+    });
+} else {
+    setTimeout(initializeCarousels, 300);
+}
+
+// Window load event - əmin olmaq üçün
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        // Əgər carousel-lar yaradılmayıbsa, yenidən cəhd et
+        if (Object.keys(carouselInstances).length === 0) {
+            initializeCarousels();
+        }
+    }, 500);
 });

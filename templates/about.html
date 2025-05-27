@@ -83,7 +83,7 @@
   </div>
 
   <!-- Quality Tab -->
-  <div class="tab-content" id="quality">
+  <div class="tab-content active" id="quality">
     <!-- Breadcrumb -->
     <div class="breadcrumb container">
       <a href="/">Home page</a>| <span>About us</span>|
@@ -160,7 +160,7 @@
   </div>
 
   <!-- Production Tab -->
-  <div class="tab-content" id="production">
+  <div class="tab-content active" id="production">
     <!-- Breadcrumb -->
 
     <div class="breadcrumb container">
@@ -206,7 +206,7 @@
   </div>
 
   <!-- Documents & Certifications Tab -->
-  <div class="tab-content " id="documents">
+  <div class="tab-content active " id="documents">
     <!-- Breadcrumb -->
     <div class="breadcrumb container">
       <a href="/">Home page</a>| <span>About Aminol</span>|
@@ -226,16 +226,16 @@
       </div>
         <div class="hidden-description">{{ documents_cert.description }}</div>
 
-      <div class="logos-section">
-        <div id="wrapper">
-          <div id="carousel">
-            <div id="content">
+      <div class=" logos-section">
+        <div id="wrapper2">
+          <div id="carousel2">
+            <div id="content2">
               {% for car in car_logos %}
               <img src="{{ car.logo.url }}" class="item" alt="Car Logo" />
             {% endfor %}
             </div>
           </div>
-          <button id="prev">
+          <button id="prev2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -248,7 +248,7 @@
               />
             </svg>
           </button>
-          <button id="next">
+          <button id="next2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -264,7 +264,6 @@
         </div>
       </div>
 
-
       <div class="certifications-logos">
         <img src="{% static '/images/certifications-logos-2.png' %}" alt="" />
       </div>
@@ -273,7 +272,7 @@
   </div>
 
   <!-- Sustainability Tab -->
-  <div class="tab-content active" id="sustainability">
+  <div class="tab-content " id="sustainability">
     <!-- Breadcrumb -->
 
     <div class="breadcrumb container">
@@ -343,5 +342,8 @@
 </div>
 
 
-{% include 'components/gallery.html' %} {% include 'components/brochure.html' %}
+{% include 'components/gallery.html' %} 
+
+{% include 'components/brochure.html' %}
 {% endblock %}
+
