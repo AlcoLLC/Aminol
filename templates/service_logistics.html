@@ -1,4 +1,4 @@
-{% extends 'base.html' %} 
+sdddddddd aqaqaqaqxc xcxcvghfghrtyghfytrghfgyrt{% extends 'base.html' %} 
 {% load static %} 
 {% block content %}
 
@@ -13,16 +13,29 @@
     <p>Aminol logistics</p>
   </div>
 
-  <div class="container map-section">
-        <div class="map-container">
-            <div class="world-map" id="worldMap"></div>
-            <div class="tooltip" id="tooltip"></div>
-        </div>
-        
-        <div class="country-list" style="display: none;">
-            <div class="countries-grid" id="countriesGrid"></div>
-        </div>
+ <div>
+    <div class="page-wrapper">
+      <main class="main-content">
+        <section id="preview" class="preview section-margin-b-m">
+          <div class="preview__content">
+            <div id="map-container">
+              
+            </div>
+            <link href="{% static 'assets/css/map.css' %}" rel="stylesheet" />
+            <script src="{% static 'assets/js/raphael.min.js' %}"></script>
+            <script src="{% static 'assets/js/settings.js' %}"></script>
+            <script src="{% static 'assets/js/paths.js' %}"></script>
+            <script src="{% static 'assets/js/map.js' %}"></script>
+            <script>
+              map_cfg.mapWidth = 0;
+              var map = new FlaMap(map_cfg);
+              map.drawOnDomReady("map-container");
+            </script>
+          </div>
+        </section>
+      </main>
     </div>
+  </div>
 
   <div class="shared-images-section">
     <div class="container">
