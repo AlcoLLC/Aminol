@@ -84,6 +84,7 @@
   .services-offer-section .text-container p {
     font-size: 14px;
     text-align: center !important;
+    line-height: 14px;
   }
 
   .services-offer-section .services-offer-image {
@@ -91,6 +92,11 @@
     width: 90%;
     max-height: 220px;
   }
+
+.services-offer-section .text-container {
+  width:90% ;
+  margin: 0 auto;
+}
 }
 
 @media (max-width: 520px) {
@@ -116,7 +122,9 @@
 
   .services-offer-section .text-container p {
     font-size: 12px;
+    text-align: justify;
   }
+  
 }
 
 /* Aminol Contact Form */
