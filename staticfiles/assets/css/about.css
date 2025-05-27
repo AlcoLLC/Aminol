@@ -268,7 +268,6 @@
   }
 }
 
-/* Very small mobile - 320px və altında */
 @media (max-width: 320px) {
   .guarantee-section .row-item {
     width: calc(50% - 6px);
@@ -727,8 +726,10 @@
   background-color: #ec1c31;
 }
 
+
+
 .markets-comprehensive-section {
-  margin: 100px auto;
+  margin: 80px auto;
 }
 
 .markets-comprehensive-section .section-grid {
@@ -741,4 +742,63 @@
   gap: 15px;
 }
 
+.markets-comprehensive-section .section-grid .grid-item {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: #28315e;
+  padding: 12px;
+  background-color: #f6f9ff;
+  border-radius: 90px;
+}
 
+
+@media (max-width: 1024px) {
+  .markets-comprehensive-section {
+  padding: 10px;
+  margin: 60px auto;
+}
+
+.markets-comprehensive-section .section-content{
+  padding: 0 20px;
+}
+  .markets-comprehensive-section .section-grid {
+    gap: 12px;
+  }
+
+  .markets-comprehensive-section .section-grid .grid-item {
+  font-size: 14px;
+  padding: 10px;
+
+}
+
+}
+
+@media (max-width: 800px) {
+  .markets-comprehensive-section .section-grid {
+    grid-template-columns: repeat(3, 1fr);
+      margin: 35px auto;
+  }
+    .markets-comprehensive-section {
+  margin: 50px auto;
+}
+
+    .markets-comprehensive-section .section-grid .grid-item {
+  font-size: 12px;
+}
+}
+
+
+@media (max-width: 600px) {
+  .markets-comprehensive-section .section-grid {
+    grid-template-columns: repeat(2, 1fr);
+      margin: 25px auto;
+  }
+
+    .markets-comprehensive-section .section-grid .grid-item {
+  font-size: 12px;
+}
+   .markets-comprehensive-section {
+  margin: 40px auto;
+}
+}

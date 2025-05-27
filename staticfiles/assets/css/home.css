@@ -7,6 +7,7 @@
   text-decoration: none;
   list-style: none;
   font-family: "Poppins", sans-serif;
+  /* border: 1px solid #d40108; */
 
 }
 
@@ -1321,11 +1322,11 @@
 
 /* LATEST NEWS  */
 .news-section {
-  margin: 100px auto;
+  margin: 50px auto;
 }
 .latest-news {
-  padding: 150px 0 60px 0;
-  margin-top: 30px auto;
+  padding: 150px 0 0 0;
+  margin: 30px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1341,6 +1342,7 @@
 
 .latest-news .news-cards .news-card {
   position: relative;
+  margin: 15px 0;
   padding: 15px 10px;
   height: 300px;
   width: 100%;
@@ -1351,7 +1353,6 @@
   background-color: #012762;
   transition: all 0.5s ease;
 }
-
 
 
 .latest-news .news-card img {
@@ -1411,6 +1412,7 @@
   line-height: 20px;
 }
 
+
 .latest-news .news-cards .news-card p {
   font-weight: 300;
   line-height: 18px;
@@ -1446,6 +1448,10 @@
 .latest-news .news-card img {
   bottom: 60%;
   left: 9px;
+}
+
+.latest-news {
+  padding: 100px 0 0 0;
 }
 
 }
@@ -1486,6 +1492,9 @@
   .latest-news .news-content {
     padding: 10px 12px;
   }
+  .latest-news {
+  padding: 10px 0 0 0;
+}
 }
 
 
@@ -1576,6 +1585,10 @@
     height: 38vh;
   }
 
+  .gallery-section .swiper {
+  margin-top: 40px;
+}
+
   .gallery-section .swiper-button-next,
   .gallery-section .swiper-button-prev {
     width: 33px;
@@ -1603,6 +1616,9 @@
   .gallery-section .swiper {
     height: 26vh !important;
   }
+   .gallery-section .swiper {
+  margin-top: 30px;
+}
 
   .gallery-section .swiper-button-next,
   .gallery-section .swiper-button-prev {
@@ -1801,6 +1817,10 @@
     width: 90px;
     max-height: 60px;
   }
+
+  .brochure {
+  margin-top: -50px;
+}
 }
 
 @media (max-width: 768px) {
@@ -1828,6 +1848,9 @@
     width: 80px;
     max-height: 50px;
   }
+  .brochure {
+  margin-top: -30px;
+}
 }
 
 @media (max-width: 576px) {
@@ -1846,6 +1869,10 @@
     width: 65px;
     max-height: 40px;
   }
+
+  .brochure {
+  margin-top: -20px;
+}
 }
 
 @media (max-width: 480px) {
@@ -1875,6 +1902,7 @@
 
 @media (max-width: 770px) {
  .partners-section {
+  margin-top: 30px;
       height: 600px;
   }
    .partners-section::before {

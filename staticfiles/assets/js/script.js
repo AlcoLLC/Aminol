@@ -1,9 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-
     const dropdowns = document.querySelectorAll('.dropdown');
     const dropdownBackground = document.querySelector('.dropdown-background');
-
 
     dropdowns.forEach(dropdown => {
         dropdown.addEventListener('mouseenter', function () {
