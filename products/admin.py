@@ -59,7 +59,7 @@ class ProductAdmin(admin.ModelAdmin):
     
     fieldsets = (
         ('Basic Information', {
-            'fields': ('title', 'slug', 'product_id', 'description', 'image')
+            'fields': ('title', 'slug', 'product_id', 'description', 'image', 'features_benefits', 'application', 'in_home')
         }),
         ('Specifications', {
             'fields': ('api', 'ilsac', 'acea', 'jaso', 'oem_sertification', 'recommendations')
