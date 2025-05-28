@@ -1,4 +1,7 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %} {% load static %}
+{% load i18n %}
+
+{% block content %}
 {% load custom_filters %}
 
 {% include 'components/navbar_blur.html' %}
@@ -20,7 +23,7 @@
 
 <div class="about-content">
   <!-- About Aminol Tab -->
-  <div class="tab-content active" id="about-aminol">
+  <div class="tab-content" id="about-aminol">
     <!-- Breadcrumb -->
     <div class="breadcrumb container">
       <a href="/">{% trans "Home page" %}</a>|
@@ -83,7 +86,7 @@
   </div>
 
   <!-- Quality Tab -->
-  <div class="tab-content active" id="quality">
+  <div class="tab-content " id="quality">
     <!-- Breadcrumb -->
     <div class="breadcrumb container">
       <a href="/">{% trans "Home page" %}</a>| <span>{% trans "About Us" %}</span>|
@@ -160,7 +163,7 @@
   </div>
 
   <!-- Production Tab -->
-  <div class="tab-content active" id="production">
+  <div class="tab-content " id="production">
     <!-- Breadcrumb -->
 
     <div class="breadcrumb container">
@@ -206,7 +209,7 @@
   </div>
 
   <!-- Documents & Certifications Tab -->
-  <div class="tab-content active " id="documents">
+  <div class="tab-content  " id="documents">
     <!-- Breadcrumb -->
     <div class="breadcrumb container">
       <a href="/">{% trans "Home page" %}</a>| <span>{% trans "About Aminol" %}</span>|
