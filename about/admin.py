@@ -7,6 +7,10 @@ from .models import (
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 
+
+
+
+
 class AboutSectionContentInline(TranslationTabularInline):
     model = AboutSectionContent
     extra = 1
