@@ -41,94 +41,98 @@
    <button class="filter-mobile" id="filterMobileBtn">Filter</button>
   <div class="products-container">
     <div class="filter-container">
-      <form method="GET" id="filterForm">
-        <div class="search-bar">
-          <input type="text" name="search" placeholder="Search" class="search-input" value="{{ search_query }}" />
-          <button type="submit" class="search-button">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
-        </div>
-
-        <!-- Product Group Filter -->
-        <div class="filter-section">
-          <div class="filter-header">
-            <div class="filter-title">{% trans "Product group" %}</div>
-            <div class="filter-icon">
-              <i class="fa-solid fa-chevron-down"></i>
-            </div>
-          </div>
-          <div class="filter-content">
-            {% for group in product_groups %}
-            <label class="checkbox-group">
-              <input type="checkbox" name="product_group" value="{{ group.slug }}"
-                     {% if group.slug in selected_product_groups %}checked{% endif %} />
-              <span class="checkbox-label {% if group.slug in selected_product_groups %}selected-item{% endif %}">{{ group.title }}</span>
-            </label>
-            {% endfor %}
-          </div>
-        </div>
-
-        <!-- Segments Filter -->
-        <div class="filter-section">
-          <div class="filter-header">
-            <div class="filter-title">{% trans "Segments" %}</div>
-            <div class="filter-icon">
-              <i class="fa-solid fa-chevron-down"></i>
-            </div>
-          </div>
-          <div class="filter-content">
-            {% for segment in segments %}
-            <label class="checkbox-group">
-              <input type="checkbox" name="segments" value="{{ segment.slug }}"
-                     {% if segment.slug in selected_segments %}checked{% endif %} />
-              <span class="checkbox-label {% if segment.slug in selected_segments %}selected-item{% endif %}">{{ segment.title }}</span>
-            </label>
-            {% endfor %}
-          </div>
-        </div>
-
-        <!-- Oil Type Filter -->
-        <div class="filter-section">
-          <div class="filter-header">
-            <div class="filter-title">{% trans "Oil Type" %}</div>
-            <div class="filter-icon">
-              <i class="fa-solid fa-chevron-down"></i>
-            </div>
-          </div>
-          <div class="filter-content">
-            {% for oil_type in oil_types %}
-            <label class="checkbox-group">
-              <input type="checkbox" name="oil_type" value="{{ oil_type.slug }}"
-                     {% if oil_type.slug in selected_oil_types %}checked{% endif %} />
-              <span class="checkbox-label {% if oil_type.slug in selected_oil_types %}selected-item{% endif %}">{{ oil_type.title }}</span>
-            </label>
-            {% endfor %}
-          </div>
-        </div>
-
-        <!-- Viscosity Filter -->
-        <div class="filter-section">
-          <div class="filter-header">
-            <div class="filter-title">{% trans "Viscosity" %}</div>
-            <div class="filter-icon">
-              <i class="fa-solid fa-chevron-down"></i>
-            </div>
-          </div>
-          <div class="filter-content">
-            {% for viscosity in viscosity_options %}
-            <label class="checkbox-group">
-              <input type="checkbox" name="viscosity" value="{{ viscosity.slug }}"
-                     {% if viscosity.slug in selected_viscosity %}checked{% endif %} />
-              <span class="checkbox-label {% if viscosity.slug in selected_viscosity %}selected-item{% endif %}">{{ viscosity.title }}</span>
-            </label>
-            {% endfor %}
-          </div>
-        </div>
-
-        <!-- Hidden input to maintain page number -->
-        <input type="hidden" name="page" value="1">
-      </form>
+  <form method="GET" id="filterForm">
+    <div class="search-bar">
+      <input type="text" name="search" placeholder="Search" class="search-input" value="{{ search_query }}" />
+      <button type="button" class="search-button">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
     </div>
+
+    <!-- Product Group Filter -->
+    <div class="filter-section">
+      <div class="filter-header">
+        <div class="filter-title">{% trans "Product group" %}</div>
+        <div class="filter-icon">
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+      </div>
+      <div class="filter-content">
+        {% for group in product_groups %}
+        <label class="checkbox-group">
+          <input type="checkbox" name="product_group" value="{{ group.slug }}"
+                 {% if group.slug in selected_product_groups %}checked{% endif %} />
+          <span class="checkbox-label {% if group.slug in selected_product_groups %}selected-item{% endif %}">{{ group.title }}</span>
+        </label>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Segments Filter -->
+    <div class="filter-section">
+      <div class="filter-header">
+        <div class="filter-title">{% trans "Segments" %}</div>
+        <div class="filter-icon">
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+      </div>
+      <div class="filter-content">
+        {% for segment in segments %}
+        <label class="checkbox-group">
+          <input type="checkbox" name="segments" value="{{ segment.slug }}"
+                 {% if segment.slug in selected_segments %}checked{% endif %} />
+          <span class="checkbox-label {% if segment.slug in selected_segments %}selected-item{% endif %}">{{ segment.title }}</span>
+        </label>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Oil Type Filter -->
+    <div class="filter-section">
+      <div class="filter-header">
+        <div class="filter-title">{% trans "Oil Type" %}</div>
+        <div class="filter-icon">
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+      </div>
+      <div class="filter-content">
+        {% for oil_type in oil_types %}
+        <label class="checkbox-group">
+          <input type="checkbox" name="oil_type" value="{{ oil_type.slug }}"
+                 {% if oil_type.slug in selected_oil_types %}checked{% endif %} />
+          <span class="checkbox-label {% if oil_type.slug in selected_oil_types %}selected-item{% endif %}">{{ oil_type.title }}</span>
+        </label>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Viscosity Filter -->
+    <div class="filter-section">
+      <div class="filter-header">
+        <div class="filter-title">{% trans "Viscosity" %}</div>
+        <div class="filter-icon">
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+      </div>
+      <div class="filter-content">
+        {% for viscosity in viscosity_options %}
+        <label class="checkbox-group">
+          <input type="checkbox" name="viscosity" value="{{ viscosity.slug }}"
+                 {% if viscosity.slug in selected_viscosity %}checked{% endif %} />
+          <span class="checkbox-label {% if viscosity.slug in selected_viscosity %}selected-item{% endif %}">{{ viscosity.title }}</span>
+        </label>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Hidden input to maintain page number -->
+    <input type="hidden" name="page" value="1">
+  </form>
+
+  <div class="filter-footer">
+    <button type="button" class="filter-results-button" id="filterResultsBtn">{% trans "View Result" %}</button>
+  </div>
+</div>
     <div class="products-list">
       {% for product in products %}
       <div class="product-card">
