@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-28 07:58+0400\n"
+"POT-Creation-Date: 2025-05-28 17:53+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,34 +18,32 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\templates\about.html:13 .\templates\about.html:167
-#: .\templates\about.html:212 .\templates\about.html:279
+#: .\templates\about.html:16 .\templates\about.html:170
+#: .\templates\about.html:215 .\templates\about.html:282
 #, fuzzy
 #| msgid "About us"
 msgid "About Aminol"
 msgstr "Haqqımızda"
 
-#: .\templates\about.html:14 .\templates\about.html:90
+#: .\templates\about.html:17 .\templates\about.html:93
 msgid "Quality"
 msgstr "Keyfiyyət"
 
-#: .\templates\about.html:15 .\templates\about.html:168
-#, fuzzy
-#| msgid "Products"
+#: .\templates\about.html:18 .\templates\about.html:171
 msgid "Production"
 msgstr "İstehsal"
 
-#: .\templates\about.html:16 .\templates\about.html:213
+#: .\templates\about.html:19 .\templates\about.html:216
 msgid "Documents & Certifications"
 msgstr "Sənədlər və Sertifikatlar"
 
-#: .\templates\about.html:17 .\templates\about.html:280
+#: .\templates\about.html:20 .\templates\about.html:283
 msgid "Sustainability"
 msgstr "Davamlılıq"
 
-#: .\templates\about.html:26 .\templates\about.html:89
-#: .\templates\about.html:167 .\templates\about.html:212
-#: .\templates\about.html:279 .\templates\contact.html:20
+#: .\templates\about.html:29 .\templates\about.html:92
+#: .\templates\about.html:170 .\templates\about.html:215
+#: .\templates\about.html:282 .\templates\contact.html:20
 #: .\templates\markets_automotive.html:20
 #: .\templates\markets_industrial.html:20 .\templates\markets_shipping.html:21
 #: .\templates\news.html:13 .\templates\news_detail.html:14
@@ -54,52 +52,51 @@ msgstr "Davamlılıq"
 msgid "Home page"
 msgstr "Ana Səhifə"
 
-#: .\templates\about.html:27 .\templates\components\navbar.html:25
+#: .\templates\about.html:30 .\templates\components\navbar.html:25
 #: .\templates\components\navbar.html:76
-#: .\templates\components\navbar_blur.html:25
-#: .\templates\components\navbar_blur.html:76
-#: .\templates\components\navbar_dark.html:25
-#: .\templates\components\navbar_dark.html:76
+#: .\templates\components\navbar_blur.html:24
+#: .\templates\components\navbar_blur.html:75
+#: .\templates\components\navbar_dark.html:24
+#: .\templates\components\navbar_dark.html:75
 msgid "About us"
 msgstr "Haqqımızda"
 
-#: .\templates\about.html:50
+#: .\templates\about.html:53
 msgid "ABOUT AMINOL"
 msgstr "AMİNOL HAQQINDA"
 
-#: .\templates\about.html:89 .\templates\components\footer.html:16
+#: .\templates\about.html:92 .\templates\components\footer.html:16
 #, fuzzy
 #| msgid "About us"
 msgid "About Us"
 msgstr "Haqqımızda"
 
-#: .\templates\about.html:94
+#: .\templates\about.html:97
 msgid "QUALITY"
 msgstr "KEYFİYYƏT"
 
-#: .\templates\about.html:172
+#: .\templates\about.html:175
 msgid "PRODUCTION"
 msgstr "İSTEHSAL"
 
-#: .\templates\about.html:217
+#: .\templates\about.html:220
 msgid "DOCUMENTS AND CERTIFICATION"
 msgstr "SƏNƏDLƏR VƏ SERTİFİKATLAR"
 
-#: .\templates\about.html:284
+#: .\templates\about.html:287
 msgid "SUSTAINABILITY"
 msgstr "DAVAMLILIQ"
-
 
 #: .\templates\brand_portal.html:13 .\templates\faq.html:11
 msgid "Home Page"
 msgstr "Ana Səhifə"
 
 #: .\templates\brand_portal.html:13 .\templates\brand_portal.html:19
-#: .\templates\components\navbar.html:15 .\templates\components\navbar.html:70
-#: .\templates\components\navbar_blur.html:15
-#: .\templates\components\navbar_blur.html:70
-#: .\templates\components\navbar_dark.html:15
-#: .\templates\components\navbar_dark.html:70
+#: .\templates\components\navbar.html:14 .\templates\components\navbar.html:70
+#: .\templates\components\navbar_blur.html:14
+#: .\templates\components\navbar_blur.html:69
+#: .\templates\components\navbar_dark.html:14
+#: .\templates\components\navbar_dark.html:69
 msgid "Brand Portal"
 msgstr "Brend Portal"
 
@@ -132,6 +129,7 @@ msgstr "Sualınızı Whatsapp-da soruşun"
 #| msgid "Contact"
 msgid "Contact form"
 msgstr "Əlaqə"
+
 #: .\templates\components\contactcomponent.html:7
 msgid "Do you need a specific solution or are you interested in a partnership?"
 msgstr "Xüsusi bir həllə ehtiyacınız var, yoxsa əməkdaşlıq üçün maraqlısınız?"
@@ -150,19 +148,19 @@ msgstr "Performans üçün Mühəndislik, Qorunma üçün Güvən."
 
 #: .\templates\components\footer.html:17 .\templates\components\navbar.html:26
 #: .\templates\components\navbar.html:77
-#: .\templates\components\navbar_blur.html:26
-#: .\templates\components\navbar_blur.html:77
-#: .\templates\components\navbar_dark.html:26
-#: .\templates\components\navbar_dark.html:77
+#: .\templates\components\navbar_blur.html:25
+#: .\templates\components\navbar_blur.html:76
+#: .\templates\components\navbar_dark.html:25
+#: .\templates\components\navbar_dark.html:76
 msgid "Products"
 msgstr "Məhsullar"
 
 #: .\templates\components\footer.html:20 .\templates\components\navbar.html:36
 #: .\templates\components\navbar.html:90
-#: .\templates\components\navbar_blur.html:36
-#: .\templates\components\navbar_blur.html:90
-#: .\templates\components\navbar_dark.html:36
-#: .\templates\components\navbar_dark.html:90
+#: .\templates\components\navbar_blur.html:35
+#: .\templates\components\navbar_blur.html:89
+#: .\templates\components\navbar_dark.html:35
+#: .\templates\components\navbar_dark.html:89
 #: .\templates\service_aminol_dealer.html:15
 #: .\templates\service_laboratory.html:15 .\templates\service_logistics.html:14
 msgid "Services"
@@ -172,22 +170,22 @@ msgstr "Xidmətlər"
 msgid "FAQ"
 msgstr "FAQ"
 
-#: .\templates\components\footer.html:24 .\templates\components\navbar.html:14
+#: .\templates\components\footer.html:24 .\templates\components\navbar.html:13
 #: .\templates\components\navbar.html:69
-#: .\templates\components\navbar_blur.html:14
-#: .\templates\components\navbar_blur.html:69
-#: .\templates\components\navbar_dark.html:14
-#: .\templates\components\navbar_dark.html:69 .\templates\news.html:13
+#: .\templates\components\navbar_blur.html:13
+#: .\templates\components\navbar_blur.html:68
+#: .\templates\components\navbar_dark.html:13
+#: .\templates\components\navbar_dark.html:68 .\templates\news.html:13
 #: .\templates\news.html:18 .\templates\news_detail.html:14
 msgid "News"
 msgstr "Xəbərlər"
 
-#: .\templates\components\footer.html:25 .\templates\components\navbar.html:16
+#: .\templates\components\footer.html:25 .\templates\components\navbar.html:15
 #: .\templates\components\navbar.html:71
-#: .\templates\components\navbar_blur.html:16
-#: .\templates\components\navbar_blur.html:71
-#: .\templates\components\navbar_dark.html:16
-#: .\templates\components\navbar_dark.html:71 .\templates\contact.html:12
+#: .\templates\components\navbar_blur.html:15
+#: .\templates\components\navbar_blur.html:70
+#: .\templates\components\navbar_dark.html:15
+#: .\templates\components\navbar_dark.html:70 .\templates\contact.html:12
 #: .\templates\contact.html:21 .\templates\contact.html:70
 msgid "Contact"
 msgstr "Əlaqə"
@@ -213,73 +211,72 @@ msgid "GALLERY"
 msgstr "Qalereya"
 
 #: .\templates\components\navbar.html:28 .\templates\components\navbar.html:80
-#: .\templates\components\navbar_blur.html:28
-#: .\templates\components\navbar_blur.html:80
-#: .\templates\components\navbar_dark.html:28
-#: .\templates\components\navbar_dark.html:80
+#: .\templates\components\navbar_blur.html:27
+#: .\templates\components\navbar_blur.html:79
+#: .\templates\components\navbar_dark.html:27
+#: .\templates\components\navbar_dark.html:79
 #: .\templates\markets_automotive.html:20
 #: .\templates\markets_industrial.html:20 .\templates\markets_shipping.html:21
 msgid "Markets"
 msgstr "Fəaliyyət sahələri"
 
 #: .\templates\components\navbar.html:30 .\templates\components\navbar.html:83
-#: .\templates\components\navbar_blur.html:30
-#: .\templates\components\navbar_blur.html:83
-#: .\templates\components\navbar_dark.html:30
-#: .\templates\components\navbar_dark.html:83
+#: .\templates\components\navbar_blur.html:29
+#: .\templates\components\navbar_blur.html:82
+#: .\templates\components\navbar_dark.html:29
+#: .\templates\components\navbar_dark.html:82
 #: .\templates\markets_automotive.html:12
 #: .\templates\markets_automotive.html:21
 msgid "Automotive"
 msgstr "Avtomobil"
 
 #: .\templates\components\navbar.html:31 .\templates\components\navbar.html:84
-#: .\templates\components\navbar_blur.html:31
-#: .\templates\components\navbar_blur.html:84
-#: .\templates\components\navbar_dark.html:31
-#: .\templates\components\navbar_dark.html:84
+#: .\templates\components\navbar_blur.html:30
+#: .\templates\components\navbar_blur.html:83
+#: .\templates\components\navbar_dark.html:30
+#: .\templates\components\navbar_dark.html:83
 #: .\templates\markets_industrial.html:12
 #: .\templates\markets_industrial.html:21
 msgid "Industrial"
 msgstr "Sənaye"
 
 #: .\templates\components\navbar.html:32 .\templates\components\navbar.html:85
-#: .\templates\components\navbar_blur.html:32
-#: .\templates\components\navbar_blur.html:85
-#: .\templates\components\navbar_dark.html:32
-#: .\templates\components\navbar_dark.html:85
+#: .\templates\components\navbar_blur.html:31
+#: .\templates\components\navbar_blur.html:84
+#: .\templates\components\navbar_dark.html:31
+#: .\templates\components\navbar_dark.html:84
 #: .\templates\markets_shipping.html:12 .\templates\markets_shipping.html:22
 msgid "Shipping & Offshore"
 msgstr "Gəmiçilik & Dəniz"
 
 #: .\templates\components\navbar.html:38 .\templates\components\navbar.html:93
-#: .\templates\components\navbar_blur.html:38
-#: .\templates\components\navbar_blur.html:93
-#: .\templates\components\navbar_dark.html:38
-#: .\templates\components\navbar_dark.html:93
+#: .\templates\components\navbar_blur.html:37
+#: .\templates\components\navbar_blur.html:92
+#: .\templates\components\navbar_dark.html:37
+#: .\templates\components\navbar_dark.html:92
 #: .\templates\service_aminol_dealer.html:16
 msgid "Aminol official dealer"
 msgstr "Aminol rəsmi dileri"
 
 #: .\templates\components\navbar.html:39 .\templates\components\navbar.html:94
-#: .\templates\components\navbar_blur.html:39
-#: .\templates\components\navbar_blur.html:94
-#: .\templates\components\navbar_dark.html:39
-#: .\templates\components\navbar_dark.html:94
+#: .\templates\components\navbar_blur.html:38
+#: .\templates\components\navbar_blur.html:93
+#: .\templates\components\navbar_dark.html:38
+#: .\templates\components\navbar_dark.html:93
 msgid "Aminol Laboratory"
 msgstr "Aminol Laboratoriyası"
 
 #: .\templates\components\navbar.html:40 .\templates\components\navbar.html:95
-#: .\templates\components\navbar_blur.html:40
-#: .\templates\components\navbar_blur.html:95
-#: .\templates\components\navbar_dark.html:40
-#: .\templates\components\navbar_dark.html:95
+#: .\templates\components\navbar_blur.html:39
+#: .\templates\components\navbar_blur.html:94
+#: .\templates\components\navbar_dark.html:39
+#: .\templates\components\navbar_dark.html:94
 msgid "Aminol Logistics"
 msgstr "Aminol Logistika"
 
 #: .\templates\contact.html:13
 msgid "We are ready for your question"
 msgstr "Sualınızı cavablandırmağa hazırıq"
-
 
 #: .\templates\contact.html:37
 msgid "Aminol headquarters"
@@ -289,6 +286,11 @@ msgstr "Aminol Baş Ofisi"
 msgid "Location"
 msgstr "Məkan"
 
+#: .\templates\contact.html:45
+#, fuzzy
+#| msgid "Contact"
+msgid "Contact Icon"
+msgstr "Əlaqə"
 
 #: .\templates\contact.html:50
 msgid "Aminol factory"
@@ -318,41 +320,76 @@ msgstr "Tez-tez verilən suallar"
 msgid "No FAQs available at the moment."
 msgstr "Hazırda tez-tez verilən suallar mövcud deyil."
 
-#: .\templates\home.html:13 .\templates\home.html:29
+#: .\templates\home.html:13
 msgid "Passenger car lubricants"
 msgstr "Minik avtomobilləri üçün sürtgü yağları"
 
 #: .\templates\home.html:15 .\templates\home.html:23 .\templates\home.html:31
-#: .\templates\home.html:39
+#: .\templates\home.html:39 .\templates\home.html:47 .\templates\home.html:55
+#: .\templates\home.html:63 .\templates\home.html:71 .\templates\home.html:79
 msgid ""
 "Manufacturer of Lubricants, Lubricant Additive Packages & Deionised Fluids. "
 "Proudly Made in Azerbaijan"
 msgstr ""
-"Sürtgü yağları, yağ əlavələri paketləri və deionlaşdırılmış mayelərin istehsalçısı. "
-"Fəxrlə Azərbaycanda istehsal olunub."
+"Sürtgü yağları, yağ əlavələri paketləri və deionlaşdırılmış mayelərin "
+"istehsalçısı. Fəxrlə Azərbaycanda istehsal olunub."
 
-#: .\templates\home.html:21 .\templates\home.html:37
+#: .\templates\home.html:21
+#, fuzzy
+#| msgid "Industrial lubricants"
+msgid "Heavy duty lubricants"
+msgstr "Sənaye sürtgü yağları"
+
+#: .\templates\home.html:29
+msgid "Motorcycle oils"
+msgstr ""
+
+#: .\templates\home.html:37
+msgid "Transmission & Gear oils"
+msgstr ""
+
+#: .\templates\home.html:45
+msgid "Hydraulic oils"
+msgstr ""
+
+#: .\templates\home.html:53
+#, fuzzy
+#| msgid "Industrial lubricants"
+msgid "Agricultural lubricants"
+msgstr "Sənaye sürtgü yağları"
+
+#: .\templates\home.html:61
 msgid "Industrial lubricants"
 msgstr "Sənaye sürtgü yağları"
 
+#: .\templates\home.html:69
+#, fuzzy
+#| msgid "Industrial lubricants"
+msgid "Marine lubricants"
+msgstr "Sənaye sürtgü yağları"
 
-#: .\templates\home.html:55
+#: .\templates\home.html:77
+msgid "Turbine Oils"
+msgstr ""
+
+#: .\templates\home.html:96
 msgid "PRODUCT GROUP"
 msgstr "MƏHSUL QRUPU"
 
-#: .\templates\home.html:76
+#: .\templates\home.html:117
 msgid "No product_group available at the moment"
 msgstr "Hazırda heç bir məhsul qrupu mövcud deyil"
 
-#: .\templates\home.html:83
+#: .\templates\home.html:125
 msgid "See more"
 msgstr "Daha çox bax"
 
-#: .\templates\home.html:94
+#: .\templates\home.html:136
 msgid "Our Values"
 msgstr "Dəyərlərimiz"
 
-#: .\templates\home.html:96
+#: .\templates\home.html:138
+#, fuzzy
 msgid ""
 "The modernization of industry and renewal of equipment have increased demand "
 "for high-quality lubricants in Azerbaijan. To meet this, AMINOL Lubricants "
@@ -361,216 +398,183 @@ msgid ""
 "motor, hydraulic, transmission, compressor, turbine, and marine oils, along "
 "with antifreeze and AdBlue."
 msgstr ""
-"Sənayenin müasirləşdirilməsi və avadanlıqların yenilənməsi Azərbaycanda yüksək keyfiyyətli yağlara tələbatı artırmışdır. Bu tələbatı qarşılamaq üçün 15 dekabr 2017-ci ildə Sumqayıt Kimya Sənaye Parkında 20 milyon dollar sərmayə ilə AMINOL Lubricants zavodu açılmışdır. Zavod ildə 150,000 ton məhsul istehsal edir və əsasən mühərrik, hidravlik, ötürücü, kompressor, turbin və dəniz yağları ilə yanaşı antifriz və AdBlue istehsalına yönəlib."
+"#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Sənayenin müasirləşdirilməsi və avadanlıqların yenilənməsi Azərbaycanda "
+"yüksək keyfiyyətli yağlara tələbatı artırmışdır. Bu tələbatı qarşılamaq üçün "
+"15 dekabr 2017-ci ildə Sumqayıt Kimya Sənaye Parkında 20 milyon dollar "
+"sərmayə ilə AMINOL Lubricants zavodu açılmışdır. Zavod ildə 150,000 ton "
+"məhsul istehsal edir və əsasən mühərrik, hidravlik, ötürücü, kompressor, "
+"turbin və dəniz yağları ilə yanaşı antifriz və AdBlue istehsalına yönəlib.\n"
+"#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Sənayenin modernləşdirilməsi və avadanlıqların yenilənməsi Azərbaycanda "
+"yüksək keyfiyyətli yağlara tələbatı artırdı. Bu tələbi qarşılamaq üçün "
+"AMINOL Yağları 15 dekabr 2017-ci ildə Sumqayıt Kimya Sənaye Parkında 20 "
+"milyon dollar sərmayə ilə fəaliyyətə başladı. Zavod ildə 150,000 ton məhsul "
+"istehsal edir və əsasən motor, hidravlik, transmissiya, kompressor, turbin "
+"və dəniz yağları, həmçinin antifriz və AdBlue istehsalına yönəlib."
 
-#: .\templates\home.html:98 .\templates\home.html:148 .\templates\home.html:170
-#: .\templates\home.html:215 .\templates\service_laboratory.html:78
+#: .\templates\home.html:140 .\templates\home.html:190
+#: .\templates\home.html:212 .\templates\home.html:257
+#: .\templates\service_laboratory.html:78
 #: .\templates\service_logistics.html:101
+#, fuzzy
 msgid "Discover more"
-msgstr "Ətraflı bax"
+msgstr ""
+"#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ətraflı bax\n"
+"#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Daha ətraflı"
 
-#: .\templates\home.html:110
+#: .\templates\home.html:152
+#, fuzzy
 msgid "Aminol Is Available Worldwide"
-msgstr "Aminol məhsulları dünyanın hər yerində mövcuddur"
+msgstr ""
+"#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Aminol məhsulları dünyanın hər yerində mövcuddur\n"
+"#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Aminol Dünyanın Dörd Bir Yanında Mövcuddur"
 
-#: .\templates\home.html:112
+#: .\templates\home.html:154
+#, fuzzy
 msgid "Sales network in more than 50 countries in four continents."
-msgstr "Dörd qitədə 50-dən çox ölkədə satış şəbəkəsi"
+msgstr ""
+"#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Dörd qitədə 50-dən çox ölkədə satış şəbəkəsi\n"
+"#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Dörd qitədə 50-dən çox ölkədə satış şəbəkəsi."
 
-#: .\templates\home.html:113
+#: .\templates\home.html:155
 msgid ""
 "Would you like to buy our products or are you interested in a partnership?"
-msgstr "Məhsullarımızı almaq istəyirsiniz, yoxsa tərəfdaşlıqla maraqlanırsınız?"
+msgstr ""
+"Məhsullarımızı almaq istəyirsiniz, yoxsa tərəfdaşlıqla maraqlanırsınız?"
 
-#: .\templates\home.html:115
+#: .\templates\home.html:157
 msgid "Get in contact"
 msgstr "Əlaqə saxlayın"
 
-#: .\templates\home.html:124
+#: .\templates\home.html:166
+#, fuzzy
 msgid "Learn more"
-msgstr "Daha ətraflı"
+msgstr ""
+"#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Daha ətraflı\n"
+"#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Daha çox öyrən"
 
-#: .\templates\home.html:124
+#: .\templates\home.html:166
 msgid "about production"
 msgstr "istehsal haqqında"
 
-#: .\templates\home.html:126
+#: .\templates\home.html:168
+#, fuzzy
 msgid ""
 "Aminol Lubricants produces and packages high-quality oils using premium "
 "imported base oils and additives, formulated by expert engineers."
 msgstr ""
-"Aminol Lubricants yüksək keyfiyyətli yağları, peşəkar mühəndislər tərəfindən hazırlanmış formullarla, idxal olunmuş premium baza yağları və əlavələrdən istifadə edərək istehsal edir və qablaşdırır."
+"#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Aminol Lubricants yüksək keyfiyyətli yağları, peşəkar mühəndislər tərəfindən "
+"hazırlanmış formullarla, idxal olunmuş premium baza yağları və əlavələrdən "
+"istifadə edərək istehsal edir və qablaşdırır.\n"
+"#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Aminol Yağları, ixtisaslaşmış mühəndislər tərəfindən hazırlanmış yüksək "
+"keyfiyyətli baz yağları və qatqılar istifadə edərək yüksək keyfiyyətli "
+"yağlar istehsal edir və qablaşdırır."
 
-#: .\templates\home.html:141 .\templates\product.html:304
+#: .\templates\home.html:183 .\templates\product.html:308
+#, fuzzy
 msgid "INNOVATION & TECHNOLOGY"
-msgstr "İNNOvASİYA & TEXNOLOGİYA"
+msgstr ""
+"#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"İNNOvASİYA & TEXNOLOGİYA\n"
+"#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"YENİLİK VƏ TEXNOLOGİYA"
 
-#: .\templates\home.html:146 .\templates\product.html:309
+#: .\templates\home.html:188 .\templates\product.html:313
+#, fuzzy
 msgid "Hybrid & EV lubricants"
-msgstr "Hibrid və Elektrik Avtomobilləri üçün Yağlar"
+msgstr ""
+"#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Hibrid və Elektrik Avtomobilləri üçün Yağlar\n"
+"#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Hibrid və Elektrikli Nəqliyyat üçün Yağlar"
 
-#: .\templates\home.html:147 .\templates\product.html:310
+#: .\templates\home.html:189 .\templates\product.html:314
+#, fuzzy
 msgid "Choose sustainability with our Hybrid & EV lubricants"
-msgstr "Hibrid və Elektrik Avtomobilləri üçün yağlarımız ilə davamlılığı təmin edin"
+msgstr ""
+"#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Hibrid və Elektrik Avtomobilləri üçün yağlarımız ilə davamlılığı təmin edin\n"
+"#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Hibrid və EV yağlarımızla davamlılığı seçin"
 
-#: .\templates\home.html:159
+#: .\templates\home.html:201
 msgid "Hybrid & EV Lubricants"
 msgstr "Hibrid və EV Yağları"
 
-#: .\templates\home.html:166 .\templates\home.html:176
-#: .\templates\product.html:321
+#: .\templates\home.html:208 .\templates\home.html:218
+#: .\templates\product.html:325
+#, fuzzy
 msgid "Additives"
-msgstr "Əlavələr"
+msgstr ""
+"#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Əlavələr\n"
+"#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Qatqılar"
 
-#: .\templates\home.html:168
+#: .\templates\home.html:210
+#, fuzzy
 msgid ""
 "Protect and keep your vehicle in top condition with our unique range of "
 "additives."
-msgstr "Unikal əlavələr çeşidimizlə avtomobilinizi qoruyun və ən yaxşı vəziyyətdə saxlayın."
+msgstr ""
+"#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Unikal əlavələr çeşidimizlə avtomobilinizi qoruyun və ən yaxşı vəziyyətdə "
+"saxlayın.\n"
+"#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Nəqliyyat vasitənizi qoruyun və ən yaxşı vəziyyətdə saxlayın – bizim unikal "
+"qatqı məhsullarımızla."
 
-#: .\templates\home.html:185 .\templates\news.html:57
+#: .\templates\home.html:227 .\templates\news.html:57
 #: .\templates\service_laboratory.html:48 .\templates\service_logistics.html:71
+#, fuzzy
 msgid "LATEST NEWS"
-msgstr "ƏN SON XƏBƏRLƏR"
+msgstr ""
+"#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"ƏN SON XƏBƏRLƏR\n"
+"#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"SON XƏBƏRLƏR"
 
-#: .\templates\home.html:204 .\templates\news.html:43 .\templates\news.html:75
+#: .\templates\home.html:246 .\templates\news.html:43 .\templates\news.html:75
 #: .\templates\news_detail.html:51
+#, fuzzy
 msgid "Read more"
-msgstr "Daha çox "
+msgstr ""
+"#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Daha çox \n"
+"#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Daha çox oxu"
 
-#: .\templates\home.html:210 .\templates\service_laboratory.html:73
+#: .\templates\home.html:252 .\templates\service_laboratory.html:73
 #: .\templates\service_logistics.html:96
 msgid "No news available at the moment"
 msgstr "Hazırda heç bir xəbər mövcud deyil"
 
 #: .\templates\markets_automotive.html:13
 msgid "Lubricants for passenger cars, trucks, vans, motorcycles"
-msgstr "Minik avtomobilləri, yük maşınları, mikroavtobuslar və motosikletlər üçün yağlar"
+msgstr ""
+"Minik avtomobilləri, yük maşınları, mikroavtobuslar və motosikletlər üçün "
+"yağlar"
 
-
+#: .\templates\markets_automotive.html:42
+#: .\templates\markets_industrial.html:42 .\templates\markets_shipping.html:44
+#: .\templates\markets_shipping.html:60
+msgid "Yellow Point"
+msgstr ""
 
 #: .\templates\markets_automotive.html:59
-#: .\templates\markets_industrial.html:92 .\templates\markets_shipping.html:92
-msgid "Our Services"
-msgstr "Xidmətlərimiz"
-
-#: .\templates\markets_industrial.html:13
-msgid "Lubricants for industrial equipments"
-msgstr "Sənaye avadanlıqları üçün yağlar"
-
-#: .\templates\home.html:55
-msgid "PRODUCT GROUP"
-msgstr "MƏHSUL QRUPU"
-
-#: .\templates\home.html:76
-msgid "No product_group available at the moment"
-msgstr "Hazırda heç bir məhsul qrupu mövcud deyil"
-
-#: .\templates\home.html:83
-msgid "See more"
-msgstr "Daha çox bax"
-
-#: .\templates\home.html:94
-msgid "Our Values"
-msgstr "Dəyərlərimiz"
-
-#: .\templates\home.html:96
-msgid ""
-"The modernization of industry and renewal of equipment have increased demand "
-"for high-quality lubricants in Azerbaijan. To meet this, AMINOL Lubricants "
-"opened on December 15, 2017, in Sumgayit Chemical Industrial Park with a $20 "
-"million investment. The plant produces 150,000 tons annually, focusing on "
-"motor, hydraulic, transmission, compressor, turbine, and marine oils, along "
-"with antifreeze and AdBlue."
-msgstr ""
-"Sənayenin modernləşdirilməsi və avadanlıqların yenilənməsi Azərbaycanda yüksək keyfiyyətli yağlara tələbatı artırdı. Bu tələbi qarşılamaq üçün AMINOL Yağları 15 dekabr 2017-ci ildə Sumqayıt Kimya Sənaye Parkında 20 milyon dollar sərmayə ilə fəaliyyətə başladı. Zavod ildə 150,000 ton məhsul istehsal edir və əsasən motor, hidravlik, transmissiya, kompressor, turbin və dəniz yağları, həmçinin antifriz və AdBlue istehsalına yönəlib."
-
-#: .\templates\home.html:98 .\templates\home.html:148 .\templates\home.html:170
-#: .\templates\home.html:215 .\templates\service_laboratory.html:78
-#: .\templates\service_logistics.html:101
-msgid "Discover more"
-msgstr "Daha ətraflı"
-
-#: .\templates\home.html:110
-msgid "Aminol Is Available Worldwide"
-msgstr "Aminol Dünyanın Dörd Bir Yanında Mövcuddur"
-
-#: .\templates\home.html:112
-msgid "Sales network in more than 50 countries in four continents."
-msgstr "Dörd qitədə 50-dən çox ölkədə satış şəbəkəsi."
-
-#: .\templates\home.html:113
-msgid "Would you like to buy our products or are you interested in a partnership?"
-msgstr "Məhsullarımızı almaq istəyirsiniz, yoxsa tərəfdaşlıqla maraqlanırsınız?"
-
-#: .\templates\home.html:115
-msgid "Get in contact"
-msgstr "Əlaqə saxlayın"
-
-#: .\templates\home.html:124
-msgid "Learn more"
-msgstr "Daha çox öyrən"
-
-#: .\templates\home.html:124
-msgid "about production"
-msgstr "istehsal haqqında"
-
-#: .\templates\home.html:126
-msgid ""
-"Aminol Lubricants produces and packages high-quality oils using premium "
-"imported base oils and additives, formulated by expert engineers."
-msgstr ""
-"Aminol Yağları, ixtisaslaşmış mühəndislər tərəfindən hazırlanmış yüksək keyfiyyətli baz yağları və qatqılar istifadə edərək yüksək keyfiyyətli yağlar istehsal edir və qablaşdırır."
-
-#: .\templates\home.html:141 .\templates\product.html:304
-msgid "INNOVATION & TECHNOLOGY"
-msgstr "YENİLİK VƏ TEXNOLOGİYA"
-
-#: .\templates\home.html:146 .\templates\product.html:309
-msgid "Hybrid & EV lubricants"
-msgstr "Hibrid və Elektrikli Nəqliyyat üçün Yağlar"
-
-#: .\templates\home.html:147 .\templates\product.html:310
-msgid "Choose sustainability with our Hybrid & EV lubricants"
-msgstr "Hibrid və EV yağlarımızla davamlılığı seçin"
-
-#: .\templates\home.html:159
-msgid "Hybrid & EV Lubricants"
-msgstr "Hibrid və EV Yağları"
-
-#: .\templates\home.html:166 .\templates\home.html:176
-#: .\templates\product.html:321
-msgid "Additives"
-msgstr "Qatqılar"
-
-#: .\templates\home.html:168
-msgid ""
-"Protect and keep your vehicle in top condition with our unique range of "
-"additives."
-msgstr ""
-"Nəqliyyat vasitənizi qoruyun və ən yaxşı vəziyyətdə saxlayın – bizim unikal qatqı məhsullarımızla."
-
-#: .\templates\home.html:185 .\templates\news.html:57
-#: .\templates\service_laboratory.html:48 .\templates\service_logistics.html:71
-msgid "LATEST NEWS"
-msgstr "SON XƏBƏRLƏR"
-
-#: .\templates\home.html:204 .\templates\news.html:43 .\templates\news.html:75
-#: .\templates\news_detail.html:51
-msgid "Read more"
-msgstr "Daha çox oxu"
-
-#: .\templates\home.html:210 .\templates\service_laboratory.html:73
-#: .\templates\service_logistics.html:96
-msgid "No news available at the moment"
-msgstr "Hazırda heç bir xəbər mövcud deyil"
-
-#: .\templates\markets_automotive.html:13
-msgid "Lubricants for passenger cars, trucks, vans, motorcycles"
-msgstr "Minik avtomobilləri, yük maşınları, mikroavtobuslar və motosikletlər üçün yağlar"
-
-#: .\templates\markets_automotive.html:59
-#: .\templates\markets_industrial.html:92 .\templates\markets_shipping.html:92
+#: .\templates\markets_industrial.html:126
+#: .\templates\markets_shipping.html:141
 msgid "Our Services"
 msgstr "Xidmətlərimiz"
 
@@ -592,7 +596,9 @@ msgid ""
 "Aminol dealer, we offer you a wide range of technical and commercial "
 "support, specifically designed to strengthen your operations."
 msgstr ""
-"Aminolu seçirsinizsə, biznesinizin inkişafını seçirsiniz. Aminol dileri olaraq biz sizə əməliyyatlarınızı gücləndirmək üçün nəzərdə tutulmuş geniş texniki və kommersiya dəstəyi təklif edirik."
+"Aminolu seçirsinizsə, biznesinizin inkişafını seçirsiniz. Aminol dileri "
+"olaraq biz sizə əməliyyatlarınızı gücləndirmək üçün nəzərdə tutulmuş geniş "
+"texniki və kommersiya dəstəyi təklif edirik."
 
 #: .\templates\markets_shipping.html:49 .\templates\markets_shipping.html:53
 msgid "Availability"
@@ -605,19 +611,24 @@ msgid ""
 "formula can vary. Please contact Sales International for availability in "
 "your country."
 msgstr ""
-"Aminolun Rəsmi Diler konsepsiyası sürətlə genişlənir və getdikcə daha çox ölkədə əlçatan olur. Konsepsiyanın məzmunu ölkədən asılı olaraq dəyişə bilər. Ölkənizdəki mövcudluq barədə məlumat almaq üçün Satış Departamenti ilə əlaqə saxlayın."
+"Aminolun Rəsmi Diler konsepsiyası sürətlə genişlənir və getdikcə daha çox "
+"ölkədə əlçatan olur. Konsepsiyanın məzmunu ölkədən asılı olaraq dəyişə "
+"bilər. Ölkənizdəki mövcudluq barədə məlumat almaq üçün Satış Departamenti "
+"ilə əlaqə saxlayın."
 
-#: .\templates\markets_shipping.html:88 .\templates\markets_shipping.html:90
+#: .\templates\markets_shipping.html:137 .\templates\markets_shipping.html:139
 msgid "Knowledge and support"
 msgstr "Bilik və dəstək"
 
-#: .\templates\markets_shipping.html:91
+#: .\templates\markets_shipping.html:140
 msgid ""
 "Our experienced team is ready to assist you with advice, technical and "
 "commercial support, and the latest industry developments. Discover our wide "
 "range of services and workshop materials on our service page."
 msgstr ""
-"Təcrübəli komandamız sizə məsləhət, texniki və kommersiya dəstəyi, eləcə də sənayenin ən son inkişafları ilə yardım etməyə hazırdır. Xidmət səhifəmizdə geniş xidmət spektrimiz və seminar materiallarımızla tanış olun."
+"Təcrübəli komandamız sizə məsləhət, texniki və kommersiya dəstəyi, eləcə də "
+"sənayenin ən son inkişafları ilə yardım etməyə hazırdır. Xidmət səhifəmizdə "
+"geniş xidmət spektrimiz və seminar materiallarımızla tanış olun."
 
 #: .\templates\news.html:19
 msgid "Always up to date with our latest news"
@@ -627,6 +638,11 @@ msgstr "Son xəbərlərimizlə daim gündəmdə qalın"
 msgid "ALL ARTICLES"
 msgstr "BÜTÜN MƏQALƏLƏR"
 
+#: .\templates\news.html:36 .\templates\news.html:68
+#: .\templates\news_detail.html:43
+msgid "Default news image"
+msgstr ""
+
 #: .\templates\news.html:48 .\templates\news_detail.html:55
 msgid "No news articles available."
 msgstr "Xəbər məqaləsi mövcud deyil."
@@ -635,6 +651,9 @@ msgstr "Xəbər məqaləsi mövcud deyil."
 msgid "No latest news articles available."
 msgstr "Son xəbərlərlə bağlı məqalə mövcud deyil."
 
+#: .\templates\news_detail.html:30
+msgid "News Content Image"
+msgstr ""
 
 #: .\templates\product.html:14
 msgid "Product Range"
@@ -654,18 +673,17 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"        Burada müxtəlif viskoziteli və spesifikasiyalı mineral, yarı-sintetik və "
-"tam sintetik mühərrik yağlarımızın geniş çeşidini tapa bilərsiniz. Bunlar "
-"benzinlə işləyən avtomobillər, dizel avtomobillər və hibrid nəqliyyat vasitələri "
-"üçün nəzərdə tutulub.\n"
+"        Burada müxtəlif viskoziteli və spesifikasiyalı mineral, yarı-"
+"sintetik və tam sintetik mühərrik yağlarımızın geniş çeşidini tapa "
+"bilərsiniz. Bunlar benzinlə işləyən avtomobillər, dizel avtomobillər və "
+"hibrid nəqliyyat vasitələri üçün nəzərdə tutulub.\n"
 "        "
 
-
-#: .\templates\product.html:55 .\templates\product.html:182
+#: .\templates\product.html:55 .\templates\product.html:186
 msgid "Product group"
 msgstr "Məhsul qrupları"
 
-#: .\templates\product.html:74 .\templates\product.html:201
+#: .\templates\product.html:74 .\templates\product.html:205
 msgid "Segments"
 msgstr "Seqmentlər"
 
@@ -673,29 +691,29 @@ msgstr "Seqmentlər"
 msgid "Oil Type"
 msgstr "Yağ Növü"
 
-#: .\templates\product.html:112 .\templates\product.html:239
+#: .\templates\product.html:112 .\templates\product.html:243
 msgid "Viscosity"
 msgstr "Viskozluq"
 
-#: .\templates\product.html:147
+#: .\templates\product.html:133 .\templates\product.html:263
+msgid "View Result"
+msgstr "Nəticəni göstər"
+
+#: .\templates\product.html:151
 msgid "More"
 msgstr "Daha çox"
 
-#: .\templates\product.html:155
+#: .\templates\product.html:159
 msgid "No products found matching your criteria."
 msgstr "Seçimlərinizə uyğun məhsul tapılmadı."
 
-#: .\templates\product.html:164
+#: .\templates\product.html:168
 msgid "Filtering"
 msgstr "Filtrləmə"
 
-#: .\templates\product.html:220
+#: .\templates\product.html:224
 msgid "Oil type"
 msgstr "Yağ növü"
-
-#: .\templates\product.html:259
-msgid "View Result"
-msgstr "Nəticəni göstər"
 
 #: .\templates\product_detail.html:24
 msgid "Back to the overview"

@@ -261,7 +261,6 @@ nav {
   cursor: pointer;
 } */
 
-
 .navbar .lang-btn,
 .navbar .mobile-lang-btn {
   background-color: #f6f9ff;
@@ -295,7 +294,6 @@ nav {
   padding: 2px 10px;
 }
 
-/* Active state will be handled by JavaScript */
 .navbar .lang-btn .btn-az.active,
 .navbar .lang-btn .btn-en.active,
 .navbar .mobile-lang-btn .btn-az.active,

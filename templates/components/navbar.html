@@ -16,7 +16,8 @@
               <li class="lang-btn">
                 <button class="btn-az" data-lang="az">AZ</button>
                 <button class="btn-en" data-lang="en">EN</button>
-              </li>
+              </li>           
+                
             </ul>
           </div>
           <div class="nav-bottom">
@@ -98,3 +99,19 @@
   </div>
 </div>
 
+<form action="{% url 'set_language' %}" method="post" id="language-form">
+  {% csrf_token %}
+  <input type="hidden" name="next" value="{{ request.path }}">
+  <input type="hidden" name="language" id="language-input">
+</form>
+
+
+<script>
+document.querySelectorAll('.btn-az, .btn-en').forEach(button => {
+    button.addEventListener('click', function () {
+        const lang = this.getAttribute('data-lang');
+        document.getElementById('language-input').value = lang;
+        document.getElementById('language-form').submit();
+    });
+});
+</script>
