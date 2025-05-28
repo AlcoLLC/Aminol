@@ -157,15 +157,17 @@ LANGUAGES = [
     ('az', 'Azerbaijani'),
 ]
 
+
+LANGUAGE_CODE = 'en'  
+
 LOCALE_PATHS = [
     BASE_DIR / 'locale',
 ]
 
-LANGUAGE_CODE = 'en'
-
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
+USE_L10N = True
 
 USE_TZ = True
 
