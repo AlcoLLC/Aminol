@@ -98,10 +98,3 @@
   </div>
 </div>
 
-
-
-<form id="language-form" action="{% url 'set_language' %}" method="post" style="display: none;">
-    {% csrf_token %}
-    <input type="hidden" name="language" id="language-input">
-    <input type="hidden" name="next" value="{{ request.get_full_path }}">
-</form>

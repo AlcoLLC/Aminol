@@ -61,7 +61,7 @@ CSRF_TRUSTED_ORIGINS = [
 
 INSTALLED_APPS = [
     'jazzmin',
-    'modeltranslation', 
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -70,9 +70,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_filters',
     'django_ckeditor_5',
-    'rosetta',
-    # apps
 
+    # apps
+    
     'home',
     'about',
     'services',
@@ -153,8 +153,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
 LANGUAGES = [
+     ('az', 'Azerbaijani'),
     ('en', 'English'),
-    ('az', 'Azerbaijani'),
 ]
 
 
@@ -168,16 +168,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 USE_L10N = True
-
 USE_TZ = True
-
-USE_L10N = True
-
-MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
-
-MODELTRANSLATION_LANGUAGES = ('en', 'az')
-
-MODELTRANSLATION_PREPOPULATE_LANGUAGE = 'en'
 
 
 # Static files (CSS, JavaScript, Images)
@@ -214,3 +205,4 @@ EMAIL_HOST_PASSWORD = 'pful vvvc uhib hxup'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
