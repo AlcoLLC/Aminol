@@ -31,19 +31,20 @@ class ContactInfoAdmin(TranslationAdmin):
     search_fields = ('title', 'description', 'contact_email')
     fieldsets = (
         ('General Information', {
-            'fields': ('title', 'description')
+            'fields': ('title', 'description', 'title_translate', 'description_translate')
         }),
         ('Headquarters Information', {
-            'fields': ('aminol_headquarters', 'aminol_headquarters_location', 'aminol_headquarters_image')
+            'fields': ('aminol_headquarters', 'aminol_headquarters_location', 'aminol_headquarters_image',
+                        'aminol_headquarters_translate', 'aminol_factory_translate')
         }),
         ('Factory Information', {
             'fields': ('aminol_factory', 'aminol_factory_location', 'aminol_factory_image')
         }),
         ('Registration Information', {
-            'fields': ('registers',)
+            'fields': ('registers','registers_translate')
         }),
         ('Contact Details', {
-            'fields': ('contact_address', 'contact_phone', 'contact_email')
+            'fields': ('contact_address', 'contact_address_translate', 'contact_phone', 'contact_email')
         }),
     )
 

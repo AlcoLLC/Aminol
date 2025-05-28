@@ -35,6 +35,13 @@ class ContactInfo(models.Model):
     contact_address = models.TextField()
     contact_phone = models.CharField(max_length=20)
     contact_email = models.EmailField()
+
+    title_translate = models.CharField(max_length=255)
+    description_translate = models.TextField()
+    aminol_headquarters_translate = models.TextField()
+    aminol_factory_translate = models.TextField()
+    registers_translate= models.TextField()
+    contact_address_translate = models.TextField()
     
     def __str__(self):
         return f"{self.title}"

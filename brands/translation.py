@@ -5,9 +5,9 @@ from .models import (
 
 @register(Brand_Portal)
 class BrandPortalTranslationOptions(TranslationOptions):
-    fields = ('title', 'description')
+    fields = ('title_translate', 'description_translate')
 
 
 @register(Brand_Portal_Content)
 class BrandPortalContentTranslationOptions(TranslationOptions):
-    fields = ('title', 'description')
+    fields = ('title_translate', 'description_translate')
