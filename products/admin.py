@@ -1,9 +1,10 @@
 from django.contrib import admin
+from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 from .models import Product_group, Segments, Oil_Types, Viscosity, Liter, Product, ProductProperty
 from django.utils.html import format_html
 
 @admin.register(Product_group)
-class ProductGroupAdmin(admin.ModelAdmin):
+class ProductGroupAdmin(TranslationAdmin):
     list_display = ('title', 'slug', 'image', 'in_home')
     prepopulated_fields = {'slug': ('title',)}
     search_fields = ('title',)
@@ -28,27 +29,67 @@ class ProductGroupAdmin(admin.ModelAdmin):
                     obj.in_home = False
         
         super().save_model(request, obj, form, change)
+    
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
 
 
 @admin.register(Segments)
-class SegmentsAdmin(admin.ModelAdmin):
+class SegmentsAdmin(TranslationAdmin):
     list_display = ('title', 'slug')
     prepopulated_fields = {'slug': ('title',)}
     search_fields = ('title',)
+    
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
 
 
 @admin.register(Oil_Types)
-class OilTypesAdmin(admin.ModelAdmin):
+class OilTypesAdmin(TranslationAdmin):
     list_display = ('title', 'slug')
     prepopulated_fields = {'slug': ('title',)}
     search_fields = ('title',)
+    
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
 
 
 @admin.register(Viscosity)
-class ViscosityAdmin(admin.ModelAdmin):
+class ViscosityAdmin(TranslationAdmin):
     list_display = ('title', 'slug')
     prepopulated_fields = {'slug': ('title',)}
     search_fields = ('title',)
+    
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
 
 
 @admin.register(Liter)
@@ -56,22 +97,35 @@ class LiterAdmin(admin.ModelAdmin):
     list_display = ('volume',)
     ordering = ('volume',)
     
-class ProductPropertyInline(admin.TabularInline):
+
+class ProductPropertyInline(TranslationTabularInline):
     model = ProductProperty
     extra = 1
     fields = ['property_name', 'unit', 'test_method', 'typical_value', 'order']
     ordering = ['order']
 
+
 @admin.register(ProductProperty)
-class ProductPropertyAdmin(admin.ModelAdmin):
+class ProductPropertyAdmin(TranslationAdmin):
     list_display = ['product', 'property_name', 'unit', 'test_method', 'typical_value', 'order']
     list_filter = ['product', 'unit']
     search_fields = ['property_name', 'test_method', 'product__title']
     list_editable = ['order']
     ordering = ['product', 'order']
+    
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
+
 
 @admin.register(Product)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(TranslationAdmin):
     list_display = ['title', 'product_id', 'product_group', 'oil_type', 'has_pds', 'has_sds']
     list_filter = ['product_group', 'segments', 'oil_type', 'viscosity']
     search_fields = ['title', 'product_id', 'description']
@@ -111,3 +165,13 @@ class ProductAdmin(admin.ModelAdmin):
             )
         return '❌'
     has_sds.short_description = 'SDS'
+    
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }

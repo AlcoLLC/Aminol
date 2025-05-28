@@ -1,30 +1,62 @@
-from django.contrib import admin
 from .models import (
     AboutAminol, AboutSectionContent, Quality, QualityContent,
     WeGuarantee, Production, ProductionContent,
     DocumentsCertification, Sustainability, SustainabilityContent
 )
 
+from django.contrib import admin
+from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 
-class AboutSectionContentInline(admin.TabularInline):
+class AboutSectionContentInline(TranslationTabularInline):
     model = AboutSectionContent
     extra = 1
     fields = ('title', 'description', 'image')
 
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
+
 
 @admin.register(AboutAminol)
-class AboutAminolAdmin(admin.ModelAdmin):
+class AboutAminolAdmin(TranslationAdmin):
     inlines = [AboutSectionContentInline]
     fields = (
         'founded_year', 'based_in', 'location',
         'exporting_to', 'production_capacity', 'workforce', 'shared_image'
     )
 
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
 
-class QualityContentInline(admin.TabularInline):
+
+# Quality Section Admin
+class QualityContentInline(TranslationTabularInline):
     model = QualityContent
     extra = 1
     fields = ('title', 'description', 'image')
+
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
 
 
 @admin.register(Quality)
@@ -33,7 +65,7 @@ class QualityAdmin(admin.ModelAdmin):
 
 
 @admin.register(WeGuarantee)
-class WeGuaranteeAdmin(admin.ModelAdmin):
+class WeGuaranteeAdmin(TranslationAdmin):
     fields = (
         'title',
         'sub_title_one', 'sub_description_one',
@@ -42,11 +74,32 @@ class WeGuaranteeAdmin(admin.ModelAdmin):
         'sub_title_four', 'sub_description_four'
     )
 
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
 
-class ProductionContentInline(admin.TabularInline):
+
+# Production Section Admin
+class ProductionContentInline(TranslationTabularInline):
     model = ProductionContent
     extra = 1
     fields = ('title', 'description', 'image')
+
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
 
 
 @admin.register(Production)
@@ -55,19 +108,48 @@ class ProductionAdmin(admin.ModelAdmin):
 
 
 @admin.register(DocumentsCertification)
-class DocumentsCertificationAdmin(admin.ModelAdmin):
-    fields = (
-        'title', 'description'
-    )
+class DocumentsCertificationAdmin(TranslationAdmin):
+    fields = ('title', 'description')
+
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
 
 
-class SustainabilityContentInline(admin.TabularInline):
+# Sustainability Section Admin
+class SustainabilityContentInline(TranslationTabularInline):
     model = SustainabilityContent
     extra = 1
     fields = ('title', 'description', 'image')
 
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
+
 
 @admin.register(Sustainability)
-class SustainabilityAdmin(admin.ModelAdmin):
+class SustainabilityAdmin(TranslationAdmin):
     inlines = [SustainabilityContentInline]
-    field = ('main_description')
+    fields = ('main_description',)
+
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }

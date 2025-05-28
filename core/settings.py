@@ -61,6 +61,7 @@ CSRF_TRUSTED_ORIGINS = [
 
 INSTALLED_APPS = [
     'jazzmin',
+    'modeltranslation', 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -69,7 +70,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_filters',
     'django_ckeditor_5',
-
+    'rosetta',
     # apps
 
     'home',
@@ -153,20 +154,28 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGES = [
     ('en', 'English'),
-    ('az', 'Azərbaycan'),
+    ('az', 'Azerbaijani'),
 ]
 
 LOCALE_PATHS = [
     BASE_DIR / 'locale',
 ]
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
 USE_TZ = True
+
+USE_L10N = True
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+
+MODELTRANSLATION_LANGUAGES = ('en', 'az')
+
+MODELTRANSLATION_PREPOPULATE_LANGUAGE = 'en'
 
 
 # Static files (CSS, JavaScript, Images)

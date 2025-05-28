@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Contact, ContactInfo
+from modeltranslation.admin import TranslationAdmin
 
 
 @admin.register(Contact)
@@ -25,10 +26,7 @@ class ContactAdmin(admin.ModelAdmin):
     )
 
 @admin.register(ContactInfo)
-class ContactInfoAdmin(admin.ModelAdmin):
-    """
-    Admin configuration for the ContactInfo model with location fields.
-    """
+class ContactInfoAdmin(TranslationAdmin):
     list_display = ('title', 'contact_email', 'contact_phone')
     search_fields = ('title', 'description', 'contact_email')
     fieldsets = (
@@ -48,3 +46,13 @@ class ContactInfoAdmin(admin.ModelAdmin):
             'fields': ('contact_address', 'contact_phone', 'contact_email')
         }),
     )
+
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
