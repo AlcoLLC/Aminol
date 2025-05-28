@@ -1,5 +1,5 @@
-{% extends 'base.html' %} {% load static %} {% load i18n %} {% block content %}
-
+{% extends 'base.html' %} {% load static %} {% block content %}
+{% load custom_filters %}
 
 {% include 'components/navbar_blur.html' %}
 
@@ -67,7 +67,7 @@
               class="text-container {% if forloop.counter|divisibleby:2 %}text-left{% endif %}"
             >
               <h2>{{ section.title }}</h2>
-              <p>{{ section.description }}</p>
+             <p>{{ section.description|safe_linebreaksbr }}</p>
             </div>
           </div>
           <img
