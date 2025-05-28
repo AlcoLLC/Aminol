@@ -18,11 +18,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Auto-submit form when filters change
-    const checkboxes = document.querySelectorAll('.checkbox-group input[type="checkbox"]');
-    const searchInput = document.querySelector('input[name="search"]');
+    // Desktop filter - checkbox functionality without auto-submit
+    const desktopCheckboxes = document.querySelectorAll('.filter-container .checkbox-group input[type="checkbox"]');
+    const searchInput = document.querySelector('.filter-container input[name="search"]');
     
-    checkboxes.forEach(checkbox => {
+    desktopCheckboxes.forEach(checkbox => {
         const label = checkbox.nextElementSibling;
         
         checkbox.addEventListener('change', function () {
@@ -31,15 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
             } else {
                 label.classList.remove('selected-item');
             }
-            // Reset to page 1 when filtering
-            const pageInput = document.querySelector('input[name="page"]');
-            if (pageInput) {
-                pageInput.value = 1;
-            }
-            const form = document.getElementById('filterForm');
-            if (form) {
-                form.submit();
-            }
+            // Do NOT auto-submit form anymore
         });
     });
 
@@ -48,32 +40,38 @@ document.addEventListener('DOMContentLoaded', function () {
         searchInput.addEventListener('keydown', function(e) {
             if (e.key === 'Enter') {
                 e.preventDefault(); // Prevent default form submission
-                const pageInput = document.querySelector('input[name="page"]');
-                if (pageInput) {
-                    pageInput.value = 1;
-                }
-                const form = document.getElementById('filterForm');
-                if (form) {
-                    form.submit();
-                }
+                submitFilterForm();
             }
         });
     }
 
     // Search button click handler
-    const searchButton = document.querySelector('.search-button');
+    const searchButton = document.querySelector('.filter-container .search-button');
     if (searchButton) {
         searchButton.addEventListener('click', function(e) {
             e.preventDefault();
-            const pageInput = document.querySelector('input[name="page"]');
-            if (pageInput) {
-                pageInput.value = 1;
-            }
-            const form = document.getElementById('filterForm');
-            if (form) {
-                form.submit();
-            }
+            submitFilterForm();
         });
+    }
+
+    // Desktop Filter Results Button
+    const filterResultsBtn = document.getElementById('filterResultsBtn');
+    if (filterResultsBtn) {
+        filterResultsBtn.addEventListener('click', function() {
+            submitFilterForm();
+        });
+    }
+
+    // Function to submit the filter form
+    function submitFilterForm() {
+        const form = document.getElementById('filterForm');
+        const pageInput = document.querySelector('input[name="page"]');
+        if (pageInput) {
+            pageInput.value = 1;
+        }
+        if (form) {
+            form.submit();
+        }
     }
 
     // Pagination functionality
