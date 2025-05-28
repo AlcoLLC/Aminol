@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-28 06:11+0400\n"
+"POT-Creation-Date: 2025-05-28 16:05+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,639 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\templates\about.html:16 .\templates\about.html:170
+#: .\templates\about.html:215 .\templates\about.html:282
+msgid "About Aminol"
+msgstr ""
+
+#: .\templates\about.html:17 .\templates\about.html:93
+msgid "Quality"
+msgstr ""
+
+#: .\templates\about.html:18 .\templates\about.html:171
+msgid "Production"
+msgstr ""
+
+#: .\templates\about.html:19 .\templates\about.html:216
+msgid "Documents & Certifications"
+msgstr ""
+
+#: .\templates\about.html:20 .\templates\about.html:283
+msgid "Sustainability"
+msgstr ""
+
+#: .\templates\about.html:29 .\templates\about.html:92
+#: .\templates\about.html:170 .\templates\about.html:215
+#: .\templates\about.html:282 .\templates\contact.html:20
+#: .\templates\markets_automotive.html:20
+#: .\templates\markets_industrial.html:20 .\templates\markets_shipping.html:21
+#: .\templates\news.html:13 .\templates\news_detail.html:14
+#: .\templates\product.html:13 .\templates\service_aminol_dealer.html:15
+#: .\templates\service_laboratory.html:15 .\templates\service_logistics.html:14
+msgid "Home page"
+msgstr ""
+
+#: .\templates\about.html:30 .\templates\components\navbar.html:24
+#: .\templates\components\navbar.html:75
+#: .\templates\components\navbar_blur.html:24
+#: .\templates\components\navbar_blur.html:75
+#: .\templates\components\navbar_dark.html:24
+#: .\templates\components\navbar_dark.html:75
+msgid "About us"
+msgstr ""
+
+#: .\templates\about.html:53
+msgid "ABOUT AMINOL"
+msgstr ""
+
+#: .\templates\about.html:92 .\templates\components\footer.html:16
+msgid "About Us"
+msgstr ""
+
+#: .\templates\about.html:97
+msgid "QUALITY"
+msgstr ""
+
+#: .\templates\about.html:175
+msgid "PRODUCTION"
+msgstr ""
+
+#: .\templates\about.html:220
+msgid "DOCUMENTS AND CERTIFICATION"
+msgstr ""
+
+#: .\templates\about.html:287
+msgid "SUSTAINABILITY"
+msgstr ""
+
+#: .\templates\brand_portal.html:13 .\templates\faq.html:11
+msgid "Home Page"
+msgstr ""
+
+#: .\templates\brand_portal.html:13 .\templates\brand_portal.html:19
+#: .\templates\components\navbar.html:14 .\templates\components\navbar.html:69
+#: .\templates\components\navbar_blur.html:14
+#: .\templates\components\navbar_blur.html:69
+#: .\templates\components\navbar_dark.html:14
+#: .\templates\components\navbar_dark.html:69
+msgid "Brand Portal"
+msgstr ""
+
+#: .\templates\components\brochure.html:11
+msgid "Tested. Proven. Trusted."
+msgstr ""
+
+#: .\templates\components\brochure.html:13
+msgid ""
+"Remittance acts as a bridge, connecting loved ones and making the world a "
+"little smaller. We are dedicated to forging strategic partnerships which "
+"help us help you send money around the globe quickly, safely and affordably."
+msgstr ""
+
+#: .\templates\components\brochure.html:21
+msgid "Partner Logo"
+msgstr ""
+
+#: .\templates\components\brochure.html:58
+#: .\templates\components\whatsapp.html:5
+msgid "Ask your question on Whatsapp"
+msgstr ""
+
+#: .\templates\components\contactcomponent.html:5
+msgid "Contact form"
+msgstr ""
+
+#: .\templates\components\contactcomponent.html:7
+msgid "Do you need a specific solution or are you interested in a partnership?"
+msgstr ""
+
+#: .\templates\components\contactcomponent.html:8
+msgid "Please contact us here."
+msgstr ""
+
+#: .\templates\components\footer.html:9
+msgid "Reliable Lubricant Manufacturer."
+msgstr ""
+
+#: .\templates\components\footer.html:10
+msgid "Engineered for Performance, Trusted for Protection."
+msgstr ""
+
+#: .\templates\components\footer.html:17 .\templates\components\navbar.html:25
+#: .\templates\components\navbar.html:76
+#: .\templates\components\navbar_blur.html:25
+#: .\templates\components\navbar_blur.html:76
+#: .\templates\components\navbar_dark.html:25
+#: .\templates\components\navbar_dark.html:76
+msgid "Products"
+msgstr ""
+
+#: .\templates\components\footer.html:20 .\templates\components\navbar.html:35
+#: .\templates\components\navbar.html:89
+#: .\templates\components\navbar_blur.html:35
+#: .\templates\components\navbar_blur.html:89
+#: .\templates\components\navbar_dark.html:35
+#: .\templates\components\navbar_dark.html:89
+#: .\templates\service_aminol_dealer.html:15
+#: .\templates\service_laboratory.html:15 .\templates\service_logistics.html:14
+msgid "Services"
+msgstr ""
+
+#: .\templates\components\footer.html:21 .\templates\faq.html:11
+msgid "FAQ"
+msgstr ""
+
+#: .\templates\components\footer.html:24 .\templates\components\navbar.html:13
+#: .\templates\components\navbar.html:68
+#: .\templates\components\navbar_blur.html:13
+#: .\templates\components\navbar_blur.html:68
+#: .\templates\components\navbar_dark.html:13
+#: .\templates\components\navbar_dark.html:68 .\templates\news.html:13
+#: .\templates\news.html:18 .\templates\news_detail.html:14
+msgid "News"
+msgstr ""
+
+#: .\templates\components\footer.html:25 .\templates\components\navbar.html:15
+#: .\templates\components\navbar.html:70
+#: .\templates\components\navbar_blur.html:15
+#: .\templates\components\navbar_blur.html:70
+#: .\templates\components\navbar_dark.html:15
+#: .\templates\components\navbar_dark.html:70 .\templates\contact.html:12
+#: .\templates\contact.html:21 .\templates\contact.html:70
+msgid "Contact"
+msgstr ""
+
+#: .\templates\components\footer.html:34
+msgid "Vali Mammadov Street 1/3, Old City, Baku, Azerbaijan, AZ1000"
+msgstr ""
+
+#: .\templates\components\footer.html:55
+msgid "© 2025 ALCO LLC. All right reserved."
+msgstr ""
+
+#: .\templates\components\footer.html:56
+msgid "Terms and Condition"
+msgstr ""
+
+#: .\templates\components\footer.html:56
+msgid "Privacy Policy"
+msgstr ""
+
+#: .\templates\components\gallery.html:7
+msgid "GALLERY"
+msgstr ""
+
+#: .\templates\components\navbar.html:27 .\templates\components\navbar.html:79
+#: .\templates\components\navbar_blur.html:27
+#: .\templates\components\navbar_blur.html:79
+#: .\templates\components\navbar_dark.html:27
+#: .\templates\components\navbar_dark.html:79
+#: .\templates\markets_automotive.html:20
+#: .\templates\markets_industrial.html:20 .\templates\markets_shipping.html:21
+msgid "Markets"
+msgstr ""
+
+#: .\templates\components\navbar.html:29 .\templates\components\navbar.html:82
+#: .\templates\components\navbar_blur.html:29
+#: .\templates\components\navbar_blur.html:82
+#: .\templates\components\navbar_dark.html:29
+#: .\templates\components\navbar_dark.html:82
+#: .\templates\markets_automotive.html:12
+#: .\templates\markets_automotive.html:21
+msgid "Automotive"
+msgstr ""
+
+#: .\templates\components\navbar.html:30 .\templates\components\navbar.html:83
+#: .\templates\components\navbar_blur.html:30
+#: .\templates\components\navbar_blur.html:83
+#: .\templates\components\navbar_dark.html:30
+#: .\templates\components\navbar_dark.html:83
+#: .\templates\markets_industrial.html:12
+#: .\templates\markets_industrial.html:21
+msgid "Industrial"
+msgstr ""
+
+#: .\templates\components\navbar.html:31 .\templates\components\navbar.html:84
+#: .\templates\components\navbar_blur.html:31
+#: .\templates\components\navbar_blur.html:84
+#: .\templates\components\navbar_dark.html:31
+#: .\templates\components\navbar_dark.html:84
+#: .\templates\markets_shipping.html:12 .\templates\markets_shipping.html:22
+msgid "Shipping & Offshore"
+msgstr ""
+
+#: .\templates\components\navbar.html:37 .\templates\components\navbar.html:92
+#: .\templates\components\navbar_blur.html:37
+#: .\templates\components\navbar_blur.html:92
+#: .\templates\components\navbar_dark.html:37
+#: .\templates\components\navbar_dark.html:92
+#: .\templates\service_aminol_dealer.html:16
+msgid "Aminol official dealer"
+msgstr ""
+
+#: .\templates\components\navbar.html:38 .\templates\components\navbar.html:93
+#: .\templates\components\navbar_blur.html:38
+#: .\templates\components\navbar_blur.html:93
+#: .\templates\components\navbar_dark.html:38
+#: .\templates\components\navbar_dark.html:93
+msgid "Aminol Laboratory"
+msgstr ""
+
+#: .\templates\components\navbar.html:39 .\templates\components\navbar.html:94
+#: .\templates\components\navbar_blur.html:39
+#: .\templates\components\navbar_blur.html:94
+#: .\templates\components\navbar_dark.html:39
+#: .\templates\components\navbar_dark.html:94
+msgid "Aminol Logistics"
+msgstr ""
+
+#: .\templates\contact.html:13
+msgid "We are ready for your question"
+msgstr ""
+
+#: .\templates\contact.html:37
+msgid "Aminol headquarters"
+msgstr ""
+
+#: .\templates\contact.html:44 .\templates\contact.html:57
+msgid "Location"
+msgstr ""
+
+#: .\templates\contact.html:45
+msgid "Contact Icon"
+msgstr ""
+
+#: .\templates\contact.html:50
+msgid "Aminol factory"
+msgstr ""
+
+#: .\templates\contact.html:65
+msgid "Registers"
+msgstr ""
+
+#: .\templates\contact.html:73
+msgid "Address"
+msgstr ""
+
+#: .\templates\contact.html:79
+msgid "Phone number"
+msgstr ""
+
+#: .\templates\contact.html:83
+msgid "E-mail address"
+msgstr ""
+
+#: .\templates\faq.html:17
+msgid "Frequently asked questions"
+msgstr ""
+
+#: .\templates\faq.html:37
+msgid "No FAQs available at the moment."
+msgstr ""
+
+#: .\templates\home.html:13
+msgid "Passenger car lubricants"
+msgstr ""
+
+#: .\templates\home.html:15 .\templates\home.html:23 .\templates\home.html:31
+#: .\templates\home.html:39 .\templates\home.html:47 .\templates\home.html:55
+#: .\templates\home.html:63 .\templates\home.html:71 .\templates\home.html:79
+msgid ""
+"Manufacturer of Lubricants, Lubricant Additive Packages & Deionised Fluids. "
+"Proudly Made in Azerbaijan"
+msgstr ""
+
+#: .\templates\home.html:21
+msgid "Heavy duty lubricants"
+msgstr ""
+
+#: .\templates\home.html:29
+msgid "Motorcycle oils"
+msgstr ""
+
+#: .\templates\home.html:37
+msgid "Transmission & Gear oils"
+msgstr ""
+
+#: .\templates\home.html:45
+msgid "Hydraulic oils"
+msgstr ""
+
+#: .\templates\home.html:53
+msgid "Agricultural lubricants"
+msgstr ""
+
+#: .\templates\home.html:61
+msgid "Industrial lubricants"
+msgstr ""
+
+#: .\templates\home.html:69
+msgid "Marine lubricants"
+msgstr ""
+
+#: .\templates\home.html:77
+msgid "Turbine Oils"
+msgstr ""
+
+#: .\templates\home.html:96
+msgid "PRODUCT GROUP"
+msgstr ""
+
+#: .\templates\home.html:117
+msgid "No product_group available at the moment"
+msgstr ""
+
+#: .\templates\home.html:125
+msgid "See more"
+msgstr ""
+
+#: .\templates\home.html:136
+msgid "Our Values"
+msgstr ""
+
+#: .\templates\home.html:138
+msgid ""
+"The modernization of industry and renewal of equipment have increased demand "
+"for high-quality lubricants in Azerbaijan. To meet this, AMINOL Lubricants "
+"opened on December 15, 2017, in Sumgayit Chemical Industrial Park with a $20 "
+"million investment. The plant produces 150,000 tons annually, focusing on "
+"motor, hydraulic, transmission, compressor, turbine, and marine oils, along "
+"with antifreeze and AdBlue."
+msgstr ""
+
+#: .\templates\home.html:140 .\templates\home.html:190
+#: .\templates\home.html:212 .\templates\home.html:257
+#: .\templates\service_laboratory.html:78
+#: .\templates\service_logistics.html:101
+msgid "Discover more"
+msgstr ""
+
+#: .\templates\home.html:152
+msgid "Aminol Is Available Worldwide"
+msgstr ""
+
+#: .\templates\home.html:154
+msgid "Sales network in more than 50 countries in four continents."
+msgstr ""
+
+#: .\templates\home.html:155
+msgid ""
+"Would you like to buy our products or are you interested in a partnership?"
+msgstr ""
+
+#: .\templates\home.html:157
+msgid "Get in contact"
+msgstr ""
+
+#: .\templates\home.html:166
+msgid "Learn more"
+msgstr ""
+
+#: .\templates\home.html:166
+msgid "about production"
+msgstr ""
+
+#: .\templates\home.html:168
+msgid ""
+"Aminol Lubricants produces and packages high-quality oils using premium "
+"imported base oils and additives, formulated by expert engineers."
+msgstr ""
+
+#: .\templates\home.html:183 .\templates\product.html:308
+msgid "INNOVATION & TECHNOLOGY"
+msgstr ""
+
+#: .\templates\home.html:188 .\templates\product.html:313
+msgid "Hybrid & EV lubricants"
+msgstr ""
+
+#: .\templates\home.html:189 .\templates\product.html:314
+msgid "Choose sustainability with our Hybrid & EV lubricants"
+msgstr ""
+
+#: .\templates\home.html:201
+msgid "Hybrid & EV Lubricants"
+msgstr ""
+
+#: .\templates\home.html:208 .\templates\home.html:218
+#: .\templates\product.html:325
+msgid "Additives"
+msgstr ""
+
+#: .\templates\home.html:210
+msgid ""
+"Protect and keep your vehicle in top condition with our unique range of "
+"additives."
+msgstr ""
+
+#: .\templates\home.html:227 .\templates\news.html:57
+#: .\templates\service_laboratory.html:48 .\templates\service_logistics.html:71
+msgid "LATEST NEWS"
+msgstr ""
+
+#: .\templates\home.html:246 .\templates\news.html:43 .\templates\news.html:75
+#: .\templates\news_detail.html:51
+msgid "Read more"
+msgstr ""
+
+#: .\templates\home.html:252 .\templates\service_laboratory.html:73
+#: .\templates\service_logistics.html:96
+msgid "No news available at the moment"
+msgstr ""
+
+#: .\templates\markets_automotive.html:13
+msgid "Lubricants for passenger cars, trucks, vans, motorcycles"
+msgstr ""
+
+#: .\templates\markets_automotive.html:42
+#: .\templates\markets_industrial.html:42 .\templates\markets_shipping.html:44
+#: .\templates\markets_shipping.html:60
+msgid "Yellow Point"
+msgstr ""
+
+#: .\templates\markets_automotive.html:59
+#: .\templates\markets_industrial.html:126
+#: .\templates\markets_shipping.html:141
+msgid "Our Services"
+msgstr ""
+
+#: .\templates\markets_industrial.html:13
+msgid "Lubricants for industrial equipments"
+msgstr ""
+
+#: .\templates\markets_shipping.html:13
+msgid "Lubricants for marine equipments"
+msgstr ""
+
+#: .\templates\markets_shipping.html:33 .\templates\markets_shipping.html:37
+msgid "Strengthen your business"
+msgstr ""
+
+#: .\templates\markets_shipping.html:39
+msgid ""
+"If you choose Aminol, you choose for the growth of your business. As an "
+"Aminol dealer, we offer you a wide range of technical and commercial "
+"support, specifically designed to strengthen your operations."
+msgstr ""
+
+#: .\templates\markets_shipping.html:49 .\templates\markets_shipping.html:53
+msgid "Availability"
+msgstr ""
+
+#: .\templates\markets_shipping.html:55
+msgid ""
+"The Aminol Official Dealer formula is growing rapidly and is available in "
+"more and more countries. Depending on the country, the content of the "
+"formula can vary. Please contact Sales International for availability in "
+"your country."
+msgstr ""
+
+#: .\templates\markets_shipping.html:137 .\templates\markets_shipping.html:139
+msgid "Knowledge and support"
+msgstr ""
+
+#: .\templates\markets_shipping.html:140
+msgid ""
+"Our experienced team is ready to assist you with advice, technical and "
+"commercial support, and the latest industry developments. Discover our wide "
+"range of services and workshop materials on our service page."
+msgstr ""
+
+#: .\templates\news.html:19
+msgid "Always up to date with our latest news"
+msgstr ""
+
+#: .\templates\news.html:25
+msgid "ALL ARTICLES"
+msgstr ""
+
+#: .\templates\news.html:36 .\templates\news.html:68
+#: .\templates\news_detail.html:43
+msgid "Default news image"
+msgstr ""
+
+#: .\templates\news.html:48 .\templates\news_detail.html:55
+msgid "No news articles available."
+msgstr ""
+
+#: .\templates\news.html:80
+msgid "No latest news articles available."
+msgstr ""
+
+#: .\templates\news_detail.html:30
+msgid "News Content Image"
+msgstr ""
+
+#: .\templates\product.html:14
+msgid "Product Range"
+msgstr ""
+
+#: .\templates\product.html:27
+msgid "All products"
+msgstr ""
+
+#: .\templates\product.html:29
+msgid ""
+"\n"
+"        Here you will find our wide range of mineral, semi-synthetic, and "
+"fully\n"
+"        synthetic motor oils in various viscosities and specifications, for\n"
+"        gasoline cars, diesel cars, and hybrid vehicles.\n"
+"        "
+msgstr ""
+
+#: .\templates\product.html:55 .\templates\product.html:186
+msgid "Product group"
+msgstr ""
+
+#: .\templates\product.html:74 .\templates\product.html:205
+msgid "Segments"
+msgstr ""
+
+#: .\templates\product.html:93
+msgid "Oil Type"
+msgstr ""
+
+#: .\templates\product.html:112 .\templates\product.html:243
+msgid "Viscosity"
+msgstr ""
+
+#: .\templates\product.html:133 .\templates\product.html:263
+msgid "View Result"
+msgstr ""
+
+#: .\templates\product.html:151
+msgid "More"
+msgstr ""
+
+#: .\templates\product.html:159
+msgid "No products found matching your criteria."
+msgstr ""
+
+#: .\templates\product.html:168
+msgid "Filtering"
+msgstr ""
+
+#: .\templates\product.html:224
+msgid "Oil type"
+msgstr ""
+
+#: .\templates\product_detail.html:24
+msgid "Back to the overview"
+msgstr ""
+
+#: .\templates\product_detail.html:37
+msgid "Featured & Benefits:"
+msgstr ""
+
+#: .\templates\product_detail.html:42
+msgid "Application:"
+msgstr ""
+
+#: .\templates\product_detail.html:47
+msgid "Specification:"
+msgstr ""
+
+#: .\templates\product_detail.html:68
+msgid "Recommendations:"
+msgstr ""
+
+#: .\templates\product_detail.html:74
+msgid "No specific recommendations available."
+msgstr ""
+
+#: .\templates\product_detail.html:80 .\templates\product_detail.html:95
+msgid "Available packages:"
+msgstr ""
+
+#: .\templates\product_detail.html:108
+msgid "Property"
+msgstr ""
+
+#: .\templates\product_detail.html:109
+msgid "Unit"
+msgstr ""
+
+#: .\templates\product_detail.html:110
+msgid "Test method"
+msgstr ""
+
+#: .\templates\product_detail.html:111
+msgid "Typical value"
+msgstr ""
+
+#: .\templates\product_detail.html:124
+msgid "This product does not have any available specification information."
+msgstr ""
+
+#: .\templates\service_laboratory.html:16
+msgid "Aminol laboratory"
+msgstr ""
+
+#: .\templates\service_logistics.html:15
+msgid "Aminol logistics"
+msgstr ""
 
 #: .\venv\Lib\site-packages\django\contrib\messages\apps.py:16
 msgid "Messages"
