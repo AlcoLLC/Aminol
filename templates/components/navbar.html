@@ -5,7 +5,6 @@
     <div class="container">
       <a href="/" class="navbar-left">
         <img class="aminol-logo" src="{% static '/images/aminol-logo.svg' %}" alt="Aminol logo" />
-        <img class="aminol-logo-light" src="{% static '/images/aminol-logo-light.svg' %}" alt="Aminol logo light" />
       </a>
       <div class="navbar-right">
         <div class="nav-section">
@@ -49,9 +48,9 @@
           <button class="btn-en" data-lang="en">EN</button>
         </div>
 
-        <button class="search">
+        <!-- <button class="search">
           <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
+        </button> -->
 
         <button class="hamburger" id="hamburger">
           <i class="fas fa-bars"></i>
@@ -99,10 +98,3 @@
   </div>
 </div>
 
-
-
-<form id="language-form" action="{% url 'set_language' %}" method="post" style="display: none;">
-    {% csrf_token %}
-    <input type="hidden" name="language" id="language-input">
-    <input type="hidden" name="next" value="{{ request.get_full_path }}">
-</form>
