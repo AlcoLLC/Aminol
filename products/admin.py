@@ -76,21 +76,11 @@ class OilTypesAdmin(TranslationAdmin):
 
 
 @admin.register(Viscosity)
-class ViscosityAdmin(TranslationAdmin):
+class ViscosityAdmin(admin.ModelAdmin):
     list_display = ('title', 'slug')
     prepopulated_fields = {'slug': ('title',)}
     search_fields = ('title',)
     
-    class Media:
-        js = (
-            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
-            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
-            'modeltranslation/js/tabbed_translation_fields.js',
-        )
-        css = {
-            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
-        }
-
 
 @admin.register(Liter)
 class LiterAdmin(admin.ModelAdmin):
@@ -98,7 +88,7 @@ class LiterAdmin(admin.ModelAdmin):
     ordering = ('volume',)
     
 
-class ProductPropertyInline(TranslationTabularInline):
+class ProductPropertyInline(admin.TabularInline):
     model = ProductProperty
     extra = 1
     fields = ['property_name', 'unit', 'test_method', 'typical_value', 'order']
@@ -106,23 +96,13 @@ class ProductPropertyInline(TranslationTabularInline):
 
 
 @admin.register(ProductProperty)
-class ProductPropertyAdmin(TranslationAdmin):
+class ProductPropertyAdmin(admin.ModelAdmin):
     list_display = ['product', 'property_name', 'unit', 'test_method', 'typical_value', 'order']
     list_filter = ['product', 'unit']
     search_fields = ['property_name', 'test_method', 'product__title']
     list_editable = ['order']
     ordering = ['product', 'order']
     
-    class Media:
-        js = (
-            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
-            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
-            'modeltranslation/js/tabbed_translation_fields.js',
-        )
-        css = {
-            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
-        }
-
 
 @admin.register(Product)
 class ProductAdmin(TranslationAdmin):

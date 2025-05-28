@@ -4,6 +4,7 @@ from .models import ContactInfo
 @register(ContactInfo)
 class ContactInfoTranslationOptions(TranslationOptions):
     fields = (
-        'title', 'description', 'aminol_headquarters', 'aminol_factory',
-        'registers', 'contact_address'
+        'title_translate', 'description_translate', 
+        'aminol_headquarters_translate', 'aminol_factory_translate',
+        'registers_translate', 'contact_address_translate'
     )

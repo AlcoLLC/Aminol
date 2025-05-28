@@ -6,6 +6,9 @@ class Product_group(models.Model):
     image = models.ImageField(upload_to='product_group/')
     slug = models.SlugField(max_length=255, unique=True)
     in_home = models.BooleanField(default=False, verbose_name="In Home")
+
+    title_translate = models.CharField(max_length=255)
+    description_translate = models.TextField(blank=True, null=True)
     
     def __str__(self):
         return self.title
@@ -13,6 +16,8 @@ class Product_group(models.Model):
 class Segments(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True)
+
+    title_translate = models.CharField(max_length=255)
     
     def __str__(self):
         return self.title
@@ -20,6 +25,9 @@ class Segments(models.Model):
 class Oil_Types(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True)
+
+    title_translate = models.CharField(max_length=255)
+
     
     def __str__(self):
         return self.title
@@ -59,6 +67,12 @@ class Product(models.Model):
     pds_url = models.URLField(blank=True, null=True, verbose_name="PDS Link")
     sds_url = models.URLField(blank=True, null=True, verbose_name="SDS Link")
     created_at = models.DateTimeField(auto_now_add=True)
+
+    title_translate = models.CharField(max_length=255)
+    description_translate = models.TextField()
+    features_benefits_translate = models.TextField(blank=True, null=True)
+    application_translate = models.TextField(blank=True, null=True)
+    recommendations_translate = models.TextField(blank=True, null=True)
     
     
     def __str__(self):

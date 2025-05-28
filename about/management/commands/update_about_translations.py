@@ -1,51 +1,81 @@
 from django.core.management.base import BaseCommand
-from django.conf import settings
-from modeltranslation.utils import get_translation_fields
 from about.models import (
     AboutAminol, AboutSectionContent, QualityContent, WeGuarantee,
     ProductionContent, DocumentsCertification, Sustainability, SustainabilityContent
 )
 
+
 class Command(BaseCommand):
-    help = 'Copy default values to translation fields for multilingual models'
+    help = 'Copy original field values to corresponding _translate fields'
 
     def handle(self, *args, **options):
-        default_lang = getattr(settings, 'MODELTRANSLATION_DEFAULT_LANGUAGE', 'en')
-        languages = [lang_code for lang_code, _ in settings.LANGUAGES]
+        
+        # AboutAminol model
+        self.stdout.write('Processing AboutAminol...')
+        for instance in AboutAminol.objects.all():
+            instance.based_in_translate = instance.based_in
+            instance.location_translate = instance.location
+            instance.exporting_to_translate = instance.exporting_to
+            instance.production_capacity_translate = instance.production_capacity
+            instance.save()
+        
+        # AboutSectionContent model
+        self.stdout.write('Processing AboutSectionContent...')
+        for instance in AboutSectionContent.objects.all():
+            instance.title_translate = instance.title
+            instance.description_translate = instance.description
+            instance.save()
+        
+        # QualityContent model
+        self.stdout.write('Processing QualityContent...')
+        for instance in QualityContent.objects.all():
+            instance.title_translate = instance.title
+            instance.description_translate = instance.description
+            instance.save()
+        
+        # WeGuarantee model
+        self.stdout.write('Processing WeGuarantee...')
+        for instance in WeGuarantee.objects.all():
+            instance.title_translate = instance.title
+            instance.sub_title_one_translate = instance.sub_title_one
+            instance.sub_description_one_translate = instance.sub_description_one
+            instance.sub_title_two_translate = instance.sub_title_two
+            instance.sub_description_two_translate = instance.sub_description_two
+            instance.sub_title_three_translate = instance.sub_title_three
+            instance.sub_description_three_translate = instance.sub_description_three
+            instance.sub_title_four_translate = instance.sub_title_four
+            instance.sub_description_four_translate = instance.sub_description_four
+            instance.save()
+        
+        # ProductionContent model
+        self.stdout.write('Processing ProductionContent...')
+        for instance in ProductionContent.objects.all():
+            instance.title_translate = instance.title
+            instance.description_translate = instance.description
+            instance.save()
+        
+        # DocumentsCertification model
+        self.stdout.write('Processing DocumentsCertification...')
+        for instance in DocumentsCertification.objects.all():
+            instance.title_translate = instance.title
+            instance.description_translate = instance.description
+            instance.save()
+        
+        # Sustainability model
+        self.stdout.write('Processing Sustainability...')
+        for instance in Sustainability.objects.all():
+            instance.main_description_translate = instance.main_description
+            instance.save()
+        
+        # SustainabilityContent model
+        self.stdout.write('Processing SustainabilityContent...')
+        for instance in SustainabilityContent.objects.all():
+            instance.title_translate = instance.title
+            instance.description_translate = instance.description
+            instance.save()
 
-        def update_instance_fields(instance, fields):
-            for field in fields:
-                default_value = getattr(instance, field, '')
-                default_field = f"{field}_{default_lang}"
-                if not getattr(instance, default_field, None):
-                    setattr(instance, default_field, default_value)
-
-                for lang in languages:
-                    if lang != default_lang:
-                        translated_field = f"{field}_{lang}"
-                        if not getattr(instance, translated_field, None):
-                            setattr(instance, translated_field, '')
-
-        model_configs = [
-            (AboutAminol, ['based_in', 'location', 'exporting_to', 'production_capacity', 'workforce']),
-            (AboutSectionContent, ['title', 'description']),
-            (QualityContent, ['title', 'description']),
-            (WeGuarantee, [
-                'title',
-                'sub_title_one', 'sub_description_one',
-                'sub_title_two', 'sub_description_two',
-                'sub_title_three', 'sub_description_three',
-                'sub_title_four', 'sub_description_four',
-            ]),
-            (ProductionContent, ['title', 'description']),
-            (DocumentsCertification, ['title', 'description']),
-            (Sustainability, ['main_description']),
-            (SustainabilityContent, ['title', 'description']),
-        ]
-
-        for model, fields in model_configs:
-            for instance in model.objects.all():
-                update_instance_fields(instance, fields)
-                instance.save()
-
-        self.stdout.write(self.style.SUCCESS("Successfully set translation fields for all multilingual models."))
+        self.stdout.write(
+            self.style.SUCCESS(
+                'Successfully copied all original field values to _translate fields!'
+            )
+        )

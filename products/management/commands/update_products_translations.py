@@ -1,41 +1,54 @@
 from django.core.management.base import BaseCommand
-from django.conf import settings
-from products.models import (  
-    Product_group, Segments, Oil_Types, Viscosity,
-    Product, ProductProperty
+from products.models import (
+    Product_group, Segments, Oil_Types, Product
 )
 
 class Command(BaseCommand):
-    help = 'Set default and empty translation fields for Product-related models'
+    help = 'Copy original values to *_translate fields in Product-related models'
 
     def handle(self, *args, **options):
-        default_lang = getattr(settings, 'MODELTRANSLATION_DEFAULT_LANGUAGE', 'en')
-        languages = [lang_code for lang_code, _ in settings.LANGUAGES]
+        def copy_fields(instance, field_pairs):
+            updated = False
+            for original, translated in field_pairs:
+                if not getattr(instance, translated, None):
+                    setattr(instance, translated, getattr(instance, original, ''))
+                    updated = True
+            if updated:
+                instance.save()
+            return updated
 
-        def update_fields(instance, fields):
-            for field in fields:
-                default_value = getattr(instance, field, '')
-                default_field = f"{field}_{default_lang}"
-                if not getattr(instance, default_field, None):
-                    setattr(instance, default_field, default_value)
-                for lang in languages:
-                    if lang != default_lang:
-                        translated_field = f"{field}_{lang}"
-                        if not getattr(instance, translated_field, None):
-                            setattr(instance, translated_field, '')
+        updated_counts = {
+            "Product_group": 0,
+            "Segments": 0,
+            "Oil_Types": 0,
+            "Product": 0,
+        }
 
-        models_with_fields = [
-            (Product_group, ['title', 'description']),
-            (Segments, ['title']),
-            (Oil_Types, ['title']),
-            (Viscosity, ['title']),
-            (Product, ['title', 'description', 'features_benefits', 'application', 'oem_sertification', 'recommendations']),
-            (ProductProperty, ['property_name', 'unit', 'test_method', 'typical_value']),
-        ]
+        for pg in Product_group.objects.all():
+            if copy_fields(pg, [
+                ('title', 'title_translate'),
+                ('description', 'description_translate'),
+            ]):
+                updated_counts["Product_group"] += 1
 
-        for model, fields in models_with_fields:
-            for obj in model.objects.all():
-                update_fields(obj, fields)
-                obj.save()
+        for seg in Segments.objects.all():
+            if copy_fields(seg, [('title', 'title_translate')]):
+                updated_counts["Segments"] += 1
 
-        self.stdout.write(self.style.SUCCESS("✅ Translation fields for Product-related models set successfully."))
+        for ot in Oil_Types.objects.all():
+            if copy_fields(ot, [('title', 'title_translate')]):
+                updated_counts["Oil_Types"] += 1
+
+        for prod in Product.objects.all():
+            if copy_fields(prod, [
+                ('title', 'title_translate'),
+                ('description', 'description_translate'),
+                ('features_benefits', 'features_benefits_translate'),
+                ('application', 'application_translate'),
+                ('recommendations', 'recommendations_translate'),
+            ]):
+                updated_counts["Product"] += 1
+
+        self.stdout.write(self.style.SUCCESS("✅ Translations copied successfully."))
+        for model, count in updated_counts.items():
+            self.stdout.write(f"  - {model}: {count} updated")

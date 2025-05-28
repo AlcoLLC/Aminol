@@ -3,10 +3,10 @@ from .models import News, News_Content
 
 @register(News)
 class NewsTranslationOptions(TranslationOptions):
-    fields = ('title', 'content')
+    fields = ('title_translate', 'content_translate')
 
 
 @register(News_Content)
 class NewsContentTranslationOptions(TranslationOptions):
-    fields = ('description',)
+    fields = ('description_translate',)
 

@@ -8,6 +8,9 @@ class FAQ(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    question_translate = models.CharField(max_length=255)
+    answer_translate = models.TextField()
+
     class Meta:
         ordering = ['order', 'created_at']
         verbose_name = "FAQ"
