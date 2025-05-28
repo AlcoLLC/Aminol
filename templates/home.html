@@ -1,4 +1,8 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
 {% include 'components/navbar.html' %}
 
   <header class="placeholder-header home-header">
@@ -6,37 +10,33 @@
       <div class="swiper-wrapper">
         <div class="swiper-slide swiper-slide_one">
           <div class="slide-content">
-            <h2>Passenger car lubricants</h2>
+            <h2>{% trans "Passenger car lubricants" %}</h2>
             <p>
-              Manufacturer of Lubricants, Lubricant Additive Packages &
-              Deionised Fluids. Proudly Made in Azerbaijan
+              {% trans "Manufacturer of Lubricants, Lubricant Additive Packages & Deionised Fluids. Proudly Made in Azerbaijan" %}
             </p>
           </div>
         </div>
         <div class="swiper-slide swiper-slide_two">
           <div class="slide-content">
-            <h2>Industrial lubricants</h2>
+            <h2>{% trans "Industrial lubricants" %}</h2>
             <p>
-              Manufacturer of Lubricants, Lubricant Additive Packages &
-              Deionised Fluids. Proudly Made in Azerbaijan
+              {% trans "Manufacturer of Lubricants, Lubricant Additive Packages & Deionised Fluids. Proudly Made in Azerbaijan" %}
             </p>
           </div>
         </div>
         <div class="swiper-slide swiper-slide_three">
           <div class="slide-content">
-            <h2>Passenger car lubricants</h2>
+            <h2>{% trans "Passenger car lubricants" %}</h2>
             <p>
-              Manufacturer of Lubricants, Lubricant Additive Packages &
-              Deionised Fluids. Proudly Made in Azerbaijan
+              {% trans "Manufacturer of Lubricants, Lubricant Additive Packages & Deionised Fluids. Proudly Made in Azerbaijan" %}
             </p>
           </div>
         </div>
         <div class="swiper-slide swiper-slide_four">
           <div class="slide-content">
-            <h2>Industrial lubricants</h2>
+            <h2>{% trans "Industrial lubricants" %}</h2>
             <p>
-              Manufacturer of Lubricants, Lubricant Additive Packages &
-              Deionised Fluids. Proudly Made in Azerbaijan
+              {% trans "Manufacturer of Lubricants, Lubricant Additive Packages & Deionised Fluids. Proudly Made in Azerbaijan" %}
             </p>
           </div>
         </div>
@@ -49,9 +49,10 @@
       </div>
     </div>
   </header>
+
   <div class="product-categories">
     <div class="section-header">
-      <h2>PRODUCT GROUP</h2>
+      <h2>{% trans "PRODUCT GROUP" %}</h2>
     </div>
     <div class="container categories-grid">
       {% for product_group in product_groups %}
@@ -72,17 +73,18 @@
       {% empty %}
         <div class="news-card">
           <div class="news-content">
-            <h5>No product_group available at the moment</h5>
+            <h5>{% trans "No product_group available at the moment" %}</h5>
           </div>
         </div>
       {% endfor %}
     
     </div>
     
-      {% if product_groups|length > 8 %}
-    <button class="button-style" id="seeMoreBtn">See more</button>
+    {% if product_groups|length > 8 %}
+    <button class="button-style" id="seeMoreBtn">{% trans "See more" %}</button>
     {% endif %}
-</div>
+  </div>
+
   <div class="our-values bg-blue">
     <div class="container our-values-section">
       <div>
@@ -90,20 +92,15 @@
         <img src="{% static 'images_folder/values.svg' %}" alt="" />
       </div>
       <div class="values-content">
-        <h3>Our Values</h3>
+        <h3>{% trans "Our Values" %}</h3>
         <p>
-          The modernization of industry and renewal of equipment have increased
-          demand for high-quality lubricants in Azerbaijan. To meet this, AMINOL
-          Lubricants opened on December 15, 2017, in Sumgayit Chemical
-          Industrial Park with a $20 million investment. The plant produces
-          150,000 tons annually, focusing on motor, hydraulic, transmission,
-          compressor, turbine, and marine oils, along with antifreeze and
-          AdBlue.
+          {% trans "The modernization of industry and renewal of equipment have increased demand for high-quality lubricants in Azerbaijan. To meet this, AMINOL Lubricants opened on December 15, 2017, in Sumgayit Chemical Industrial Park with a $20 million investment. The plant produces 150,000 tons annually, focusing on motor, hydraulic, transmission, compressor, turbine, and marine oils, along with antifreeze and AdBlue." %}
         </p>
-        <a href="/about/" class="button-style">Discover more</a>
+        <a href="/about/" class="button-style">{% trans "Discover more" %}</a>
       </div>
     </div>
   </div>
+
   <div class="aminol-worldwide container">
     <div>
       <video autoplay muted loop playsinline style="width: 100%; height: auto">
@@ -111,25 +108,23 @@
       </video>
     </div>
     <div class="aminol-worldwide-content">
-      <h2>Aminol Is Available Worldwide</h2>
+      <h2>{% trans "Aminol Is Available Worldwide" %}</h2>
       <p>
-        Sales network in more than 50 countries in four continents. <br />
-        Would you like to buy our products or are you interested in a
-        partnership?
+        {% trans "Sales network in more than 50 countries in four continents." %} <br />
+        {% trans "Would you like to buy our products or are you interested in a partnership?" %}
       </p>
-      <a href="/contact/" class="button-style">Get in contact</a>
+      <a href="/contact/" class="button-style">{% trans "Get in contact" %}</a>
     </div>
   </div>
+
   <div class="container">
     <section class="production-section">
       <div class="section-background"></div>
       <div class="section-container">
         <div class="section-content" id="textContent">
-          <h2>Learn more<br />about production</h2>
+          <h2>{% trans "Learn more" %}<br />{% trans "about production" %}</h2>
           <p>
-            Aminol Lubricants produces and packages high-quality oils using
-            premium imported base oils and additives, formulated by expert
-            engineers.
+            {% trans "Aminol Lubricants produces and packages high-quality oils using premium imported base oils and additives, formulated by expert engineers." %}
           </p>
         </div>
         <div class="play-button" id="playButton">
@@ -141,16 +136,17 @@
       </div>
     </section>
   </div>
+
   <div class="innovation">
     <div class="section-header">
-      <h2>INNOVATION & TECHNOLOGY</h2>
+      <h2>{% trans "INNOVATION & TECHNOLOGY" %}</h2>
     </div>
     <div class="container innovation-technology">
       <div class="section slide-right">
         <div class="content">
-          <h2>Hybrid & EV lubricants</h2>
-          <p>Choose sustainability with our Hybrid & EV lubricants</p>
-          <!-- <a href="#" class="button-style">Discover more</a> -->
+          <h2>{% trans "Hybrid & EV lubricants" %}</h2>
+          <p>{% trans "Choose sustainability with our Hybrid & EV lubricants" %}</p>
+          <!-- <a href="#" class="button-style">{% trans "Discover more" %}</a> -->
         </div>
         <div class="image-container">
           <img
@@ -161,25 +157,24 @@
           <img
             class="innovation-image"
             src="{% static 'images_folder/image.png' %}"
-            alt="Hybrid & EV Lubricants"
+            alt="{% trans 'Hybrid & EV Lubricants' %}"
           />
         </div>
       </div>
 
       <div class="section slide-left">
         <div class="content">
-          <h2>Additives</h2>
+          <h2>{% trans "Additives" %}</h2>
           <p>
-            Protect and keep your vehicle in top condition with our unique range
-            of additives.
+            {% trans "Protect and keep your vehicle in top condition with our unique range of additives." %}
           </p>
-          <!-- <a href="#" class="button-style">Discover more</a> -->
+          <!-- <a href="#" class="button-style">{% trans "Discover more" %}</a> -->
         </div>
         <div class="image-container">
           <img
             class="innovation-image"
             src="{% static 'images_folder/FR4A9609 1.png' %}"
-            alt="Additives"
+            alt="{% trans 'Additives' %}"
           />
         </div>
       </div>
@@ -188,7 +183,7 @@
 
   <section class="news-section">
     <div class="section-header">
-      <h2>LATEST NEWS</h2>
+      <h2>{% trans "LATEST NEWS" %}</h2>
     </div>
 
     <div class="container latest-news">
@@ -207,24 +202,22 @@
             <p>
               {{ news.content|truncatechars:150 }}
             </p>
-            <a href="{% url 'news:news_detail' news.pk %}">Read more <i class="fa-solid fa-chevron-right"></i></a>
+            <a href="{% url 'news:news_detail' news.pk %}">{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></a>
           </div>
         </div>
         {% empty %}
         <div class="news-card">
           <div class="news-content">
-            <h5>No news available at the moment</h5>
+            <h5>{% trans "No news available at the moment" %}</h5>
           </div>
         </div>
         {% endfor %}
       </div>
-      <a href="/news/" class="button-style">Discover more</a>
+      <a href="/news/" class="button-style">{% trans "Discover more" %}</a>
     </div>
   </section>
 
   {% include 'components/gallery.html' %}
   {% include 'components/brochure.html' %}
-
-  
 
 {% endblock %}

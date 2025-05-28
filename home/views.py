@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from news.models import News
 from products.models import Product_group
-from .models import PartnerLogo, CarLogo, Gallery as GalleryImage
+from .models import PartnerLogo, Gallery as GalleryImage
 
 def home_view(request): 
     latest_news = News.objects.filter(is_active=True)[:3] 
@@ -9,14 +9,12 @@ def home_view(request):
     product_groups = Product_group.objects.all().order_by('-in_home', 'title')
     
     partner_logos = PartnerLogo.objects.all()
-    car_logos = CarLogo.objects.all()
     images = GalleryImage.objects.all().order_by('-created_at')
     
     context = { 
         'latest_news': latest_news, 
         'product_groups': product_groups,
         'partner_logos': partner_logos,
-        'car_logos': car_logos,
         'images': images,
     } 
      

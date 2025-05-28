@@ -3,7 +3,7 @@ from .models import (
     AboutAminol, Quality, WeGuarantee, Production,
     DocumentsCertification, Sustainability
 )
-from home.models import PartnerLogo, CarLogo
+from home.models import PartnerLogo, CarLogo, Gallery as GalleryImage
 
 def about_page_view(request):
     about_aminol = AboutAminol.objects.last()
@@ -35,6 +35,7 @@ def about_page_view(request):
 
     partner_logos = PartnerLogo.objects.all()
     car_logos = CarLogo.objects.all()
+    images = GalleryImage.objects.all().order_by('-created_at')
 
     context = {
         'about_aminol': about_aminol,
@@ -49,6 +50,8 @@ def about_page_view(request):
         'sustainability_contents': sustainability_contents,
         'partner_logos': partner_logos,
         'car_logos': car_logos,
+        'images': images,
+
     }
 
 

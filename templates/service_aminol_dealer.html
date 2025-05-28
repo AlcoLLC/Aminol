@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
+
 {% block content %}
 
 {% include 'components/navbar_blur.html' %}
@@ -10,8 +12,8 @@
 
 <!-- Breadcrumb -->
 <div class="breadcrumb container">
-  <a href="/">Home page</a>| <span>Services</span>|
-  <p>Aminol official dealer</p>
+  <a href="/">{% trans "Home page" %}</a>| <span>{% trans "Services" %}</span>|
+  <p>{% trans "Aminol official dealer" %}</p>
 </div>
 
 {% if dealer %}

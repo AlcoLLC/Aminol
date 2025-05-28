@@ -22,17 +22,16 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  
+
 </head>
 
 <body>
   {% block content %} {% endblock %}
   {% include 'components/footer.html' %}
 
- 
+   <script src="{% static 'assets/js/locale.js' %}"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.js"></script>
-  <script src="https://cdnjs.cgit branch -M mainloudflare.com/ajax/libs/Swiper/9.4.1/swiper-bundle.min.js"></script>
   <script src="{% static 'assets/js/script.js' %}"></script>
   <script src="{% static 'assets/js/home.js' %}"></script>
   <script src="{% static 'assets/js/about.js' %}"></script>

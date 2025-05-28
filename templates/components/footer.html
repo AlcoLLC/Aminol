@@ -1,27 +1,28 @@
 {% load static %}
+{% load i18n %}
 
 <footer class="container">
   <div class="footer-content">
     <div>
        <a href="/"><img src="{% static 'images/aminol-logo.svg' %}" alt="" /></a>
       <p>
-        Reliable Lubricant Manufacturer. <br />
-        Engineered for Performance, Trusted for Protection.
+        {% trans "Reliable Lubricant Manufacturer." %} <br />
+        {% trans "Engineered for Performance, Trusted for Protection." %}
       </p>
     </div>
     <div class="footer-row">
       <ul>
         <li>
-         <a href="/about">About Us</a>
-          <a href="/product">Products</a>
+         <a href="/about">{% trans "About Us" %}</a>
+          <a href="/product">{% trans "Products" %}</a>
         </li>
         <li>
-          <a href="/service_aminol_dealer">Services</a>
-          <a href="/faq">FAQ</a>
+          <a href="/service_aminol_dealer">{% trans "Services" %}</a>
+          <a href="/faq">{% trans "FAQ" %}</a>
         </li>
         <li>
-          <a href="/news">News</a>
-          <a href="/contact">Contact</a>
+          <a href="/news">{% trans "News" %}</a>
+          <a href="/contact">{% trans "Contact" %}</a>
         </li>
       </ul>
       <button id="scrollToTop"><i class="fa-solid fa-chevron-up"></i></button>
@@ -30,7 +31,7 @@
   <hr class="custom-hr" />
   <div class="footer-contact">
     <div>
-      <p>Vali Mammadov Street 1/3, Old City, Baku, Azerbaijan, AZ1000</p>
+      <p>{% trans "Vali Mammadov Street 1/3, Old City, Baku, Azerbaijan, AZ1000" %}</p>
       <p><a href="">+994 12 585 10 05</a><a href="">+994 12 505 68 11</a></p>
       <p><a href="">info@aminol.az</a></p>
     </div>
@@ -51,7 +52,7 @@
   </div>
   <hr class="custom-hr" />
   <div class="alco-privacy">
-    <p>© 2025 ALCO LLC. All right reserved.</p>
-    <p>Terms and Condition - Privacy Policy</p>
+    <p>{% trans "© 2025 ALCO LLC. All right reserved." %}</p>
+    <p>{% trans "Terms and Condition" %} - {% trans "Privacy Policy" %}</p>
   </div>
 </footer>
