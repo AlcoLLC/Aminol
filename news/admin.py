@@ -1,15 +1,16 @@
 # admin.py
 from django.contrib import admin
 from django.utils.html import format_html
+from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 from .models import News, News_Content
 
 
-class NewsContentInline(admin.TabularInline):
+class NewsContentInline(TranslationTabularInline):
     model = News_Content
     extra = 1
 
 @admin.register(News)
-class NewsAdmin(admin.ModelAdmin):
+class NewsAdmin(TranslationAdmin):
     list_display = ['title', 'published_date', 'is_active', 'image_preview']
     list_filter = ['is_active', 'published_date']
     search_fields = ['title', 'content']
@@ -40,6 +41,12 @@ class NewsAdmin(admin.ModelAdmin):
     image_preview.short_description = "Image Preview"
     
     class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
         css = {
-            'all': ('admin/css/news_admin.css',)
+            'all': ('admin/css/news_admin.css',),
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
         }

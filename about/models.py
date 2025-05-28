@@ -10,7 +10,7 @@ class AboutAminol(models.Model):
     workforce = models.CharField(max_length=200)
     shared_image = models.ImageField(upload_to='about/')
 
-    def __str__(self):
+    def _str_(self):
         return f"About Aminol - Founded {self.founded_year}"
 
 
@@ -21,14 +21,12 @@ class AboutSectionContent(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='about_sections/')
 
-    def __str__(self):
+    def _str_(self):
         return f"{self.title}"
 
 
 class Quality(models.Model):
-    pass
-
-    def __str__(self):
+    def _str_(self):
         return "Quality Section"
 
 
@@ -39,7 +37,7 @@ class QualityContent(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='quality/')
 
-    def __str__(self):
+    def _str_(self):
         return f"{self.title}"
 
 
@@ -54,14 +52,12 @@ class WeGuarantee(models.Model):
     sub_title_four = models.CharField(max_length=255)
     sub_description_four = models.TextField()
 
-    def __str__(self):
+    def _str_(self):
         return self.title
 
 
 class Production(models.Model):
-    pass
-
-    def __str__(self):
+    def _str_(self):
         return "Production Section"
 
 
@@ -72,7 +68,7 @@ class ProductionContent(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='production/')
 
-    def __str__(self):
+    def _str_(self):
         return f"{self.title}"
 
 
@@ -80,14 +76,14 @@ class DocumentsCertification(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
 
-    def __str__(self):
+    def _str_(self):
         return self.title
 
 
 class Sustainability(models.Model):
     main_description = models.TextField()
 
-    def __str__(self):
+    def _str_(self):
         return "Sustainability Section"
 
 
@@ -99,5 +95,5 @@ class SustainabilityContent(models.Model):
     image = models.ImageField(
         upload_to='sustainability/', blank=True, null=True)
 
-    def __str__(self):
+    def _str_(self):
         return f"{self.title}"

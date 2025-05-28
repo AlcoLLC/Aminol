@@ -13,16 +13,16 @@
 //     });
 // });
 
-document.addEventListener('DOMContentLoaded', function() {
-    const languageButtons = document.querySelectorAll('.btn-az, .btn-en');
-    const languageForm = document.getElementById('language-form');
-    const languageInput = document.getElementById('language-input');
+// document.addEventListener('DOMContentLoaded', function() {
+//     const languageButtons = document.querySelectorAll('.btn-az, .btn-en');
+//     const languageForm = document.getElementById('language-form');
+//     const languageInput = document.getElementById('language-input');
 
-    languageButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const lang = this.getAttribute('data-lang');
-            languageInput.value = lang;
-            languageForm.submit();
-        });
-    });
-});
+//     languageButtons.forEach(button => {
+//         button.addEventListener('click', function() {
+//             const lang = this.getAttribute('data-lang');
+//             languageInput.value = lang;
+//             languageForm.submit();
+//         });
+//     });
+// });
