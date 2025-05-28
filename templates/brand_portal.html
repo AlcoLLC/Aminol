@@ -1,4 +1,7 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %} {% load static %}
+{% load i18n %}
+{% block content %}
+
 <div class="news-page">
     {% include 'components/navbar_dark.html' %}
 
@@ -7,13 +10,13 @@
 
     <!-- Breadcrumb -->
     <div class="breadcrumb container">
-        <a href="/">Home page</a>|<p>Brand Portal</p>
+        <a href="/">{% trans "Home Page" %}</a>|<p>{% trans "Brand Portal" %}</p>
     </div>
 
 
     <div class="container">
         <div class="news-top-content">
-            <h2>Brand portal</h2>
+            <h2>{% trans "Brand Portal" %}</h2>
             <p>{{ brand.title }}</p>
         </div>
     </div>

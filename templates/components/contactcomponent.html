@@ -1,12 +1,12 @@
 {% load static %}
-
+{% load i18n %}
 <div class="aminol-contact-form container">
     <div class="form-content">
-      <h2>Contact form</h2>
-      <p>
-        Do you need a specific solution or are you interested in a partnership?<br />
-        Please contact us here.
-      </p>
+       <h2>{% trans "Contact form" %}</h2>
+    <p>
+      {% trans "Do you need a specific solution or are you interested in a partnership?" %}<br />
+      {% trans "Please contact us here." %}
+    </p>
 
       <form action="{% url 'contact' %}" method="POST">
         {% csrf_token %}
@@ -106,4 +106,3 @@
       </form>
     </div>
   </div>
-  

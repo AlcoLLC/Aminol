@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% load i18n %} {% block content %}
 
 
 {% include 'components/navbar_blur.html' %}
@@ -10,11 +10,11 @@
 <!-- About Us Section -->
 <section class="about-section container">
   <div class="about-tabs">
-    <div class="tab active" data-tab="about-aminol">About Aminol</div>
-    <div class="tab" data-tab="quality">Quality</div>
-    <div class="tab" data-tab="production">Production</div>
-    <div class="tab" data-tab="documents">Documents & Certifications</div>
-    <div class="tab" data-tab="sustainability">Sustainability</div>
+    <div class="tab active" data-tab="about-aminol">{% trans "About Aminol" %}</div>
+<div class="tab" data-tab="quality">{% trans "Quality" %}</div>
+<div class="tab" data-tab="production">{% trans "Production" %}</div>
+<div class="tab" data-tab="documents">{% trans "Documents & Certifications" %}</div>
+<div class="tab" data-tab="sustainability">{% trans "Sustainability" %}</div>
   </div>
 </section>
 
@@ -23,8 +23,8 @@
   <div class="tab-content active" id="about-aminol">
     <!-- Breadcrumb -->
     <div class="breadcrumb container">
-      <a href="/">Home page</a>|
-      <p>About us</p>
+      <a href="/">{% trans "Home page" %}</a>|
+      <p>{% trans "About us" %}</p>
     </div>
 
     <!-- Shared Section -->
@@ -47,7 +47,7 @@
 
     <div class="shared-images-section">
       <div class="section-header">
-        <h2>ABOUT AMINOL</h2>
+           <h2>{% trans "ABOUT AMINOL" %}</h2>
       </div>
 
       <div class="container">
@@ -86,12 +86,12 @@
   <div class="tab-content active" id="quality">
     <!-- Breadcrumb -->
     <div class="breadcrumb container">
-      <a href="/">Home page</a>| <span>About us</span>|
-      <p>Quality</p>
+      <a href="/">{% trans "Home page" %}</a>| <span>{% trans "About Us" %}</span>|
+      <p>{% trans "Quality" %}</p>
     </div>
 
     <div class="section-header">
-      <h2>QUALITY</h2>
+      <h2>{% trans "QUALITY" %}</h2>
     </div>
 
     <div class="shared-images-section">
@@ -164,12 +164,12 @@
     <!-- Breadcrumb -->
 
     <div class="breadcrumb container">
-      <a href="/">Home page</a>| <span>About Aminol</span>|
-      <p>Production</p>
+      <a href="/">{% trans "Home page" %}</a>| <span>{% trans "About Aminol" %}</span>|
+      <p>{% trans "Production" %}</p>
     </div>
 
     <div class="section-header">
-      <h2>PRODUCTION</h2>
+      <h2>{% trans "PRODUCTION" %}</h2>
     </div>
 
     <div class="shared-images-section">
@@ -209,12 +209,12 @@
   <div class="tab-content active " id="documents">
     <!-- Breadcrumb -->
     <div class="breadcrumb container">
-      <a href="/">Home page</a>| <span>About Aminol</span>|
-      <p>Documents & Certifications</p>
+      <a href="/">{% trans "Home page" %}</a>| <span>{% trans "About Aminol" %}</span>|
+      <p>{% trans "Documents & Certifications" %}</p>
     </div>
 
     <div class="section-header certification">
-      <h2>DOCUMENTS AND CERTIFICATION</h2>
+      <h2>{% trans "DOCUMENTS AND CERTIFICATION" %}</h2>
     </div>
 
     {% if documents_cert %}
@@ -276,12 +276,12 @@
     <!-- Breadcrumb -->
 
     <div class="breadcrumb container">
-      <a href="/">Home page</a>| <span>About Aminol</span>|
-      <p>Sustainability</p>
+      <a href="/">{% trans "Home page" %}</a>| <span>{% trans "About Aminol" %}</span>|
+      <p>{% trans "Sustainability" %}</p>
     </div>
 
     <div class="section-header">
-      <h2>SUSTAINABILITY</h2>
+      <h2>{% trans "SUSTAINABILITY" %}</h2>
     </div>
 
     {% if sustainability %}
@@ -342,7 +342,7 @@
 </div>
 
 
-{% include 'components/gallery.html' %} 
+{% include 'components/gallery.html' %}
 
 {% include 'components/brochure.html' %}
 {% endblock %}

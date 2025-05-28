@@ -1,4 +1,5 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% load i18n %}
+{% block content %}
 <div class="news-page">
     {% include 'components/navbar_dark.html' %}
 
@@ -7,13 +8,13 @@
 
     <!-- Breadcrumb -->
     <div class="breadcrumb container">
-        <a href="/">Home page</a>|<p>FAQ</p>
+        <a href="/">{% trans "Home Page" %}</a>|<p>{% trans "FAQ" %}</p>
     </div>
 
 
     <div class="container">
         <div class="news-top-content">
-            <h2>Frequently asked questions</h2>
+            <h2> {% trans "Frequently asked questions" %}</h2>
         </div>
     </div>
 
@@ -33,7 +34,7 @@
         </div>
         {% empty %}
         <div class="no-faq">
-            <p>No FAQs available at the moment.</p>
+            <p> {% trans "No FAQs available at the moment." %}</p>
         </div>
         {% endfor %}
     </div>

@@ -1,4 +1,8 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
 <div class="news-page">
     {% include 'components/navbar_dark.html' %}
 
@@ -7,9 +11,8 @@
 
     <!-- Breadcrumb -->
     <div class="breadcrumb container">
-        <a href="/">Home page</a>|<p>News</p>
+        <a href="/">{% trans "Home page" %}</a>|<p>{% trans "News" %}</p>
     </div>
-
 
     <div class="container">
         <div class="news-detail-top-content">
@@ -18,14 +21,13 @@
         </div>
     </div>
 
-   
 {% for content in contents %}
     <div class="services-offer-section {% if forloop.counter|divisibleby:2 %}reverse{% endif %} brand-portal-section container">
         <div class="text-container text-left">
             <p>{{ content.description }}</p>
         </div>
         <div class="services-offer-image">
-            <img src="{{ content.image.url }}" alt="News Content Image" />
+            <img src="{{ content.image.url }}" alt="{% trans 'News Content Image' %}" />
         </div>
     </div>
 {% endfor %}
@@ -38,7 +40,7 @@
                             {% if news.image %}
                                 <img src="{{ news.image.url }}" alt="{{ news.title }}" />
                             {% else %}
-                                <img src="{% static 'images_folder/zavod.svg' %}" alt="Default news image" />
+                                <img src="{% static 'images_folder/zavod.svg' %}" alt="{% trans 'Default news image' %}" />
                             {% endif %}
                         </div>
                         <div class="news-content">
@@ -46,13 +48,13 @@
                             <p>
                                 {{ news.content|truncatewords:20 }}
                             </p>
-                            <a href="{% url 'news:news_detail' news.pk %}">Read more <i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="{% url 'news:news_detail' news.pk %}">{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></a>
                         </div>
                     </div>
                 {% empty %}
-                    <p>No news articles available.</p>
+                    <p>{% trans "No news articles available." %}</p>
                 {% endfor %}
-            </div>       
+            </div>
         </div>
 
     {% include 'components/whatsapp.html' %}
