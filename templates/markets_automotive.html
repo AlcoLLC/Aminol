@@ -1,21 +1,24 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
 
 {% include 'components/navbar_blur.html' %}
 
 <div class="markets-automotive">
     <header class="page-header">
         <div class="header-content">
-            <h2>Automotive</h2>
-            <p>Lubricants for passenger cars, trucks, vans, motorcycles</p>
+            <h2>{% trans "Automotive" %}</h2>
+            <p>{% trans "Lubricants for passenger cars, trucks, vans, motorcycles" %}</p>
         </div>
     </header>
 </div>
 
-
 <!-- Breadcrumb -->
 <div class="breadcrumb container">
-    <a href="/">Home page</a>| <span>Markets</span>|
-    <p>Automotive</p>
+    <a href="/">{% trans "Home page" %}</a>| <span>{% trans "Markets" %}</span>|
+    <p>{% trans "Automotive" %}</p>
 </div>
 
 <div class="shared-images-section">
@@ -36,7 +39,7 @@
                 </div>
             </div>
 
-            <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-{{ forloop.counter }}" alt="Yellow Point" />
+            <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-{{ forloop.counter }}" alt="{% trans 'Yellow Point' %}" />
             {% endfor %}
         </div>
     </div>
@@ -53,7 +56,7 @@
         <div class="shared-description">
             <h3>{{ automotive_service.title }}</h3>
             <span>{{ automotive_service.description }}</span>
-            <a href="#" class="button-style">Our Services</a>
+            <a href="#" class="button-style">{% trans "Our Services" %}</a>
         </div>
     </div>
 </div>

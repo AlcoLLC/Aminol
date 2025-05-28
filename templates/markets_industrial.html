@@ -1,21 +1,24 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
 
 {% include 'components/navbar_blur.html' %}
 
 <div class="markets-industrial">
     <header class="page-header">
         <div class="header-content">
-            <h2>Industrial</h2>
-            <p>Lubricants for
-                industrial equipments</p>
+            <h2>{% trans "Industrial" %}</h2>
+            <p>{% trans "Lubricants for industrial equipments" %}</p>
         </div>
     </header>
 </div>
 
 <!-- Breadcrumb -->
 <div class="breadcrumb container">
-    <a href="/">Home page</a>| <span>Markets</span>|
-    <p>Industrial</p>
+    <a href="/">{% trans "Home page" %}</a>| <span>{% trans "Markets" %}</span>|
+    <p>{% trans "Industrial" %}</p>
 </div>
 
 <div class="shared-images-section">
@@ -36,7 +39,7 @@
                 </div>
             </div>
 
-            <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-{{ forloop.counter }}" alt="Yellow Point" />
+            <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-{{ forloop.counter }}" alt="{% trans 'Yellow Point' %}" />
             {% endfor %}
         </div>
     </div>
@@ -44,7 +47,7 @@
 
 <div class="container">
     <div class="market-logos">
-        <img src="{% static '/images/market-logos.png' %}" alt="" />
+        <img src="{% static '/images/market-logos.png' %}" alt="{% trans 'Market Logos' %}" />
     </div>
 </div>
 
@@ -86,7 +89,7 @@
         <div class="shared-description">
             <h3>{{ automotive_service.title }}</h3>
             <span>{{ automotive_service.description }}</span>
-            <a href="#" class="button-style">Our Services</a>
+            <a href="#" class="button-style">{% trans "Our Services" %}</a>
         </div>
     </div>
 </div>

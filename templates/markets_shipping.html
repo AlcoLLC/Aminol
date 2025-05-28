@@ -1,12 +1,16 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
 
 {% include 'components/navbar_blur.html' %}
 
 <div class="markets-shipping">
     <header class="page-header">
         <div class="header-content">
-            <h2>Shipping & Offshore</h2>
-            <p>Lubricants for marine equipments</p>
+            <h2>{% trans "Shipping & Offshore" %}</h2>
+            <p>{% trans "Lubricants for marine equipments" %}</p>
         </div>
     </header>
 </div>
@@ -14,8 +18,8 @@
 <!-- Breadcrumb -->
 
 <div class="breadcrumb container">
-    <a href="/">Home page</a>| <span>Markets</span>|
-    <p>Shipping & Offshore</p>
+    <a href="/">{% trans "Home page" %}</a>| <span>{% trans "Markets" %}</span>|
+    <p>{% trans "Shipping & Offshore" %}</p>
 </div>
 
 <div class="shared-images-section">
@@ -26,40 +30,34 @@
             <div class="section-row ">
                 <div class="image-container">
                     <div class="circular-image">
-                        <img src="{% static '/images/services-aminol-1.jpg' %}" alt="Strengthen your business" />
+                        <img src="{% static '/images/services-aminol-1.jpg' %}" alt="{% trans 'Strengthen your business' %}" />
                     </div>
                 </div>
                 <div class="text-container">
-                    <h2>Strengthen your business</h2>
+                    <h2>{% trans "Strengthen your business" %}</h2>
                     <p>
-                        If you choose Aminol, you choose for the growth of your business. As
-                        an Aminol dealer, we offer you a wide range of technical and
-                        commercial support, specifically designed to strengthen your
-                        operations.
+                        {% trans "If you choose Aminol, you choose for the growth of your business. As an Aminol dealer, we offer you a wide range of technical and commercial support, specifically designed to strengthen your operations." %}
                     </p>
                 </div>
             </div>
 
-            <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-1" alt="Yellow Point" />
+            <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-1" alt="{% trans 'Yellow Point' %}" />
 
             <div class="section-row row-reverse">
                 <div class="image-container">
                     <div class="circular-image">
-                        <img src="{% static '/images/services-aminol-2.jpg' %}" alt="Availability" />
+                        <img src="{% static '/images/services-aminol-2.jpg' %}" alt="{% trans 'Availability' %}" />
                     </div>
                 </div>
                 <div class="text-container text-left">
-                    <h2>Availability</h2>
+                    <h2>{% trans "Availability" %}</h2>
                     <p>
-                        The Aminol Official Dealer formula is growing rapidly and is
-                        available in more and more countries. Depending on the country, the
-                        content of the formula can vary. Please contact Sales International
-                        for availability in your country.
+                        {% trans "The Aminol Official Dealer formula is growing rapidly and is available in more and more countries. Depending on the country, the content of the formula can vary. Please contact Sales International for availability in your country." %}
                     </p>
                 </div>
             </div>
 
-            <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-2" alt="Yellow Point" />
+            <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-2" alt="{% trans 'Yellow Point' %}" />
 
         </div>
     </div>
@@ -67,7 +65,7 @@
 
 <div class="container">
     <div class="market-logos">
-        <img src="{% static '/images/market-logos.png' %}" alt="" />
+        <img src="{% static '/images/market-logos.png' %}" alt="{% trans 'Market Logos' %}" />
     </div>
 </div>
 
@@ -75,11 +73,11 @@
     <div class="text-container text-left">
         <h2>{{ shipping_service.title }}</h2>
         <p>
-           {{ industrshipping_serviceial_service.description }}
+           {{ shipping_service.description }}
         </p>
     </div>
     <div class="services-offer-image">
-        <img src="{{ shipping_service.image.url }}" alt="{{ industrial_service.title }}" />
+        <img src="{{ shipping_service.image.url }}" alt="{{ shipping_service.title }}" />
     </div>
 </div>
 
@@ -87,14 +85,11 @@
 <div class="shared-section">
     <div class="shared-background"></div>
     <div class="container">
-        <img src="{% static '/images/shared-image1.png' %}" alt="">
+        <img src="{% static '/images/shared-image1.png' %}" alt="{% trans 'Knowledge and support' %}">
         <div class="shared-description">
-            <h3>Knowledge and support</h3>
-            <span>Our experienced team is ready to assist you with advice, technical and commercial support, and the
-                latest
-                industry developments. Discover our wide range of services and workshop materials on our service page.
-            </span>
-            <a href="#" class="button-style">Our Services</a>
+            <h3>{% trans "Knowledge and support" %}</h3>
+            <span>{% trans "Our experienced team is ready to assist you with advice, technical and commercial support, and the latest industry developments. Discover our wide range of services and workshop materials on our service page." %}</span>
+            <a href="#" class="button-style">{% trans "Our Services" %}</a>
         </div>
     </div>
 </div>

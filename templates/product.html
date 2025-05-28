@@ -1,4 +1,7 @@
-{% extends 'base.html' %} {% load static %} {% block content %} 
+{% extends 'base.html' %} {% load static %}
+{% load i18n %}
+
+{% block content %}
 {% include 'components/navbar_blur.html' %}
 
 <div class="about-page">
@@ -7,8 +10,8 @@
 
 <!-- Breadcrumb -->
 <div class="breadcrumb container">
-  <a href="/">Home page</a>|
-  <p>Product Range</p>
+  <a href="/">{% trans "Home page" %}</a>|
+  <p>{% trans "Product Range" %}</p>
 </div>
 
 <div class="container">
@@ -21,11 +24,13 @@
         {% endif %}
       {% endfor %}
     {% else %}
-      <h2>All products</h2>
+      <h2>{% trans "All products" %}</h2>
       <p>
+        {% blocktrans %}
         Here you will find our wide range of mineral, semi-synthetic, and fully
         synthetic motor oils in various viscosities and specifications, for
         gasoline cars, diesel cars, and hybrid vehicles.
+        {% endblocktrans %}
       </p>
     {% endif %}
   </div>
@@ -47,7 +52,7 @@
         <!-- Product Group Filter -->
         <div class="filter-section">
           <div class="filter-header">
-            <div class="filter-title">Product group</div>
+            <div class="filter-title">{% trans "Product group" %}</div>
             <div class="filter-icon">
               <i class="fa-solid fa-chevron-down"></i>
             </div>
@@ -66,7 +71,7 @@
         <!-- Segments Filter -->
         <div class="filter-section">
           <div class="filter-header">
-            <div class="filter-title">Segments</div>
+            <div class="filter-title">{% trans "Segments" %}</div>
             <div class="filter-icon">
               <i class="fa-solid fa-chevron-down"></i>
             </div>
@@ -85,7 +90,7 @@
         <!-- Oil Type Filter -->
         <div class="filter-section">
           <div class="filter-header">
-            <div class="filter-title">Oil type</div>
+            <div class="filter-title">{% trans "Oil Type" %}</div>
             <div class="filter-icon">
               <i class="fa-solid fa-chevron-down"></i>
             </div>
@@ -104,7 +109,7 @@
         <!-- Viscosity Filter -->
         <div class="filter-section">
           <div class="filter-header">
-            <div class="filter-title">Viscosity</div>
+            <div class="filter-title">{% trans "Viscosity" %}</div>
             <div class="filter-icon">
               <i class="fa-solid fa-chevron-down"></i>
             </div>
@@ -119,7 +124,7 @@
             {% endfor %}
           </div>
         </div>
-        
+
         <!-- Hidden input to maintain page number -->
         <input type="hidden" name="page" value="1">
       </form>
@@ -139,7 +144,7 @@
             <div class="product-description">
               <p class="product-id">{{ product.product_id }}</p>
               <a href="{% url 'products:product_detail' slug=product.slug %}" class="btn-more">
-                More <i class="fa-solid fa-chevron-right"></i>
+                 {% trans "More" %}<i class="fa-solid fa-chevron-right"></i>
               </a>
             </div>
           </div>
@@ -147,16 +152,16 @@
       </div>
       {% empty %}
       <div class="no-products">
-        <p>No products found matching your criteria.</p>
+        <p>{% trans "No products found matching your criteria." %}</p>
       </div>
       {% endfor %}
     </div>
-  
+
   <!-- Modal Overlay HTML -->
 <div class="product-modal-overlay" id="productFilterModal">
     <div class="product-modal-content">
         <div class="product-modal-header">
-            <h2 class="product-modal-title">Filtering</h2>
+            <h2 class="product-modal-title">{% trans "Filtering" %}</h2>
             <button class="product-modal-close" id="productModalClose">
                 <i class="fa-solid fa-times"></i>
             </button>
@@ -174,7 +179,7 @@
                 <!-- Product Group Filter -->
                 <div class="modal-filter-section">
                     <div class="modal-filter-header">
-                        <div class="modal-filter-title">Product group</div>
+                        <div class="modal-filter-title">{% trans "Product group" %}</div>
                         <div class="modal-filter-icon">
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
@@ -193,7 +198,7 @@
                 <!-- Segments Filter -->
                 <div class="modal-filter-section">
                     <div class="modal-filter-header">
-                        <div class="modal-filter-title">Segments</div>
+                        <div class="modal-filter-title">{% trans "Segments" %}</div>
                         <div class="modal-filter-icon">
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
@@ -212,7 +217,7 @@
                 <!-- Oil Type Filter -->
                 <div class="modal-filter-section">
                     <div class="modal-filter-header">
-                        <div class="modal-filter-title">Oil type</div>
+                        <div class="modal-filter-title">{% trans "Oil type" %}</div>
                         <div class="modal-filter-icon">
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
@@ -231,7 +236,7 @@
                 <!-- Viscosity Filter -->
                 <div class="modal-filter-section">
                     <div class="modal-filter-header">
-                        <div class="modal-filter-title">Viscosity</div>
+                        <div class="modal-filter-title">{% trans "Viscosity" %}</div>
                         <div class="modal-filter-icon">
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
@@ -251,7 +256,7 @@
 
         <div class="product-modal-footer">
             <button class="product-search-results-button" id="productSearchResultsBtn">
-                View Result
+                {% trans "View Result" %}
             </button>
         </div>
     </div>
@@ -265,7 +270,7 @@
       <button class="pagination-arrow prev" id="prevPage" {% if not page_obj.has_previous %}disabled{% endif %}>
         <i class="fa-solid fa-chevron-left"></i>
       </button>
-    
+
     <div class="pagination-numbers" id="paginationNumbers">
       {% for num in page_obj.paginator.page_range %}
         {% if page_obj.number == num %}
@@ -285,7 +290,7 @@
         {% endif %}
       {% endfor %}
     </div>
-    
+
     <button class="pagination-arrow next" id="nextPage" {% if not page_obj.has_next %}disabled{% endif %}>
       <i class="fa-solid fa-chevron-right"></i>
     </button>
@@ -296,13 +301,13 @@
 <!-- Innovation section -->
 <div class="innovation">
     <div class="section-header">
-      <h2>INNOVATION & TECHNOLOGY</h2>
+      <h2>{% trans "INNOVATION & TECHNOLOGY" %}</h2>
     </div>
     <div class="container innovation-technology">
       <div class="section slide-right">
         <div class="content">
-          <h2>Hybrid & EV lubricants</h2>
-          <p>Choose sustainability with our Hybrid & EV lubricants</p>
+          <h2>{% trans "Hybrid & EV lubricants" %}</h2>
+          <p>{% trans "Choose sustainability with our Hybrid & EV lubricants" %}</p>
           <!-- <a href="#" class="button-style">Discover more</a> -->
         </div>
         <div class="image-container">
@@ -313,10 +318,10 @@
 
       <div class="section slide-left">
         <div class="content">
-          <h2>Additives</h2>
+          <h2>{% trans "Additives" %}</h2>
           <p>
-            Protect and keep your vehicle in top condition with our unique range
-            of additives.
+            {% trans "Protect and keep your vehicle in top condition with our unique range
+            of additives." %}
           </p>
           <!-- <a href="#" class="button-style">Discover more</a> -->
         </div>

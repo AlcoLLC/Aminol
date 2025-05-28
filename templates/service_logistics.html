@@ -1,5 +1,7 @@
-{% extends 'base.html' %} 
-{% load static %} 
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
 {% block content %}
 
 {% include 'components/navbar_blur.html' %}
@@ -9,8 +11,8 @@
 
   <!-- Breadcrumb -->
   <div class="breadcrumb container">
-    <a href="/">Home page</a>| <span>Services</span>|
-    <p>Aminol logistics</p>
+  <a href="/">{% trans "Home page" %}</a>| <span>{% trans "Services" %}</span>|
+  <p>{% trans "Aminol logistics" %}</p>
   </div>
 
  <div>
@@ -19,7 +21,7 @@
         <section id="preview" class="preview section-margin-b-m">
           <div class="preview__content">
             <div id="map-container">
-              
+
             </div>
             <link href="{% static 'assets/css/map.css' %}" rel="stylesheet" />
             <script src="{% static 'assets/js/raphael.min.js' %}"></script>
@@ -41,15 +43,15 @@
     <div class="container">
       <div class="shared-images-container">
         <div class="vertical-line"></div>
-        
+
         {% for logistic in logistics %}
         <!-- Content Row -->
         <div class="section-row {% if forloop.counter|divisibleby:2 %}{% else %}row-reverse{% endif %}">
           <div class="image-container">
             <div class="circular-image">
-              <img 
-                src="{{ logistic.image.url }}" 
-                alt="{{ logistic.title }}" 
+              <img
+                src="{{ logistic.image.url }}"
+                alt="{{ logistic.title }}"
               />
             </div>
           </div>
@@ -59,14 +61,14 @@
           </div>
         </div>
         {% endfor %}
-        
+
       </div>
     </div>
   </div>
 
   <section class="news-section">
     <div class="section-header">
-      <h2>LATEST NEWS</h2>
+      <h2>{% trans "LATEST NEWS" %}</h2>
     </div>
 
     <div class="container latest-news">
@@ -91,12 +93,12 @@
         {% empty %}
         <div class="news-card">
           <div class="news-content">
-            <h5>No news available at the moment</h5>
+            <h5>{% trans "No news available at the moment" %}</h5>
           </div>
         </div>
         {% endfor %}
       </div>
-      <a href="/news/" class="button-style">Discover more</a>
+      <a href="/news/" class="button-style">{% trans "Discover more" %}</a>
     </div>
   </section>
 </div>
