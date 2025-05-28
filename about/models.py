@@ -17,7 +17,7 @@ class AboutAminol(models.Model):
 class AboutSectionContent(models.Model):
     about_aminol = models.ForeignKey(
         AboutAminol, related_name='sections', on_delete=models.CASCADE)
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, blank=True, null=True)
     description = models.TextField()
     image = models.ImageField(upload_to='about_sections/')
 
