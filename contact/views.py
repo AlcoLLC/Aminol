@@ -6,6 +6,7 @@ from django.conf import settings
 from .models import Contact, ContactInfo
 from .forms import ContactForm
 import logging  
+from django.utils.translation import gettext_lazy as _
 
 logger = logging.getLogger(__name__)
 
