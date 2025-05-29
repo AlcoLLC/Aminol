@@ -25,7 +25,7 @@ def about_page_view(request):
     if production:
         production_contents = production.contents.all().order_by('id')
 
-    documents_cert = DocumentsCertification.objects.last()
+    documents_certs = DocumentsCertification.objects.all()
 
     sustainability = Sustainability.objects.last()
 
@@ -45,7 +45,7 @@ def about_page_view(request):
         'guarantee': guarantee,
         'production': production,
         'production_contents': production_contents,
-        'documents_cert': documents_cert,
+        'documents_certs': documents_certs,
         'sustainability': sustainability,
         'sustainability_contents': sustainability_contents,
         'partner_logos': partner_logos,
