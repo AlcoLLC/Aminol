@@ -14,15 +14,19 @@
               <li><a href="/brand_portal">{% trans "Brand Portal" %}</a></li>
               <li><a href="/contact">{% trans "Contact" %}</a></li>
               <li class="lang-btn">
-                <button class="btn-az" data-lang="az">AZ</button>
-                <button class="btn-en" data-lang="en">EN</button>
+                <button class="btn-az {% if LANGUAGE_CODE == 'az' %}active{% endif %}"
+                        data-lang="az" type="button">AZ</button>
+                <button class="btn-en {% if LANGUAGE_CODE == 'en' %}active{% endif %}"
+                        data-lang="en" type="button">EN</button>
               </li>
             </ul>
           </div>
           <div class="nav-bottom">
             <ul>
-              <li><a class="active" href="/about">{% trans "About us" %}</a></li>
-              <li><a class="" href="/product">{% trans "Products" %}</a></li>
+              <li><a class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}"
+                     href="/about">{% trans "About us" %}</a></li>
+              <li><a class="{% if request.resolver_match.url_name == 'products' %}active{% endif %}"
+                     href="/product">{% trans "Products" %}</a></li>
               <li class="dropdown">
                 <a class="dropdown-head">{% trans "Markets" %}<i class="fa-solid fa-chevron-down"></i></a>
                 <div class="dropdown-content">
@@ -34,7 +38,7 @@
               <li class="dropdown">
                 <a class="dropdown-head">{% trans "Services" %}<i class="fa-solid fa-chevron-down"></i></a>
                 <div class="dropdown-content">
-                  <a  href="/service_aminol_dealer">{% trans "Aminol official dealer" %}</a>
+                  <a href="/service_aminol_dealer">{% trans "Aminol official dealer" %}</a>
                   <a href="/service_laboratory">{% trans "Aminol Laboratory" %}</a>
                   <a href="/service_logistics">{% trans "Aminol Logistics" %}</a>
                 </div>
@@ -43,19 +47,17 @@
           </div>
         </div>
 
+        <!-- Mobile language buttons -->
         <div class="mobile-lang-btn">
-          <button class="btn-az" data-lang="az">AZ</button>
-          <button class="btn-en" data-lang="en">EN</button>
+          <button class="btn-az {% if LANGUAGE_CODE == 'az' %}active{% endif %}"
+                  data-lang="az" type="button">AZ</button>
+          <button class="btn-en {% if LANGUAGE_CODE == 'en' %}active{% endif %}"
+                  data-lang="en" type="button">EN</button>
         </div>
-
-        <button class="search">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
 
         <button class="hamburger" id="hamburger">
           <i class="fas fa-bars"></i>
         </button>
-
       </div>
     </div>
     <div class="dropdown-background"></div>
@@ -72,7 +74,7 @@
   </div>
   <div class="mobile-nav-bottom">
     <ul>
-      <li><a class="" href="/about">{% trans "About us" %}</a></li>
+      <li><a href="/about">{% trans "About us" %}</a></li>
       <li><a href="/product">{% trans "Products" %}</a></li>
       <li class="mobile-dropdown">
         <a class="mobile-dropdown-head">
@@ -97,6 +99,4 @@
     </ul>
   </div>
 </div>
-
-
 
