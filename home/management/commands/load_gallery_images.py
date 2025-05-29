@@ -8,7 +8,7 @@ class Command(BaseCommand):
     help = 'Load all .jpg images from ayarlaki folder into Gallery model'
 
     def handle(self, *args, **options):
-        folder_path = os.path.join(settings.MEDIA_ROOT, 'AMINOL_SITE_FOTO')
+        folder_path = 'AMINOL_SITE_FOTO'
         image_files = [f for f in os.listdir(folder_path) if f.lower().endswith('.jpg')]
 
         for index, filename in enumerate(sorted(image_files)):
