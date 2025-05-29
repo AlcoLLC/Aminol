@@ -526,6 +526,10 @@ nav {
   align-items: center;
 }
 
+.news-page .breadcrumb {
+  margin-top: 70px ;
+}
+
 .breadcrumb a {
   color: #012762;
   padding: 0 5px;
@@ -1611,7 +1615,7 @@ footer .alco-privacy p {
     font-size: 18px;
   }
 
-  
+
   .product-detail-page .page-header h2 {
   font-size: 34px;
   line-height: 60px;
@@ -1633,7 +1637,7 @@ footer .alco-privacy p {
     padding-left: 5%;
     height: 50vh;
   }
-  
+
 
   .page-header .header-content h2 {
     font-size: 32px;

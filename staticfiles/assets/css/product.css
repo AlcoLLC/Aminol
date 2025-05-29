@@ -318,6 +318,7 @@
   }
 
   .product-content {
+    margin: 50px auto;
     padding: 0 15px;
   }
 
@@ -352,6 +353,10 @@
     grid-template-columns: 1fr 1fr;
     gap: 10px;
   }
+    .product-content {
+    margin: 40px auto;
+    padding: 0 15px;
+  }
 
   .products-section .product-card .product-image img {
     width: 180px;
@@ -372,6 +377,7 @@
   .product-content {
     padding: 0 10px;
     margin-bottom: 10px;
+    margin: 30px auto;
   }
 
   .product-content h2 {
@@ -658,8 +664,8 @@
 }
 
 .product-modal-content .modal-filter-header {
-  padding: 20px 10px 20px 0;
-  border-bottom: 1px solid #01286257;
+  padding: 15px 10px 15px 0;
+  border-bottom: 0.5px solid #01286257;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -674,8 +680,8 @@
 .product-modal-content .modal-filter-title {
   color: #012762;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 24.03px;
+  font-size: 14px;
+  line-height: 20px;
   letter-spacing: 0px;
 }
 
@@ -770,17 +776,17 @@
 
 /* Product Modal Footer */
 .product-modal-content .product-modal-footer {
-  padding: 20px;
+  padding: 0px 20px;
 }
 
 .product-modal-content .product-search-results-button {
-  width: 50%;
-  height: 50px;
+  width: 40%;
+  height: 35px;
   background-color: #f92b3f;
   color: white;
   border: none;
   border-radius: 12px;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -1053,7 +1059,7 @@
   .product-detail-section .product-detail-container .product-details{
   gap: 15px;
 }
-  
+
 
   .product-detail-section .product-detail-container .product-details h2 {
     font-size: 18px;
@@ -1122,7 +1128,7 @@
 
 /* Modal filter section scrollbar styles */
 .product-modal-content .modal-filter-content.modal-content-open {
-    max-height: 175px;
+    max-height: 140px;
     padding: 1px 0;
     border-bottom: 1px solid #01276280;
     opacity: 1;
