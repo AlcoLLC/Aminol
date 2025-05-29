@@ -1,88 +1,69 @@
-// Language switching functionality
 document.addEventListener('DOMContentLoaded', function() {
-    const langButtons = document.querySelectorAll('[data-lang]');
-    const currentLang = document.documentElement.lang || 'en';
-    
-    // Set initial active state based on current language
-    updateButtonStates(currentLang);
-    
-    // Add click event listeners to all language buttons
+    console.log('Language switcher loaded');
+
+    // Bütün dil buttonlarını tapın
+    const langButtons = document.querySelectorAll('.btn-az, .btn-en');
+
+    // Hər bir buttona click event əlavə edin
     langButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('Language button clicked');
+
             const selectedLang = this.getAttribute('data-lang');
+            console.log('Selected language:', selectedLang);
+
             switchLanguage(selectedLang);
         });
     });
-    
-    function switchLanguage(lang) {
-        // Create form and submit to Django's set_language view
+
+    // Dil dəyişmə funksiyası
+    function switchLanguage(langCode) {
+        console.log('Switching to language:', langCode);
+
+        // CSRF token tapın
+        const csrfToken = document.querySelector('[name="csrf-token"]') ||
+                         document.querySelector('[name="csrfmiddlewaretoken"]') ||
+                         document.querySelector('meta[name="csrf-token"]');
+
+        if (!csrfToken) {
+            console.error('CSRF token not found');
+            return;
+        }
+
+        const csrfValue = csrfToken.getAttribute('content') || csrfToken.value;
+        console.log('CSRF token found:', csrfValue);
+
+        // Form yaradın
         const form = document.createElement('form');
         form.method = 'POST';
         form.action = '/i18n/setlang/';
         form.style.display = 'none';
-        
-        // Add CSRF token
-        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]');
-        if (csrfToken) {
-            const csrfInput = document.createElement('input');
-            csrfInput.type = 'hidden';
-            csrfInput.name = 'csrfmiddlewaretoken';
-            csrfInput.value = csrfToken.value;
-            form.appendChild(csrfInput);
-        }
-        
-        // Add language input
+
+        // CSRF token əlavə edin
+        const csrfInput = document.createElement('input');
+        csrfInput.type = 'hidden';
+        csrfInput.name = 'csrfmiddlewaretoken';
+        csrfInput.value = csrfValue;
+        form.appendChild(csrfInput);
+
+        // Language input əlavə edin
         const langInput = document.createElement('input');
         langInput.type = 'hidden';
         langInput.name = 'language';
-        langInput.value = lang;
+        langInput.value = langCode;
         form.appendChild(langInput);
-        
-        // Add next URL to redirect back to current page
+
+        // Next URL əlavə edin
         const nextInput = document.createElement('input');
         nextInput.type = 'hidden';
         nextInput.name = 'next';
         nextInput.value = window.location.pathname;
         form.appendChild(nextInput);
-        
+
+        // Formu body-ə əlavə edin və submit edin
         document.body.appendChild(form);
+        console.log('Submitting form...');
         form.submit();
-    }
-    
-    function updateButtonStates(activeLang) {
-        // Reset all buttons
-        const azButtons = document.querySelectorAll('[data-lang="az"]');
-        const enButtons = document.querySelectorAll('[data-lang="en"]');
-        
-        azButtons.forEach(btn => {
-            btn.classList.remove('active');
-            btn.style.backgroundColor = 'transparent';
-            btn.style.color = '#012762';
-            btn.style.border = 'none';
-        });
-        
-        enButtons.forEach(btn => {
-            btn.classList.remove('active');
-            btn.style.backgroundColor = 'transparent';
-            btn.style.color = '#012762';
-            btn.style.border = 'none';
-        });
-        
-        // Set active button style
-        const activeButtons = document.querySelectorAll(`[data-lang="${activeLang}"]`);
-        activeButtons.forEach(btn => {
-            btn.classList.add('active');
-            btn.style.backgroundColor = '#012762';
-            btn.style.color = '#fff';
-            btn.style.border = '1px solid #fff';
-            btn.style.borderRadius = '12px';
-            btn.style.padding = '2px 10px';
-        });
-        
-        // Set inactive button style
-        const inactiveButtons = document.querySelectorAll(`[data-lang="${activeLang === 'az' ? 'en' : 'az'}"]`);
-        inactiveButtons.forEach(btn => {
-            btn.style.padding = activeLang === 'az' ? '2px 10px' : '0 6px 0 8px';
-        });
     }
 });

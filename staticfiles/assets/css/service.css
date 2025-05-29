@@ -19,9 +19,9 @@
 }
 
 .services-offer-section .services-offer-image img {
+  object-fit: cover;
   width: 100%;
   height: 100%;
-  transform: scale(1.3);
 }
 
 .services-offer-section .text-container {
@@ -520,14 +520,14 @@
   width: 1000px;
 }
         @keyframes pulse {
-    0%, 100% { 
-        stroke-width: 2px; 
-        stroke-opacity: 1; 
+    0%, 100% {
+        stroke-width: 2px;
+        stroke-opacity: 1;
         stroke: #7798BA;
     }
-    50% { 
-        stroke-width: 5px; 
-        stroke-opacity: 0.6; 
+    50% {
+        stroke-width: 5px;
+        stroke-opacity: 0.6;
         stroke: #7798BA;
     }
 }
@@ -535,7 +535,7 @@
 .fm-map-container text {
     color: #e22131 !important;
     fill: #e22131 !important;
-    stroke: #7798BA !important;     
+    stroke: #7798BA !important;
     stroke-width: 2px !important;
     animation: pulse 2s infinite !important;
 }

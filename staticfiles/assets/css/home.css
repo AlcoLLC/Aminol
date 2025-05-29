@@ -406,7 +406,7 @@
 
 .product-categories  .button-style{
   background-color: #F51B21;
-  margin: 30px auto;  
+  margin: 30px auto;
 }
 
 .product-categories  .button-style:hover{
@@ -1080,12 +1080,12 @@
     line-height: 20px;
   }
   .production-section .play-button {
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
   }
 
   .production-section .play-button i {
-    font-size: 14px;
+    font-size: 16bropx;
   }
 
   .production-section .play-button::before {
@@ -1409,8 +1409,9 @@
 
 .latest-news .news-card img {
   position: absolute;
+  object-fit: cover;
   width: 90%;
-  height: 80%;
+  height: 200px;
   left: 13px;
   bottom: 68%;
 }
@@ -1427,9 +1428,9 @@
 
 .latest-news .news-cards .news-card h5 {
   font-weight: 600;
-  font-size: 16px;
-  line-height: 22px;
-  margin-bottom: 10px;
+  font-size: 15px;
+  line-height: 20px;
+  margin-bottom: 8px;
   letter-spacing: 0px;
   color: #f6f9ff;
   transition: all 0.5s ease;
@@ -1437,8 +1438,8 @@
 
 .latest-news .news-cards .news-card p {
   font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 14px;
+  line-height: 18px;
   letter-spacing: 0px;
   color: #f6f9ff;
   transition: all 0.5s ease;
@@ -1446,8 +1447,8 @@
 
 .latest-news .news-card a {
   font-weight: 600;
-  font-size: 16px;
-  line-height: 30px;
+  font-size: 14px;
+  line-height: 28px;
   letter-spacing: 0px;
   color: #f6f9ff;
   display: flex;
@@ -1456,7 +1457,6 @@
   margin-top: 7px;
   transition: all 0.5s ease;
 }
-
 
 /* 1024px və daha aşağı üçün */
 @media (max-width: 1024px) {
@@ -1475,6 +1475,9 @@
   gap: 8px;
   align-items: center;
 
+}
+.latest-news .news-card img {
+  height: 190px ;
 }
 }
 
@@ -1497,8 +1500,9 @@
   align-items: center;
 }
 .latest-news .news-card img {
-  bottom: 60%;
+  bottom: 72%;
   left: 9px;
+  height: 150px ;
 }
 
 }
@@ -1516,7 +1520,7 @@
 
   .latest-news .news-card {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start !important;
     gap: 20px;
     width: 90% !important;
     height: 400px !important;
@@ -1524,7 +1528,7 @@
   }
    .latest-news .news-card .news-image {
     width: 100%;
-    height: 50%;
+    height: 160px;
    }
   .latest-news .news-card img {
     position: relative;
@@ -1768,7 +1772,7 @@
   scrollbar-width: none;
   box-sizing: content-box;
   margin: 0 auto;
-} 
+}
 
 .logos-section #carousel::-webkit-scrollbar {
   height: 0;
@@ -1838,6 +1842,7 @@
 
 .logos-section .item {
   width: 105px;
+  object-fit: contain !important;
   height: auto;
   max-height: 80px;
 }
@@ -1904,7 +1909,7 @@
   .logos-section #wrapper2 {
      width: 80%;
   }
-    
+
   .logos-section #prev,
   .logos-section #prev2 {
     left: -16%;
@@ -1926,15 +1931,16 @@
     max-height: 50px;
   }
   .brochure {
-  margin-top: -30px;
+    width: 90%;
+    margin-top: -35px;
 }
 }
 
 @media (max-width: 576px) {
   .logos-section #prev,
   .logos-section #next,
-.logos-section #prev2,
-.logos-section #next2 {
+  .logos-section #prev2,
+  .logos-section #next2 {
     width: 25px;
     height: 25px;
     padding: 6px;
@@ -1951,12 +1957,11 @@
   }
 
   .brochure {
-  margin-top: -20px;
+  margin-top: -25px;
 }
 }
 
 @media (max-width: 480px) {
-
   .logos-section #content,
   .logos-section #content2 {
     grid-gap: 28px;
@@ -2145,7 +2150,8 @@
   }
 
   .shared-images-section .shared-images-container h2 {
-    font-size: 20px;
+    font-size: 18px;
+    line-height: 18px;
   }
 
   .shared-images-section .shared-images-container p {
@@ -2183,6 +2189,12 @@
     height: 220px;
   }
 
+  .shared-images-section .shared-images-container h2 {
+    font-size: 16px;
+    line-height: 16px;
+    line-height: 1.4;
+  }
+
   .shared-images-section .shared-images-container p {
     font-size: 13px;
     line-height: 1.4;
@@ -2212,7 +2224,8 @@
   }
 
   .shared-images-section .shared-images-container h2 {
-    font-size: 16px;
+    font-size: 14px;
+    line-height: 16px;
     margin-bottom: 8px;
   }
 
@@ -2250,6 +2263,7 @@
 
   .shared-images-section .shared-images-container h2 {
     font-size: 14px;
+    line-height: 14px;
   }
 
   .shared-images-section .shared-images-container p {
