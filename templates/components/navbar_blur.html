@@ -1,19 +1,23 @@
 {% load static %}
 {% load i18n %}
+
+<!-- CSRF token meta tag əlavə edin -->
+<meta name="csrf-token" content="{{ csrf_token }}">
+
 <nav>
   <div class="navbar navbar-blur">
     <div class="container">
-      <a href="/" class="navbar-left">
+      <a href="{% if LANGUAGE_CODE == 'az' %}/az/{% else %}/{% endif %}" class="navbar-left">
         <img class="aminol-logo" src="{% static '/images/aminol-logo.svg' %}" alt="Aminol logo" />
       </a>
       <div class="navbar-right">
         <div class="nav-section">
           <div class="nav-top">
             <ul>
-              <li><a class="" href="/news">{% trans "News" %}</a></li>
-              <li><a href="/brand_portal">{% trans "Brand Portal" %}</a></li>
-              <li><a href="/contact">{% trans "Contact" %}</a></li>
-              <li class="lang-btn">
+              <li><a class="" href="{% if LANGUAGE_CODE == 'az' %}/az/news{% else %}/news{% endif %}">{% trans "News" %}</a></li>
+              <li><a href="{% if LANGUAGE_CODE == 'az' %}/az/brand_portal{% else %}/brand_portal{% endif %}">{% trans "Brand Portal" %}</a></li>
+              <li><a href="{% if LANGUAGE_CODE == 'az' %}/az/contact{% else %}/contact{% endif %}">{% trans "Contact" %}</a></li>
+               <li class="lang-btn">
                 <button class="btn-az {% if LANGUAGE_CODE == 'az' %}active{% endif %}"
                         data-lang="az" type="button">AZ</button>
                 <button class="btn-en {% if LANGUAGE_CODE == 'en' %}active{% endif %}"
@@ -24,23 +28,23 @@
           <div class="nav-bottom">
             <ul>
               <li><a class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}"
-                     href="/about">{% trans "About us" %}</a></li>
+                     href="{% if LANGUAGE_CODE == 'az' %}/az/about{% else %}/about{% endif %}">{% trans "About us" %}</a></li>
               <li><a class="{% if request.resolver_match.url_name == 'products' %}active{% endif %}"
-                     href="/product">{% trans "Products" %}</a></li>
+                     href="{% if LANGUAGE_CODE == 'az' %}/az/product{% else %}/product{% endif %}">{% trans "Products" %}</a></li>
               <li class="dropdown">
                 <a class="dropdown-head">{% trans "Markets" %}<i class="fa-solid fa-chevron-down"></i></a>
                 <div class="dropdown-content">
-                  <a href="/markets_automotive">{% trans "Automotive" %}</a>
-                  <a href="/markets_industrial">{% trans "Industrial" %}</a>
-                  <a href="/markets_shipping">{% trans "Shipping & Offshore" %}</a>
+                  <a href="{% if LANGUAGE_CODE == 'az' %}/az/markets_automotive{% else %}/markets_automotive{% endif %}">{% trans "Automotive" %}</a>
+                  <a href="{% if LANGUAGE_CODE == 'az' %}/az/markets_industrial{% else %}/markets_industrial{% endif %}">{% trans "Industrial" %}</a>
+                  <a href="{% if LANGUAGE_CODE == 'az' %}/az/markets_shipping{% else %}/markets_shipping{% endif %}">{% trans "Shipping & Offshore" %}</a>
                 </div>
               </li>
               <li class="dropdown">
                 <a class="dropdown-head">{% trans "Services" %}<i class="fa-solid fa-chevron-down"></i></a>
                 <div class="dropdown-content">
-                  <a href="/service_aminol_dealer">{% trans "Aminol official dealer" %}</a>
-                  <a href="/service_laboratory">{% trans "Aminol Laboratory" %}</a>
-                  <a href="/service_logistics">{% trans "Aminol Logistics" %}</a>
+                  <a href="{% if LANGUAGE_CODE == 'az' %}/az/service_aminol_dealer{% else %}/service_aminol_dealer{% endif %}">{% trans "Aminol official dealer" %}</a>
+                  <a href="{% if LANGUAGE_CODE == 'az' %}/az/service_laboratory{% else %}/service_laboratory{% endif %}">{% trans "Aminol Laboratory" %}</a>
+                  <a href="{% if LANGUAGE_CODE == 'az' %}/az/service_logistics{% else %}/service_logistics{% endif %}">{% trans "Aminol Logistics" %}</a>
                 </div>
               </li>
             </ul>
@@ -67,23 +71,23 @@
 <div class="mobile-menu" id="mobile-menu">
   <div class="mobile-nav-top">
     <ul>
-      <li><a href="/news">{% trans "News" %}</a></li>
-      <li><a href="/brand_portal">{% trans "Brand Portal" %}</a></li>
-      <li><a href="/contact">{% trans "Contact" %}</a></li>
+      <li><a href="{% if LANGUAGE_CODE == 'az' %}/az/news{% else %}/news{% endif %}">{% trans "News" %}</a></li>
+      <li><a href="{% if LANGUAGE_CODE == 'az' %}/az/brand_portal{% else %}/brand_portal{% endif %}">{% trans "Brand Portal" %}</a></li>
+      <li><a href="{% if LANGUAGE_CODE == 'az' %}/az/contact{% else %}/contact{% endif %}">{% trans "Contact" %}</a></li>
     </ul>
   </div>
   <div class="mobile-nav-bottom">
     <ul>
-      <li><a href="/about">{% trans "About us" %}</a></li>
-      <li><a href="/product">{% trans "Products" %}</a></li>
+      <li><a href="{% if LANGUAGE_CODE == 'az' %}/az/about{% else %}/about{% endif %}">{% trans "About us" %}</a></li>
+      <li><a href="{% if LANGUAGE_CODE == 'az' %}/az/product{% else %}/product{% endif %}">{% trans "Products" %}</a></li>
       <li class="mobile-dropdown">
         <a class="mobile-dropdown-head">
           {% trans "Markets" %}<i class="fa-solid fa-chevron-down"></i>
         </a>
         <div class="mobile-dropdown-content">
-          <a href="/markets_automotive">{% trans "Automotive" %}</a>
-          <a href="/markets_industrial">{% trans "Industrial" %}</a>
-          <a href="/markets_shipping">{% trans "Shipping & Offshore" %}</a>
+          <a href="{% if LANGUAGE_CODE == 'az' %}/az/markets_automotive{% else %}/markets_automotive{% endif %}">{% trans "Automotive" %}</a>
+          <a href="{% if LANGUAGE_CODE == 'az' %}/az/markets_industrial{% else %}/markets_industrial{% endif %}">{% trans "Industrial" %}</a>
+          <a href="{% if LANGUAGE_CODE == 'az' %}/az/markets_shipping{% else %}/markets_shipping{% endif %}">{% trans "Shipping & Offshore" %}</a>
         </div>
       </li>
       <li class="mobile-dropdown">
@@ -91,12 +95,11 @@
           {% trans "Services" %}<i class="fa-solid fa-chevron-down"></i>
         </a>
         <div class="mobile-dropdown-content">
-          <a href="/service_aminol_dealer">{% trans "Aminol official dealer" %}</a>
-          <a href="/service_laboratory">{% trans "Aminol Laboratory" %}</a>
-          <a href="/service_logistics">{% trans "Aminol Logistics" %}</a>
+          <a href="{% if LANGUAGE_CODE == 'az' %}/az/service_aminol_dealer{% else %}/service_aminol_dealer{% endif %}">{% trans "Aminol official dealer" %}</a>
+          <a href="{% if LANGUAGE_CODE == 'az' %}/az/service_laboratory{% else %}/service_laboratory{% endif %}">{% trans "Aminol Laboratory" %}</a>
+          <a href="{%if LANGUAGE_CODE == 'az' %}/az/service_logistics{% else %}/service_logistics{% endif %}">{% trans "Aminol Logistics" %}</a>
         </div>
       </li>
     </ul>
   </div>
 </div>
-

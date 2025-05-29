@@ -16,15 +16,23 @@
 
     <div class="container">
         <div class="news-detail-top-content">
-            <h2>{{ news.title }}</h2>
+            <h2>{{ news.title_translate }}</h2>
             <p>{{ news.published_date|date:"F d, Y" }}</p>
+        </div>
+    </div>
+    <div class="services-offer-section brand-portal-section-tab container">
+        <div class="services-offer-image">
+            <img src="{{ news.image.url }}" alt="{% trans 'News Image' %}" />
+        </div>
+        <div class="text-container text-left">
+            <p>{{ news.content_translate }}</p>
         </div>
     </div>
 
 {% for content in contents %}
     <div class="services-offer-section {% if forloop.counter|divisibleby:2 %}reverse{% endif %} brand-portal-section container">
         <div class="text-container text-left">
-            <p>{{ content.description }}</p>
+            <p>{{ content.description_translate }}</p>
         </div>
         <div class="services-offer-image">
             <img src="{{ content.image.url }}" alt="{% trans 'News Content Image' %}" />
@@ -38,15 +46,15 @@
                     <div class="news-card">
                         <div class="news-image">
                             {% if news.image %}
-                                <img src="{{ news.image.url }}" alt="{{ news.title }}" />
+                                <img src="{{ news.image.url }}" alt="{{ news.title_translate }}" />
                             {% else %}
                                 <img src="{% static 'images_folder/zavod.svg' %}" alt="{% trans 'Default news image' %}" />
                             {% endif %}
                         </div>
                         <div class="news-content">
-                            <h5>{{ news.title }}</h5>
+                            <h5>{{ news.title_translate }}</h5>
                             <p>
-                                {{ news.content|truncatewords:10 }}
+                                {{ news.content_translate|truncatewords:10 }}
                             </p>
                             <a href="{% url 'news:news_detail' news.pk %}">{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></a>
                         </div>
