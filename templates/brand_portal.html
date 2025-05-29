@@ -17,14 +17,14 @@
     <div class="container">
         <div class="news-top-content">
             <h2>{% trans "Brand Portal" %}</h2>
-            <p>{{ brand.title }}</p>
+            <p>{{ brand.title_translate }}</p>
         </div>
     </div>
 
     <div class="services-offer-section brand-portal-section container">
         <div class="text-container text-left">
             <p>
-               {{ brand.description }}
+               {{ brand.description_translate }}
             </p>
         </div>
         <div class="services-offer-image">
@@ -37,12 +37,12 @@
         {% for content in brand_contents %}
         <div class="brand-item">
             <div class="text-container">
-                <h2>{{ content.title }}</h2>
-                <p>{{ content.description }}</p>
+                <h2>{{ content.title_translate }}</h2>
+                <p>{{ content.description_translate }}</p>
             </div>
             <div class="brand-image">
                 {% if content.image %}
-                    <img src="{{ content.image.url }}" alt="{{ content.title }}" />
+                    <img src="{{ content.image.url }}" alt="{{ content.title_translate }}" />
                 {% else %}
                     <img src="{% static '/images/market-industrial.jpg' %}" alt="Service Offer Image" />
                 {% endif %}

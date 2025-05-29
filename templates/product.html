@@ -19,8 +19,8 @@
     {% if selected_product_groups|length == 1 %}
       {% for group in product_groups %}
         {% if group.slug in selected_product_groups %}
-          <h2>{{ group.title }}</h2>
-          <p>{{ group.description }}</p>
+          <h2>{{ group.title_translate }}</h2>
+          <p>{{ group.description_translate }}</p>
         {% endif %}
       {% endfor %}
     {% else %}
@@ -62,7 +62,7 @@
         <label class="checkbox-group">
           <input type="checkbox" name="product_group" value="{{ group.slug }}"
                  {% if group.slug in selected_product_groups %}checked{% endif %} />
-          <span class="checkbox-label {% if group.slug in selected_product_groups %}selected-item{% endif %}">{{ group.title }}</span>
+          <span class="checkbox-label {% if group.slug in selected_product_groups %}selected-item{% endif %}">{{ group.title_translate }}</span>
         </label>
         {% endfor %}
       </div>
@@ -81,7 +81,7 @@
         <label class="checkbox-group">
           <input type="checkbox" name="segments" value="{{ segment.slug }}"
                  {% if segment.slug in selected_segments %}checked{% endif %} />
-          <span class="checkbox-label {% if segment.slug in selected_segments %}selected-item{% endif %}">{{ segment.title }}</span>
+          <span class="checkbox-label {% if segment.slug in selected_segments %}selected-item{% endif %}">{{ segment.title_translate }}</span>
         </label>
         {% endfor %}
       </div>
@@ -100,7 +100,7 @@
         <label class="checkbox-group">
           <input type="checkbox" name="oil_type" value="{{ oil_type.slug }}"
                  {% if oil_type.slug in selected_oil_types %}checked{% endif %} />
-          <span class="checkbox-label {% if oil_type.slug in selected_oil_types %}selected-item{% endif %}">{{ oil_type.title }}</span>
+          <span class="checkbox-label {% if oil_type.slug in selected_oil_types %}selected-item{% endif %}">{{ oil_type.title_translate }}</span>
         </label>
         {% endfor %}
       </div>
@@ -119,7 +119,7 @@
         <label class="checkbox-group">
           <input type="checkbox" name="viscosity" value="{{ viscosity.slug }}"
                  {% if viscosity.slug in selected_viscosity %}checked{% endif %} />
-          <span class="checkbox-label {% if viscosity.slug in selected_viscosity %}selected-item{% endif %}">{{ viscosity.title }}</span>
+          <span class="checkbox-label {% if viscosity.slug in selected_viscosity %}selected-item{% endif %}">{{ viscosity.title_translate }}</span>
         </label>
         {% endfor %}
       </div>
@@ -138,13 +138,13 @@
       <div class="product-card">
         <div class="product-image">
           {% if product.image %}
-          <img src="{{ product.image.url }}" alt="{{ product.title }}" />
+          <img src="{{ product.image.url }}" alt="{{ product.title_translate }}" />
           {% else %}
           {% endif %}
         </div>
         <div class="product-info">
           <div>
-            <h2 class="product-title">{{ product.title }}</h2>
+            <h2 class="product-title">{{ product.title_translate }}</h2>
             <div class="product-description">
               <p class="product-id">{{ product.product_id }}</p>
               <a href="{% url 'products:product_detail' slug=product.slug %}" class="btn-more">
@@ -193,7 +193,7 @@
                         <label class="modal-checkbox-group">
                             <input type="checkbox" name="product_group" value="{{ group.slug }}"
                                    {% if group.slug in selected_product_groups %}checked{% endif %} />
-                            <span class="modal-checkbox-label {% if group.slug in selected_product_groups %}modal-selected-item{% endif %}">{{ group.title }}</span>
+                            <span class="modal-checkbox-label {% if group.slug in selected_product_groups %}modal-selected-item{% endif %}">{{ group.title_translate }}</span>
                         </label>
                         {% endfor %}
                     </div>
@@ -212,7 +212,7 @@
                         <label class="modal-checkbox-group">
                             <input type="checkbox" name="segments" value="{{ segment.slug }}"
                                    {% if segment.slug in selected_segments %}checked{% endif %} />
-                            <span class="modal-checkbox-label {% if segment.slug in selected_segments %}modal-selected-item{% endif %}">{{ segment.title }}</span>
+                            <span class="modal-checkbox-label {% if segment.slug in selected_segments %}modal-selected-item{% endif %}">{{ segment.title_translate }}</span>
                         </label>
                         {% endfor %}
                     </div>
@@ -231,7 +231,7 @@
                         <label class="modal-checkbox-group">
                             <input type="checkbox" name="oil_type" value="{{ oil_type.slug }}"
                                    {% if oil_type.slug in selected_oil_types %}checked{% endif %} />
-                            <span class="modal-checkbox-label {% if oil_type.slug in selected_oil_types %}modal-selected-item{% endif %}">{{ oil_type.title }}</span>
+                            <span class="modal-checkbox-label {% if oil_type.slug in selected_oil_types %}modal-selected-item{% endif %}">{{ oil_type.title_translate }}</span>
                         </label>
                         {% endfor %}
                     </div>

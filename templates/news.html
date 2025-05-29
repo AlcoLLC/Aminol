@@ -37,8 +37,8 @@
                             {% endif %}
                         </div>
                         <div class="news-content">
-                            <h5>{{ news.title }}</h5>
-                            <p>{{ news.content|truncatewords:10 }}</p>
+                            <h5>{{ news.title_translate }}</h5>
+                            <p>{{ news.content_translate|truncatewords:10 }}</p>
 
                             <a href="{% url 'news:news_detail' news.pk %}">
                                 {% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i>
@@ -63,14 +63,14 @@
                         <div class="news-card">
                             <div class="news-image">
                                 {% if news.image %}
-                                    <img src="{{ news.image.url }}" alt="{{ news.title }}" />
+                                    <img src="{{ news.image.url }}" alt="{{ news.title_translate }}" />
                                 {% else %}
                                     <img src="{% static 'images_folder/zavod.svg' %}" alt="{% trans 'Default news image' %}" />
                                 {% endif %}
                             </div>
                             <div class="news-content">
-                                <h5>{{ news.title }}</h5>
-                                <p>{{ news.content|truncatewords:10 }}</p>
+                                <h5>{{ news.title_translate }}</h5>
+                                <p>{{ news.content_translate|truncatewords:10 }}</p>
                                 <a href="{% url 'news:news_detail' news.pk %}">
                                     {% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i>
                                 </a>

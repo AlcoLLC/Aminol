@@ -21,7 +21,6 @@
   <div class="container">
     <div class="shared-images-container">
       <div class="vertical-line"></div>
-
       {% for content in dealer_contents %}
       <!-- Content Row -->
       <div class="section-row {% if forloop.counter|divisibleby:2 %}{% else %}row-reverse{% endif %}">
@@ -29,13 +28,13 @@
           <div class="circular-image">
             <img
               src="{{ content.image.url }}"
-              alt="{{ content.title }}"
+              alt="{{ content.title_translate }}"
             />
           </div>
         </div>
         <div class="text-container {% if forloop.counter|divisibleby:2 %}{% else %}text-left{% endif %}">
-          <h2>{{ content.title }}</h2>
-          <p>{{ content.description }}</p>
+          <h2>{{ content.title_translate }}</h2>
+          <p>{{ content.description_translate }}</p>
         </div>
       </div>
 
@@ -53,13 +52,13 @@
 {% if dealer %}
 <div class="services-offer-section container">
   <div class="text-container text-left">
-    <h2>{{ dealer.title }}</h2>
-    <p>{{ dealer.title_description }}</p>
+    <h2>{{ dealer.title_translate }}</h2>
+    <p>{{ dealer.title_description_translate }}</p>
   </div>
   <div class="services-offer-image">
     <img
       src="{{ dealer.image.url }}"
-      alt="{{ dealer.title }}"
+      alt="{{ dealer.title_translate }}"
     />
   </div>
 </div>
@@ -75,7 +74,7 @@
  <div class="services-offer-section reverse container">
         <div class="text-container text-left">
             <p>
-               {{ dealer.description }}
+               {{ dealer.description_translate }}
             </p>
         </div>
         <div class="services-offer-image">
