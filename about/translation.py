@@ -10,44 +10,44 @@ translation.activate('en')
 
 @register(AboutAminol)
 class AboutAminolTranslationOptions(TranslationOptions):
-    fields = ('based_in', 'location', 'exporting_to', 'production_capacity', 'workforce')
+    fields = ('based_in_translate', 'location_translate', 'exporting_to_translate', 'production_capacity_translate')
 
 
 @register(AboutSectionContent)
 class AboutSectionContentTranslationOptions(TranslationOptions):
-    fields = ('title', 'description')
+    fields = ('title_translate', 'description_translate')
 
 
 @register(QualityContent)
 class QualityContentTranslationOptions(TranslationOptions):
-    fields = ('title', 'description')
+    fields = ('title_translate', 'description_translate')
 
 
 @register(WeGuarantee)
 class WeGuaranteeTranslationOptions(TranslationOptions):
     fields = (
-        'title', 'sub_title_one', 'sub_description_one',
-        'sub_title_two', 'sub_description_two',
-        'sub_title_three', 'sub_description_three',
-        'sub_title_four', 'sub_description_four'
+        'title_translate', 'sub_title_one_translate', 'sub_description_one_translate',
+        'sub_title_two_translate', 'sub_description_two_translate',
+        'sub_title_three_translate', 'sub_description_three_translate',
+        'sub_title_four_translate', 'sub_description_four_translate'
     )
 
 
 @register(ProductionContent)
 class ProductionContentTranslationOptions(TranslationOptions):
-    fields = ('title', 'description')
+    fields = ('title_translate', 'description_translate')
 
 
 @register(DocumentsCertification)
 class DocumentsCertificationTranslationOptions(TranslationOptions):
-    fields = ('title', 'description')
+    fields = ('title_translate', 'description_translate')
 
 
 @register(Sustainability)
 class SustainabilityTranslationOptions(TranslationOptions):
-    fields = ('main_description',)
+    fields = ('main_description_translate',)
 
 
 @register(SustainabilityContent)
 class SustainabilityContentTranslationOptions(TranslationOptions):
-    fields = ('title', 'description')
+    fields = ('title_translate', 'description_translate')

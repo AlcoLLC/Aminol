@@ -1,30 +1,29 @@
 from django.core.management.base import BaseCommand
 from faq.models import FAQ
-from django.conf import settings
 
 class Command(BaseCommand):
-    help = 'Copy default values to translation fields for existing FAQs'
-    
+    help = 'Copy default field values to _translate fields for FAQ model'
+
     def handle(self, *args, **kwargs):
-        default_lang = getattr(settings, 'MODELTRANSLATION_DEFAULT_LANGUAGE', 'en')
-        
+        updated_count = 0
+
         for faq in FAQ.objects.all():
-            if not getattr(faq, f'question_{default_lang}', None):
-                setattr(faq, f'question_{default_lang}', faq.question)
-            if not getattr(faq, f'answer_{default_lang}', None):
-                setattr(faq, f'answer_{default_lang}', faq.answer)
-            
-            for lang_code, lang_name in settings.LANGUAGES:
-                if lang_code != default_lang:
-                    if not getattr(faq, f'question_{lang_code}', None):
-                        setattr(faq, f'question_{lang_code}', '')  
-                    if not getattr(faq, f'answer_{lang_code}', None):
-                        setattr(faq, f'answer_{lang_code}', '')  
-            
-            faq.save()
-        
+            updated = False
+
+            if not faq.question_translate:
+                faq.question_translate = faq.question
+                updated = True
+
+            if not faq.answer_translate:
+                faq.answer_translate = faq.answer
+                updated = True
+
+            if updated:
+                faq.save()
+                updated_count += 1
+
         self.stdout.write(
             self.style.SUCCESS(
-                f'Successfully updated translation fields for {FAQ.objects.count()} FAQs.'
+                f'Successfully updated translation fields for {updated_count} FAQ(s).'
             )
         )

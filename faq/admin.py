@@ -10,7 +10,7 @@ class FAQAdmin(TranslationAdmin):
     list_editable = ('order', 'is_active')
     fieldsets = (
         (None, {
-            'fields': ('question', 'answer')
+            'fields': ('question', 'answer', 'question_translate', 'answer_translate')
         }),
         ('Settings', {
             'fields': ('order', 'is_active')

@@ -6,19 +6,19 @@ from .models import ( Aminol_Official_Dealer,
 
 @register(Aminol_Official_Dealer)
 class AminolOfficialDealerTranslationOptions(TranslationOptions):
-    fields = ('title', 'title_description', 'description')
+    fields = ('title_translate', 'title_description_translate', 'description_translate')
 
 
 @register(Aminol_Official_Dealer_Content)
 class AminolOfficialDealerContentTranslationOptions(TranslationOptions):
-    fields = ('title', 'description')
+    fields = ('title_translate', 'description_translate')
 
 
 @register(Aminol_Labaratory)
 class AminolLabaratoryTranslationOptions(TranslationOptions):
-    fields = ('title', 'description')
+    fields = ('title_translate', 'description_translate')
 
 
 @register(Aminol_Logistics)
 class AminolLogisticsTranslationOptions(TranslationOptions):
-    fields = ('title', 'description')
+    fields = ('title_translate', 'description_translate')

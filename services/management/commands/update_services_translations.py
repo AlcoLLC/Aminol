@@ -1,5 +1,4 @@
 from django.core.management.base import BaseCommand
-from django.conf import settings
 from services.models import ( 
     Aminol_Official_Dealer,
     Aminol_Official_Dealer_Content,
@@ -8,34 +7,55 @@ from services.models import (
 )
 
 class Command(BaseCommand):
-    help = 'Set default and empty translation fields for Aminol Dealer, Labaratory, and Logistics models'
+    help = 'Copy original fields into *_translate fields for Aminol models'
 
     def handle(self, *args, **options):
-        default_lang = getattr(settings, 'MODELTRANSLATION_DEFAULT_LANGUAGE', 'en')
-        languages = [lang_code for lang_code, _ in settings.LANGUAGES]
+        def copy_fields(instance, field_pairs):
+            updated = False
+            for original, translated in field_pairs:
+                if not getattr(instance, translated, None):
+                    setattr(instance, translated, getattr(instance, original, ''))
+                    updated = True
+            if updated:
+                instance.save()
+            return updated
 
-        def update_fields(instance, fields):
-            for field in fields:
-                default_value = getattr(instance, field, '')
-                default_field = f"{field}_{default_lang}"
-                if not getattr(instance, default_field, None):
-                    setattr(instance, default_field, default_value)
-                for lang in languages:
-                    if lang != default_lang:
-                        translated_field = f"{field}_{lang}"
-                        if not getattr(instance, translated_field, None):
-                            setattr(instance, translated_field, '')
+        updated_counts = {
+            "Aminol_Official_Dealer": 0,
+            "Aminol_Official_Dealer_Content": 0,
+            "Aminol_Labaratory": 0,
+            "Aminol_Logistics": 0,
+        }
 
-        models_with_fields = [
-            (Aminol_Official_Dealer, ['title', 'title_description', 'description']),
-            (Aminol_Official_Dealer_Content, ['title', 'description']),
-            (Aminol_Labaratory, ['title', 'description']),
-            (Aminol_Logistics, ['title', 'description']),
-        ]
+        for item in Aminol_Official_Dealer.objects.all():
+            if copy_fields(item, [
+                ('title', 'title_translate'),
+                ('title_description', 'title_description_translate'),
+                ('description', 'description_translate'),
+            ]):
+                updated_counts["Aminol_Official_Dealer"] += 1
 
-        for model, fields in models_with_fields:
-            for obj in model.objects.all():
-                update_fields(obj, fields)
-                obj.save()
+        for item in Aminol_Official_Dealer_Content.objects.all():
+            if copy_fields(item, [
+                ('title', 'title_translate'),
+                ('description', 'description_translate'),
+            ]):
+                updated_counts["Aminol_Official_Dealer_Content"] += 1
 
-        self.stdout.write(self.style.SUCCESS("✅ Aminol translation fields set successfully."))
+        for item in Aminol_Labaratory.objects.all():
+            if copy_fields(item, [
+                ('title', 'title_translate'),
+                ('description', 'description_translate'),
+            ]):
+                updated_counts["Aminol_Labaratory"] += 1
+
+        for item in Aminol_Logistics.objects.all():
+            if copy_fields(item, [
+                ('title', 'title_translate'),
+                ('description', 'description_translate'),
+            ]):
+                updated_counts["Aminol_Logistics"] += 1
+
+        self.stdout.write(self.style.SUCCESS("✅ Aminol translations copied successfully."))
+        for model, count in updated_counts.items():
+            self.stdout.write(f"  - {model}: {count} updated")

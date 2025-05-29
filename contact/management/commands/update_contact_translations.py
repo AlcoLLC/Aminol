@@ -1,37 +1,28 @@
 from django.core.management.base import BaseCommand
-from django.conf import settings
 from contact.models import ContactInfo
 
 class Command(BaseCommand):
-    help = 'Copy default values to translation fields for multilingual models'
+    help = 'Copy default field values to _translate fields for ContactInfo model'
 
     def handle(self, *args, **options):
-        default_lang = getattr(settings, 'MODELTRANSLATION_DEFAULT_LANGUAGE', 'en')
-        languages = [lang_code for lang_code, _ in settings.LANGUAGES]
 
-        def update_instance_fields(instance, fields):
-            for field in fields:
-                default_value = getattr(instance, field, '')
-                default_field = f"{field}_{default_lang}"
-                if not getattr(instance, default_field, None):
-                    setattr(instance, default_field, default_value)
+        def update_instance_fields(instance, field_pairs):
+            for original_field, translate_field in field_pairs:
+                original_value = getattr(instance, original_field, '')
+                if not getattr(instance, translate_field, None):
+                    setattr(instance, translate_field, original_value)
 
-                for lang in languages:
-                    if lang != default_lang:
-                        translated_field = f"{field}_{lang}"
-                        if not getattr(instance, translated_field, None):
-                            setattr(instance, translated_field, '')
-
-        model_configs = [
-            (ContactInfo, [
-                'title', 'description', 'aminol_headquarters', 'aminol_factory',
-                'registers', 'contact_address'
-            ]),
+        field_mappings = [
+            ('title', 'title_translate'),
+            ('description', 'description_translate'),
+            ('aminol_headquarters', 'aminol_headquarters_translate'),
+            ('aminol_factory', 'aminol_factory_translate'),
+            ('registers', 'registers_translate'),
+            ('contact_address', 'contact_address_translate'),
         ]
 
-        for model, fields in model_configs:
-            for instance in model.objects.all():
-                update_instance_fields(instance, fields)
-                instance.save()
+        for instance in ContactInfo.objects.all():
+            update_instance_fields(instance, field_mappings)
+            instance.save()
 
-        self.stdout.write(self.style.SUCCESS("Successfully set translation fields for all multilingual models."))
+        self.stdout.write(self.style.SUCCESS("Successfully copied values to _translate fields in ContactInfo."))

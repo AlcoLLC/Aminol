@@ -76,21 +76,11 @@ class OilTypesAdmin(TranslationAdmin):
 
 
 @admin.register(Viscosity)
-class ViscosityAdmin(TranslationAdmin):
+class ViscosityAdmin(admin.ModelAdmin):
     list_display = ('title', 'slug')
     prepopulated_fields = {'slug': ('title',)}
     search_fields = ('title',)
     
-    class Media:
-        js = (
-            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
-            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
-            'modeltranslation/js/tabbed_translation_fields.js',
-        )
-        css = {
-            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
-        }
-
 
 @admin.register(Liter)
 class LiterAdmin(admin.ModelAdmin):
@@ -101,7 +91,8 @@ class LiterAdmin(admin.ModelAdmin):
 class ProductPropertyInline(TranslationTabularInline):
     model = ProductProperty
     extra = 1
-    fields = ['property_name', 'unit', 'test_method', 'typical_value', 'order']
+    fields = ['property_name', 'unit', 'test_method', 'typical_value', 'order',
+              'property_name_translate', 'unit_translate', 'test_method_translate', 'typical_value_translate',]
     ordering = ['order']
 
 
@@ -122,7 +113,7 @@ class ProductPropertyAdmin(TranslationAdmin):
         css = {
             'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
         }
-
+    
 
 @admin.register(Product)
 class ProductAdmin(TranslationAdmin):
@@ -134,10 +125,11 @@ class ProductAdmin(TranslationAdmin):
     
     fieldsets = (
         ('Basic Information', {
-            'fields': ('title', 'slug', 'product_id', 'description', 'image', 'features_benefits', 'application')
+            'fields': ('title', 'slug', 'product_id', 'description', 'image', 'features_benefits', 'application',
+                       'title_translate', 'description_translate', 'features_benefits_translate', 'application_translate')
         }),
         ('Specifications', {
-            'fields': ('api', 'ilsac', 'acea', 'jaso', 'oem_sertification', 'recommendations')
+            'fields': ('api', 'ilsac', 'acea', 'jaso', 'oem_sertification', 'recommendations', 'recommendations_translate')
         }),
         ('Categories', {
             'fields': ('product_group', 'segments', 'oil_type', 'viscosity', 'liters')

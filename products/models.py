@@ -1,46 +1,50 @@
 from django.db import models
-from django.db import models
-
-
 
 class Product_group(models.Model):
     title = models.CharField(max_length=255)
-    title_translate = models.CharField(max_length=255, null=True, blank=True)
     description = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='product_group/')
     slug = models.SlugField(max_length=255, unique=True)
     in_home = models.BooleanField(default=False, verbose_name="In Home")
 
+    title_translate = models.CharField(max_length=255, blank=True, null=True)
+    description_translate = models.TextField(blank=True, null=True)
+    
     def __str__(self):
         return self.title
-
+    
 class Segments(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True)
 
+    title_translate = models.CharField(max_length=255, blank=True, null=True)
+    
     def __str__(self):
         return self.title
-
+    
 class Oil_Types(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True)
 
+    title_translate = models.CharField(max_length=255, blank=True, null=True)
+
+    
     def __str__(self):
         return self.title
-
+    
 class Viscosity(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True)
-
+    
     def __str__(self):
         return self.title
 
 class Liter(models.Model):
-    volume = models.FloatField(unique=True)
+    volume = models.FloatField(unique=True) 
 
     def __str__(self):
         return f"{self.volume} L"
-
+    
 class Product(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
@@ -64,7 +68,13 @@ class Product(models.Model):
     sds_url = models.URLField(blank=True, null=True, verbose_name="SDS Link")
     created_at = models.DateTimeField(auto_now_add=True)
 
-
+    title_translate = models.CharField(max_length=255, blank=True, null=True)
+    description_translate = models.TextField(blank=True, null=True)
+    features_benefits_translate = models.TextField(blank=True, null=True)
+    application_translate = models.TextField(blank=True, null=True)
+    recommendations_translate = models.TextField(blank=True, null=True)
+    
+    
     def __str__(self):
         return self.title
 
@@ -76,10 +86,15 @@ class ProductProperty(models.Model):
     typical_value = models.CharField(max_length=100, verbose_name="Typical value")
     order = models.PositiveIntegerField(default=0, verbose_name="Order")
 
+    property_name_translate = models.CharField(max_length=255, verbose_name="Property", blank=True, null=True)
+    unit_translate = models.CharField(max_length=50,verbose_name="Unit", blank=True, null=True)
+    test_method_translate = models.CharField(max_length=255, verbose_name="Test method", blank=True, null=True)
+    typical_value_translate = models.CharField(max_length=100, verbose_name="Typical value", blank=True, null=True)
+    
     class Meta:
         ordering = ['order', 'id']
         verbose_name = 'Product Property'
         verbose_name_plural = 'Product Properties'
-
+    
     def __str__(self):
         return f"{self.product.title} - {self.property_name}"
