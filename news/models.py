@@ -7,8 +7,8 @@ class News(models.Model):
     published_date = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
 
-    title_translate = models.CharField(max_length=255)
-    content_translate = models.TextField()
+    title_translate = models.CharField(max_length=255, blank=True, null=True)
+    content_translate = models.TextField(blank=True, null=True)
 
     class Meta:
         ordering = ['-published_date']
@@ -24,7 +24,7 @@ class News_Content(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='news/')
 
-    description_translate = models.TextField()
+    description_translate = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.news.title} Content"

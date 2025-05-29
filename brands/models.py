@@ -5,8 +5,8 @@ class Brand_Portal(models.Model):
     image = models.ImageField(upload_to='brand_portal/')
     description = models.TextField()
 
-    title_translate = models.CharField(max_length=255)
-    description_translate = models.TextField()
+    title_translate = models.CharField(max_length=255, blank=True, null=True)
+    description_translate = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.title}"
@@ -22,8 +22,8 @@ class Brand_Portal_Content(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    title_translate = models.CharField(max_length=100)
-    description_translate = models.TextField()
+    title_translate = models.CharField(max_length=100, blank=True, null=True)
+    description_translate = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.title}"

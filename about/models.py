@@ -10,10 +10,10 @@ class AboutAminol(models.Model):
     workforce = models.CharField(max_length=200)
     shared_image = models.ImageField(upload_to='about/')
 
-    based_in_translate = models.CharField(max_length=200)
-    location_translate = models.CharField(max_length=200)
-    exporting_to_translate = models.CharField(max_length=200)
-    production_capacity_translate = models.CharField(max_length=200)
+    based_in_translate = models.CharField(max_length=200, blank=True, null=True)
+    location_translate = models.CharField(max_length=200, blank=True, null=True)
+    exporting_to_translate = models.CharField(max_length=200, blank=True, null=True)
+    production_capacity_translate = models.CharField(max_length=200, blank=True, null=True)
 
     def _str_(self):
         return f"About Aminol - Founded {self.founded_year}"
@@ -27,7 +27,7 @@ class AboutSectionContent(models.Model):
     image = models.ImageField(upload_to='about_sections/')
 
     title_translate = models.CharField(max_length=255, blank=True, null=True)
-    description_translate = models.TextField()
+    description_translate = models.TextField(blank=True, null=True)
     def _str_(self):
         return f"{self.title}"
 
@@ -44,8 +44,8 @@ class QualityContent(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='quality/')
 
-    title_translate = models.CharField(max_length=255)
-    description_translate = models.TextField()
+    title_translate = models.CharField(max_length=255, blank=True, null=True)
+    description_translate = models.TextField(blank=True, null=True)
 
     def _str_(self):
         return f"{self.title}"
@@ -62,15 +62,15 @@ class WeGuarantee(models.Model):
     sub_title_four = models.CharField(max_length=255)
     sub_description_four = models.TextField()
 
-    title_translate = models.CharField(max_length=255, default="We guarantee")
-    sub_title_one_translate = models.CharField(max_length=255)
-    sub_description_one_translate = models.TextField()
-    sub_title_two_translate = models.CharField(max_length=255)
-    sub_description_two_translate = models.TextField()
-    sub_title_three_translate = models.CharField(max_length=255)
-    sub_description_three_translate = models.TextField()
-    sub_title_four_translate = models.CharField(max_length=255)
-    sub_description_four_translate = models.TextField()
+    title_translate = models.CharField(max_length=255, default="We guarantee", blank=True, null=True)
+    sub_title_one_translate = models.CharField(max_length=255, blank=True, null=True)
+    sub_description_one_translate = models.TextField(blank=True, null=True)
+    sub_title_two_translate = models.CharField(max_length=255, blank=True, null=True)
+    sub_description_two_translate = models.TextField(blank=True, null=True)
+    sub_title_three_translate = models.CharField(max_length=255, blank=True, null=True)
+    sub_description_three_translate = models.TextField(blank=True, null=True)
+    sub_title_four_translate = models.CharField(max_length=255, blank=True, null=True)
+    sub_description_four_translate = models.TextField(blank=True, null=True)
 
     def _str_(self):
         return self.title
@@ -88,8 +88,8 @@ class ProductionContent(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='production/')
 
-    title_translate = models.CharField(max_length=255)
-    description_translate = models.TextField()
+    title_translate = models.CharField(max_length=255, blank=True, null=True)
+    description_translate = models.TextField(blank=True, null=True)
 
     def _str_(self):
         return f"{self.title}"
@@ -99,8 +99,8 @@ class DocumentsCertification(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
 
-    title_translate = models.CharField(max_length=255)
-    description_translate = models.TextField()
+    title_translate = models.CharField(max_length=255, blank=True, null=True)
+    description_translate = models.TextField(blank=True, null=True)
 
     def _str_(self):
         return self.title
@@ -109,7 +109,7 @@ class DocumentsCertification(models.Model):
 class Sustainability(models.Model):
     main_description = models.TextField()
 
-    main_description_translate = models.TextField()
+    main_description_translate = models.TextField(blank=True, null=True)
 
     def _str_(self):
         return "Sustainability Section"
@@ -123,8 +123,8 @@ class SustainabilityContent(models.Model):
     image = models.ImageField(
         upload_to='sustainability/', blank=True, null=True)
     
-    title_translate = models.CharField(max_length=255)
-    description_translate = models.TextField()
+    title_translate = models.CharField(max_length=255, blank=True, null=True)
+    description_translate = models.TextField(blank=True, null=True)
 
     def _str_(self):
         return f"{self.title}"

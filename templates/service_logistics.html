@@ -85,17 +85,13 @@
           <div class="news-content">
             <h5>{{ news.title }}</h5>
             <p>
-              {{ news.content|truncatechars:150 }}
+              {{ news.content|truncatewords:10 }}
             </p>
             <a href="{% url 'news:news_detail' news.pk %}">Read more <i class="fa-solid fa-chevron-right"></i></a>
           </div>
         </div>
         {% empty %}
-        <div class="news-card">
-          <div class="news-content">
-            <h5>{% trans "No news available at the moment" %}</h5>
-          </div>
-        </div>
+        
         {% endfor %}
       </div>
       <a href="/news/" class="button-style">{% trans "Discover more" %}</a>
