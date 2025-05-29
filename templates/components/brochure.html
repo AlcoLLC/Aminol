@@ -64,8 +64,8 @@
         <div id="wrapper2">
           <div id="carousel2">
             <div id="content2">
-              {% for car in car_logos %}
-              <img src="{{ car.logo.url }}" class="item" alt="Car Logo" />
+              {% for partner in partner_logos %}
+              <img src="{{ partner.logo.url }}" class="item" alt="{% trans 'Partner Logo' %}" />
             {% endfor %}
             </div>
           </div>

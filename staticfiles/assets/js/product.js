@@ -21,10 +21,10 @@ document.addEventListener('DOMContentLoaded', function () {
     // Desktop filter - checkbox functionality without auto-submit
     const desktopCheckboxes = document.querySelectorAll('.filter-container .checkbox-group input[type="checkbox"]');
     const searchInput = document.querySelector('.filter-container input[name="search"]');
-    
+
     desktopCheckboxes.forEach(checkbox => {
         const label = checkbox.nextElementSibling;
-        
+
         checkbox.addEventListener('change', function () {
             if (this.checked) {
                 label.classList.add('selected-item');
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const prevButton = document.getElementById('prevPage');
     const nextButton = document.getElementById('nextPage');
     const pageNumbers = document.querySelectorAll('.page-number');
-    
+
     if (prevButton) {
         prevButton.addEventListener('click', function() {
             if (!this.disabled) {
@@ -185,20 +185,41 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Modal filter header toggle functionality
+    // Modal filter header toggle functionality - accordion style (only one open at a time)
     const modalFilterHeaders = document.querySelectorAll('.modal-filter-header');
     modalFilterHeaders.forEach(header => {
         header.addEventListener('click', function() {
-            this.classList.toggle('modal-header-active');
-            const content = this.nextElementSibling;
-            content.classList.toggle('modal-content-open');
-            const icon = this.querySelector('.modal-filter-icon i');
-            if (content.classList.contains('modal-content-open')) {
-                icon.classList.remove('fa-chevron-down');
-                icon.classList.add('fa-chevron-up');
+            const currentContent = this.nextElementSibling;
+            const currentIcon = this.querySelector('.modal-filter-icon i');
+            const isCurrentlyOpen = currentContent.classList.contains('modal-content-open');
+
+            // Close all other sections first
+            modalFilterHeaders.forEach(otherHeader => {
+                if (otherHeader !== this) {
+                    const otherContent = otherHeader.nextElementSibling;
+                    const otherIcon = otherHeader.querySelector('.modal-filter-icon i');
+
+                    // Close other sections
+                    otherHeader.classList.remove('modal-header-active');
+                    otherContent.classList.remove('modal-content-open');
+                    otherIcon.classList.remove('fa-chevron-up');
+                    otherIcon.classList.add('fa-chevron-down');
+                }
+            });
+
+            // Toggle current section
+            if (!isCurrentlyOpen) {
+                // Open current section
+                this.classList.add('modal-header-active');
+                currentContent.classList.add('modal-content-open');
+                currentIcon.classList.remove('fa-chevron-down');
+                currentIcon.classList.add('fa-chevron-up');
             } else {
-                icon.classList.remove('fa-chevron-up');
-                icon.classList.add('fa-chevron-down');
+                // Close current section if it was already open
+                this.classList.remove('modal-header-active');
+                currentContent.classList.remove('modal-content-open');
+                currentIcon.classList.remove('fa-chevron-up');
+                currentIcon.classList.add('fa-chevron-down');
             }
         });
     });
@@ -207,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalCheckboxes = document.querySelectorAll('.modal-checkbox-group input[type="checkbox"]');
     modalCheckboxes.forEach(checkbox => {
         const label = checkbox.nextElementSibling;
-        
+
         checkbox.addEventListener('change', function() {
             if (this.checked) {
                 label.classList.add('modal-selected-item');
@@ -229,7 +250,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Clear existing selections in main form
                     const mainCheckboxes = mainForm.querySelectorAll('input[type="checkbox"]');
                     mainCheckboxes.forEach(cb => cb.checked = false);
-                    
+
                     // Copy modal selections to main form
                     const modalCheckboxes = modalForm.querySelectorAll('input[type="checkbox"]:checked');
                     modalCheckboxes.forEach(modalCb => {
@@ -243,25 +264,25 @@ document.addEventListener('DOMContentLoaded', function() {
                             }
                         }
                     });
-                    
+
                     // Copy search input
                     const modalSearchInput = modalForm.querySelector('input[name="search"]');
                     const mainSearchInput = mainForm.querySelector('input[name="search"]');
                     if (modalSearchInput && mainSearchInput) {
                         mainSearchInput.value = modalSearchInput.value;
                     }
-                    
+
                     // Reset to page 1
                     const pageInput = mainForm.querySelector('input[name="page"]');
                     if (pageInput) {
                         pageInput.value = 1;
                     }
-                    
+
                     // Submit main form
                     mainForm.submit();
                 }
             }
-            
+
             // Close modal
             closeProductModal();
         });
@@ -270,7 +291,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Modal search button
     const modalSearchButton = document.querySelector('.modal-search-button');
     const modalSearchInput = document.querySelector('.modal-search-input');
-    
+
     if (modalSearchButton) {
         modalSearchButton.addEventListener('click', function() {
             // Trigger search results

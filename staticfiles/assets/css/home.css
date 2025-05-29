@@ -1697,16 +1697,12 @@
 
 
 
+
 .partners-section {
   margin-top: 50px;
-  margin-bottom: 200px;
-}
-
-
-.partners-section {
   margin-bottom: 0 !important;
   width: 100%;
-  height: 1000px;
+  height: 1100px;
   position: relative;
   overflow: hidden;
 }
@@ -1714,7 +1710,7 @@
 .partners-section::before {
   content: "";
   position: absolute;
-  top: 340px;
+  top: 550px;
   left: 0;
   width: 100%;
   height: 100%;
@@ -1898,7 +1894,7 @@
 
   .partners-section .section-content:not(:first-child) h2 {
   margin-top: 25px;
-  font-size: 28px ;
+  font-size: 20px ;
 }
 
 
@@ -1945,10 +1941,6 @@
     grid-gap: 40px;
   }
 
-   .partners-section .section-content:not(:first-child) h2 {
-  margin-top: 25px;
-  font-size: 24px ;
-}
 
 
   .logos-section .item {
@@ -1977,7 +1969,7 @@
   }
  .partners-section .section-content:not(:first-child) h2 {
   margin-top: 20px;
-  font-size: 20px ;
+  font-size: 14px ;
 }
 
   .logos-section .item {
@@ -2006,7 +1998,11 @@
 
 @media (max-width: 1200px) {
    .partners-section {
-      height: 700px;
+      height: 900px;
+  }
+
+   .partners-section::before {
+   top: 500px;
   }
 
   .partners-section .section-content p {
@@ -2019,10 +2015,10 @@
 
 @media (max-width: 770px) {
  .partners-section {
-      height: 600px;
+      height: 750px;
   }
    .partners-section::before {
-   top: 300px;
+   top: 450px;
   }
 
 
@@ -2333,11 +2329,11 @@
 
 @media (max-width: 550px) {
 .partners-section {
-      height: 450px;
+      height:550px;
   }
 
   .partners-section::before {
-   top: 290px;
+   top: 400px;
   }
 
   .partners-section .section-content h2 {
