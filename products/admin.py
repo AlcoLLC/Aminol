@@ -88,20 +88,31 @@ class LiterAdmin(admin.ModelAdmin):
     ordering = ('volume',)
     
 
-class ProductPropertyInline(admin.TabularInline):
+class ProductPropertyInline(TranslationTabularInline):
     model = ProductProperty
     extra = 1
-    fields = ['property_name', 'unit', 'test_method', 'typical_value', 'order']
+    fields = ['property_name', 'unit', 'test_method', 'typical_value', 'order',
+              'property_name_translate', 'unit_translate', 'test_method_translate', 'typical_value_translate',]
     ordering = ['order']
 
 
 @admin.register(ProductProperty)
-class ProductPropertyAdmin(admin.ModelAdmin):
+class ProductPropertyAdmin(TranslationAdmin):
     list_display = ['product', 'property_name', 'unit', 'test_method', 'typical_value', 'order']
     list_filter = ['product', 'unit']
     search_fields = ['property_name', 'test_method', 'product__title']
     list_editable = ['order']
     ordering = ['product', 'order']
+    
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
     
 
 @admin.register(Product)
@@ -114,10 +125,11 @@ class ProductAdmin(TranslationAdmin):
     
     fieldsets = (
         ('Basic Information', {
-            'fields': ('title', 'slug', 'product_id', 'description', 'image', 'features_benefits', 'application')
+            'fields': ('title', 'slug', 'product_id', 'description', 'image', 'features_benefits', 'application',
+                       'title_translate', 'description_translate', 'features_benefits_translate', 'application_translate')
         }),
         ('Specifications', {
-            'fields': ('api', 'ilsac', 'acea', 'jaso', 'oem_sertification', 'recommendations')
+            'fields': ('api', 'ilsac', 'acea', 'jaso', 'oem_sertification', 'recommendations', 'recommendations_translate')
         }),
         ('Categories', {
             'fields': ('product_group', 'segments', 'oil_type', 'viscosity', 'liters')

@@ -5,8 +5,8 @@ class Markets_Automotive(models.Model):
     image = models.ImageField(upload_to='markets_automotive/')
     description = models.TextField()
 
-    title_translate = models.CharField(max_length=255)
-    description_translate = models.TextField()
+    title_translate = models.CharField(max_length=255, blank=True, null=True)
+    description_translate = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.title}"
@@ -19,8 +19,8 @@ class Markets_Automotive_Content(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='markets_automotive_content/')
 
-    title_translate = models.CharField(max_length=255)
-    description_translate = models.TextField()
+    title_translate = models.CharField(max_length=255, blank=True, null=True)
+    description_translate = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.title}"
@@ -32,10 +32,10 @@ class Markets_Industrial(models.Model):
     industries_title = models.CharField(max_length=255)
     industries_description = models.TextField()
     
-    title_translate = models.CharField(max_length=255)
-    description_translate = models.TextField()
-    industries_title_translate = models.CharField(max_length=255)
-    industries_description_translate = models.TextField()
+    title_translate = models.CharField(max_length=255, blank=True, null=True)
+    description_translate = models.TextField(blank=True, null=True)
+    industries_title_translate = models.CharField(max_length=255, blank=True, null=True)
+    industries_description_translate = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.title}"
@@ -59,7 +59,7 @@ class Industries_Content(models.Model):
         Markets_Industrial, related_name='industry_items', on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
 
-    title_translate = models.CharField(max_length=100)
+    title_translate = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
         return f"{self.title}"
@@ -71,10 +71,10 @@ class Markets_Shipping(models.Model):
     industries_title = models.CharField(max_length=255)
     industries_description = models.TextField()
 
-    title_translate = models.CharField(max_length=255)
-    description_translate = models.TextField()
-    industries_title_translate = models.CharField(max_length=255)
-    industries_description_translate = models.TextField()
+    title_translate = models.CharField(max_length=255, blank=True, null=True)
+    description_translate = models.TextField(blank=True, null=True)
+    industries_title_translate = models.CharField(max_length=255, blank=True, null=True)
+    industries_description_translate = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.title}"
@@ -87,8 +87,8 @@ class Markets_Shipping_Content(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='markets_shipping_content/') 
 
-    title_translate = models.CharField(max_length=100)
-    description_translate = models.TextField()
+    title_translate = models.CharField(max_length=100, blank=True, null=True)
+    description_translate = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.title}"

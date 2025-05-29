@@ -6,9 +6,9 @@ class Aminol_Official_Dealer(models.Model):
     image = models.ImageField(upload_to='aminol_official_dealer/')
     description = models.TextField()
 
-    title_translate = models.CharField(max_length=255)
-    title_description_translate = models.TextField()
-    description_translate = models.TextField()
+    title_translate = models.CharField(max_length=255, blank=True, null=True)
+    title_description_translate = models.TextField(blank=True, null=True)
+    description_translate = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.title}"
@@ -21,8 +21,8 @@ class Aminol_Official_Dealer_Content(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='aminol_official_dealer_content/')
 
-    title_translate = models.CharField(max_length=100)
-    description_translate = models.TextField()
+    title_translate = models.CharField(max_length=100, blank=True, null=True)
+    description_translate = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.title}"
@@ -32,8 +32,8 @@ class Aminol_Labaratory(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='aminol_labaratory/')
 
-    title_translate = models.CharField(max_length=100)
-    description_translate = models.TextField()
+    title_translate = models.CharField(max_length=100, blank=True, null=True)
+    description_translate = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.title}"
@@ -43,8 +43,8 @@ class Aminol_Logistics(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='aminol_logistics/')
 
-    title_translate = models.CharField(max_length=100)
-    description_translate = models.TextField()
+    title_translate = models.CharField(max_length=100, blank=True, null=True)
+    description_translate = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.title}"
