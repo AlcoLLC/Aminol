@@ -6,10 +6,11 @@ from .models import PartnerLogo, Gallery as GalleryImage
 def home_view(request): 
     latest_news = News.objects.filter(is_active=True)[:3] 
     
-    product_groups = Product_group.objects.all().order_by('-in_home', 'title')
+    product_groups = Product_group.objects.all().order_by('-in_home', 'order')
     
     partner_logos = PartnerLogo.objects.all()
-    images = GalleryImage.objects.all().order_by('-created_at')
+    images = GalleryImage.objects.all().order_by('order')
+
     
     context = { 
         'latest_news': latest_news, 
