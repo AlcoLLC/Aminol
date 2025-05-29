@@ -165,7 +165,7 @@ class GalleryAdmin(admin.ModelAdmin):
     
     fieldsets = (
         ('Image Information', {
-            'fields': ('image', 'image_preview_large')
+            'fields': ('image', 'image_preview_large', 'order')
         }),
         ('Timestamps', {
             'fields': ('created_at', 'updated_at'),
