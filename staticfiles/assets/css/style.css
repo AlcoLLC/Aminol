@@ -811,12 +811,18 @@ nav {
   }
   .shared-section .container {
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
   }
 
   .shared-section img {
     width: 80%;
     height: 250px;
+  }
+
+  .shared-section .shared-description .button-style {
+    margin: 20px auto;
   }
 
   .shared-section .shared-description p {

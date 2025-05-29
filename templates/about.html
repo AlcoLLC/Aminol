@@ -14,10 +14,10 @@
 <section class="about-section container">
   <div class="about-tabs">
     <div class="tab active" data-tab="about-aminol">{% trans "About Aminol" %}</div>
-<div class="tab" data-tab="quality">{% trans "Quality" %}</div>
-<div class="tab" data-tab="production">{% trans "Production" %}</div>
-<div class="tab" data-tab="documents">{% trans "Documents & Certifications" %}</div>
-<div class="tab" data-tab="sustainability">{% trans "Sustainability" %}</div>
+    <div class="tab" data-tab="quality">{% trans "Quality" %}</div>
+    <div class="tab" data-tab="production">{% trans "Production" %}</div>
+    <div class="tab" data-tab="documents">{% trans "Documents & Certifications" %}</div>
+    <div class="tab" data-tab="sustainability">{% trans "Sustainability" %}</div>
   </div>
 </section>
 
@@ -29,6 +29,34 @@
       <a href="/">{% trans "Home page" %}</a>|
       <p>{% trans "About us" %}</p>
     </div>
+
+      <div class="container about-company-profile">
+
+        <div class="section-content">
+          <h2>{% trans "Company Profile" %}</h2>
+          <p>{% trans "Company profile description" %}</p>
+        </div>
+        <!-- <div class="section-content">
+          <h2>{% trans "Company Profile" %}</h2>
+          <p>{% trans "ALCO LLC was entered into the state register on 5 May 2016. In the same year the company was granted resident status in the Sumgayit Chemical Industrial Park." %}</p>
+          <p>{% trans "Construction of the ALCO LLC lubricant plant within the park began in 2016, and operations started on 15 December 2017 following the visit of the President of the Republic of Azerbaijan to the park." %}</p>
+          <p>{% trans "The plant is equipped with state-of-the-art German and Italian equipment, including fully automated production lines." %}</p>
+          <p>{% trans "On the 3.5-hectare site allocated to ALCO LLC, a 5,000-tonne tank farm has been built for storing raw materials, intermediates and finished products, along with a 4,800 m² warehouse." %}</p>
+          <p>{% trans "To improve packaging flexibility and strengthen internal supply, a plastic-container production unit was launched in 2019. Today ALCO LLC meets its needs entirely with high-quality plastic packaging of its own manufacture." %}</p>
+          <p>{% trans "Since 2019 the company’s scope has expanded to include technical fluids. A production area for coolant (antifreeze) with an annual capacity of 5,000 tonnes was installed, and a variety of antifreeze grades are now produced." %}</p>
+          <p>{% trans "In 2020 the plant began manufacturing AdBlue®, a special non-toxic synthetic urea solution used to chemically reduce NOx emissions in diesel vehicles." %}</p>
+          <p>{% trans "The plant houses an ISO/IEC 17025-accredited quality-assurance laboratory equipped with more than 30 modern instruments; tests are currently carried out for over 65 parameters." %}</p>
+          <p>{% trans "In 2023 the necessary infrastructure was created to produce and store performance additives and, in line with modern requirements, to manufacture environmentally friendly plant-based bio-lubricants and fluids." %}</p>
+          <p>{% trans "From 2024 the plant’s annual production capacity has been raised to 100,000 tonnes." %}</p>
+          <p>{% trans "Today the company’s product portfolio comprises more than 1,000 unique items, with many new products in the commercialization pipeline." %}</p>
+          <p>{% trans "Engine oils produced by ALCO LLC are offered to customers with a warranty and can provide minimum oil-change intervals of 100,000 km in modern heavy-duty trucks and 30,000 km in passenger cars." %}</p>
+          <p>{% trans "In addition, GE-approved locomotive oils that deliver maximum protection, fuel efficiency and engine durability—even under the harshest conditions—are supplied to the railway sector." %}</p>
+          <p>{% trans "High-performance oils play a crucial role in critical industries such as metalworking, power generation (including renewable wind energy and heat production), mining and cement, pulp and paper, textiles, and plastic and rubber processing. ALCO LLC offers a wide range of industrial lubricants tailored to each of these fields. Their high quality, consistent performance and long-term stability ensure efficient operation of industrial equipment, prevent technical failures and significantly extend service life." %}</p>
+          <p>{% trans "Thus, thanks to its advanced technologies, extensive product range and international market strategy, ALCO LLC is today recognised as one of the largest specialised industrial enterprises for the production of lubricants and technical fluids in the South Caucasus and the wider region." %}</p>
+
+        </div> -->
+
+      </div>
 
     <!-- Shared Section -->
     {% if about_aminol %}
@@ -50,7 +78,7 @@
 
     <div class="shared-images-section">
       <div class="section-header">
-           <h2>{% trans "ABOUT AMINOL" %}</h2>
+        <h2>{% trans "ABOUT AMINOL" %}</h2>
       </div>
 
       <div class="container">
@@ -58,26 +86,19 @@
         <div class="shared-images-container">
           <div class="vertical-line"></div>
           {% for section in about_sections %}
-          <div
-            class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}"
-          >
+          <div class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}">
             <div class="image-container">
               <div class="circular-image">
                 <img src="{{ section.image.url }}" alt="{{ section.title }}" />
               </div>
             </div>
-            <div
-              class="text-container {% if forloop.counter|divisibleby:2 %}text-left{% endif %}"
-            >
+            <div class="text-container {% if forloop.counter|divisibleby:2 %}text-left{% endif %}">
               <h2>{{ section.title }}</h2>
-             <p>{{ section.description|safe_linebreaksbr }}</p>
+              <p>{{ section.description|safe_linebreaksbr }}</p>
             </div>
           </div>
-          <img
-            src="{% static '/images/yellow-point.svg' %}"
-            class="droplet droplet-{{ forloop.counter }}"
-            alt="Yellow Point"
-          />
+          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-{{ forloop.counter }}"
+            alt="Yellow Point" />
           {% endfor %}
         </div>
         {% endif %}
@@ -103,9 +124,7 @@
         <div class="shared-images-container">
           <div class="vertical-line"></div>
           {% for content in quality_contents %}
-          <div
-            class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}"
-          >
+          <div class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}">
             <div class="image-container">
               <div class="circular-image">
                 <img src="{{ content.image.url }}" alt="{{ content.title }}" />
@@ -116,11 +135,8 @@
               <p>{{ content.description|safe_linebreaksbr }}</p>
             </div>
           </div>
-          <img
-            src="{% static '/images/yellow-point.svg' %}"
-            class="droplet droplet-{{ forloop.counter }}"
-            alt="Yellow Point"
-          />
+          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-{{ forloop.counter }}"
+            alt="Yellow Point" />
           {% endfor %}
         </div>
         {% endif %}
@@ -181,9 +197,7 @@
         <div class="shared-images-container">
           <div class="vertical-line"></div>
           {% for content in production_contents %}
-          <div
-            class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}"
-          >
+          <div class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}">
             <div class="image-container">
               <div class="circular-image">
                 <img src="{{ content.image.url }}" alt="{{ content.title }}" />
@@ -196,11 +210,8 @@
           </div>
 
           <!-- Yellow Point Droplet -->
-          <img
-            src="{% static '/images/yellow-point.svg' %}"
-            class="droplet droplet-{{ forloop.counter }}"
-            alt="Yellow Point"
-          />
+          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-{{ forloop.counter }}"
+            alt="Yellow Point" />
           {% endfor %}
         </div>
         {% endif %}
@@ -235,33 +246,19 @@
             <div id="content2">
               {% for car in car_logos %}
               <img src="{{ car.logo.url }}" class="item" alt="Car Logo" />
-            {% endfor %}
+              {% endfor %}
             </div>
           </div>
           <button id="prev2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
               <path fill="none" d="M0 0h24v24H0V0z" />
-              <path
-                d="M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z"
-              />
+              <path d="M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z" />
             </svg>
           </button>
           <button id="next2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
               <path fill="none" d="M0 0h24v24H0V0z" />
-              <path
-                d="M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z"
-              />
+              <path d="M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z" />
             </svg>
           </button>
         </div>
@@ -293,16 +290,10 @@
       <div class="container sustainability-content">
         <div class="sustainability-circle-wrapper">
           <div class="sustainability-circle-img">
-            <img
-              class="circle-img"
-              src="{% static '/images/sustainability-circle.png' %}"
-              alt="Sustainability Circle"
-            />
-            <img
-              class="curved-text-img"
-              src="{% static '/images/curve text.svg' %}"
-              alt="Core of Innovation Sustainability"
-            />
+            <img class="circle-img" src="{% static '/images/sustainability-circle.png' %}"
+              alt="Sustainability Circle" />
+            <img class="curved-text-img" src="{% static '/images/curve text.svg' %}"
+              alt="Core of Innovation Sustainability" />
           </div>
         </div>
         <div class="content-wrapper">
@@ -318,9 +309,7 @@
         <div class="shared-images-container">
           <div class="vertical-line"></div>
           {% for content in sustainability_contents %}
-          <div
-            class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}"
-          >
+          <div class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}">
             <div class="image-container">
               <div class="circular-image">
                 <img src="{{ content.image.url }}" alt="{{ content.title }}" />
@@ -331,11 +320,8 @@
               <p>{{ content.description|safe_linebreaksbr }}</p>
             </div>
           </div>
-          <img
-            src="{% static '/images/yellow-point.svg' %}"
-            class="droplet droplet-{{ forloop.counter }}"
-            alt="Yellow Point"
-          />
+          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-{{ forloop.counter }}"
+            alt="Yellow Point" />
           {% endfor %}
         </div>
         {% endif %}
@@ -349,4 +335,3 @@
 
 {% include 'components/brochure.html' %}
 {% endblock %}
-
