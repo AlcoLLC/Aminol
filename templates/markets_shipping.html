@@ -30,7 +30,7 @@
             <div class="section-row ">
                 <div class="image-container">
                     <div class="circular-image">
-                        <img src="{% static '/images/services-aminol-1.jpg' %}" alt="{% trans 'Strengthen your business' %}" />
+                        <img loading="lazy" src="{% static '/images/services-aminol-1.jpg' %}" alt="{% trans 'Strengthen your business' %}" />
                     </div>
                 </div>
                 <div class="text-container">
@@ -41,12 +41,12 @@
                 </div>
             </div>
 
-            <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-1" alt="{% trans 'Yellow Point' %}" />
+            <img loading="lazy" src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-1" alt="{% trans 'Yellow Point' %}" />
 
             <div class="section-row row-reverse">
                 <div class="image-container">
                     <div class="circular-image">
-                        <img src="{% static '/images/services-aminol-2.jpg' %}" alt="{% trans 'Availability' %}" />
+                        <img loading="lazy" src="{% static '/images/services-aminol-2.jpg' %}" alt="{% trans 'Availability' %}" />
                     </div>
                 </div>
                 <div class="text-container text-left">
@@ -57,7 +57,7 @@
                 </div>
             </div>
 
-            <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-2" alt="{% trans 'Yellow Point' %}" />
+            <img loading="lazy" src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-2" alt="{% trans 'Yellow Point' %}" />
 
         </div>
     </div>
@@ -69,7 +69,7 @@
           <div id="carousel2">
             <div id="content2">
               {% for market in market_logos %}
-              <img src="{{ market.logo.url }}" class="item" alt="Market Logo" />
+              <img loading="lazy" src="{{ market.logo.url }}" class="item" alt="Market Logo" />
             {% endfor %}
             </div>
           </div>
@@ -111,7 +111,7 @@
         </p>
     </div>
     <div class="services-offer-image">
-        <img src="{{ shipping_service.image.url }}" alt="{{ shipping_service.title }}" />
+        <img loading="lazy" src="{{ shipping_service.image.url }}" alt="{{ shipping_service.title }}" />
     </div>
 </div>
 
@@ -134,7 +134,7 @@
 <div class="shared-section">
     <div class="shared-background"></div>
     <div class="container">
-        <img src="{% static '/images/shared-image1.png' %}" alt="{% trans 'Knowledge and support' %}">
+        <img loading="lazy" src="{% static '/images/shared-image1.png' %}" alt="{% trans 'Knowledge and support' %}">
         <div class="shared-description">
             <h3>{% trans "Knowledge and support" %}</h3>
             <span>{% trans "Our experienced team is ready to assist you with advice, technical and commercial support, and the latest industry developments. Discover our wide range of services and workshop materials on our service page." %}</span>

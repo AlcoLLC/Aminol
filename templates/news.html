@@ -31,9 +31,9 @@
                     <div class="news-card">
                         <div class="news-image">
                             {% if news.image %}
-                                <img src="{{ news.image.url }}" alt="{{ news.title }}" />
+                                <img loading="lazy" src="{{ news.image.url }}" alt="{{ news.title }}" />
                             {% else %}
-                                <img src="{% static 'images_folder/zavod.svg' %}" alt="{% trans 'Default news image' %}" />
+                                <img loading="lazy" src="{% static 'images_folder/zavod.svg' %}" alt="{% trans 'Default news image' %}" />
                             {% endif %}
                         </div>
                         <div class="news-content">
@@ -63,9 +63,9 @@
                         <div class="news-card">
                             <div class="news-image">
                                 {% if news.image %}
-                                    <img src="{{ news.image.url }}" alt="{{ news.title_translate }}" />
+                                    <img loading="lazy" src="{{ news.image.url }}" alt="{{ news.title_translate }}" />
                                 {% else %}
-                                    <img src="{% static 'images_folder/zavod.svg' %}" alt="{% trans 'Default news image' %}" />
+                                    <img loading="lazy" src="{% static 'images_folder/zavod.svg' %}" alt="{% trans 'Default news image' %}" />
                                 {% endif %}
                             </div>
                             <div class="news-content">

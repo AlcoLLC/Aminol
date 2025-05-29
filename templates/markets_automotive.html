@@ -30,7 +30,7 @@
             <div class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}">
                 <div class="image-container">
                     <div class="circular-image">
-                        <img src="{{ content.image.url }}" alt="{{ content.title_translate }}" />
+                        <img loading="lazy" src="{{ content.image.url }}" alt="{{ content.title_translate }}" />
                     </div>
                 </div>
                 <div class="text-container {% if forloop.counter|divisibleby:2 %}text-left{% endif %}">
@@ -39,7 +39,7 @@
                 </div>
             </div>
 
-            <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-{{ forloop.counter }}" alt="{% trans 'Yellow Point' %}" />
+            <img loading="lazy" src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-{{ forloop.counter }}" alt="{% trans 'Yellow Point' %}" />
             {% endfor %}
         </div>
     </div>
@@ -49,7 +49,7 @@
 <div class="shared-section">
     <div class="shared-background"></div>
     <div class="container">
-        <img
+        <img loading="lazy"
             src="{{ automotive_service.image.url }}"
             alt="{{ automotive_service.title_translate }}"
             />
