@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import News, News_Content
+from .models import News
 
 def news_list(request):
     all_news = News.objects.filter(is_active=True)
@@ -14,7 +14,7 @@ def news_list(request):
 
 def news_detail(request, pk):
     news = get_object_or_404(News, pk=pk, is_active=True)
-    contents = News_Content.objects.all()
+    contents = news.contents.all()
     latest_news = News.objects.filter(is_active=True).exclude(pk=pk)[:3]
     
     context = {
