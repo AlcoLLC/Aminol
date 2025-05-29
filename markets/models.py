@@ -48,8 +48,8 @@ class Markets_Industrial_Content(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='markets_industrial_content/')
 
-    title_translate = models.CharField(max_length=100)
-    description_translate = models.TextField()
+    title_translate = models.CharField(max_length=100, blank=True, null=True)
+    description_translate = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.title}"
