@@ -15,7 +15,7 @@ class NewsAdmin(TranslationAdmin):
     list_filter = ['is_active', 'published_date']
     search_fields = ['title', 'content']
     list_editable = ['is_active']
-    readonly_fields = ['published_date', 'image_preview']
+    readonly_fields = ['image_preview']
     inlines = [NewsContentInline]
     
     fieldsets = (
