@@ -4,7 +4,7 @@ class News(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
     image = models.ImageField(upload_to='news/')
-    published_date = models.DateTimeField(auto_now_add=True)
+    published_date = models.DateTimeField()
     is_active = models.BooleanField(default=True)
 
     title_translate = models.CharField(max_length=255, blank=True, null=True)

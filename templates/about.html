@@ -132,7 +132,7 @@
             </div>
             <div class="text-container">
               <h2>{{ content.title }}</h2>
-              <p>{{ content.description }}</p>
+              <p>{{ content.description|safe_linebreaksbr }}</p>
             </div>
           </div>
           <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-{{ forloop.counter }}"
@@ -155,22 +155,22 @@
           <div class="row-item">
             <span>1.</span>
             <h3>{{ guarantee.sub_title_one }}</h3>
-            <p>{{ guarantee.sub_description_one }}</p>
+            <p>{{ guarantee.sub_description_one|safe_linebreaksbr }}</p>
           </div>
           <div class="row-item row-item-2">
             <span>2.</span>
             <h3>{{ guarantee.sub_title_two }}</h3>
-            <p>{{ guarantee.sub_description_two }}</p>
+            <p>{{ guarantee.sub_description_two|safe_linebreaksbr }}</p>
           </div>
           <div class="row-item">
             <span>3.</span>
             <h3>{{ guarantee.sub_title_three }}</h3>
-            <p>{{ guarantee.sub_description_three }}</p>
+            <p>{{ guarantee.sub_description_three|safe_linebreaksbr }}</p>
           </div>
           <div class="row-item row-item-2">
             <span>4.</span>
             <h3>{{ guarantee.sub_title_four }}</h3>
-            <p>{{ guarantee.sub_description_four }}</p>
+            <p>{{ guarantee.sub_description_four|safe_linebreaksbr }}</p>
           </div>
         </div>
       </div>
@@ -205,7 +205,7 @@
             </div>
             <div class="text-container">
               <h2>{{ content.title }}</h2>
-              <p>{{ content.description }}</p>
+              <p>{{ content.description|safe_linebreaksbr }}</p>
             </div>
           </div>
 
@@ -236,9 +236,9 @@
       <div class="certifications-container">
         <img src="{% static '/images/certifications.png' %}" alt="" />
         <h3>{{ documents_cert.title }}</h3>
-        <p>{{ documents_cert.description }}</p>
+        <p>{{ documents_cert.description|safe_linebreaksbr }}</p>
       </div>
-      <div class="hidden-description">{{ documents_cert.description }}</div>
+        <div class="hidden-description">{{ documents_cert.description|safe_linebreaksbr }}</div>
 
       <div class=" logos-section">
         <div id="wrapper2">
@@ -297,7 +297,7 @@
           </div>
         </div>
         <div class="content-wrapper">
-          <p>{{ sustainability.main_description }}</p>
+          <p>{{ sustainability.main_description|safe_linebreaksbr }}</p>
         </div>
       </div>
     </div>
@@ -317,7 +317,7 @@
             </div>
             <div class="text-container">
               <h2>{{ content.title }}</h2>
-              <p>{{ content.description }}</p>
+              <p>{{ content.description|safe_linebreaksbr }}</p>
             </div>
           </div>
           <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-{{ forloop.counter }}"

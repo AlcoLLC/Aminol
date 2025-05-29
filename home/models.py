@@ -17,6 +17,16 @@ class CarLogo(models.Model):
 
 class Gallery(models.Model):
     image = models.ImageField(upload_to='gallery/')
+    order = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Gallery Image {self.id}"
+
+class Supplier(models.Model):
+    image = models.ImageField(upload_to='supplier/')
+    order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

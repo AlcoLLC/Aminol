@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import PartnerLogo, CarLogo, MarketLogo, Gallery
+from .models import PartnerLogo, CarLogo, MarketLogo, Gallery, Supplier
 
 
 @admin.register(PartnerLogo)
@@ -165,7 +165,49 @@ class GalleryAdmin(admin.ModelAdmin):
     
     fieldsets = (
         ('Image Information', {
-            'fields': ('image', 'image_preview_large')
+            'fields': ('image', 'image_preview_large', 'order')
+        }),
+        ('Timestamps', {
+            'fields': ('created_at', 'updated_at'),
+            'classes': ('collapse',)
+        }),
+    )
+
+@admin.register(Supplier)
+class SupplierAdmin(admin.ModelAdmin):
+    list_display = ['id', 'image_preview', 'image_name', 'created_at', 'updated_at']
+    list_display_links = ['id', 'image_preview', 'image_name']
+    readonly_fields = ['image_preview_large', 'created_at', 'updated_at']
+    list_per_page = 20
+    ordering = ['-created_at']
+    
+    def image_preview(self, obj):
+        if obj.image:
+            return format_html(
+                '<img src="{}" style="width: 50px; height: 50px; object-fit: contain; border-radius: 4px; border: 1px solid #ddd;" />',
+                obj.image.url
+            )
+        return "No Image"
+    image_preview.short_description = "Preview"
+    
+    def image_preview_large(self, obj):
+        if obj.image:
+            return format_html(
+                '<img src="{}" style="max-width: 200px; max-height: 200px; object-fit: contain; border-radius: 8px; border: 1px solid #ddd;" />',
+                obj.image.url
+            )
+        return "No Image"
+    image_preview_large.short_description = "Image Preview"
+    
+    def image_name(self, obj):
+        if obj.image:
+            return obj.image.name.split('/')[-1] 
+        return "No File"
+    image_name.short_description = "File Name"
+    
+    fieldsets = (
+        ('Image Information', {
+            'fields': ('image', 'image_preview_large', 'order')
         }),
         ('Timestamps', {
             'fields': ('created_at', 'updated_at'),

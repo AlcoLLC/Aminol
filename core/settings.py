@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_filters',
     'django_ckeditor_5',
+    'rosetta',
 
     # apps
 
@@ -154,8 +155,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
 LANGUAGES = [
-     ('az', 'Azerbaijani'),
     ('en', 'English'),
+    ('az', 'Azerbaijani'),
 ]
 
 
@@ -166,7 +167,7 @@ LOCALE_PATHS = [
     BASE_DIR / 'locale',
 ]
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Baku' 
 
 USE_I18N = True
 USE_L10N = True
@@ -175,15 +176,16 @@ USE_TZ = True
 
 LANGUAGE_SESSION_KEY = 'django_language'
 LANGUAGE_COOKIE_NAME = 'django_language'
-LANGUAGE_COOKIE_AGE = 60 * 60 * 24 * 30
+LANGUAGE_COOKIE_AGE = 60 * 60 * 24 * 365  # 1 il
 LANGUAGE_COOKIE_DOMAIN = None
 LANGUAGE_COOKIE_PATH = '/'
+LANGUAGE_COOKIE_SECURE = False  # Production-da True edin
+LANGUAGE_COOKIE_HTTPONLY = False
 
-
+# Session konfiqurasiyası
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30  # 30 gün
 SESSION_SAVE_EVERY_REQUEST = True
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
