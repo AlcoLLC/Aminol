@@ -10,7 +10,15 @@ import logging
 logger = logging.getLogger(__name__)
 
 def contact_view(request):
-    help_choices = Contact.HELP_CHOICES
+    help_choices = [
+        ('buy', _('I would like to buy Aminol products.')),
+        ('become_dealer', _('I am interested in becoming a distributor.')),
+        ('technical', _('I need technical support.')),
+        ('certificates', _('I would like to request product certificates or compliance documents.')),
+        ('about', _('I need more information about a product.')),
+        ('partnership', _('I am interested in a potential partnership.')),
+        ('other', _('Other'))
+    ]
     
     if request.method == 'POST':
         form_data = {
