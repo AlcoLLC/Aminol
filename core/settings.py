@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_filters',
     'django_ckeditor_5',
+    'rosetta',
 
     # apps
 
