@@ -24,12 +24,12 @@
         <div class="grid-item">
             <div class="question">
                 <i class="fa-solid fa-circle"></i>
-                <h3>{{ faq.question }}</h3>
+                <h3>{{ faq.question_translate }}</h3>
                 <img class="plus-icon" src="{% static '/images/Add_round_duotone.svg' %}" alt="">
                 <img class="minus-icon" src="{% static '/images/minus_round_duotone.svg' %}" alt="">
             </div>
             <div class="answer">
-                <p>{{ faq.answer }}</p>
+                <p>{{ faq.answer_translate }}</p>
             </div>
         </div>
         {% empty %}
@@ -41,10 +41,6 @@
 </section>
 
 {% include 'components/contactcomponent.html' %}
-
-    <!-- Contact form  section-->
-
-
 
     {% include 'components/whatsapp.html' %}
 

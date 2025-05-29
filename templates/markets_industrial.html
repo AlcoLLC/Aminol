@@ -25,17 +25,16 @@
     <div class="container">
         <div class="shared-images-container">
             <div class="vertical-line"></div>
-
             {% for content in industrial_contents %}
             <div class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}">
                 <div class="image-container">
                     <div class="circular-image">
-                        <img src="{{ content.image.url }}" alt="{{ content.title }}" />
+                        <img src="{{ content.image.url }}" alt="{{ content.title_translate }}" />
                     </div>
                 </div>
                 <div class="text-container {% if forloop.counter|divisibleby:2 %}text-left{% endif %}">
-                    <h2>{{ content.title }}</h2>
-                    <p>{{ content.description }}</p>
+                    <h2>{{ content.title_translate }}</h2>
+                    <p>{{ content.description_translate }}</p>
                 </div>
             </div>
 
@@ -87,26 +86,26 @@
 
 <div class="services-offer-section container">
     <div class="text-container text-left">
-        <h2>{{ industrial_service.title }}</h2>
+        <h2>{{ industrial_service.title_translate }}</h2>
         <p>
-           {{ industrial_service.description }}
+           {{ industrial_service.description_translate }}
         </p>
     </div>
     <div class="services-offer-image">
-        <img src="{{ industrial_service.image.url }}" alt="{{ industrial_service.title }}" />
+        <img src="{{ industrial_service.image.url }}" alt="{{ industrial_service.title_translate }}" />
     </div>
 </div>
 
 <section class="markets-comprehensive-section container">
     <div class="section-content">
-        <h3>{{ industrial_service.industries_title }}</h3>
-        <p>{{ industrial_service.industries_description }}</p>
+        <h3>{{ industrial_service.industries_title_translate }}</h3>
+        <p>{{ industrial_service.industries_description_translate }}</p>
     </div>
 
     <div class="section-grid">
         {% for industry in industries %}
         <div class="grid-item">
-            <p>{{ industry.title }}</p>
+            <p>{{ industry.title_translate }}</p>
         </div>
         {% endfor %}
     </div>
@@ -118,11 +117,11 @@
     <div class="container">
         <img
             src="{{ automotive_service.image.url }}"
-            alt="{{ automotive_service.title }}"
+            alt="{{ automotive_service.title_translate }}"
             />
         <div class="shared-description">
-            <h3>{{ automotive_service.title }}</h3>
-            <span>{{ automotive_service.description }}</span>
+            <h3>{{ automotive_service.title_translate }}</h3>
+            <span>{{ automotive_service.description_translate }}</span>
             <a href="#" class="button-style">{% trans "Our Services" %}</a>
         </div>
     </div>
