@@ -2,7 +2,7 @@
 {% load i18n %}
 
 <div class="container brochure">
-  <img src="{% static 'images_folder/aminol broshur cvr 1.svg' %}" alt="" />
+  <img loading="lazy" src="{% static 'images_folder/aminol broshur cvr 1.svg' %}" alt="" />
 </div>
 
 <div class="partners-section">
@@ -23,7 +23,7 @@
         <div id="carousel">
           <div id="content">
             {% for supplier in supplier_logos %}
-              <img src="{{ supplier.image.url }}" class="item" alt="{% trans 'Supplier Logo' %}" />
+              <img loading="lazy" src="{{ supplier.image.url }}" class="item" alt="{% trans 'Supplier Logo' %}" />
             {% endfor %}
           </div>
         </div>
@@ -65,7 +65,7 @@
           <div id="carousel2">
             <div id="content2">
               {% for partner in partner_logos %}
-              <img src="{{ partner.logo.url }}" class="item" alt="{% trans 'Partner Logo' %}" />
+              <img loading="lazy" src="{{ partner.logo.url }}" class="item" alt="{% trans 'Partner Logo' %}" />
             {% endfor %}
             </div>
           </div>
@@ -103,6 +103,6 @@
 <div class="whatsapp-section">
   <a href=""
     >{% trans "Ask your question on Whatsapp" %}
-    <img src="{% static 'images_folder/Vector.svg' %}" alt="" />
+    <img loading="lazy" src="{% static 'images_folder/Vector.svg' %}" alt="" />
   </a>
 </div>
