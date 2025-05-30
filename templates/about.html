@@ -229,14 +229,16 @@
       <h2>{% trans "DOCUMENTS AND CERTIFICATION" %}</h2>
     </div>
 
-    {% if documents_cert %}
+
     <div class="container">
+     {% for documents_cert in documents_certs %}
       <div class="certifications-container">
         <img loading="lazy" src="{% static '/images/certifications.png' %}" alt="" />
         <h3>{{ documents_cert.title_translate|linebreaksbr }}</h3>
-        <p>{{ documents_cert.description_translate|safe_linebreaksbr }}</p>
+        <p>{{ documents_cert.description_translate|linebreaksbr }}</p>
       </div>
         <div class="hidden-description">{{ documents_cert.description|safe_linebreaksbr }}</div>
+     {% endfor %}
 
       <div class=" logos-section">
         <div id="wrapper2">
@@ -280,7 +282,6 @@
         <img loading="lazy" src="{% static '/images/certifications-logos-2.png' %}" alt="" />
       </div>
     </div>
-    {% endif %}
   </div>
 
   <!-- Sustainability Tab -->

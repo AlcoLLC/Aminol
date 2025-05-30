@@ -14,11 +14,12 @@
       </p>
     </div>
 
+     
      <div class="section-content">
       <h2>{% trans "Our Suppliers" %}</h2>
     </div>
-
-    <div class="logos-section">
+  
+     <div class="logos-section">
       <div id="wrapper">
         <div id="carousel">
           <div id="content">
@@ -59,17 +60,16 @@
     <div class="section-content">
       <h2>{% trans "Our Partners" %}</h2>
     </div>
-
-    <div class=" logos-section">
-        <div id="wrapper2">
-          <div id="carousel2">
-            <div id="content2">
+ <div class=" logos-section">
+        <div id="wrapper3">
+          <div id="carousel3">
+            <div id="content3">
               {% for partner in partner_logos %}
               <img loading="lazy" src="{{ partner.logo.url }}" class="item" alt="{% trans 'Partner Logo' %}" />
             {% endfor %}
             </div>
           </div>
-          <button id="prev2">
+          <button id="prev3">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -82,7 +82,7 @@
               />
             </svg>
           </button>
-          <button id="next2">
+          <button id="next3">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -97,11 +97,14 @@
           </button>
         </div>
       </div>
+
+ 
+
   </div>
 </div>
 
 <div class="whatsapp-section">
-  <a href=""
+  <a href="https://wa.me/994502220607"
     >{% trans "Ask your question on Whatsapp" %}
     <img loading="lazy" src="{% static 'images_folder/Vector.svg' %}" alt="" />
   </a>
