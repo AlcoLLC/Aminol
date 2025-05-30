@@ -641,6 +641,10 @@
   transition: all 0.3s ease;
 }
 
+.our-values .button-style {
+  border: 1px solid #f92b3f;
+}
+
 .our-values .values-content a:hover {
   background-color: #f92b3f;
   border: 1px solid #f92b3f;
@@ -1391,6 +1395,7 @@
 }
 
 .latest-news .news-cards {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 20px;

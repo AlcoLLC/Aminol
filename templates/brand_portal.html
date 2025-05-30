@@ -1,64 +1,67 @@
-{% extends 'base.html' %} {% load static %}
-{% load i18n %}
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% load i18n %} {% block content %}
 
 <div class="news-page">
-    {% include 'components/navbar_dark.html' %}
+  {% include 'components/navbar_dark.html' %}
 
-    <header class="page-header">
-    </header>
+  <header class="page-header"></header>
 
-    <!-- Breadcrumb -->
-    <div class="breadcrumb container">
-        <a href="/">{% trans "Home Page" %}</a>|<p>{% trans "Brand Portal" %}</p>
+  <!-- Breadcrumb -->
+  <div class="breadcrumb container">
+    <a href="/">{% trans "Home Page" %}</a>|
+    <p>{% trans "Brand Portal" %}</p>
+  </div>
+
+  <div class="container">
+    <div class="news-top-content">
+      <h2>{% trans "Brand Portal" %}</h2>
+      <p>{{ brand.title_translate|linebreaksbr }}</p>
     </div>
+  </div>
 
-
-    <div class="container">
-        <div class="news-top-content">
-            <h2>{% trans "Brand Portal" %}</h2>
-            <p>{{ brand.title_translate }}</p>
-        </div>
+  <div class="services-offer-section brand-portal-section container">
+    <div class="text-container text-left">
+      <p>{{ brand.description_translate|linebreaksbr }}</p>
     </div>
-
-    <div class="services-offer-section brand-portal-section container">
-        <div class="text-container text-left">
-            <p>
-               {{ brand.description_translate }}
-            </p>
-        </div>
-        <div class="services-offer-image">
-            <img src="{{ brand.image.url }}" alt="Service Offer Image" />
-        </div>
+    <div class="services-offer-image">
+      <img src="{{ brand.image.url }}" alt="Service Offer Image" />
     </div>
+  </div>
 
-
-     <div class="brand-section container">
-        {% for content in brand_contents %}
-        <div class="brand-item">
-            <div class="text-container">
-                <h2>{{ content.title_translate }}</h2>
-                <p>{{ content.description_translate }}</p>
-            </div>
-            <div class="brand-image">
-                {% if content.image %}
-                    <img src="{{ content.image.url }}" alt="{{ content.title_translate }}" />
-                {% else %}
-                    <img src="{% static '/images/market-industrial.jpg' %}" alt="Service Offer Image" />
-                {% endif %}
-                <a class="read-more" href="{% url 'services:view_brand_content_pdf' content.id %}" target="_blank">Read more</a>
-
-            </div>
-        </div>
-        {% empty %}
-        <div class="no-content">
-            <p>No brand content available at the moment.</p>
-        </div>
-        {% endfor %}
+  <div class="brand-section container">
+    {% for content in brand_contents %}
+    <div class="brand-item">
+      <div class="text-container">
+        <h2>{{ content.title_translate|linebreaksbr }}</h2>
+        <p>{{ content.description_translate|linebreaksbr }}</p>
+      </div>
+      <div class="brand-image">
+        {% if content.image %}
+        <img
+          src="{{ content.image.url }}"
+          alt="{{ content.title_translate }}"
+        />
+        {% else %}
+        <img
+          src="{% static '/images/market-industrial.jpg' %}"
+          alt="Service Offer Image"
+        />
+        {% endif %}
+        <a
+          class="read-more"
+          href="{% url 'services:view_brand_content_pdf' content.id %}"
+          target="_blank"
+          >Read more</a
+        >
+      </div>
     </div>
+    {% empty %}
+    <div class="no-content">
+      <p>No brand content available at the moment.</p>
+    </div>
+    {% endfor %}
+  </div>
 
-    {% include 'components/whatsapp.html' %}
-
+  {% include 'components/whatsapp.html' %}
 </div>
 
 {% endblock %}

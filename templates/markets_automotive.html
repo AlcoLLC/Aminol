@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load i18n %}
+{% load i18n %}|linebreaksbr
 
 {% block content %}
 
@@ -34,8 +34,8 @@
                     </div>
                 </div>
                 <div class="text-container {% if forloop.counter|divisibleby:2 %}text-left{% endif %}">
-                    <h2>{{ content.title_translate }}</h2>
-                    <p>{{ content.description_translate }}</p>
+                    <h2>{{ content.title_translate|linebreaksbr }}</h2>
+                    <p>{{ content.description_translate|linebreaksbr }}</p>
                 </div>
             </div>
 
@@ -54,8 +54,8 @@
             alt="{{ automotive_service.title_translate }}"
             />
         <div class="shared-description">
-            <h3>{{ automotive_service.title_translate }}</h3>
-            <span>{{ automotive_service.description_translate }}</span>
+            <h3>{{ automotive_service.title_translate|linebreaksbr }}</h3>
+            <span>{{ automotive_service.description_translate|linebreaksbr }}</span>
             <a href="#" class="button-style">{% trans "Our Services" %}</a>
         </div>
     </div>

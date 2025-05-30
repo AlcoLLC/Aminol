@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-29 16:52+0400\n"
+"POT-Creation-Date: 2025-05-30 09:51+0400\n"
 "PO-Revision-Date: 2025-05-29 17:06+0400\n"
 "Last-Translator:   <elay@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,18 +19,18 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.10.2\n"
 
-#: .\templates\about.html:16 .\templates\about.html:186
-#: .\templates\about.html:226 .\templates\about.html:279
+#: .\templates\about.html:16 .\templates\about.html:181
+#: .\templates\about.html:226 .\templates\about.html:293
 #, fuzzy
 #| msgid "About us"
 msgid "About Aminol"
 msgstr "Haqqımızda"
 
-#: .\templates\about.html:17 .\templates\about.html:114
+#: .\templates\about.html:17 .\templates\about.html:104
 msgid "Quality"
 msgstr "Keyfiyyət"
 
-#: .\templates\about.html:18 .\templates\about.html:187
+#: .\templates\about.html:18 .\templates\about.html:182
 msgid "Production"
 msgstr "İstehsal"
 
@@ -38,19 +38,18 @@ msgstr "İstehsal"
 msgid "Documents & Certifications"
 msgstr "Sənədlər və Sertifikatlar"
 
-#: .\templates\about.html:20 .\templates\about.html:280
+#: .\templates\about.html:20 .\templates\about.html:294
 msgid "Sustainability"
 msgstr "Davamlılıq"
 
-#: .\templates\about.html:29 .\templates\about.html:113
-#: .\templates\about.html:186 .\templates\about.html:226
-#: .\templates\about.html:279 .\templates\contact.html:20
+#: .\templates\about.html:29 .\templates\about.html:103
+#: .\templates\about.html:181 .\templates\about.html:226
+#: .\templates\about.html:293 .\templates\contact.html:20
 #: .\templates\markets_automotive.html:20
 #: .\templates\markets_industrial.html:20 .\templates\markets_shipping.html:21
 #: .\templates\news.html:13 .\templates\news_detail.html:14
 #: .\templates\product.html:13 .\templates\service_aminol_dealer.html:15
-#: .\templates\service_laboratory.html:15
-#: .\templates\service_logistics.html:14
+#: .\templates\service_laboratory.html:15 .\templates\service_logistics.html:14
 msgid "Home page"
 msgstr "Ana Səhifə"
 
@@ -63,164 +62,92 @@ msgstr "Ana Səhifə"
 msgid "About us"
 msgstr "Haqqımızda"
 
-#: .\templates\about.html:36 .\templates\about.html:40
-msgid "Company Profile"
-msgstr ""
-
-#: .\templates\about.html:37
-msgid "Company profile description"
-msgstr ""
-"ALCO MMC 5 may 2016-cı ildə dövlət reyestrinə daxil edilib. Həmin il şirkət Sumqayıt Kimya Sənaye Parkında rezident statusu alıb. <br>\n"
-"\n"
-"Parkda ALCO MMC sürtkü materialları zavodunun tikintisinə 2016-cı ildə başlanılıb və Azərbaycan Respublikası Prezidentinin parka səfərindən sonra 15 dekabr 2017-ci ildə zavod fəaliyyətə başlayıb.<br>\n"
-"\n"
-"Zavod tam avtomatlaşdırılmış istehsal xətləri daxil olmaqla, ən müasir Almaniya və İtaliya avadanlıqları ilə təchiz olunub.<br>\n"
-"\n"
-"ALCO MMC-yə ayrılmış 3.5 hektar ərazidə xammal, aralıq məhsullar və hazır məhsulların saxlanması üçün 5000 tonluq çən parkı, həmçinin 4800 m² anbar inşa edilib.<br>\n"
-"\n"
-"Qablaşdırma çevikliyini artırmaq və daxili təchizatı gücləndirmək məqsədilə 2019-cu ildə plastik qab istehsalı bölməsi fəaliyyətə başlayıb. Bu gün ALCO MMC öz ehtiyaclarını tamamilə öz istehsalı olan yüksək keyfiyyətli plastik qablaşdırma ilə ödəyir.<br>\n"
-"\n"
-"2019-cu ildən şirkətin fəaliyyət dairəsi texniki mayeləri də əhatə edib. İllik 5000 ton istehsal gücünə malik soyuducu maye (antifriz) istehsal sahəsi quraşdırılıb və hazırda müxtəlif növ antifrizlər istehsal olunur.<br>\n"
-"\n"
-"2020-ci ildə zavod dizel avtomobillərində NOx emissiyalarını kimyəvi yolla azaltmaq üçün istifadə olunan, qeyri-zəhərli xüsusi sintetik karbamid məhlulu olan AdBlue® istehsalına başlayıb.<br>\n"
-"\n"
-"Zavodda 30-dan çox müasir alətlə təchiz olunmuş ISO/IEC 17025 akkreditasiyalı keyfiyyətə nəzarət laboratoriyası fəaliyyət göstərir; hazırda 65-dən çox parametr üzrə sınaqlar aparılır.<br>\n"
-"\n"
-"2023-cü ildə müasir tələblərə uyğun olaraq yüksək performanslı aşqarların istehsalı və saxlanması, eləcə də ekoloji cəhətdən təmiz, bitki əsaslı biolubricantlar və mayelərin istehsalı üçün lazımi infrastruktur yaradılıb.<br>\n"
-"\n"
-"2024-cü ildən zavodun illik istehsal gücü 100.000 tona çatdırılıb.<br>\n"
-"\n"
-"Bu gün şirkətin məhsul portfelində 1000-dən çox unikal məhsul mövcuddur və bir çox yeni məhsul kommersiyalaşdırma prosesindədir.<br>\n"
-"\n"
-"ALCO MMC tərəfindən istehsal olunan mühərrik yağları müştərilərə zəmanətlə təklif olunur və müasir ağır yük maşınlarında minimum 100.000 km, minik avtomobillərində isə 30.000 km yağdəyişmə intervalı təmin edə bilir.<br>\n"
-"\n"
-"Bundan əlavə, dəmir yolu sektoruna ən sərt şəraitdə belə maksimum mühafizə, yanacaq səmərəliliyi və mühərrikin davamlılığını təmin edən, GE tərəfindən təsdiqlənmiş lokomotiv yağları təchiz edilir.<br>\n"
-"\n"
-"Yüksək performanslı yağlar metallurgiya, enerji istehsalı (o cümlədən bərpa olunan külək enerjisi və istilik istehsalı), mədənçilik və sement, sellüloz və kağız, toxuculuq, plastik və rezin emalı kimi kritik sənaye sahələrində mühüm rol oynayır. ALCO MMC bu sahələrin hər biri üçün uyğunlaşdırılmış geniş çeşiddə sənaye sürtkü materialları təklif edir. Onların yüksək keyfiyyəti, davamlı performansı və uzunmüddətli sabitliyi sənaye avadanlıqlarının səmərəli işləməsini təmin edir, texniki nasazlıqların qarşısını alır və xidmət müddətini əhəmiyyətli dərəcədə uzadır.<br>\n"
-"\n"
-"Beləliklə, qabaqcıl texnologiyaları, geniş məhsul çeşidi və beynəlxalq bazar strategiyası sayəsində ALCO MMC bu gün Cənubi Qafqazda və daha geniş regionda sürtkü materialları və texniki mayelərin istehsalı üzrə ən böyük ixtisaslaşmış sənaye müəssisələrindən biri kimi tanınır.<br>"
-
-#: .\templates\about.html:41
-msgid ""
-"ALCO LLC was entered into the state register on 5 May 2016. In the same year"
-" the company was granted resident status in the Sumgayit Chemical Industrial"
-" Park."
-msgstr ""
-
-#: .\templates\about.html:42
-msgid ""
-"Construction of the ALCO LLC lubricant plant within the park began in 2016, "
-"and operations started on 15 December 2017 following the visit of the "
-"President of the Republic of Azerbaijan to the park."
-msgstr ""
-
-#: .\templates\about.html:43
-msgid ""
-"The plant is equipped with state-of-the-art German and Italian equipment, "
-"including fully automated production lines."
-msgstr ""
-
-#: .\templates\about.html:44
-msgid ""
-"On the 3.5-hectare site allocated to ALCO LLC, a 5,000-tonne tank farm has "
-"been built for storing raw materials, intermediates and finished products, "
-"along with a 4,800 m² warehouse."
-msgstr ""
-
-#: .\templates\about.html:45
-msgid ""
-"To improve packaging flexibility and strengthen internal supply, a plastic-"
-"container production unit was launched in 2019. Today ALCO LLC meets its "
-"needs entirely with high-quality plastic packaging of its own manufacture."
-msgstr ""
-
-#: .\templates\about.html:46
-msgid ""
-"Since 2019 the company’s scope has expanded to include technical fluids. A "
-"production area for coolant (antifreeze) with an annual capacity of 5,000 "
-"tonnes was installed, and a variety of antifreeze grades are now produced."
-msgstr ""
-
-#: .\templates\about.html:47
-msgid ""
-"In 2020 the plant began manufacturing AdBlue®, a special non-toxic synthetic"
-" urea solution used to chemically reduce NOx emissions in diesel vehicles."
-msgstr ""
-
-#: .\templates\about.html:48
-msgid ""
-"The plant houses an ISO/IEC 17025-accredited quality-assurance laboratory "
-"equipped with more than 30 modern instruments; tests are currently carried "
-"out for over 65 parameters."
-msgstr ""
-
-#: .\templates\about.html:49
-msgid ""
-"In 2023 the necessary infrastructure was created to produce and store "
-"performance additives and, in line with modern requirements, to manufacture "
-"environmentally friendly plant-based bio-lubricants and fluids."
-msgstr ""
-
-#: .\templates\about.html:50
-msgid ""
-"From 2024 the plant’s annual production capacity has been raised to 100,000 "
-"tonnes."
-msgstr ""
-
-#: .\templates\about.html:51
-msgid ""
-"Today the company’s product portfolio comprises more than 1,000 unique "
-"items, with many new products in the commercialization pipeline."
-msgstr ""
-
-#: .\templates\about.html:52
-msgid ""
-"Engine oils produced by ALCO LLC are offered to customers with a warranty "
-"and can provide minimum oil-change intervals of 100,000 km in modern heavy-"
-"duty trucks and 30,000 km in passenger cars."
-msgstr ""
-
 #: .\templates\about.html:53
-msgid ""
-"In addition, GE-approved locomotive oils that deliver maximum protection, "
-"fuel efficiency and engine durability—even under the harshest conditions—are"
-" supplied to the railway sector."
-msgstr ""
-
-#: .\templates\about.html:54
-msgid ""
-"High-performance oils play a crucial role in critical industries such as "
-"metalworking, power generation (including renewable wind energy and heat "
-"production), mining and cement, pulp and paper, textiles, and plastic and "
-"rubber processing. ALCO LLC offers a wide range of industrial lubricants "
-"tailored to each of these fields. Their high quality, consistent performance"
-" and long-term stability ensure efficient operation of industrial equipment,"
-" prevent technical failures and significantly extend service life."
-msgstr ""
-
-#: .\templates\about.html:55
-msgid ""
-"Thus, thanks to its advanced technologies, extensive product range and "
-"international market strategy, ALCO LLC is today recognised as one of the "
-"largest specialised industrial enterprises for the production of lubricants "
-"and technical fluids in the South Caucasus and the wider region."
-msgstr ""
-
-#: .\templates\about.html:81
 msgid "ABOUT AMINOL"
 msgstr "AMİNOL HAQQINDA"
 
-#: .\templates\about.html:113 .\templates\components\footer.html:16
+#: .\templates\about.html:60
+msgid "Company Profile"
+msgstr ""
+
+#: .\templates\about.html:61
+msgid "Company profile description"
+msgstr ""
+"ALCO MMC 5 may 2016-cı ildə dövlət reyestrinə daxil edilib. Həmin il şirkət "
+"Sumqayıt Kimya Sənaye Parkında rezident statusu alıb. <br>\n"
+"\n"
+"Parkda ALCO MMC sürtkü materialları zavodunun tikintisinə 2016-cı ildə "
+"başlanılıb və Azərbaycan Respublikası Prezidentinin parka səfərindən sonra "
+"15 dekabr 2017-ci ildə zavod fəaliyyətə başlayıb.<br>\n"
+"\n"
+"Zavod tam avtomatlaşdırılmış istehsal xətləri daxil olmaqla, ən müasir "
+"Almaniya və İtaliya avadanlıqları ilə təchiz olunub.<br>\n"
+"\n"
+"ALCO MMC-yə ayrılmış 3.5 hektar ərazidə xammal, aralıq məhsullar və hazır "
+"məhsulların saxlanması üçün 5000 tonluq çən parkı, həmçinin 4800 m² anbar "
+"inşa edilib.<br>\n"
+"\n"
+"Qablaşdırma çevikliyini artırmaq və daxili təchizatı gücləndirmək məqsədilə "
+"2019-cu ildə plastik qab istehsalı bölməsi fəaliyyətə başlayıb. Bu gün ALCO "
+"MMC öz ehtiyaclarını tamamilə öz istehsalı olan yüksək keyfiyyətli plastik "
+"qablaşdırma ilə ödəyir.<br>\n"
+"\n"
+"2019-cu ildən şirkətin fəaliyyət dairəsi texniki mayeləri də əhatə edib. "
+"İllik 5000 ton istehsal gücünə malik soyuducu maye (antifriz) istehsal "
+"sahəsi quraşdırılıb və hazırda müxtəlif növ antifrizlər istehsal olunur."
+"<br>\n"
+"\n"
+"2020-ci ildə zavod dizel avtomobillərində NOx emissiyalarını kimyəvi yolla "
+"azaltmaq üçün istifadə olunan, qeyri-zəhərli xüsusi sintetik karbamid "
+"məhlulu olan AdBlue® istehsalına başlayıb.<br>\n"
+"\n"
+"Zavodda 30-dan çox müasir alətlə təchiz olunmuş ISO/IEC 17025 "
+"akkreditasiyalı keyfiyyətə nəzarət laboratoriyası fəaliyyət göstərir; "
+"hazırda 65-dən çox parametr üzrə sınaqlar aparılır.<br>\n"
+"\n"
+"2023-cü ildə müasir tələblərə uyğun olaraq yüksək performanslı aşqarların "
+"istehsalı və saxlanması, eləcə də ekoloji cəhətdən təmiz, bitki əsaslı "
+"biolubricantlar və mayelərin istehsalı üçün lazımi infrastruktur yaradılıb."
+"<br>\n"
+"\n"
+"2024-cü ildən zavodun illik istehsal gücü 100.000 tona çatdırılıb.<br>\n"
+"\n"
+"Bu gün şirkətin məhsul portfelində 1000-dən çox unikal məhsul mövcuddur və "
+"bir çox yeni məhsul kommersiyalaşdırma prosesindədir.<br>\n"
+"\n"
+"ALCO MMC tərəfindən istehsal olunan mühərrik yağları müştərilərə zəmanətlə "
+"təklif olunur və müasir ağır yük maşınlarında minimum 100.000 km, minik "
+"avtomobillərində isə 30.000 km yağdəyişmə intervalı təmin edə bilir.<br>\n"
+"\n"
+"Bundan əlavə, dəmir yolu sektoruna ən sərt şəraitdə belə maksimum mühafizə, "
+"yanacaq səmərəliliyi və mühərrikin davamlılığını təmin edən, GE tərəfindən "
+"təsdiqlənmiş lokomotiv yağları təchiz edilir.<br>\n"
+"\n"
+"Yüksək performanslı yağlar metallurgiya, enerji istehsalı (o cümlədən bərpa "
+"olunan külək enerjisi və istilik istehsalı), mədənçilik və sement, sellüloz "
+"və kağız, toxuculuq, plastik və rezin emalı kimi kritik sənaye sahələrində "
+"mühüm rol oynayır. ALCO MMC bu sahələrin hər biri üçün uyğunlaşdırılmış "
+"geniş çeşiddə sənaye sürtkü materialları təklif edir. Onların yüksək "
+"keyfiyyəti, davamlı performansı və uzunmüddətli sabitliyi sənaye "
+"avadanlıqlarının səmərəli işləməsini təmin edir, texniki nasazlıqların "
+"qarşısını alır və xidmət müddətini əhəmiyyətli dərəcədə uzadır.<br>\n"
+"\n"
+"Beləliklə, qabaqcıl texnologiyaları, geniş məhsul çeşidi və beynəlxalq bazar "
+"strategiyası sayəsində ALCO MMC bu gün Cənubi Qafqazda və daha geniş "
+"regionda sürtkü materialları və texniki mayelərin istehsalı üzrə ən böyük "
+"ixtisaslaşmış sənaye müəssisələrindən biri kimi tanınır.<br>"
+
+#: .\templates\about.html:103 .\templates\components\footer.html:16
 #, fuzzy
 #| msgid "About us"
 msgid "About Us"
 msgstr "Haqqımızda"
 
-#: .\templates\about.html:118
+#: .\templates\about.html:108
 msgid "QUALITY"
 msgstr "KEYFİYYƏT"
 
-#: .\templates\about.html:191
+#: .\templates\about.html:186
 msgid "PRODUCTION"
 msgstr "İSTEHSAL"
 
@@ -228,7 +155,7 @@ msgstr "İSTEHSAL"
 msgid "DOCUMENTS AND CERTIFICATION"
 msgstr "SƏNƏDLƏR VƏ SERTİFİKATLAR"
 
-#: .\templates\about.html:284
+#: .\templates\about.html:298
 msgid "SUSTAINABILITY"
 msgstr "DAVAMLILIQ"
 
@@ -287,8 +214,7 @@ msgid "Contact form"
 msgstr "Əlaqə"
 
 #: .\templates\components\contactcomponent.html:7
-msgid ""
-"Do you need a specific solution or are you interested in a partnership?"
+msgid "Do you need a specific solution or are you interested in a partnership?"
 msgstr "Xüsusi bir həllə ehtiyacınız var, yoxsa əməkdaşlıq üçün maraqlısınız?"
 
 #: .\templates\components\contactcomponent.html:8
@@ -319,8 +245,7 @@ msgstr "Məhsullar"
 #: .\templates\components\navbar_dark.html:43
 #: .\templates\components\navbar_dark.html:95
 #: .\templates\service_aminol_dealer.html:15
-#: .\templates\service_laboratory.html:15
-#: .\templates\service_logistics.html:14
+#: .\templates\service_laboratory.html:15 .\templates\service_logistics.html:14
 msgid "Services"
 msgstr "Xidmətlər"
 
@@ -424,8 +349,7 @@ msgstr "Aminol rəsmi dileri"
 msgid "Aminol Laboratory"
 msgstr "Aminol Laboratoriyası"
 
-#: .\templates\components\navbar.html:47
-#: .\templates\components\navbar.html:100
+#: .\templates\components\navbar.html:47 .\templates\components\navbar.html:100
 #: .\templates\components\navbar_blur.html:47
 #: .\templates\components\navbar_blur.html:100
 #: .\templates\components\navbar_dark.html:47
@@ -550,22 +474,31 @@ msgstr "Dəyərlərimiz"
 #: .\templates\home.html:138
 #, fuzzy
 msgid ""
-"The modernization of industry and renewal of equipment have increased demand"
-" for high-quality lubricants in Azerbaijan. To meet this, AMINOL Lubricants "
-"opened on December 15, 2017, in Sumgayit Chemical Industrial Park with a $20"
-" million investment. The plant produces 150,000 tons annually, focusing on "
+"The modernization of industry and renewal of equipment have increased demand "
+"for high-quality lubricants in Azerbaijan. To meet this, AMINOL Lubricants "
+"opened on December 15, 2017, in Sumgayit Chemical Industrial Park with a $20 "
+"million investment. The plant produces 150,000 tons annually, focusing on "
 "motor, hydraulic, transmission, compressor, turbine, and marine oils, along "
 "with antifreeze and AdBlue."
 msgstr ""
 "#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Sənayenin müasirləşdirilməsi və avadanlıqların yenilənməsi Azərbaycanda yüksək keyfiyyətli yağlara tələbatı artırmışdır. Bu tələbatı qarşılamaq üçün 15 dekabr 2017-ci ildə Sumqayıt Kimya Sənaye Parkında 20 milyon dollar sərmayə ilə AMINOL Lubricants zavodu açılmışdır. Zavod ildə 150,000 ton məhsul istehsal edir və əsasən mühərrik, hidravlik, ötürücü, kompressor, turbin və dəniz yağları ilə yanaşı antifriz və AdBlue istehsalına yönəlib.\n"
+"Sənayenin müasirləşdirilməsi və avadanlıqların yenilənməsi Azərbaycanda "
+"yüksək keyfiyyətli yağlara tələbatı artırmışdır. Bu tələbatı qarşılamaq üçün "
+"15 dekabr 2017-ci ildə Sumqayıt Kimya Sənaye Parkında 20 milyon dollar "
+"sərmayə ilə AMINOL Lubricants zavodu açılmışdır. Zavod ildə 150,000 ton "
+"məhsul istehsal edir və əsasən mühərrik, hidravlik, ötürücü, kompressor, "
+"turbin və dəniz yağları ilə yanaşı antifriz və AdBlue istehsalına yönəlib.\n"
 "#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Sənayenin modernləşdirilməsi və avadanlıqların yenilənməsi Azərbaycanda yüksək keyfiyyətli yağlara tələbatı artırdı. Bu tələbi qarşılamaq üçün AMINOL Yağları 15 dekabr 2017-ci ildə Sumqayıt Kimya Sənaye Parkında 20 milyon dollar sərmayə ilə fəaliyyətə başladı. Zavod ildə 150,000 ton məhsul istehsal edir və əsasən motor, hidravlik, transmissiya, kompressor, turbin və dəniz yağları, həmçinin antifriz və AdBlue istehsalına yönəlib."
+"Sənayenin modernləşdirilməsi və avadanlıqların yenilənməsi Azərbaycanda "
+"yüksək keyfiyyətli yağlara tələbatı artırdı. Bu tələbi qarşılamaq üçün "
+"AMINOL Yağları 15 dekabr 2017-ci ildə Sumqayıt Kimya Sənaye Parkında 20 "
+"milyon dollar sərmayə ilə fəaliyyətə başladı. Zavod ildə 150,000 ton məhsul "
+"istehsal edir və əsasən motor, hidravlik, transmissiya, kompressor, turbin "
+"və dəniz yağları, həmçinin antifriz və AdBlue istehsalına yönəlib."
 
 #: .\templates\home.html:140 .\templates\home.html:190
 #: .\templates\home.html:212 .\templates\home.html:253
-#: .\templates\service_laboratory.html:74
-#: .\templates\service_logistics.html:97
+#: .\templates\service_laboratory.html:74 .\templates\service_logistics.html:97
 #, fuzzy
 msgid "Discover more"
 msgstr ""
@@ -622,9 +555,13 @@ msgid ""
 "imported base oils and additives, formulated by expert engineers."
 msgstr ""
 "#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Aminol Lubricants yüksək keyfiyyətli yağları, peşəkar mühəndislər tərəfindən hazırlanmış formullarla, idxal olunmuş premium baza yağları və əlavələrdən istifadə edərək istehsal edir və qablaşdırır.\n"
+"Aminol Lubricants yüksək keyfiyyətli yağları, peşəkar mühəndislər tərəfindən "
+"hazırlanmış formullarla, idxal olunmuş premium baza yağları və əlavələrdən "
+"istifadə edərək istehsal edir və qablaşdırır.\n"
 "#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Aminol Yağları, ixtisaslaşmış mühəndislər tərəfindən hazırlanmış yüksək keyfiyyətli baz yağları və qatqılar istifadə edərək yüksək keyfiyyətli yağlar istehsal edir və qablaşdırır."
+"Aminol Yağları, ixtisaslaşmış mühəndislər tərəfindən hazırlanmış yüksək "
+"keyfiyyətli baz yağları və qatqılar istifadə edərək yüksək keyfiyyətli "
+"yağlar istehsal edir və qablaşdırır."
 
 #: .\templates\home.html:183 .\templates\product.html:308
 #, fuzzy
@@ -674,13 +611,14 @@ msgid ""
 "additives."
 msgstr ""
 "#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Unikal əlavələr çeşidimizlə avtomobilinizi qoruyun və ən yaxşı vəziyyətdə saxlayın.\n"
+"Unikal əlavələr çeşidimizlə avtomobilinizi qoruyun və ən yaxşı vəziyyətdə "
+"saxlayın.\n"
 "#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Nəqliyyat vasitənizi qoruyun və ən yaxşı vəziyyətdə saxlayın – bizim unikal qatqı məhsullarımızla."
+"Nəqliyyat vasitənizi qoruyun və ən yaxşı vəziyyətdə saxlayın – bizim unikal "
+"qatqı məhsullarımızla."
 
 #: .\templates\home.html:227 .\templates\news.html:57
-#: .\templates\service_laboratory.html:48
-#: .\templates\service_logistics.html:71
+#: .\templates\service_laboratory.html:48 .\templates\service_logistics.html:71
 #, fuzzy
 msgid "LATEST NEWS"
 msgstr ""
@@ -706,13 +644,13 @@ msgstr ""
 "yağlar"
 
 #: .\templates\markets_automotive.html:42
-#: .\templates\markets_industrial.html:42 .\templates\markets_shipping.html:44
+#: .\templates\markets_industrial.html:41 .\templates\markets_shipping.html:44
 #: .\templates\markets_shipping.html:60
 msgid "Yellow Point"
 msgstr ""
 
 #: .\templates\markets_automotive.html:59
-#: .\templates\markets_industrial.html:126
+#: .\templates\markets_industrial.html:125
 #: .\templates\markets_shipping.html:141
 msgid "Our Services"
 msgstr "Xidmətlərimiz"
@@ -805,13 +743,17 @@ msgstr "Bütün Məhsullar"
 #: .\templates\product.html:29
 msgid ""
 "\n"
-"        Here you will find our wide range of mineral, semi-synthetic, and fully\n"
+"        Here you will find our wide range of mineral, semi-synthetic, and "
+"fully\n"
 "        synthetic motor oils in various viscosities and specifications, for\n"
 "        gasoline cars, diesel cars, and hybrid vehicles.\n"
 "        "
 msgstr ""
 "\n"
-"        Burada müxtəlif viskoziteli və spesifikasiyalı mineral, yarı-sintetik və tam sintetik mühərrik yağlarımızın geniş çeşidini tapa bilərsiniz. Bunlar benzinlə işləyən avtomobillər, dizel avtomobillər və hibrid nəqliyyat vasitələri üçün nəzərdə tutulub.\n"
+"        Burada müxtəlif viskoziteli və spesifikasiyalı mineral, yarı-"
+"sintetik və tam sintetik mühərrik yağlarımızın geniş çeşidini tapa "
+"bilərsiniz. Bunlar benzinlə işləyən avtomobillər, dizel avtomobillər və "
+"hibrid nəqliyyat vasitələri üçün nəzərdə tutulub.\n"
 "        "
 
 #: .\templates\product.html:55 .\templates\product.html:186
@@ -979,8 +921,8 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\core\validators.py:297
 msgid ""
-"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or"
-" hyphens."
+"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
+"hyphens."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\core\validators.py:309
@@ -1201,8 +1143,8 @@ msgstr ""
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1570
 #, python-format
 msgid ""
-"“%(value)s” value has the correct format (YYYY-MM-DD "
-"HH:MM[:ss[.uuuuuu]][TZ]) but it is an invalid date/time."
+"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
+"[TZ]) but it is an invalid date/time."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1575
@@ -1391,8 +1333,7 @@ msgid "Many-to-many relationship"
 msgstr ""
 
 #. Translators: If found as last label character, these punctuation
-#. characters will prevent the default label_suffix to be appended to the
-#. label
+#. characters will prevent the default label_suffix to be appended to the label
 #: .\venv\Lib\site-packages\django\forms\boundfield.py:185
 msgid ":?.!"
 msgstr ""
@@ -1444,8 +1385,7 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\forms\fields.py:644
 #, python-format
-msgid ""
-"Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
 msgid_plural ""
 "Ensure this filename has at most %(max)d characters (it has %(length)d)."
 msgstr[0] ""
@@ -1552,8 +1492,7 @@ msgid "The inline value did not match the parent instance."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\forms\models.py:1450
-msgid ""
-"Select a valid choice. That choice is not one of the available choices."
+msgid "Select a valid choice. That choice is not one of the available choices."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\forms\models.py:1594
@@ -2021,10 +1960,10 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\views\csrf.py:45
 msgid ""
-"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or"
-" including the “Referrer-Policy: no-referrer” header, please remove them. "
-"The CSRF protection requires the “Referer” header to do strict referer "
-"checking. If you’re concerned about privacy, use alternatives like <a "
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
+"including the “Referrer-Policy: no-referrer” header, please remove them. The "
+"CSRF protection requires the “Referer” header to do strict referer checking. "
+"If you’re concerned about privacy, use alternatives like <a "
 "rel=\"noreferrer\" …> for links to third-party sites."
 msgstr ""
 
@@ -2136,10 +2075,10 @@ msgstr ""
 #: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:208
 #, python-format
 msgid ""
-"You are seeing this page because <a "
-"href=\"https://docs.djangoproject.com/en/%(version)s/ref/settings/#debug\" "
-"target=\"_blank\" rel=\"noopener\">DEBUG=True</a> is in your settings file "
-"and you have not configured any URLs."
+"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
+"%(version)s/ref/settings/#debug\" target=\"_blank\" "
+"rel=\"noopener\">DEBUG=True</a> is in your settings file and you have not "
+"configured any URLs."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:217
@@ -2203,9 +2142,10 @@ msgstr ""
 #~ msgid ""
 #~ "Remittance acts as a bridge, connecting loved ones and making the world a "
 #~ "little smaller. We are dedicated to forging strategic partnerships which "
-#~ "help us help you send money around the globe quickly, safely and affordably."
+#~ "help us help you send money around the globe quickly, safely and "
+#~ "affordably."
 #~ msgstr ""
 #~ "Pul köçürməsi körpü rolunu oynayır, sevdiklərinizi birləşdirir və dünyanı "
-#~ "bir az da kiçildir. Biz strateji tərəfdaşlıqlar qurmağa həsr olunmuşuq ki, "
-#~ "bu da sizə dünyanın hər yerinə tez, təhlükəsiz və sərfəli şəkildə pul "
+#~ "bir az da kiçildir. Biz strateji tərəfdaşlıqlar qurmağa həsr olunmuşuq "
+#~ "ki, bu da sizə dünyanın hər yerinə tez, təhlükəsiz və sərfəli şəkildə pul "
 #~ "göndərməkdə kömək edir."
