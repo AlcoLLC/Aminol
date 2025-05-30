@@ -23,7 +23,7 @@
       <p>{{ brand.description_translate|linebreaksbr }}</p>
     </div>
     <div class="services-offer-image">
-      <img src="{{ brand.image.url }}" alt="Service Offer Image" />
+      <img loading="lazy" src="{{ brand.image.url }}" alt="Service Offer Image" />
     </div>
   </div>
 
@@ -36,12 +36,12 @@
       </div>
       <div class="brand-image">
         {% if content.image %}
-        <img
+        <img loading="lazy"
           src="{{ content.image.url }}"
           alt="{{ content.title_translate }}"
         />
         {% else %}
-        <img
+        <img loading="lazy"
           src="{% static '/images/market-industrial.jpg' %}"
           alt="Service Offer Image"
         />
