@@ -90,7 +90,7 @@
 	width: 12px !important;
 	padding:0 !important;
 	margin:0 !important;
-	border:0 !important; 
+	border:0 !important;
 }
 .fm-tooltip-x.fm-frozen-x {
 	visibility: visible;
@@ -175,7 +175,7 @@
 	.fm-mobile-fixed .fm-tooltip-comment {
 		width: 100%;
 	}
-	.fm-scale a { 
+	.fm-scale a {
 		width: 31px;
 		height: 27px;
 		font-size: 21px;

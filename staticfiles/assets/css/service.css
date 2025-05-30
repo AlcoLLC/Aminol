@@ -494,7 +494,7 @@
   border-radius: 20px;
   text-align: center;
   font-size: 12px;
-  color: #495057;
+  color: red;
   border: 1px solid #dee2e6;
   transition: all 0.3s ease;
 }
@@ -544,14 +544,13 @@
     color: #e22131 !important;
     fill: #e22131 !important;
     stroke: #7798BA !important;
-    stroke-width: 2px !important;
+    stroke-width: 1px !important;
     animation: pulse 2s infinite !important;
 }
 
 .fm-tooltip-comment {
    color: #223160 !important;
     text-align: center !important;
-      font-family: Atyp Regular !important;
     font-weight: 400 !important;
     font-size: 15px !important;
     line-height: 1 !important;
@@ -569,3 +568,49 @@
     gap: 7px;
     text-align: center;
 }
+
+
+@media (min-width: 1024px) {
+     .fm-tooltip-comment{
+        font-size: 14px !important;
+    }
+
+    .fm-tooltip-frame {
+	   min-width: 150px;
+     	max-width: 250px;
+   }
+
+   .fm-tooltip img {
+	   min-width: 150px;
+     	max-width: 250px;
+   }
+   .fm-tooltip-image img {
+	 width: 10px !important;
+}
+}
+
+@media (max-width: 768px) {
+    .fm-tooltip-comment {
+        font-size: 12px !important;
+    }
+
+    .fm-tooltip-frame {
+      min-width: 30px !important;
+      	max-height: 150px;
+
+    }
+}
+
+@media (max-width: 768px) {
+    .fm-tooltip-comment {
+        font-size: 10px !important;
+    }
+
+    .fm-tooltip-frame {
+      min-width: 10px !important;
+      	height: 15px;
+
+    }
+}
+
+

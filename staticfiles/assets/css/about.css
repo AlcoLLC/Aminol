@@ -2,6 +2,12 @@
 text-align: left;
 
 }
+
+.about-company-profile .section-content h2{
+  margin-top: 25px;
+font-size: 28px;
+}
+
 .about-section {
   margin-bottom: 100px;
 }
@@ -50,11 +56,16 @@ text-align: left;
   gap: 8px;
 }
 
+.about-company-profile .section-content h2 {
+  font-size: 22px;
+}
+
+}
+
 .about-section .tab {
   font-size: 13px;
 }
 
-}
 
 @media (min-width: 650px) and  (max-width: 770px) {
     .about-section .about-tabs {
@@ -178,6 +189,10 @@ text-align: left;
     font-size: 13px;
     line-height: 14px;
   }
+
+  .about-company-profile .section-content h2 {
+  font-size: 22px;
+}
 }
 
 
@@ -196,6 +211,10 @@ text-align: left;
     gap: 15px;
     padding: 0 50px;
   }
+
+  .about-company-profile .section-content h2 {
+  font-size: 18px;
+}
 
   .guarantee-section .row-item {
     width: calc(50% - 10px);
@@ -242,6 +261,10 @@ text-align: left;
     margin-bottom: 40px;
     padding: 15px 0;
   }
+
+  .about-company-profile .section-content h2 {
+  font-size: 14px;
+}
 .guarantee-section .guarantee-main-container::before {
     top: 320px;
   }

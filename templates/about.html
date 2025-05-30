@@ -30,38 +30,39 @@
       <p>{% trans "About us" %}</p>
     </div>
 
+    <!-- Shared Section -->
+    {% if about_aminol %}
+    <div class="shared-section">
+      <div class="shared-background"></div>
+      <div class="container">
+        <img src="{{ about_aminol.shared_image.url }}" alt="About Aminol" />
+        <div class="shared-description">
+          <p>Founded in {{ about_aminol.founded_year }}</p>
+          <p>Based in {{ about_aminol.based_in_translate }}</p>
+          <p>Located in {{ about_aminol.location_translate }}</p>
+          <p>Exporting to {{ about_aminol.exporting_to_translate }}</p>
+          <p>Production capacity {{ about_aminol.production_capacity_translate }}</p>
+          <p>Workforce {{ about_aminol.workforce }}</p>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    
+    <div class="shared-images-section">
+      <div class="section-header">
+           <h2>{% trans "ABOUT AMINOL" %}</h2>
+      </div>
+
+
       <div class="container about-company-profile">
 
         <div class="section-content">
           <h2>{% trans "Company Profile" %}</h2>
           <p>{% trans "Company profile description" %}</p>
         </div>
-        <!-- <div class="section-content">
-          <h2>{% trans "Company Profile" %}</h2>
-          <p>{% trans "ALCO LLC was entered into the state register on 5 May 2016. In the same year the company was granted resident status in the Sumgayit Chemical Industrial Park." %}</p>
-          <p>{% trans "Construction of the ALCO LLC lubricant plant within the park began in 2016, and operations started on 15 December 2017 following the visit of the President of the Republic of Azerbaijan to the park." %}</p>
-          <p>{% trans "The plant is equipped with state-of-the-art German and Italian equipment, including fully automated production lines." %}</p>
-          <p>{% trans "On the 3.5-hectare site allocated to ALCO LLC, a 5,000-tonne tank farm has been built for storing raw materials, intermediates and finished products, along with a 4,800 m² warehouse." %}</p>
-          <p>{% trans "To improve packaging flexibility and strengthen internal supply, a plastic-container production unit was launched in 2019. Today ALCO LLC meets its needs entirely with high-quality plastic packaging of its own manufacture." %}</p>
-          <p>{% trans "Since 2019 the company’s scope has expanded to include technical fluids. A production area for coolant (antifreeze) with an annual capacity of 5,000 tonnes was installed, and a variety of antifreeze grades are now produced." %}</p>
-          <p>{% trans "In 2020 the plant began manufacturing AdBlue®, a special non-toxic synthetic urea solution used to chemically reduce NOx emissions in diesel vehicles." %}</p>
-          <p>{% trans "The plant houses an ISO/IEC 17025-accredited quality-assurance laboratory equipped with more than 30 modern instruments; tests are currently carried out for over 65 parameters." %}</p>
-          <p>{% trans "In 2023 the necessary infrastructure was created to produce and store performance additives and, in line with modern requirements, to manufacture environmentally friendly plant-based bio-lubricants and fluids." %}</p>
-          <p>{% trans "From 2024 the plant’s annual production capacity has been raised to 100,000 tonnes." %}</p>
-          <p>{% trans "Today the company’s product portfolio comprises more than 1,000 unique items, with many new products in the commercialization pipeline." %}</p>
-          <p>{% trans "Engine oils produced by ALCO LLC are offered to customers with a warranty and can provide minimum oil-change intervals of 100,000 km in modern heavy-duty trucks and 30,000 km in passenger cars." %}</p>
-          <p>{% trans "In addition, GE-approved locomotive oils that deliver maximum protection, fuel efficiency and engine durability—even under the harshest conditions—are supplied to the railway sector." %}</p>
-          <p>{% trans "High-performance oils play a crucial role in critical industries such as metalworking, power generation (including renewable wind energy and heat production), mining and cement, pulp and paper, textiles, and plastic and rubber processing. ALCO LLC offers a wide range of industrial lubricants tailored to each of these fields. Their high quality, consistent performance and long-term stability ensure efficient operation of industrial equipment, prevent technical failures and significantly extend service life." %}</p>
-          <p>{% trans "Thus, thanks to its advanced technologies, extensive product range and international market strategy, ALCO LLC is today recognised as one of the largest specialised industrial enterprises for the production of lubricants and technical fluids in the South Caucasus and the wider region." %}</p>
-
-        </div> -->
 
       </div>
 
-    <div class="shared-images-section">
-      <div class="section-header">
-           <h2>{% trans "ABOUT AMINOL" %}</h2>
-      </div>
 
       <div class="container">
         {% if about_sections %}
