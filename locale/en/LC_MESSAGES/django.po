@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-30 10:56+0400\n"
-"PO-Revision-Date: 2025-05-30 11:34+0400\n"
+"POT-Creation-Date: 2025-05-30 16:33+0400\n"
+"PO-Revision-Date: 2025-05-30 16:58+0400\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,29 +19,100 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.10.2\n"
 
-#: templates/about.html:16 templates/about.html:180 templates/about.html:225
-#: templates/about.html:292
+#: contact/models.py:8 contact/views.py:14
+#: templates/components/contactcomponent.html:19
+msgid "I would like to buy Aminol products."
+msgstr ""
+
+#: contact/models.py:9 contact/views.py:15
+msgid "I am interested in becoming a distributor."
+msgstr ""
+
+#: contact/models.py:10 contact/views.py:16
+msgid "I need technical support."
+msgstr ""
+
+#: contact/models.py:11 contact/views.py:17
+msgid "I would like to request product certificates or compliance documents."
+msgstr ""
+
+#: contact/models.py:12 contact/views.py:18
+msgid "I need more information about a product."
+msgstr ""
+
+#: contact/models.py:13 contact/views.py:19
+msgid "I am interested in a potential partnership."
+msgstr ""
+
+#: contact/models.py:14 contact/views.py:20
+msgid "Other"
+msgstr ""
+
+#: contact/models.py:17
+msgid "Help Type"
+msgstr ""
+
+#: contact/models.py:18
+msgid "Company Name"
+msgstr ""
+
+#: contact/models.py:19
+msgid "Question"
+msgstr ""
+
+#: contact/models.py:20
+msgid "First Name"
+msgstr "Ad"
+
+#: contact/models.py:21
+msgid "Last Name"
+msgstr ""
+
+#: contact/models.py:22
+msgid "Email"
+msgstr ""
+
+#: contact/models.py:23
+msgid "Phone Number"
+msgstr ""
+
+#: contact/models.py:31 templates/components/footer.html:25
+#: templates/components/navbar.html:19 templates/components/navbar.html:76
+#: templates/components/navbar_blur.html:19
+#: templates/components/navbar_blur.html:76
+#: templates/components/navbar_dark.html:19
+#: templates/components/navbar_dark.html:76 templates/contact.html:12
+#: templates/contact.html:21 templates/contact.html:70
+msgid "Contact"
+msgstr ""
+
+#: contact/models.py:32
+msgid "Contacts"
+msgstr ""
+
+#: templates/about.html:16 templates/about.html:179 templates/about.html:224
+#: templates/about.html:291
 msgid "About Aminol"
 msgstr ""
 
-#: templates/about.html:17 templates/about.html:103
+#: templates/about.html:17 templates/about.html:102
 msgid "Quality"
 msgstr ""
 
-#: templates/about.html:18 templates/about.html:181
+#: templates/about.html:18 templates/about.html:180
 msgid "Production"
 msgstr ""
 
-#: templates/about.html:19 templates/about.html:226
+#: templates/about.html:19 templates/about.html:225
 msgid "Documents & Certifications"
 msgstr ""
 
-#: templates/about.html:20 templates/about.html:293
+#: templates/about.html:20 templates/about.html:292
 msgid "Sustainability"
 msgstr ""
 
-#: templates/about.html:29 templates/about.html:102 templates/about.html:180
-#: templates/about.html:225 templates/about.html:292 templates/contact.html:20
+#: templates/about.html:29 templates/about.html:101 templates/about.html:179
+#: templates/about.html:224 templates/about.html:291 templates/contact.html:20
 #: templates/markets_automotive.html:20 templates/markets_industrial.html:20
 #: templates/markets_shipping.html:21 templates/news.html:13
 #: templates/news_detail.html:14 templates/product.html:13
@@ -59,180 +130,72 @@ msgstr ""
 msgid "About us"
 msgstr ""
 
-#: templates/about.html:36 templates/about.html:40
-msgid "Company Profile"
-msgstr ""
-
-#: templates/about.html:37
-msgid "Company profile description"
-msgstr ""
-"ALCO LLC was entered into the state register on 5 May 2016. In the same year the company was granted resident status in the Sumgayit Chemical Industrial Park.\n"
-"\n"
-"Construction of the ALCO LLC lubricant plant within the park began in 2016, and operations started on 15 December 2017 following the visit of the President of the Republic of Azerbaijan to the park.\n"
-"\n"
-"The plant is equipped with state-of-the-art German and Italian equipment, including fully automated production lines.\n"
-"\n"
-"On the 3.5-hectare site allocated to ALCO LLC, a 5,000-tonne tank farm has been built for storing raw materials, intermediates and finished products, along with a 4,800 m² warehouse.\n"
-"\n"
-"To improve packaging flexibility and strengthen internal supply, a plastic-container production unit was launched in 2019. Today ALCO LLC meets its needs entirely with high-quality plastic packaging of its own manufacture.\n"
-"\n"
-"Since 2019 the company’s scope has expanded to include technical fluids. A production area for coolant (antifreeze) with an annual capacity of 5,000 tonnes was installed, and a variety of antifreeze grades are now produced.\n"
-"\n"
-"In 2020 the plant began manufacturing AdBlue®, a special non-toxic synthetic urea solution used to chemically reduce NOx emissions in diesel vehicles.\n"
-"\n"
-"The plant houses an ISO/IEC 17025-accredited quality-assurance laboratory equipped with more than 30 modern instruments; tests are currently carried out for over 65 parameters.\n"
-"\n"
-"In 2023 the necessary infrastructure was created to produce and store performance additives and, in line with modern requirements, to manufacture environmentally friendly plant-based bio-lubricants and fluids.\n"
-"\n"
-"From 2024 the plant’s annual production capacity has been raised to 100,000 tonnes.\n"
-"\n"
-"Today the company’s product portfolio comprises more than 1,000 unique items, with many new products in the commercialization pipeline.\n"
-"\n"
-"Engine oils produced by ALCO LLC are offered to customers with a warranty and can provide minimum oil-change intervals of 100,000 km in modern heavy-duty trucks and 30,000 km in passenger cars.\n"
-"\n"
-"In addition, GE-approved locomotive oils that deliver maximum protection, fuel efficiency and engine durability—even under the harshest conditions—are supplied to the railway sector.\n"
-"\n"
-"High-performance oils play a crucial role in critical industries such as metalworking, power generation (including renewable wind energy and heat production), mining and cement, pulp and paper, textiles, and plastic and rubber processing. ALCO LLC offers a wide range of industrial lubricants tailored to each of these fields. Their high quality, consistent performance and long-term stability ensure efficient operation of industrial equipment, prevent technical failures and significantly extend service life.\n"
-"\n"
-"Thus, thanks to its advanced technologies, extensive product range and international market strategy, ALCO LLC is today recognised as one of the largest specialised industrial enterprises for the production of lubricants and technical fluids in the South Caucasus and the wider region.\n"
-"\n"
-"Yellow Point"
-
-#: templates/about.html:41
-msgid ""
-"ALCO LLC was entered into the state register on 5 May 2016. In the same year"
-" the company was granted resident status in the Sumgayit Chemical Industrial"
-" Park."
-msgstr ""
-
-#: templates/about.html:42
-msgid ""
-"Construction of the ALCO LLC lubricant plant within the park began in 2016, "
-"and operations started on 15 December 2017 following the visit of the "
-"President of the Republic of Azerbaijan to the park."
-msgstr ""
-
-#: templates/about.html:43
-msgid ""
-"The plant is equipped with state-of-the-art German and Italian equipment, "
-"including fully automated production lines."
-msgstr ""
-
-#: templates/about.html:44
-msgid ""
-"On the 3.5-hectare site allocated to ALCO LLC, a 5,000-tonne tank farm has "
-"been built for storing raw materials, intermediates and finished products, "
-"along with a 4,800 m² warehouse."
-msgstr ""
-
-#: templates/about.html:45
-msgid ""
-"To improve packaging flexibility and strengthen internal supply, a plastic-"
-"container production unit was launched in 2019. Today ALCO LLC meets its "
-"needs entirely with high-quality plastic packaging of its own manufacture."
-msgstr ""
-
-#: templates/about.html:46
-msgid ""
-"Since 2019 the company’s scope has expanded to include technical fluids. A "
-"production area for coolant (antifreeze) with an annual capacity of 5,000 "
-"tonnes was installed, and a variety of antifreeze grades are now produced."
-msgstr ""
-
-#: templates/about.html:47
-msgid ""
-"In 2020 the plant began manufacturing AdBlue®, a special non-toxic synthetic"
-" urea solution used to chemically reduce NOx emissions in diesel vehicles."
-msgstr ""
-
-#: templates/about.html:48
-msgid ""
-"The plant houses an ISO/IEC 17025-accredited quality-assurance laboratory "
-"equipped with more than 30 modern instruments; tests are currently carried "
-"out for over 65 parameters."
-msgstr ""
-
-#: templates/about.html:49
-msgid ""
-"In 2023 the necessary infrastructure was created to produce and store "
-"performance additives and, in line with modern requirements, to manufacture "
-"environmentally friendly plant-based bio-lubricants and fluids."
-msgstr ""
-
-#: templates/about.html:50
-msgid ""
-"From 2024 the plant’s annual production capacity has been raised to 100,000 "
-"tonnes."
-msgstr ""
-
-#: templates/about.html:51
-msgid ""
-"Today the company’s product portfolio comprises more than 1,000 unique "
-"items, with many new products in the commercialization pipeline."
-msgstr ""
-
-#: templates/about.html:52
-msgid ""
-"Engine oils produced by ALCO LLC are offered to customers with a warranty "
-"and can provide minimum oil-change intervals of 100,000 km in modern heavy-"
-"duty trucks and 30,000 km in passenger cars."
-msgstr ""
-
 #: templates/about.html:53
-msgid ""
-"In addition, GE-approved locomotive oils that deliver maximum protection, "
-"fuel efficiency and engine durability—even under the harshest conditions—are"
-" supplied to the railway sector."
-msgstr ""
-
-#: templates/about.html:54
-msgid ""
-"High-performance oils play a crucial role in critical industries such as "
-"metalworking, power generation (including renewable wind energy and heat "
-"production), mining and cement, pulp and paper, textiles, and plastic and "
-"rubber processing. ALCO LLC offers a wide range of industrial lubricants "
-"tailored to each of these fields. Their high quality, consistent performance"
-" and long-term stability ensure efficient operation of industrial equipment,"
-" prevent technical failures and significantly extend service life."
-msgstr ""
-
-#: templates/about.html:55
-msgid ""
-"Thus, thanks to its advanced technologies, extensive product range and "
-"international market strategy, ALCO LLC is today recognised as one of the "
-"largest specialised industrial enterprises for the production of lubricants "
-"and technical fluids in the South Caucasus and the wider region."
-msgstr ""
-
-#: templates/about.html:63
 msgid "ABOUT AMINOL"
 msgstr ""
 
-#: templates/about.html:102 templates/components/footer.html:16
+#: templates/about.html:59
+msgid "Company Profile"
+msgstr ""
+
+#: templates/about.html:60
+msgid "Company profile description"
+msgstr ""
+"ALCO LLC was entered into the state register on 5 May 2016. In the same year the company was granted resident status in the Sumgayit Chemical Industrial Park. <br>\n"
+"\n"
+"Construction of the ALCO LLC lubricant plant within the park began in 2016, and operations started on 15 December 2017 following the visit of the President of the Republic of Azerbaijan to the park. <br>\n"
+"\n"
+"The plant is equipped with state-of-the-art German and Italian equipment, including fully automated production lines. <br>\n"
+"\n"
+"On the 3.5-hectare site allocated to ALCO LLC, a 5,000-tonne tank farm has been built for storing raw materials, intermediates and finished products, along with a 4,800 m² warehouse. <br>\n"
+"\n"
+"To improve packaging flexibility and strengthen internal supply, a plastic-container production unit was launched in 2019. Today ALCO LLC meets its needs entirely with high-quality plastic packaging of its own manufacture. <br>\n"
+"\n"
+"Since 2019 the company’s scope has expanded to include technical fluids. A production area for coolant (antifreeze) with an annual capacity of 5,000 tonnes was installed, and a variety of antifreeze grades are now produced. <br>\n"
+"\n"
+"In 2020 the plant began manufacturing AdBlue®, a special non-toxic synthetic urea solution used to chemically reduce NOx emissions in diesel vehicles. <br>\n"
+"\n"
+"The plant houses an ISO/IEC 17025-accredited quality-assurance laboratory equipped with more than 30 modern instruments; tests are currently carried out for over 65 parameters. <br>\n"
+"\n"
+"In 2023 the necessary infrastructure was created to produce and store performance additives and, in line with modern requirements, to manufacture environmentally friendly plant-based bio-lubricants and fluids. <br>\n"
+"\n"
+"From 2024 the plant’s annual production capacity has been raised to 100,000 tonnes. <br>\n"
+"\n"
+"Today the company’s product portfolio comprises more than 1,000 unique items, with many new products in the commercialization pipeline. <br>\n"
+"\n"
+"Engine oils produced by ALCO LLC are offered to customers with a warranty and can provide minimum oil-change intervals of 100,000 km in modern heavy-duty trucks and 30,000 km in passenger cars. <br>\n"
+"\n"
+"In addition, GE-approved locomotive oils that deliver maximum protection, fuel efficiency and engine durability—even under the harshest conditions—are supplied to the railway sector. <br>\n"
+"\n"
+"High-performance oils play a crucial role in critical industries such as metalworking, power generation (including renewable wind energy and heat production), mining and cement, pulp and paper, textiles, and plastic and rubber processing. ALCO LLC offers a wide range of industrial lubricants tailored to each of these fields. Their high quality, consistent performance and long-term stability ensure efficient operation of industrial equipment, prevent technical failures and significantly extend service life. <br>\n"
+"\n"
+"Thus, thanks to its advanced technologies, extensive product range and international market strategy, ALCO LLC is today recognised as one of the largest specialised industrial enterprises for the production of lubricants and technical fluids in the South Caucasus and the wider region. <br>"
+
+#: templates/about.html:101 templates/components/footer.html:16
 msgid "About Us"
 msgstr ""
 
-#: templates/about.html:107
+#: templates/about.html:106
 msgid "QUALITY"
 msgstr ""
 
-#: templates/about.html:185
+#: templates/about.html:184
 msgid "PRODUCTION"
 msgstr ""
 
-#: templates/about.html:230
+#: templates/about.html:229
 msgid "DOCUMENTS AND CERTIFICATION"
 msgstr ""
 
-#: templates/about.html:297
+#: templates/about.html:296
 msgid "SUSTAINABILITY"
 msgstr ""
 
-#: templates/brand_portal.html:13 templates/faq.html:11
+#: templates/brand_portal.html:10 templates/faq.html:11
 msgid "Home Page"
 msgstr ""
 
-#: templates/brand_portal.html:13 templates/brand_portal.html:19
+#: templates/brand_portal.html:11 templates/brand_portal.html:16
 #: templates/components/navbar.html:18 templates/components/navbar.html:75
 #: templates/components/navbar_blur.html:18
 #: templates/components/navbar_blur.html:75
@@ -271,16 +234,16 @@ msgstr ""
 msgid "Ask your question on Whatsapp"
 msgstr ""
 
-#: templates/components/contactcomponent.html:5
+#: templates/components/contactcomponent.html:6
 msgid "Contact form"
 msgstr ""
 
-#: templates/components/contactcomponent.html:7
+#: templates/components/contactcomponent.html:8
 msgid ""
 "Do you need a specific solution or are you interested in a partnership?"
 msgstr ""
 
-#: templates/components/contactcomponent.html:8
+#: templates/components/contactcomponent.html:9
 msgid "Please contact us here."
 msgstr ""
 
@@ -324,16 +287,6 @@ msgstr ""
 #: templates/components/navbar_dark.html:74 templates/news.html:13
 #: templates/news.html:18 templates/news_detail.html:14
 msgid "News"
-msgstr ""
-
-#: templates/components/footer.html:25 templates/components/navbar.html:19
-#: templates/components/navbar.html:76
-#: templates/components/navbar_blur.html:19
-#: templates/components/navbar_blur.html:76
-#: templates/components/navbar_dark.html:19
-#: templates/components/navbar_dark.html:76 templates/contact.html:12
-#: templates/contact.html:21 templates/contact.html:70
-msgid "Contact"
 msgstr ""
 
 #: templates/components/footer.html:34
@@ -391,7 +344,7 @@ msgstr ""
 #: templates/components/navbar_dark.html:90 templates/markets_shipping.html:12
 #: templates/markets_shipping.html:22
 msgid "Shipping & Offshore"
-msgstr ""
+msgstr "Marine & Offshore"
 
 #: templates/components/navbar.html:45 templates/components/navbar.html:98
 #: templates/components/navbar_blur.html:45
@@ -464,7 +417,7 @@ msgstr ""
 
 #: templates/home.html:13
 msgid "Passenger car lubricants"
-msgstr ""
+msgstr "PCMO"
 
 #: templates/home.html:15 templates/home.html:23 templates/home.html:31
 #: templates/home.html:39 templates/home.html:47 templates/home.html:55
@@ -476,7 +429,7 @@ msgstr ""
 
 #: templates/home.html:21
 msgid "Heavy duty lubricants"
-msgstr ""
+msgstr "HDEO"
 
 #: templates/home.html:29
 msgid "Motorcycle oils"
@@ -506,9 +459,9 @@ msgstr ""
 msgid "Turbine Oils"
 msgstr ""
 
-#: templates/home.html:96
+#: templates/home.html:97
 msgid "PRODUCT GROUP"
-msgstr ""
+msgstr "PRODUCT GROUPS"
 
 #: templates/home.html:117
 msgid "No product_group available at the moment"
@@ -610,12 +563,12 @@ msgid "Lubricants for passenger cars, trucks, vans, motorcycles"
 msgstr ""
 
 #: templates/markets_automotive.html:42 templates/markets_industrial.html:41
-#: templates/markets_shipping.html:44 templates/markets_shipping.html:60
+#: templates/markets_shipping.html:43
 msgid "Yellow Point"
 msgstr ""
 
 #: templates/markets_automotive.html:59 templates/markets_industrial.html:125
-#: templates/markets_shipping.html:141
+#: templates/markets_shipping.html:124
 msgid "Our Services"
 msgstr ""
 
@@ -627,34 +580,11 @@ msgstr ""
 msgid "Lubricants for marine equipments"
 msgstr ""
 
-#: templates/markets_shipping.html:33 templates/markets_shipping.html:37
-msgid "Strengthen your business"
-msgstr ""
-
-#: templates/markets_shipping.html:39
-msgid ""
-"If you choose Aminol, you choose for the growth of your business. As an "
-"Aminol dealer, we offer you a wide range of technical and commercial "
-"support, specifically designed to strengthen your operations."
-msgstr ""
-
-#: templates/markets_shipping.html:49 templates/markets_shipping.html:53
-msgid "Availability"
-msgstr ""
-
-#: templates/markets_shipping.html:55
-msgid ""
-"The Aminol Official Dealer formula is growing rapidly and is available in "
-"more and more countries. Depending on the country, the content of the "
-"formula can vary. Please contact Sales International for availability in "
-"your country."
-msgstr ""
-
-#: templates/markets_shipping.html:137 templates/markets_shipping.html:139
+#: templates/markets_shipping.html:120 templates/markets_shipping.html:122
 msgid "Knowledge and support"
 msgstr ""
 
-#: templates/markets_shipping.html:140
+#: templates/markets_shipping.html:123
 msgid ""
 "Our experienced team is ready to assist you with advice, technical and "
 "commercial support, and the latest industry developments. Discover our wide "
@@ -704,7 +634,7 @@ msgstr ""
 
 #: templates/product.html:55 templates/product.html:186
 msgid "Product group"
-msgstr ""
+msgstr "Product groups"
 
 #: templates/product.html:74 templates/product.html:205
 msgid "Segments"
