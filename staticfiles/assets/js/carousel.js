@@ -315,19 +315,6 @@ function initializeCarousels() {
         });
     }
 
-    // Car logos carousel (about page)
-    if (document.getElementById('carousel2')) {
-        createCarousel('car', {
-            carouselId: 'carousel2',
-            contentId: 'content2',
-            nextId: 'next2',
-            prevId: 'prev2',
-            gap: 115,
-            itemWidth: 110,
-            autoplayDelay: 3200,
-            transitionDuration: 600
-        });
-    }
 }
 
 // Page visibility API

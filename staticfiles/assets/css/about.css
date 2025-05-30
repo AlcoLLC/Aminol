@@ -146,6 +146,12 @@ text-align: left;
   border-radius: 8px;
 }
 
+ .guarantee-section .row-item:nth-child(3) {
+  background-color: #012762;
+  color: #fff;
+  border-radius: 8px;
+}
+
 .guarantee-section .row-item-2 span {
   color: #ffd936;
 }
@@ -183,11 +189,11 @@ text-align: left;
 
 @media (max-width: 768px) {
   .guarantee-section .guarantee-main-container {
-    height:58vh;
+    height:65vh;
   }
 
   .guarantee-section .guarantee-main-container::before {
-    top: 275px;
+    top: 285px;
   }
 
   .guarantee-section .guarantee-row {
@@ -214,7 +220,7 @@ text-align: left;
 
   .guarantee-section .row-item:nth-child(4) {
     background-color: transparent;
-  color: #012762;
+    color: #012762;
   }
 .guarantee-section .row-item:nth-child(4) span{
     color: #012762;
@@ -237,13 +243,14 @@ text-align: left;
 }
 
 @media (max-width: 520px) {
+  
   .guarantee-section .guarantee-main-container {
     margin-top: 40px;
     margin-bottom: 40px;
     padding: 15px 0;
   }
 .guarantee-section .guarantee-main-container::before {
-    top: 320px;
+    top: 335px;
   }
   .guarantee-section .guarantee-row {
     gap: 10px;
