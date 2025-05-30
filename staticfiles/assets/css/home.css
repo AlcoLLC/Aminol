@@ -62,8 +62,6 @@
   position: relative;
 }
 
-
-
 .home-header .swiper-slide_one {
   background-image: url("../../images/home-slider.jpg");
 }
@@ -191,6 +189,35 @@
 .innovation-technology .button-style:hover {
   background-color: #d40108;
 }
+
+.fixed-whatsapp {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.fixed-whatsapp i {
+  font-size: 30px;
+  color: white;
+}
+
+.fixed-whatsapp:hover {
+  transform: scale(1.1);
+}
+
+
 
 @media (max-width: 1200px) {
 
