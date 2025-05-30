@@ -33,8 +33,8 @@
           </div>
         </div>
         <div class="text-container {% if forloop.counter|divisibleby:2 %}{% else %}text-left{% endif %}">
-          <h2>{{ content.title_translate }}</h2>
-          <p>{{ content.description_translate }}</p>
+          <h2>{{ content.title_translate|linebreaksbr }}</h2>
+          <p>{{ content.description_translate|linebreaksbr }}</p>
         </div>
       </div>
 
@@ -52,8 +52,8 @@
 {% if dealer %}
 <div class="services-offer-section container">
   <div class="text-container text-left">
-    <h2>{{ dealer.title_translate }}</h2>
-    <p>{{ dealer.title_description_translate }}</p>
+    <h2>{{ dealer.title_translate|linebreaksbr }}</h2>
+    <p>{{ dealer.title_description_translate|linebreaksbr }}</p>
   </div>
   <div class="services-offer-image">
     <img
@@ -74,7 +74,7 @@
  <div class="services-offer-section reverse container">
         <div class="text-container text-left">
             <p>
-               {{ dealer.description_translate }}
+               {{ dealer.description_translate|linebreaksbr }}
             </p>
         </div>
         <div class="services-offer-image">

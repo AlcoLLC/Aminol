@@ -37,7 +37,7 @@
                             {% endif %}
                         </div>
                         <div class="news-content">
-                            <h5>{{ news.title_translate }}</h5>
+                            <h5>{{ news.title_translate|linebreaksbr }}</h5>
                             <p>{{ news.content_translate|truncatewords:10 }}</p>
 
                             <a href="{% url 'news:news_detail' news.pk %}">
@@ -69,7 +69,7 @@
                                 {% endif %}
                             </div>
                             <div class="news-content">
-                                <h5>{{ news.title_translate }}</h5>
+                                <h5>{{ news.title_translate|linebreaksbr }}</h5>
                                 <p>{{ news.content_translate|truncatewords:10 }}</p>
                                 <a href="{% url 'news:news_detail' news.pk %}">
                                     {% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i>

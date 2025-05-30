@@ -6,8 +6,8 @@
 <div class="product-detail-page">
   <header class="page-header" style="background-image: url('{{ product.product_group.image.url }}');">
       <div class="header-content container">
-        <h2>{{ product.product_group.title_translate }}</h2>
-        <p>{{ product.product_group.description_translate }}</p>
+        <h2>{{ product.product_group.title_translate|linebreaksbr }}</h2>
+        <p>{{ product.product_group.description_translate|linebreaksbr}}</p>
       </div>
     </header>
 </div>
@@ -22,25 +22,25 @@
 
 <div class="breadcrumb container">
   <a href="{% url 'products:product_list' %}">{% trans "Back to the overview" %} |</a>
-  <p>{{ product.title_translate }}</p>
+  <p>{{ product.title_translate|linebreaksbr }}</p>
 </div>
 
 <section class="product-detail-section container">
   <div class="product-detail-container">
     <div class="product-details">
-      <h2>{{ product.title_translate }}</h2>
+      <h2>{{ product.title_translate|linebreaksbr }}</h2>
       <p class="product-id">{{ product.product_id }}</p>
       <p class="product-description">
         {{ product.description_translate|linebreaksbr }}
       </p>
         <div class="featured-benefits">
           <h3>{% trans "Featured & Benefits:" %} </h3>
-          <p>{{ product.features_benefits_translate }}</p>
+          <p>{{ product.features_benefits_translate|linebreaksbr }}</p>
         </div>
 
         <div class="application">
           <h3>{% trans "Application:" %} </h3>
-          <p>{{ product.application_translate }}</p>
+          <p>{{ product.application_translate|linebreaksbr }}</p>
         </div>
       <div class="product-detail-row">
         <div class="specification">
@@ -114,10 +114,10 @@
       <tbody>
         {% for property in properties %}
         <tr>
-          <td>{{ property.property_name_translate }}</td>
+          <td>{{ property.property_name_translate|linebreaksbr }}</td>
           <td>{{ property.unit_translate|default:"-" }}</td>
-          <td>{{ property.test_method_translate }}</td>
-          <td>{{ property.typical_value_translate }}</td>
+          <td>{{ property.test_method_translate|linebreaksbr }}</td>
+          <td>{{ property.typical_value_translate|linebreaksbr }}</td>
         </tr>
         {% empty %}
         <tr>

@@ -23,8 +23,8 @@
 
 <div class="container">
   <div class="contact-top-content">
-    <h2>{{ contact_info.title_translate }}</h2>
-    <p>{{ contact_info.description_translate }}</p>
+    <h2>{{ contact_info.title_translate|linebreaksbr }}</h2>
+    <p>{{ contact_info.description_translate|linebreaksbr }}</p>
   </div>
 </div>
 
@@ -35,7 +35,7 @@
 <div class="contact-grid-content container">
   <div class="item">
     <h2>{% trans "Aminol headquarters" %}</h2>
-    <p>{{ contact_info.aminol_headquarters_translate }}</p>
+    <p>{{ contact_info.aminol_headquarters_translate|linebreaksbr }}</p>
     <a
       href="{% if contact_info.aminol_headquarters_location %}{{ contact_info.aminol_headquarters_location }}{% else %}https://maps.google.com/?q={{ contact_info.aminol_headquarters|urlencode }}{% endif %}"
       class="button-style"
@@ -48,7 +48,7 @@
 
   <div class="item">
     <h2>{% trans "Aminol factory" %}</h2>
-    <p>{{ contact_info.aminol_factory_translate }}</p>
+    <p>{{ contact_info.aminol_factory_translate|linebreaksbr }}</p>
     <a
       href="{% if contact_info.aminol_factory_location %}{{ contact_info.aminol_factory_location }}{% else %}https://maps.google.com/?q={{ contact_info.aminol_factory|urlencode }}{% endif %}"
       class="button-style"

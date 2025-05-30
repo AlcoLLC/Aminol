@@ -33,8 +33,8 @@
             </div>
           </div>
           <div class="text-container {% if forloop.counter|divisibleby:2 %}{% else %}text-left{% endif %}">
-            <h2>{{ laboratory.title_translate }}</h2>
-            <p>{{ laboratory.description_translate }}</p>
+            <h2>{{ laboratory.title_translate|linebreaksbr }}</h2>
+            <p>{{ laboratory.description_translate|linebreaksbr }}</p>
           </div>
         </div>
         {% endfor %}
@@ -60,7 +60,7 @@
             {% endif %}
           </div>
           <div class="news-content">
-            <h5>{{ news.title_translate }}</h5>
+            <h5>{{ news.title_translate|linebreaksbr }}</h5>
             <p>
               {{ news.content_translate|truncatewords:10 }}
             </p>
