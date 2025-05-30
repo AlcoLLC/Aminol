@@ -15,7 +15,7 @@ class AboutAminol(models.Model):
     exporting_to_translate = models.CharField(max_length=200, blank=True, null=True)
     production_capacity_translate = models.CharField(max_length=200, blank=True, null=True)
 
-    def _str_(self):
+    def __str__(self):
         return f"About Aminol - Founded {self.founded_year}"
 
 
@@ -28,12 +28,12 @@ class AboutSectionContent(models.Model):
 
     title_translate = models.CharField(max_length=255, blank=True, null=True)
     description_translate = models.TextField(blank=True, null=True)
-    def _str_(self):
+    def __str__(self):
         return f"{self.title}"
 
 
 class Quality(models.Model):
-    def _str_(self):
+    def __str__(self):
         return "Quality Section"
 
 
@@ -47,7 +47,7 @@ class QualityContent(models.Model):
     title_translate = models.CharField(max_length=255, blank=True, null=True)
     description_translate = models.TextField(blank=True, null=True)
 
-    def _str_(self):
+    def __str__(self):
         return f"{self.title}"
 
 
@@ -72,12 +72,12 @@ class WeGuarantee(models.Model):
     sub_title_four_translate = models.CharField(max_length=255, blank=True, null=True)
     sub_description_four_translate = models.TextField(blank=True, null=True)
 
-    def _str_(self):
+    def __str__(self):
         return self.title
 
 
 class Production(models.Model):
-    def _str_(self):
+    def __str__(self):
         return "Production Section"
 
 
@@ -91,7 +91,7 @@ class ProductionContent(models.Model):
     title_translate = models.CharField(max_length=255, blank=True, null=True)
     description_translate = models.TextField(blank=True, null=True)
 
-    def _str_(self):
+    def __str__(self):
         return f"{self.title}"
 
 
@@ -102,7 +102,7 @@ class DocumentsCertification(models.Model):
     title_translate = models.CharField(max_length=255, blank=True, null=True)
     description_translate = models.TextField(blank=True, null=True)
 
-    def _str_(self):
+    def __str__(self):
         return self.title
 
 
@@ -111,7 +111,7 @@ class Sustainability(models.Model):
 
     main_description_translate = models.TextField(blank=True, null=True)
 
-    def _str_(self):
+    def __str__(self):
         return "Sustainability Section"
 
 
@@ -126,5 +126,5 @@ class SustainabilityContent(models.Model):
     title_translate = models.CharField(max_length=255, blank=True, null=True)
     description_translate = models.TextField(blank=True, null=True)
 
-    def _str_(self):
+    def __str__(self):
         return f"{self.title}"
