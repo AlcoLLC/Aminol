@@ -14,10 +14,10 @@
 <section class="about-section container">
   <div class="about-tabs">
     <div class="tab active" data-tab="about-aminol">{% trans "About Aminol" %}</div>
-    <div class="tab" data-tab="quality">{% trans "Quality" %}</div>
-    <div class="tab" data-tab="production">{% trans "Production" %}</div>
-    <div class="tab" data-tab="documents">{% trans "Documents & Certifications" %}</div>
-    <div class="tab" data-tab="sustainability">{% trans "Sustainability" %}</div>
+<div class="tab" data-tab="quality">{% trans "Quality" %}</div>
+<div class="tab" data-tab="production">{% trans "Production" %}</div>
+<div class="tab" data-tab="documents">{% trans "Documents & Certifications" %}</div>
+<div class="tab" data-tab="sustainability">{% trans "Sustainability" %}</div>
   </div>
 </section>
 
@@ -38,19 +38,19 @@
         <img src="{{ about_aminol.shared_image.url }}" alt="About Aminol" />
         <div class="shared-description">
           <p>Founded in {{ about_aminol.founded_year }}</p>
-          <p>Based in {{ about_aminol.based_in }}</p>
-          <p>Located in {{ about_aminol.location }}</p>
-          <p>Exporting to {{ about_aminol.exporting_to }}</p>
-          <p>Production capacity {{ about_aminol.production_capacity }}</p>
+          <p>Based in {{ about_aminol.based_in_translate }}</p>
+          <p>Located in {{ about_aminol.location_translate }}</p>
+          <p>Exporting to {{ about_aminol.exporting_to_translate }}</p>
+          <p>Production capacity {{ about_aminol.production_capacity_translate }}</p>
           <p>Workforce {{ about_aminol.workforce }}</p>
         </div>
       </div>
     </div>
     {% endif %}
-
+    
     <div class="shared-images-section">
       <div class="section-header">
-        <h2>{% trans "ABOUT AMINOL" %}</h2>
+           <h2>{% trans "ABOUT AMINOL" %}</h2>
       </div>
 
 
@@ -69,19 +69,26 @@
         <div class="shared-images-container">
           <div class="vertical-line"></div>
           {% for section in about_sections %}
-          <div class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}">
+          <div
+            class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}"
+          >
             <div class="image-container">
               <div class="circular-image">
-                <img src="{{ section.image.url }}" alt="{{ section.title }}" />
+                <img src="{{ section.image.url }}" alt="{{ section.title_translate }}" />
               </div>
             </div>
-            <div class="text-container {% if forloop.counter|divisibleby:2 %}text-left{% endif %}">
-              <h2>{{ section.title }}</h2>
-              <p>{{ section.description|safe_linebreaksbr }}</p>
+            <div
+              class="text-container {% if forloop.counter|divisibleby:2 %}text-left{% endif %}"
+            >
+              <h2>{{ section.title_translate }}</h2>
+             <p>{{ section.description_translate|safe_linebreaksbr }}</p>
             </div>
           </div>
-          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-{{ forloop.counter }}"
-            alt="Yellow Point" />
+          <img
+            src="{% static '/images/yellow-point.svg' %}"
+            class="droplet droplet-{{ forloop.counter }}"
+            alt="Yellow Point"
+          />
           {% endfor %}
         </div>
         {% endif %}
@@ -107,19 +114,24 @@
         <div class="shared-images-container">
           <div class="vertical-line"></div>
           {% for content in quality_contents %}
-          <div class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}">
+          <div
+            class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}"
+          >
             <div class="image-container">
               <div class="circular-image">
-                <img src="{{ content.image.url }}" alt="{{ content.title }}" />
+                <img src="{{ content.image.url }}" alt="{{ content.title_translate }}" />
               </div>
             </div>
             <div class="text-container">
-              <h2>{{ content.title }}</h2>
-              <p>{{ content.description|safe_linebreaksbr }}</p>
+              <h2>{{ content.title_translate }}</h2>
+              <p>{{ content.description_translate|safe_linebreaksbr }}</p>
             </div>
           </div>
-          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-{{ forloop.counter }}"
-            alt="Yellow Point" />
+          <img
+            src="{% static '/images/yellow-point.svg' %}"
+            class="droplet droplet-{{ forloop.counter }}"
+            alt="Yellow Point"
+          />
           {% endfor %}
         </div>
         {% endif %}
@@ -130,30 +142,30 @@
     {% if guarantee %}
     <div class="guarantee-section">
       <div class="section-content">
-        <h2>{{ guarantee.title }}</h2>
+        <h2>{{ guarantee.title_translate }}</h2>
       </div>
 
       <div class="guarantee-main-container">
         <div class="guarantee-row container">
           <div class="row-item">
             <span>1.</span>
-            <h3>{{ guarantee.sub_title_one }}</h3>
-            <p>{{ guarantee.sub_description_one|safe_linebreaksbr }}</p>
+            <h3>{{ guarantee.sub_title_one_translate }}</h3>
+            <p>{{ guarantee.sub_description_one_translate|safe_linebreaksbr }}</p>
           </div>
           <div class="row-item row-item-2">
             <span>2.</span>
-            <h3>{{ guarantee.sub_title_two }}</h3>
-            <p>{{ guarantee.sub_description_two|safe_linebreaksbr }}</p>
+            <h3>{{ guarantee.sub_title_two_translate }}</h3>
+            <p>{{ guarantee.sub_description_two_translate|safe_linebreaksbr }}</p>
           </div>
           <div class="row-item">
             <span>3.</span>
-            <h3>{{ guarantee.sub_title_three }}</h3>
-            <p>{{ guarantee.sub_description_three|safe_linebreaksbr }}</p>
+            <h3>{{ guarantee.sub_title_three_translate }}</h3>
+            <p>{{ guarantee.sub_description_three_translate|safe_linebreaksbr }}</p>
           </div>
           <div class="row-item row-item-2">
             <span>4.</span>
-            <h3>{{ guarantee.sub_title_four }}</h3>
-            <p>{{ guarantee.sub_description_four|safe_linebreaksbr }}</p>
+            <h3>{{ guarantee.sub_title_four_translate }}</h3>
+            <p>{{ guarantee.sub_description_four_translate|safe_linebreaksbr }}</p>
           </div>
         </div>
       </div>
@@ -180,21 +192,26 @@
         <div class="shared-images-container">
           <div class="vertical-line"></div>
           {% for content in production_contents %}
-          <div class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}">
+          <div
+            class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}"
+          >
             <div class="image-container">
               <div class="circular-image">
-                <img src="{{ content.image.url }}" alt="{{ content.title }}" />
+                <img src="{{ content.image.url }}" alt="{{ content.title_translate }}" />
               </div>
             </div>
             <div class="text-container">
-              <h2>{{ content.title }}</h2>
-              <p>{{ content.description|safe_linebreaksbr }}</p>
+              <h2>{{ content.title_translate }}</h2>
+              <p>{{ content.description_translate|safe_linebreaksbr }}</p>
             </div>
           </div>
 
           <!-- Yellow Point Droplet -->
-          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-{{ forloop.counter }}"
-            alt="Yellow Point" />
+          <img
+            src="{% static '/images/yellow-point.svg' %}"
+            class="droplet droplet-{{ forloop.counter }}"
+            alt="Yellow Point"
+          />
           {% endfor %}
         </div>
         {% endif %}
@@ -218,8 +235,8 @@
     <div class="container">
       <div class="certifications-container">
         <img src="{% static '/images/certifications.png' %}" alt="" />
-        <h3>{{ documents_cert.title }}</h3>
-        <p>{{ documents_cert.description|safe_linebreaksbr }}</p>
+        <h3>{{ documents_cert.title_translate }}</h3>
+        <p>{{ documents_cert.description_translate|safe_linebreaksbr }}</p>
       </div>
         <div class="hidden-description">{{ documents_cert.description|safe_linebreaksbr }}</div>
 
@@ -229,19 +246,33 @@
             <div id="content2">
               {% for car in car_logos %}
               <img src="{{ car.logo.url }}" class="item" alt="Car Logo" />
-              {% endfor %}
+            {% endfor %}
             </div>
           </div>
           <button id="prev2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
               <path fill="none" d="M0 0h24v24H0V0z" />
-              <path d="M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z" />
+              <path
+                d="M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z"
+              />
             </svg>
           </button>
           <button id="next2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
               <path fill="none" d="M0 0h24v24H0V0z" />
-              <path d="M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z" />
+              <path
+                d="M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z"
+              />
             </svg>
           </button>
         </div>
@@ -273,14 +304,20 @@
       <div class="container sustainability-content">
         <div class="sustainability-circle-wrapper">
           <div class="sustainability-circle-img">
-            <img class="circle-img" src="{% static '/images/sustainability-circle.png' %}"
-              alt="Sustainability Circle" />
-            <img class="curved-text-img" src="{% static '/images/curve text.svg' %}"
-              alt="Core of Innovation Sustainability" />
+            <img
+              class="circle-img"
+              src="{% static '/images/sustainability-circle.png' %}"
+              alt="Sustainability Circle"
+            />
+            <img
+              class="curved-text-img"
+              src="{% static '/images/curve text.svg' %}"
+              alt="Core of Innovation Sustainability"
+            />
           </div>
         </div>
         <div class="content-wrapper">
-          <p>{{ sustainability.main_description|safe_linebreaksbr }}</p>
+          <p>{{ sustainability.main_description_translate|safe_linebreaksbr }}</p>
         </div>
       </div>
     </div>
@@ -292,19 +329,24 @@
         <div class="shared-images-container">
           <div class="vertical-line"></div>
           {% for content in sustainability_contents %}
-          <div class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}">
+          <div
+            class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}"
+          >
             <div class="image-container">
               <div class="circular-image">
-                <img src="{{ content.image.url }}" alt="{{ content.title }}" />
+                <img src="{{ content.image.url }}" alt="{{ content.title_translate }}" />
               </div>
             </div>
             <div class="text-container">
-              <h2>{{ content.title }}</h2>
-              <p>{{ content.description|safe_linebreaksbr }}</p>
+              <h2>{{ content.title_translate }}</h2>
+              <p>{{ content.description_translate|safe_linebreaksbr }}</p>
             </div>
           </div>
-          <img src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-{{ forloop.counter }}"
-            alt="Yellow Point" />
+          <img
+            src="{% static '/images/yellow-point.svg' %}"
+            class="droplet droplet-{{ forloop.counter }}"
+            alt="Yellow Point"
+          />
           {% endfor %}
         </div>
         {% endif %}
@@ -318,3 +360,4 @@
 
 {% include 'components/brochure.html' %}
 {% endblock %}
+

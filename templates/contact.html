@@ -23,8 +23,8 @@
 
 <div class="container">
   <div class="contact-top-content">
-    <h2>{{ contact_info.title }}</h2>
-    <p>{{ contact_info.description }}</p>
+    <h2>{{ contact_info.title_translate }}</h2>
+    <p>{{ contact_info.description_translate }}</p>
   </div>
 </div>
 
@@ -35,7 +35,7 @@
 <div class="contact-grid-content container">
   <div class="item">
     <h2>{% trans "Aminol headquarters" %}</h2>
-    <p>{{ contact_info.aminol_headquarters }}</p>
+    <p>{{ contact_info.aminol_headquarters_translate }}</p>
     <a
       href="{% if contact_info.aminol_headquarters_location %}{{ contact_info.aminol_headquarters_location }}{% else %}https://maps.google.com/?q={{ contact_info.aminol_headquarters|urlencode }}{% endif %}"
       class="button-style"
@@ -48,7 +48,7 @@
 
   <div class="item">
     <h2>{% trans "Aminol factory" %}</h2>
-    <p>{{ contact_info.aminol_factory }}</p>
+    <p>{{ contact_info.aminol_factory_translate }}</p>
     <a
       href="{% if contact_info.aminol_factory_location %}{{ contact_info.aminol_factory_location }}{% else %}https://maps.google.com/?q={{ contact_info.aminol_factory|urlencode }}{% endif %}"
       class="button-style"
@@ -63,7 +63,7 @@
 <div class="contact-flex-content container">
   <div class="contact-left-content">
     <h2>{% trans "Registers" %}</h2>
-    <div>{{ contact_info.registers|linebreaks }}</div>
+    <div>{{ contact_info.registers_translate|linebreaks }}</div>
   </div>
 
   <div class="contact-right-content">
@@ -71,7 +71,7 @@
     <div class="contact-bottom">
       <div class="item">
         <h3>{% trans "Address" %}</h3>
-        <div>{{ contact_info.contact_address|linebreaks }}</div>
+        <div>{{ contact_info.contact_address_translate|linebreaks }}</div>
       </div>
 
       <div class="right-item">

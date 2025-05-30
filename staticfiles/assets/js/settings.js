@@ -1889,8 +1889,8 @@ var map_cfg = {
     },
     st233: {
       name: "",
-      shortname: "",
-      comment: "",
+      shortname: "●",
+      comment: "Ukraine",
       link: "",
       color: "#366CA3",
       colorOver: "#012762",
