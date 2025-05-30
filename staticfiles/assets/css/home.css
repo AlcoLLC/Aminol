@@ -314,6 +314,15 @@
     font-size: 13px;
     height: 38px;
   }
+
+  .fixed-whatsapp {
+  width: 55px;
+  height: 55px;
+}
+
+.fixed-whatsapp i {
+  font-size: 28px;
+}
 }
 
 @media (max-width: 520px) {
@@ -358,6 +367,15 @@
     .home-header .swiper-button-prev {
     left: 10% !important;
   }
+
+    .fixed-whatsapp {
+  width: 50px;
+  height: 50px;
+}
+
+.fixed-whatsapp i {
+  font-size: 24px;
+}
 
 }
 
@@ -1811,20 +1829,18 @@
   margin: 30px auto;
 }
 
-.logos-section #wrapper {
+.logos-section #wrapper,
+.logos-section #wrapper2,
+.logos-section #wrapper3 {
   width: 90%;
   margin: 0 auto;
   position: relative;
 }
 
-.logos-section #wrapper2 {
-  width: 90%;
-  margin: 0 auto;
-  position: relative;
-}
 
-
-.logos-section #carousel {
+.logos-section #carousel,
+.logos-section #carousel2,
+.logos-section #carousel3 {
   overflow-x: auto;
   scroll-behavior: smooth;
   scrollbar-width: none;
@@ -1832,26 +1848,21 @@
   margin: 0 auto;
 }
 
-.logos-section #carousel2 {
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  box-sizing: content-box;
-  margin: 0 auto;
-}
 
-.logos-section #carousel::-webkit-scrollbar {
+
+.logos-section #carousel::-webkit-scrollbar,
+.logos-section #carousel2::-webkit-scrollbar,
+.logos-section #carousel3::-webkit-scrollbar {
   height: 0;
 }
 
-.logos-section #carousel2::-webkit-scrollbar {
-  height: 0;
-}
 
 .logos-section #prev,
 .logos-section #next,
 .logos-section #prev2,
-.logos-section #next2  {
+.logos-section #next2,
+.logos-section #prev3,
+.logos-section #next3  {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1877,27 +1888,32 @@
 .logos-section #prev:hover,
 .logos-section #next:hover,
 .logos-section #prev2:hover,
-.logos-section #next2:hover  {
+.logos-section #next2:hover,
+.logos-section #prev3:hover,
+.logos-section #next3:hover   {
   background: #eef1f7;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 .logos-section #prev,
-.logos-section #prev2 {
+.logos-section #prev2,
+.logos-section #prev3 {
   top: 50%;
   left: -12%;
   transform: translate(50%, -50%);
 }
 
 .logos-section #next,
-.logos-section #next2  {
+.logos-section #next2,
+.logos-section #next3  {
   top: 50%;
   right: -12%;
   transform: translate(-50%, -50%);
 }
 
 .logos-section #content,
-.logos-section #content2 {
+.logos-section #content2,
+.logos-section #content3 {
   display: grid;
   grid-gap: 115px;
   grid-auto-flow: column;
@@ -1915,7 +1931,8 @@
 
 @media (max-width: 1200px) {
   .logos-section #content,
-  .logos-section #content2
+  .logos-section #content2,
+  .logos-section #content3
    {
     grid-gap: 80px;
   }
@@ -1930,22 +1947,29 @@
   .logos-section #prev,
   .logos-section #next,
   .logos-section #prev2,
-  .logos-section #next2 {
+  .logos-section #next2,
+  .logos-section #prev3,
+  .logos-section #next3 {
     width: 40px;
     height: 40px;
     padding: 8px;
   }
   .logos-section #wrapper,
-  .logos-section #wrapper2 {
+  .logos-section #wrapper2,
+  .logos-section #wrapper3 {
   width: 85%;
 }
 
 
-  .logos-section #prev {
+  .logos-section #prev,
+  .logos-section #prev2,
+  .logos-section #prev3 {
     left: -12%;
   }
 
-  .logos-section #next {
+  .logos-section #next,
+  .logos-section #next2,
+  .logos-section #next3 {
     right: -12%;
   }
 
@@ -1956,7 +1980,8 @@
 
 
   .logos-section #content,
-  .logos-section #content2
+  .logos-section #content2,
+  .logos-section #content3
   {
     grid-gap: 50px;
 
@@ -1978,23 +2003,27 @@
   }
 
   .logos-section #wrapper,
-  .logos-section #wrapper2 {
+  .logos-section #wrapper2,
+  .logos-section #wrapper3 {
      width: 80%;
   }
 
   .logos-section #prev,
-  .logos-section #prev2 {
+  .logos-section #prev2,
+  .logos-section #prev3 {
     left: -16%;
   }
 
   .logos-section #next,
-  .logos-section #next2 {
+  .logos-section #next2,
+  .logos-section #next3 {
     right: -16%;
   }
 
 
   .logos-section #content,
-  .logos-section #content2 {
+  .logos-section #content2,
+  .logos-section #content3 {
     grid-gap: 40px;
   }
 
@@ -2014,14 +2043,17 @@
   .logos-section #prev,
   .logos-section #next,
   .logos-section #prev2,
-  .logos-section #next2 {
+  .logos-section #next2,
+  .logos-section #prev3,
+  .logos-section #next3 {
     width: 25px;
     height: 25px;
     padding: 6px;
   }
 
   .logos-section #content,
-  .logos-section #content2 {
+  .logos-section #content2,
+  .logos-section #content3 {
     grid-gap: 30px;
   }
  .partners-section .section-content:not(:first-child) h2 {
@@ -2041,7 +2073,8 @@
 
 @media (max-width: 480px) {
   .logos-section #content,
-  .logos-section #content2 {
+  .logos-section #content2,
+  .logos-section #content3 {
     grid-gap: 28px;
   }
 
