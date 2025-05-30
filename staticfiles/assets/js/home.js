@@ -1,6 +1,11 @@
+
 const swiper = new Swiper('.home-header .mySwiper', {
   loop: true,
   effect: 'fade',
+  lazy: {
+    loadPrevNext: true,
+    loadPrevNextAmount: 2,
+  },
   autoplay: {
     delay: 5000,
     disableOnInteraction: false,
