@@ -38,11 +38,11 @@
         <img src="{{ about_aminol.shared_image.url }}" alt="About Aminol" />
         <div class="shared-description">
           <p>Founded in {{ about_aminol.founded_year }}</p>
-          <p>Based in {{ about_aminol.based_in_translate }}</p>
-          <p>Located in {{ about_aminol.location_translate }}</p>
-          <p>Exporting to {{ about_aminol.exporting_to_translate }}</p>
-          <p>Production capacity {{ about_aminol.production_capacity_translate }}</p>
-          <p>Workforce {{ about_aminol.workforce }}</p>
+          <p>Based in {{ about_aminol.based_in_translate|linebreaksbr }}</p>
+          <p>Located in {{ about_aminol.location_translate|linebreaksbr }}</p>
+          <p>Exporting to {{ about_aminol.exporting_to_translate|linebreaksbr }}</p>
+          <p>Production capacity {{ about_aminol.production_capacity_translate|linebreaksbr }}</p>
+          <p>Workforce {{ about_aminol.workforce|linebreaksbr }}</p>
         </div>
       </div>
     </div>
@@ -58,7 +58,7 @@
 
         <div class="section-content">
           <h2>{% trans "Company Profile" %}</h2>
-          <p>{% trans "Company profile description" %}</p>
+          <p>{{ "Company profile description"|trans|linebreaksbr }}</p>
         </div>
 
       </div>
@@ -80,7 +80,7 @@
             <div
               class="text-container {% if forloop.counter|divisibleby:2 %}text-left{% endif %}"
             >
-              <h2>{{ section.title_translate }}</h2>
+              <h2>{{ section.title_translate|linebreaksbr }}</h2>
              <p>{{ section.description_translate|safe_linebreaksbr }}</p>
             </div>
           </div>
@@ -142,29 +142,29 @@
     {% if guarantee %}
     <div class="guarantee-section">
       <div class="section-content">
-        <h2>{{ guarantee.title_translate }}</h2>
+        <h2>{{ guarantee.title_translate|linebreaksbr }}</h2>
       </div>
 
       <div class="guarantee-main-container">
         <div class="guarantee-row container">
           <div class="row-item">
             <span>1.</span>
-            <h3>{{ guarantee.sub_title_one_translate }}</h3>
+            <h3>{{ guarantee.sub_title_one_translate|linebreaksbr }}</h3>
             <p>{{ guarantee.sub_description_one_translate|safe_linebreaksbr }}</p>
           </div>
           <div class="row-item row-item-2">
             <span>2.</span>
-            <h3>{{ guarantee.sub_title_two_translate }}</h3>
+            <h3>{{ guarantee.sub_title_two_translate|linebreaksbr }}</h3>
             <p>{{ guarantee.sub_description_two_translate|safe_linebreaksbr }}</p>
           </div>
           <div class="row-item">
             <span>3.</span>
-            <h3>{{ guarantee.sub_title_three_translate }}</h3>
+            <h3>{{ guarantee.sub_title_three_translate|linebreaksbr }}</h3>
             <p>{{ guarantee.sub_description_three_translate|safe_linebreaksbr }}</p>
           </div>
           <div class="row-item row-item-2">
             <span>4.</span>
-            <h3>{{ guarantee.sub_title_four_translate }}</h3>
+            <h3>{{ guarantee.sub_title_four_translate|linebreaksbr }}</h3>
             <p>{{ guarantee.sub_description_four_translate|safe_linebreaksbr }}</p>
           </div>
         </div>
@@ -201,7 +201,7 @@
               </div>
             </div>
             <div class="text-container">
-              <h2>{{ content.title_translate }}</h2>
+              <h2>{{ content.title_translate|linebreaksbr }}</h2>
               <p>{{ content.description_translate|safe_linebreaksbr }}</p>
             </div>
           </div>
@@ -235,7 +235,7 @@
     <div class="container">
       <div class="certifications-container">
         <img src="{% static '/images/certifications.png' %}" alt="" />
-        <h3>{{ documents_cert.title_translate }}</h3>
+        <h3>{{ documents_cert.title_translate|linebreaksbr }}</h3>
         <p>{{ documents_cert.description_translate|safe_linebreaksbr }}</p>
       </div>
         <div class="hidden-description">{{ documents_cert.description|safe_linebreaksbr }}</div>
@@ -338,7 +338,7 @@
               </div>
             </div>
             <div class="text-container">
-              <h2>{{ content.title_translate }}</h2>
+              <h2>{{ content.title_translate|linebreaksbr }}</h2>
               <p>{{ content.description_translate|safe_linebreaksbr }}</p>
             </div>
           </div>

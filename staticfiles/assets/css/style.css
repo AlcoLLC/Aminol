@@ -285,14 +285,12 @@ nav {
 }
 
 .navbar .lang-btn .btn-az,
-.navbar .mobile-lang-btn .btn-az {
-  padding: 0 6px 0 8px;
-}
-
+.navbar .mobile-lang-btn .btn-az,
 .navbar .lang-btn .btn-en,
 .navbar .mobile-lang-btn .btn-en {
   padding: 2px 10px;
 }
+
 
 .navbar .lang-btn .btn-az.active,
 .navbar .lang-btn .btn-en.active,
@@ -303,6 +301,7 @@ nav {
   border: 1px solid #fff;
   border-radius: 12px;
 }
+
 
 .navbar .nav-section .nav-bottom ul li a {
   color: #012762;
