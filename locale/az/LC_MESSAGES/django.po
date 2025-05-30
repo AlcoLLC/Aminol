@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-30 10:57+0400\n"
+"POT-Creation-Date: 2025-05-30 11:28+0400\n"
 "PO-Revision-Date: 2025-05-30 11:32+0400\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,256 +19,262 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.10.2\n"
 
-#: templates/about.html:16 templates/about.html:180 templates/about.html:225
-#: templates/about.html:292
+#: .\contact\models.py:8 .\contact\views.py:14
+#: .\templates\components\contactcomponent.html:19
+msgid "I would like to buy Aminol products."
+msgstr ""
+
+#: .\contact\models.py:9 .\contact\views.py:15
+msgid "I am interested in becoming a distributor."
+msgstr ""
+
+#: .\contact\models.py:10 .\contact\views.py:16
+msgid "I need technical support."
+msgstr ""
+
+#: .\contact\models.py:11 .\contact\views.py:17
+msgid "I would like to request product certificates or compliance documents."
+msgstr ""
+
+#: .\contact\models.py:12 .\contact\views.py:18
+msgid "I need more information about a product."
+msgstr ""
+
+#: .\contact\models.py:13 .\contact\views.py:19
+msgid "I am interested in a potential partnership."
+msgstr ""
+
+#: .\contact\models.py:14 .\contact\views.py:20
+msgid "Other"
+msgstr ""
+
+#: .\contact\models.py:17
+#, fuzzy
+#| msgid "Oil Type"
+msgid "Help Type"
+msgstr "Yağ Növü"
+
+#: .\contact\models.py:18
+msgid "Company Name"
+msgstr ""
+
+#: .\contact\models.py:19
+#, fuzzy
+#| msgid "Location"
+msgid "Question"
+msgstr "Məkan"
+
+#: .\contact\models.py:20
+msgid "First Name"
+msgstr ""
+
+#: .\contact\models.py:21
+msgid "Last Name"
+msgstr ""
+
+#: .\contact\models.py:22
+msgid "Email"
+msgstr ""
+
+#: .\contact\models.py:23
+#, fuzzy
+#| msgid "Phone number"
+msgid "Phone Number"
+msgstr "Telefon nömrəsi"
+
+#: .\contact\models.py:31 .\templates\components\footer.html:25
+#: .\templates\components\navbar.html:19 .\templates\components\navbar.html:76
+#: .\templates\components\navbar_blur.html:19
+#: .\templates\components\navbar_blur.html:76
+#: .\templates\components\navbar_dark.html:19
+#: .\templates\components\navbar_dark.html:76 .\templates\contact.html:12
+#: .\templates\contact.html:21 .\templates\contact.html:70
+msgid "Contact"
+msgstr "Əlaqə"
+
+#: .\contact\models.py:32
+#, fuzzy
+#| msgid "Contact"
+msgid "Contacts"
+msgstr "Əlaqə"
+
+#: .\templates\about.html:16 .\templates\about.html:179
+#: .\templates\about.html:224 .\templates\about.html:291
 msgid "About Aminol"
 msgstr "Haqqımızda"
 
-#: templates/about.html:17 templates/about.html:103
+#: .\templates\about.html:17 .\templates\about.html:102
 msgid "Quality"
 msgstr "Keyfiyyət"
 
-#: templates/about.html:18 templates/about.html:181
+#: .\templates\about.html:18 .\templates\about.html:180
 msgid "Production"
 msgstr "İstehsal"
 
-#: templates/about.html:19 templates/about.html:226
+#: .\templates\about.html:19 .\templates\about.html:225
 msgid "Documents & Certifications"
 msgstr "Sənədlər və Sertifikatlar"
 
-#: templates/about.html:20 templates/about.html:293
+#: .\templates\about.html:20 .\templates\about.html:292
 msgid "Sustainability"
 msgstr "Davamlılıq"
 
-#: templates/about.html:29 templates/about.html:102 templates/about.html:180
-#: templates/about.html:225 templates/about.html:292 templates/contact.html:20
-#: templates/markets_automotive.html:20 templates/markets_industrial.html:20
-#: templates/markets_shipping.html:21 templates/news.html:13
-#: templates/news_detail.html:14 templates/product.html:13
-#: templates/service_aminol_dealer.html:15
-#: templates/service_laboratory.html:15 templates/service_logistics.html:14
+#: .\templates\about.html:29 .\templates\about.html:101
+#: .\templates\about.html:179 .\templates\about.html:224
+#: .\templates\about.html:291 .\templates\contact.html:20
+#: .\templates\markets_automotive.html:20
+#: .\templates\markets_industrial.html:20 .\templates\markets_shipping.html:21
+#: .\templates\news.html:13 .\templates\news_detail.html:14
+#: .\templates\product.html:13 .\templates\service_aminol_dealer.html:15
+#: .\templates\service_laboratory.html:15 .\templates\service_logistics.html:14
 msgid "Home page"
 msgstr "Ana Səhifə"
 
-#: templates/about.html:30 templates/components/navbar.html:31
-#: templates/components/navbar.html:81
-#: templates/components/navbar_blur.html:31
-#: templates/components/navbar_blur.html:81
-#: templates/components/navbar_dark.html:31
-#: templates/components/navbar_dark.html:81
+#: .\templates\about.html:30 .\templates\components\navbar.html:31
+#: .\templates\components\navbar.html:81
+#: .\templates\components\navbar_blur.html:31
+#: .\templates\components\navbar_blur.html:81
+#: .\templates\components\navbar_dark.html:31
+#: .\templates\components\navbar_dark.html:81
 msgid "About us"
 msgstr "Haqqımızda"
 
-#: templates/about.html:36 templates/about.html:40
-msgid "Company Profile"
-msgstr ""
-
-#: templates/about.html:37
-msgid "Company profile description"
-msgstr ""
-"“ALCO” MMC 5 may 2016-cı il tarixində dövlət qeydiyyatında alınmışdır. Elə həmin ildə şirkətə\n"
-"Sumqayıt Kimya-Sənaye Parkının rezidenti statusu verilmişdir.\n"
-"\n"
-"2016-cı ildən Sumqayıt Kimya-Sənaye Parkının ərazisində inşasına başlanılan “ALCO” MMC-yə\n"
-"məxsus sürtkü yağları zavodu 15 dekabr 2017-ci ildə Azərbaycan Respublikası Prezidentinin\n"
-"Sumqayıt Kimya-Sənaye Parkına səfərindən sonra fəaliyyətə başlamışdır.\n"
-"\n"
-"Zavod Almaniya və İtaliya istehsalı olan ən müasir avadanlıqlarla, o cümlədən tam\n"
-"avtomatlaşdırılmış istehsal xətləri ilə təchiz olunmuşdur.\n"
-"\n"
-"Eyni zamanda, “ALCO” MMC-yə ayrılmış 3.5 ha ərazidə xammal, material və hazır məhsul\n"
-"ehtiyatlarının saxlanılması üçün 5 min tonluq rezervuar parkı yaradılmış, 4800 m2\n"
-"-lik anbar sahəsi\n"
-"inşa edilmişdir.\n"
-"Qablaşdırma prosesində çevikliyi artırmaq və daxili təminatı gücləndirmək məqsədilə 2019-cü\n"
-"ildə zavodda plastik qablar istehsalı sahəsi yaradılmışdır və hazırda “ALCO” MMC yüksək\n"
-"keyfiyyətli plastik qablarla özünü tam şəkildə təchiz edir.\n"
-"\n"
-"2019-cu ildən şirkətin fəaliyyət sahəsi genişləndirilmiş və texniki mayelərin istehsalına\n"
-"başlanılmışdır. Bu məqsədlə zavod ərazisində illik istehsal gücü 5 min ton olan soyuducu maye -\n"
-"antifiriz istehsalı sahəsi qurulmuşdur və hazırda zavodda müxtəlif antifiriz çeşidləri istehsal\n"
-"olunur.\n"
-"\n"
-"2020-ci ildən isə dizel yanacağı ilə işləyən avtomobillərin NOx emissiyasınının təsirini kimyəvi\n"
-"cəhətdən azaltmaq üçün istifadə edilən xüsusi qeyri-toksik sintetik karbamid məhlulu – “AdBlue”\n"
-"istehsalına başlanılmışdır.\n"
-"Bununla yanaşı, zavodda ISO/IEC 17025” beynəlxalq standartının tələblərinə uyğun olaraq\n"
-"akkreditə edilmiş və 30-dan artıq müasir cihazla təchiz olunmuş keyfiyyət təminatı laboratoriyası\n"
-"fəaliyyət göstərir. Hazırda həmin laboratoriyada 65-dan çox göstərici üzrə sınaqlar aparılır.\n"
-"\n"
-"2023-cü ildə zavodda performans qatqılarının istehsalı və saxlanılması, həmçinin müasir dövrün\n"
-"tələblərinə uyğun olaraq ekoloji cəhətdən təmiz, bitki mənşəli bio-əsaslı yağların və mayelərin\n"
-"istehsalı üçün də zəruri infrastruktur qurulmuşdur.\n"
-"\n"
-"2024-cü ildən etibarən zavodun istehsal gücü illik 100 min tona çatdırılmışdır.\n"
-"Hazırda şirkətin məhsul portfeli 1000-dən artıq unikal çeşidi özündə ehtiva edir, bir çox yeni\n"
-"məhsullar isə realizasiya mərhələsindədir.\n"
-"“ALCO” MMC tərəfindən istehsal olunan mühərrik yağları, müasir yük avtomobillərində minimum\n"
-"100,000 km, sərnişin avtomobillərində isə minimum 30,000 km yağ dəyişmə intervalını təmin\n"
-"etmək qabiliyyətinə malikdir zəmanət əsasında müştərilərə təklif olunur.\n"
-"\n"
-"Əlavə olaraq, ən çətin istismar şəraitində belə maksimum qoruma, yanacaq səmərəliliyi və\n"
-"mühərrik dayanıqlığı təmin edən “GE” təsdiqli lokomotiv yağları da dəmir yolu nəqliyyatında\n"
-"performansın etibarlı zəmanəti sayılır.\n"
-"Metal emalı, enerji, xüsusilə alernativ külək enejisi və istilik istehsalı, mədən və sement sənayesi,\n"
-"kağız və sellüloz, tekstil, plastik və rezin emalı kimi kritik sahələrdə yüksək performanslı yağlar\n"
-"vacib rol oynayır. “ALCO” MMC bu sahələrin hər birinə uyğunlaşdırılmış geniş sənaye yağları çeşidi\n"
-"təklif edir. Sözügedən yağlar yüksək keyfiyyəti, sabit performansı və uzunmüddətli dayanıqlılığı\n"
-"ilə sənaye avadanlıqlarının effektiv işləməsini təmin edir, texniki nasazlıqların qarşısını alır və\n"
-"istismar müddətini əhəmiyyətli dərəcədə uzadır.\n"
-"\n"
-"Beləliklə, bu gün ALCO MMC, yüksək texnoloji imkanları, geniş məhsul portfeli və beynəlxalq\n"
-"bazarlara çıxış strategiyası ilə Cənubi Qafqaz və regionda sürtkü yağları və texniki mayelərin\n"
-"istehsalı üzrə ixtisaslaşmış ən iri sənaye müəssisələrindən biri kimi tanınır."
-
-#: templates/about.html:41
-msgid ""
-"ALCO LLC was entered into the state register on 5 May 2016. In the same year"
-" the company was granted resident status in the Sumgayit Chemical Industrial"
-" Park."
-msgstr ""
-
-#: templates/about.html:42
-msgid ""
-"Construction of the ALCO LLC lubricant plant within the park began in 2016, "
-"and operations started on 15 December 2017 following the visit of the "
-"President of the Republic of Azerbaijan to the park."
-msgstr ""
-
-#: templates/about.html:43
-msgid ""
-"The plant is equipped with state-of-the-art German and Italian equipment, "
-"including fully automated production lines."
-msgstr ""
-
-#: templates/about.html:44
-msgid ""
-"On the 3.5-hectare site allocated to ALCO LLC, a 5,000-tonne tank farm has "
-"been built for storing raw materials, intermediates and finished products, "
-"along with a 4,800 m² warehouse."
-msgstr ""
-
-#: templates/about.html:45
-msgid ""
-"To improve packaging flexibility and strengthen internal supply, a plastic-"
-"container production unit was launched in 2019. Today ALCO LLC meets its "
-"needs entirely with high-quality plastic packaging of its own manufacture."
-msgstr ""
-
-#: templates/about.html:46
-msgid ""
-"Since 2019 the company’s scope has expanded to include technical fluids. A "
-"production area for coolant (antifreeze) with an annual capacity of 5,000 "
-"tonnes was installed, and a variety of antifreeze grades are now produced."
-msgstr ""
-
-#: templates/about.html:47
-msgid ""
-"In 2020 the plant began manufacturing AdBlue®, a special non-toxic synthetic"
-" urea solution used to chemically reduce NOx emissions in diesel vehicles."
-msgstr ""
-
-#: templates/about.html:48
-msgid ""
-"The plant houses an ISO/IEC 17025-accredited quality-assurance laboratory "
-"equipped with more than 30 modern instruments; tests are currently carried "
-"out for over 65 parameters."
-msgstr ""
-
-#: templates/about.html:49
-msgid ""
-"In 2023 the necessary infrastructure was created to produce and store "
-"performance additives and, in line with modern requirements, to manufacture "
-"environmentally friendly plant-based bio-lubricants and fluids."
-msgstr ""
-
-#: templates/about.html:50
-msgid ""
-"From 2024 the plant’s annual production capacity has been raised to 100,000 "
-"tonnes."
-msgstr ""
-
-#: templates/about.html:51
-msgid ""
-"Today the company’s product portfolio comprises more than 1,000 unique "
-"items, with many new products in the commercialization pipeline."
-msgstr ""
-
-#: templates/about.html:52
-msgid ""
-"Engine oils produced by ALCO LLC are offered to customers with a warranty "
-"and can provide minimum oil-change intervals of 100,000 km in modern heavy-"
-"duty trucks and 30,000 km in passenger cars."
-msgstr ""
-
-#: templates/about.html:53
-msgid ""
-"In addition, GE-approved locomotive oils that deliver maximum protection, "
-"fuel efficiency and engine durability—even under the harshest conditions—are"
-" supplied to the railway sector."
-msgstr ""
-
-#: templates/about.html:54
-msgid ""
-"High-performance oils play a crucial role in critical industries such as "
-"metalworking, power generation (including renewable wind energy and heat "
-"production), mining and cement, pulp and paper, textiles, and plastic and "
-"rubber processing. ALCO LLC offers a wide range of industrial lubricants "
-"tailored to each of these fields. Their high quality, consistent performance"
-" and long-term stability ensure efficient operation of industrial equipment,"
-" prevent technical failures and significantly extend service life."
-msgstr ""
-
-#: templates/about.html:55
-msgid ""
-"Thus, thanks to its advanced technologies, extensive product range and "
-"international market strategy, ALCO LLC is today recognised as one of the "
-"largest specialised industrial enterprises for the production of lubricants "
-"and technical fluids in the South Caucasus and the wider region."
-msgstr ""
-
-#: templates/about.html:63
+#: .\templates\about.html:53
 msgid "ABOUT AMINOL"
 msgstr "AMİNOL HAQQINDA"
 
-#: templates/about.html:102 templates/components/footer.html:16
+#: .\templates\about.html:59
+msgid "Company Profile"
+msgstr ""
+
+#: .\templates\about.html:60
+msgid "Company profile description"
+msgstr ""
+"“ALCO” MMC 5 may 2016-cı il tarixində dövlət qeydiyyatında alınmışdır. Elə "
+"həmin ildə şirkətə\n"
+"Sumqayıt Kimya-Sənaye Parkının rezidenti statusu verilmişdir.\n"
+"\n"
+"2016-cı ildən Sumqayıt Kimya-Sənaye Parkının ərazisində inşasına başlanılan "
+"“ALCO” MMC-yə\n"
+"məxsus sürtkü yağları zavodu 15 dekabr 2017-ci ildə Azərbaycan Respublikası "
+"Prezidentinin\n"
+"Sumqayıt Kimya-Sənaye Parkına səfərindən sonra fəaliyyətə başlamışdır.\n"
+"\n"
+"Zavod Almaniya və İtaliya istehsalı olan ən müasir avadanlıqlarla, o "
+"cümlədən tam\n"
+"avtomatlaşdırılmış istehsal xətləri ilə təchiz olunmuşdur.\n"
+"\n"
+"Eyni zamanda, “ALCO” MMC-yə ayrılmış 3.5 ha ərazidə xammal, material və "
+"hazır məhsul\n"
+"ehtiyatlarının saxlanılması üçün 5 min tonluq rezervuar parkı yaradılmış, "
+"4800 m2\n"
+"-lik anbar sahəsi\n"
+"inşa edilmişdir.\n"
+"Qablaşdırma prosesində çevikliyi artırmaq və daxili təminatı gücləndirmək "
+"məqsədilə 2019-cü\n"
+"ildə zavodda plastik qablar istehsalı sahəsi yaradılmışdır və hazırda “ALCO” "
+"MMC yüksək\n"
+"keyfiyyətli plastik qablarla özünü tam şəkildə təchiz edir.\n"
+"\n"
+"2019-cu ildən şirkətin fəaliyyət sahəsi genişləndirilmiş və texniki "
+"mayelərin istehsalına\n"
+"başlanılmışdır. Bu məqsədlə zavod ərazisində illik istehsal gücü 5 min ton "
+"olan soyuducu maye -\n"
+"antifiriz istehsalı sahəsi qurulmuşdur və hazırda zavodda müxtəlif antifiriz "
+"çeşidləri istehsal\n"
+"olunur.\n"
+"\n"
+"2020-ci ildən isə dizel yanacağı ilə işləyən avtomobillərin NOx "
+"emissiyasınının təsirini kimyəvi\n"
+"cəhətdən azaltmaq üçün istifadə edilən xüsusi qeyri-toksik sintetik karbamid "
+"məhlulu – “AdBlue”\n"
+"istehsalına başlanılmışdır.\n"
+"Bununla yanaşı, zavodda ISO/IEC 17025” beynəlxalq standartının tələblərinə "
+"uyğun olaraq\n"
+"akkreditə edilmiş və 30-dan artıq müasir cihazla təchiz olunmuş keyfiyyət "
+"təminatı laboratoriyası\n"
+"fəaliyyət göstərir. Hazırda həmin laboratoriyada 65-dan çox göstərici üzrə "
+"sınaqlar aparılır.\n"
+"\n"
+"2023-cü ildə zavodda performans qatqılarının istehsalı və saxlanılması, "
+"həmçinin müasir dövrün\n"
+"tələblərinə uyğun olaraq ekoloji cəhətdən təmiz, bitki mənşəli bio-əsaslı "
+"yağların və mayelərin\n"
+"istehsalı üçün də zəruri infrastruktur qurulmuşdur.\n"
+"\n"
+"2024-cü ildən etibarən zavodun istehsal gücü illik 100 min tona "
+"çatdırılmışdır.\n"
+"Hazırda şirkətin məhsul portfeli 1000-dən artıq unikal çeşidi özündə ehtiva "
+"edir, bir çox yeni\n"
+"məhsullar isə realizasiya mərhələsindədir.\n"
+"“ALCO” MMC tərəfindən istehsal olunan mühərrik yağları, müasir yük "
+"avtomobillərində minimum\n"
+"100,000 km, sərnişin avtomobillərində isə minimum 30,000 km yağ dəyişmə "
+"intervalını təmin\n"
+"etmək qabiliyyətinə malikdir zəmanət əsasında müştərilərə təklif olunur.\n"
+"\n"
+"Əlavə olaraq, ən çətin istismar şəraitində belə maksimum qoruma, yanacaq "
+"səmərəliliyi və\n"
+"mühərrik dayanıqlığı təmin edən “GE” təsdiqli lokomotiv yağları da dəmir "
+"yolu nəqliyyatında\n"
+"performansın etibarlı zəmanəti sayılır.\n"
+"Metal emalı, enerji, xüsusilə alernativ külək enejisi və istilik istehsalı, "
+"mədən və sement sənayesi,\n"
+"kağız və sellüloz, tekstil, plastik və rezin emalı kimi kritik sahələrdə "
+"yüksək performanslı yağlar\n"
+"vacib rol oynayır. “ALCO” MMC bu sahələrin hər birinə uyğunlaşdırılmış geniş "
+"sənaye yağları çeşidi\n"
+"təklif edir. Sözügedən yağlar yüksək keyfiyyəti, sabit performansı və "
+"uzunmüddətli dayanıqlılığı\n"
+"ilə sənaye avadanlıqlarının effektiv işləməsini təmin edir, texniki "
+"nasazlıqların qarşısını alır və\n"
+"istismar müddətini əhəmiyyətli dərəcədə uzadır.\n"
+"\n"
+"Beləliklə, bu gün ALCO MMC, yüksək texnoloji imkanları, geniş məhsul "
+"portfeli və beynəlxalq\n"
+"bazarlara çıxış strategiyası ilə Cənubi Qafqaz və regionda sürtkü yağları və "
+"texniki mayelərin\n"
+"istehsalı üzrə ixtisaslaşmış ən iri sənaye müəssisələrindən biri kimi "
+"tanınır."
+
+#: .\templates\about.html:101 .\templates\components\footer.html:16
 msgid "About Us"
 msgstr "Haqqımızda"
 
-#: templates/about.html:107
+#: .\templates\about.html:106
 msgid "QUALITY"
 msgstr "KEYFİYYƏT"
 
-#: templates/about.html:185
+#: .\templates\about.html:184
 msgid "PRODUCTION"
 msgstr "İSTEHSAL"
 
-#: templates/about.html:230
+#: .\templates\about.html:229
 msgid "DOCUMENTS AND CERTIFICATION"
 msgstr "SƏNƏDLƏR VƏ SERTİFİKATLAR"
 
-#: templates/about.html:297
+#: .\templates\about.html:296
 msgid "SUSTAINABILITY"
 msgstr "DAVAMLILIQ"
 
-#: templates/brand_portal.html:13 templates/faq.html:11
+#: .\templates\brand_portal.html:10 .\templates\faq.html:11
 msgid "Home Page"
 msgstr "Ana Səhifə"
 
-#: templates/brand_portal.html:13 templates/brand_portal.html:19
-#: templates/components/navbar.html:18 templates/components/navbar.html:75
-#: templates/components/navbar_blur.html:18
-#: templates/components/navbar_blur.html:75
-#: templates/components/navbar_dark.html:18
-#: templates/components/navbar_dark.html:75
+#: .\templates\brand_portal.html:11 .\templates\brand_portal.html:16
+#: .\templates\components\navbar.html:18 .\templates\components\navbar.html:75
+#: .\templates\components\navbar_blur.html:18
+#: .\templates\components\navbar_blur.html:75
+#: .\templates\components\navbar_dark.html:18
+#: .\templates\components\navbar_dark.html:75
 msgid "Brand Portal"
 msgstr "Brend Portal"
 
-#: templates/components/brochure.html:11
+#: .\templates\components\brochure.html:11
 msgid "Power. Protection. Performance."
 msgstr "Güc. Qoruma. Performans."
 
-#: templates/components/brochure.html:13
+#: .\templates\components\brochure.html:13
 msgid ""
 "Aminol delivers the strength your machines need, the protection they rely "
 "on, and the performance you expect—every time."
@@ -276,228 +282,220 @@ msgstr ""
 "Aminol avadanlıqlarınızın ehtiyac duyduğu gücü, güvəndiyi qorumayı və "
 "gözlədiyiniz performansı hər dəfə təmin edir."
 
-#: templates/components/brochure.html:18
+#: .\templates\components\brochure.html:18
 #, fuzzy
 #| msgid "Our Services"
 msgid "Our Suppliers"
 msgstr "Xidmətlərimiz"
 
-#: templates/components/brochure.html:26
+#: .\templates\components\brochure.html:26
 msgid "Supplier Logo"
 msgstr ""
 
-#: templates/components/brochure.html:60
+#: .\templates\components\brochure.html:60
 #, fuzzy
 #| msgid "Our Values"
 msgid "Our Partners"
 msgstr "Dəyərlərimiz"
 
-#: templates/components/brochure.html:68
+#: .\templates\components\brochure.html:68
 msgid "Partner Logo"
 msgstr "Tərəfdaş Loqosu"
 
-#: templates/components/brochure.html:105 templates/components/whatsapp.html:5
+#: .\templates\components\brochure.html:105
+#: .\templates\components\whatsapp.html:5
 msgid "Ask your question on Whatsapp"
 msgstr "Sualınızı Whatsapp-da soruşun"
 
-#: templates/components/contactcomponent.html:5
+#: .\templates\components\contactcomponent.html:6
 msgid "Contact form"
 msgstr "Əlaqə"
 
-#: templates/components/contactcomponent.html:7
-msgid ""
-"Do you need a specific solution or are you interested in a partnership?"
+#: .\templates\components\contactcomponent.html:8
+msgid "Do you need a specific solution or are you interested in a partnership?"
 msgstr "Xüsusi bir həllə ehtiyacınız var, yoxsa əməkdaşlıq üçün maraqlısınız?"
 
-#: templates/components/contactcomponent.html:8
+#: .\templates\components\contactcomponent.html:9
 msgid "Please contact us here."
 msgstr "Bizimlə əlaqə saxlayın."
 
-#: templates/components/footer.html:9
+#: .\templates\components\footer.html:9
 msgid "Reliable Lubricant Manufacturer."
 msgstr "Etibarlı Sürtkü Yağı İstehsalçısı."
 
-#: templates/components/footer.html:10
+#: .\templates\components\footer.html:10
 msgid "Engineered for Performance, Trusted for Protection."
 msgstr "Performans üçün Mühəndislik, Qorunma üçün Güvən."
 
-#: templates/components/footer.html:17 templates/components/navbar.html:33
-#: templates/components/navbar.html:82
-#: templates/components/navbar_blur.html:33
-#: templates/components/navbar_blur.html:82
-#: templates/components/navbar_dark.html:33
-#: templates/components/navbar_dark.html:82
+#: .\templates\components\footer.html:17 .\templates\components\navbar.html:33
+#: .\templates\components\navbar.html:82
+#: .\templates\components\navbar_blur.html:33
+#: .\templates\components\navbar_blur.html:82
+#: .\templates\components\navbar_dark.html:33
+#: .\templates\components\navbar_dark.html:82
 msgid "Products"
 msgstr "Məhsullar"
 
-#: templates/components/footer.html:20 templates/components/navbar.html:43
-#: templates/components/navbar.html:95
-#: templates/components/navbar_blur.html:43
-#: templates/components/navbar_blur.html:95
-#: templates/components/navbar_dark.html:43
-#: templates/components/navbar_dark.html:95
-#: templates/service_aminol_dealer.html:15
-#: templates/service_laboratory.html:15 templates/service_logistics.html:14
+#: .\templates\components\footer.html:20 .\templates\components\navbar.html:43
+#: .\templates\components\navbar.html:95
+#: .\templates\components\navbar_blur.html:43
+#: .\templates\components\navbar_blur.html:95
+#: .\templates\components\navbar_dark.html:43
+#: .\templates\components\navbar_dark.html:95
+#: .\templates\service_aminol_dealer.html:15
+#: .\templates\service_laboratory.html:15 .\templates\service_logistics.html:14
 msgid "Services"
 msgstr "Xidmətlər"
 
-#: templates/components/footer.html:21 templates/faq.html:11
+#: .\templates\components\footer.html:21 .\templates\faq.html:11
 msgid "FAQ"
 msgstr "FAQ"
 
-#: templates/components/footer.html:24 templates/components/navbar.html:17
-#: templates/components/navbar.html:74
-#: templates/components/navbar_blur.html:17
-#: templates/components/navbar_blur.html:74
-#: templates/components/navbar_dark.html:17
-#: templates/components/navbar_dark.html:74 templates/news.html:13
-#: templates/news.html:18 templates/news_detail.html:14
+#: .\templates\components\footer.html:24 .\templates\components\navbar.html:17
+#: .\templates\components\navbar.html:74
+#: .\templates\components\navbar_blur.html:17
+#: .\templates\components\navbar_blur.html:74
+#: .\templates\components\navbar_dark.html:17
+#: .\templates\components\navbar_dark.html:74 .\templates\news.html:13
+#: .\templates\news.html:18 .\templates\news_detail.html:14
 msgid "News"
 msgstr "Xəbərlər"
 
-#: templates/components/footer.html:25 templates/components/navbar.html:19
-#: templates/components/navbar.html:76
-#: templates/components/navbar_blur.html:19
-#: templates/components/navbar_blur.html:76
-#: templates/components/navbar_dark.html:19
-#: templates/components/navbar_dark.html:76 templates/contact.html:12
-#: templates/contact.html:21 templates/contact.html:70
-msgid "Contact"
-msgstr "Əlaqə"
-
-#: templates/components/footer.html:34
+#: .\templates\components\footer.html:34
 msgid "Vali Mammadov Street 1/3, Old City, Baku, Azerbaijan, AZ1000"
 msgstr "Vəli Məmmədov küçəsi 1/3, İçərişəhər, Bakı, Azərbaycan, AZ1000"
 
-#: templates/components/footer.html:55
+#: .\templates\components\footer.html:55
 msgid "© 2025 ALCO LLC. All right reserved."
 msgstr "© 2025 ALCO MMC. Bütün hüquqlar qorunur."
 
-#: templates/components/footer.html:56
+#: .\templates\components\footer.html:56
 msgid "Terms and Condition"
 msgstr "Şərtlər və Qaydalar"
 
-#: templates/components/footer.html:56
+#: .\templates\components\footer.html:56
 msgid "Privacy Policy"
 msgstr "Məxfilik Siyasəti"
 
-#: templates/components/gallery.html:7
+#: .\templates\components\gallery.html:7
 msgid "GALLERY"
 msgstr "Qalereya"
 
-#: templates/components/navbar.html:35 templates/components/navbar.html:85
-#: templates/components/navbar_blur.html:35
-#: templates/components/navbar_blur.html:85
-#: templates/components/navbar_dark.html:35
-#: templates/components/navbar_dark.html:85
-#: templates/markets_automotive.html:20 templates/markets_industrial.html:20
-#: templates/markets_shipping.html:21
+#: .\templates\components\navbar.html:35 .\templates\components\navbar.html:85
+#: .\templates\components\navbar_blur.html:35
+#: .\templates\components\navbar_blur.html:85
+#: .\templates\components\navbar_dark.html:35
+#: .\templates\components\navbar_dark.html:85
+#: .\templates\markets_automotive.html:20
+#: .\templates\markets_industrial.html:20 .\templates\markets_shipping.html:21
 msgid "Markets"
 msgstr "Fəaliyyət sahələri"
 
-#: templates/components/navbar.html:37 templates/components/navbar.html:88
-#: templates/components/navbar_blur.html:37
-#: templates/components/navbar_blur.html:88
-#: templates/components/navbar_dark.html:37
-#: templates/components/navbar_dark.html:88
-#: templates/markets_automotive.html:12 templates/markets_automotive.html:21
+#: .\templates\components\navbar.html:37 .\templates\components\navbar.html:88
+#: .\templates\components\navbar_blur.html:37
+#: .\templates\components\navbar_blur.html:88
+#: .\templates\components\navbar_dark.html:37
+#: .\templates\components\navbar_dark.html:88
+#: .\templates\markets_automotive.html:12
+#: .\templates\markets_automotive.html:21
 msgid "Automotive"
 msgstr "Avtomobil"
 
-#: templates/components/navbar.html:38 templates/components/navbar.html:89
-#: templates/components/navbar_blur.html:38
-#: templates/components/navbar_blur.html:89
-#: templates/components/navbar_dark.html:38
-#: templates/components/navbar_dark.html:89
-#: templates/markets_industrial.html:12 templates/markets_industrial.html:21
+#: .\templates\components\navbar.html:38 .\templates\components\navbar.html:89
+#: .\templates\components\navbar_blur.html:38
+#: .\templates\components\navbar_blur.html:89
+#: .\templates\components\navbar_dark.html:38
+#: .\templates\components\navbar_dark.html:89
+#: .\templates\markets_industrial.html:12
+#: .\templates\markets_industrial.html:21
 msgid "Industrial"
 msgstr "Sənaye"
 
-#: templates/components/navbar.html:39 templates/components/navbar.html:90
-#: templates/components/navbar_blur.html:39
-#: templates/components/navbar_blur.html:90
-#: templates/components/navbar_dark.html:39
-#: templates/components/navbar_dark.html:90 templates/markets_shipping.html:12
-#: templates/markets_shipping.html:22
+#: .\templates\components\navbar.html:39 .\templates\components\navbar.html:90
+#: .\templates\components\navbar_blur.html:39
+#: .\templates\components\navbar_blur.html:90
+#: .\templates\components\navbar_dark.html:39
+#: .\templates\components\navbar_dark.html:90
+#: .\templates\markets_shipping.html:12 .\templates\markets_shipping.html:22
 msgid "Shipping & Offshore"
 msgstr "Gəmiçilik & Dəniz"
 
-#: templates/components/navbar.html:45 templates/components/navbar.html:98
-#: templates/components/navbar_blur.html:45
-#: templates/components/navbar_blur.html:98
-#: templates/components/navbar_dark.html:45
-#: templates/components/navbar_dark.html:98
-#: templates/service_aminol_dealer.html:16
+#: .\templates\components\navbar.html:45 .\templates\components\navbar.html:98
+#: .\templates\components\navbar_blur.html:45
+#: .\templates\components\navbar_blur.html:98
+#: .\templates\components\navbar_dark.html:45
+#: .\templates\components\navbar_dark.html:98
+#: .\templates\service_aminol_dealer.html:16
 msgid "Aminol official dealer"
 msgstr "Aminol rəsmi dileri"
 
-#: templates/components/navbar.html:46 templates/components/navbar.html:99
-#: templates/components/navbar_blur.html:46
-#: templates/components/navbar_blur.html:99
-#: templates/components/navbar_dark.html:46
-#: templates/components/navbar_dark.html:99
+#: .\templates\components\navbar.html:46 .\templates\components\navbar.html:99
+#: .\templates\components\navbar_blur.html:46
+#: .\templates\components\navbar_blur.html:99
+#: .\templates\components\navbar_dark.html:46
+#: .\templates\components\navbar_dark.html:99
 msgid "Aminol Laboratory"
 msgstr "Aminol Laboratoriyası"
 
-#: templates/components/navbar.html:47 templates/components/navbar.html:100
-#: templates/components/navbar_blur.html:47
-#: templates/components/navbar_blur.html:100
-#: templates/components/navbar_dark.html:47
-#: templates/components/navbar_dark.html:100
+#: .\templates\components\navbar.html:47 .\templates\components\navbar.html:100
+#: .\templates\components\navbar_blur.html:47
+#: .\templates\components\navbar_blur.html:100
+#: .\templates\components\navbar_dark.html:47
+#: .\templates\components\navbar_dark.html:100
 msgid "Aminol Logistics"
 msgstr "Aminol Logistika"
 
-#: templates/contact.html:13
+#: .\templates\contact.html:13
 msgid "We are ready for your question"
 msgstr "Sualınızı cavablandırmağa hazırıq"
 
-#: templates/contact.html:37
+#: .\templates\contact.html:37
 msgid "Aminol headquarters"
 msgstr "Aminol Baş Ofisi"
 
-#: templates/contact.html:44 templates/contact.html:57
+#: .\templates\contact.html:44 .\templates\contact.html:57
 msgid "Location"
 msgstr "Məkan"
 
-#: templates/contact.html:45
+#: .\templates\contact.html:45
 msgid "Contact Icon"
 msgstr "Əlaqə"
 
-#: templates/contact.html:50
+#: .\templates\contact.html:50
 msgid "Aminol factory"
 msgstr "Aminol Zavodu"
 
-#: templates/contact.html:65
+#: .\templates\contact.html:65
 msgid "Registers"
 msgstr "Qeydiyyatlar"
 
-#: templates/contact.html:73
+#: .\templates\contact.html:73
 msgid "Address"
 msgstr "Ünvan"
 
-#: templates/contact.html:79
+#: .\templates\contact.html:79
 msgid "Phone number"
 msgstr "Telefon nömrəsi"
 
-#: templates/contact.html:83
+#: .\templates\contact.html:83
 msgid "E-mail address"
 msgstr "E-poçt ünvanı"
 
-#: templates/faq.html:17
+#: .\templates\faq.html:17
 msgid "Frequently asked questions"
 msgstr "Tez-tez verilən suallar"
 
-#: templates/faq.html:37
+#: .\templates\faq.html:37
 msgid "No FAQs available at the moment."
 msgstr "Hazırda tez-tez verilən suallar mövcud deyil."
 
-#: templates/home.html:13
+#: .\templates\home.html:13
 msgid "Passenger car lubricants"
 msgstr "Minik avtomobilləri üçün sürtgü yağları"
 
-#: templates/home.html:15 templates/home.html:23 templates/home.html:31
-#: templates/home.html:39 templates/home.html:47 templates/home.html:55
-#: templates/home.html:63 templates/home.html:71 templates/home.html:79
+#: .\templates\home.html:15 .\templates\home.html:23 .\templates\home.html:31
+#: .\templates\home.html:39 .\templates\home.html:47 .\templates\home.html:55
+#: .\templates\home.html:63 .\templates\home.html:71 .\templates\home.html:79
 msgid ""
 "Manufacturer of Lubricants, Lubricant Additive Packages & Deionised Fluids. "
 "Proudly Made in Azerbaijan"
@@ -505,72 +503,82 @@ msgstr ""
 "Sürtgü yağları, yağ əlavələri paketləri və deionlaşdırılmış mayelərin "
 "istehsalçısı. Fəxrlə Azərbaycanda istehsal olunub."
 
-#: templates/home.html:21
+#: .\templates\home.html:21
 msgid "Heavy duty lubricants"
 msgstr "Ağır yüklü sürtkü materialları"
 
-#: templates/home.html:29
+#: .\templates\home.html:29
 msgid "Motorcycle oils"
 msgstr "Motosiklet yağları"
 
-#: templates/home.html:37
+#: .\templates\home.html:37
 msgid "Transmission & Gear oils"
 msgstr "Transmissiya və Ötürücü yağları"
 
-#: templates/home.html:45
+#: .\templates\home.html:45
 msgid "Hydraulic oils"
 msgstr "Hidravlik yağları"
 
-#: templates/home.html:53
+#: .\templates\home.html:53
 msgid "Agricultural lubricants"
 msgstr "Kənd təsərrüfatı sürtkü materialları"
 
-#: templates/home.html:61
+#: .\templates\home.html:61
 msgid "Industrial lubricants"
 msgstr "Sənaye sürtgü yağları"
 
-#: templates/home.html:69
+#: .\templates\home.html:69
 msgid "Marine lubricants"
 msgstr "Dəniz sürtkü yağları"
 
-#: templates/home.html:77
+#: .\templates\home.html:77
 msgid "Turbine Oils"
 msgstr "Turbin yağları"
 
-#: templates/home.html:96
+#: .\templates\home.html:97
 msgid "PRODUCT GROUP"
 msgstr "MƏHSUL QRUPU"
 
-#: templates/home.html:117
+#: .\templates\home.html:117
 msgid "No product_group available at the moment"
 msgstr "Hazırda heç bir məhsul qrupu mövcud deyil"
 
-#: templates/home.html:125
+#: .\templates\home.html:125
 msgid "See more"
 msgstr "Daha çox bax"
 
-#: templates/home.html:136
+#: .\templates\home.html:136
 msgid "Our Values"
 msgstr "Dəyərlərimiz"
 
-#: templates/home.html:138
+#: .\templates\home.html:138
 #, fuzzy
 msgid ""
-"The modernization of industry and renewal of equipment have increased demand"
-" for high-quality lubricants in Azerbaijan. To meet this, AMINOL Lubricants "
-"opened on December 15, 2017, in Sumgayit Chemical Industrial Park with a $20"
-" million investment. The plant produces 150,000 tons annually, focusing on "
+"The modernization of industry and renewal of equipment have increased demand "
+"for high-quality lubricants in Azerbaijan. To meet this, AMINOL Lubricants "
+"opened on December 15, 2017, in Sumgayit Chemical Industrial Park with a $20 "
+"million investment. The plant produces 150,000 tons annually, focusing on "
 "motor, hydraulic, transmission, compressor, turbine, and marine oils, along "
 "with antifreeze and AdBlue."
 msgstr ""
 "#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Sənayenin müasirləşdirilməsi və avadanlıqların yenilənməsi Azərbaycanda yüksək keyfiyyətli yağlara tələbatı artırmışdır. Bu tələbatı qarşılamaq üçün 15 dekabr 2017-ci ildə Sumqayıt Kimya Sənaye Parkında 20 milyon dollar sərmayə ilə AMINOL Lubricants zavodu açılmışdır. Zavod ildə 150,000 ton məhsul istehsal edir və əsasən mühərrik, hidravlik, ötürücü, kompressor, turbin və dəniz yağları ilə yanaşı antifriz və AdBlue istehsalına yönəlib.\n"
+"Sənayenin müasirləşdirilməsi və avadanlıqların yenilənməsi Azərbaycanda "
+"yüksək keyfiyyətli yağlara tələbatı artırmışdır. Bu tələbatı qarşılamaq üçün "
+"15 dekabr 2017-ci ildə Sumqayıt Kimya Sənaye Parkında 20 milyon dollar "
+"sərmayə ilə AMINOL Lubricants zavodu açılmışdır. Zavod ildə 150,000 ton "
+"məhsul istehsal edir və əsasən mühərrik, hidravlik, ötürücü, kompressor, "
+"turbin və dəniz yağları ilə yanaşı antifriz və AdBlue istehsalına yönəlib.\n"
 "#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Sənayenin modernləşdirilməsi və avadanlıqların yenilənməsi Azərbaycanda yüksək keyfiyyətli yağlara tələbatı artırdı. Bu tələbi qarşılamaq üçün AMINOL Yağları 15 dekabr 2017-ci ildə Sumqayıt Kimya Sənaye Parkında 20 milyon dollar sərmayə ilə fəaliyyətə başladı. Zavod ildə 150,000 ton məhsul istehsal edir və əsasən motor, hidravlik, transmissiya, kompressor, turbin və dəniz yağları, həmçinin antifriz və AdBlue istehsalına yönəlib."
+"Sənayenin modernləşdirilməsi və avadanlıqların yenilənməsi Azərbaycanda "
+"yüksək keyfiyyətli yağlara tələbatı artırdı. Bu tələbi qarşılamaq üçün "
+"AMINOL Yağları 15 dekabr 2017-ci ildə Sumqayıt Kimya Sənaye Parkında 20 "
+"milyon dollar sərmayə ilə fəaliyyətə başladı. Zavod ildə 150,000 ton məhsul "
+"istehsal edir və əsasən motor, hidravlik, transmissiya, kompressor, turbin "
+"və dəniz yağları, həmçinin antifriz və AdBlue istehsalına yönəlib."
 
-#: templates/home.html:140 templates/home.html:190 templates/home.html:212
-#: templates/home.html:253 templates/service_laboratory.html:74
-#: templates/service_logistics.html:97
+#: .\templates\home.html:140 .\templates\home.html:190
+#: .\templates\home.html:212 .\templates\home.html:253
+#: .\templates\service_laboratory.html:74 .\templates\service_logistics.html:97
 #, fuzzy
 msgid "Discover more"
 msgstr ""
@@ -579,7 +587,7 @@ msgstr ""
 "#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Daha ətraflı"
 
-#: templates/home.html:152
+#: .\templates\home.html:152
 #, fuzzy
 msgid "Aminol Is Available Worldwide"
 msgstr ""
@@ -588,7 +596,7 @@ msgstr ""
 "#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Aminol Dünyanın Dörd Bir Yanında Mövcuddur"
 
-#: templates/home.html:154
+#: .\templates\home.html:154
 #, fuzzy
 msgid "Sales network in more than 50 countries in four continents."
 msgstr ""
@@ -597,17 +605,17 @@ msgstr ""
 "#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Dörd qitədə 50-dən çox ölkədə satış şəbəkəsi."
 
-#: templates/home.html:155
+#: .\templates\home.html:155
 msgid ""
 "Would you like to buy our products or are you interested in a partnership?"
 msgstr ""
 "Məhsullarımızı almaq istəyirsiniz, yoxsa tərəfdaşlıqla maraqlanırsınız?"
 
-#: templates/home.html:157
+#: .\templates\home.html:157
 msgid "Get in contact"
 msgstr "Əlaqə saxlayın"
 
-#: templates/home.html:166
+#: .\templates\home.html:166
 #, fuzzy
 msgid "Learn more"
 msgstr ""
@@ -616,22 +624,26 @@ msgstr ""
 "#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Daha çox öyrən"
 
-#: templates/home.html:166
+#: .\templates\home.html:166
 msgid "about production"
 msgstr "istehsal haqqında"
 
-#: templates/home.html:168
+#: .\templates\home.html:168
 #, fuzzy
 msgid ""
 "Aminol Lubricants produces and packages high-quality oils using premium "
 "imported base oils and additives, formulated by expert engineers."
 msgstr ""
 "#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Aminol Lubricants yüksək keyfiyyətli yağları, peşəkar mühəndislər tərəfindən hazırlanmış formullarla, idxal olunmuş premium baza yağları və əlavələrdən istifadə edərək istehsal edir və qablaşdırır.\n"
+"Aminol Lubricants yüksək keyfiyyətli yağları, peşəkar mühəndislər tərəfindən "
+"hazırlanmış formullarla, idxal olunmuş premium baza yağları və əlavələrdən "
+"istifadə edərək istehsal edir və qablaşdırır.\n"
 "#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Aminol Yağları, ixtisaslaşmış mühəndislər tərəfindən hazırlanmış yüksək keyfiyyətli baz yağları və qatqılar istifadə edərək yüksək keyfiyyətli yağlar istehsal edir və qablaşdırır."
+"Aminol Yağları, ixtisaslaşmış mühəndislər tərəfindən hazırlanmış yüksək "
+"keyfiyyətli baz yağları və qatqılar istifadə edərək yüksək keyfiyyətli "
+"yağlar istehsal edir və qablaşdırır."
 
-#: templates/home.html:183 templates/product.html:308
+#: .\templates\home.html:183 .\templates\product.html:308
 #, fuzzy
 msgid "INNOVATION & TECHNOLOGY"
 msgstr ""
@@ -640,7 +652,7 @@ msgstr ""
 "#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "YENİLİK VƏ TEXNOLOGİYA"
 
-#: templates/home.html:188 templates/product.html:313
+#: .\templates\home.html:188 .\templates\product.html:313
 #, fuzzy
 msgid "Hybrid & EV lubricants"
 msgstr ""
@@ -649,7 +661,7 @@ msgstr ""
 "#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Hibrid və Elektrikli Nəqliyyat üçün Yağlar"
 
-#: templates/home.html:189 templates/product.html:314
+#: .\templates\home.html:189 .\templates\product.html:314
 #, fuzzy
 msgid "Choose sustainability with our Hybrid & EV lubricants"
 msgstr ""
@@ -658,11 +670,12 @@ msgstr ""
 "#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Hibrid və EV yağlarımızla davamlılığı seçin"
 
-#: templates/home.html:201
+#: .\templates\home.html:201
 msgid "Hybrid & EV Lubricants"
 msgstr "Hibrid və EV Yağları"
 
-#: templates/home.html:208 templates/home.html:218 templates/product.html:325
+#: .\templates\home.html:208 .\templates\home.html:218
+#: .\templates\product.html:325
 #, fuzzy
 msgid "Additives"
 msgstr ""
@@ -671,19 +684,21 @@ msgstr ""
 "#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Qatqılar"
 
-#: templates/home.html:210
+#: .\templates\home.html:210
 #, fuzzy
 msgid ""
 "Protect and keep your vehicle in top condition with our unique range of "
 "additives."
 msgstr ""
 "#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Unikal əlavələr çeşidimizlə avtomobilinizi qoruyun və ən yaxşı vəziyyətdə saxlayın.\n"
+"Unikal əlavələr çeşidimizlə avtomobilinizi qoruyun və ən yaxşı vəziyyətdə "
+"saxlayın.\n"
 "#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Nəqliyyat vasitənizi qoruyun və ən yaxşı vəziyyətdə saxlayın – bizim unikal qatqı məhsullarımızla."
+"Nəqliyyat vasitənizi qoruyun və ən yaxşı vəziyyətdə saxlayın – bizim unikal "
+"qatqı məhsullarımızla."
 
-#: templates/home.html:227 templates/news.html:57
-#: templates/service_laboratory.html:48 templates/service_logistics.html:71
+#: .\templates\home.html:227 .\templates\news.html:57
+#: .\templates\service_laboratory.html:48 .\templates\service_logistics.html:71
 #, fuzzy
 msgid "LATEST NEWS"
 msgstr ""
@@ -692,8 +707,8 @@ msgstr ""
 "#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "SON XƏBƏRLƏR"
 
-#: templates/home.html:247 templates/news.html:44 templates/news.html:75
-#: templates/news_detail.html:59
+#: .\templates\home.html:247 .\templates\news.html:44 .\templates\news.html:75
+#: .\templates\news_detail.html:59
 #, fuzzy
 msgid "Read more"
 msgstr ""
@@ -702,65 +717,36 @@ msgstr ""
 "#-#-#-#-#  django.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Daha çox oxu"
 
-#: templates/markets_automotive.html:13
+#: .\templates\markets_automotive.html:13
 msgid "Lubricants for passenger cars, trucks, vans, motorcycles"
 msgstr ""
 "Minik avtomobilləri, yük maşınları, mikroavtobuslar və motosikletlər üçün "
 "yağlar"
 
-#: templates/markets_automotive.html:42 templates/markets_industrial.html:41
-#: templates/markets_shipping.html:44 templates/markets_shipping.html:60
+#: .\templates\markets_automotive.html:42
+#: .\templates\markets_industrial.html:41 .\templates\markets_shipping.html:43
 msgid "Yellow Point"
 msgstr ""
 
-#: templates/markets_automotive.html:59 templates/markets_industrial.html:125
-#: templates/markets_shipping.html:141
+#: .\templates\markets_automotive.html:59
+#: .\templates\markets_industrial.html:125
+#: .\templates\markets_shipping.html:124
 msgid "Our Services"
 msgstr "Xidmətlərimiz"
 
-#: templates/markets_industrial.html:13
+#: .\templates\markets_industrial.html:13
 msgid "Lubricants for industrial equipments"
 msgstr "Sənaye avadanlıqları üçün yağlar"
 
-#: templates/markets_shipping.html:13
+#: .\templates\markets_shipping.html:13
 msgid "Lubricants for marine equipments"
 msgstr "Dəniz avadanlıqları üçün yağlar"
 
-#: templates/markets_shipping.html:33 templates/markets_shipping.html:37
-msgid "Strengthen your business"
-msgstr "Biznesinizi gücləndirin"
-
-#: templates/markets_shipping.html:39
-msgid ""
-"If you choose Aminol, you choose for the growth of your business. As an "
-"Aminol dealer, we offer you a wide range of technical and commercial "
-"support, specifically designed to strengthen your operations."
-msgstr ""
-"Aminolu seçirsinizsə, biznesinizin inkişafını seçirsiniz. Aminol dileri "
-"olaraq biz sizə əməliyyatlarınızı gücləndirmək üçün nəzərdə tutulmuş geniş "
-"texniki və kommersiya dəstəyi təklif edirik."
-
-#: templates/markets_shipping.html:49 templates/markets_shipping.html:53
-msgid "Availability"
-msgstr "Əlçatanlıq"
-
-#: templates/markets_shipping.html:55
-msgid ""
-"The Aminol Official Dealer formula is growing rapidly and is available in "
-"more and more countries. Depending on the country, the content of the "
-"formula can vary. Please contact Sales International for availability in "
-"your country."
-msgstr ""
-"Aminolun Rəsmi Diler konsepsiyası sürətlə genişlənir və getdikcə daha çox "
-"ölkədə əlçatan olur. Konsepsiyanın məzmunu ölkədən asılı olaraq dəyişə "
-"bilər. Ölkənizdəki mövcudluq barədə məlumat almaq üçün Satış Departamenti "
-"ilə əlaqə saxlayın."
-
-#: templates/markets_shipping.html:137 templates/markets_shipping.html:139
+#: .\templates\markets_shipping.html:120 .\templates\markets_shipping.html:122
 msgid "Knowledge and support"
 msgstr "Bilik və dəstək"
 
-#: templates/markets_shipping.html:140
+#: .\templates\markets_shipping.html:123
 msgid ""
 "Our experienced team is ready to assist you with advice, technical and "
 "commercial support, and the latest industry developments. Discover our wide "
@@ -770,161 +756,166 @@ msgstr ""
 "sənayenin ən son inkişafları ilə yardım etməyə hazırdır. Xidmət səhifəmizdə "
 "geniş xidmət spektrimiz və seminar materiallarımızla tanış olun."
 
-#: templates/news.html:19
+#: .\templates\news.html:19
 msgid "Always up to date with our latest news"
 msgstr "Son xəbərlərimizlə daim gündəmdə qalın"
 
-#: templates/news.html:25
+#: .\templates\news.html:25
 msgid "ALL ARTICLES"
 msgstr "BÜTÜN MƏQALƏLƏR"
 
-#: templates/news.html:36 templates/news.html:68 templates/news_detail.html:51
+#: .\templates\news.html:36 .\templates\news.html:68
+#: .\templates\news_detail.html:51
 msgid "Default news image"
 msgstr ""
 
-#: templates/news.html:80
+#: .\templates\news.html:80
 msgid "No latest news articles available."
 msgstr "Son xəbərlərlə bağlı məqalə mövcud deyil."
 
-#: templates/news_detail.html:25
+#: .\templates\news_detail.html:25
 msgid "News Image"
 msgstr ""
 
-#: templates/news_detail.html:38
+#: .\templates\news_detail.html:38
 msgid "News Content Image"
 msgstr ""
 
-#: templates/product.html:14
+#: .\templates\product.html:14
 msgid "Product Range"
 msgstr "Məhsul Çeşidləri"
 
-#: templates/product.html:27
+#: .\templates\product.html:27
 msgid "All products"
 msgstr "Bütün Məhsullar"
 
-#: templates/product.html:29
+#: .\templates\product.html:29
 msgid ""
 "\n"
-"        Here you will find our wide range of mineral, semi-synthetic, and fully\n"
+"        Here you will find our wide range of mineral, semi-synthetic, and "
+"fully\n"
 "        synthetic motor oils in various viscosities and specifications, for\n"
 "        gasoline cars, diesel cars, and hybrid vehicles.\n"
 "        "
 msgstr ""
 "\n"
-"        Burada müxtəlif viskoziteli və spesifikasiyalı mineral, yarı-sintetik və tam sintetik mühərrik yağlarımızın geniş çeşidini tapa bilərsiniz. Bunlar benzinlə işləyən avtomobillər, dizel avtomobillər və hibrid nəqliyyat vasitələri üçün nəzərdə tutulub.\n"
+"        Burada müxtəlif viskoziteli və spesifikasiyalı mineral, yarı-"
+"sintetik və tam sintetik mühərrik yağlarımızın geniş çeşidini tapa "
+"bilərsiniz. Bunlar benzinlə işləyən avtomobillər, dizel avtomobillər və "
+"hibrid nəqliyyat vasitələri üçün nəzərdə tutulub.\n"
 "        "
 
-#: templates/product.html:55 templates/product.html:186
+#: .\templates\product.html:55 .\templates\product.html:186
 msgid "Product group"
 msgstr "Məhsul qrupları"
 
-#: templates/product.html:74 templates/product.html:205
+#: .\templates\product.html:74 .\templates\product.html:205
 msgid "Segments"
 msgstr "Seqmentlər"
 
-#: templates/product.html:93
+#: .\templates\product.html:93
 msgid "Oil Type"
 msgstr "Yağ Növü"
 
-#: templates/product.html:112 templates/product.html:243
+#: .\templates\product.html:112 .\templates\product.html:243
 msgid "Viscosity"
 msgstr "Viskozluq"
 
-#: templates/product.html:133 templates/product.html:263
+#: .\templates\product.html:133 .\templates\product.html:263
 msgid "View Result"
 msgstr "Nəticəni göstər"
 
-#: templates/product.html:151
+#: .\templates\product.html:151
 msgid "More"
 msgstr "Daha çox"
 
-#: templates/product.html:159
+#: .\templates\product.html:159
 msgid "No products found matching your criteria."
 msgstr "Seçimlərinizə uyğun məhsul tapılmadı."
 
-#: templates/product.html:168
+#: .\templates\product.html:168
 msgid "Filtering"
 msgstr "Filtrləmə"
 
-#: templates/product.html:224
+#: .\templates\product.html:224
 msgid "Oil type"
 msgstr "Yağ növü"
 
-#: templates/product.html:327
+#: .\templates\product.html:327
 msgid ""
 "We use high-quality additives in our production to ensure maximum "
 "performance and protection."
 msgstr ""
 
-#: templates/product_detail.html:24
+#: .\templates\product_detail.html:24
 msgid "Back to the overview"
 msgstr "Ümumi baxışa qayıt"
 
-#: templates/product_detail.html:37
+#: .\templates\product_detail.html:37
 msgid "Featured & Benefits:"
 msgstr "Xüsusiyyətlər və faydalar:"
 
-#: templates/product_detail.html:42
+#: .\templates\product_detail.html:42
 msgid "Application:"
 msgstr "Tətbiq sahəsi:"
 
-#: templates/product_detail.html:47
+#: .\templates\product_detail.html:47
 msgid "Specification:"
 msgstr "Spesifikasiya:"
 
-#: templates/product_detail.html:68
+#: .\templates\product_detail.html:68
 msgid "Recommendations:"
 msgstr "Tövsiyələr:"
 
-#: templates/product_detail.html:74
+#: .\templates\product_detail.html:74
 msgid "No specific recommendations available."
 msgstr "Xüsusi tövsiyələr mövcud deyil."
 
-#: templates/product_detail.html:80 templates/product_detail.html:95
+#: .\templates\product_detail.html:80 .\templates\product_detail.html:95
 msgid "Available packages:"
 msgstr "Mövcud paketlər:"
 
-#: templates/product_detail.html:108
+#: .\templates\product_detail.html:108
 msgid "Property"
 msgstr "Xüsusiyyət"
 
-#: templates/product_detail.html:109
+#: .\templates\product_detail.html:109
 msgid "Unit"
 msgstr "Vahid"
 
-#: templates/product_detail.html:110
+#: .\templates\product_detail.html:110
 msgid "Test method"
 msgstr "Test metodu"
 
-#: templates/product_detail.html:111
+#: .\templates\product_detail.html:111
 msgid "Typical value"
 msgstr "Tipik dəyər"
 
-#: templates/product_detail.html:124
+#: .\templates\product_detail.html:124
 msgid "This product does not have any available specification information."
 msgstr "Bu məhsul üçün mövcud spesifikasiya məlumatı yoxdur."
 
-#: templates/service_laboratory.html:16
+#: .\templates\service_laboratory.html:16
 msgid "Aminol laboratory"
 msgstr "Aminol Laboratoriyası"
 
-#: templates/service_logistics.html:15
+#: .\templates\service_logistics.html:15
 msgid "Aminol logistics"
 msgstr "Aminol Logistika"
 
-#: venv/lib/python3.12/site-packages/django/contrib/messages/apps.py:16
+#: .\venv\Lib\site-packages\django\contrib\messages\apps.py:16
 msgid "Messages"
 msgstr "Mesajlar"
 
-#: venv/lib/python3.12/site-packages/django/contrib/sitemaps/apps.py:8
+#: .\venv\Lib\site-packages\django\contrib\sitemaps\apps.py:8
 msgid "Site Maps"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/contrib/staticfiles/apps.py:9
+#: .\venv\Lib\site-packages\django\contrib\staticfiles\apps.py:9
 msgid "Static Files"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/contrib/syndication/apps.py:7
+#: .\venv\Lib\site-packages\django\contrib\syndication\apps.py:7
 #, fuzzy
 #| msgid "Specification:"
 msgid "Syndication"
@@ -932,110 +923,110 @@ msgstr "Spesifikasiya:"
 
 #. Translators: String used to replace omitted page numbers in elided page
 #. range generated by paginators, e.g. [1, 2, '…', 5, 6, 7, '…', 9, 10].
-#: venv/lib/python3.12/site-packages/django/core/paginator.py:30
+#: .\venv\Lib\site-packages\django\core\paginator.py:30
 msgid "…"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/core/paginator.py:32
+#: .\venv\Lib\site-packages\django\core\paginator.py:32
 msgid "That page number is not an integer"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/core/paginator.py:33
+#: .\venv\Lib\site-packages\django\core\paginator.py:33
 msgid "That page number is less than 1"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/core/paginator.py:34
+#: .\venv\Lib\site-packages\django\core\paginator.py:34
 msgid "That page contains no results"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:22
+#: .\venv\Lib\site-packages\django\core\validators.py:22
 msgid "Enter a valid value."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:70
+#: .\venv\Lib\site-packages\django\core\validators.py:70
 msgid "Enter a valid domain name."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:153
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:775
+#: .\venv\Lib\site-packages\django\core\validators.py:153
+#: .\venv\Lib\site-packages\django\forms\fields.py:775
 msgid "Enter a valid URL."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:200
+#: .\venv\Lib\site-packages\django\core\validators.py:200
 msgid "Enter a valid integer."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:211
+#: .\venv\Lib\site-packages\django\core\validators.py:211
 #, fuzzy
 #| msgid "E-mail address"
 msgid "Enter a valid email address."
 msgstr "E-poçt ünvanı"
 
 #. Translators: "letters" means latin letters: a-z and A-Z.
-#: venv/lib/python3.12/site-packages/django/core/validators.py:289
+#: .\venv\Lib\site-packages\django\core\validators.py:289
 msgid ""
 "Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:297
+#: .\venv\Lib\site-packages\django\core\validators.py:297
 msgid ""
-"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or"
-" hyphens."
+"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
+"hyphens."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:309
-#: venv/lib/python3.12/site-packages/django/core/validators.py:318
-#: venv/lib/python3.12/site-packages/django/core/validators.py:332
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2220
+#: .\venv\Lib\site-packages\django\core\validators.py:309
+#: .\venv\Lib\site-packages\django\core\validators.py:318
+#: .\venv\Lib\site-packages\django\core\validators.py:332
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2220
 #, python-format
 msgid "Enter a valid %(protocol)s address."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:311
+#: .\venv\Lib\site-packages\django\core\validators.py:311
 msgid "IPv4"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:320
-#: venv/lib/python3.12/site-packages/django/utils/ipv6.py:43
+#: .\venv\Lib\site-packages\django\core\validators.py:320
+#: .\venv\Lib\site-packages\django\utils\ipv6.py:43
 msgid "IPv6"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:334
+#: .\venv\Lib\site-packages\django\core\validators.py:334
 msgid "IPv4 or IPv6"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:375
+#: .\venv\Lib\site-packages\django\core\validators.py:375
 msgid "Enter only digits separated by commas."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:381
+#: .\venv\Lib\site-packages\django\core\validators.py:381
 #, python-format
 msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:416
+#: .\venv\Lib\site-packages\django\core\validators.py:416
 #, python-format
 msgid "Ensure this value is less than or equal to %(limit_value)s."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:425
+#: .\venv\Lib\site-packages\django\core\validators.py:425
 #, python-format
 msgid "Ensure this value is greater than or equal to %(limit_value)s."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:434
+#: .\venv\Lib\site-packages\django\core\validators.py:434
 #, python-format
 msgid "Ensure this value is a multiple of step size %(limit_value)s."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:441
+#: .\venv\Lib\site-packages\django\core\validators.py:441
 #, python-format
 msgid ""
 "Ensure this value is a multiple of step size %(limit_value)s, starting from "
 "%(offset)s, e.g. %(offset)s, %(valid_value1)s, %(valid_value2)s, and so on."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:473
+#: .\venv\Lib\site-packages\django\core\validators.py:473
 #, python-format
 msgid ""
 "Ensure this value has at least %(limit_value)d character (it has "
@@ -1046,7 +1037,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:491
+#: .\venv\Lib\site-packages\django\core\validators.py:491
 #, python-format
 msgid ""
 "Ensure this value has at most %(limit_value)d character (it has "
@@ -1057,29 +1048,29 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:514
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:366
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:405
+#: .\venv\Lib\site-packages\django\core\validators.py:514
+#: .\venv\Lib\site-packages\django\forms\fields.py:366
+#: .\venv\Lib\site-packages\django\forms\fields.py:405
 #, fuzzy
 #| msgid "Phone number"
 msgid "Enter a number."
 msgstr "Telefon nömrəsi"
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:516
+#: .\venv\Lib\site-packages\django\core\validators.py:516
 #, python-format
 msgid "Ensure that there are no more than %(max)s digit in total."
 msgid_plural "Ensure that there are no more than %(max)s digits in total."
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:521
+#: .\venv\Lib\site-packages\django\core\validators.py:521
 #, python-format
 msgid "Ensure that there are no more than %(max)s decimal place."
 msgid_plural "Ensure that there are no more than %(max)s decimal places."
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:526
+#: .\venv\Lib\site-packages\django\core\validators.py:526
 #, python-format
 msgid ""
 "Ensure that there are no more than %(max)s digit before the decimal point."
@@ -1088,917 +1079,914 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:597
+#: .\venv\Lib\site-packages\django\core\validators.py:597
 #, python-format
 msgid ""
 "File extension “%(extension)s” is not allowed. Allowed extensions are: "
 "%(allowed_extensions)s."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:659
+#: .\venv\Lib\site-packages\django\core\validators.py:659
 msgid "Null characters are not allowed."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/base.py:1600
-#: venv/lib/python3.12/site-packages/django/forms/models.py:908
+#: .\venv\Lib\site-packages\django\db\models\base.py:1600
+#: .\venv\Lib\site-packages\django\forms\models.py:908
 msgid "and"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/base.py:1602
+#: .\venv\Lib\site-packages\django\db\models\base.py:1602
 #, python-format
 msgid "%(model_name)s with this %(field_labels)s already exists."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/constraints.py:22
+#: .\venv\Lib\site-packages\django\db\models\constraints.py:22
 #, python-format
 msgid "Constraint “%(name)s” is violated."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:134
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:134
 #, python-format
 msgid "Value %(value)r is not a valid choice."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:135
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:135
 msgid "This field cannot be null."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:136
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:136
 msgid "This field cannot be blank."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:137
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:137
 #, python-format
 msgid "%(model_name)s with this %(field_label)s already exists."
 msgstr ""
 
 #. Translators: The 'lookup_type' is one of 'date', 'year' or
 #. 'month'. Eg: "Title must be unique for pub_date year"
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:141
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:141
 #, python-format
 msgid ""
 "%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:180
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:180
 #, python-format
 msgid "Field of type: %(field_type)s"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1162
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1162
 #, python-format
 msgid "“%(value)s” value must be either True or False."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1163
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1163
 #, python-format
 msgid "“%(value)s” value must be either True, False, or None."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1165
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1165
 msgid "Boolean (Either True or False)"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1215
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1215
 #, python-format
 msgid "String (up to %(max_length)s)"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1217
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1217
 msgid "String (unlimited)"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1326
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1326
 msgid "Comma-separated integers"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1427
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1427
 #, python-format
 msgid ""
 "“%(value)s” value has an invalid date format. It must be in YYYY-MM-DD "
 "format."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1431
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1566
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1431
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1566
 #, python-format
 msgid ""
 "“%(value)s” value has the correct format (YYYY-MM-DD) but it is an invalid "
 "date."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1435
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1435
 msgid "Date (without time)"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1562
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1562
 #, python-format
 msgid ""
 "“%(value)s” value has an invalid format. It must be in YYYY-MM-DD "
 "HH:MM[:ss[.uuuuuu]][TZ] format."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1570
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1570
 #, python-format
 msgid ""
-"“%(value)s” value has the correct format (YYYY-MM-DD "
-"HH:MM[:ss[.uuuuuu]][TZ]) but it is an invalid date/time."
+"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
+"[TZ]) but it is an invalid date/time."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1575
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1575
 msgid "Date (with time)"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1702
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1702
 #, python-format
 msgid "“%(value)s” value must be a decimal number."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1704
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1704
 #, fuzzy
 #| msgid "Phone number"
 msgid "Decimal number"
 msgstr "Telefon nömrəsi"
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1864
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1864
 #, python-format
 msgid ""
 "“%(value)s” value has an invalid format. It must be in [DD] "
 "[[HH:]MM:]ss[.uuuuuu] format."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1868
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1868
 #, fuzzy
 #| msgid "Location"
 msgid "Duration"
 msgstr "Məkan"
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1920
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1920
 #, fuzzy
 #| msgid "E-mail address"
 msgid "Email address"
 msgstr "E-poçt ünvanı"
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1945
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1945
 msgid "File path"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2023
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2023
 #, python-format
 msgid "“%(value)s” value must be a float."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2025
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2025
 msgid "Floating point number"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2065
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2065
 #, python-format
 msgid "“%(value)s” value must be an integer."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2067
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2067
 msgid "Integer"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2163
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2163
 msgid "Big (8 byte) integer"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2180
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2180
 msgid "Small integer"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2188
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2188
 #, fuzzy
 #| msgid "Address"
 msgid "IPv4 address"
 msgstr "Ünvan"
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2219
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2219
 #, fuzzy
 #| msgid "Address"
 msgid "IP address"
 msgstr "Ünvan"
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2310
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2311
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2310
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2311
 #, python-format
 msgid "“%(value)s” value must be either None, True or False."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2313
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2313
 msgid "Boolean (Either True, False or None)"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2364
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2364
 msgid "Positive big integer"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2379
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2379
 msgid "Positive integer"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2394
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2394
 msgid "Positive small integer"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2410
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2410
 #, python-format
 msgid "Slug (up to %(max_length)s)"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2446
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2446
 msgid "Text"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2526
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2526
 #, python-format
 msgid ""
 "“%(value)s” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
 "format."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2530
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2530
 #, python-format
 msgid ""
 "“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
 "invalid time."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2534
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2534
 msgid "Time"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2642
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2642
 msgid "URL"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2666
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2666
 msgid "Raw binary data"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2731
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2731
 #, python-format
 msgid "“%(value)s” is not a valid UUID."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2733
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2733
 msgid "Universally unique identifier"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/files.py:244
+#: .\venv\Lib\site-packages\django\db\models\fields\files.py:244
 msgid "File"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/files.py:420
+#: .\venv\Lib\site-packages\django\db\models\fields\files.py:420
 msgid "Image"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/json.py:24
+#: .\venv\Lib\site-packages\django\db\models\fields\json.py:24
 msgid "A JSON object"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/json.py:26
+#: .\venv\Lib\site-packages\django\db\models\fields\json.py:26
 msgid "Value must be valid JSON."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/related.py:978
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:978
 #, python-format
 msgid "%(model)s instance with %(field)s %(value)r is not a valid choice."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/related.py:981
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:981
 msgid "Foreign Key (type determined by related field)"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/related.py:1275
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1275
 msgid "One-to-one relationship"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/related.py:1332
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1332
 #, python-format
 msgid "%(from)s-%(to)s relationship"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/related.py:1334
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1334
 #, python-format
 msgid "%(from)s-%(to)s relationships"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/related.py:1382
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1382
 msgid "Many-to-many relationship"
 msgstr ""
 
 #. Translators: If found as last label character, these punctuation
-#. characters will prevent the default label_suffix to be appended to the
-#. label
-#: venv/lib/python3.12/site-packages/django/forms/boundfield.py:185
+#. characters will prevent the default label_suffix to be appended to the label
+#: .\venv\Lib\site-packages\django\forms\boundfield.py:185
 msgid ":?.!"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:95
+#: .\venv\Lib\site-packages\django\forms\fields.py:95
 msgid "This field is required."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:315
+#: .\venv\Lib\site-packages\django\forms\fields.py:315
 #, fuzzy
 #| msgid "Phone number"
 msgid "Enter a whole number."
 msgstr "Telefon nömrəsi"
 
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:486
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:1267
+#: .\venv\Lib\site-packages\django\forms\fields.py:486
+#: .\venv\Lib\site-packages\django\forms\fields.py:1267
 msgid "Enter a valid date."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:509
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:1268
+#: .\venv\Lib\site-packages\django\forms\fields.py:509
+#: .\venv\Lib\site-packages\django\forms\fields.py:1268
 msgid "Enter a valid time."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:536
+#: .\venv\Lib\site-packages\django\forms\fields.py:536
 msgid "Enter a valid date/time."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:570
+#: .\venv\Lib\site-packages\django\forms\fields.py:570
 msgid "Enter a valid duration."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:571
+#: .\venv\Lib\site-packages\django\forms\fields.py:571
 #, python-brace-format
 msgid "The number of days must be between {min_days} and {max_days}."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:640
+#: .\venv\Lib\site-packages\django\forms\fields.py:640
 msgid "No file was submitted. Check the encoding type on the form."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:641
+#: .\venv\Lib\site-packages\django\forms\fields.py:641
 msgid "No file was submitted."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:642
+#: .\venv\Lib\site-packages\django\forms\fields.py:642
 msgid "The submitted file is empty."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:644
+#: .\venv\Lib\site-packages\django\forms\fields.py:644
 #, python-format
-msgid ""
-"Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
 msgid_plural ""
 "Ensure this filename has at most %(max)d characters (it has %(length)d)."
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:649
+#: .\venv\Lib\site-packages\django\forms\fields.py:649
 msgid "Please either submit a file or check the clear checkbox, not both."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:717
+#: .\venv\Lib\site-packages\django\forms\fields.py:717
 msgid ""
 "Upload a valid image. The file you uploaded was either not an image or a "
 "corrupted image."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:889
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:975
-#: venv/lib/python3.12/site-packages/django/forms/models.py:1592
+#: .\venv\Lib\site-packages\django\forms\fields.py:889
+#: .\venv\Lib\site-packages\django\forms\fields.py:975
+#: .\venv\Lib\site-packages\django\forms\models.py:1592
 #, python-format
 msgid "Select a valid choice. %(value)s is not one of the available choices."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:977
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:1096
-#: venv/lib/python3.12/site-packages/django/forms/models.py:1590
+#: .\venv\Lib\site-packages\django\forms\fields.py:977
+#: .\venv\Lib\site-packages\django\forms\fields.py:1096
+#: .\venv\Lib\site-packages\django\forms\models.py:1590
 msgid "Enter a list of values."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:1097
+#: .\venv\Lib\site-packages\django\forms\fields.py:1097
 msgid "Enter a complete value."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:1339
+#: .\venv\Lib\site-packages\django\forms\fields.py:1339
 msgid "Enter a valid UUID."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:1369
+#: .\venv\Lib\site-packages\django\forms\fields.py:1369
 msgid "Enter a valid JSON."
 msgstr ""
 
 #. Translators: This is the default suffix added to form field labels
-#: venv/lib/python3.12/site-packages/django/forms/forms.py:97
+#: .\venv\Lib\site-packages\django\forms\forms.py:97
 msgid ":"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/forms.py:239
+#: .\venv\Lib\site-packages\django\forms\forms.py:239
 #, python-format
 msgid "(Hidden field %(name)s) %(error)s"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/formsets.py:61
+#: .\venv\Lib\site-packages\django\forms\formsets.py:61
 #, python-format
 msgid ""
 "ManagementForm data is missing or has been tampered with. Missing fields: "
 "%(field_names)s. You may need to file a bug report if the issue persists."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/formsets.py:65
+#: .\venv\Lib\site-packages\django\forms\formsets.py:65
 #, python-format
 msgid "Please submit at most %(num)d form."
 msgid_plural "Please submit at most %(num)d forms."
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.12/site-packages/django/forms/formsets.py:70
+#: .\venv\Lib\site-packages\django\forms\formsets.py:70
 #, python-format
 msgid "Please submit at least %(num)d form."
 msgid_plural "Please submit at least %(num)d forms."
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.12/site-packages/django/forms/formsets.py:484
-#: venv/lib/python3.12/site-packages/django/forms/formsets.py:491
+#: .\venv\Lib\site-packages\django\forms\formsets.py:484
+#: .\venv\Lib\site-packages\django\forms\formsets.py:491
 msgid "Order"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/formsets.py:499
+#: .\venv\Lib\site-packages\django\forms\formsets.py:499
 msgid "Delete"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/models.py:901
+#: .\venv\Lib\site-packages\django\forms\models.py:901
 #, python-format
 msgid "Please correct the duplicate data for %(field)s."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/models.py:906
+#: .\venv\Lib\site-packages\django\forms\models.py:906
 #, python-format
 msgid "Please correct the duplicate data for %(field)s, which must be unique."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/models.py:913
+#: .\venv\Lib\site-packages\django\forms\models.py:913
 #, python-format
 msgid ""
 "Please correct the duplicate data for %(field_name)s which must be unique "
 "for the %(lookup)s in %(date_field)s."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/models.py:922
+#: .\venv\Lib\site-packages\django\forms\models.py:922
 msgid "Please correct the duplicate values below."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/models.py:1359
+#: .\venv\Lib\site-packages\django\forms\models.py:1359
 msgid "The inline value did not match the parent instance."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/models.py:1450
-msgid ""
-"Select a valid choice. That choice is not one of the available choices."
+#: .\venv\Lib\site-packages\django\forms\models.py:1450
+msgid "Select a valid choice. That choice is not one of the available choices."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/models.py:1594
+#: .\venv\Lib\site-packages\django\forms\models.py:1594
 #, python-format
 msgid "“%(pk)s” is not a valid value."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/utils.py:229
+#: .\venv\Lib\site-packages\django\forms\utils.py:229
 #, python-format
 msgid ""
 "%(datetime)s couldn’t be interpreted in time zone %(current_timezone)s; it "
 "may be ambiguous or it may not exist."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/widgets.py:527
+#: .\venv\Lib\site-packages\django\forms\widgets.py:527
 msgid "Clear"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/widgets.py:528
+#: .\venv\Lib\site-packages\django\forms\widgets.py:528
 msgid "Currently"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/widgets.py:529
+#: .\venv\Lib\site-packages\django\forms\widgets.py:529
 msgid "Change"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/widgets.py:866
+#: .\venv\Lib\site-packages\django\forms\widgets.py:866
 msgid "Unknown"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/widgets.py:867
+#: .\venv\Lib\site-packages\django\forms\widgets.py:867
 msgid "Yes"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/forms/widgets.py:868
+#: .\venv\Lib\site-packages\django\forms\widgets.py:868
 msgid "No"
 msgstr ""
 
 #. Translators: Please do not add spaces around commas.
-#: venv/lib/python3.12/site-packages/django/template/defaultfilters.py:873
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:873
 msgid "yes,no,maybe"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/template/defaultfilters.py:903
-#: venv/lib/python3.12/site-packages/django/template/defaultfilters.py:920
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:903
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:920
 #, python-format
 msgid "%(size)d byte"
 msgid_plural "%(size)d bytes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.12/site-packages/django/template/defaultfilters.py:922
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:922
 #, python-format
 msgid "%s KB"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/template/defaultfilters.py:924
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:924
 #, python-format
 msgid "%s MB"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/template/defaultfilters.py:926
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:926
 #, python-format
 msgid "%s GB"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/template/defaultfilters.py:928
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:928
 #, python-format
 msgid "%s TB"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/template/defaultfilters.py:930
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:930
 #, python-format
 msgid "%s PB"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/utils/dateformat.py:74
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:74
 msgid "p.m."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/utils/dateformat.py:75
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:75
 msgid "a.m."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/utils/dateformat.py:80
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:80
 msgid "PM"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/utils/dateformat.py:81
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:81
 msgid "AM"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/utils/dateformat.py:153
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:153
 msgid "midnight"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/utils/dateformat.py:155
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:155
 msgid "noon"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:7
+#: .\venv\Lib\site-packages\django\utils\dates.py:7
 msgid "Monday"
 msgstr "Bazar ertəsi"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:8
+#: .\venv\Lib\site-packages\django\utils\dates.py:8
 msgid "Tuesday"
 msgstr "Çərşənbə axşamı"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:9
+#: .\venv\Lib\site-packages\django\utils\dates.py:9
 msgid "Wednesday"
 msgstr "Çərşənbə"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:10
+#: .\venv\Lib\site-packages\django\utils\dates.py:10
 msgid "Thursday"
 msgstr "Cümə axşamı"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:11
+#: .\venv\Lib\site-packages\django\utils\dates.py:11
 msgid "Friday"
 msgstr "Cümə"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:12
+#: .\venv\Lib\site-packages\django\utils\dates.py:12
 msgid "Saturday"
 msgstr "Şənbə"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:13
+#: .\venv\Lib\site-packages\django\utils\dates.py:13
 msgid "Sunday"
 msgstr "Bazar"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:16
+#: .\venv\Lib\site-packages\django\utils\dates.py:16
 msgid "Mon"
 msgstr "B.e."
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:17
+#: .\venv\Lib\site-packages\django\utils\dates.py:17
 msgid "Tue"
 msgstr "Ç.a."
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:18
+#: .\venv\Lib\site-packages\django\utils\dates.py:18
 msgid "Wed"
 msgstr "Ç."
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:19
+#: .\venv\Lib\site-packages\django\utils\dates.py:19
 msgid "Thu"
 msgstr "C.a."
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:20
+#: .\venv\Lib\site-packages\django\utils\dates.py:20
 msgid "Fri"
 msgstr "C."
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:21
+#: .\venv\Lib\site-packages\django\utils\dates.py:21
 msgid "Sat"
 msgstr "Ş."
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:22
+#: .\venv\Lib\site-packages\django\utils\dates.py:22
 msgid "Sun"
 msgstr "B."
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:25
+#: .\venv\Lib\site-packages\django\utils\dates.py:25
 msgid "January"
 msgstr "Yanvar"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:26
+#: .\venv\Lib\site-packages\django\utils\dates.py:26
 msgid "February"
 msgstr "Fevral"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:27
+#: .\venv\Lib\site-packages\django\utils\dates.py:27
 msgid "March"
 msgstr "Mart"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:28
+#: .\venv\Lib\site-packages\django\utils\dates.py:28
 msgid "April"
 msgstr "Aprel"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:29
+#: .\venv\Lib\site-packages\django\utils\dates.py:29
 msgid "May"
 msgstr "May"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:30
+#: .\venv\Lib\site-packages\django\utils\dates.py:30
 msgid "June"
 msgstr "İyun"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:31
+#: .\venv\Lib\site-packages\django\utils\dates.py:31
 msgid "July"
 msgstr "İyul"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:32
+#: .\venv\Lib\site-packages\django\utils\dates.py:32
 msgid "August"
 msgstr "Avqust"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:33
+#: .\venv\Lib\site-packages\django\utils\dates.py:33
 msgid "September"
 msgstr "Sentyabr"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:34
+#: .\venv\Lib\site-packages\django\utils\dates.py:34
 msgid "October"
 msgstr "Oktyabr"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:35
+#: .\venv\Lib\site-packages\django\utils\dates.py:35
 msgid "November"
 msgstr "Noyabr"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:36
+#: .\venv\Lib\site-packages\django\utils\dates.py:36
 msgid "December"
 msgstr "Dekabr"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:39
+#: .\venv\Lib\site-packages\django\utils\dates.py:39
 msgid "jan"
 msgstr "Yan."
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:40
+#: .\venv\Lib\site-packages\django\utils\dates.py:40
 msgid "feb"
 msgstr "Fev."
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:41
+#: .\venv\Lib\site-packages\django\utils\dates.py:41
 msgid "mar"
 msgstr "Mart"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:42
+#: .\venv\Lib\site-packages\django\utils\dates.py:42
 msgid "apr"
 msgstr "Apr."
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:43
+#: .\venv\Lib\site-packages\django\utils\dates.py:43
 msgid "may"
 msgstr "May"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:44
+#: .\venv\Lib\site-packages\django\utils\dates.py:44
 msgid "jun"
 msgstr "İyn."
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:45
+#: .\venv\Lib\site-packages\django\utils\dates.py:45
 msgid "jul"
 msgstr "İyl."
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:46
+#: .\venv\Lib\site-packages\django\utils\dates.py:46
 msgid "aug"
 msgstr "Avq."
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:47
+#: .\venv\Lib\site-packages\django\utils\dates.py:47
 msgid "sep"
 msgstr "Sen."
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:48
+#: .\venv\Lib\site-packages\django\utils\dates.py:48
 msgid "oct"
 msgstr "Okt."
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:49
+#: .\venv\Lib\site-packages\django\utils\dates.py:49
 msgid "nov"
 msgstr "Noy."
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:50
+#: .\venv\Lib\site-packages\django\utils\dates.py:50
 msgid "dec"
 msgstr "Dek."
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:53
+#: .\venv\Lib\site-packages\django\utils\dates.py:53
 msgctxt "abbrev. month"
 msgid "Jan."
 msgstr "Yan."
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:54
+#: .\venv\Lib\site-packages\django\utils\dates.py:54
 msgctxt "abbrev. month"
 msgid "Feb."
 msgstr "Fev."
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:55
+#: .\venv\Lib\site-packages\django\utils\dates.py:55
 msgctxt "abbrev. month"
 msgid "March"
 msgstr "Mart"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:56
+#: .\venv\Lib\site-packages\django\utils\dates.py:56
 msgctxt "abbrev. month"
 msgid "April"
 msgstr "Apr."
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:57
+#: .\venv\Lib\site-packages\django\utils\dates.py:57
 msgctxt "abbrev. month"
 msgid "May"
 msgstr "May"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:58
+#: .\venv\Lib\site-packages\django\utils\dates.py:58
 msgctxt "abbrev. month"
 msgid "June"
 msgstr "İyn."
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:59
+#: .\venv\Lib\site-packages\django\utils\dates.py:59
 msgctxt "abbrev. month"
 msgid "July"
 msgstr "İyl."
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:60
+#: .\venv\Lib\site-packages\django\utils\dates.py:60
 msgctxt "abbrev. month"
 msgid "Aug."
 msgstr "Avq."
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:61
+#: .\venv\Lib\site-packages\django\utils\dates.py:61
 msgctxt "abbrev. month"
 msgid "Sept."
 msgstr "Sen."
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:62
+#: .\venv\Lib\site-packages\django\utils\dates.py:62
 msgctxt "abbrev. month"
 msgid "Oct."
 msgstr "Okt."
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:63
+#: .\venv\Lib\site-packages\django\utils\dates.py:63
 msgctxt "abbrev. month"
 msgid "Nov."
 msgstr "Noy."
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:64
+#: .\venv\Lib\site-packages\django\utils\dates.py:64
 msgctxt "abbrev. month"
 msgid "Dec."
 msgstr "Dek."
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:67
+#: .\venv\Lib\site-packages\django\utils\dates.py:67
 msgctxt "alt. month"
 msgid "January"
 msgstr "Yanvar"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:68
+#: .\venv\Lib\site-packages\django\utils\dates.py:68
 msgctxt "alt. month"
 msgid "February"
 msgstr "Fevral"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:69
+#: .\venv\Lib\site-packages\django\utils\dates.py:69
 msgctxt "alt. month"
 msgid "March"
 msgstr "Mart"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:70
+#: .\venv\Lib\site-packages\django\utils\dates.py:70
 msgctxt "alt. month"
 msgid "April"
 msgstr "Aprel"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:71
+#: .\venv\Lib\site-packages\django\utils\dates.py:71
 msgctxt "alt. month"
 msgid "May"
 msgstr "May"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:72
+#: .\venv\Lib\site-packages\django\utils\dates.py:72
 msgctxt "alt. month"
 msgid "June"
 msgstr "İyun"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:73
+#: .\venv\Lib\site-packages\django\utils\dates.py:73
 msgctxt "alt. month"
 msgid "July"
 msgstr "İyul"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:74
+#: .\venv\Lib\site-packages\django\utils\dates.py:74
 msgctxt "alt. month"
 msgid "August"
 msgstr "Avqust"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:75
+#: .\venv\Lib\site-packages\django\utils\dates.py:75
 msgctxt "alt. month"
 msgid "September"
 msgstr "Sentyabr"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:76
+#: .\venv\Lib\site-packages\django\utils\dates.py:76
 msgctxt "alt. month"
 msgid "October"
 msgstr "Oktyabr"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:77
+#: .\venv\Lib\site-packages\django\utils\dates.py:77
 msgctxt "alt. month"
 msgid "November"
 msgstr "Noyabr"
 
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:78
+#: .\venv\Lib\site-packages\django\utils\dates.py:78
 msgctxt "alt. month"
 msgid "December"
 msgstr "Dekabr"
 
-#: venv/lib/python3.12/site-packages/django/utils/ipv6.py:20
+#: .\venv\Lib\site-packages\django\utils\ipv6.py:20
 msgid "This is not a valid IPv6 address."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/utils/text.py:76
+#: .\venv\Lib\site-packages\django\utils\text.py:76
 #, python-format
 msgctxt "String to return when truncating text"
 msgid "%(truncated_text)s…"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/utils/text.py:287
+#: .\venv\Lib\site-packages\django\utils\text.py:287
 #, fuzzy
 #| msgid "More"
 msgid "or"
 msgstr "Daha çox"
 
 #. Translators: This string is used as a separator between list elements
-#: venv/lib/python3.12/site-packages/django/utils/text.py:306
-#: venv/lib/python3.12/site-packages/django/utils/timesince.py:135
+#: .\venv\Lib\site-packages\django\utils\text.py:306
+#: .\venv\Lib\site-packages\django\utils\timesince.py:135
 msgid ", "
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/utils/timesince.py:8
+#: .\venv\Lib\site-packages\django\utils\timesince.py:8
 #, python-format
 msgid "%(num)d year"
 msgid_plural "%(num)d years"
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.12/site-packages/django/utils/timesince.py:9
+#: .\venv\Lib\site-packages\django\utils\timesince.py:9
 #, python-format
 msgid "%(num)d month"
 msgid_plural "%(num)d months"
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.12/site-packages/django/utils/timesince.py:10
+#: .\venv\Lib\site-packages\django\utils\timesince.py:10
 #, python-format
 msgid "%(num)d week"
 msgid_plural "%(num)d weeks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.12/site-packages/django/utils/timesince.py:11
+#: .\venv\Lib\site-packages\django\utils\timesince.py:11
 #, python-format
 msgid "%(num)d day"
 msgid_plural "%(num)d days"
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.12/site-packages/django/utils/timesince.py:12
+#: .\venv\Lib\site-packages\django\utils\timesince.py:12
 #, python-format
 msgid "%(num)d hour"
 msgid_plural "%(num)d hours"
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.12/site-packages/django/utils/timesince.py:13
+#: .\venv\Lib\site-packages\django\utils\timesince.py:13
 #, python-format
 msgid "%(num)d minute"
 msgid_plural "%(num)d minutes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.12/site-packages/django/views/csrf.py:29
+#: .\venv\Lib\site-packages\django\views\csrf.py:29
 msgid "Forbidden"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/csrf.py:30
+#: .\venv\Lib\site-packages\django\views\csrf.py:30
 msgid "CSRF verification failed. Request aborted."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/csrf.py:34
+#: .\venv\Lib\site-packages\django\views\csrf.py:34
 msgid ""
 "You are seeing this message because this HTTPS site requires a “Referer "
 "header” to be sent by your web browser, but none was sent. This header is "
@@ -2006,184 +1994,210 @@ msgid ""
 "hijacked by third parties."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/csrf.py:40
+#: .\venv\Lib\site-packages\django\views\csrf.py:40
 msgid ""
 "If you have configured your browser to disable “Referer” headers, please re-"
 "enable them, at least for this site, or for HTTPS connections, or for “same-"
 "origin” requests."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/csrf.py:45
+#: .\venv\Lib\site-packages\django\views\csrf.py:45
 msgid ""
-"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or"
-" including the “Referrer-Policy: no-referrer” header, please remove them. "
-"The CSRF protection requires the “Referer” header to do strict referer "
-"checking. If you’re concerned about privacy, use alternatives like <a "
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
+"including the “Referrer-Policy: no-referrer” header, please remove them. The "
+"CSRF protection requires the “Referer” header to do strict referer checking. "
+"If you’re concerned about privacy, use alternatives like <a "
 "rel=\"noreferrer\" …> for links to third-party sites."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/csrf.py:54
+#: .\venv\Lib\site-packages\django\views\csrf.py:54
 msgid ""
 "You are seeing this message because this site requires a CSRF cookie when "
 "submitting forms. This cookie is required for security reasons, to ensure "
 "that your browser is not being hijacked by third parties."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/csrf.py:60
+#: .\venv\Lib\site-packages\django\views\csrf.py:60
 msgid ""
 "If you have configured your browser to disable cookies, please re-enable "
 "them, at least for this site, or for “same-origin” requests."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/csrf.py:66
+#: .\venv\Lib\site-packages\django\views\csrf.py:66
 msgid "More information is available with DEBUG=True."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:44
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:44
 msgid "No year specified"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:64
-#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:115
-#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:214
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:64
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:115
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:214
 msgid "Date out of range"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:94
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:94
 msgid "No month specified"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:147
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:147
 msgid "No day specified"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:194
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:194
 msgid "No week specified"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:353
-#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:384
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:353
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:384
 #, fuzzy, python-format
 #| msgid "No news articles available."
 msgid "No %(verbose_name_plural)s available"
 msgstr "Xəbər məqaləsi mövcud deyil."
 
-#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:680
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:680
 #, python-format
 msgid ""
 "Future %(verbose_name_plural)s not available because "
 "%(class_name)s.allow_future is False."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:720
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:720
 #, python-format
 msgid "Invalid date string “%(datestr)s” given format “%(format)s”"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/generic/detail.py:56
+#: .\venv\Lib\site-packages\django\views\generic\detail.py:56
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/generic/list.py:70
+#: .\venv\Lib\site-packages\django\views\generic\list.py:70
 msgid "Page is not “last”, nor can it be converted to an int."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/generic/list.py:77
+#: .\venv\Lib\site-packages\django\views\generic\list.py:77
 #, python-format
 msgid "Invalid page (%(page_number)s): %(message)s"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/generic/list.py:173
+#: .\venv\Lib\site-packages\django\views\generic\list.py:173
 #, python-format
 msgid "Empty list and “%(class_name)s.allow_empty” is False."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/static.py:49
+#: .\venv\Lib\site-packages\django\views\static.py:49
 msgid "Directory indexes are not allowed here."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/static.py:51
+#: .\venv\Lib\site-packages\django\views\static.py:51
 #, python-format
 msgid "“%(path)s” does not exist"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/static.py:68
-#: venv/lib/python3.12/site-packages/django/views/templates/directory_index.html:8
-#: venv/lib/python3.12/site-packages/django/views/templates/directory_index.html:11
+#: .\venv\Lib\site-packages\django\views\static.py:68
+#: .\venv\Lib\site-packages\django\views\templates\directory_index.html:8
+#: .\venv\Lib\site-packages\django\views\templates\directory_index.html:11
 #, python-format
 msgid "Index of %(directory)s"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:7
-#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:204
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:7
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:204
 msgid "The install worked successfully! Congratulations!"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:206
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:206
 #, python-format
 msgid ""
 "View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
 "target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:208
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:208
 #, python-format
 msgid ""
-"You are seeing this page because <a "
-"href=\"https://docs.djangoproject.com/en/%(version)s/ref/settings/#debug\" "
-"target=\"_blank\" rel=\"noopener\">DEBUG=True</a> is in your settings file "
-"and you have not configured any URLs."
+"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
+"%(version)s/ref/settings/#debug\" target=\"_blank\" "
+"rel=\"noopener\">DEBUG=True</a> is in your settings file and you have not "
+"configured any URLs."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:217
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:217
 msgid "Django Documentation"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:218
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:218
 msgid "Topics, references, &amp; how-to’s"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:226
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:226
 msgid "Tutorial: A Polling App"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:227
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:227
 msgid "Get started with Django"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:235
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:235
 msgid "Django Community"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:236
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:236
 msgid "Connect, get help, or contribute"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django_ckeditor_5/permissions.py:18
+#: .\venv\Lib\site-packages\django_ckeditor_5\permissions.py:18
 msgid "You do not have permission to upload files."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django_ckeditor_5/permissions.py:25
+#: .\venv\Lib\site-packages\django_ckeditor_5\permissions.py:25
 msgid "You must be logged in to upload files."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django_ckeditor_5/validators.py:17
+#: .\venv\Lib\site-packages\django_ckeditor_5\validators.py:17
 #, python-format
 msgid "File should be at most %(max_size)s MB."
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django_ckeditor_5/views.py:41
+#: .\venv\Lib\site-packages\django_ckeditor_5\views.py:41
 msgid "Invalid form data"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django_ckeditor_5/widgets.py:43
+#: .\venv\Lib\site-packages\django_ckeditor_5\widgets.py:43
 msgid "Check the correct settings.CKEDITOR_5_CONFIGS "
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/modeltranslation/widgets.py:32
+#: .\venv\Lib\site-packages\modeltranslation\widgets.py:32
 msgid "None"
 msgstr ""
+
+#~ msgid "Strengthen your business"
+#~ msgstr "Biznesinizi gücləndirin"
+
+#~ msgid ""
+#~ "If you choose Aminol, you choose for the growth of your business. As an "
+#~ "Aminol dealer, we offer you a wide range of technical and commercial "
+#~ "support, specifically designed to strengthen your operations."
+#~ msgstr ""
+#~ "Aminolu seçirsinizsə, biznesinizin inkişafını seçirsiniz. Aminol dileri "
+#~ "olaraq biz sizə əməliyyatlarınızı gücləndirmək üçün nəzərdə tutulmuş "
+#~ "geniş texniki və kommersiya dəstəyi təklif edirik."
+
+#~ msgid "Availability"
+#~ msgstr "Əlçatanlıq"
+
+#~ msgid ""
+#~ "The Aminol Official Dealer formula is growing rapidly and is available in "
+#~ "more and more countries. Depending on the country, the content of the "
+#~ "formula can vary. Please contact Sales International for availability in "
+#~ "your country."
+#~ msgstr ""
+#~ "Aminolun Rəsmi Diler konsepsiyası sürətlə genişlənir və getdikcə daha çox "
+#~ "ölkədə əlçatan olur. Konsepsiyanın məzmunu ölkədən asılı olaraq dəyişə "
+#~ "bilər. Ölkənizdəki mövcudluq barədə məlumat almaq üçün Satış Departamenti "
+#~ "ilə əlaqə saxlayın."
 
 #~ msgid "No news available at the moment"
 #~ msgstr "Hazırda heç bir xəbər mövcud deyil"
@@ -2197,9 +2211,10 @@ msgstr ""
 #~ msgid ""
 #~ "Remittance acts as a bridge, connecting loved ones and making the world a "
 #~ "little smaller. We are dedicated to forging strategic partnerships which "
-#~ "help us help you send money around the globe quickly, safely and affordably."
+#~ "help us help you send money around the globe quickly, safely and "
+#~ "affordably."
 #~ msgstr ""
 #~ "Pul köçürməsi körpü rolunu oynayır, sevdiklərinizi birləşdirir və dünyanı "
-#~ "bir az da kiçildir. Biz strateji tərəfdaşlıqlar qurmağa həsr olunmuşuq ki, "
-#~ "bu da sizə dünyanın hər yerinə tez, təhlükəsiz və sərfəli şəkildə pul "
+#~ "bir az da kiçildir. Biz strateji tərəfdaşlıqlar qurmağa həsr olunmuşuq "
+#~ "ki, bu da sizə dünyanın hər yerinə tez, təhlükəsiz və sərfəli şəkildə pul "
 #~ "göndərməkdə kömək edir."
