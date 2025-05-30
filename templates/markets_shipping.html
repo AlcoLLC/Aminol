@@ -27,38 +27,21 @@
         <div class="shared-images-container">
             <div class="vertical-line"></div>
 
-            <div class="section-row ">
+            {% for content in shipping_contents %}
+            <div class="section-row {% if forloop.counter|divisibleby:2 %}row-reverse{% endif %}">
                 <div class="image-container">
                     <div class="circular-image">
-                        <img loading="lazy" src="{% static '/images/services-aminol-1.jpg' %}" alt="{% trans 'Strengthen your business' %}" />
+                        <img loading="lazy" src="{{ content.image.url }}" alt="{{ content.title_translate }}" />
                     </div>
                 </div>
-                <div class="text-container">
-                    <h2>{% trans "Strengthen your business" %}</h2>
-                    <p>
-                        {% trans "If you choose Aminol, you choose for the growth of your business. As an Aminol dealer, we offer you a wide range of technical and commercial support, specifically designed to strengthen your operations." %}
-                    </p>
+                <div class="text-container {% if forloop.counter|divisibleby:2 %}text-left{% endif %}">
+                    <h2>{{ content.title_translate|linebreaksbr }}</h2>
+                    <p>{{ content.description_translate|linebreaksbr }}</p>
                 </div>
             </div>
 
-            <img loading="lazy" src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-1" alt="{% trans 'Yellow Point' %}" />
-
-            <div class="section-row row-reverse">
-                <div class="image-container">
-                    <div class="circular-image">
-                        <img loading="lazy" src="{% static '/images/services-aminol-2.jpg' %}" alt="{% trans 'Availability' %}" />
-                    </div>
-                </div>
-                <div class="text-container text-left">
-                    <h2>{% trans "Availability" %}</h2>
-                    <p>
-                        {% trans "The Aminol Official Dealer formula is growing rapidly and is available in more and more countries. Depending on the country, the content of the formula can vary. Please contact Sales International for availability in your country." %}
-                    </p>
-                </div>
-            </div>
-
-            <img loading="lazy" src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-2" alt="{% trans 'Yellow Point' %}" />
-
+            <img loading="lazy" src="{% static '/images/yellow-point.svg' %}" class="droplet droplet-{{ forloop.counter }}" alt="{% trans 'Yellow Point' %}" />
+            {% endfor %}
         </div>
     </div>
 </div>
