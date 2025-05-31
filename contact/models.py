@@ -1,26 +1,35 @@
 from django.db import models
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 
 
 class Contact(models.Model):
     HELP_CHOICES = [
-        ('buy', 'I would like to buy Aminol products'),
-        ('info', 'I would like more information'),
-        ('other', 'Others'),
+        ('buy', _('I would like to buy Aminol products.')),
+        ('become_dealer', _('I am interested in becoming a distributor.')),
+        ('technical', _('I need technical support.')),
+        ('certificates', _('I would like to request product certificates or compliance documents.')),
+        ('about', _('I need more information about a product.')),
+        ('partnership', _('I am interested in a potential partnership.')),
+        ('other', _('Other'))
     ]
     
-    help_type = models.CharField(max_length=50, choices=HELP_CHOICES)
-    company_name = models.CharField(max_length=255)
-    question = models.TextField()
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    email = models.EmailField()
-    phone_number = models.CharField(max_length=20)
+    help_type = models.CharField(max_length=50, choices=HELP_CHOICES, verbose_name=_('Help Type'))
+    company_name = models.CharField(max_length=255, verbose_name=_('Company Name'))
+    question = models.TextField(verbose_name=_('Question'))
+    first_name = models.CharField(max_length=100, verbose_name=_('First Name'))
+    last_name = models.CharField(max_length=100, verbose_name=_('Last Name'))
+    email = models.EmailField(verbose_name=_('Email'))
+    phone_number = models.CharField(max_length=20, verbose_name=_('Phone Number'))
     
     created_at = models.DateTimeField(default=timezone.now)
     
     def __str__(self):
         return f"{self.first_name} {self.last_name} - {self.company_name}"
+
+    class Meta:
+        verbose_name = _('Contact')
+        verbose_name_plural = _('Contacts')
     
 class ContactInfo(models.Model):
     title = models.CharField(max_length=255)

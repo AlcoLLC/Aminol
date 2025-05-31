@@ -45,6 +45,7 @@ def product_list(request):
 
     images = GalleryImage.objects.all().order_by('-created_at')
     partner_logos = PartnerLogo.objects.all()
+    supplier_logos = Supplier.objects.all()
 
     context = {
         'products': page_obj,
@@ -60,6 +61,7 @@ def product_list(request):
         'selected_viscosity': selected_viscosity,
         'images': images,
         'partner_logos': partner_logos,
+        'supplier_logos': supplier_logos,
     }
 
     return render(request, 'product.html', context)

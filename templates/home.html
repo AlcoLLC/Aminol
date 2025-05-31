@@ -101,7 +101,7 @@
       <div class="category-card {% if forloop.counter > 8 %}hidden{% endif %}">
         <a href="{% url 'products:product_list' %}?product_group={{ product_group.slug }}">
           <div class="category-image">
-            <img
+            <img loading="lazy"
               src="{{ product_group.image.url }}"
               alt="{{ product_group.title_translate }}"
             />
@@ -189,12 +189,12 @@
           <!-- <a href="#" class="button-style">{% trans "Discover more" %}</a> -->
         </div>
         <div class="image-container">
-          <img
+          <img loading="lazy"
             class="slide-under-img"
             src="{% static 'images_folder/Mask group.svg' %}"
             alt=""
           />
-          <img
+          <img loading="lazy"
             class="innovation-image"
             src="{% static 'images_folder/image.png' %}"
             alt="{% trans 'Hybrid & EV Lubricants' %}"
@@ -211,7 +211,7 @@
           <!-- <a href="#" class="button-style">{% trans "Discover more" %}</a> -->
         </div>
         <div class="image-container">
-          <img
+          <img loading="lazy"
             class="innovation-image"
             src="{% static 'images_folder/FR4A9609 1.png' %}"
             alt="{% trans 'Additives' %}"
@@ -233,9 +233,9 @@
         <div class="news-card">
           <div class="news-image">
             {% if news.image %}
-            <img src="{{ news.image.url }}" alt="{{ news.title_translate }}" />
+            <img loading="lazy" src="{{ news.image.url }}" alt="{{ news.title_translate }}" />
             {% else %}
-            <img src="{% static 'images_folder/default-news.svg' %}" alt="{{ news.title_translate }}" />
+            <img loading="lazy" src="{% static 'images_folder/default-news.svg' %}" alt="{{ news.title_translate }}" />
             {% endif %}
           </div>
           <div class="news-content">

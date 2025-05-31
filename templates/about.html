@@ -35,7 +35,7 @@
     <div class="shared-section">
       <div class="shared-background"></div>
       <div class="container">
-        <img src="{{ about_aminol.shared_image.url }}" alt="About Aminol" />
+        <img loading="lazy" src="{{ about_aminol.shared_image.url }}" alt="About Aminol" />
         <div class="shared-description">
           <p>Founded in {{ about_aminol.founded_year }}</p>
           <p>Based in {{ about_aminol.based_in_translate|linebreaksbr }}</p>
@@ -55,7 +55,6 @@
 
 
       <div class="container about-company-profile">
-
         <div class="section-content">
           <h2>{% trans "Company Profile" %}</h2>
           <p>{% trans "Company profile description" %}</p>
@@ -73,7 +72,7 @@
           >
             <div class="image-container">
               <div class="circular-image">
-                <img src="{{ section.image.url }}" alt="{{ section.title_translate }}" />
+                <img loading="lazy" src="{{ section.image.url }}" alt="{{ section.title_translate }}" />
               </div>
             </div>
             <div
@@ -83,7 +82,7 @@
              <p>{{ section.description_translate|safe_linebreaksbr }}</p>
             </div>
           </div>
-          <img
+          <img loading="lazy"
             src="{% static '/images/yellow-point.svg' %}"
             class="droplet droplet-{{ forloop.counter }}"
             alt="Yellow Point"
@@ -118,7 +117,7 @@
           >
             <div class="image-container">
               <div class="circular-image">
-                <img src="{{ content.image.url }}" alt="{{ content.title_translate }}" />
+                <img loading="lazy" src="{{ content.image.url }}" alt="{{ content.title_translate }}" />
               </div>
             </div>
             <div class="text-container">
@@ -126,7 +125,7 @@
               <p>{{ content.description_translate|safe_linebreaksbr }}</p>
             </div>
           </div>
-          <img
+          <img loading="lazy"
             src="{% static '/images/yellow-point.svg' %}"
             class="droplet droplet-{{ forloop.counter }}"
             alt="Yellow Point"
@@ -196,7 +195,7 @@
           >
             <div class="image-container">
               <div class="circular-image">
-                <img src="{{ content.image.url }}" alt="{{ content.title_translate }}" />
+                <img loading="lazy" src="{{ content.image.url }}" alt="{{ content.title_translate }}" />
               </div>
             </div>
             <div class="text-container">
@@ -206,7 +205,7 @@
           </div>
 
           <!-- Yellow Point Droplet -->
-          <img
+          <img loading="lazy"
             src="{% static '/images/yellow-point.svg' %}"
             class="droplet droplet-{{ forloop.counter }}"
             alt="Yellow Point"
@@ -230,21 +229,23 @@
       <h2>{% trans "DOCUMENTS AND CERTIFICATION" %}</h2>
     </div>
 
-    {% if documents_cert %}
+
     <div class="container">
+     {% for documents_cert in documents_certs %}
       <div class="certifications-container">
-        <img src="{% static '/images/certifications.png' %}" alt="" />
+        <img loading="lazy" src="{% static '/images/certifications.png' %}" alt="" />
         <h3>{{ documents_cert.title_translate|linebreaksbr }}</h3>
-        <p>{{ documents_cert.description_translate|safe_linebreaksbr }}</p>
+        <p>{{ documents_cert.description_translate|linebreaksbr }}</p>
       </div>
         <div class="hidden-description">{{ documents_cert.description|safe_linebreaksbr }}</div>
+     {% endfor %}
 
       <div class=" logos-section">
         <div id="wrapper2">
           <div id="carousel2">
             <div id="content2">
               {% for car in car_logos %}
-              <img src="{{ car.logo.url }}" class="item" alt="Car Logo" />
+              <img loading="lazy" src="{{ car.logo.url }}" class="item" alt="Car Logo" />
             {% endfor %}
             </div>
           </div>
@@ -278,10 +279,9 @@
       </div>
 
       <div class="certifications-logos">
-        <img src="{% static '/images/certifications-logos-2.png' %}" alt="" />
+        <img loading="lazy" src="{% static '/images/certifications-logos-2.png' %}" alt="" />
       </div>
     </div>
-    {% endif %}
   </div>
 
   <!-- Sustainability Tab -->
@@ -303,12 +303,12 @@
       <div class="container sustainability-content">
         <div class="sustainability-circle-wrapper">
           <div class="sustainability-circle-img">
-            <img
+            <img loading="lazy"
               class="circle-img"
               src="{% static '/images/sustainability-circle.png' %}"
               alt="Sustainability Circle"
             />
-            <img
+            <img loading="lazy"
               class="curved-text-img"
               src="{% static '/images/curve text.svg' %}"
               alt="Core of Innovation Sustainability"
@@ -333,7 +333,7 @@
           >
             <div class="image-container">
               <div class="circular-image">
-                <img src="{{ content.image.url }}" alt="{{ content.title_translate }}" />
+                <img loading="lazy" src="{{ content.image.url }}" alt="{{ content.title_translate }}" />
               </div>
             </div>
             <div class="text-container">
@@ -341,7 +341,7 @@
               <p>{{ content.description_translate|safe_linebreaksbr }}</p>
             </div>
           </div>
-          <img
+          <img loading="lazy"
             src="{% static '/images/yellow-point.svg' %}"
             class="droplet droplet-{{ forloop.counter }}"
             alt="Yellow Point"

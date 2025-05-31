@@ -1,8 +1,8 @@
 from django.db import models
 
 class News(models.Model):
-    title = models.CharField(max_length=255)
-    content = models.TextField()
+    title = models.CharField(max_length=255, blank=True, null=True)
+    content = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='news/')
     published_date = models.DateTimeField()
     is_active = models.BooleanField(default=True)
@@ -21,8 +21,8 @@ class News(models.Model):
 class News_Content(models.Model):
     news = models.ForeignKey(
         News, related_name='contents', on_delete=models.CASCADE)
-    description = models.TextField()
-    image = models.ImageField(upload_to='news/')
+    description = models.TextField(blank=True, null=True)
+    image = models.ImageField(upload_to='news/', blank=True, null=True)
 
     description_translate = models.TextField(blank=True, null=True)
 

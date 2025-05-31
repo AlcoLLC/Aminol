@@ -138,7 +138,7 @@
       <div class="product-card">
         <div class="product-image">
           {% if product.image %}
-          <img src="{{ product.image.url }}" alt="{{ product.title_translate }}" />
+          <img loading="lazy" src="{{ product.image.url }}" alt="{{ product.title_translate }}" />
           {% else %}
           {% endif %}
         </div>
@@ -315,8 +315,8 @@
           <!-- <a href="#" class="button-style">Discover more</a> -->
         </div>
         <div class="image-container">
-          <img class="slide-under-img" src="{% static 'images_folder/Mask group.svg' %}" alt="" />
-          <img class="innovation-image" src="{% static 'images_folder/image.png' %}" alt="Hybrid & EV Lubricants" />
+          <img loading="lazy" class="slide-under-img" src="{% static 'images_folder/Mask group.svg' %}" alt="" />
+          <img loading="lazy" class="innovation-image" src="{% static 'images_folder/image.png' %}" alt="Hybrid & EV Lubricants" />
         </div>
       </div>
 
@@ -329,7 +329,7 @@
           <!-- <a href="#" class="button-style">Discover more</a> -->
         </div>
         <div class="image-container">
-          <img class="innovation-image" src="{% static 'images_folder/FR4A9609 1.png' %}" alt="Additives" />
+          <img loading="lazy" class="innovation-image" src="{% static 'images_folder/FR4A9609 1.png' %}" alt="Additives" />
         </div>
       </div>
     </div>
