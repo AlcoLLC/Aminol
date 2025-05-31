@@ -25,7 +25,7 @@ class CarouselController {
         this.isDragging = false;
         this.scrollTimeout = null;
         this.isInitialized = false;
-        this.singleWidth = 0; // Bir set content-in eni
+        this.singleWidth = 0;
         this.resetInProgress = false;
 
         this.init();
@@ -39,6 +39,11 @@ class CarouselController {
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = originalContent;
         const items = Array.from(tempDiv.children);
+
+        if (items.length === 0) {
+            console.warn('Carousel content boşdur');
+            return;
+        }
 
         // Son elementi əvvələ əlavə edirik, sonra 3 kopya
         const lastItem = items[items.length - 1].cloneNode(true);
@@ -59,8 +64,6 @@ class CarouselController {
     }
 
     calculateDimensions() {
-        // İndi struktur: [lastItem] + [original] + [original] + [original] + [firstItem]
-        // Orijinal width = (total - 2 extra items) / 3
         const totalItems = this.content.children.length;
         const itemWidth = this.itemWidth + this.gap;
         this.singleWidth = (totalItems - 2) * itemWidth / 3;
@@ -68,10 +71,9 @@ class CarouselController {
     }
 
     setupInitialPosition() {
-        // Son elementdən sonra birinci orijinal elementdən başlayırıq
         const itemWidth = this.itemWidth + this.gap;
         this.carousel.style.scrollBehavior = 'auto';
-        this.carousel.scrollLeft = itemWidth; // Birinci orijinal elementi göstər
+        this.carousel.scrollLeft = itemWidth;
         this.carousel.style.cursor = 'grab';
 
         setTimeout(() => {
@@ -80,7 +82,6 @@ class CarouselController {
     }
 
     setupEventListeners() {
-        // Button events
         this.next.addEventListener("click", (e) => {
             e.preventDefault();
             this.handleNextClick();
@@ -91,7 +92,6 @@ class CarouselController {
             this.handlePrevClick();
         });
 
-        // Drag events
         this.carousel.addEventListener('mousedown', (e) => this.startDrag(e));
         this.carousel.addEventListener('touchstart', (e) => this.startDrag(e), { passive: false });
 
@@ -102,7 +102,6 @@ class CarouselController {
         this.carousel.addEventListener('mouseleave', () => this.endDrag());
         this.carousel.addEventListener('touchend', () => this.endDrag());
 
-        // Hover events
         this.carousel.addEventListener('mouseenter', () => {
             this.stopAutoplay();
         });
@@ -113,7 +112,6 @@ class CarouselController {
             }
         });
 
-        // Scroll event
         this.carousel.addEventListener('scroll', () => {
             this.handleScroll();
         });
@@ -170,14 +168,10 @@ class CarouselController {
         const maxScroll = this.carousel.scrollWidth - this.carousel.clientWidth;
         const threshold = 30;
 
-        // Sağa çox getdik - son orijinal elementdən keçdik
         if (currentScroll >= maxScroll - threshold) {
-            // Son elementdən birinci orijinal elementə smooth keçid
             this.resetPosition(itemWidth);
         }
-        // Sola çox getdik - birinci elementi keçdik (dummy last element görünür)
         else if (currentScroll <= threshold) {
-            // Birinci elementdən son orijinal elementə keçid
             this.resetPosition(this.singleWidth + itemWidth);
         }
     }
@@ -201,8 +195,6 @@ class CarouselController {
         if (this.isScrolling || !this.isInitialized || this.resetInProgress) return;
 
         this.isScrolling = true;
-
-        // Əvvəlcə pozisiyanı yoxlayırıq
         this.checkPosition();
 
         setTimeout(() => {
@@ -223,8 +215,6 @@ class CarouselController {
         if (this.isScrolling || !this.isInitialized || this.resetInProgress) return;
 
         this.isScrolling = true;
-
-        // Əvvəlcə pozisiyanı yoxlayırıq
         this.checkPosition();
 
         setTimeout(() => {
@@ -301,20 +291,58 @@ function createCarousel(id, config) {
 
 // Səhifə yüklənəndə carousel-ları yaradırıq
 function initializeCarousels() {
-    // Partner logos carousel (brochure)
-    if (document.getElementById('carousel')) {
-        createCarousel('partner', {
-            carouselId: 'carousel',
-            contentId: 'content',
-            nextId: 'next',
-            prevId: 'prev',
+    console.log('Carousel initialization başladı...');
+    
+    // Supplier logos carousel (brochure) - carousel1
+    if (document.getElementById('carousel1')) {
+        console.log('Carousel1 tapıldı, yaradılır...');
+        createCarousel('suppliers', {
+            carouselId: 'carousel1',
+            contentId: 'content1',
+            nextId: 'next1',
+            prevId: 'prev1',
             gap: 115,
             itemWidth: 110,
             autoplayDelay: 3000,
             transitionDuration: 600
         });
+    } else {
+        console.log('Carousel1 tapılmadı');
     }
 
+    // Documents carousel (about page) - carousel2
+    if (document.getElementById('carousel2')) {
+        console.log('Carousel2 tapıldı, yaradılır...');
+        createCarousel('documents', {
+            carouselId: 'carousel2',
+            contentId: 'content2',
+            nextId: 'next2',
+            prevId: 'prev2',
+            gap: 115,
+            itemWidth: 110,
+            autoplayDelay: 2800,
+            transitionDuration: 600
+        });
+    } else {
+        console.log('Carousel2 tapılmadı');
+    }
+
+    // Partner logos carousel (brochure) - carousel3
+    if (document.getElementById('carousel3')) {
+        console.log('Carousel3 tapıldı, yaradılır...');
+        createCarousel('partners', {
+            carouselId: 'carousel3',
+            contentId: 'content3',
+            nextId: 'next3',
+            prevId: 'prev3',
+            gap: 115,
+            itemWidth: 110,
+            autoplayDelay: 3200,
+            transitionDuration: 600
+        });
+    } else {
+        console.log('Carousel3 tapılmadı');
+    }
 }
 
 // Page visibility API
@@ -328,19 +356,33 @@ document.addEventListener('visibilitychange', () => {
     });
 });
 
-// Initialization
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(initializeCarousels, 300);
-    });
-} else {
-    setTimeout(initializeCarousels, 300);
+// DOM hazır olduqda carousel-ları yaradırıq
+function waitForDOM() {
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOMContentLoaded event fired');
+            setTimeout(initializeCarousels, 500);
+        });
+    } else {
+        console.log('DOM artıq hazırdır');
+        setTimeout(initializeCarousels, 500);
+    }
 }
 
+// Window load event
 window.addEventListener('load', () => {
+    console.log('Window load event fired');
     setTimeout(() => {
-        if (Object.keys(carouselInstances).length === 0) {
+        // Əgər carousel-lar yaradılmayıbsa, yenidən cəhd et
+        const activeCarousels = Object.keys(carouselInstances).length;
+        console.log(`Aktiv carousel sayı: ${activeCarousels}`);
+        
+        if (activeCarousels === 0) {
+            console.log('Carousel-lar tapılmadı, yenidən cəhd edilir...');
             initializeCarousels();
         }
-    }, 500);
+    }, 1000);
 });
+
+// Initialization
+waitForDOM();

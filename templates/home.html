@@ -129,8 +129,7 @@
   <div class="our-values bg-blue">
     <div class="container our-values-section">
       <div>
-        <img loading="lazy" src="{% static 'images_folder/curve text.svg' %}" alt="" />
-        <img loading="lazy" src="{% static 'images/values.jpg' %}" alt="" />
+        <img src="{% static 'images/values.jpg' %}" alt="" />
       </div>
       <div class="values-content">
         <h3>{% trans "Our Values" %}</h3>
@@ -257,5 +256,6 @@
 
   {% include 'components/gallery.html' %}
   {% include 'components/brochure.html' %}
+
 
 {% endblock %}
