@@ -4,7 +4,7 @@ from .models import (
     Markets_Industrial, Markets_Industrial_Content, Industries_Content,
     Markets_Shipping, Markets_Shipping_Content
 )
-from home.models import PartnerLogo, Gallery as GalleryImage, MarketLogo
+from home.models import PartnerLogo, Gallery as GalleryImage, MarketLogo, Supplier
 
 
 def automotive(request):
@@ -17,6 +17,7 @@ def automotive(request):
         )
 
     partner_logos = PartnerLogo.objects.all()
+    supplier_logos = Supplier.objects.all()
     images = GalleryImage.objects.all().order_by('-created_at')
     
     context = {
@@ -24,6 +25,7 @@ def automotive(request):
         'automotive_contents': automotive_contents,
         'partner_logos': partner_logos,
         'images': images,
+        'supplier_logos': supplier_logos,
     }
     return render(request, 'markets_automotive.html', context)
 
@@ -44,6 +46,7 @@ def industrial(request):
     images = GalleryImage.objects.all().order_by('-created_at')
     market_logos = MarketLogo.objects.all()
     partner_logos = PartnerLogo.objects.all()
+    supplier_logos = Supplier.objects.all()
     
     context = {
         'industrial_service': industrial_service,
@@ -53,6 +56,7 @@ def industrial(request):
         'images': images,
         'market_logos': market_logos,
         'partner_logos': partner_logos,
+        'supplier_logos': supplier_logos,
     }
     return render(request, 'markets_industrial.html', context)
 
@@ -69,7 +73,7 @@ def shipping(request):
         shipping_contents = Markets_Shipping_Content.objects.filter(
             markets_shipping=shipping_service 
         )
-    
+    supplier_logos = Supplier.objects.all()
     context = {
         'shipping_service': shipping_service,
         'shipping_contents': shipping_contents,
@@ -77,5 +81,6 @@ def shipping(request):
         'images': images,
         'market_logos': market_logos,
         'partner_logos': partner_logos,
+        'supplier_logos': supplier_logos,
     }
     return render(request, 'markets_shipping.html', context)
