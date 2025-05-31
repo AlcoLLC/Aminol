@@ -1,7 +1,7 @@
 import os
-from PIL import Image
+from PIL import Image, UnidentifiedImageError # UnidentifiedImageError import edildi
 from io import BytesIO
-import shutil # shutil.copy2 yerine kendimiz dosya kopyalama yapacağız.
+# shutil'e gerek kalmadı, çünkü sadece var olan dosyaları kontrol ediyoruz, kopyalamıyoruz.
 
 # Target size range in kilobytes
 TARGET_MIN_KB = 800
@@ -30,116 +30,91 @@ def get_file_size_kb(buffer):
 
 def compress_jpeg(img):
     """Iteratively compress JPEG to target size"""
-    # Try to save with original quality first if it's within max, otherwise start from max
-    # This can be refined, but for now, we stick to the iterative approach
     best_buffer = None
-    best_quality_size_kb = float('inf') # Start with a very large size
+    # En iyi sonucu saklamak için (hedefe en yakın olanı)
+    closest_size_diff = float('inf')
+    final_buffer_to_return = None # Hedef aralıkta bulunamazsa kullanılacak son geçerli buffer
 
     for quality in range(JPEG_QUALITY_MAX, JPEG_QUALITY_MIN - 1, -5):
         buffer = BytesIO()
         img.save(buffer, format="JPEG", quality=quality, optimize=True)
         size_kb = get_file_size_kb(buffer)
-        if TARGET_MIN_KB <= size_kb <= TARGET_MAX_KB:
-            return buffer # Found a good size
 
-        # Keep track of the buffer that is smallest but still over TARGET_MIN_KB
-        # or the largest if all are under TARGET_MIN_KB
-        if best_buffer is None: # First iteration
-             best_buffer = buffer
-             best_quality_size_kb = size_kb
-        elif size_kb < TARGET_MIN_KB: # If current is too small
-            if best_quality_size_kb < TARGET_MIN_KB and size_kb > best_quality_size_kb : # if best was also too small, pick the larger of two smalls
-                 best_buffer = buffer
-                 best_quality_size_kb = size_kb
-            elif best_quality_size_kb >= TARGET_MIN_KB: # if best was in acceptable range or larger, and current is too small, stick with best (or update if new best_buffer logic needed)
-                pass # Current is too small, and previous best was better or also too small but larger
-        elif size_kb > TARGET_MAX_KB: # If current is too large
-            if size_kb < best_quality_size_kb: # if current is smaller than previous best (and both are too large)
-                 best_buffer = buffer
-                 best_quality_size_kb = size_kb
-        # This logic might need further refinement if the "closest" is desired.
-        # For now, if not in range, it returns the buffer from the lowest quality tried.
-    return best_buffer if best_buffer else buffer # Return best attempt or last attempt
+        if final_buffer_to_return is None: # İlk denemede bir buffer ata
+            final_buffer_to_return = buffer
+
+        if TARGET_MIN_KB <= size_kb <= TARGET_MAX_KB:
+            return buffer # Hedef aralıkta bulundu
+
+        # Hedef aralığa en yakın olanı bulma mantığı (isteğe bağlı iyileştirme)
+        # Bu örnekte, hedef aralığa ulaşılamazsa en son denenen (en düşük kaliteli) buffer'ı döndürmek yerine,
+        # biraz daha gelişmiş bir mantık eklenebilir. Şimdilik basit tutalım.
+        # Mevcut mantık, hedef aralığa ulaşılamazsa en son denenen (JPEG_QUALITY_MIN'e en yakın) buffer'ı döndürür.
+        best_buffer = buffer # Her döngüde güncellenir, böylece en sonuncusu olur
+
+    return best_buffer # Hedef aralığa ulaşılamazsa en son denenen buffer (veya en düşük kaliteli)
 
 def compress_png(img):
     """Iteratively compress PNG to target size"""
-    best_buffer = None
-    # Similar logic to JPEG can be applied if "closest" is needed rather than just first fit or last resort.
+    last_buffer = None
     for level in PNG_COMPRESSION_LEVELS:
         buffer = BytesIO()
         img.save(buffer, format="PNG", optimize=True, compress_level=level)
         size_kb = get_file_size_kb(buffer)
         if TARGET_MIN_KB <= size_kb <= TARGET_MAX_KB:
             return buffer
-    return buffer # Return buffer from the last (weakest) compression level tried if not in range
+        last_buffer = buffer # Son denenen buffer'ı sakla
+    return last_buffer # Hedef aralığa ulaşılamazsa son denenen (en düşük sıkıştırma seviyeli) buffer'ı döndür
 
 def compress_webp(img):
     """Iteratively compress WebP to target size"""
-    # Similar logic to JPEG can be applied
-    best_buffer = None
+    last_buffer = None
     for quality in range(JPEG_QUALITY_MAX, JPEG_QUALITY_MIN - 1, -5):
         buffer = BytesIO()
-        img.save(buffer, format="WEBP", quality=quality) # optimize=True is not a param for WEBP save
+        img.save(buffer, format="WEBP", quality=quality)
         size_kb = get_file_size_kb(buffer)
         if TARGET_MIN_KB <= size_kb <= TARGET_MAX_KB:
             return buffer
-    return buffer # Return buffer from the lowest quality tried
+        last_buffer = buffer # Son denenen buffer'ı sakla
+    return last_buffer # Hedef aralığa ulaşılamazsa son denenen (en düşük kaliteli) buffer'ı döndür
 
 def process_single_image(original_image_path, compressed_image_save_path):
     """Compress a single image file and save it to the new destination."""
     try:
-        # Check if source file exists and is readable
         if not os.path.exists(original_image_path) or not os.access(original_image_path, os.R_OK):
-            print(f"⏭ Cannot read file: {original_image_path}")
+            print(f"⏭ Okunamayan dosya: {original_image_path}")
             return False
 
         original_size_kb = os.path.getsize(original_image_path) / 1024
 
-        # Skip files that are already in target range (optional, as we are creating a new file)
-        # For now, we will try to compress regardless to ensure it's in the target location
-        # if TARGET_MIN_KB <= original_size_kb <= TARGET_MAX_KB:
-        #     print(f"⏭ Original already in target range: {original_image_path} ({int(original_size_kb)} KB)")
-        #     # If already in range, we might just copy it to the destination
-        #     os.makedirs(os.path.dirname(compressed_image_save_path), exist_ok=True)
-        #     shutil.copy2(original_image_path, compressed_image_save_path)
-        #     print(f"✔ Copied (already in range): {original_image_path} to {compressed_image_save_path}")
-        #     return True
-
-        # Skip very small files
-        if original_size_kb < 50:  # Less than 50KB
-            print(f"⏭ File too small to process: {original_image_path} ({int(original_size_kb)} KB)")
-            # Optionally, copy small files as is to the destination
+        if original_size_kb < 10:  # Çok küçük dosyaları atla (örn. 10KB altı)
+            print(f"⏭ İşlenemeyecek kadar küçük dosya: {original_image_path} ({int(original_size_kb)} KB)")
+            # İsteğe bağlı: küçük dosyaları olduğu gibi kopyala
             # os.makedirs(os.path.dirname(compressed_image_save_path), exist_ok=True)
-            # shutil.copy2(original_image_path, compressed_image_save_path)
-            # print(f"📠 Copied (too small): {original_image_path} to {compressed_image_save_path}")
-            return False # Or True if copied
+            # shutil.copy2(original_image_path, compressed_image_save_path) # shutil'i tekrar import etmeniz gerekir
+            # print(f"📠 Kopyalandı (çok küçük): {original_image_path} -> {compressed_image_save_path}")
+            return False # Veya kopyalandıysa True
 
         img = Image.open(original_image_path)
-        img_format = img.format.upper() if img.format else '' # Handle cases where format might be None
+        img_format = img.format.upper() if img.format else ''
 
-        # Convert to RGB unless PNG (preserves transparency)
-        # For WEBP, Pillow might handle RGBA saving better, but let's be explicit.
-        if img.mode == 'P' or img.mode == 'LA': # Palette or Luma+Alpha
-            # If it has transparency, convert to RGBA. Otherwise, RGB.
-            if 'A' in img.mode:
+        # Mod dönüşümleri (önceki kodunuzdaki gibi)
+        if img.mode == 'P' or img.mode == 'LA':
+            if 'A' in img.mode or img.info.get("transparency") is not None: # Paletli PNG'ler için transparency kontrolü
                  img = img.convert("RGBA")
             else:
                  img = img.convert("RGB")
-        elif img_format != "PNG" and img.mode == "RGBA": # e.g. a JPEG saved with alpha channel by mistake
-             img = img.convert("RGB")
-        elif img_format == "PNG" and img.mode != "RGBA" and img.mode != "LA" and img.mode != "P":
-            # If it's a PNG but not in a mode that supports transparency well or is paletted,
-            # ensure it can be saved properly. This might need more nuanced handling
-            # depending on desired output for specific PNG types.
-            # For simplicity, if it's not RGBA/LA/P, convert to RGB. If it *should* have alpha, this will lose it.
-            if 'A' not in img.mode: # Check if it doesn't have an alpha channel already
-                img = img.convert("RGB")
+        elif img_format != "PNG" and img.mode == "RGBA":
+            img = img.convert("RGB")
+        elif img_format == "PNG" and img.mode not in ["RGBA", "LA"] and 'A' not in img.mode and img.info.get("transparency") is None:
+             # Basit PNG'ler için (alfa kanalı yoksa)
+            if img.mode != "RGB":
+                 img = img.convert("RGB")
 
 
-        # Select compression function based on format
+        buffer = None
         if img_format in ["JPEG", "JPG"]:
-            # If original was PNG with transparency and we want JPEG, it must be RGB
-            if img.mode == "RGBA":
+            if img.mode == "RGBA": # JPEG RGBA'yı desteklemez
                 img = img.convert("RGB")
             buffer = compress_jpeg(img)
         elif img_format == "PNG":
@@ -147,48 +122,50 @@ def process_single_image(original_image_path, compressed_image_save_path):
         elif img_format == "WEBP":
             buffer = compress_webp(img)
         else:
-            # Attempt to save in original format if it's a known one by Pillow but not explicitly handled
-            # Or convert to a common format like PNG if format is unknown/problematic
             try:
-                print(f"ℹ️ Unsupported explicit format: {img_format}. Trying to save as PNG.")
-                img = img.convert("RGBA") # Convert to a safe bet format
-                img_format_to_save = "PNG"
-                buffer = BytesIO() # Create a new buffer
-                img.save(buffer, format=img_format_to_save, optimize=True) # Save as PNG by default
-                # Check size, if not in range, apply PNG compression
-                size_kb = get_file_size_kb(buffer)
+                print(f"ℹ️ Desteklenmeyen format: {img_format}. PNG olarak kaydedilmeye çalışılıyor.")
+                if img.mode not in ["RGB", "RGBA"]: # PNG için güvenli bir moda dönüştür
+                    img = img.convert("RGBA") if 'A' in img.mode or img.info.get("transparency") is not None else img.convert("RGB")
+
+                temp_buffer = BytesIO()
+                img.save(temp_buffer, format="PNG", optimize=True)
+                size_kb = get_file_size_kb(temp_buffer)
                 if not (TARGET_MIN_KB <= size_kb <= TARGET_MAX_KB):
-                    buffer = compress_png(img) # Re-compress as PNG with iterations
+                    # img'nin PNG sıkıştırması için doğru modda olduğundan emin ol
+                    if img.mode == 'P': # Paletli ise ve sıkıştırma gerekiyorsa RGBA'ya dönüştür
+                         img = img.convert("RGBA")
+                    elif 'A' not in img.mode and img.info.get("transparency") is None and img.mode != "RGB":
+                         img = img.convert("RGB")
+
+                    buffer = compress_png(img)
+                else:
+                    buffer = temp_buffer
             except Exception as conv_err:
-                print(f"⏭ Error converting/saving unknown format {original_image_path} ({img_format}): {conv_err}")
+                print(f"⏭ Bilinmeyen formatı dönüştürme/kaydetme hatası {original_image_path} ({img_format}): {conv_err}")
                 return False
 
+        if buffer is None or len(buffer.getvalue()) == 0:
+            print(f"❌ Sıkıştırma {original_image_path} için bir buffer döndürmedi veya boş buffer döndürdü.")
+            return False
 
-        if buffer is None: # Should not happen if compress functions always return a buffer
-             print(f"❌ Compression failed to return a buffer for {original_image_path}")
-             return False
-
-        # Ensure target directory for the specific file exists
         os.makedirs(os.path.dirname(compressed_image_save_path), exist_ok=True)
-
-        # Write compressed version to the new path
         with open(compressed_image_save_path, "wb") as f_out:
             f_out.write(buffer.getvalue())
 
         compressed_size_kb = get_file_size_kb(buffer)
-        print(f"✔ Compressed: {original_image_path}")
-        print(f" ↳ Saved to: {compressed_image_save_path}")
-        print(f" 📊 {int(original_size_kb)} KB → {int(compressed_size_kb)} KB")
+        print(f"✔ Sıkıştırıldı: {original_image_path}")
+        print(f"  ↳ Kaydedildi: {compressed_image_save_path}")
+        print(f"  📊 {int(original_size_kb)} KB → {int(compressed_size_kb)} KB")
         return True
 
     except FileNotFoundError:
-        print(f"❌ File not found during processing: {original_image_path}")
+        print(f"❌ İşlem sırasında dosya bulunamadı: {original_image_path}")
         return False
-    except UnidentifiedImageError:
-        print(f"❌ Cannot identify image file (possibly corrupt or not an image): {original_image_path}")
+    except UnidentifiedImageError: # Pillow'dan bu hatayı import edin
+        print(f"❌ Resim dosyası tanımlanamadı (bozuk veya resim değil): {original_image_path}")
         return False
     except Exception as e:
-        print(f"❌ Error processing {original_image_path}: {e}")
+        print(f"❌ {original_image_path} işlenirken hata: {e}")
         return False
 
 def is_safe_path(path, base_dir):
@@ -203,75 +180,106 @@ def is_safe_path(path, base_dir):
 def process_source_directory():
     """Recursively process all valid image files from SOURCE_DIR to COMPRESSED_OUTPUT_DIR."""
 
-    # Safety check for source and target directories
+    # Güvenlik kontrolleri (önceki kodunuzdaki gibi)
     if not os.path.abspath(SOURCE_DIR).startswith(os.path.abspath("/Aminol")):
-        print(f"❌ Security error: Source path {SOURCE_DIR} is not within /Aminol.")
+        print(f"❌ Güvenlik hatası: Kaynak yolu {SOURCE_DIR}, /Aminol içinde değil.")
         return
     if not os.path.abspath(COMPRESSED_OUTPUT_DIR).startswith(os.path.abspath("/Aminol")):
-        print(f"❌ Security error: Target path {COMPRESSED_OUTPUT_DIR} is not within /Aminol.")
+        print(f"❌ Güvenlik hatası: Hedef yolu {COMPRESSED_OUTPUT_DIR}, /Aminol içinde değil.")
         return
 
     if not os.path.exists(SOURCE_DIR):
-        print(f"❌ Source directory does not exist: {SOURCE_DIR}")
+        print(f"❌ Kaynak dizini mevcut değil: {SOURCE_DIR}")
         return
     if not os.path.isdir(SOURCE_DIR):
-        print(f"❌ Source path is not a directory: {SOURCE_DIR}")
+        print(f"❌ Kaynak yolu bir dizin değil: {SOURCE_DIR}")
         return
 
-    # Create the base compressed output directory if it doesn't exist
     if not os.path.exists(COMPRESSED_OUTPUT_DIR):
         try:
             os.makedirs(COMPRESSED_OUTPUT_DIR)
-            print(f"📁 Created target directory: {COMPRESSED_OUTPUT_DIR}")
+            print(f"📁 Hedef dizin oluşturuldu: {COMPRESSED_OUTPUT_DIR}")
         except Exception as e:
-            print(f"❌ Could not create target directory {COMPRESSED_OUTPUT_DIR}: {e}")
+            print(f"❌ Hedef dizin {COMPRESSED_OUTPUT_DIR} oluşturulamadı: {e}")
             return
 
-    processed_count = 0
-    success_count = 0
+    total_source_files_found = 0
+    successfully_processed_this_run = 0
+    skipped_existing_count = 0
+    failed_this_run = 0
 
     try:
         for root, dirs, files in os.walk(SOURCE_DIR):
-            # Ensure the current root being walked is safe relative to SOURCE_DIR
             if not is_safe_path(root, SOURCE_DIR):
-                print(f"⏭ Skipping unsafe path during walk: {root}")
+                print(f"⏭ Gezinme sırasında güvenli olmayan yol atlanıyor: {root}")
                 continue
 
             for file in files:
                 if file.lower().endswith(IMAGE_EXTENSIONS):
+                    total_source_files_found += 1
                     original_path = os.path.join(root, file)
 
-                    # Ensure the original file path is safe
                     if not is_safe_path(original_path, SOURCE_DIR):
-                        print(f"⏭ Skipping unsafe original file path: {original_path}")
+                        print(f"⏭ Güvenli olmayan orijinal dosya yolu atlanıyor: {original_path}")
                         continue
 
-                    # Determine the corresponding path in the COMPRESSED_OUTPUT_DIR
-                    # This preserves the subdirectory structure from SOURCE_DIR
                     relative_path = os.path.relpath(original_path, SOURCE_DIR)
                     compressed_save_path = os.path.join(COMPRESSED_OUTPUT_DIR, relative_path)
 
-                    # Ensure the target save path is also safe relative to COMPRESSED_OUTPUT_DIR
                     if not is_safe_path(compressed_save_path, COMPRESSED_OUTPUT_DIR):
-                        print(f"⏭ Skipping unsafe target save path: {compressed_save_path}")
+                        print(f"⏭ Güvenli olmayan hedef kayıt yolu atlanıyor: {compressed_save_path}")
                         continue
 
+                    # --- YENİ KONTROL ---
+                    # Sıkıştırılmış dosyanın hedefte zaten var olup olmadığını kontrol et
+                    if os.path.exists(compressed_save_path):
+                        # İsteğe bağlı: Mevcut dosyanın boyutunu da kontrol edebilirsiniz.
+                        # try:
+                        #     existing_size_kb = os.path.getsize(compressed_save_path) / 1024
+                        #     if TARGET_MIN_KB <= existing_size_kb <= TARGET_MAX_KB:
+                        #         print(f"⏭ Zaten işlenmiş ve hedef aralıkta: {compressed_save_path} ({int(existing_size_kb)} KB). Atlanıyor.")
+                        #         skipped_existing_count += 1
+                        #         continue
+                        #     else:
+                        #         # Eğer boyut aralığı dışındaysa ve yeniden işlenmesini istiyorsanız bu kısmı aktif edin.
+                        #         # print(f"ℹ️ Mevcut dosya {compressed_save_path} ({int(existing_size_kb)} KB) hedef aralıkta değil. Yeniden işleniyor.")
+                        #         pass # Yeniden işlemek için devam et
+                        # except OSError: # Dosya silinmiş veya erişilemez olabilir
+                        #     pass # Yeniden işlemek için devam et
+                        
+                        # Basit kontrol: Eğer dosya varsa, daha önce işlendiğini varsay ve atla.
+                        print(f"⏭ Dosya hedefte zaten mevcut: {compressed_save_path}. Atlanıyor.")
+                        skipped_existing_count += 1
+                        continue # Bir sonraki dosyaya geç
+                    # --- KONTROL SONU ---
+
                     if process_single_image(original_path, compressed_save_path):
-                        success_count +=1
-                    processed_count += 1
-
+                        successfully_processed_this_run += 1
+                    else:
+                        failed_this_run +=1
+    
     except PermissionError as e:
-        print(f"❌ Permission denied during directory processing: {e}")
+        print(f"❌ Dizin işlenirken izin reddedildi: {e}")
     except Exception as e:
-        print(f"❌ Error during directory processing: {e}")
+        print(f"❌ Dizin işlenirken hata: {e}")
 
-    print(f"\n🏁 Processing complete. {success_count}/{processed_count} images successfully processed and saved.")
+    print(f"\n🏁 İşlem tamamlandı.")
+    print(f"🔎 Kaynakta bulunan toplam resim dosyası: {total_source_files_found}")
+    print(f"⏭ Atlanan (hedefte zaten mevcut olan): {skipped_existing_count}")
+    print(f"✔ Bu çalıştırmada başarıyla sıkıştırılan: {successfully_processed_this_run}")
+    print(f"❌ Bu çalıştırmada işlenemeyen: {failed_this_run}")
+    attempted_this_run = successfully_processed_this_run + failed_this_run
+    print(f"🛠 Bu çalıştırmada işlenmeye çalışılan: {attempted_this_run}")
+
 
 if __name__ == "__main__":
-    print(f"🚀 Starting image compression.")
-    print(f"📂 Source directory: {SOURCE_DIR}")
-    print(f"💾 Target directory for compressed files: {COMPRESSED_OUTPUT_DIR}")
-    print(f"📏 Target size range: {TARGET_MIN_KB}-{TARGET_MAX_KB} KB")
+    # Pillow'dan UnidentifiedImageError'ı import ettiğinizden emin olun
+    # from PIL import UnidentifiedImageError (script'in başında zaten var)
+    
+    print(f"🚀 Resim sıkıştırma başlatılıyor.")
+    print(f"📂 Kaynak dizin: {SOURCE_DIR}")
+    print(f"💾 Sıkıştırılmış dosyalar için hedef dizin: {COMPRESSED_OUTPUT_DIR}")
+    print(f"📏 Hedef boyut aralığı: {TARGET_MIN_KB}-{TARGET_MAX_KB} KB")
     print("-" * 60)
 
     process_source_directory()

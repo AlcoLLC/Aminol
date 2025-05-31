@@ -1,71 +1,85 @@
-{% extends 'base.html' %}
-{% load static %}
-{% load i18n %}
-
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% load i18n %} {% block content %}
 <div class="news-page">
-    {% include 'components/navbar_dark.html' %}
+  {% include 'components/navbar_dark.html' %}
 
-    <header class="page-header">
-    </header>
+  <header class="page-header"></header>
 
-    <!-- Breadcrumb -->
-    <div class="breadcrumb container">
-        <a href="/">{% trans "Home page" %}</a>|<p>{% trans "News" %}</p>
+  <!-- Breadcrumb -->
+  <div class="breadcrumb container">
+    <a href="/">{% trans "Home page" %}</a>|
+    <p>{% trans "News" %}</p>
+  </div>
+
+  <div class="container">
+    <div class="news-detail-top-content">
+      <h2>{{ news.title_translate|linebreaksbr }}</h2>
+      <p>{{ news.published_date|date:"F d, Y" }}</p>
     </div>
-
-    <div class="container">
-        <div class="news-detail-top-content">
-            <h2>{{ news.title_translate|linebreaksbr }}</h2>
-            <p>{{ news.published_date|date:"F d, Y" }}</p>
-        </div>
+  </div>
+  <div class="services-offer-section brand-portal-section-tab container">
+    <div class="services-offer-image">
+      <img
+        loading="lazy"
+        src="{{ news.image.url }}"
+        alt="{% trans 'News Image' %}"
+      />
     </div>
-    <div class="services-offer-section brand-portal-section-tab container">
-        <div class="services-offer-image">
-            <img loading="lazy" src="{{ news.image.url }}" alt="{% trans 'News Image' %}" />
-        </div>
-        <div class="text-container text-left">
-            <p>{{ news.content_translate|linebreaksbr }}</p>
-        </div>
+    <div class="text-container text-left">
+      <p>{{ news.content_translate|linebreaksbr }}</p>
     </div>
+  </div>
 
-{% for content in contents %}
-    <div class="services-offer-section {% if forloop.counter|divisibleby:2 %}reverse{% endif %} brand-portal-section container">
-        <div class="text-container text-left">
-            <p>{{ content.description_translate|linebreaksbr }}</p>
-        </div>
-        <div class="services-offer-image">
-            <img loading="lazy" src="{{ content.image.url }}" alt="{% trans 'News Content Image' %}" />
-        </div>
+  {% for content in contents %}
+  <div
+    class="services-offer-section {% if forloop.counter|divisibleby:2 %}reverse{% endif %} brand-portal-section container"
+  >
+    <div class="text-container text-left">
+      <p>{{ content.description_translate|linebreaksbr }}</p>
     </div>
-{% endfor %}
+    <div class="services-offer-image">
+      <img
+        loading="lazy"
+        src="{{ content.image.url }}"
+        alt="{% trans 'News Content Image' %}"
+      />
+    </div>
+  </div>
+  {% endfor %}
 
- <div class="container latest-news">
-            <div class="news-cards">
-                {% for news in latest_news %}
-                    <div class="news-card">
-                        <div class="news-image">
-                            {% if news.image %}
-                                <img loading="lazy" src="{{ news.image.url }}" alt="{{ news.title_translate }}" />
-                            {% else %}
-                                <img loading="lazy" src="{% static 'images_folder/zavod.svg' %}" alt="{% trans 'Default news image' %}" />
-                            {% endif %}
-                        </div>
-                        <div class="news-content">
-                            <h5>{{ news.title_translate|linebreaksbr }}</h5>
-                            <p>
-                                {{ news.content_translate|truncatewords:10 }}
-                            </p>
-                            <a href="{% url 'news:news_detail' news.pk %}">{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></a>
-                        </div>
-                    </div>
-                {% empty %}
-                {% endfor %}
-            </div>
+  <section class="news-section">
+    <div class="section-header">
+      <h2>{% trans "LATEST NEWS" %}</h2>
+    </div>
+    <div class="container latest-news">
+      <div class="news-cards">
+        {% for news in latest_news %}
+        <div class="news-card">
+          <div class="news-image">
+            {% if news.image %}
+            <img
+              loading="lazy"
+              src="{{ news.image.url }}"
+              alt="{{ news.title_translate }}"
+            />
+            {% else %}
+            <img
+              loading="lazy"
+              src="{% static 'images_folder/zavod.svg' %}"
+              alt="{% trans 'Default news image' %}"
+            />
+            {% endif %}
+          </div>
+          <div class="news-content">
+            <h5>{{ news.title_translate|linebreaksbr }}</h5>
+            <p>{{ news.content_translate|truncatewords:10 }}</p>
+            <a href="{% url 'news:news_detail' news.pk %}"
+              >{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i
+            ></a>
+          </div>
         </div>
-
-    {% include 'components/whatsapp.html' %}
-
+        {% empty %} {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% include 'components/whatsapp.html' %} {% endblock %}
 </div>
-
-{% endblock %}
