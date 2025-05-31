@@ -93,9 +93,15 @@
   {% if available_liters %}
   <div class="product-litre">
     <p> {% trans "Available packages:" %} </p>
-    {% for liter in available_liters %}
-    <span>{{ liter.volume }}L</span>
-    {% endfor %}
+   {% for liter in available_liters %}
+  <span>
+    {% if liter.volume|floatformat:"0" == liter.volume|stringformat:"s" %}
+      {{ liter.volume|floatformat:"0" }}L
+    {% else %}
+      {{ liter.volume }}L
+    {% endif %}
+  </span>
+{% endfor %}
   </div>
   {% endif %}
 </section>

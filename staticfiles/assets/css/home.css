@@ -1431,7 +1431,7 @@
 
 /* LATEST NEWS  */
 .news-section {
-  margin: 100px auto;
+  margin: 100px auto !important;
 }
 .latest-news {
   padding: 100px 0  0;
