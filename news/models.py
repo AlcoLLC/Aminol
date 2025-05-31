@@ -22,7 +22,7 @@ class News_Content(models.Model):
     news = models.ForeignKey(
         News, related_name='contents', on_delete=models.CASCADE)
     description = models.TextField(blank=True, null=True)
-    image = models.ImageField(upload_to='news/')
+    image = models.ImageField(upload_to='news/', blank=True, null=True)
 
     description_translate = models.TextField(blank=True, null=True)
 
