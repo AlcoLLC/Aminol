@@ -3,7 +3,7 @@ from django.db.models import Q
 from django.core.paginator import Paginator
 from .models import Product, Product_group, Segments, Oil_Types, Viscosity, ProductProperty
 from django.http import JsonResponse
-from home.models import PartnerLogo, Gallery as GalleryImage
+from home.models import PartnerLogo, Gallery as GalleryImage, Supplier
 
 def product_list(request):
     products = Product.objects.all()
