@@ -146,12 +146,6 @@ text-align: left;
   border-radius: 8px;
 }
 
- .guarantee-section .row-item:nth-child(3) {
-  background-color: #012762;
-  color: #fff;
-  border-radius: 8px;
-}
-
 .guarantee-section .row-item-2 span {
   color: #ffd936;
 }
