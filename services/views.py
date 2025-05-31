@@ -6,17 +6,20 @@ from .models import (
     Aminol_Logistics
 )
 from news.models import News
-from home.models import PartnerLogo, Gallery as GalleryImage
+from home.models import PartnerLogo, Gallery as GalleryImage, Supplier
 
 
 def aminol_dealer_view(request):
     dealer = Aminol_Official_Dealer.objects.last()
     dealer_contents = Aminol_Official_Dealer_Content.objects.filter(aminol_official_dealer=dealer) if dealer else []
     partner_logos = PartnerLogo.objects.all()
+    supplier_logos = Supplier.objects.all()
     
     context = {
         'dealer': dealer,
         'dealer_contents': dealer_contents,
+        'partner_logos': partner_logos,
+        'supplier_logos': supplier_logos
     }
     
     return render(request, 'service_aminol_dealer.html', context)
@@ -24,10 +27,14 @@ def aminol_dealer_view(request):
 def aminol_laboratory_view(request):
     laboratories = Aminol_Labaratory.objects.all()
     latest_news = News.objects.filter(is_active=True)[:3]
+    partner_logos = PartnerLogo.objects.all()
+    supplier_logos = Supplier.objects.all()
     
     context = {
         'laboratories': laboratories,
         'latest_news': latest_news,
+        'partner_logos': partner_logos,
+        'supplier_logos': supplier_logos
     }
     
     return render(request, 'service_laboratory.html', context)
@@ -35,10 +42,14 @@ def aminol_laboratory_view(request):
 def aminol_logistics_view(request):
     logistics = Aminol_Logistics.objects.all()
     latest_news = News.objects.filter(is_active=True)[:3]
+    partner_logos = PartnerLogo.objects.all()
+    supplier_logos = Supplier.objects.all()
     
     context = {
         'logistics': logistics,
         'latest_news': latest_news,
+        'partner_logos': partner_logos,
+        'supplier_logos': supplier_logos
     }
     
     return render(request, 'service_logistics.html', context)
