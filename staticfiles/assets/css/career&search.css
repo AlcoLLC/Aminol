@@ -1,0 +1,148 @@
+
+
+ .career-button {
+  white-space: nowrap;
+  width: 160px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1.9px solid #012762;
+  border-radius: 5px;
+  color: #012762;
+  font-size: 16px;
+  font-weight: 500;
+  flex: 1;
+  text-align: center;
+  transition: all 0.5s ease;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+
+.career-section {
+  margin-bottom: 100px;
+}
+
+.career-section .career-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+}
+
+.career-section .tab {
+  white-space: nowrap;
+  padding: 10px;
+  border: 1.9px solid #012762;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #012762;
+  font-size: 16px;
+  font-weight: 500;
+  flex: 1;
+  text-align: center;
+  transition: all 0.5s ease;
+}
+
+.tab.active {
+  background-color: #012762;
+  color: #fff;
+}
+
+.career-content .tab-content {
+  display: none;
+}
+
+.career-content .tab-content.active {
+  display: block;
+}
+
+
+@media (min-width: 770px) and (max-width: 1024px) {
+  .career-section .career-tabs {
+  gap: 8px;
+}
+
+.career-section .tab {
+  font-size: 13px;
+}
+
+}
+
+@media (min-width: 650px) and  (max-width: 770px) {
+    .career-section .career-tabs {
+  gap: 4px;
+}
+
+.career-section .tab {
+  padding: 8px 4px;
+  font-size: 11px;
+}
+
+}
+
+@media (max-width: 650px) {
+ .career-section .career-tabs {
+  flex-direction: column;
+  gap: 8px;
+}
+.career-section .tab {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+}
+}
+
+
+.vacancy-content {
+  color: #28315e;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.vacancy-content h2 {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 48px;
+}
+
+.vacancy-content p {
+  max-width: 62%;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+
+@media (max-width: 770px) {
+  .vacancy-content h2{
+    font-size: 22px;
+    line-height: 40px;
+  }
+ .vacancy-content p {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+ 
+
+}
+
+@media (max-width: 520px) {
+
+  .vacancy-content h2{
+    font-size: 18px;
+    line-height: 30px; 
+    margin-bottom: 10px;
+  }
+ .vacancy-content p {
+    font-size: 12px;
+    line-height: 18px;
+    max-width: 90%
+  }
+
+}

@@ -525,7 +525,7 @@ nav {
   align-items: center;
 }
 
-.news-page .breadcrumb {
+.non-header-page .breadcrumb {
   margin-top: 70px ;
 }
 
@@ -1475,7 +1475,7 @@ footer .alco-privacy p {
   position: relative;
 }
 
-.news-page .page-header {
+.non-header-page .page-header {
   height: 8vh;
 }
 
