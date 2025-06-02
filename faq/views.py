@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView
 from .models import FAQ
+from django.utils.translation import gettext_lazy as _
 
 def faq_view(request):
     faqs = FAQ.objects.filter(is_active=True).order_by('created_at')
