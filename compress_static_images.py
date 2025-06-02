@@ -1,84 +1,81 @@
 import os
+import shutil
 from PIL import Image, UnidentifiedImageError
 from io import BytesIO
 
-# Target size range in kilobytes
 TARGET_MIN_KB = 800
 TARGET_MAX_KB = 1200
-
-# JPEG/WebP quality settings
 JPEG_QUALITY_MIN = 30
 JPEG_QUALITY_MAX = 95
-
-# PNG compression levels (strongest first)
 PNG_COMPRESSION_LEVELS = list(range(9, -1, -1))
+IMAGE_EXTENSIONS = ('.jpg', '.jpeg', '.png', '.webp', '.svg')
 
-# Supported image formats
-IMAGE_EXTENSIONS = ('.jpg', '.jpeg', '.png', '.webp')
-
-# Source and target directories
 DIRECTORIES_TO_PROCESS = [
-    {
-        'source': 'staticfiles/images_1',
-        'target': 'staticfiles/images'
-    },
-    {
-        'source': 'staticfiles/images_folder_1',
-        'target': 'staticfiles/images_folder'
-    }
+    {'source': 'staticfiles/images_1', 'target': 'staticfiles/images'},
+    {'source': 'staticfiles/images_folder_1', 'target': 'staticfiles/images_folder'}
 ]
 
 
 def get_file_size_kb(buffer):
-    """Return file size in KB from BytesIO buffer"""
     return len(buffer.getvalue()) / 1024
 
-def compress_jpeg(img):
-    """Iteratively compress JPEG to target size"""
-    best_buffer = None
-    final_buffer_to_return = None
 
+def compress_jpeg(img):
+    best_buffer = None
     for quality in range(JPEG_QUALITY_MAX, JPEG_QUALITY_MIN - 1, -5):
         buffer = BytesIO()
         img.save(buffer, format="JPEG", quality=quality, optimize=True)
-        size_kb = get_file_size_kb(buffer)
-
-        if final_buffer_to_return is None:
-            final_buffer_to_return = buffer
-
-        if TARGET_MIN_KB <= size_kb <= TARGET_MAX_KB:
+        if TARGET_MIN_KB <= get_file_size_kb(buffer) <= TARGET_MAX_KB:
             return buffer
-
         best_buffer = buffer
-
     return best_buffer
 
+
 def compress_png(img):
-    """Iteratively compress PNG to target size"""
     last_buffer = None
     for level in PNG_COMPRESSION_LEVELS:
         buffer = BytesIO()
         img.save(buffer, format="PNG", optimize=True, compress_level=level)
-        size_kb = get_file_size_kb(buffer)
-        if TARGET_MIN_KB <= size_kb <= TARGET_MAX_KB:
+        if TARGET_MIN_KB <= get_file_size_kb(buffer) <= TARGET_MAX_KB:
             return buffer
         last_buffer = buffer
     return last_buffer
 
+
 def compress_webp(img):
-    """Iteratively compress WebP to target size"""
     last_buffer = None
     for quality in range(JPEG_QUALITY_MAX, JPEG_QUALITY_MIN - 1, -5):
         buffer = BytesIO()
         img.save(buffer, format="WEBP", quality=quality)
-        size_kb = get_file_size_kb(buffer)
-        if TARGET_MIN_KB <= size_kb <= TARGET_MAX_KB:
+        if TARGET_MIN_KB <= get_file_size_kb(buffer) <= TARGET_MAX_KB:
             return buffer
         last_buffer = buffer
     return last_buffer
 
-def process_single_image(original_image_path, compressed_image_save_path):
-    """Compress a single image file and save it to the new destination."""
+
+def copy_svg_file(original_path, target_path):
+    try:
+        os.makedirs(os.path.dirname(target_path), exist_ok=True)
+        shutil.copy2(original_path, target_path)
+        print(f"📄 SVG kopyalandı: {original_path} → {target_path}")
+        return True
+    except Exception as e:
+        print(f"❌ SVG dosyası kopyalanamadı: {original_path} → {e}")
+        return False
+
+
+def move_small_file(original_path, source_root):
+    try:
+        relative_path = os.path.relpath(original_path, source_root)
+        skipped_path = os.path.join("staticfiles", "skipped_small_images", relative_path)
+        os.makedirs(os.path.dirname(skipped_path), exist_ok=True)
+        os.rename(original_path, skipped_path)
+        print(f"📁 Küçük dosya taşındı: {skipped_path}")
+    except Exception as e:
+        print(f"❌ Küçük dosya taşınamadı: {original_path} → {e}")
+
+
+def process_single_image(original_image_path, compressed_image_save_path, source_root):
     try:
         if not os.path.exists(original_image_path) or not os.access(original_image_path, os.R_OK):
             print(f"⏭ Okunamayan dosya: {original_image_path}")
@@ -88,27 +85,25 @@ def process_single_image(original_image_path, compressed_image_save_path):
 
         if original_size_kb < 10:
             print(f"⏭ İşlenemeyecek kadar küçük dosya: {original_image_path} ({int(original_size_kb)} KB)")
+            move_small_file(original_image_path, source_root)
             return False
 
         img = Image.open(original_image_path)
         img_format = img.format.upper() if img.format else ''
 
-        # Mode conversions
-        if img.mode == 'P' or img.mode == 'LA':
-            if 'A' in img.mode or img.info.get("transparency") is not None:
-                 img = img.convert("RGBA")
-            else:
-                 img = img.convert("RGB")
+        # Convert modes
+        if img.mode in ['P', 'LA']:
+            img = img.convert("RGBA") if 'A' in img.mode or img.info.get("transparency") else img.convert("RGB")
         elif img_format != "PNG" and img.mode == "RGBA":
             img = img.convert("RGB")
-        elif img_format == "PNG" and img.mode not in ["RGBA", "LA"] and 'A' not in img.mode and img.info.get("transparency") is None:
-            if img.mode != "RGB":
-                 img = img.convert("RGB")
+        elif img_format == "PNG":
+            if img.mode not in ["RGBA", "LA"] and 'A' not in img.mode and img.info.get("transparency") is None:
+                img = img.convert("RGB")
 
+        # Compress
         buffer = None
         if img_format in ["JPEG", "JPG"]:
-            if img.mode == "RGBA":
-                img = img.convert("RGB")
+            img = img.convert("RGB") if img.mode == "RGBA" else img
             buffer = compress_jpeg(img)
         elif img_format == "PNG":
             buffer = compress_png(img)
@@ -116,28 +111,19 @@ def process_single_image(original_image_path, compressed_image_save_path):
             buffer = compress_webp(img)
         else:
             try:
-                print(f"ℹ️ Desteklenmeyen format: {img_format}. PNG olarak kaydedilmeye çalışılıyor.")
-                if img.mode not in ["RGB", "RGBA"]:
-                    img = img.convert("RGBA") if 'A' in img.mode or img.info.get("transparency") is not None else img.convert("RGB")
-
+                img = img.convert("RGBA") if 'A' in img.mode or img.info.get("transparency") else img.convert("RGB")
                 temp_buffer = BytesIO()
                 img.save(temp_buffer, format="PNG", optimize=True)
-                size_kb = get_file_size_kb(temp_buffer)
-                if not (TARGET_MIN_KB <= size_kb <= TARGET_MAX_KB):
-                    if img.mode == 'P':
-                         img = img.convert("RGBA")
-                    elif 'A' not in img.mode and img.info.get("transparency") is None and img.mode != "RGB":
-                         img = img.convert("RGB")
-
+                if not (TARGET_MIN_KB <= get_file_size_kb(temp_buffer) <= TARGET_MAX_KB):
                     buffer = compress_png(img)
                 else:
                     buffer = temp_buffer
-            except Exception as conv_err:
-                print(f"⏭ Bilinmeyen formatı dönüştürme/kaydetme hatası {original_image_path} ({img_format}): {conv_err}")
+            except Exception as e:
+                print(f"⏭ Bilinmeyen formatı dönüştürme hatası {original_image_path}: {e}")
                 return False
 
-        if buffer is None or len(buffer.getvalue()) == 0:
-            print(f"❌ Sıkıştırma {original_image_path} için bir buffer döndürmedi veya boş buffer döndürdü.")
+        if not buffer or len(buffer.getvalue()) == 0:
+            print(f"❌ Sıkıştırma başarısız: {original_image_path}")
             return False
 
         os.makedirs(os.path.dirname(compressed_image_save_path), exist_ok=True)
@@ -146,132 +132,81 @@ def process_single_image(original_image_path, compressed_image_save_path):
 
         compressed_size_kb = get_file_size_kb(buffer)
         print(f"✔ Sıkıştırıldı: {original_image_path}")
-        print(f"  ↳ Kaydedildi: {compressed_image_save_path}")
         print(f"  📊 {int(original_size_kb)} KB → {int(compressed_size_kb)} KB")
         return True
 
     except FileNotFoundError:
-        print(f"❌ İşlem sırasında dosya bulunamadı: {original_image_path}")
+        print(f"❌ Dosya bulunamadı: {original_image_path}")
         return False
     except UnidentifiedImageError:
-        print(f"❌ Resim dosyası tanımlanamadı (bozuk veya resim değil): {original_image_path}")
+        print(f"❌ Tanınamayan resim dosyası: {original_image_path}")
         return False
     except Exception as e:
-        print(f"❌ {original_image_path} işlenirken hata: {e}")
+        print(f"❌ Genel hata ({original_image_path}): {e}")
         return False
 
-def is_safe_path(path, base_dir):
-    """Ensure path is within the intended base_dir to prevent directory traversal attacks."""
-    try:
-        abs_base = os.path.abspath(base_dir)
-        abs_path = os.path.abspath(path)
-        return abs_path.startswith(abs_base)
-    except Exception:
-        return False
 
 def process_directory_pair(source_dir, target_dir):
-    """Process images from source_dir to target_dir."""
-    
-    if not os.path.exists(source_dir):
-        print(f"❌ Kaynak dizini mevcut değil: {source_dir}")
-        return 0, 0, 0, 0
-    if not os.path.isdir(source_dir):
-        print(f"❌ Kaynak yolu bir dizin değil: {source_dir}")
-        return 0, 0, 0, 0
+    total_files = 0
+    skipped_existing = 0
+    processed = 0
+    failed = 0
 
-    if not os.path.exists(target_dir):
-        try:
-            os.makedirs(target_dir)
-            print(f"📁 Hedef dizin oluşturuldu: {target_dir}")
-        except Exception as e:
-            print(f"❌ Hedef dizin {target_dir} oluşturulamadı: {e}")
-            return 0, 0, 0, 0
+    for root, _, files in os.walk(source_dir):
+        for file in files:
+            if file.lower().endswith(IMAGE_EXTENSIONS):
+                total_files += 1
+                original_path = os.path.join(root, file)
+                relative_path = os.path.relpath(original_path, source_dir)
+                compressed_path = os.path.join(target_dir, relative_path)
 
-    total_source_files_found = 0
-    successfully_processed_this_run = 0
-    skipped_existing_count = 0
-    failed_this_run = 0
+                if os.path.exists(compressed_path):
+                    print(f"⏭ Zaten mevcut: {compressed_path}")
+                    skipped_existing += 1
+                    continue
 
-    try:
-        for root, dirs, files in os.walk(source_dir):
-            if not is_safe_path(root, source_dir):
-                print(f"⏭ Gezinme sırasında güvenli olmayan yol atlanıyor: {root}")
-                continue
-
-            for file in files:
-                if file.lower().endswith(IMAGE_EXTENSIONS):
-                    total_source_files_found += 1
-                    original_path = os.path.join(root, file)
-
-                    if not is_safe_path(original_path, source_dir):
-                        print(f"⏭ Güvenli olmayan orijinal dosya yolu atlanıyor: {original_path}")
-                        continue
-
-                    relative_path = os.path.relpath(original_path, source_dir)
-                    compressed_save_path = os.path.join(target_dir, relative_path)
-
-                    if not is_safe_path(compressed_save_path, target_dir):
-                        print(f"⏭ Güvenli olmayan hedef kayıt yolu atlanıyor: {compressed_save_path}")
-                        continue
-
-                    # Check if compressed file already exists
-                    if os.path.exists(compressed_save_path):
-                        print(f"⏭ Dosya hedefte zaten mevcut: {compressed_save_path}. Atlanıyor.")
-                        skipped_existing_count += 1
-                        continue
-
-                    if process_single_image(original_path, compressed_save_path):
-                        successfully_processed_this_run += 1
+                if file.lower().endswith('.svg'):
+                    if copy_svg_file(original_path, compressed_path):
+                        processed += 1
                     else:
-                        failed_this_run += 1
-    
-    except PermissionError as e:
-        print(f"❌ Dizin işlenirken izin reddedildi: {e}")
-    except Exception as e:
-        print(f"❌ Dizin işlenirken hata: {e}")
+                        failed += 1
+                    continue
 
-    return total_source_files_found, skipped_existing_count, successfully_processed_this_run, failed_this_run
+                if process_single_image(original_path, compressed_path, source_dir):
+                    processed += 1
+                else:
+                    failed += 1
+
+    return total_files, skipped_existing, processed, failed
+
 
 def process_all_directories():
-    """Process all configured directory pairs."""
-    
-    print(f"🚀 Staticfiles resim sıkıştırma başlatılıyor.")
-    print(f"📏 Hedef boyut aralığı: {TARGET_MIN_KB}-{TARGET_MAX_KB} KB")
+    print(f"🚀 Sıkıştırma başlatıldı ({TARGET_MIN_KB}-{TARGET_MAX_KB} KB hedef boyut)")
     print("-" * 80)
-    
-    grand_total_files = 0
-    grand_total_skipped = 0
-    grand_total_processed = 0
-    grand_total_failed = 0
-    
-    for dir_config in DIRECTORIES_TO_PROCESS:
-        source_dir = dir_config['source']
-        target_dir = dir_config['target']
-        
-        print(f"\n📂 İşleniyor: {source_dir} → {target_dir}")
+
+    totals = [0, 0, 0, 0]
+
+    for pair in DIRECTORIES_TO_PROCESS:
+        source, target = pair['source'], pair['target']
+        print(f"\n📂 İşleniyor: {source} → {target}")
         print("-" * 60)
-        
-        total_files, skipped, processed, failed = process_directory_pair(source_dir, target_dir)
-        
-        print(f"\n📊 {source_dir} için özet:")
-        print(f"🔎 Bulunan toplam resim dosyası: {total_files}")
-        print(f"⏭ Atlanan (hedefte zaten mevcut olan): {skipped}")
-        print(f"✔ Başarıyla sıkıştırılan: {processed}")
-        print(f"❌ İşlenemeyen: {failed}")
-        
-        grand_total_files += total_files
-        grand_total_skipped += skipped
-        grand_total_processed += processed
-        grand_total_failed += failed
-    
-    print(f"\n" + "=" * 80)
-    print(f"🏁 TÜM DİZİNLER İÇİN GENEL ÖZET:")
-    print(f"🔎 Toplam bulunan resim dosyası: {grand_total_files}")
-    print(f"⏭ Toplam atlanan (hedefte zaten mevcut olan): {grand_total_skipped}")
-    print(f"✔ Toplam başarıyla sıkıştırılan: {grand_total_processed}")
-    print(f"❌ Toplam işlenemeyen: {grand_total_failed}")
-    attempted_total = grand_total_processed + grand_total_failed
-    print(f"🛠 Toplam işlenmeye çalışılan: {attempted_total}")
+
+        result = process_directory_pair(source, target)
+        totals = [sum(x) for x in zip(totals, result)]
+
+        print(f"\n📊 {source} özeti:")
+        print(f"🔎 Toplam dosya bulundu: {result[0]}")
+        print(f"⏭ Atlanan (zaten var): {result[1]}")
+        print(f"✔ Sıkıştırıldı/kopyalandı: {result[2]}")
+        print(f"❌ Başarısız: {result[3]}")
+
+    print("\n" + "=" * 80)
+    print("🏁 GENEL ÖZET")
+    print(f"🔎 Toplam dosya bulundu: {totals[0]}")
+    print(f"⏭ Toplam atlanan: {totals[1]}")
+    print(f"✔ Başarılı: {totals[2]}")
+    print(f"❌ Başarısız: {totals[3]}")
+    print(f"🛠 İşlenmeye çalışılan toplam: {totals[2] + totals[3]}")
 
 
 if __name__ == "__main__":
