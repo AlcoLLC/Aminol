@@ -57,24 +57,19 @@
           {% if product.jaso %}
           <p>JASO <span>{{ product.jaso }}</span></p>
           {% endif %}
-          {% for segment in product.segments.all %}
-          <p>Segment <span>{{ segment.title }}</span></p>
-          {% endfor %}
           {% if product.oem_sertification %}
           <p>{{ product.oem_sertification|linebreaksbr }}</p>
           {% endif %}
         </div>
+        {% if product.recommendations %}
         <div class="recommendations">
-          <h3>{% trans "Recommendations:" %} </h3>
-          {% if product.recommendations %}
+          <h3>{% trans "Recommendations:" %} </h3>   
           <div class="recommendations-content">
             {{ product.recommendations_translate|linebreaksbr }}
           </div>
-          {% else %}
-          <p>{% trans "No specific recommendations available." %} </p>
-          {% endif %}
+          {% else %}          
         </div>
-
+        {% endif %}
         {% if available_liters %}
         <div class="hidden-product-litre">
           <h3>{% trans "Available packages:" %} </h3>
