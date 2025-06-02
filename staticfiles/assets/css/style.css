@@ -1476,7 +1476,7 @@ footer .alco-privacy p {
 }
 
 .non-header-page .page-header {
-  height: 8vh;
+  height: 8vh !important;
 }
 
 .page-header::after {
