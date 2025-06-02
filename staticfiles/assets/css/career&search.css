@@ -105,9 +105,7 @@
 }
 
 .steps-content  {
- margin-top: 50px;
- margin-bottom: 50px;
-
+ margin-top: 20px;
 }
 
 .steps-content h2 {
@@ -122,6 +120,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
+  margin-bottom: 60px;
 }
 
  .career-buttons{
@@ -176,14 +175,27 @@
     z-index: 5;
 }
 
-.career-steps::before{
+
+
+.career-steps::after{
   content: "";
   position: absolute;
   z-index: -1;
   width: 50%;
   height: 3px;
   background-color: #012762;
-  left: 0;
+  left: 25%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.career-steps::before{
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 50%;
+  height: 3px;
+  background-color: #F6F9FF;
+  left: 75%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
@@ -198,8 +210,16 @@
     align-items: center;
     justify-content: center;
     color: #012762;
+    font-weight: 600;
+}
+.career-steps .checked{
+    background-color: #012762;
+    color: #F6F9FF;
 }
 
+.career-steps .next{
+    border: 2px solid #012762;
+}
 
 @media (max-width: 770px) {
   .vacancy-main-content h2{
@@ -225,4 +245,116 @@
     max-width: 90%
   }
 
+}
+
+
+
+.career-form {
+  margin: 70px auto;
+  color: #28315e;
+  border-radius: 12px;
+}
+
+
+.career-form h2 {
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 24.03px;
+  letter-spacing: 0px;
+}
+
+.career-form p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0px;
+}
+
+.career-form .form-group {
+  margin-bottom: 20px;
+}
+
+.career-form .form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.career-form .form-group span {
+  color: #EC1C31;
+}
+
+.career-form .form-control {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #b4b7d425;
+  border-radius: 6px;
+  background-color: #f6f9ff;
+  font-size: 16px;
+  color: #28315e;
+}
+
+.career-form .form-control:focus {
+  outline: none;
+  border-color: #b4b7d4;
+}
+
+.career-form textarea.form-control {
+  resize: vertical;
+  min-height: 170px;
+  max-height: 200px;
+}
+
+.career-form .form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.career-form .form-row .form-group {
+  flex: 1;
+}
+
+.career-btns{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    gap: 20px;
+}
+
+.career-form .btn{
+  background-color: #F6F9FF;
+  border: none;
+  width: 200px;
+  height: 45px;
+    border-radius: 24px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.career-form .btn a{
+  color: #012762;
+  font-size: 16px;
+}
+
+.career-form .btn-send {
+  background-color: #f92b3f;
+  color: white;
+}
+
+.career-form .btn-send a{
+  color: white;
+}
+
+.career-form .btn:hover {
+  background-color: #e7dfdf;
+}
+.career-form .btn-send:hover {
+  background-color: #d9232f;
 }
