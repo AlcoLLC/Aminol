@@ -125,7 +125,6 @@ Aminol Support Team
     contact_info = ContactInfo.objects.last()
     
     context = {
-        'form': form,
         'help_choices': help_choices,
         'contact_info': contact_info,
         'form_labels': form_labels 
