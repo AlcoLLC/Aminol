@@ -1,0 +1,54 @@
+{% extends 'base.html' %} {% load static %} {% load i18n %} {% block content %}
+<div class="non-header-page">
+  {% include 'components/navbar_dark.html' %}
+
+  <header class="page-header"></header>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb container">
+    <a href="/">{% trans "Home Page" %}</a>|
+    <p>{% trans "Career" %}</p>
+  </div>
+
+
+  <div class="container">
+      <div class="career-button">{% trans "We are hiring!" %}</div>
+      <div class="vacancy-main-content">
+        <h2>Product designer</h2>
+        <p>We are looking for a Mid-Level Product Designer to join our team</p>
+        <div class="career-buttons">
+          <div class="career-button">100% remote
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div class="career-button">Full-time
+            <i class="fa-regular fa-clock"></i>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div class="container">
+    <div class="vacancy-main-content">
+      <h2>{% trans "Submit your application." %}</h2>
+      <p>{% trans "Enter your personal information. Pay attention to the required file formats." %}</p>
+    </div>
+
+    <div class="career-steps">
+
+      <span class="checked"><i class="fa-solid fa-check"></i></span>
+      <span class="next">2</span>
+      <span class="simple">3</span>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+  {% include 'components/whatsapp.html' %}
+</div>
+
+{% endblock %}
