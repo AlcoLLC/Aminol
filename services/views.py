@@ -7,6 +7,7 @@ from .models import (
 )
 from news.models import News
 from home.models import PartnerLogo, Gallery as GalleryImage, Supplier
+from django.utils.translation import gettext_lazy as _
 
 
 def aminol_dealer_view(request):
