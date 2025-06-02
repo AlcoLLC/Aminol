@@ -78,7 +78,6 @@
 
 
 .vacancy-content {
-  color: #28315e;
   display: flex;
   align-items: start;
   justify-content: space-between;
@@ -86,14 +85,40 @@
   padding: 20px 0;
 }
 
+.vacancy-main-content  {
+  width: 60%;
+}
+
 .vacancy-main-content h2 {
+  color: #28315e;
   font-weight: 600;
   font-size: 24px;
   line-height: 48px;
 }
 
 .vacancy-main-content p {
+  color: #28315e;
   max-width: 62%;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.steps-content  {
+ margin-top: 50px;
+ margin-bottom: 50px;
+
+}
+
+.steps-content h2 {
+  color: #28315e;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 48px;
+}
+
+.steps-content p {
+  color: #28315e;
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
@@ -139,6 +164,39 @@
 
 .vacancy-content .apply-button:hover{
     background-color: #ee1d32;
+}
+
+.career-steps{
+    margin: 70px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 5;
+}
+
+.career-steps::before{
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 50%;
+  height: 3px;
+  background-color: #012762;
+  left: 10%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.career-steps span{
+    font-size: 24px;
+    background-color: #F6F9FF;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #012762;
 }
 
 

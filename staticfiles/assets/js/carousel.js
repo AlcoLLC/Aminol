@@ -2,7 +2,7 @@
 class CarouselController {
     constructor(options) {
         this.gap = options.gap || 115;
-        this.itemWidth = options.itemWidth || 110;
+        this.itemWidth = options.itemWidth || 155;
         this.scrollAmount = this.itemWidth + this.gap;
         this.autoplayDelay = options.autoplayDelay || 2700;
         this.transitionDuration = options.transitionDuration || 800;
