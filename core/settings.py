@@ -83,6 +83,7 @@ INSTALLED_APPS = [
     'news',
     'brands',
     'products',
+    'career',
 ]
 
 MIDDLEWARE = [

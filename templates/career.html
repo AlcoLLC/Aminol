@@ -1,0 +1,89 @@
+{% extends 'base.html' %} {% load static %} {% load i18n %} {% block content %}
+<div class="non-header-page">
+  {% include 'components/navbar_dark.html' %}
+
+  <header class="page-header"></header>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb container">
+    <a href="/">{% trans "Home Page" %}</a>|
+    <p>{% trans "Career" %}</p>
+  </div>
+  
+
+  <div class="container">
+    <div class="product-content">
+       <div class="career-button" >{% trans "We are hiring!" %}</div>
+
+      <h2>{% trans "Be a part of our mission." %}</h2>
+      <p>
+        {% blocktrans %} 
+        We are looking for passionate people to join us on our
+        mission. We value flat hierarchies, clear communication, and full
+        ownership and resposibilities.
+        {% endblocktrans %}
+      </p>
+    </div>
+  </div>
+
+
+<!-- Career Section -->
+<section class="career-section container">
+  <div class="career-tabs">
+    <div class="tab active" data-tab="view-all">{% trans "View All" %}</div>
+    <div class="tab" data-tab="development">{% trans "Development" %}</div>
+    <div class="tab" data-tab="design">{% trans "Design" %}</div>
+    <div class="tab" data-tab="marketing">{% trans "Marketing" %}</div>
+    <div class="tab" data-tab="customer-service">{% trans "Customer Service" %}</div>
+  </div>
+</section>
+
+<div class="career-content container">
+  <!-- View All Tab -->
+  <div class="tab-content active" id="view-all">
+  
+    <div class="vacancy-content">
+      <div class="left-content">
+        <h2>Product designer</h2>
+        <p>We are looking for a Mid-Level Product Designer to join our team</p>
+        <div class="career-buttons">
+          <div class="career-button">100% remote
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div class="career-button">Full-time
+            <i class="fa-regular fa-clock"></i>
+          </div>
+        </div>
+      </div>
+      <a href="" class="apply-button">{% trans "Apply" %}</a>
+    </div>
+  </div>
+
+  <!-- Development Tab -->
+  <div class="tab-content " id="development">
+        <p>development</p>
+  </div>
+
+    <!-- Design Tab -->
+   <div class="tab-content " id="design">
+  </div>
+
+    <!-- Marketing Tab -->
+   <div class="tab-content " id="marketing">
+  </div>
+
+    <!-- Customer Service Tab -->
+   <div class="tab-content " id="customer-service">
+  </div>
+
+ 
+
+</div>
+
+
+
+{% include 'components/contactcomponent.html' %} 
+{% include 'components/whatsapp.html' %}
+</div>
+
+{% endblock %}
