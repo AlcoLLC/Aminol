@@ -1,28 +1,5 @@
-
-
- .career-button {
-  white-space: nowrap;
-  width: 160px;
-  height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  border: 1.9px solid #012762;
-  border-radius: 5px;
-  color: #012762;
-  font-size: 16px;
-  font-weight: 500;
-  flex: 1;
-  text-align: center;
-  transition: all 0.5s ease;
-  margin-bottom: 15px;
-  margin-top: 15px;
-}
-
-
 .career-section {
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 
 .career-section .career-tabs {
@@ -102,44 +79,85 @@
   display: flex;
   align-items: start;
   justify-content: space-between;
+  border-top: 1px solid #28315e7c ;
+  padding: 20px 0;
 }
 
-.vacancy-content h2 {
+.vacancy-main-content h2 {
   font-weight: 600;
   font-size: 24px;
   line-height: 48px;
 }
 
-.vacancy-content p {
+.vacancy-main-content p {
   max-width: 62%;
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
 }
 
+ .career-buttons{
+    display: flex;
+    align-items: start;
+    gap: 10px;
+    width: 75%;
+ }
+
+ .career-button {
+  white-space: nowrap;
+  width: 160px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1.9px solid #012762;
+  border-radius: 5px;
+  color: #012762;
+  font-size: 16px;
+  font-weight: 500;
+  flex: 1;
+  text-align: center;
+  transition: all 0.5s ease;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+
+.vacancy-content .apply-button{
+    font-weight: 600;
+    font-size: 18px;
+    color: #fff;
+    background-color: #F92B3F;
+    border-radius: 47px;
+    padding: 8px 30px;
+    transition: all 0.3s ease;
+}
+
+.vacancy-content .apply-button:hover{
+    background-color: #ee1d32;
+}
+
 
 @media (max-width: 770px) {
-  .vacancy-content h2{
+  .vacancy-main-content h2{
     font-size: 22px;
     line-height: 40px;
   }
- .vacancy-content p {
+ .vacancy-main-content p {
     font-size: 14px;
     line-height: 18px;
   }
-
- 
-
 }
 
 @media (max-width: 520px) {
 
-  .vacancy-content h2{
+  .vacancy-main-content h2{
     font-size: 18px;
     line-height: 30px; 
     margin-bottom: 10px;
   }
- .vacancy-content p {
+ .vacancy-main-content p {
     font-size: 12px;
     line-height: 18px;
     max-width: 90%
