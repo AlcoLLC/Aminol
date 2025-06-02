@@ -35,7 +35,7 @@ def about_page_view(request):
 
     partner_logos = PartnerLogo.objects.all()
     car_logos = CarLogo.objects.all()
-    images = GalleryImage.objects.all().order_by('-created_at')
+    images = GalleryImage.objects.all().order_by('order')
     supplier_logos = Supplier.objects.all()
 
     context = {
