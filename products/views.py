@@ -38,12 +38,12 @@ def product_list(request):
     page_number = request.GET.get('page', 1)
     page_obj = paginator.get_page(page_number)
 
-    product_groups = Product_group.objects.all()
+    product_groups = Product_group.objects.all().order_by('order')
     segments = Segments.objects.all()
     oil_types = Oil_Types.objects.all()
     viscosity_options = Viscosity.objects.all()
 
-    images = GalleryImage.objects.all().order_by('-created_at')
+    images = GalleryImage.objects.all().order_by('order')
     partner_logos = PartnerLogo.objects.all()
     supplier_logos = Supplier.objects.all()
 

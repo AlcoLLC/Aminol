@@ -18,7 +18,7 @@ def automotive(request):
 
     partner_logos = PartnerLogo.objects.all()
     supplier_logos = Supplier.objects.all()
-    images = GalleryImage.objects.all().order_by('-created_at')
+    images = GalleryImage.objects.all().order_by('order')
     
     context = {
         'automotive_service': automotive_service,
@@ -43,7 +43,7 @@ def industrial(request):
             markets_industrial=industrial_service
         )
 
-    images = GalleryImage.objects.all().order_by('-created_at')
+    images = GalleryImage.objects.all().order_by('order')
     market_logos = MarketLogo.objects.all()
     partner_logos = PartnerLogo.objects.all()
     supplier_logos = Supplier.objects.all()
@@ -65,7 +65,7 @@ def shipping(request):
     automotive_service = Markets_Automotive.objects.last() 
     shipping_contents = None
 
-    images = GalleryImage.objects.all().order_by('-created_at')
+    images = GalleryImage.objects.all().order_by('order')
     market_logos = MarketLogo.objects.all()
     partner_logos = PartnerLogo.objects.all()
     
