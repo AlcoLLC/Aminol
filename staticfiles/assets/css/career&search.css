@@ -4,13 +4,16 @@
 
 .career-section .career-tabs {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   gap: 10px;
   position: relative;
 }
 
 .career-section .tab {
+  width: 20% ;
+  max-width: 20%;
   white-space: nowrap;
   padding: 10px;
   border: 1.9px solid #012762;

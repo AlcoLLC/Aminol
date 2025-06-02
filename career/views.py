@@ -5,5 +5,5 @@ from django.views.generic import ListView
 def career_view(request):
     return render(request, 'career.html')
 
-def career_step1_view(request):
+def career_steps_view(request):
     return render(request, 'career_steps.html')
