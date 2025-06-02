@@ -167,6 +167,7 @@
 }
 
 .career-steps{
+    width: 100%;
     margin: 70px auto;
     display: flex;
     align-items: center;
@@ -182,7 +183,7 @@
   width: 50%;
   height: 3px;
   background-color: #012762;
-  left: 10%;
+  left: 0;
   top: 50%;
   transform: translate(-50%, -50%);
 }
