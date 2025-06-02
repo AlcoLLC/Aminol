@@ -4,10 +4,11 @@
   justify-content: space-between;
   column-gap: 30px;
   margin: 50px auto;
+  flex-direction: row-reverse;
 }
 
 .services-offer-section.reverse {
-  flex-direction: row-reverse;
+  flex-direction: row;
 }
 
 .services-offer-section .services-offer-image {
