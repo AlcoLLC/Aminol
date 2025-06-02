@@ -53,7 +53,6 @@ def about_page_view(request):
         'car_logos': car_logos,
         'images': images,
         'supplier_logos': supplier_logos,
-
     }
 
     return render(request, 'about.html', context)
