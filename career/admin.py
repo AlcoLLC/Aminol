@@ -1,11 +1,11 @@
-# admin.py
 from django.contrib import admin
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 from .models import Department, Job, JobApplication
+from modeltranslation.admin import TranslationAdmin
 
 @admin.register(Department)
-class DepartmentAdmin(admin.ModelAdmin):
+class DepartmentAdmin(TranslationAdmin):
     list_display = ['name', 'slug', 'is_active', 'job_count', 'created_at']
     list_filter = ['is_active', 'created_at']
     search_fields = ['name']
@@ -16,15 +16,24 @@ class DepartmentAdmin(admin.ModelAdmin):
         return obj.job_set.count()
     job_count.short_description = _('Jobs Count')
 
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
+
 @admin.register(Job)
-class JobAdmin(admin.ModelAdmin):
+class JobAdmin(TranslationAdmin):
     list_display = [
         'title', 
         'department', 
         'work_type', 
         'time_type', 
         'is_active',
-        'application_count',
         'created_at'
     ]
     list_filter = [
@@ -43,7 +52,7 @@ class JobAdmin(admin.ModelAdmin):
             'fields': ('title', 'department')
         }),
         (_('Job Details'), {
-            'fields': ('job_description', 'requirements', 'responsibilities', 'bonus_skills')
+            'fields': ('job_description', 'requirements')
         }),
         (_('Work Configuration'), {
             'fields': ('work_type', 'time_type', 'is_active')
@@ -53,16 +62,17 @@ class JobAdmin(admin.ModelAdmin):
             'classes': ('collapse',)
         }),
     )
+
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
     
-    def application_count(self, obj):
-        count = obj.jobapplication_set.count()
-        if count > 0:
-            return format_html(
-                '<a href="/admin/your_app/jobapplication/?job__id__exact={}">{}</a>',
-                obj.id, count
-            )
-        return count
-    application_count.short_description = _('Applications')
 
 @admin.register(JobApplication)
 class JobApplicationAdmin(admin.ModelAdmin):
@@ -121,7 +131,6 @@ class JobApplicationAdmin(admin.ModelAdmin):
         return '-'
     cv_link.short_description = _('CV File')
     
-    # Bulk actions
     actions = ['mark_as_reviewing', 'mark_as_interview', 'mark_as_accepted', 'mark_as_rejected']
     
     def mark_as_reviewing(self, request, queryset):

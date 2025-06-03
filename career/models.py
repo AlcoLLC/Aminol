@@ -32,8 +32,6 @@ class Job(models.Model):
     department = models.ForeignKey(Department, on_delete=models.CASCADE, verbose_name=_('Department'))
     job_description = models.TextField(verbose_name=_('Job Description'))
     requirements = models.TextField(verbose_name=_('Requirements'))
-    responsibilities = models.TextField(verbose_name=_('Responsibilities'))
-    bonus_skills = models.TextField(blank=True, verbose_name=_('Bonus Skills'))
     
     work_type = models.CharField(
         max_length=20,
@@ -76,7 +74,8 @@ class JobApplication(models.Model):
     phone = models.CharField(max_length=20, verbose_name=_('Phone'))
     cv_file = models.FileField(upload_to='cv_files/', verbose_name=_('CV File'))
     motivation_letter = models.TextField(verbose_name=_('Motivation Letter'))
-    
+    ip_address = models.GenericIPAddressField(null=True, blank=True, verbose_name=_("IP Address"))
+
     status = models.CharField(
         max_length=20,
         choices=APPLICATION_STATUS_CHOICES,
