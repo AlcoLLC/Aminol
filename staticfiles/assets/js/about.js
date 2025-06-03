@@ -47,8 +47,31 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Function to get current tab from URL parameter
+  function getCurrentTabFromUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const tabParam = urlParams.get('tab');
+    const validTabs = ['about-aminol', 'quality', 'production', 'documents', 'sustainability'];
+    return validTabs.includes(tabParam) ? tabParam : 'about-aminol'; // Default to about-aminol
+  }
+
+  // Function to update URL without page reload
+  function updateUrl(tabId) {
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    if (tabId === 'about-aminol') {
+      // Remove tab parameter for default tab to keep URL clean
+      urlParams.delete('tab');
+    } else {
+      urlParams.set('tab', tabId);
+    }
+    
+    const newUrl = window.location.pathname + (urlParams.toString() ? '?' + urlParams.toString() : '');
+    history.pushState({ tab: tabId }, '', newUrl);
+  }
+
   if (tabs.length > 0) {
-    function switchTab(tabId) {
+    function switchTab(tabId, updateHistory = true) {
       tabContents.forEach((content) => {
         content.classList.remove("active");
       });
@@ -58,26 +81,42 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       const selectedContent = document.getElementById(tabId);
-      selectedContent.classList.add("active");
+      if (selectedContent) {
+        selectedContent.classList.add("active");
+      }
 
-      document.querySelector(`[data-tab="${tabId}"]`).classList.add("active");
+      const selectedTab = document.querySelector(`[data-tab="${tabId}"]`);
+      if (selectedTab) {
+        selectedTab.classList.add("active");
+      }
+
+      // Update URL if needed
+      if (updateHistory) {
+        updateUrl(tabId);
+      }
 
       positionDropletsForTab(tabId);
     }
 
+    // Handle tab clicks
     tabs.forEach((tab) => {
       tab.addEventListener("click", function () {
         const tabId = this.getAttribute("data-tab");
-        switchTab(tabId);
+        switchTab(tabId, true);
       });
     });
 
-    const activeTab = document.querySelector(".tab.active");
-    if (activeTab) {
-      const activeTabId = activeTab.getAttribute("data-tab");
-      positionDropletsForTab(activeTabId);
-    }
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', function(event) {
+      const tabId = getCurrentTabFromUrl();
+      switchTab(tabId, false); // Don't update history since we're responding to history change
+    });
 
+    // Initialize tab based on URL on page load
+    const initialTab = getCurrentTabFromUrl();
+    switchTab(initialTab, false); // Don't push to history on initial load
+
+    // Position droplets on window resize
     window.addEventListener('resize', function () {
       const activeTab = document.querySelector(".tab.active");
       if (activeTab) {
@@ -98,6 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Position droplets after page fully loads
   window.addEventListener('load', function() {
     if (tabs.length > 0) {
       const activeTab = document.querySelector(".tab.active");

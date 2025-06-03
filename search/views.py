@@ -274,10 +274,35 @@ def search_view(request):
             results.append({
                 'title': title,
                 'description': description[:200] + '...' if len(description) > 200 else description,
-                'url': '/about/quality/',
+                'url': '/about/?tab=quality/',
                 'type': 'Quality',
                 'image': content.image.url if content.image else None
             })
+
+        if is_english:
+            certifications_contents = DocumentsCertification.objects.filter(
+                Q(title__icontains=query) |
+                Q(description__icontains=query)
+            ).distinct()
+        else:
+            certifications_contents = DocumentsCertification.objects.filter(
+                Q(title_translate__icontains=query) |
+                Q(description_translate__icontains=query) |
+                Q(title__icontains=query) |
+                Q(description__icontains=query)
+            ).distinct()
+
+        for content in certifications_contents:
+            title = content.title_translate if not is_english and content.title_translate else content.title
+            description = content.description_translate if not is_english and content.description_translate else content.description
+            results.append({
+                'title': title,
+                'description': description[:200] + '...' if len(description) > 200 else description,
+                'url': '/about/?tab=documents/',
+                'type': 'Documents & Certifications',
+                'image': content.image.url if content.image else None
+            })
+    
         
         if is_english:
             production_contents = ProductionContent.objects.filter(
@@ -298,7 +323,7 @@ def search_view(request):
             results.append({
                 'title': title,
                 'description': description[:200] + '...' if len(description) > 200 else description,
-                'url': '/about/production/',
+                'url': '/about/?tab=production/',
                 'type': 'Production',
                 'image': content.image.url if content.image else None
             })
@@ -322,7 +347,7 @@ def search_view(request):
             results.append({
                 'title': title,
                 'description': description[:200] + '...' if len(description) > 200 else description,
-                'url': '/about/sustainability/',
+                'url': '/about/?tab=sustainability/',
                 'type': 'Sustainability',
                 'image': content.image.url if content.image else None
             })
