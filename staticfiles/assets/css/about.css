@@ -31,7 +31,7 @@ text-align: left;
   transition: all 0.5s ease;
 }
 
-.tab.active {
+.about-section .tab.active {
   background-color: #f6f9ff;
   color: #012762;
 }

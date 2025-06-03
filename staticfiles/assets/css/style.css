@@ -739,8 +739,8 @@ nav {
 
 .shared-section img {
   width: 380px;
-  height: 380px;
-  object-fit: cover;
+  max-height: 380px;
+  object-fit: contain;
 }
 .shared-section .shared-description {
   color: #fff;
@@ -788,7 +788,7 @@ nav {
   }
   .shared-section img {
     width: 350px;
-    height: 350px;
+    max-height: 350px;
   }
 
   .shared-section .container {
@@ -825,8 +825,8 @@ nav {
   }
 
   .shared-section img {
-    width: 80%;
-    height: 250px;
+    width: 100%;
+    max-height: 250px;
   }
 
   .shared-section .shared-description .button-style {
@@ -853,7 +853,7 @@ nav {
   }
 
   .shared-section img {
-    height: 20vh;
+    max-height: 20vh;
   }
 
   .shared-section .shared-description p {
@@ -1485,7 +1485,7 @@ footer .alco-privacy p {
 }
 
 .non-header-page .page-header {
-  height: 8vh !important;
+  height: 7vh !important;
 }
 
 .page-header::after {
