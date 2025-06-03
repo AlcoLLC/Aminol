@@ -1,4 +1,9 @@
-{% extends 'base.html' %} {% load static %} {% load i18n %} {% block content %}
+
+{% extends 'base.html' %} 
+{% load static %} 
+{% load i18n %} 
+
+{% block content %}
 <div class="non-header-page">
   {% include 'components/navbar_dark.html' %}
 
@@ -10,22 +15,19 @@
     <p>{% trans "Career" %}</p>
   </div>
   
-
   <div class="container">
     <div class="product-content">
-       <div class="career-button" >{% trans "We are hiring!" %}</div>
-
+       <div class="career-button">{% trans "We are hiring!" %}</div>
       <h2>{% trans "Be a part of our mission." %}</h2>
       <p>
         {% blocktrans %} 
         We are looking for passionate people to join us on our
         mission. We value flat hierarchies, clear communication, and full
-        ownership and resposibilities.
+        ownership and responsibilities.
         {% endblocktrans %}
       </p>
     </div>
   </div>
-
 
 <!-- Career Section -->
 <section class="career-section container">
@@ -59,9 +61,17 @@
           </div>
         </div>
       </div>
-      <a href="{% url 'career:career_steps' job.id %}" class="apply-button">
-        {% trans "Apply" %}
-      </a>
+      
+      {% if job.is_applied %}
+        <button class="apply-button applied-button" disabled>
+          <i class="fa-solid fa-check"></i>
+          {% trans "Applied" %}
+        </button>
+      {% else %}
+        <a href="{% url 'career:career_steps' job.id %}" class="apply-button">
+          {% trans "Apply" %}
+        </a>
+      {% endif %}
     </div>
     {% endfor %}
   {% else %}
@@ -70,10 +80,6 @@
     </div>
   {% endif %}
 </div>
-
-</div>
-
-
 
 {% include 'components/contactcomponent.html' %} 
 {% include 'components/whatsapp.html' %}
@@ -85,30 +91,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const vacancies = document.querySelectorAll('.vacancy-content');
     
     tabs.forEach(tab => {
-        tab.addEventListener('click', function() {
-            const selectedDepartment = this.getAttribute('data-department');
-            
-            tabs.forEach(t => t.classList.remove('active'));
-            this.classList.add('active');
-            
-            vacancies.forEach(vacancy => {
-                const vacancyDepartment = vacancy.getAttribute('data-department');
-                
-                if (selectedDepartment === 'all' || vacancyDepartment === selectedDepartment) {
-                    vacancy.style.display = 'flex';
-                } else {
-                    vacancy.style.display = 'none';
-                }
-            });
-            const url = new URL(window.location);
-            if (selectedDepartment === 'all') {
-                url.searchParams.delete('department');
-            } else {
-                url.searchParams.set('department', selectedDepartment);
-            }
-            window.history.pushState({}, '', url);
-        });
+    tab.addEventListener('click', function() {
+        const selectedDepartment = this.getAttribute('data-department');
+        const url = new URL(window.location);
+
+        if (selectedDepartment === 'all') {
+            url.searchParams.delete('department');
+        } else {
+            url.searchParams.set('department', selectedDepartment);
+        }
+
+        window.location.href = url.toString();
     });
+});
+
     
     const currentDepartment = '{{ selected_department }}';
     vacancies.forEach(vacancy => {

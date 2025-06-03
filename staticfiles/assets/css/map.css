@@ -182,3 +182,18 @@
 		line-height: 28px;
 	}
 }
+
+@media (max-width: 1400px) {
+	.map-section .section-header::before, 
+.map-section .section-header::after{
+width: 27%;
+}
+}
+
+@media (max-width: 1120px) {
+	.map-section .section-header::before, 
+.map-section .section-header::after{
+width: 25%;
+}
+}
+
