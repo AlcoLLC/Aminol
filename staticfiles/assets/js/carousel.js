@@ -1,32 +1,33 @@
-// Carousel Class - Hər iki tərəfə sonsuz dövran
-class CarouselController {
+class ContinuousCarouselController {
     constructor(options) {
         this.gap = options.gap || 115;
         this.itemWidth = options.itemWidth || 155;
-        this.scrollAmount = this.itemWidth + this.gap;
-        this.autoplayDelay = options.autoplayDelay || 2700;
-        this.transitionDuration = options.transitionDuration || 800;
+        this.speed = options.speed || 1; 
+        this.direction = options.direction || 1; 
+        this.pauseOnHover = options.pauseOnHover !== false; 
 
         this.carousel = document.getElementById(options.carouselId);
         this.content = document.getElementById(options.contentId);
         this.next = document.getElementById(options.nextId);
         this.prev = document.getElementById(options.prevId);
 
-        if (!this.carousel || !this.content || !this.next || !this.prev) {
-            console.warn(`Carousel elementləri tapılmadı: ${options.carouselId}`);
+        if (!this.carousel || !this.content) {
+            console.warn(`Carousel elements not found: ${options.carouselId}`);
             return;
         }
 
-        // State variables
-        this.isScrolling = false;
-        this.autoplayTimer = null;
-        this.startX = 0;
-        this.scrollLeft = 0;
-        this.isDragging = false;
-        this.scrollTimeout = null;
+        this.isRunning = false;
+        this.isPaused = false;
+        this.animationFrame = null;
         this.isInitialized = false;
-        this.singleWidth = 0;
-        this.resetInProgress = false;
+        this.singleSetWidth = 0;
+        this.lastTimestamp = 0;
+        this.isDragging = false;
+        this.dragStartX = 0;
+        this.dragStartScrollLeft = 0;
+        this.dragVelocity = 0;
+        this.lastDragX = 0;
+        this.dragMomentum = false;
 
         this.init();
     }
@@ -34,222 +35,187 @@ class CarouselController {
     init() {
         if (this.isInitialized) return;
 
-        // İçeriyi 3 dəfə təkrarlayırıq və əvvəlinə sonuncu elementi əlavə edirik
         const originalContent = this.content.innerHTML;
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = originalContent;
         const items = Array.from(tempDiv.children);
 
         if (items.length === 0) {
-            console.warn('Carousel content boşdur');
+            console.warn('Casousel - empty');
             return;
         }
 
-        // Son elementi əvvələ əlavə edirik, sonra 3 kopya
-        const lastItem = items[items.length - 1].cloneNode(true);
-        const firstItem = items[0].cloneNode(true);
+      
+        this.content.innerHTML = originalContent + originalContent + originalContent + originalContent;
 
-        this.content.innerHTML = lastItem.outerHTML + originalContent + originalContent + originalContent + firstItem.outerHTML;
-
-        // Ölçüləri hesablayırıq
         setTimeout(() => {
             this.calculateDimensions();
             this.setupEventListeners();
             this.setupInitialPosition();
             this.isInitialized = true;
-
-            // Autoplay-i başladırıq
-            setTimeout(() => this.startAutoplay(), 1000);
+            this.start();
         }, 100);
     }
 
     calculateDimensions() {
         const totalItems = this.content.children.length;
-        const itemWidth = this.itemWidth + this.gap;
-        this.singleWidth = (totalItems - 2) * itemWidth / 3;
-        console.log(`Carousel ${this.carousel.id}: singleWidth = ${this.singleWidth}, totalItems = ${totalItems}`);
+        const originalItemCount = totalItems / 4; 
+        this.singleSetWidth = originalItemCount * (this.itemWidth + this.gap);
+        
+        console.log(`Carousel ${this.carousel.id}: singleSetWidth = ${this.singleSetWidth}, totalItems = ${totalItems}`);
     }
 
     setupInitialPosition() {
-        const itemWidth = this.itemWidth + this.gap;
         this.carousel.style.scrollBehavior = 'auto';
-        this.carousel.scrollLeft = itemWidth;
-        this.carousel.style.cursor = 'grab';
-
-        setTimeout(() => {
-            this.carousel.style.scrollBehavior = 'smooth';
-        }, 50);
+        this.carousel.scrollLeft = this.singleSetWidth; 
     }
 
     setupEventListeners() {
-        this.next.addEventListener("click", (e) => {
-            e.preventDefault();
-            this.handleNextClick();
-        });
+        if (this.pauseOnHover) {
+            this.carousel.addEventListener('mouseenter', () => {
+                this.pause();
+            });
 
-        this.prev.addEventListener("click", (e) => {
-            e.preventDefault();
-            this.handlePrevClick();
-        });
+            this.carousel.addEventListener('mouseleave', () => {
+                if (!this.isDragging) {
+                    this.resume();
+                }
+            });
+        }
 
         this.carousel.addEventListener('mousedown', (e) => this.startDrag(e));
-        this.carousel.addEventListener('touchstart', (e) => this.startDrag(e), { passive: false });
-
         this.carousel.addEventListener('mousemove', (e) => this.drag(e));
-        this.carousel.addEventListener('touchmove', (e) => this.drag(e), { passive: false });
-
         this.carousel.addEventListener('mouseup', () => this.endDrag());
         this.carousel.addEventListener('mouseleave', () => this.endDrag());
+        this.carousel.addEventListener('touchstart', (e) => this.startDrag(e), { passive: false });
+        this.carousel.addEventListener('touchmove', (e) => this.drag(e), { passive: false });
         this.carousel.addEventListener('touchend', () => this.endDrag());
 
-        this.carousel.addEventListener('mouseenter', () => {
-            this.stopAutoplay();
-        });
+        if (this.next) {
+            this.next.addEventListener("click", (e) => {
+                e.preventDefault();
+                this.handleNextClick();
+            });
+        }
 
-        this.carousel.addEventListener('mouseleave', () => {
-            if (!this.isDragging) {
-                setTimeout(() => this.startAutoplay(), 500);
+        if (this.prev) {
+            this.prev.addEventListener("click", (e) => {
+                e.preventDefault();
+                this.handlePrevClick();
+            });
+        }
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                this.pause();
+            } else {
+                this.resume();
             }
         });
 
-        this.carousel.addEventListener('scroll', () => {
-            this.handleScroll();
-        });
+        this.carousel.style.cursor = 'grab';
+    }
+
+    start() {
+        if (this.isRunning) return;
+        
+        this.isRunning = true;
+        this.isPaused = false;
+        this.lastTimestamp = performance.now();
+        this.animate();
+    }
+
+    stop() {
+        this.isRunning = false;
+        if (this.animationFrame) {
+            cancelAnimationFrame(this.animationFrame);
+            this.animationFrame = null;
+        }
+    }
+
+    pause() {
+        this.isPaused = true;
+    }
+
+    resume() {
+        this.isPaused = false;
+        if (!this.isRunning) {
+            this.start();
+        }
+    }
+
+    changeDirection(newDirection) {
+        this.direction = newDirection;
+    }
+
+    changeSpeed(newSpeed) {
+        this.speed = Math.max(0.1, Math.min(10, newSpeed)); 
     }
 
     handleNextClick() {
-        this.stopAutoplay();
-        this.moveNext();
-        setTimeout(() => this.startAutoplay(), 1500);
+        this.pause();
+        this.smoothScrollBy(this.itemWidth + this.gap);
+        setTimeout(() => {
+            if (!this.isDragging) this.resume();
+        }, 800);
     }
 
     handlePrevClick() {
-        this.stopAutoplay();
-        this.movePrev();
-        setTimeout(() => this.startAutoplay(), 1500);
-    }
-
-    handleScroll() {
-        if (this.scrollTimeout) {
-            clearTimeout(this.scrollTimeout);
-        }
-
-        this.scrollTimeout = setTimeout(() => {
-            if (!this.isDragging && !this.isScrolling && !this.resetInProgress) {
-                this.checkPosition();
-            }
-        }, 150);
-    }
-
-    startAutoplay() {
-        if (!this.isInitialized) return;
-
-        this.stopAutoplay();
-
-        this.autoplayTimer = setInterval(() => {
-            if (!this.isScrolling && !this.isDragging && !document.hidden && !this.resetInProgress) {
-                this.moveNext();
-            }
-        }, this.autoplayDelay);
-    }
-
-    stopAutoplay() {
-        if (this.autoplayTimer) {
-            clearInterval(this.autoplayTimer);
-            this.autoplayTimer = null;
-        }
-    }
-
-    checkPosition() {
-        if (!this.singleWidth || this.resetInProgress) return;
-
-        const currentScroll = this.carousel.scrollLeft;
-        const itemWidth = this.itemWidth + this.gap;
-        const maxScroll = this.carousel.scrollWidth - this.carousel.clientWidth;
-        const threshold = 30;
-
-        if (currentScroll >= maxScroll - threshold) {
-            this.resetPosition(itemWidth);
-        }
-        else if (currentScroll <= threshold) {
-            this.resetPosition(this.singleWidth + itemWidth);
-        }
-    }
-
-    resetPosition(newPosition) {
-        this.resetInProgress = true;
-        const wasScrollBehaviorSmooth = this.carousel.style.scrollBehavior === 'smooth';
-
-        this.carousel.style.scrollBehavior = 'auto';
-        this.carousel.scrollLeft = newPosition;
-
+        this.pause();
+        this.smoothScrollBy(-(this.itemWidth + this.gap));
         setTimeout(() => {
-            if (wasScrollBehaviorSmooth) {
-                this.carousel.style.scrollBehavior = 'smooth';
+            if (!this.isDragging) this.resume();
+        }, 800);
+    }
+
+    smoothScrollBy(distance) {
+        const startScrollLeft = this.carousel.scrollLeft;
+        const targetScrollLeft = startScrollLeft + distance;
+        const startTime = performance.now();
+        const duration = 600;
+
+        const animateScroll = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const easeOut = 1 - Math.pow(1 - progress, 3);
+            this.carousel.scrollLeft = startScrollLeft + (distance * easeOut);
+            
+            if (progress < 1) {
+                requestAnimationFrame(animateScroll);
             }
-            this.resetInProgress = false;
-        }, 20);
-    }
+        };
 
-    moveNext() {
-        if (this.isScrolling || !this.isInitialized || this.resetInProgress) return;
-
-        this.isScrolling = true;
-        this.checkPosition();
-
-        setTimeout(() => {
-            this.carousel.style.scrollBehavior = 'smooth';
-            this.carousel.scrollBy({
-                left: this.scrollAmount,
-                behavior: 'smooth'
-            });
-
-            setTimeout(() => {
-                this.checkPosition();
-                this.isScrolling = false;
-            }, this.transitionDuration);
-        }, this.resetInProgress ? 100 : 0);
-    }
-
-    movePrev() {
-        if (this.isScrolling || !this.isInitialized || this.resetInProgress) return;
-
-        this.isScrolling = true;
-        this.checkPosition();
-
-        setTimeout(() => {
-            this.carousel.style.scrollBehavior = 'smooth';
-            this.carousel.scrollBy({
-                left: -this.scrollAmount,
-                behavior: 'smooth'
-            });
-
-            setTimeout(() => {
-                this.checkPosition();
-                this.isScrolling = false;
-            }, this.transitionDuration);
-        }, this.resetInProgress ? 100 : 0);
+        requestAnimationFrame(animateScroll);
     }
 
     startDrag(e) {
-        this.isDragging = true;
-        this.stopAutoplay();
-        this.carousel.style.scrollBehavior = 'auto';
-
-        this.startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
-        this.scrollLeft = this.carousel.scrollLeft;
-
-        this.carousel.style.cursor = 'grabbing';
         e.preventDefault();
+        
+        this.isDragging = true;
+        this.dragMomentum = false;
+        this.pause();
+        
+        const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        this.dragStartX = clientX;
+        this.lastDragX = clientX;
+        this.dragStartScrollLeft = this.carousel.scrollLeft;
+        this.dragVelocity = 0;
+        
+        this.carousel.style.cursor = 'grabbing';
+        this.carousel.style.userSelect = 'none';
     }
 
     drag(e) {
         if (!this.isDragging) return;
         e.preventDefault();
 
-        const x = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
-        const walk = (x - this.startX) * 1.2;
-        this.carousel.scrollLeft = this.scrollLeft - walk;
+        const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        const deltaX = clientX - this.dragStartX;
+        const currentDeltaX = clientX - this.lastDragX;
+        this.dragVelocity = currentDeltaX * 0.8 + this.dragVelocity * 0.2;
+        this.lastDragX = clientX;
+        
+        this.carousel.scrollLeft = this.dragStartScrollLeft - deltaX;
     }
 
     endDrag() {
@@ -257,132 +223,214 @@ class CarouselController {
 
         this.isDragging = false;
         this.carousel.style.cursor = 'grab';
-        this.carousel.style.scrollBehavior = 'smooth';
+        this.carousel.style.userSelect = '';
 
-        setTimeout(() => {
-            this.checkPosition();
-        }, 200);
+        if (Math.abs(this.dragVelocity) > 2) {
+            this.applyMomentum();
+        } else {
+            setTimeout(() => {
+                if (!this.isDragging) this.resume();
+            }, 300);
+        }
+    }
 
-        setTimeout(() => this.startAutoplay(), 2000);
+    applyMomentum() {
+        this.dragMomentum = true;
+        let velocity = this.dragVelocity;
+        const friction = 0.95;
+        const minVelocity = 0.5;
+
+        const momentumStep = () => {
+            if (Math.abs(velocity) < minVelocity || !this.dragMomentum) {
+                this.dragMomentum = false;
+                setTimeout(() => {
+                    if (!this.isDragging) this.resume();
+                }, 500);
+                return;
+            }
+
+            this.carousel.scrollLeft -= velocity;
+            velocity *= friction;
+            
+            requestAnimationFrame(momentumStep);
+        };
+
+        requestAnimationFrame(momentumStep);
+    }
+
+    animate(timestamp = performance.now()) {
+        if (!this.isRunning) return;
+
+
+        const deltaTime = timestamp - this.lastTimestamp;
+        this.lastTimestamp = timestamp;
+
+        if (!this.isPaused && deltaTime > 0 && !this.dragMomentum) {
+            const moveDistance = (this.speed * deltaTime) / 16.67; 
+            this.carousel.scrollLeft += moveDistance * this.direction;
+            this.checkAndResetPosition();
+        }
+
+        this.animationFrame = requestAnimationFrame((ts) => this.animate(ts));
+    }
+
+    checkAndResetPosition() {
+        const currentScroll = this.carousel.scrollLeft;
+        const maxScroll = this.carousel.scrollWidth - this.carousel.clientWidth;
+
+        if (this.direction > 0) {
+            if (currentScroll >= this.singleSetWidth * 2) {
+                this.carousel.scrollLeft = this.singleSetWidth;
+            }
+        } else {
+            if (currentScroll <= this.singleSetWidth) {
+                this.carousel.scrollLeft = this.singleSetWidth * 2;
+            }
+        }
     }
 
     destroy() {
-        this.stopAutoplay();
-        if (this.scrollTimeout) {
-            clearTimeout(this.scrollTimeout);
-        }
+        this.stop();
+        this.dragMomentum = false;
+        this.isDragging = false;
         this.isInitialized = false;
-        this.resetInProgress = false;
     }
 }
 
-// Global carousel instances
-let carouselInstances = {};
+let continuousCarouselInstances = {};
 
-// Carousel yaratma funksiyası
-function createCarousel(id, config) {
-    if (carouselInstances[id]) {
-        carouselInstances[id].destroy();
+function createContinuousCarousel(id, config) {
+    if (continuousCarouselInstances[id]) {
+        continuousCarouselInstances[id].destroy();
     }
 
-    carouselInstances[id] = new CarouselController(config);
-    return carouselInstances[id];
+    continuousCarouselInstances[id] = new ContinuousCarouselController(config);
+    return continuousCarouselInstances[id];
 }
 
-// Səhifə yüklənəndə carousel-ları yaradırıq
-function initializeCarousels() {
-    console.log('Carousel initialization başladı...');
+
+function initializeContinuousCarousels() {
+    console.log('Continuous Carousel initialization başladı...');
     
-    // Supplier logos carousel (brochure) - carousel1
+
     if (document.getElementById('carousel1')) {
-        console.log('Carousel1 tapıldı, yaradılır...');
-        createCarousel('suppliers', {
+        console.log('Carousel1 tapıldı, daimi hərəkətli yaradılır...');
+        createContinuousCarousel('suppliers', {
             carouselId: 'carousel1',
             contentId: 'content1',
             nextId: 'next1',
             prevId: 'prev1',
             gap: 115,
             itemWidth: 110,
-            autoplayDelay: 3000,
-            transitionDuration: 600
+            speed: 0.5, 
+            direction: 1, 
+            pauseOnHover: true
         });
-    } else {
-        console.log('Carousel1 tapılmadı');
     }
 
-    // Documents carousel (about page) - carousel2
     if (document.getElementById('carousel2')) {
-        console.log('Carousel2 tapıldı, yaradılır...');
-        createCarousel('documents', {
+        console.log('Carousel2 tapıldı, daimi hərəkətli yaradılır...');
+        createContinuousCarousel('documents', {
             carouselId: 'carousel2',
             contentId: 'content2',
             nextId: 'next2',
             prevId: 'prev2',
             gap: 115,
             itemWidth: 110,
-            autoplayDelay: 2800,
-            transitionDuration: 600
+            speed: 0.8, 
+            direction: 1, 
+            pauseOnHover: true
         });
-    } else {
-        console.log('Carousel2 tapılmadı');
     }
 
-    // Partner logos carousel (brochure) - carousel3
     if (document.getElementById('carousel3')) {
-        console.log('Carousel3 tapıldı, yaradılır...');
-        createCarousel('partners', {
+        console.log('Carousel3 tapıldı, daimi hərəkətli yaradılır...');
+        createContinuousCarousel('partners', {
             carouselId: 'carousel3',
             contentId: 'content3',
             nextId: 'next3',
             prevId: 'prev3',
             gap: 115,
             itemWidth: 110,
-            autoplayDelay: 3200,
-            transitionDuration: 600
+            speed: 1.2, 
+            direction: 1, 
+            pauseOnHover: true
         });
-    } else {
-        console.log('Carousel3 tapılmadı');
     }
 }
 
-// Page visibility API
-document.addEventListener('visibilitychange', () => {
-    Object.values(carouselInstances).forEach(instance => {
-        if (document.hidden) {
-            instance.stopAutoplay();
-        } else {
-            setTimeout(() => instance.startAutoplay(), 1000);
-        }
-    });
-});
 
-// DOM hazır olduqda carousel-ları yaradırıq
+function setCarouselSpeed(carouselId, speed) {
+    const instance = continuousCarouselInstances[carouselId];
+    if (instance) {
+        instance.changeSpeed(speed);
+        console.log(`${carouselId} carousel sürəti ${speed}-ə dəyişdirildi`);
+    }
+}
+
+function setCarouselDirection(carouselId, direction) {
+    const instance = continuousCarouselInstances[carouselId];
+    if (instance) {
+        instance.changeDirection(direction);
+        console.log(`${carouselId} carousel istiqaməti ${direction > 0 ? 'sağa' : 'sola'} dəyişdirildi`);
+    }
+}
+
+function pauseCarousel(carouselId) {
+    const instance = continuousCarouselInstances[carouselId];
+    if (instance) {
+        instance.pause();
+        console.log(`${carouselId} carousel dayandırıldı`);
+    }
+}
+
+function resumeCarousel(carouselId) {
+    const instance = continuousCarouselInstances[carouselId];
+    if (instance) {
+        instance.resume();
+        console.log(`${carouselId} carousel davam etdirildi`);
+    }
+}
+
+
+function pauseAllCarousels() {
+    Object.values(continuousCarouselInstances).forEach(instance => {
+        instance.pause();
+    });
+    console.log('Bütün carousel-lar dayandırıldı');
+}
+
+function resumeAllCarousels() {
+    Object.values(continuousCarouselInstances).forEach(instance => {
+        instance.resume();
+    });
+    console.log('Bütün carousel-lar davam etdirildi');
+}
+
+
 function waitForDOM() {
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
             console.log('DOMContentLoaded event fired');
-            setTimeout(initializeCarousels, 500);
+            setTimeout(initializeContinuousCarousels, 500);
         });
     } else {
         console.log('DOM artıq hazırdır');
-        setTimeout(initializeCarousels, 500);
+        setTimeout(initializeContinuousCarousels, 500);
     }
 }
 
-// Window load event
 window.addEventListener('load', () => {
     console.log('Window load event fired');
     setTimeout(() => {
-        // Əgər carousel-lar yaradılmayıbsa, yenidən cəhd et
-        const activeCarousels = Object.keys(carouselInstances).length;
-        console.log(`Aktiv carousel sayı: ${activeCarousels}`);
+        const activeCarousels = Object.keys(continuousCarouselInstances).length;
+        console.log(`Aktiv continuous carousel sayı: ${activeCarousels}`);
         
         if (activeCarousels === 0) {
-            console.log('Carousel-lar tapılmadı, yenidən cəhd edilir...');
-            initializeCarousels();
+            console.log('Continuous carousel-lar tapılmadı, yenidən cəhd edilir...');
+            initializeContinuousCarousels();
         }
     }, 1000);
 });
 
-// Initialization
 waitForDOM();
