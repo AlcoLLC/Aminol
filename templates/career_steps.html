@@ -12,96 +12,171 @@
 
 
   <div class="container">
-      <div class="career-button">{% trans "We are hiring!" %}</div>
-      <div class="vacancy-main-content">
-        <h2>Product designer</h2>
-        <p>We are looking for a Mid-Level Product Designer to join our team</p>
-        <div class="career-buttons">
-          <div class="career-button">100% remote
-            <i class="fa-solid fa-location-dot"></i>
-          </div>
-          <div class="career-button">Full-time
-            <i class="fa-regular fa-clock"></i>
-          </div>
+    <div class="career-button">{% trans "We are hiring!" %}</div>
+    <div class="vacancy-main-content">
+      <h2>Product designer</h2>
+      <p>We are looking for a Mid-Level Product Designer to join our team</p>
+      <div class="career-buttons">
+        <div class="career-button">100% remote
+          <i class="fa-solid fa-location-dot"></i>
+        </div>
+        <div class="career-button">Full-time
+          <i class="fa-regular fa-clock"></i>
         </div>
       </div>
+    </div>
   </div>
-
-  <div class="container">
+  
+  <div class="container career-form-section">
     <div class="steps-content two">
       <p>JOB DESC</p>
       <h2>{% trans "Submit your application." %}</h2>
       <p>{% trans "Enter your personal information. Pay attention to the required file formats." %}</p>
     </div>
-
-
-
+  
+  
+  
     <div class="career-steps">
       <span class="checked"><i class="fa-solid fa-check"></i></span>
       <span class="next">2</span>
       <span class="simple">3</span>
     </div>
-
+  
     <div class="career-form container">
-    <div class="form-content">
-       
+      <div class="form-content">
+  
         <form action="" method="POST">
           {% csrf_token %}
-        
+  
           <div class="form-row">
             <div class="form-group">
               <label for="firstName">{% trans "Name" %} <span>*</span></label>
               <input type="text" id="firstName" name="firstName" class="form-control" required />
             </div>
-        
+  
             <div class="form-group">
               <label for="lastName">{% trans "Surname" %} <span>*</span></label>
               <input type="text" id="lastName" name="lastName" class="form-control" required />
             </div>
           </div>
-        
+  
           <div class="form-row">
             <div class="form-group">
               <label for="email">{% trans "E-mail" %} <span>*</span></label>
-        
+  
               <input type="email" id="email" name="email" class="form-control" required />
             </div>
-        
+  
             <div class="form-group">
               <label for="email">{% trans "Phone" %} <span>*</span></label>
               <input type="tel" id="phone" name="phone" class="form-control" required />
             </div>
           </div>
-
+  
           <div class="form-group">
-          
             <label for="cvFile">{% trans "Upload CV file" %} <span>*</span></label>
-            <div class="upload-area" onclick="document.getElementById('cvFile').click()"></div>
-            <div class="form-control"> <i class="fa-solid fa-arrow-up-from-bracket"></i></div>
-            <input type="hidden" id="cvFile" class="file-input" accept=".pdf,.doc,.docx" />
+            <div class="upload-area form-control" onclick="document.getElementById('cvFile').click()"> <i
+                class="fa-solid fa-arrow-up-from-bracket"></i></div>
+            <input type="file" id="cvFile" name="cvFile" accept=".pdf,.doc,.docx" style="display: none;" />
+  
           </div>
-          </div>
-
-          <div class="career-btns">
-            <button type="submit" class="btn btn-back">
-              <a href="/career">{% trans "Back" %}</a>
-            </button>
-            <button type="submit" class="btn btn-send">
-              <a href="">{% trans "Continue" %}</a>
-            </button>
-          </div>
-        </form>
+      </div>
+  
+      <div class="career-btns">
+        <button type="submit" class="btn btn-back">
+          <a href="/career">{% trans "Back" %}</a>
+        </button>
+        <button type="submit" class="btn btn-send">
+          <a href="">{% trans "Continue" %}</a>
+        </button>
+      </div>
+      </form>
     </div>
-</div>
   </div>
 
 
+  <div class="container career-motivation">
+    <div class="steps-content two">
+      <h2>{% trans "Motivation letter" %}</h2>
+      <p>{% trans "Write a short letter to the employer explaining that you are a suitable candidate for this role." %}</p>
+    </div>
+
+  
+  
+    <div class="career-steps">
+      <span class="checked"><i class="fa-solid fa-check"></i></span>
+      <span class="checked"><i class="fa-solid fa-check"></i></span>
+      <span class="simple">3</span>
+    </div>
+  
+    <div class="career-form  container">
+      <div class="form-content">
+  
+        <form action="" method="POST">
+          {% csrf_token %}
+  
+          <div class="form-group">
+            <label for="motivationLetter">{% trans "Your motivation letter" %} <span>*</span></label>
+            <div class="text-area form-control"></div>
+            <textarea name="motivationLetter" id="motivationLetter" class="form-control" style="display: none;" required></textarea>
+          </div>
+
+          
+      </div>
+  
+      <div class="career-btns">
+        <button  class="btn btn-back"> {% trans "Back" %} 
+        </button>
+        <button type="submit" class="btn btn-send ">
+          <a href="">{% trans "Continue" %}</a>
+        </button>
+      </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="container career-confirm">
+    <div class="career-confirm-modal career-form">
+  
+      <h2>{% trans "Attention!" %}</h2>
+      <p>
+        {% blocktrans %}
+        Before applying, please review the following information for accuracy, and edit it if it is incorrect.
+        Otherwise, your application may be rejected due to incomplete or incorrect information.
+        {% endblocktrans %}
+      </p>
+  
+      <p><span>{% trans "Name" %}:</span> Ad</p>
+      <p><span>{% trans "Surname" %}:</span> Soyad</p>
+      <p><span>{% trans "Email" %}:</span> email</p>
+      <p><span>{% trans "Mobile number" %}:</span> phone</p>
+  
+      <div class="career-btns">
+        <button class="btn btn-cancel"> {% trans "Cancel" %}
+        </button>
+        <button class="btn btn-send btn-confirm"> {% trans "Confirm and send" %}
+        </button>
+      </div>
+    </div>
+  
+  </div>
 
 
+  <div class="container career-completed">
+    <div class="steps-content two">
+      <h2>{% trans "Thank you! Your application has been successfully submitted." %}</h2>
+    </div>
+  
+    <div class="career-steps completed">
+      <span class="checked"><i class="fa-solid fa-check"></i></span>
+      <span class="checked"><i class="fa-solid fa-check"></i></span>
+      <span class="checked"><i class="fa-solid fa-check"></i></span>
+    </div>
+  
+  </div>
 
 
-
-  {% include 'components/whatsapp.html' %}
+{% include 'components/whatsapp.html' %}
 </div>
 
 {% endblock %}

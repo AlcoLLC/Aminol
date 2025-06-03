@@ -112,15 +112,22 @@
   color: #28315e;
   font-weight: 600;
   font-size: 24px;
-  line-height: 48px;
+  line-height: 30px;
+  margin-bottom: 10px;
+
+}
+
+.career-completed .steps-content h2 {
+  width: 65%;
 }
 
 .steps-content p {
   color: #28315e;
   font-weight: 400;
   font-size: 16px;
-  line-height: 20px;
+  line-height: 22px;
   margin-bottom: 60px;
+  width: 60%;
 }
 
  .career-buttons{
@@ -200,6 +207,10 @@
   transform: translate(-50%, -50%);
 }
 
+.career-steps.completed::before{
+  background-color: #012762;
+}
+
 .career-steps span{
     font-size: 24px;
     background-color: #F6F9FF;
@@ -251,6 +262,7 @@
 
 .career-form {
   margin: 70px auto;
+  margin-bottom: 150px;
   color: #28315e;
   border-radius: 12px;
 }
@@ -260,9 +272,10 @@
   margin-bottom: 10px;
   font-weight: 600;
   font-size: 24px;
-  line-height: 24.03px;
+  line-height: 30px;
   letter-spacing: 0px;
 }
+
 
 .career-form p {
   margin-bottom: 20px;
@@ -299,12 +312,6 @@
 .career-form .form-control:focus {
   outline: none;
   border-color: #b4b7d4;
-}
-
-.career-form textarea.form-control {
-  resize: vertical;
-  min-height: 170px;
-  max-height: 200px;
 }
 
 .career-form .form-row {
@@ -353,8 +360,56 @@
 }
 
 .career-form .btn:hover {
-  background-color: #e7dfdf;
+  background-color: #eef4ff;
 }
 .career-form .btn-send:hover {
   background-color: #d9232f;
+}
+
+ .career-form  .upload-area {
+     cursor: pointer;
+     transition: all 0.2s ease;
+ }
+
+  .career-form .upload-area:hover,
+  .career-form .text-area:hover {
+  border-color: #b4b7d4;
+ }
+ 
+
+ .career-form  .text-area{
+  width: 100%;
+  height: 330px;
+
+ }
+
+ .career-form textarea.form-control {
+  resize: vertical;
+  height: 330px;
+}
+
+
+
+/* Attention section */
+
+.career-completed{
+  margin: 70px auto;
+  margin-bottom: 150px;
+}
+.career-confirm-modal {
+  width: 100%;
+  height: 470px;
+  background-color: #fff;
+  box-shadow: 0px 22px 16.9px 0px #00000014;
+  padding: 70px  50px;
+}
+
+.career-confirm-modal h2{
+  font-size: 40px;
+  color: #F92B3F;
+  margin-bottom: 25px;
+}
+
+.career-confirm-modal span{
+  font-weight: 600;
 }
