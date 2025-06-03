@@ -7,7 +7,7 @@
   <header class="page-header" style="background-image: url('{{ product.product_group.image.url }}');">
       <div class="header-content container">
         <h2>{{ product.product_group.title_translate|linebreaksbr }}</h2>
-        <p>{{ product.product_group.description_translate|linebreaksbr}}</p>
+        {% comment %} <p>{{ product.product_group.description_translate|linebreaksbr}}</p> {% endcomment %}
       </div>
     </header>
 </div>
@@ -89,17 +89,19 @@
   {% if available_liters %}
   <div class="product-litre">
     <p> {% trans "Available packages:" %} </p>
-   {% for liter in available_liters %}
-  <span>
-    {% if liter.volume|floatformat:"0" == liter.volume|stringformat:"s" %}
-      {{ liter.volume|floatformat:"0" }}L
-    {% else %}
-      {{ liter.volume }}L
-    {% endif %}
-  </span>
-{% endfor %}
+    {% for liter in available_liters %}
+      <span>
+        {% if liter.volume|floatformat:"-0" == liter.volume|stringformat:"s"|slice:":-2" and liter.volume|stringformat:"s"|slice:"-2:" == ".0" %}
+          {{ liter.volume|floatformat:"0" }}L
+        {% elif liter.volume|stringformat:"s"|slice:"-2:" == ".0" %}
+          {{ liter.volume|floatformat:"0" }}L
+        {% else %}
+          {{ liter.volume }}L
+        {% endif %}
+      </span>
+    {% endfor %}
   </div>
-  {% endif %}
+{% endif %}
 </section>
 
 <section class="product-table-section container">

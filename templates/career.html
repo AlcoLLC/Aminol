@@ -1,4 +1,9 @@
-{% extends 'base.html' %} {% load static %} {% load i18n %} {% block content %}
+
+{% extends 'base.html' %} 
+{% load static %} 
+{% load i18n %} 
+
+{% block content %}
 <div class="non-header-page">
   {% include 'components/navbar_dark.html' %}
 
@@ -10,143 +15,109 @@
     <p>{% trans "Career" %}</p>
   </div>
   
-
   <div class="container">
     <div class="product-content">
-       <div class="career-button" >{% trans "We are hiring!" %}</div>
-
+       <div class="career-button">{% trans "We are hiring!" %}</div>
       <h2>{% trans "Be a part of our mission." %}</h2>
       <p>
         {% blocktrans %} 
         We are looking for passionate people to join us on our
         mission. We value flat hierarchies, clear communication, and full
-        ownership and resposibilities.
+        ownership and responsibilities.
         {% endblocktrans %}
       </p>
     </div>
   </div>
 
-
 <!-- Career Section -->
 <section class="career-section container">
   <div class="career-tabs">
-    <div class="tab active" data-tab="view-all">{% trans "View All" %}</div>
-    <div class="tab" data-tab="development">{% trans "Development" %}</div>
-    <div class="tab" data-tab="design">{% trans "Design" %}</div>
-    <div class="tab" data-tab="marketing">{% trans "Marketing" %}</div>
-    <div class="tab" data-tab="customer-service">{% trans "Customer Service" %}</div>
+    <div class="tab {% if selected_department == 'all' %}active{% endif %}" data-department="all">
+      {% trans "View All" %}
+    </div>
+    {% for department in departments %}
+    <div class="tab {% if selected_department == department.slug %}active{% endif %}" data-department="{{ department.slug }}">
+      {{ department.name }}
+    </div>
+    {% endfor %}
   </div>
 </section>
 
 <div class="career-content container">
-  <!-- View All Tab -->
-  <div class="tab-content active" id="view-all">
-    <div class="vacancy-content">
+  {% if jobs %}
+    {% for job in jobs %}
+    <div class="vacancy-content" data-department="{{ job.department.slug }}">
       <div class="vacancy-main-content">
-        <h2>Product designer</h2>
-        <p>We are looking for a Mid-Level Product Designer to join our team</p>
+        <h2>{{ job.title }}</h2>
+        <p>{{ job.job_description|truncatewords:20 }}</p>
         <div class="career-buttons">
-          <div class="career-button">100% remote
+          <div class="career-button">
+            {{ job.get_work_type_display }}
             <i class="fa-solid fa-location-dot"></i>
           </div>
-          <div class="career-button">Full-time
+          <div class="career-button">
+            {{ job.get_time_type_display }}
             <i class="fa-regular fa-clock"></i>
           </div>
         </div>
       </div>
-      <a href="" class="apply-button">{% trans "Apply" %}</a>
-    </div>
-   
-  </div>
-
-  <!-- Development Tab -->
-  <div class="tab-content " id="development">
-          
-    <div class="vacancy-content">
-      <div class="left-content">
-        <h2>Full stack developer</h2>
-        <p>We are looking for a Mid-Level Product Designer to join our team</p>
-        <div class="career-buttons">
-          <div class="career-button">100% remote
-            <i class="fa-solid fa-location-dot"></i>
-          </div>
-          <div class="career-button">Full-time
-            <i class="fa-regular fa-clock"></i>
-          </div>
-        </div>
-      </div>
-      <a href="" class="apply-button">{% trans "Apply" %}</a>
-    </div>
-  </div>
-
-    <!-- Design Tab -->
-   <div class="tab-content " id="design">
       
-    <div class="vacancy-content">
-      <div class="left-content">
-        <h2>Product designer</h2>
-        <p>We are looking for a Mid-Level Product Designer to join our team</p>
-        <div class="career-buttons">
-          <div class="career-button">100% remote
-            <i class="fa-solid fa-location-dot"></i>
-          </div>
-          <div class="career-button">Full-time
-            <i class="fa-regular fa-clock"></i>
-          </div>
-        </div>
-      </div>
-      <a href="" class="apply-button">{% trans "Apply" %}</a>
+      {% if job.is_applied %}
+        <button class="apply-button applied-button" disabled>
+          <i class="fa-solid fa-check"></i>
+          {% trans "Applied" %}
+        </button>
+      {% else %}
+        <a href="{% url 'career:career_steps' job.id %}" class="apply-button">
+          {% trans "Apply" %}
+        </a>
+      {% endif %}
     </div>
-  </div>
-
-    <!-- Marketing Tab -->
-   <div class="tab-content " id="marketing">
-      
-    <div class="vacancy-content">
-      <div class="left-content">
-        <h2>Management</h2>
-        <p>We are looking for a Mid-Level Product Designer to join our team</p>
-        <div class="career-buttons">
-          <div class="career-button">100% remote
-            <i class="fa-solid fa-location-dot"></i>
-          </div>
-          <div class="career-button">Full-time
-            <i class="fa-regular fa-clock"></i>
-          </div>
-        </div>
-      </div>
-      <a href="" class="apply-button">{% trans "Apply" %}</a>
+    {% endfor %}
+  {% else %}
+    <div class="no-jobs-message">
+      <p>{% trans "No job openings available at the moment." %}</p>
     </div>
-  </div>
-
-    <!-- Customer Service Tab -->
-   <div class="tab-content " id="customer-service">
-      
-    <div class="vacancy-content">
-      <div class="left-content">
-        <h2>Product designer</h2>
-        <p>We are looking for a Mid-Level Product Designer to join our team</p>
-        <div class="career-buttons">
-          <div class="career-button">100% remote
-            <i class="fa-solid fa-location-dot"></i>
-          </div>
-          <div class="career-button">Full-time
-            <i class="fa-regular fa-clock"></i>
-          </div>
-        </div>
-      </div>
-      <a href="" class="apply-button">{% trans "Apply" %}</a>
-    </div>
-  </div>
-
- 
-
+  {% endif %}
 </div>
-
-
 
 {% include 'components/contactcomponent.html' %} 
 {% include 'components/whatsapp.html' %}
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const tabs = document.querySelectorAll('.tab');
+    const vacancies = document.querySelectorAll('.vacancy-content');
+    
+    tabs.forEach(tab => {
+    tab.addEventListener('click', function() {
+        const selectedDepartment = this.getAttribute('data-department');
+        const url = new URL(window.location);
+
+        if (selectedDepartment === 'all') {
+            url.searchParams.delete('department');
+        } else {
+            url.searchParams.set('department', selectedDepartment);
+        }
+
+        window.location.href = url.toString();
+    });
+});
+
+    
+    const currentDepartment = '{{ selected_department }}';
+    vacancies.forEach(vacancy => {
+        const vacancyDepartment = vacancy.getAttribute('data-department');
+        
+        if (currentDepartment === 'all' || vacancyDepartment === currentDepartment) {
+            vacancy.style.display = 'flex';
+        } else {
+            vacancy.style.display = 'none';
+        }
+    });
+});
+</script>
+
 
 {% endblock %}

@@ -20,6 +20,18 @@ def contact_view(request):
         ('partnership', _('I am interested in a potential partnership.')),
         ('other', _('Other'))
     ]
+
+    form_labels = {
+        'help_type': _('How can we help you?'),
+        'company': _('Company name'),           
+        'question': _('Your question, wish and/or clarification'),
+        'first_name': _('First name'),        
+        'last_name': _('Last name'),           
+        'email': _('Email address'),        
+        'phone': _('Phone number'),             
+        'required': '*',                       
+        'send_button': _('Send')               
+    }
     
     if request.method == 'POST':
         form_data = {
@@ -115,6 +127,7 @@ Aminol Support Team
     context = {
         'help_choices': help_choices,
         'contact_info': contact_info,
+        'form_labels': form_labels 
     }
     
     return render(request, 'contact.html', context)

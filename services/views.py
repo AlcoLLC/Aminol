@@ -7,6 +7,7 @@ from .models import (
 )
 from news.models import News
 from home.models import PartnerLogo, Gallery as GalleryImage, Supplier
+from django.utils.translation import gettext_lazy as _
 
 
 def aminol_dealer_view(request):
@@ -14,12 +15,24 @@ def aminol_dealer_view(request):
     dealer_contents = Aminol_Official_Dealer_Content.objects.filter(aminol_official_dealer=dealer) if dealer else []
     partner_logos = PartnerLogo.objects.all()
     supplier_logos = Supplier.objects.all()
+    form_labels = {
+        'help_type': _('How can we help you?'),
+        'company': _('Company name'),           
+        'question': _('Your question, wish and/or clarification'),
+        'first_name': _('First name'),        
+        'last_name': _('Last name'),           
+        'email': _('Email address'),        
+        'phone': _('Phone number'),             
+        'required': '*',                       
+        'send_button': _('Send')               
+    }
     
     context = {
         'dealer': dealer,
         'dealer_contents': dealer_contents,
         'partner_logos': partner_logos,
-        'supplier_logos': supplier_logos
+        'supplier_logos': supplier_logos,
+        'form_labels':form_labels
     }
     
     return render(request, 'service_aminol_dealer.html', context)

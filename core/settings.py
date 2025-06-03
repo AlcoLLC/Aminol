@@ -105,6 +105,7 @@ CKEDITOR_5_CONFIGS = {
         'language': 'en',
     },
 }
+
 CKEDITOR5_UPLOAD_PATH = "uploads/ckeditor5/"
 
 
