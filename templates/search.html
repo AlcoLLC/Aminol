@@ -1,0 +1,49 @@
+{% extends 'base.html' %} {% load static %} {% load i18n %}
+ {% block content %}
+
+{% include 'components/navbar.html' %}
+<div class="product-detail-page search-page">
+    <header class="page-header">
+        <div class="header-content container">
+            <h2>{% trans "Search" %}</h2>
+        </div>
+
+        <div class="container search-bar">
+            <form method="GET" id="" class="search-form">
+                <input type="text" name="search" class="search-input" value="" />
+                <button type="button" class="cancel-button">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </form>
+        </div>
+    </header>
+</div>
+
+
+ <div class="breadcrumb container">
+    <a href="/">{% trans "Home Page" %}</a>|
+    <p>{% trans "Search" %}</p>
+  </div>
+
+
+
+<section class="search-section container">
+
+    <span>0 results</span>
+
+    <div class="search-result">
+        <div  class="result-content" >
+            <a href="/">Page > </a>
+            <h2>TOMOIL Lubricants for Agricultural Machinery</h2>
+        </div>
+        <button class="result-btn">
+            <a href=""><i class="fa-solid fa-arrow-right"></i></a>
+        </button>
+    </div>
+
+</section>
+
+
+
+{% include 'components/whatsapp.html' %}
+{% endblock %}

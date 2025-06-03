@@ -325,6 +325,12 @@ nav {
   color: #fff;
   border-radius: 5px;
   cursor: pointer;
+
+}
+
+.navbar .search a i{
+  color: #fff;
+  font-size: 16px;
 }
 
 .navbar .nav-bottom ul li {
@@ -666,6 +672,9 @@ nav {
     width: 35px;
     height: 35px;
   }
+  .navbar .search a i{
+  font-size: 13px;
+}
 
   .navbar .nav-section {
     display: none !important;
@@ -1548,6 +1557,9 @@ footer .alco-privacy p {
   color: white;
   position: relative;
   z-index: 5;
+  padding-left: 0;
+  padding-top: 10%;
+
 }
 
 .product-detail-page .page-header::before {
@@ -1561,11 +1573,54 @@ footer .alco-privacy p {
   z-index: 1;
 }
 
-.product-detail-page .page-header {
-  padding-left: 0;
-  padding-top: 10%;
+.search-page .page-header::before{
+ background-color: #012762 !important;
+}
+.search-page .page-header {
+   display: flex;
+   flex-direction: column;
+   align-items: start;
+}
+.search-page .search-bar{
+ position: relative;
+ z-index: 10;
+ margin: 10px auto;
+}
+.search-form{
+  width: 70%;
+  position: relative;
 }
 
+.search-page .search-input {
+  width: 100%;
+  height: 40px;
+  padding: 25px;
+  border-radius: 12px;
+  border: none;
+  background-color: #f6f9ff;
+  color: #012762;
+  font-size: 14px;
+  font-weight: 500;
+  outline: none;
+}
+
+.search-page .cancel-button {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-page .cancel-button i {
+  color: #012762;
+  font-size: 14px;
+}
 .product-detail-page .page-header h2 {
   font-size: 42px;
   line-height: 80px;
@@ -1588,7 +1643,10 @@ footer .alco-privacy p {
     font-size: 48px;
     line-height: 56px;
   }
+.product-detail-page .page-header {
+  padding-top: 15%;
 
+}
   .page-header .header-content p {
     font-size: 20px;
   }
@@ -1609,7 +1667,12 @@ footer .alco-privacy p {
   .page-header {
     height: 60vh;
     padding-left: 8%;
+
   }
+  .product-detail-page .page-header {
+  padding-top: 20%;
+
+}
 
   .page-header .header-content h2 {
     font-size: 40px;
@@ -1633,7 +1696,7 @@ footer .alco-privacy p {
 
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .page-header {
     flex-direction: column;
     align-items: flex-start;
@@ -1647,6 +1710,10 @@ footer .alco-privacy p {
   .page-header .header-content h2 {
     font-size: 32px;
     line-height: 40px;
+  }
+
+  .search-page .search-input {
+   padding: 20px;
   }
 
   .page-header .header-content p {
