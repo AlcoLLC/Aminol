@@ -16,19 +16,19 @@
   </div>
 
   <div class="container">
-    <div class="career-button">{% trans "We are hiring!" %}</div>
+    <button class="career-button">{% trans "We are hiring!" %}</button>
     <div class="vacancy-main-content">
       <h2>{{ job.title }}</h2>
       <p>{{ job.job_description|truncatewords:15 }}</p>
       <div class="career-buttons">
-        <div class="career-button">
+        <button class="career-button">
           {{ job.get_work_type_display }}
           <i class="fa-solid fa-location-dot"></i>
-        </div>
-        <div class="career-button">
+        </button>
+        <button class="career-button">
           {{ job.get_time_type_display }}
           <i class="fa-regular fa-clock"></i>
-        </div>
+        </button>
       </div>
     </div>
   </div>
