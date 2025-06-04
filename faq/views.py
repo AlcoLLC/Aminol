@@ -16,7 +16,18 @@ def faq_view(request):
         'required': '*',                       
         'send_button': _('Send')               
     }
-    return render(request, 'faq.html', {'faqs': faqs, 'form_labels': form_labels})
+
+    help_choices = [
+        ('buy', _('I would like to buy Aminol products.')),
+        ('become_dealer', _('I am interested in becoming a distributor.')),
+        ('technical', _('I need technical support.')),
+        ('certificates', _('I would like to request product certificates or compliance documents.')),
+        ('about', _('I need more information about a product.')),
+        ('partnership', _('I am interested in a potential partnership.')),
+        ('other', _('Other'))
+    ]
+
+    return render(request, 'faq.html', {'faqs': faqs, 'form_labels': form_labels, 'help_choices': help_choices,})
 
 class FAQListView(ListView):
     model = FAQ

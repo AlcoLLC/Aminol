@@ -26,13 +26,24 @@ def aminol_dealer_view(request):
         'required': '*',                       
         'send_button': _('Send')               
     }
+
+    help_choices = [
+        ('buy', _('I would like to buy Aminol products.')),
+        ('become_dealer', _('I am interested in becoming a distributor.')),
+        ('technical', _('I need technical support.')),
+        ('certificates', _('I would like to request product certificates or compliance documents.')),
+        ('about', _('I need more information about a product.')),
+        ('partnership', _('I am interested in a potential partnership.')),
+        ('other', _('Other'))
+    ]
     
     context = {
         'dealer': dealer,
         'dealer_contents': dealer_contents,
         'partner_logos': partner_logos,
         'supplier_logos': supplier_logos,
-        'form_labels':form_labels
+        'form_labels':form_labels,
+        'help_choices': help_choices,
     }
     
     return render(request, 'service_aminol_dealer.html', context)
