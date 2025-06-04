@@ -70,12 +70,15 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = url.toString();
     }
 
-    // Keyboard navigation for search
+    // Keyboard navigation for search - DÜZELTİLDİ
     if (searchInput) {
         searchInput.addEventListener('keydown', function(e) {
             if (e.key === 'Enter') {
                 e.preventDefault();
-                searchForm.submit();
+                // Sadece boşluk değilse arama yap
+                if (searchInput.value.trim().length > 0) {
+                    searchForm.submit();
+                }
             }
             if (e.key === 'Escape') {
                 searchInput.value = "";
@@ -90,7 +93,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Highlight search terms in results (optional enhancement)
-    const query = "{{ query|escapejs }}";
+    // Django template değişkenini JavaScript'e güvenli şekilde aktarmak için
+    const queryElement = document.querySelector('[data-search-query]');
+    const query = queryElement ? queryElement.getAttribute('data-search-query') : '';
+    
     if (query && query.trim()) {
         highlightSearchTerms(query.trim());
     }
