@@ -435,10 +435,10 @@
 }
 .career-confirm-modal {
   width: 100%;
-  height: 470px;
+  height: auto;
   background-color: #fff;
   box-shadow: 0px 22px 16.9px 0px #00000014;
-  padding: 70px  50px;
+  padding: 50px;
 }
 
 .career-confirm-modal h2{
@@ -447,7 +447,7 @@
   margin-bottom: 25px;
 }
 
-.career-confirm-modal span{
+.career-confirm-modal span:first-child{
   font-weight: 600;
 }
 
@@ -648,6 +648,15 @@
   .search-section .result-btn i {
     font-size: 16px;
   }
+
+  .career-form p {
+  margin-bottom: 15px;
+}
+
+.career-confirm-modal h2{
+  font-size: 32px;
+}
+
 }
 
 @media (max-width: 520px) {
@@ -656,6 +665,10 @@
   }
   .career-form .form-row {
   flex-direction: column;
+}
+.career-form p {
+  margin-bottom: 10px;
+  font-size: 14px;
 }
 
   .search-section span {
@@ -704,6 +717,10 @@
 
  .career-form textarea.form-control::placeholder {
  font-size: 14px;
+}
+.career-confirm-modal h2{
+  font-size: 28px;
+  margin-bottom: 20px;
 }
 }
 
