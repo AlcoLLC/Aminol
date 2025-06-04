@@ -6,7 +6,8 @@
   color: #012762;
   font-weight: 600;
   font-size: 42px;
-  line-height: 75px;
+  line-height: 50px;
+  margin: 20px auto;
   letter-spacing: -1%;
 }
 
@@ -323,7 +324,7 @@
 
   .product-content h2 {
     font-size: 38px;
-    line-height: 60px;
+    line-height: 40px;
   }
 
   .product-content p {
@@ -381,7 +382,7 @@
 
   .product-content h2 {
     font-size: 30px;
-    line-height: 40px;
+    line-height: 35px;
   }
 
   .product-content p {

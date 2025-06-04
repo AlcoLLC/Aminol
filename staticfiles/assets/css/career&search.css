@@ -93,7 +93,7 @@
 
 .vacancy-main-content p {
   color: #28315e;
-  max-width: 62%;
+  max-width: 80%;
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
@@ -134,11 +134,11 @@
 
  .career-button {
   white-space: nowrap;
-  width: 160px;
-  height: 42px;
+  padding: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: transparent;
   gap: 8px;
   border: 1.9px solid #012762;
   border-radius: 5px;
@@ -372,8 +372,7 @@
 .career-form .btn{
   background-color: #F6F9FF;
   border: none;
-  width: 200px;
-  height: 45px;
+  padding: 12px  40px;
     border-radius: 24px;
   cursor: pointer;
   font-weight: 600;
@@ -621,6 +620,12 @@
     margin: 50px auto;
   }
 
+  .career-steps span{
+    font-size: 20px;
+    width: 45px;
+    height: 45px;
+  }
+
   .search-section span {
     font-size: 16px;
   }
@@ -649,10 +654,24 @@
   .search-section {
     margin: 30px auto;
   }
+  .career-form .form-row {
+  flex-direction: column;
+}
 
   .search-section span {
     font-size: 15px;
   }
+  .career-steps span{
+    font-size: 18px;
+    width: 40px;
+    height: 40px;
+  }
+  .career-form .form-group label {
+  font-size: 14px;
+ }
+ .career-form .form-control{
+  padding: 8px 10px;
+ }
 
   .search-section h2 {
     font-size: 14px;
@@ -674,6 +693,18 @@
   .search-section .result-btn i {
     font-size: 14px;
   }
+
+  .career-form .btn{
+   padding: 10px  20px;
+
+}
+ .career-form textarea.form-control {
+  height: 200px;
+}
+
+ .career-form textarea.form-control::placeholder {
+ font-size: 14px;
+}
 }
 
 .result-image {
