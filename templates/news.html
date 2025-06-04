@@ -28,13 +28,16 @@
         <div class="container latest-news">
             <div class="news-cards">
                 {% for news in all_news %}
+                   
                     <div class="news-card">
                         <div class="news-image">
+                            <a href="{% url 'news:news_detail' news.pk %}">
                             {% if news.image %}
                                 <img loading="lazy" src="{{ news.image.url }}" alt="{{ news.title }}" />
                             {% else %}
                                 <img loading="lazy" src="{% static 'images_folder/zavod.svg' %}" alt="{% trans 'Default news image' %}" />
                             {% endif %}
+                            </a>
                         </div>
                         <div class="news-content">
                             <h5>{{ news.title_translate|linebreaksbr }}</h5>
@@ -44,7 +47,9 @@
                                 {% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i>
                             </a>
                         </div>
+                       
                     </div>
+                    
                 {% empty %}
                 {% endfor %}
             </div>

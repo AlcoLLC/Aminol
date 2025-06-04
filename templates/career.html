@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %} 
 {% load static %} 
 {% load i18n %} 
@@ -29,14 +28,13 @@
     </div>
   </div>
 
-<!-- Career Section -->
 <section class="career-section container">
   <div class="career-tabs">
-    <div class="tab {% if selected_department == 'all' %}active{% endif %}" data-department="all">
+    <div class="tab" data-department="all">
       {% trans "View All" %}
     </div>
     {% for department in departments %}
-    <div class="tab {% if selected_department == department.slug %}active{% endif %}" data-department="{{ department.slug }}">
+    <div class="tab" data-department="{{ department.slug }}">
       {{ department.name }}
     </div>
     {% endfor %}
@@ -86,38 +84,84 @@
 </div>
 
 <script>
+// Django dəyişənini JavaScript-ə ötür
+const SELECTED_DEPARTMENT = '{{ selected_department|escapejs }}';
+
 document.addEventListener('DOMContentLoaded', function() {
-    const tabs = document.querySelectorAll('.tab');
+    const tabs = document.querySelectorAll('.career-section .tab');
     const vacancies = document.querySelectorAll('.vacancy-content');
     
-    tabs.forEach(tab => {
-    tab.addEventListener('click', function() {
-        const selectedDepartment = this.getAttribute('data-department');
-        const url = new URL(window.location);
-
-        if (selectedDepartment === 'all') {
-            url.searchParams.delete('department');
-        } else {
-            url.searchParams.set('department', selectedDepartment);
-        }
-
-        window.location.href = url.toString();
-    });
-});
-
+    console.log('Found tabs:', tabs.length);
+    console.log('Selected department from Django:', SELECTED_DEPARTMENT);
     
-    const currentDepartment = '{{ selected_department }}';
+    // Tab click handler
+    tabs.forEach((tab, index) => {
+        if (tab) {
+            tab.addEventListener('click', function() {
+                const selectedDepartment = this.getAttribute('data-department');
+                const url = new URL(window.location);
+                
+                // Remove tab parameter (əgər varsa)
+                url.searchParams.delete('tab');
+                
+                // Department parametrini düzgün təyin et
+                if (selectedDepartment === 'all') {
+                    url.searchParams.delete('department');
+                } else {
+                    url.searchParams.set('department', selectedDepartment);
+                }
+
+                // Səhifəni yenidən yüklə
+                window.location.href = url.toString();
+            });
+        }
+    });
+    
+    // Hazırkı department-ə əsasən vacancy-ləri göstər/gizlət
     vacancies.forEach(vacancy => {
         const vacancyDepartment = vacancy.getAttribute('data-department');
         
-        if (currentDepartment === 'all' || vacancyDepartment === currentDepartment) {
+        if (SELECTED_DEPARTMENT === 'all' || vacancyDepartment === SELECTED_DEPARTMENT) {
             vacancy.style.display = 'flex';
         } else {
             vacancy.style.display = 'none';
         }
     });
+
+    // Active class-ı düzgün təyin et
+    tabs.forEach((tab, index) => {
+        if (tab) {
+            const tabDepartment = tab.getAttribute('data-department');
+            
+            console.log(`Tab ${index}:`, tabDepartment, 'Current:', SELECTED_DEPARTMENT);
+            
+            // Əvvəlcə bütün tab-lardan active class-ı sil
+            tab.classList.remove('active');
+            
+            // Uyğun tab-a active class əlavə et
+            if (tabDepartment === SELECTED_DEPARTMENT) {
+                tab.classList.add('active');
+                console.log('Added active class to tab:', tabDepartment);
+                
+                // Force style apply etmək üçün
+                tab.style.backgroundColor = '#012762';
+                tab.style.color = '#fff';
+                tab.style.borderColor = '#012762';
+            }
+        }
+    });
+    
+    // Active class-ın tətbiq olub olmadığını yoxla
+    setTimeout(() => {
+        const activeTab = document.querySelector('.career-section .tab.active');
+        if (activeTab) {
+            console.log('Active tab found:', activeTab);
+            console.log('Active tab styles:', window.getComputedStyle(activeTab));
+        } else {
+            console.log('No active tab found!');
+        }
+    }, 100);
 });
 </script>
-
 
 {% endblock %}

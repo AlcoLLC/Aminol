@@ -25,6 +25,16 @@
   height: 100%;
 }
 
+.services-offer-section .services-offer-image.news-d  {
+ height: 380px;
+}
+
+.services-offer-section .services-offer-image.news-d img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
 .services-offer-section .text-container {
   width: 100%;
   color: #28315e;
