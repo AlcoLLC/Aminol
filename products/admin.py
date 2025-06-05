@@ -126,7 +126,7 @@ class ProductAdmin(TranslationAdmin):
     fieldsets = (
         ('Basic Information', {
             'fields': ('title', 'slug', 'product_id', 'description', 'image', 'features_benefits', 'application',
-                       'title_translate', 'description_translate', 'features_benefits_translate', 'application_translate')
+                       'title_translate', 'description_translate', 'features_benefits_translate', 'application_translate', 'order')
         }),
         ('Specifications', {
             'fields': ('api', 'ilsac', 'acea', 'jaso', 'oem_sertification', 'recommendations', 'recommendations_translate')
