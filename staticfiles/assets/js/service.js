@@ -18,9 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
             ['buy', 'I would like to buy Aminol products.'],
             ['become_dealer', 'I am interested in becoming a distributor.'],
             ['technical', 'I need technical support.'],
-            ['certificates', 'I would like to request product certificates or compliance documents.'],
-            ['about', 'I need more information about a product.'],
-            ['partnership', 'I am interested in a potential partnership.'],
             ['other', 'Other']
         ];
        

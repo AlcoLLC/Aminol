@@ -15,9 +15,6 @@ def contact_view(request):
         ('buy', _('I would like to buy Aminol products.')),
         ('become_dealer', _('I am interested in becoming a distributor.')),
         ('technical', _('I need technical support.')),
-        ('certificates', _('I would like to request product certificates or compliance documents.')),
-        ('about', _('I need more information about a product.')),
-        ('partnership', _('I am interested in a potential partnership.')),
         ('other', _('Other'))
     ]
 
@@ -77,13 +74,13 @@ Question/Message: {form.cleaned_data['question']}
                     email_subject,
                     email_message,
                     settings.EMAIL_HOST_USER,
-                    ['aytacmehdizade08@gmail.com'], 
+                    ['info@aminol.az'], 
                     html_message=html_email,
                     fail_silently=False,
                 )
                 
                 if admin_email_sent:
-                    logger.info(f"Admin email sent successfully to aytacmehdizade08@gmail.com")
+                    logger.info(f"Admin email sent successfully to info@aminol.az")
                 else:
                     logger.error("Failed to send admin email")
                 
