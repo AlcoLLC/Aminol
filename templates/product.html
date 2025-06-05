@@ -20,7 +20,7 @@
       {% for group in product_groups %}
         {% if group.slug in selected_product_groups %}
           <h2>{{ group.title_translate|linebreaksbr }}</h2>
-          <p>{{ group.description_translate|linebreaksbr }}</p>
+          {% comment %} <p>{{ group.description_translate|linebreaksbr }}</p> {% endcomment %}
         {% endif %}
       {% endfor %}
     {% else %}
