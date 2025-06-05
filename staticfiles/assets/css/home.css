@@ -518,6 +518,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 }
 
 .product-categories .category-image {
@@ -543,7 +544,7 @@
 
 .product-categories .category-content {
   padding: 15px;
-  text-align: left;
+  text-align: center;
   top: 66px;
     position: absolute;
 }
@@ -555,6 +556,7 @@
   letter-spacing: 0px;
   color: #012762;
   margin: 5px 0;
+  text-align: center;
 }
 
 .product-categories .category-desc {

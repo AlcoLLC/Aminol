@@ -123,7 +123,7 @@ CV file has been attached to this application.
             admin_email_subject,
             admin_email_message,
             settings.EMAIL_HOST_USER,
-            ['aytacmehdizade08@gmail.com'], 
+            ['info@aminol.az'], 
             html_message=html_admin_email,
             fail_silently=False,
         )
