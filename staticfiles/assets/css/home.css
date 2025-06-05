@@ -76,10 +76,10 @@
 }
 
 .home-header .swiper-slide_four {
-  background-image: url("../../images/home-slider4.jpg");
+  background-image: url("../../images/home-slider4-new.jpg");
 }
 .home-header .swiper-slide_five {
-  background-image: url("../../images/home-slider5-new.jpg");
+  background-image: url("../../images/home-slider5-new2.jpg");
 }
 
 .home-header .swiper-slide_six{
@@ -1618,7 +1618,7 @@
 /* GALLERY */
 .gallery-section .swiper {
   width: 100%;
-  height: 55vh;
+  height: 45vh;
   margin-top: 60px;
   position: relative;
   overflow: hidden;
@@ -1686,8 +1686,8 @@
 .brochure {
   position: relative;
   z-index: -5;
-  width: 80%;
-  margin-top: -60px;
+  width: 50%;
+  margin-top: -50px;
 }
 
 .brochure img {
@@ -1697,7 +1697,7 @@
 
 @media (min-width: 521px) and (max-width: 1024px) {
   .gallery-section .swiper {
-    height: 38vh;
+    height: 33vh;
   }
 
   .gallery-section .swiper-button-next,
@@ -1717,15 +1717,19 @@
   .gallery-section .swiper-button-next:after,
   .gallery-section .swiper-button-prev:after {
   font-size: 14px;
+  
 
 }
 
+.brochure {
+  width: 60%;
+}
 
 }
 
 @media (max-width: 520px) {
   .gallery-section .swiper {
-    height: 26vh !important;
+    height: 22vh !important;
   }
 
   .gallery-section .swiper-button-next,
@@ -1748,6 +1752,10 @@
 
 }
 
+.brochure {
+  width: 75%;
+}
+
 }
 
 
@@ -1755,7 +1763,7 @@
 
 
 .partners-section {
-  margin-top: 50px;
+  margin-top: 30px;
   margin-bottom: 0 !important;
   width: 100%;
   height: 1100px;
@@ -2036,8 +2044,7 @@
   }
 
   .brochure {
-    width: 90%;
-    margin-top: -35px;
+    margin-top: 0;
   }
 }
 
@@ -2069,9 +2076,7 @@
     max-height: 35px;
   }
 
-  .brochure {
-    margin-top: -25px;
-  }
+
 }
 
 @media (max-width: 480px) {

@@ -32,18 +32,10 @@
 
     <!-- Shared Section -->
     {% if about_aminol %}
-    <div class="shared-section">
+    <div class="shared-section about-shared-section">
       <div class="shared-background"></div>
       <div class="container">
         <img src="{{ about_aminol.shared_image.url }}" alt="About Aminol" />
-        <div class="shared-description">
-          <p>{% trans "Founded in " %} {{ about_aminol.founded_year }}</p>
-          <p>{% trans "Based in " %}{{ about_aminol.based_in_translate|linebreaksbr }}</p>
-          <p>{% trans "Located in " %}{{ about_aminol.location_translate|linebreaksbr }}</p>
-          <p>{% trans "Exporting to " %}{{ about_aminol.exporting_to_translate|linebreaksbr }}</p>
-          <p>{% trans "Production capacity " %}{{ about_aminol.production_capacity_translate|linebreaksbr }}</p>
-          <!-- <p>{% trans "Workforce " %}{{ about_aminol.workforce|linebreaksbr }}</p> -->
-        </div>
       </div>
     </div>
     {% endif %}
