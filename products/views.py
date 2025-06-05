@@ -27,7 +27,7 @@ def product_list(request):
     if selected_viscosity:
         products = products.filter(viscosity__slug__in=selected_viscosity)
     
-    products = products.select_related('product_group').order_by('product_group__order', 'title').distinct()
+    products = products.select_related('product_group').order_by('order', 'product_group__order').distinct()
     
     paginator = Paginator(products, 12)
     page_number = request.GET.get('page', 1)

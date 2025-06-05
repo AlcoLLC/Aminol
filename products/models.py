@@ -74,6 +74,7 @@ class Product(models.Model):
     features_benefits_translate = models.TextField(blank=True, null=True)
     application_translate = models.TextField(blank=True, null=True)
     recommendations_translate = models.TextField(blank=True, null=True)
+    order = models.IntegerField(default=0)
     
     
     def __str__(self):
