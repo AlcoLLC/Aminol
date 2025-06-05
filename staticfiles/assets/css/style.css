@@ -735,6 +735,8 @@ nav {
   margin: 70px auto;
 }
 
+
+
 .shared-section .container {
   display: flex;
   align-items: center;
@@ -745,6 +747,11 @@ nav {
   width: 380px;
   max-height: 380px;
   object-fit: contain;
+}
+.about-shared-section  img  {
+    width: 500px;
+    max-height: 500px;
+    margin: 0 auto !important;
 }
 .shared-section .shared-description {
   color: #fff;
@@ -795,6 +802,8 @@ nav {
     max-height: 350px;
   }
 
+
+
   .shared-section .container {
     gap: 25px;
   }
@@ -811,6 +820,19 @@ nav {
   .shared-background {
     height: 280px;
   }
+  .about-shared-section img {
+    width: 400px;
+    max-height: 400px;
+  }
+
+    .about-shared-section .shared-background {
+    height: 230px;
+  }
+
+  .about-shared-section {
+    margin: 30px auto;
+  }
+
 }
 
 @media (max-width: 790px) {
@@ -844,6 +866,15 @@ nav {
   .shared-section .shared-description h3 {
     line-height: 40px;
   }
+
+   .about-shared-section img {
+    width: 320px;
+    max-height: 320px;
+  }
+
+    .about-shared-section .shared-background {
+    height: 200px;
+  }
 }
 
 @media (max-width: 520px) {
@@ -868,6 +899,19 @@ nav {
   .shared-section .shared-description h3 {
     line-height: 30px;
     font-size: 14px;
+  }
+
+  .about-shared-section {
+    margin: 30px auto;
+  }
+
+   .about-shared-section img {
+    width: 250px;
+    max-height: 250px;
+  }
+
+    .about-shared-section .shared-background {
+    height: 180px;
   }
 }
 
