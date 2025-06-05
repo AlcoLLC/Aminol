@@ -129,6 +129,10 @@
   margin: 13px 0;
 }
 
+.home-header .slide-content a {
+  margin-top: 20px;
+}
+
 .home-header .button-style,
 .innovation-technology .button-style,
 .latest-news .button-style:hover {
