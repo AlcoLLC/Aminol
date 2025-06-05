@@ -6,7 +6,11 @@ from .models import Brand_Portal, Brand_Portal_Content
 
 def brand_portal_list(request):
     brand = Brand_Portal.objects.last()
-    brand_contents = Brand_Portal_Content.objects.filter(brand_portal=brand) if brand else []
+    brand_contents = []
+    if brand:
+        brand_contents = Brand_Portal_Content.objects.filter(
+            brand_portal=brand
+        ).order_by('order', '-created_at') 
     
     context = {
         'brand': brand,

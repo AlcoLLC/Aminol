@@ -24,6 +24,7 @@ class Brand_Portal_Content(models.Model):
 
     title_translate = models.CharField(max_length=100, blank=True, null=True)
     description_translate = models.TextField(blank=True, null=True)
+    order = models.IntegerField(default=0)
 
     def __str__(self):
         return f"{self.title}"
