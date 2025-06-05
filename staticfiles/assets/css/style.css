@@ -318,12 +318,8 @@ nav {
 }
 
 .navbar .search {
-  width: 44px;
-  height: 44px;
-  background-color: #f92b3f;
   border: none;
   color: #fff;
-  border-radius: 5px;
   cursor: pointer;
 
 }
@@ -331,6 +327,14 @@ nav {
 .navbar .search a i{
   color: #fff;
   font-size: 16px;
+    width: 44px;
+  height: 44px;
+  background-color: #f92b3f;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
 
 .navbar .nav-bottom ul li {
@@ -429,7 +433,7 @@ nav {
   display: flex;
   top: 65px;
   right: -100%;
-  height: 50vh;
+  height: 45vh;
   z-index: 10000;
   color: #fff;
   flex-direction: column;
@@ -592,7 +596,7 @@ nav {
   .navbar .nav-section .nav-top ul li a i {
     font-size: 14px;
   }
-  .navbar .search {
+  .navbar .search a{
     width: 40px;
     height: 40px;
   }
@@ -654,7 +658,7 @@ nav {
   }
 
 
-  .navbar .search {
+  .navbar .search a{
     width: 38px;
     height: 38px;
   }
@@ -668,7 +672,7 @@ nav {
     gap: 25px;
   }
 
-  .navbar .search {
+  .navbar .search a{
     width: 35px;
     height: 35px;
   }
