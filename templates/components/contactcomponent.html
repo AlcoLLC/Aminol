@@ -3,6 +3,20 @@
 
 <div class="aminol-contact-form container">
     <div class="form-content">
+
+        {# --- START: XƏTA MESAJLARINI GÖSTƏRƏN BLOK --- #}
+        {% if messages %}
+            <div class="form-messages">
+                {% for message in messages %}
+                    {# Mesajın tipinə görə (error, success) uyğun class əlavə edirik #}
+                    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {# --- END: XƏTA MESAJLARINI GÖSTƏRƏN BLOK --- #}
+
         <h2>{% trans "Contact form" %}</h2>
         <p>
             {% trans "Do you need a specific solution or are you interested in a partnership?" %}<br />
@@ -11,6 +25,9 @@
 
         <form action="{% url 'contact' %}" method="POST">
             {% csrf_token %}
+            
+            {# ... formun qalan hissəsi olduğu kimi qalır ... #}
+            
             <div class="form-row">
                 <div class="form-group select-form-group">
                     <label for="helpType">{{ form_labels.help_type }}{{ form_labels.required }}</label>
@@ -104,10 +121,10 @@
 
             <div class="form-group recaptcha-container">
                 <div class="g-recaptcha" 
-                     data-sitekey="{{ recaptcha_site_key }}"
-                     data-callback="onRecaptchaSuccess"
-                     data-expired-callback="onRecaptchaExpired" 
-                     data-error-callback="onRecaptchaError">
+                        data-sitekey="{{ recaptcha_site_key }}"
+                        data-callback="onRecaptchaSuccess"
+                        data-expired-callback="onRecaptchaExpired" 
+                        data-error-callback="onRecaptchaError">
                 </div>
             </div>
 
