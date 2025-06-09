@@ -1,19 +1,35 @@
+# contact/views.py
+
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.contrib import messages
 from django.conf import settings
-from .models import Contact, ContactInfo
+from .models import Contact, ContactInfo, ContactSubmissionLimit # <--- ContactSubmissionLimit əlavə edildi
 from .forms import ContactForm
 import logging
 import requests
 from django.utils.translation import gettext_lazy as _
+from django.utils import timezone # <--- timezone əlavə edildi
+from datetime import timedelta # <--- timedelta əlavə edildi
 
 # Ensure you have RECAPTCHA keys in your settings
 RECAPTCHA_SITE_KEY = settings.RECAPTCHA_SITE_KEY
 RECAPTCHA_SECRET_KEY = settings.RECAPTCHA_SECRET_KEY
 
 logger = logging.getLogger(__name__)
+
+# --- START: YENİ ƏLAVƏ EDİLMİŞ FUNKSİYA ---
+def get_client_ip(request):
+    """Müştərinin real IP ünvanını əldə etmək üçün köməkçi funksiya."""
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+# --- END: YENİ ƏLAVƏ EDİLMİŞ FUNKSİYA ---
+
 
 def verify_recaptcha(recaptcha_response):
     """
@@ -36,6 +52,11 @@ def verify_recaptcha(recaptcha_response):
         return False
 
 def contact_view(request):
+    # --- START: MƏHDUDİYYƏT PARAMETRLƏRİ ---
+    MAX_SUBMISSIONS_PER_HOUR = 5 # Bir saat ərzində icazə verilən maksimum müraciət sayı
+    BLOCK_DURATION_HOURS = 24 # IP ünvanının bloklanma müddəti (saatla)
+    # --- END: MƏHDUDİYYƏT PARAMETRLƏRİ ---
+
     help_choices = [
         ('buy', _('I would like to buy Aminol products.')),
         ('become_dealer', _('I am interested in becoming a distributor.')),
@@ -56,6 +77,42 @@ def contact_view(request):
     }
     
     if request.method == 'POST':
+        client_ip = get_client_ip(request)
+        
+        # --- START: IP ÜNVANINA GÖRƏ MƏHDUDİYYƏT MƏNTİQİ ---
+        if client_ip:
+            limit, created = ContactSubmissionLimit.objects.get_or_create(ip_address=client_ip)
+            
+            # 1. IP-nin bloklanıb-bloklanmadığını yoxla
+            if limit.is_blocked:
+                # Bloklanma müddətinin bitib-bitmədiyini yoxla
+                if timezone.now() < limit.last_submission + timedelta(hours=BLOCK_DURATION_HOURS):
+                    messages.error(request, _("You have submitted the form too many times. Please try again later."))
+                    logger.warning(f"Blocked IP address {client_ip} tried to submit again.")
+                    return redirect('contact') # Formu yenidən göstər
+                else:
+                    # Bloklanma müddəti bitibsə, sayğacı sıfırla və bloku aç
+                    limit.is_blocked = False
+                    limit.submission_count = 0
+
+            # 2. Son müraciətdən 1 saat keçibsə, sayğacı sıfırla
+            if not created and (timezone.now() - limit.last_submission > timedelta(hours=1)):
+                limit.submission_count = 0
+
+            # 3. Sayğacı artır
+            limit.submission_count += 1
+            limit.last_submission = timezone.now()
+            limit.save()
+
+            # 4. Sayğac maksimum həddi keçibsə, IP-ni blokla
+            if limit.submission_count > MAX_SUBMISSIONS_PER_HOUR:
+                limit.is_blocked = True
+                limit.save()
+                logger.warning(f"IP address {client_ip} has been blocked for excessive submissions.")
+                messages.error(request, _("You have reached the submission limit. Your IP has been temporarily blocked."))
+                return redirect('contact')
+        # --- END: IP ÜNVANINA GÖRƏ MƏHDUDİYYƏT MƏNTİQİ ---
+
         # Verify reCAPTCHA first
         recaptcha_response = request.POST.get('g-recaptcha-response')
         
@@ -81,7 +138,11 @@ def contact_view(request):
             
             if form.is_valid():
                 try:
-                    form.save()
+                    # --- START: IP ÜNVANINI ƏSAS MODELƏ YAZMAQ ---
+                    contact_instance = form.save(commit=False)
+                    contact_instance.ip_address = client_ip # IP ünvanını Contact modelinə yaz
+                    contact_instance.save()
+                    # --- END: IP ÜNVANINI ƏSAS MODELƏ YAZMAQ ---
                     
                     help_type_display = dict(Contact.HELP_CHOICES).get(form.cleaned_data['help_type'])
                     
@@ -94,6 +155,7 @@ Phone: {form.cleaned_data['phone_number']}
 Help Type: {help_type_display}
 Question/Message: {form.cleaned_data['question']}
 
+IP Address: {client_ip}
 Note: This submission was verified with reCAPTCHA.
 """
                     html_email = render_to_string('emails/contactform.html', {
@@ -103,7 +165,8 @@ Note: This submission was verified with reCAPTCHA.
                         'email': form.cleaned_data['email'],
                         'phone_number': form.cleaned_data['phone_number'],
                         'help_type': help_type_display,
-                        'message': form.cleaned_data['question']
+                        'message': form.cleaned_data['question'],
+                        'ip_address': client_ip, # E-poçt şablonuna da əlavə et
                     })
                     
                     logger.debug(f"Email settings: HOST={settings.EMAIL_HOST}, PORT={settings.EMAIL_PORT}, USER={settings.EMAIL_HOST_USER}")
@@ -152,7 +215,7 @@ Aminol Support Team
         'help_choices': help_choices,
         'contact_info': contact_info,
         'form_labels': form_labels,
-         'recaptcha_site_key': settings.RECAPTCHA_SITE_KEY, 
+       'recaptcha_site_key': settings.RECAPTCHA_SITE_KEY, 
     }
     
     return render(request, 'contact.html', context)
