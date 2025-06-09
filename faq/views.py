@@ -10,6 +10,7 @@ from contact.models import Contact
 from .models import FAQ
 from contact.forms import ContactForm
 import logging
+import requests
 
 
 logger = logging.getLogger(__name__)
@@ -99,7 +100,6 @@ def faq_view(request):
                     
                     help_type_display = dict(Contact.HELP_CHOICES).get(form.cleaned_data['help_type'])
                     
-                    # Adminə e-poçt göndərilir
                     email_subject = f"New Contact Form Submission from {form.cleaned_data['first_name']} {form.cleaned_data['last_name']} (via FAQ Page)"
                     html_email = render_to_string('emails/contactform.html', {
                         'first_name': form.cleaned_data['first_name'], 'last_name': form.cleaned_data['last_name'],
@@ -109,7 +109,6 @@ def faq_view(request):
                     })
                     send_mail(email_subject, "", settings.EMAIL_HOST_USER, ['info@aminol.az'], html_message=html_email, fail_silently=False)
                     
-                    # İstifadəçiyə təşəkkür e-poçtu göndərilir
                     user_email_subject = "Thank you for contacting Aminol"
                     user_email_message = f"Dear {form.cleaned_data['first_name']},\n\nThank you for contacting Aminol. We have received your inquiry. Our team will get back to you shortly.\n\nBest regards,\nAminol Support Team"
                     send_mail(user_email_subject, user_email_message, settings.EMAIL_HOST_USER, [form.cleaned_data['email']], fail_silently=False)
@@ -123,23 +122,20 @@ def faq_view(request):
             
             else:
                 logger.warning(f"FAQ Form validation errors: {form.errors}")
-                # Xətaları formaya əlavə etmək daha yaxşıdır ki, istifadəçi görsün
                 for field, error_list in form.errors.items():
                     for error in error_list:
                         messages.error(request, f"{field.replace('_', ' ').title()}: {error}")
 
-    # Həm GET, həm də POST xətaları üçün ümumi kontekst
     context = {
         'faqs': faqs, 
         'form_labels': form_labels, 
         'help_choices': help_choices,
-        'recaptcha_site_key': RECAPTCHA_SITE_KEY, # reCAPTCHA-nı şablonda göstərmək üçün
+        'recaptcha_site_key': RECAPTCHA_SITE_KEY, 
     }
 
     return render(request, 'faq.html', context)
 
 
-# Class-Based View olduğu kimi qalır, əgər istifadə etmirsinizsə, silə bilərsiniz.
 class FAQListView(ListView):
     model = FAQ
     template_name = 'faq.html'
