@@ -6,7 +6,7 @@ class Contact(models.Model):
     HELP_CHOICES = [
         ('buy', _('I would like to buy Aminol products.')),
         ('become_dealer', _('I am interested in becoming a distributor.')),
-        ('technical', _('I need technical support.')),
+        ('technical', 'I need technical support.'),
         ('other', _('Other'))
     ]
     
@@ -18,6 +18,7 @@ class Contact(models.Model):
     email = models.EmailField(verbose_name=_('Email'))
     phone_number = models.CharField(max_length=20, verbose_name=_('Phone Number'))
     
+    # IP ünvanını saxlamaq üçün bu sahə vacibdir
     ip_address = models.GenericIPAddressField(verbose_name=_('IP Address'), null=True, blank=True)
     
     created_at = models.DateTimeField(default=timezone.now)
@@ -28,24 +29,9 @@ class Contact(models.Model):
     class Meta:
         verbose_name = _('Contact')
         verbose_name_plural = _('Contacts')
+        # IP ünvanı üzrə unikal məhdudiyyət əlavə edə bilərik, lakin view səviyyəsində yoxlama daha çevikdir.
 
 
-class ContactSubmissionLimit(models.Model):
-    ip_address = models.GenericIPAddressField(unique=True, verbose_name=_('IP Address'))
-    submission_count = models.PositiveIntegerField(default=0, verbose_name=_('Submission Count'))
-    last_submission = models.DateTimeField(verbose_name=_('Last Submission'))
-    is_blocked = models.BooleanField(default=False, verbose_name=_('Is Blocked'))
-    
-    created_at = models.DateTimeField(default=timezone.now)
-    updated_at = models.DateTimeField(auto_now=True)
-    
-    def __str__(self):
-        return f"{self.ip_address} - {self.submission_count} submissions"
-    
-    class Meta:
-        verbose_name = _('Contact Submission Limit')
-        verbose_name_plural = _('Contact Submission Limits')
-    
 class ContactInfo(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
