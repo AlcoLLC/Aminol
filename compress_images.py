@@ -17,16 +17,16 @@ except ImportError:
     SVG_SUPPORT = False
     print("⚠️  SVG support not available. Install Cairo dependencies and cairosvg for SVG processing.")
 
-# Target size range in kilobytes
-TARGET_MIN_KB = 800
-TARGET_MAX_KB = 1200
+# Target size range in kilobytes - UPDATED FOR 20-30 KB
+TARGET_MIN_KB = 20
+TARGET_MAX_KB = 30
 
-# WebP quality settings
-WEBP_QUALITY_MIN = 30
-WEBP_QUALITY_MAX = 95
+# WebP quality settings - UPDATED for smaller file sizes
+WEBP_QUALITY_MIN = 15
+WEBP_QUALITY_MAX = 85
 
-# Maximum image dimensions for processing (to prevent memory issues)
-MAX_IMAGE_DIMENSION = 8000
+# Maximum image dimensions for processing - REDUCED for smaller files
+MAX_IMAGE_DIMENSION = 1920  # Reduced from 8000 to help achieve smaller file sizes
 
 # Supported image formats (SVG only if cairosvg is available)
 if SVG_SUPPORT:
@@ -61,20 +61,71 @@ def resize_if_too_large(img, max_dimension=MAX_IMAGE_DIMENSION):
     
     return img
 
+def smart_resize_for_target_size(img, target_size_kb):
+    """Intelligently resize image to help reach target file size"""
+    width, height = img.size
+    current_pixels = width * height
+    
+    # Estimate pixels needed for target size (rough approximation)
+    # This is a heuristic - actual results will vary by image content
+    target_pixels = int(current_pixels * (target_size_kb / 100))  # Very rough estimate
+    
+    if target_pixels < current_pixels:
+        scale_factor = (target_pixels / current_pixels) ** 0.5
+        new_width = max(100, int(width * scale_factor))  # Minimum 100px width
+        new_height = max(100, int(height * scale_factor))  # Minimum 100px height
+        
+        print(f"  📐 Smart resize for target size: {width}x{height} -> {new_width}x{new_height}")
+        img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
+    
+    return img
+
 def compress_webp(img):
-    """Iteratively compress WebP to target size"""
+    """Iteratively compress WebP to target size with multiple strategies"""
     last_buffer = None
-    for quality in range(WEBP_QUALITY_MAX, WEBP_QUALITY_MIN - 1, -5):
+    
+    # Strategy 1: Try different quality levels
+    for quality in range(WEBP_QUALITY_MAX, WEBP_QUALITY_MIN - 1, -3):
         buffer = BytesIO()
         try:
             img.save(buffer, format="WEBP", quality=quality, optimize=True)
             size_kb = get_file_size_kb(buffer)
+            print(f"    📊 Quality {quality}: {size_kb:.1f} KB")
+            
             if TARGET_MIN_KB <= size_kb <= TARGET_MAX_KB:
+                print(f"    ✅ Target achieved at quality {quality}")
                 return buffer
+            
             last_buffer = buffer
+            
+            # If still too large, try resizing the image further
+            if size_kb > TARGET_MAX_KB and quality <= 30:
+                print(f"    🔄 Still too large, trying smaller dimensions...")
+                current_width, current_height = img.size
+                new_width = int(current_width * 0.8)
+                new_height = int(current_height * 0.8)
+                
+                # Don't go below minimum reasonable size
+                if new_width >= 200 and new_height >= 200:
+                    img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
+                    print(f"    📐 Resized to {new_width}x{new_height} for size optimization")
+                    
+                    # Try compression again with the smaller image
+                    buffer = BytesIO()
+                    img.save(buffer, format="WEBP", quality=quality, optimize=True)
+                    size_kb = get_file_size_kb(buffer)
+                    print(f"    📊 After resize, quality {quality}: {size_kb:.1f} KB")
+                    
+                    if TARGET_MIN_KB <= size_kb <= TARGET_MAX_KB:
+                        print(f"    ✅ Target achieved after resize at quality {quality}")
+                        return buffer
+                        
+                    last_buffer = buffer
+                
         except Exception as e:
             print(f"    ⚠️ WebP compression failed at quality {quality}: {e}")
             continue
+    
     return last_buffer
 
 def convert_svg_to_image(svg_path):
@@ -84,13 +135,13 @@ def convert_svg_to_image(svg_path):
         return None
     
     try:
-        # SVG'yi PNG'ye çevir
+        # Convert SVG to PNG
         png_data = cairosvg.svg2png(url=svg_path)
-        # PNG verisini PIL Image'e yükle
+        # Load PNG data into PIL Image
         img = Image.open(BytesIO(png_data))
         return img
     except Exception as e:
-        print(f"❌ SVG dönüştürme hatası {svg_path}: {e}")
+        print(f"❌ SVG conversion error {svg_path}: {e}")
         return None
 
 def safe_makedirs(path):
@@ -112,24 +163,23 @@ def safe_makedirs(path):
         return False
 
 def process_single_image(original_image_path, compressed_image_save_path):
-    """Convert and compress a single image file to WebP format.
-    If the image is too small (<10KB), it will be converted to WebP anyway."""
+    """Convert and compress a single image file to WebP format targeting 20-30 KB."""
     try:
         if not os.path.exists(original_image_path) or not os.access(original_image_path, os.R_OK):
-            print(f"⏭ Okunamayan dosya: {original_image_path}")
+            print(f"⏭ Unreadable file: {original_image_path}")
             return False
 
         original_size_kb = os.path.getsize(original_image_path) / 1024
         
         # Skip extremely large files that might cause memory issues
         if original_size_kb > 50000:  # 50MB limit
-            print(f"⏭ Dosya çok büyük ({int(original_size_kb)} KB), atlanıyor: {original_image_path}")
+            print(f"⏭ File too large ({int(original_size_kb)} KB), skipping: {original_image_path}")
             return False
         
-        # Dosya uzantısını kontrol et
+        # Check file extension
         file_ext = os.path.splitext(original_image_path)[1].lower()
         
-        # SVG dosyası kontrolü
+        # SVG file check
         if file_ext == '.svg':
             if not SVG_SUPPORT:
                 print(f"⏭ SVG support not available, skipping: {original_image_path}")
@@ -137,18 +187,21 @@ def process_single_image(original_image_path, compressed_image_save_path):
             img = convert_svg_to_image(original_image_path)
             if img is None:
                 return False
-            print(f"🔄 SVG dönüştürüldü: {original_image_path}")
+            print(f"🔄 SVG converted: {original_image_path}")
         else:
             try:
                 img = Image.open(original_image_path)
             except Exception as e:
-                print(f"❌ Resim açılamadı {original_image_path}: {e}")
+                print(f"❌ Could not open image {original_image_path}: {e}")
                 return False
 
-        # Resize if too large
+        # Initial resize if too large
         img = resize_if_too_large(img)
+        
+        # Smart resize based on target size
+        img = smart_resize_for_target_size(img, TARGET_MAX_KB)
 
-        # Çıktı dosyasının uzantısını .webp olarak değiştir
+        # Change output file extension to .webp
         base_name = os.path.splitext(os.path.basename(compressed_image_save_path))[0]
         dir_name = os.path.dirname(compressed_image_save_path)
         compressed_image_save_path = os.path.join(dir_name, base_name + '.webp')
@@ -158,28 +211,7 @@ def process_single_image(original_image_path, compressed_image_save_path):
         if not safe_makedirs(output_dir):
             return False
 
-        # Küçük dosyalar için özel işlem
-        if original_size_kb < 10:
-            try:
-                # RGB moduna çevir (WebP için gerekli)
-                if img.mode in ('RGBA', 'LA'):
-                    # Şeffaflık varsa RGBA olarak tut
-                    if img.mode != 'RGBA':
-                        img = img.convert('RGBA')
-                elif img.mode not in ('RGB', 'RGBA'):
-                    img = img.convert('RGB')
-                
-                # Küçük dosyaları da WebP'ye çevir, yüksek kalite ile
-                img.save(compressed_image_save_path, format="WEBP", quality=90, optimize=True)
-                
-                final_size_kb = os.path.getsize(compressed_image_save_path) / 1024
-                print(f"📠 WebP'ye çevrildi (küçük dosya): {original_image_path} ({int(original_size_kb)} KB) -> {compressed_image_save_path} ({int(final_size_kb)} KB)")
-                return True
-            except Exception as e:
-                print(f"❌ Küçük dosya {original_image_path} WebP'ye çevrilirken hata: {e}")
-                return False
-
-        # Mod dönüşümleri - WebP için optimize edildi
+        # Handle mode conversions - optimized for WebP
         try:
             if img.mode == 'P':
                 if img.info.get("transparency") is not None:
@@ -189,7 +221,7 @@ def process_single_image(original_image_path, compressed_image_save_path):
             elif img.mode == 'LA':
                 img = img.convert("RGBA")
             elif img.mode not in ('RGB', 'RGBA', 'L'):
-                # Diğer modları RGB'ye çevir
+                # Convert other modes to RGB
                 img = img.convert("RGB")
         except Exception as e:
             print(f"  ⚠️ Mode conversion issue: {e}")
@@ -199,40 +231,42 @@ def process_single_image(original_image_path, compressed_image_save_path):
             except:
                 return False
 
-        # WebP sıkıştırması
+        # WebP compression
         buffer = compress_webp(img)
 
         if buffer is None or len(buffer.getvalue()) == 0:
-            print(f"❌ WebP sıkıştırması {original_image_path} için başarısız oldu.")
-            # Başarısız durumda yine de WebP olarak kaydetmeyi dene
-            try:
-                buffer = BytesIO()
-                img.save(buffer, format="WEBP", quality=75, optimize=True)
-                if len(buffer.getvalue()) == 0:
-                    return False
-            except:
-                return False
+            print(f"❌ WebP compression failed for {original_image_path}.")
+            return False
 
         with open(compressed_image_save_path, "wb") as f_out:
             f_out.write(buffer.getvalue())
 
         compressed_size_kb = get_file_size_kb(buffer)
-        print(f"✔ WebP'ye dönüştürüldü: {original_image_path}")
-        print(f"  ↳ Kaydedildi: {compressed_image_save_path}")
-        print(f"  📊 {int(original_size_kb)} KB → {int(compressed_size_kb)} KB")
+        print(f"✔ Converted to WebP: {original_image_path}")
+        print(f"  ↳ Saved: {compressed_image_save_path}")
+        print(f"  📊 {int(original_size_kb)} KB → {compressed_size_kb:.1f} KB")
+        
+        # Show if target was achieved
+        if TARGET_MIN_KB <= compressed_size_kb <= TARGET_MAX_KB:
+            print(f"  🎯 Target size achieved!")
+        elif compressed_size_kb < TARGET_MIN_KB:
+            print(f"  📉 Below target (could increase quality)")
+        else:
+            print(f"  📈 Above target (may need further optimization)")
+        
         return True
 
     except FileNotFoundError:
-        print(f"❌ İşlem sırasında dosya bulunamadı: {original_image_path}")
+        print(f"❌ File not found during processing: {original_image_path}")
         return False
     except UnidentifiedImageError:
-        print(f"❌ Resim dosyası tanımlanamadı (bozuk veya resim değil): {original_image_path}")
+        print(f"❌ Unidentified image file (corrupted or not an image): {original_image_path}")
         return False
     except MemoryError:
-        print(f"❌ Yetersiz bellek: {original_image_path} (dosya çok büyük)")
+        print(f"❌ Insufficient memory: {original_image_path} (file too large)")
         return False
     except Exception as e:
-        print(f"❌ {original_image_path} işlenirken hata: {e} (Satır: {e.__traceback__.tb_lineno if e.__traceback__ else 'N/A'})")
+        print(f"❌ Error processing {original_image_path}: {e} (Line: {e.__traceback__.tb_lineno if e.__traceback__ else 'N/A'})")
         return False
 
 def is_safe_path(path, base_dir):
@@ -248,31 +282,31 @@ def process_source_directory():
     """Recursively process all valid image files from SOURCE_DIR to COMPRESSED_OUTPUT_DIR, converting to WebP."""
 
     if not os.path.abspath(SOURCE_DIR).startswith(os.path.abspath("/Aminol")):
-        print(f"❌ Güvenlik hatası: Kaynak yolu {SOURCE_DIR}, /Aminol içinde değil.")
+        print(f"❌ Security error: Source path {SOURCE_DIR} is not within /Aminol.")
         return
     if not os.path.abspath(COMPRESSED_OUTPUT_DIR).startswith(os.path.abspath("/Aminol")):
-        print(f"❌ Güvenlik hatası: Hedef yolu {COMPRESSED_OUTPUT_DIR}, /Aminol içinde değil.")
+        print(f"❌ Security error: Target path {COMPRESSED_OUTPUT_DIR} is not within /Aminol.")
         return
 
     if not os.path.exists(SOURCE_DIR):
-        print(f"❌ Kaynak dizini mevcut değil: {SOURCE_DIR}")
+        print(f"❌ Source directory does not exist: {SOURCE_DIR}")
         return
     if not os.path.isdir(SOURCE_DIR):
-        print(f"❌ Kaynak yolu bir dizin değil: {SOURCE_DIR}")
+        print(f"❌ Source path is not a directory: {SOURCE_DIR}")
         return
 
     # Create main output directory
     if not safe_makedirs(COMPRESSED_OUTPUT_DIR):
-        print(f"❌ Ana hedef dizin {COMPRESSED_OUTPUT_DIR} oluşturulamadı")
+        print(f"❌ Could not create main target directory {COMPRESSED_OUTPUT_DIR}")
         return
     else:
-        print(f"📁 Hedef dizin hazır: {COMPRESSED_OUTPUT_DIR}")
+        print(f"📁 Target directory ready: {COMPRESSED_OUTPUT_DIR}")
 
     total_source_files_found = 0
     successfully_processed_this_run = 0
     skipped_existing_count = 0
     failed_this_run = 0
-    converted_small_files_count = 0
+    target_achieved_count = 0
     svg_converted_count = 0
     svg_skipped_count = 0
     large_files_skipped = 0
@@ -280,7 +314,7 @@ def process_source_directory():
     try:
         for root, dirs, files in os.walk(SOURCE_DIR):
             if not is_safe_path(root, SOURCE_DIR):
-                print(f"⏭ Gezinme sırasında güvenli olmayan yol atlanıyor: {root}")
+                print(f"⏭ Skipping unsafe path during traversal: {root}")
                 continue
 
             for file in files:
@@ -290,7 +324,7 @@ def process_source_directory():
                     original_path = os.path.join(root, file)
 
                     if not is_safe_path(original_path, SOURCE_DIR):
-                        print(f"⏭ Güvenli olmayan orijinal dosya yolu atlanıyor: {original_path}")
+                        print(f"⏭ Skipping unsafe original file path: {original_path}")
                         continue
 
                     # Check file size before processing
@@ -302,7 +336,7 @@ def process_source_directory():
                     except:
                         continue
 
-                    # SVG dosyası kontrolü
+                    # SVG file check
                     if file_lower.endswith('.svg') and not SVG_SUPPORT:
                         print(f"⏭ SVG support not available, skipping: {original_path}")
                         svg_skipped_count += 1
@@ -310,70 +344,75 @@ def process_source_directory():
 
                     relative_path = os.path.relpath(original_path, SOURCE_DIR)
                     
-                    # Çıktı dosyasının uzantısını .webp olarak değiştir
+                    # Change output file extension to .webp
                     base_name = os.path.splitext(relative_path)[0]
                     compressed_save_path = os.path.join(COMPRESSED_OUTPUT_DIR, base_name + '.webp')
 
                     if not is_safe_path(compressed_save_path, COMPRESSED_OUTPUT_DIR):
-                        print(f"⏭ Güvenli olmayan hedef kayıt yolu atlanıyor: {compressed_save_path}")
+                        print(f"⏭ Skipping unsafe target save path: {compressed_save_path}")
                         continue
 
                     if os.path.exists(compressed_save_path):
-                        print(f"⏭ WebP dosyası hedefte zaten mevcut: {compressed_save_path}. Atlanıyor.")
+                        print(f"⏭ WebP file already exists at target: {compressed_save_path}. Skipping.")
                         skipped_existing_count += 1
                         continue
 
-                    original_size_kb_before_process = file_size_kb
                     is_svg = original_path.lower().endswith('.svg')
                     
                     processed_successfully = process_single_image(original_path, compressed_save_path)
 
                     if processed_successfully:
                         successfully_processed_this_run += 1
-                        if original_size_kb_before_process < 10:
-                            converted_small_files_count += 1
                         if is_svg:
                             svg_converted_count += 1
+                        
+                        # Check if target size was achieved
+                        try:
+                            final_size_kb = os.path.getsize(compressed_save_path) / 1024
+                            if TARGET_MIN_KB <= final_size_kb <= TARGET_MAX_KB:
+                                target_achieved_count += 1
+                        except:
+                            pass
                     else:
                         failed_this_run += 1
     
     except PermissionError as e:
-        print(f"❌ Dizin işlenirken izin reddedildi: {e}")
+        print(f"❌ Permission denied while processing directory: {e}")
     except Exception as e:
-        print(f"❌ Dizin işlenirken hata: {e}")
+        print(f"❌ Error while processing directory: {e}")
 
-    print(f"\n🏁 WebP dönüştürme işlemi tamamlandı.")
-    print(f"🔎 Kaynakta bulunan toplam resim dosyası: {total_source_files_found}")
+    print(f"\n🏁 WebP conversion process completed.")
+    print(f"🔎 Total image files found in source: {total_source_files_found}")
     if large_files_skipped > 0:
-        print(f"⏭ Çok büyük olduğu için atlanan dosyalar (>50MB): {large_files_skipped}")
-    print(f"📠 WebP'ye çevrilen küçük (<10KB) dosyalar: {converted_small_files_count}")
+        print(f"⏭ Files skipped due to size (>50MB): {large_files_skipped}")
     if SVG_SUPPORT:
-        print(f"🔄 SVG'den WebP'ye çevrilen dosyalar: {svg_converted_count}")
+        print(f"🔄 SVG files converted to WebP: {svg_converted_count}")
     else:
-        print(f"⏭ SVG desteği olmadığı için atlanan SVG dosyalar: {svg_skipped_count}")
-    print(f"⏭ Atlanan (hedefte zaten mevcut olan): {skipped_existing_count}")
-    print(f"✔ Bu çalıştırmada başarıyla WebP'ye çevrilen: {successfully_processed_this_run}")
-    print(f"❌ Bu çalıştırmada işlenemeyen: {failed_this_run}")
+        print(f"⏭ SVG files skipped (no SVG support): {svg_skipped_count}")
+    print(f"⏭ Skipped (already exists at target): {skipped_existing_count}")
+    print(f"✔ Successfully converted to WebP in this run: {successfully_processed_this_run}")
+    print(f"🎯 Files achieving target size ({TARGET_MIN_KB}-{TARGET_MAX_KB} KB): {target_achieved_count}")
+    print(f"❌ Failed to process in this run: {failed_this_run}")
     attempted_this_run = successfully_processed_this_run + failed_this_run
-    print(f"🛠 Bu çalıştırmada işlenmeye çalışılan: {attempted_this_run}")
+    print(f"🛠 Total attempted to process in this run: {attempted_this_run}")
 
 
 if __name__ == "__main__":
-    print(f"🚀 WebP dönüştürme ve sıkıştırma başlatılıyor.")
-    print(f"📂 Kaynak dizin: {SOURCE_DIR}")
-    print(f"💾 WebP dosyaları için hedef dizin: {COMPRESSED_OUTPUT_DIR}")
-    print(f"📏 Hedef boyut aralığı: {TARGET_MIN_KB}-{TARGET_MAX_KB} KB")
-    print(f"🔄 Tüm resimler WebP formatına çevrilecektir.")
-    print(f"⚠️  Büyük dosyalar (>50MB) güvenlik için atlanacaktır.")
-    print(f"📐 Çok büyük resimler {MAX_IMAGE_DIMENSION}px'e yeniden boyutlandırılacaktır.")
+    print(f"🚀 Starting WebP conversion and compression.")
+    print(f"📂 Source directory: {SOURCE_DIR}")
+    print(f"💾 Target directory for WebP files: {COMPRESSED_OUTPUT_DIR}")
+    print(f"📏 Target size range: {TARGET_MIN_KB}-{TARGET_MAX_KB} KB")
+    print(f"🔄 All images will be converted to WebP format.")
+    print(f"⚠️  Large files (>50MB) will be skipped for safety.")
+    print(f"📐 Very large images will be resized to max {MAX_IMAGE_DIMENSION}px.")
     
     if SVG_SUPPORT:
-        print(f"✅ SVG desteği aktif. SVG dosyaları önce PNG'ye, sonra WebP'ye çevrilecektir.")
+        print(f"✅ SVG support active. SVG files will be converted to PNG first, then to WebP.")
     else:
-        print(f"⚠️  SVG desteği yok. SVG dosyalarını işlemek için Cairo kütüphanelerini yükleyin:")
+        print(f"⚠️  No SVG support. To process SVG files, install Cairo libraries:")
         print(f"    sudo apt install libcairo2-dev libgirepository1.0-dev pkg-config")
         print(f"    pip install cairosvg")
-        print(f"    SVG dosyaları atlanacaktır.")
+        print(f"    SVG files will be skipped.")
     
     print("-" * 60)
 
