@@ -199,7 +199,7 @@ else:
     STATICFILES_DIRS = [os.path.join(BASE_DIR, "staticfiles")]
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'medias/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -215,6 +215,11 @@ CKEDITOR_5_CONFIGS = {
         'language': 'en',
     },
 }
+
+DIRECTORIES_TO_PROCESS = [
+    {'source': 'staticfiles/images_1', 'target': 'staticfiles/images'},
+    {'source': 'staticfiles/images_folder_1', 'target': 'staticfiles/images_folder'}
+]
 
 from decouple import config
 
