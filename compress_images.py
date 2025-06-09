@@ -16,10 +16,10 @@ WEBP_QUALITY_MAX = 95
 IMAGE_EXTENSIONS = ('.jpg', '.jpeg', '.png', '.webp', '.svg', '.bmp', '.tiff', '.gif')
 
 # Source directory for original images
-SOURCE_DIR = "/Aminol/media"
+SOURCE_DIR = "/Aminol/mediafiles"
 
 # Target directory for compressed images
-COMPRESSED_OUTPUT_DIR = "/Aminol/mediafiles"
+COMPRESSED_OUTPUT_DIR = "/Aminol/medias"
 
 
 def get_file_size_kb(buffer):
