@@ -144,7 +144,7 @@
   <div class="our-values bg-blue">
     <div class="container our-values-section">
       <div>
-        <img src="{% static 'images/values.jpg' %}" alt="" />
+        <img src="{% static 'images/values.webp' %}" alt="" />
       </div>
       <div class="values-content">
         <h3>{% trans "Our Values" %}</h3>
@@ -206,12 +206,12 @@
         <div class="image-container">
           <img loading="lazy"
             class="slide-under-img"
-            src="{% static 'images_folder/Mask group.svg' %}"
+            src="{% static 'images_folder/Mask group.webp' %}"
             alt=""
           />
           <img loading="lazy"
             class="innovation-image"
-            src="{% static 'images_folder/image.png' %}"
+            src="{% static 'images_folder/image.webp' %}"
             alt="{% trans 'Hybrid & EV Lubricants' %}"
           />
         </div>
@@ -228,7 +228,7 @@
         <div class="image-container">
           <img loading="lazy"
             class="innovation-image"
-            src="{% static 'images_folder/FR4A9609 1.png' %}"
+            src="{% static 'images_folder/FR4A9609 1.webp' %}"
             alt="{% trans 'Additives' %}"
           />
         </div>
@@ -250,7 +250,7 @@
             {% if news.image %}
             <img loading="lazy" src="{{ news.image.url }}" alt="{{ news.title_translate }}" />
             {% else %}
-            <img loading="lazy" src="{% static 'images_folder/default-news.svg' %}" alt="{{ news.title_translate }}" />
+            <img loading="lazy" src="{% static 'images_folder/default-news.webp' %}" alt="{{ news.title_translate }}" />
             {% endif %}
           </div>
           <div class="news-content">

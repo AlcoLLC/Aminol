@@ -33,7 +33,7 @@
                             {% if news.image %}
                                 <img loading="lazy" src="{{ news.image.url }}" alt="{{ news.title }}" />
                             {% else %}
-                                <img loading="lazy" src="{% static 'images_folder/zavod.svg' %}" alt="{% trans 'Default news image' %}" />
+                                <img loading="lazy" src="{% static 'images_folder/zavod.webp' %}" alt="{% trans 'Default news image' %}" />
                             {% endif %}
                         </div>
                         <div class="news-content">
@@ -65,7 +65,7 @@
                                 {% if news.image %}
                                     <img loading="lazy" src="{{ news.image.url }}" alt="{{ news.title_translate }}" />
                                 {% else %}
-                                    <img loading="lazy" src="{% static 'images_folder/zavod.svg' %}" alt="{% trans 'Default news image' %}" />
+                                    <img loading="lazy" src="{% static 'images_folder/zavod.webp' %}" alt="{% trans 'Default news image' %}" />
                                 {% endif %}
                             </div>
                             <div class="news-content">
