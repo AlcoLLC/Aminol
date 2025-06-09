@@ -216,6 +216,11 @@ CKEDITOR_5_CONFIGS = {
     },
 }
 
+DIRECTORIES_TO_PROCESS = [
+    {'source': 'staticfiles/images_1', 'target': 'staticfiles/images'},
+    {'source': 'staticfiles/images_folder_1', 'target': 'staticfiles/images_folder'}
+]
+
 from decouple import config
 
 
