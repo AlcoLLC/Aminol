@@ -66,14 +66,10 @@ def contact_view(request):
     
     if request.method == 'POST':
         client_ip = get_client_ip(request)
-        
-        # --- START: YENİ IP MƏHDUDİYYƏTİ YOXLAMASI ---
-        # Əgər bu IP ünvanından artıq bir müraciət varsa, prosesi dayandır.
         if client_ip and Contact.objects.filter(ip_address=client_ip).exists():
-            messages.error(request, _("Siz bu IP ünvanından artıq müraciət göndərmisiniz."))
+            messages.error(request, _("You have already submitted the form from this IP address."))
             logger.warning(f"Duplicate submission attempt from IP address {client_ip}.")
             return redirect('contact')
-        # --- END: YENİ IP MƏHDUDİYYƏTİ YOXLAMASI ---
 
         recaptcha_response = request.POST.get('g-recaptcha-response')
         
@@ -99,7 +95,6 @@ def contact_view(request):
             if form.is_valid():
                 try:
                     contact_instance = form.save(commit=False)
-                    # Müraciəti yadda saxlayarkən IP ünvanını mütləq qeyd et
                     contact_instance.ip_address = client_ip 
                     contact_instance.save()
                     
