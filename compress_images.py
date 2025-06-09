@@ -17,16 +17,16 @@ except ImportError:
     SVG_SUPPORT = False
     print("⚠️  SVG support not available. Install Cairo dependencies and cairosvg for SVG processing.")
 
-# Target size range in kilobytes - UPDATED FOR 20-30 KB
-TARGET_MIN_KB = 20
-TARGET_MAX_KB = 30
+# Target size range in kilobytes - UPDATED FOR MAX 150 KB
+TARGET_MIN_KB = 50
+TARGET_MAX_KB = 150
 
-# WebP quality settings - UPDATED for smaller file sizes
-WEBP_QUALITY_MIN = 15
-WEBP_QUALITY_MAX = 85
+# WebP quality settings - UPDATED for larger file sizes with better quality
+WEBP_QUALITY_MIN = 30
+WEBP_QUALITY_MAX = 95
 
-# Maximum image dimensions for processing - REDUCED for smaller files
-MAX_IMAGE_DIMENSION = 1920  # Reduced from 8000 to help achieve smaller file sizes
+# Maximum image dimensions for processing - INCREASED for better quality
+MAX_IMAGE_DIMENSION = 2560  # Increased from 1920 to allow larger images
 
 # Supported image formats (SVG only if cairosvg is available)
 if SVG_SUPPORT:
@@ -38,7 +38,7 @@ else:
 SOURCE_DIR = "/Aminol/mediafiles"
 
 # Target directory for compressed images
-COMPRESSED_OUTPUT_DIR = "/Aminol/medias"
+COMPRESSED_OUTPUT_DIR = "/Aminol/mediafile"
 
 
 def get_file_size_kb(buffer):
@@ -68,12 +68,12 @@ def smart_resize_for_target_size(img, target_size_kb):
     
     # Estimate pixels needed for target size (rough approximation)
     # This is a heuristic - actual results will vary by image content
-    target_pixels = int(current_pixels * (target_size_kb / 100))  # Very rough estimate
+    target_pixels = int(current_pixels * (target_size_kb / 200))  # Adjusted for 150KB target
     
     if target_pixels < current_pixels:
         scale_factor = (target_pixels / current_pixels) ** 0.5
-        new_width = max(100, int(width * scale_factor))  # Minimum 100px width
-        new_height = max(100, int(height * scale_factor))  # Minimum 100px height
+        new_width = max(200, int(width * scale_factor))  # Increased minimum to 200px width
+        new_height = max(200, int(height * scale_factor))  # Increased minimum to 200px height
         
         print(f"  📐 Smart resize for target size: {width}x{height} -> {new_width}x{new_height}")
         img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
@@ -84,8 +84,8 @@ def compress_webp(img):
     """Iteratively compress WebP to target size with multiple strategies"""
     last_buffer = None
     
-    # Strategy 1: Try different quality levels
-    for quality in range(WEBP_QUALITY_MAX, WEBP_QUALITY_MIN - 1, -3):
+    # Strategy 1: Start with higher quality for better results
+    for quality in range(WEBP_QUALITY_MAX, WEBP_QUALITY_MIN - 1, -5):
         buffer = BytesIO()
         try:
             img.save(buffer, format="WEBP", quality=quality, optimize=True)
@@ -99,14 +99,14 @@ def compress_webp(img):
             last_buffer = buffer
             
             # If still too large, try resizing the image further
-            if size_kb > TARGET_MAX_KB and quality <= 30:
+            if size_kb > TARGET_MAX_KB and quality <= 50:
                 print(f"    🔄 Still too large, trying smaller dimensions...")
                 current_width, current_height = img.size
-                new_width = int(current_width * 0.8)
-                new_height = int(current_height * 0.8)
+                new_width = int(current_width * 0.85)  # More conservative resize (85% instead of 80%)
+                new_height = int(current_height * 0.85)
                 
                 # Don't go below minimum reasonable size
-                if new_width >= 200 and new_height >= 200:
+                if new_width >= 300 and new_height >= 300:  # Increased minimum size
                     img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
                     print(f"    📐 Resized to {new_width}x{new_height} for size optimization")
                     
@@ -163,7 +163,7 @@ def safe_makedirs(path):
         return False
 
 def process_single_image(original_image_path, compressed_image_save_path):
-    """Convert and compress a single image file to WebP format targeting 20-30 KB."""
+    """Convert and compress a single image file to WebP format targeting 50-150 KB."""
     try:
         if not os.path.exists(original_image_path) or not os.access(original_image_path, os.R_OK):
             print(f"⏭ Unreadable file: {original_image_path}")
