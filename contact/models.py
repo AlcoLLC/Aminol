@@ -29,7 +29,6 @@ class Contact(models.Model):
     class Meta:
         verbose_name = _('Contact')
         verbose_name_plural = _('Contacts')
-        # IP ünvanı üzrə unikal məhdudiyyət əlavə edə bilərik, lakin view səviyyəsində yoxlama daha çevikdir.
 
 
 class ContactInfo(models.Model):
