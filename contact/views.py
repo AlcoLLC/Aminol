@@ -81,7 +81,10 @@ def contact_view(request):
         
         # --- START: IP ÜNVANINA GÖRƏ MƏHDUDİYYƏT MƏNTİQİ ---
         if client_ip:
-            limit, created = ContactSubmissionLimit.objects.get_or_create(ip_address=client_ip)
+            limit, created = ContactSubmissionLimit.objects.get_or_create(
+                ip_address=client_ip,
+                defaults={'last_submission': timezone.now()}
+            )
             
             # 1. IP-nin bloklanıb-bloklanmadığını yoxla
             if limit.is_blocked:
