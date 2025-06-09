@@ -7,50 +7,36 @@ from pathlib import Path
 
 # CSS/JS dosyaları için ek uzantılar
 STATIC_EXTENSIONS = ('.css', '.js', '.html', '.json', '.xml', '.svg', '.txt')
-GZIP_EXTENSIONS = ('.css', '.js', '.html', '.json', '.xml', '.txt')
+# GZIP_EXTENSIONS artık gerekli değil, çünkü Gzip sıkıştırması yapmayacağız.
 
-# Mevcut kod bloğunuzun sonuna eklenecek fonksiyonlar:
-
+# --- Minify Fonksiyonları (Değişiklik Yok) ---
 def minify_css(css_content):
     """Basit CSS minification"""
-    # Yorumları kaldır
     css_content = re.sub(r'/\*.*?\*/', '', css_content, flags=re.DOTALL)
-    # Fazla boşlukları kaldır
     css_content = re.sub(r'\s+', ' ', css_content)
-    # Gereksiz karakterleri kaldır
-    css_content = css_content.replace(' {', '{')
-    css_content = css_content.replace('{ ', '{')
-    css_content = css_content.replace(' }', '}')
-    css_content = css_content.replace('} ', '}')
-    css_content = css_content.replace('; ', ';')
-    css_content = css_content.replace(': ', ':')
-    css_content = css_content.replace(', ', ',')
+    css_content = css_content.replace(' {', '{').replace('{ ', '{')
+    css_content = css_content.replace(' }', '}').replace('} ', '}')
+    css_content = css_content.replace('; ', ';').replace(': ', ':').replace(', ', ',')
     return css_content.strip()
 
 def minify_js(js_content):
     """Basit JavaScript minification"""
-    # Tek satır yorumları kaldır (// ile başlayanlar)
     js_content = re.sub(r'//.*$', '', js_content, flags=re.MULTILINE)
-    # Çok satırlı yorumları kaldır
     js_content = re.sub(r'/\*.*?\*/', '', js_content, flags=re.DOTALL)
-    # Fazla boşlukları kaldır
     js_content = re.sub(r'\s+', ' ', js_content)
-    # Noktalı virgülden sonraki boşlukları kaldır
     js_content = js_content.replace('; ', ';')
     return js_content.strip()
 
 def minify_html(html_content):
     """Basit HTML minification"""
-    # HTML yorumlarını kaldır
-    html_content = re.sub(r'<!--.*?-->', '', html_content, flags=re.DOTALL)
-    # Fazla boşlukları kaldır
+    html_content = re.sub(r'', '', html_content, flags=re.DOTALL)
     html_content = re.sub(r'\s+', ' ', html_content)
-    # Tag'ler arasındaki gereksiz boşlukları kaldır
     html_content = re.sub(r'>\s+<', '><', html_content)
     return html_content.strip()
 
-def compress_static_file(file_path, target_path):
-    """Static dosyaları minify et ve gzip ile sıkıştır"""
+# --- DEĞİŞİKLİK: Fonksiyonun adı ve içeriği güncellendi ---
+def minify_and_save_static_file(file_path, target_path):
+    """Static dosyaları minify et ve .min uzantılı olarak kaydet"""
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
@@ -67,11 +53,10 @@ def compress_static_file(file_path, target_path):
             content = minify_html(content)
         elif file_ext == '.json':
             try:
-                # JSON'u compact format'a çevir
                 data = json.loads(content)
                 content = json.dumps(data, separators=(',', ':'))
             except:
-                pass  # JSON parse edilemezse orijinal halini bırak
+                pass # JSON parse edilemezse orijinal halini bırak
         
         minified_size = len(content.encode('utf-8'))
         
@@ -80,18 +65,13 @@ def compress_static_file(file_path, target_path):
         with open(target_path, 'w', encoding='utf-8') as f:
             f.write(content)
         
-        # Gzip versiyonunu da oluştur
-        if file_ext in GZIP_EXTENSIONS:
-            gzip_path = target_path + '.gz'
-            with gzip.open(gzip_path, 'wt', encoding='utf-8') as f:
-                f.write(content)
-            gzip_size = os.path.getsize(gzip_path)
-            print(f"📦 Gzip oluşturuldu: {gzip_path} ({gzip_size} bytes)")
+        # --- DEĞİŞİKLİK: Gzip oluşturma bölümü kaldırıldı ---
+        # Gzip ile ilgili tüm mantık buradan çıkarıldı.
         
         compression_ratio = ((original_size - minified_size) / original_size) * 100 if original_size > 0 else 0
         
         print(f"✔ Minify edildi: {file_path}")
-        print(f"  ↳ Kaydedildi: {target_path}")
+        print(f"  ↳ Kaydedildi: {target_path}") # Hedef yolu gösterir (.min.css gibi)
         print(f"  📊 {original_size} bytes → {minified_size} bytes ({compression_ratio:.1f}% azalma)")
         
         return True
@@ -100,13 +80,14 @@ def compress_static_file(file_path, target_path):
         print(f"❌ Static dosya hatası ({file_path}): {e}")
         return False
 
+# --- DEĞİŞİKLİK: Hedef dosya adını oluşturan mantık güncellendi ---
 def process_static_files(source_dir, target_dir):
-    """Static dosyaları işle"""
+    """Static dosyaları işle ve .min versiyonlarını oluştur"""
     total_files = 0
     processed = 0
     failed = 0
     
-    print(f"\n📁 Static dosyalar işleniyor: {source_dir} → {target_dir}")
+    print(f"\n📁 Static dosyalar işleniyor: {source_dir}")
     
     if not os.path.exists(source_dir):
         print(f"❌ Kaynak dizin mevcut değil: {source_dir}")
@@ -114,21 +95,35 @@ def process_static_files(source_dir, target_dir):
     
     for root, _, files in os.walk(source_dir):
         for file in files:
+            # .min.css gibi zaten işlenmiş dosyaları atla
+            if file.lower().endswith('.min.css') or file.lower().endswith('.min.js'):
+                continue
+
             if file.lower().endswith(STATIC_EXTENSIONS):
                 total_files += 1
                 original_path = os.path.join(root, file)
-                relative_path = os.path.relpath(original_path, source_dir)
-                target_path = os.path.join(target_dir, relative_path)
                 
-                if compress_static_file(original_path, target_path):
+                # --- DEĞİŞİKLİK: Hedef dosya adını oluşturma ---
+                # dosya.css -> dosya.min.css
+                base_name, ext = os.path.splitext(file)
+                min_filename = f"{base_name}.min{ext}"
+                
+                # Hedef yolu yeni dosya adıyla birleştir
+                # Not: Bu, kaynak ve hedef dizin aynı olduğunda orijinal dosyanın üzerine yazmaz.
+                target_path = os.path.join(target_dir, os.path.relpath(root, source_dir), min_filename)
+                
+                # Ana fonksiyonu yeni hedef yol ile çağır
+                if minify_and_save_static_file(original_path, target_path):
                     processed += 1
                 else:
                     failed += 1
     
     return total_files, processed, failed
 
-# Mevcut DIRECTORIES_TO_PROCESS'e static dizinleri ekleyin:
+# --- Ana İşlem Fonksiyonları (Çağrılar Güncellendi) ---
 STATIC_DIRECTORIES_TO_PROCESS = [
+    # Kaynak ve hedef dizinlerin aynı olması, .min dosyalarının
+    # orijinallerinin yanına oluşturulmasını sağlar.
     {'source': 'staticfiles/assets/css', 'target': 'staticfiles/assets/css'},
     {'source': 'staticfiles/assets/js', 'target': 'staticfiles/assets/js'},
     {'source': 'templates/html', 'target': 'templates/html'},
@@ -136,7 +131,7 @@ STATIC_DIRECTORIES_TO_PROCESS = [
 
 def process_all_static_files():
     """Tüm static dosyaları işle"""
-    print(f"\n🗜️ STATIC DOSYA COMPRESSION")
+    print(f"\n🗜️ STATIC DOSYA MINIFICATION")
     print("-" * 80)
     
     total_static = [0, 0, 0]  # total, processed, failed
@@ -148,15 +143,8 @@ def process_all_static_files():
     
     print(f"\n📊 STATIC DOSYA ÖZETİ:")
     print(f"🔎 Toplam static dosya: {total_static[0]}")
-    print(f"✔ Başarıyla sıkıştırılan: {total_static[1]}")
+    print(f"✔ Başarıyla minify edilen: {total_static[1]}")
     print(f"❌ Başarısız: {total_static[2]}")
 
-# Ana process_all_directories() fonksiyonunun sonuna ekleyin:
-def process_all_directories_extended():
-    
-    # Static dosya işleme
-    process_all_static_files()
-
-# Script'in sonunda çağırın:
 if __name__ == "__main__":
-    process_all_directories_extended()
+    process_all_static_files()
