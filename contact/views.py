@@ -152,7 +152,7 @@ Aminol Support Team
         'help_choices': help_choices,
         'contact_info': contact_info,
         'form_labels': form_labels,
-        'recaptcha_site_key': RECAPTCHA_SITE_KEY
+         'recaptcha_site_key': settings.RECAPTCHA_SITE_KEY, 
     }
     
     return render(request, 'contact.html', context)
