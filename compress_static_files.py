@@ -129,9 +129,9 @@ def process_static_files(source_dir, target_dir):
 
 # Mevcut DIRECTORIES_TO_PROCESS'e static dizinleri ekleyin:
 STATIC_DIRECTORIES_TO_PROCESS = [
-    {'source': 'staticfiles/css', 'target': 'staticfiles/css_compressed'},
-    {'source': 'staticfiles/js', 'target': 'staticfiles/js_compressed'},
-    {'source': 'staticfiles/html', 'target': 'staticfiles/html_compressed'},
+    {'source': 'staticfiles/assets/css', 'target': 'staticfiles/assets/css'},
+    {'source': 'staticfiles/assets/js', 'target': 'staticfiles/assets/js'},
+    {'source': 'templates/html', 'target': 'templates/html'},
 ]
 
 def process_all_static_files():
