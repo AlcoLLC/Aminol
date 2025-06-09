@@ -3,13 +3,13 @@ import shutil
 from PIL import Image, UnidentifiedImageError
 from io import BytesIO
 
-# Ana hedef boyut aralığı - 20-30 KB
+# Yeni hedef boyut aralığı - maksimum 150 KB
 TARGET_MIN_KB = 20
-TARGET_MAX_KB = 30
+TARGET_MAX_KB = 150
 
-# WebP kalite aralığı - daha düşük kalite kullanıyoruz
-WEBP_QUALITY_MIN = 25
-WEBP_QUALITY_MAX = 60
+# WebP kalite aralığı - daha yüksek kalite kullanıyoruz
+WEBP_QUALITY_MIN = 40
+WEBP_QUALITY_MAX = 85
 
 IMAGE_EXTENSIONS = ('.jpg', '.jpeg', '.png', '.webp', '.svg', '.bmp', '.tiff', '.gif')
 
@@ -32,22 +32,22 @@ def get_file_size_kb(buffer):
 
 
 def compress_webp_to_target(img):
-    """WebP formatında 20-30 KB hedef boyutuna sıkıştırma"""
+    """WebP formatında 20-150 KB hedef boyutuna sıkıştırma"""
     original_width, original_height = img.size
     last_buffer = None
     
-    # Farklı boyut seçenekleri (küçükten büyüğe)
-    size_multipliers = [0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+    # Farklı boyut seçenekleri (küçükten büyüğe) - daha fazla seçenek
+    size_multipliers = [0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2]
     
     for multiplier in size_multipliers:
         # Yeni boyutları hesapla
-        new_width = max(50, int(original_width * multiplier))  # Minimum 50px
-        new_height = max(50, int(original_height * multiplier))  # Minimum 50px
+        new_width = max(100, int(original_width * multiplier))  # Minimum 100px
+        new_height = max(100, int(original_height * multiplier))  # Minimum 100px
         
         # Resmi yeniden boyutlandır
         resized_img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
         
-        # Farklı kalite seviyelerini dene
+        # Farklı kalite seviyelerini dene (yüksekten düşüğe)
         for quality in range(WEBP_QUALITY_MAX, WEBP_QUALITY_MIN - 1, -5):
             buffer = BytesIO()
             resized_img.save(buffer, format="WEBP", quality=quality, optimize=True)
@@ -60,24 +60,28 @@ def compress_webp_to_target(img):
             # En son buffer'ı sakla
             last_buffer = buffer
             
-            # Eğer hedef aralığın altındaysa, bu boyut kombinasyonunu bırak
+            # Eğer maksimum boyutun üzerindeyse, kaliteyi düşür
+            if size_kb > TARGET_MAX_KB:
+                continue
+            
+            # Eğer minimum boyutun altındaysa, bir sonraki boyut multiplier'ına geç
             if size_kb < TARGET_MIN_KB:
                 break
     
     # Hedef aralıkta bulamadıysak en son buffer'ı döndür
     if last_buffer:
         last_size = get_file_size_kb(last_buffer)
-        # Son boyutları da hesaplayalım (yaklaşık)
-        last_width = max(50, int(original_width * size_multipliers[-1]))
-        last_height = max(50, int(original_height * size_multipliers[-1]))
+        # Son boyutları da hesaplayalım
+        last_width = max(100, int(original_width * size_multipliers[-1]))
+        last_height = max(100, int(original_height * size_multipliers[-1]))
         return last_buffer, last_size, (last_width, last_height)
     
-    # Hiçbir şey bulamazsak en küçük versiyonu oluştur
-    tiny_img = img.resize((100, 100), Image.Resampling.LANCZOS)
+    # Hiçbir şey bulamazsak ortalama bir versiyonu oluştur
+    medium_img = img.resize((400, 400), Image.Resampling.LANCZOS)
     buffer = BytesIO()
-    tiny_img.save(buffer, format="WEBP", quality=30, optimize=True)
+    medium_img.save(buffer, format="WEBP", quality=60, optimize=True)
     size_kb = get_file_size_kb(buffer)
-    return buffer, size_kb, (100, 100)
+    return buffer, size_kb, (400, 400)
 
 
 def convert_svg_to_image(svg_path):
@@ -97,7 +101,7 @@ def convert_svg_to_image(svg_path):
 
 
 def process_single_image(original_image_path, compressed_image_save_path, source_root):
-    """Tek bir resim dosyasını 20-30 KB WebP formatına çevir"""
+    """Tek bir resim dosyasını 20-150 KB WebP formatına çevir"""
     try:
         if not os.path.exists(original_image_path) or not os.access(original_image_path, os.R_OK):
             print(f"⏭ Okunamayan dosya: {original_image_path}")
@@ -135,7 +139,7 @@ def process_single_image(original_image_path, compressed_image_save_path, source
         elif img.mode not in ('RGB', 'RGBA', 'L'):
             img = img.convert("RGB")
 
-        # 20-30 KB hedefine WebP dosyasını oluştur
+        # 20-150 KB hedefine WebP dosyasını oluştur
         buffer, compressed_size_kb, dimensions = compress_webp_to_target(img)
         
         if not buffer or len(buffer.getvalue()) == 0:
@@ -227,10 +231,10 @@ def process_directory_pair(source_dir, target_dir):
 
 def process_all_directories():
     """Tüm dizin çiftlerini işle"""
-    print(f"🚀 20-30 KB WebP dönüştürme başlatıldı")
+    print(f"🚀 20-150 KB WebP dönüştürme başlatıldı")
     print(f"🎯 Hedef boyut aralığı: {TARGET_MIN_KB}-{TARGET_MAX_KB} KB")
     print(f"🔧 Kalite aralığı: {WEBP_QUALITY_MIN}-{WEBP_QUALITY_MAX}")
-    print(f"🔄 Tüm resimler optimize edilecek ve 20-30 KB aralığına sıkıştırılacak.")
+    print(f"🔄 Tüm resimler optimize edilecek ve 20-150 KB aralığına sıkıştırılacak.")
     if SVG_SUPPORT:
         print("✅ SVG desteği aktif.")
     else:
@@ -256,7 +260,7 @@ def process_all_directories():
         print(f"❌ Başarısız: {result[3]}")
 
     print("\n" + "=" * 80)
-    print("🏁 GENEL ÖZET - 20-30 KB WebP Dönüştürme")
+    print("🏁 GENEL ÖZET - 20-150 KB WebP Dönüştürme")
     print(f"🔎 Toplam resim dosyası bulundu: {totals[0]}")
     print(f"⏭ Toplam atlanan (zaten mevcut): {totals[1]}")
     print(f"✔ Başarıyla WebP'ye çevrilen: {totals[2]}")
