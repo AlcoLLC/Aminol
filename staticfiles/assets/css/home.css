@@ -56,12 +56,12 @@
   background-image: url("../../images/home-slider.webp");
 }
 .home-header .swiper-slide_two {
-  background-image: url("../../images/actros.jpg");
+  background-image: url("../../images/actros.webp");
   background-position: center;
 }
 
 .home-header .swiper-slide_three {
-  background-image: url("../../images/yamaha.jpg");
+  background-image: url("../../images/yamaha.webp");
 }
 .home-header .swiper-slide_four {
   background-image: url("../../images/home-slider4-new.webp");
