@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-31 13:50+0400\n"
-"PO-Revision-Date: 2025-05-31 13:44+0400\n"
+"POT-Creation-Date: 2025-06-04 12:11+0400\n"
+"PO-Revision-Date: 2025-06-04 09:37+0400\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,100 +19,395 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.10.2\n"
 
-#: contact/models.py:8 contact/views.py:15
-#: templates/components/contactcomponent.html:19
+#: career/admin.py:17
+msgid "Jobs Count"
+msgstr ""
+
+#: career/admin.py:51
+msgid "Basic Information"
+msgstr ""
+
+#: career/admin.py:54
+msgid "Job Details"
+msgstr ""
+
+#: career/admin.py:57
+msgid "Work Configuration"
+msgstr ""
+
+#: career/admin.py:60 career/admin.py:113
+msgid "Timestamps"
+msgstr ""
+
+#: career/admin.py:104
+msgid "Applicant Information"
+msgstr ""
+
+#: career/admin.py:107
+msgid "Job Information"
+msgstr ""
+
+#: career/admin.py:110
+msgid "Application Details"
+msgstr ""
+
+#: career/admin.py:121
+#, fuzzy
+#| msgid "First Name"
+msgid "Full Name"
+msgstr "First Name"
+
+#: career/admin.py:129
+msgid "Download CV"
+msgstr ""
+
+#: career/admin.py:132 career/models.py:75 templates/career_steps.html:188
+msgid "CV File"
+msgstr ""
+
+#: career/admin.py:139
+msgid "Mark as under review"
+msgstr ""
+
+#: career/admin.py:144
+msgid "Mark for interview"
+msgstr ""
+
+#: career/admin.py:149
+msgid "Mark as accepted"
+msgstr ""
+
+#: career/admin.py:154
+msgid "Mark as rejected"
+msgstr ""
+
+#: career/models.py:5
+msgid "Department Name"
+msgstr ""
+
+#: career/models.py:6
+msgid "Slug"
+msgstr ""
+
+#: career/models.py:7 career/models.py:49
+msgid "Is Active"
+msgstr ""
+
+#: career/models.py:12 career/models.py:32
+msgid "Department"
+msgstr ""
+
+#: career/models.py:13
+msgid "Departments"
+msgstr ""
+
+#: career/models.py:21
+msgid "100% Remote"
+msgstr ""
+
+#: career/models.py:22
+msgid "100% On-site"
+msgstr ""
+
+#: career/models.py:23
+msgid "Hybrid"
+msgstr ""
+
+#: career/models.py:27
+msgid "Full-time"
+msgstr ""
+
+#: career/models.py:28
+msgid "Part-time"
+msgstr ""
+
+#: career/models.py:31
+msgid "Job Title"
+msgstr ""
+
+#: career/models.py:33
+msgid "Job Description"
+msgstr ""
+
+#: career/models.py:34
+msgid "Requirements"
+msgstr ""
+
+#: career/models.py:39
+msgid "Work Type"
+msgstr ""
+
+#: career/models.py:45
+#, fuzzy
+#| msgid "Help Type"
+msgid "Time Type"
+msgstr "Help Type"
+
+#: career/models.py:54 career/models.py:70
+msgid "Job"
+msgstr ""
+
+#: career/models.py:55
+msgid "Jobs"
+msgstr ""
+
+#: career/models.py:63
+msgid "Pending"
+msgstr ""
+
+#: career/models.py:64
+msgid "Under Review"
+msgstr ""
+
+#: career/models.py:65
+msgid "Interview Stage"
+msgstr ""
+
+#: career/models.py:66
+msgid "Accepted"
+msgstr ""
+
+#: career/models.py:67
+msgid "Rejected"
+msgstr ""
+
+#: career/models.py:71 contact/models.py:20
+msgid "First Name"
+msgstr "First Name"
+
+#: career/models.py:72 contact/models.py:21
+msgid "Last Name"
+msgstr "Last Name"
+
+#: career/models.py:73 career/views.py:75 contact/models.py:22
+#: templates/career_steps.html:186
+msgid "Email"
+msgstr "Email"
+
+#: career/models.py:74 career/views.py:76
+msgid "Phone"
+msgstr ""
+
+#: career/models.py:76
+msgid "Motivation Letter"
+msgstr ""
+
+#: career/models.py:77
+#, fuzzy
+#| msgid "Address"
+msgid "IP Address"
+msgstr "Address"
+
+#: career/models.py:83
+msgid "Status"
+msgstr ""
+
+#: career/models.py:90
+#, fuzzy
+#| msgid "Location"
+msgid "Job Application"
+msgstr "Location"
+
+#: career/models.py:91
+msgid "Job Applications"
+msgstr ""
+
+#: career/views.py:33 contact/views.py:25 faq/views.py:9 services/views.py:19
+msgid "How can we help you?"
+msgstr "How can we help you?"
+
+#: career/views.py:34 contact/views.py:26 faq/views.py:10 services/views.py:20
+msgid "Company name"
+msgstr "Company name"
+
+#: career/views.py:35 contact/views.py:27 faq/views.py:11 services/views.py:21
+msgid "Your question, wish and/or clarification"
+msgstr "Your question, wish and/or clarification"
+
+#: career/views.py:36 career/views.py:73 contact/views.py:28 faq/views.py:12
+#: services/views.py:22
+msgid "First name"
+msgstr "First Name"
+
+#: career/views.py:37 career/views.py:74 contact/views.py:29 faq/views.py:13
+#: services/views.py:23
+msgid "Last name"
+msgstr "Last Name"
+
+#: career/views.py:38 contact/views.py:30 faq/views.py:14 services/views.py:24
+#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1920
+msgid "Email address"
+msgstr "Email address"
+
+#: career/views.py:39 contact/views.py:31 faq/views.py:15 services/views.py:25
+#: templates/contact.html:79
+msgid "Phone number"
+msgstr "Phone number"
+
+#: career/views.py:41 contact/views.py:33 faq/views.py:17 services/views.py:27
+msgid "Send"
+msgstr "Send"
+
+#: career/views.py:45 contact/models.py:8 contact/views.py:15 faq/views.py:21
+#: services/views.py:31 templates/components/contactcomponent.html:19
 msgid "I would like to buy Aminol products."
-msgstr ""
+msgstr "I would like to buy Aminol products."
 
-#: contact/models.py:9 contact/views.py:16
+#: career/views.py:46 contact/models.py:9 contact/views.py:16 faq/views.py:22
+#: services/views.py:32
 msgid "I am interested in becoming a distributor."
-msgstr ""
+msgstr "I am interested in becoming a distributor."
 
-#: contact/models.py:10 contact/views.py:17
+#: career/views.py:47 contact/models.py:10 contact/views.py:17 faq/views.py:23
+#: services/views.py:33
 msgid "I need technical support."
-msgstr ""
+msgstr "I need technical support."
 
-#: contact/models.py:11 contact/views.py:18
+#: career/views.py:48 contact/models.py:11 contact/views.py:18 faq/views.py:24
+#: services/views.py:34
 msgid "I would like to request product certificates or compliance documents."
-msgstr ""
+msgstr "I would like to request product certificates or compliance documents."
 
-#: contact/models.py:12 contact/views.py:19
+#: career/views.py:49 contact/models.py:12 contact/views.py:19 faq/views.py:25
+#: services/views.py:35
 msgid "I need more information about a product."
-msgstr ""
+msgstr "I need more information about a product."
 
-#: contact/models.py:13 contact/views.py:20
+#: career/views.py:50 contact/models.py:13 contact/views.py:20 faq/views.py:26
+#: services/views.py:36
 msgid "I am interested in a potential partnership."
+msgstr "I am interested in a potential partnership."
+
+#: career/views.py:51 contact/models.py:14 contact/views.py:21 faq/views.py:27
+#: services/views.py:37
+msgid "Other"
+msgstr "Other"
+
+#: career/views.py:77
+msgid "Upload CV file"
 msgstr ""
 
-#: contact/models.py:14 contact/views.py:21
-msgid "Other"
+#: career/views.py:78
+msgid "Your motivation letter"
+msgstr ""
+
+#: career/views.py:80
+msgid "Continue"
+msgstr ""
+
+#: career/views.py:81
+msgid "Back"
+msgstr ""
+
+#: career/views.py:82
+msgid "Confirm and send"
+msgstr ""
+
+#: career/views.py:83
+msgid "Cancel"
+msgstr ""
+
+#: career/views.py:190
+msgid "You have already applied for this job from this IP address."
+msgstr ""
+
+#: career/views.py:203
+msgid "Please fill all required fields and upload your CV."
+msgstr ""
+
+#: career/views.py:221
+msgid ""
+"Your application has been successfully submitted. You will receive a "
+"confirmation email shortly."
+msgstr ""
+
+#: career/views.py:224
+msgid ""
+"Your application has been successfully submitted, but there was an issue "
+"sending confirmation emails."
+msgstr ""
+
+#: career/views.py:236
+msgid "An error occurred while submitting your application. Please try again."
+msgstr ""
+
+#: career/views.py:256
+msgid "Invalid step"
+msgstr ""
+
+#: career/views.py:270
+msgid "Please fill in all required fields: {}"
+msgstr ""
+
+#: career/views.py:278
+msgid "Invalid request format"
+msgstr ""
+
+#: career/views.py:284
+msgid "An error occurred while validating the form"
+msgstr ""
+
+#: career/views.py:289
+msgid "Invalid request method"
+msgstr ""
+
+#: career/views.py:320
+msgid "Invalid request"
 msgstr ""
 
 #: contact/models.py:17
 msgid "Help Type"
-msgstr ""
+msgstr "Help Type"
 
 #: contact/models.py:18
 msgid "Company Name"
-msgstr ""
+msgstr "Company Name"
 
 #: contact/models.py:19
 msgid "Question"
-msgstr ""
-
-#: contact/models.py:20
-msgid "First Name"
-msgstr "Ad"
-
-#: contact/models.py:21
-msgid "Last Name"
-msgstr ""
-
-#: contact/models.py:22
-msgid "Email"
-msgstr ""
+msgstr "Question"
 
 #: contact/models.py:23
 msgid "Phone Number"
-msgstr ""
+msgstr "Phone Number"
 
 #: contact/models.py:31 templates/components/footer.html:25
-#: templates/components/navbar.html:19 templates/components/navbar.html:76
-#: templates/components/navbar_blur.html:19
-#: templates/components/navbar_blur.html:76
-#: templates/components/navbar_dark.html:19
-#: templates/components/navbar_dark.html:76 templates/contact.html:12
+#: templates/components/navbar.html:20 templates/components/navbar.html:82
+#: templates/components/navbar_blur.html:20
+#: templates/components/navbar_blur.html:82
+#: templates/components/navbar_dark.html:20
+#: templates/components/navbar_dark.html:82 templates/contact.html:12
 #: templates/contact.html:21 templates/contact.html:70
 msgid "Contact"
-msgstr ""
+msgstr "Contact"
 
 #: contact/models.py:32
 msgid "Contacts"
-msgstr ""
+msgstr "Contacts"
 
-#: templates/about.html:16 templates/about.html:199 templates/about.html:244
-#: templates/about.html:311
+#: templates/about.html:16 templates/about.html:191 templates/about.html:231
+#: templates/about.html:285
 msgid "About Aminol"
 msgstr ""
 
-#: templates/about.html:17 templates/about.html:122
+#: templates/about.html:17 templates/about.html:119
 msgid "Quality"
 msgstr ""
 
-#: templates/about.html:18 templates/about.html:200
+#: templates/about.html:18 templates/about.html:192
 msgid "Production"
 msgstr ""
 
-#: templates/about.html:19 templates/about.html:245
+#: templates/about.html:19 templates/about.html:232
 msgid "Documents & Certifications"
 msgstr ""
 
-#: templates/about.html:20 templates/about.html:312
+#: templates/about.html:20 templates/about.html:286
 msgid "Sustainability"
 msgstr ""
 
-#: templates/about.html:29 templates/about.html:121 templates/about.html:199
-#: templates/about.html:244 templates/about.html:311 templates/contact.html:20
+#: templates/about.html:29 templates/about.html:118 templates/about.html:191
+#: templates/about.html:231 templates/about.html:285 templates/contact.html:20
 #: templates/markets_automotive.html:20 templates/markets_industrial.html:20
 #: templates/markets_shipping.html:21 templates/news.html:13
 #: templates/news_detail.html:9 templates/product.html:13
@@ -121,11 +416,11 @@ msgstr ""
 msgid "Home page"
 msgstr ""
 
-#: templates/about.html:30 templates/components/navbar.html:31
-#: templates/components/navbar.html:81 templates/components/navbar_blur.html:31
-#: templates/components/navbar_blur.html:81
-#: templates/components/navbar_dark.html:31
-#: templates/components/navbar_dark.html:81
+#: templates/about.html:30 templates/components/navbar.html:32
+#: templates/components/navbar.html:87 templates/components/navbar_blur.html:32
+#: templates/components/navbar_blur.html:87
+#: templates/components/navbar_dark.html:32
+#: templates/components/navbar_dark.html:87
 msgid "About us"
 msgstr ""
 
@@ -229,51 +524,176 @@ msgstr ""
 "largest specialised industrial enterprises for the production of lubricants "
 "and technical fluids in the South Caucasus and the wider region. <br><br />"
 
-#: templates/about.html:102 templates/home.html:165
+#: templates/about.html:95 templates/home.html:165
 msgid "Learn more"
 msgstr ""
 
-#: templates/about.html:102 templates/home.html:165
+#: templates/about.html:95 templates/home.html:165
 msgid "about production"
 msgstr ""
 
-#: templates/about.html:104 templates/home.html:167
-msgid ""
-"Aminol Lubricants produces and packages high-quality oils using premium "
-"imported base oils and additives, formulated by expert engineers."
-msgstr ""
-
-#: templates/about.html:121 templates/components/footer.html:16
+#: templates/about.html:118 templates/components/footer.html:16
 msgid "About Us"
 msgstr ""
 
-#: templates/about.html:126
+#: templates/about.html:123
 msgid "QUALITY"
 msgstr ""
 
-#: templates/about.html:204
+#: templates/about.html:196
 msgid "PRODUCTION"
 msgstr ""
 
-#: templates/about.html:249
+#: templates/about.html:236
 msgid "DOCUMENTS AND CERTIFICATION"
 msgstr ""
 
-#: templates/about.html:316
+#: templates/about.html:290
 msgid "SUSTAINABILITY"
 msgstr ""
 
-#: templates/brand_portal.html:10 templates/faq.html:11
+#: templates/brand_portal.html:10 templates/career.html:13
+#: templates/career_steps.html:13 templates/faq.html:11
+#: templates/search.html:26
 msgid "Home Page"
 msgstr ""
 
 #: templates/brand_portal.html:11 templates/brand_portal.html:16
-#: templates/components/navbar.html:18 templates/components/navbar.html:75
+#: templates/components/navbar.html:18 templates/components/navbar.html:80
 #: templates/components/navbar_blur.html:18
-#: templates/components/navbar_blur.html:75
+#: templates/components/navbar_blur.html:80
 #: templates/components/navbar_dark.html:18
-#: templates/components/navbar_dark.html:75
+#: templates/components/navbar_dark.html:80
 msgid "Brand Portal"
+msgstr ""
+
+#: templates/career.html:14 templates/career_steps.html:14
+#: templates/components/navbar.html:19 templates/components/navbar.html:81
+#: templates/components/navbar_blur.html:19
+#: templates/components/navbar_blur.html:81
+#: templates/components/navbar_dark.html:19
+#: templates/components/navbar_dark.html:81
+msgid "Career"
+msgstr ""
+
+#: templates/career.html:19 templates/career_steps.html:19
+msgid "We are hiring!"
+msgstr ""
+
+#: templates/career.html:20
+msgid "Be a part of our mission."
+msgstr ""
+
+#: templates/career.html:22
+msgid ""
+" \n"
+"        We are looking for passionate people to join us on our\n"
+"        mission. We value flat hierarchies, clear communication, and full\n"
+"        ownership and responsibilities.\n"
+"        "
+msgstr ""
+
+#: templates/career.html:34
+msgid "View All"
+msgstr ""
+
+#: templates/career.html:66
+msgid "Applied"
+msgstr ""
+
+#: templates/career.html:70 templates/career_steps.html:15
+msgid "Apply"
+msgstr ""
+
+#: templates/career.html:77
+msgid "No job openings available at the moment."
+msgstr ""
+
+#: templates/career_steps.html:40
+msgid "Submit your application."
+msgstr ""
+
+#: templates/career_steps.html:41
+msgid ""
+"Enter your personal information. Pay attention to the required file formats."
+msgstr ""
+
+#: templates/career_steps.html:96
+msgid "Upload your CV"
+msgstr ""
+
+#: templates/career_steps.html:97
+msgid "Please upload your CV file. Accepted formats: PDF, DOC, DOCX"
+msgstr ""
+
+#: templates/career_steps.html:115
+msgid "Click to upload file"
+msgstr ""
+
+#: templates/career_steps.html:137
+msgid "Motivation letter"
+msgstr ""
+
+#: templates/career_steps.html:138
+msgid ""
+"Write a short letter to the employer explaining that you are a suitable "
+"candidate for this role."
+msgstr ""
+
+#: templates/career_steps.html:155
+msgid "Write your motivation letter here..."
+msgstr ""
+
+#: templates/career_steps.html:175
+msgid "Attention!"
+msgstr ""
+
+#: templates/career_steps.html:177
+msgid ""
+"\n"
+"            Before applying, please review the following information for "
+"accuracy, and edit it if it is incorrect.\n"
+"            Otherwise, your application may be rejected due to incomplete or "
+"incorrect information.\n"
+"            "
+msgstr ""
+
+#: templates/career_steps.html:184
+#, fuzzy
+#| msgid "Last Name"
+msgid "Name"
+msgstr "Last Name"
+
+#: templates/career_steps.html:185
+msgid "Surname"
+msgstr ""
+
+#: templates/career_steps.html:187
+#, fuzzy
+#| msgid "Phone number"
+msgid "Mobile number"
+msgstr "Phone number"
+
+#: templates/career_steps.html:206
+msgid "Thank you! Your application has been successfully submitted."
+msgstr ""
+
+#: templates/career_steps.html:207
+msgid "We will review your application and contact you soon."
+msgstr ""
+
+#: templates/career_steps.html:218
+msgid "Back to Career Page"
+msgstr ""
+
+#: templates/career_steps.html:230
+#, fuzzy
+#| msgid "Location"
+msgid "Notification"
+msgstr "Location"
+
+#: templates/career_steps.html:232
+msgid "Close"
 msgstr ""
 
 #: templates/components/brochure.html:11
@@ -286,23 +706,23 @@ msgid ""
 "on, and the performance you expect—every time."
 msgstr ""
 
-#: templates/components/brochure.html:19
+#: templates/components/brochure.html:18
 msgid "Our Suppliers"
 msgstr ""
 
-#: templates/components/brochure.html:27
+#: templates/components/brochure.html:26
 msgid "Supplier Logo"
 msgstr ""
 
-#: templates/components/brochure.html:61
+#: templates/components/brochure.html:60
 msgid "Our Partners"
 msgstr ""
 
-#: templates/components/brochure.html:68
+#: templates/components/brochure.html:67
 msgid "Partner Logo"
 msgstr ""
 
-#: templates/components/brochure.html:108 templates/components/whatsapp.html:5
+#: templates/components/brochure.html:107 templates/components/whatsapp.html:5
 msgid "Ask your question on Whatsapp"
 msgstr ""
 
@@ -324,21 +744,22 @@ msgstr ""
 
 #: templates/components/footer.html:10
 msgid "Engineered for Performance, Trusted for Protection."
-msgstr ""
+msgstr "Power. Protection. Performance."
 
-#: templates/components/footer.html:17 templates/components/navbar.html:33
-#: templates/components/navbar.html:82 templates/components/navbar_blur.html:33
-#: templates/components/navbar_blur.html:82
-#: templates/components/navbar_dark.html:33
-#: templates/components/navbar_dark.html:82
+#: templates/components/footer.html:17 templates/components/navbar.html:34
+#: templates/components/navbar.html:88 templates/components/navbar_blur.html:34
+#: templates/components/navbar_blur.html:88
+#: templates/components/navbar_dark.html:34
+#: templates/components/navbar_dark.html:88
 msgid "Products"
 msgstr ""
 
-#: templates/components/footer.html:20 templates/components/navbar.html:43
-#: templates/components/navbar.html:95 templates/components/navbar_blur.html:43
-#: templates/components/navbar_blur.html:95
-#: templates/components/navbar_dark.html:43
-#: templates/components/navbar_dark.html:95
+#: templates/components/footer.html:20 templates/components/navbar.html:44
+#: templates/components/navbar.html:101
+#: templates/components/navbar_blur.html:44
+#: templates/components/navbar_blur.html:101
+#: templates/components/navbar_dark.html:44
+#: templates/components/navbar_dark.html:101
 #: templates/service_aminol_dealer.html:15 templates/service_laboratory.html:15
 #: templates/service_logistics.html:14
 msgid "Services"
@@ -349,17 +770,17 @@ msgid "FAQ"
 msgstr ""
 
 #: templates/components/footer.html:24 templates/components/navbar.html:17
-#: templates/components/navbar.html:74 templates/components/navbar_blur.html:17
-#: templates/components/navbar_blur.html:74
+#: templates/components/navbar.html:79 templates/components/navbar_blur.html:17
+#: templates/components/navbar_blur.html:79
 #: templates/components/navbar_dark.html:17
-#: templates/components/navbar_dark.html:74 templates/news.html:13
+#: templates/components/navbar_dark.html:79 templates/news.html:13
 #: templates/news.html:18 templates/news_detail.html:10
 msgid "News"
 msgstr ""
 
 #: templates/components/footer.html:34
 msgid "Vali Mammadov Street 1/3, Old City, Baku, Azerbaijan, AZ1000"
-msgstr ""
+msgstr "3. Vali Mammadov St., Sabail dist., AZ1095, Baku, Azerbaijan"
 
 #: templates/components/footer.html:55
 msgid "© 2025 ALCO LLC. All right reserved."
@@ -377,67 +798,67 @@ msgstr ""
 msgid "GALLERY"
 msgstr ""
 
-#: templates/components/navbar.html:35 templates/components/navbar.html:85
-#: templates/components/navbar_blur.html:35
-#: templates/components/navbar_blur.html:85
-#: templates/components/navbar_dark.html:35
-#: templates/components/navbar_dark.html:85
+#: templates/components/navbar.html:36 templates/components/navbar.html:91
+#: templates/components/navbar_blur.html:36
+#: templates/components/navbar_blur.html:91
+#: templates/components/navbar_dark.html:36
+#: templates/components/navbar_dark.html:91
 #: templates/markets_automotive.html:20 templates/markets_industrial.html:20
 #: templates/markets_shipping.html:21
 msgid "Markets"
 msgstr ""
 
-#: templates/components/navbar.html:37 templates/components/navbar.html:88
-#: templates/components/navbar_blur.html:37
-#: templates/components/navbar_blur.html:88
-#: templates/components/navbar_dark.html:37
-#: templates/components/navbar_dark.html:88
+#: templates/components/navbar.html:38 templates/components/navbar.html:94
+#: templates/components/navbar_blur.html:38
+#: templates/components/navbar_blur.html:94
+#: templates/components/navbar_dark.html:38
+#: templates/components/navbar_dark.html:94
 #: templates/markets_automotive.html:12 templates/markets_automotive.html:21
 msgid "Automotive"
 msgstr ""
 
-#: templates/components/navbar.html:38 templates/components/navbar.html:89
-#: templates/components/navbar_blur.html:38
-#: templates/components/navbar_blur.html:89
-#: templates/components/navbar_dark.html:38
-#: templates/components/navbar_dark.html:89
+#: templates/components/navbar.html:39 templates/components/navbar.html:95
+#: templates/components/navbar_blur.html:39
+#: templates/components/navbar_blur.html:95
+#: templates/components/navbar_dark.html:39
+#: templates/components/navbar_dark.html:95
 #: templates/markets_industrial.html:12 templates/markets_industrial.html:21
 msgid "Industrial"
 msgstr ""
 
-#: templates/components/navbar.html:39 templates/components/navbar.html:90
-#: templates/components/navbar_blur.html:39
-#: templates/components/navbar_blur.html:90
-#: templates/components/navbar_dark.html:39
-#: templates/components/navbar_dark.html:90 templates/markets_shipping.html:12
+#: templates/components/navbar.html:40 templates/components/navbar.html:96
+#: templates/components/navbar_blur.html:40
+#: templates/components/navbar_blur.html:96
+#: templates/components/navbar_dark.html:40
+#: templates/components/navbar_dark.html:96 templates/markets_shipping.html:12
 #: templates/markets_shipping.html:22
 msgid "Shipping & Offshore"
 msgstr "Marine & Offshore"
 
-#: templates/components/navbar.html:45 templates/components/navbar.html:98
-#: templates/components/navbar_blur.html:45
-#: templates/components/navbar_blur.html:98
-#: templates/components/navbar_dark.html:45
-#: templates/components/navbar_dark.html:98
+#: templates/components/navbar.html:46 templates/components/navbar.html:104
+#: templates/components/navbar_blur.html:46
+#: templates/components/navbar_blur.html:104
+#: templates/components/navbar_dark.html:46
+#: templates/components/navbar_dark.html:104
 #: templates/service_aminol_dealer.html:16
 msgid "Aminol official dealer"
-msgstr ""
+msgstr "Official Dealership"
 
-#: templates/components/navbar.html:46 templates/components/navbar.html:99
-#: templates/components/navbar_blur.html:46
-#: templates/components/navbar_blur.html:99
-#: templates/components/navbar_dark.html:46
-#: templates/components/navbar_dark.html:99
-msgid "Aminol Laboratory"
-msgstr ""
-
-#: templates/components/navbar.html:47 templates/components/navbar.html:100
+#: templates/components/navbar.html:47 templates/components/navbar.html:105
 #: templates/components/navbar_blur.html:47
-#: templates/components/navbar_blur.html:100
+#: templates/components/navbar_blur.html:105
 #: templates/components/navbar_dark.html:47
-#: templates/components/navbar_dark.html:100
+#: templates/components/navbar_dark.html:105
+msgid "Aminol Laboratory"
+msgstr "Product Development & Lab Analysis"
+
+#: templates/components/navbar.html:48 templates/components/navbar.html:106
+#: templates/components/navbar_blur.html:48
+#: templates/components/navbar_blur.html:106
+#: templates/components/navbar_dark.html:48
+#: templates/components/navbar_dark.html:106
 msgid "Aminol Logistics"
-msgstr ""
+msgstr "Logistics & Delivery"
 
 #: templates/contact.html:13
 msgid "We are ready for your question"
@@ -445,11 +866,11 @@ msgstr ""
 
 #: templates/contact.html:37
 msgid "Aminol headquarters"
-msgstr ""
+msgstr "Head Office"
 
 #: templates/contact.html:44 templates/contact.html:57
 msgid "Location"
-msgstr ""
+msgstr "Location"
 
 #: templates/contact.html:45
 msgid "Contact Icon"
@@ -457,7 +878,7 @@ msgstr ""
 
 #: templates/contact.html:50
 msgid "Aminol factory"
-msgstr ""
+msgstr "LOBP"
 
 #: templates/contact.html:65
 msgid "Registers"
@@ -465,15 +886,11 @@ msgstr ""
 
 #: templates/contact.html:73
 msgid "Address"
-msgstr ""
-
-#: templates/contact.html:79
-msgid "Phone number"
-msgstr ""
+msgstr "Address"
 
 #: templates/contact.html:83
 msgid "E-mail address"
-msgstr ""
+msgstr "E-mail address"
 
 #: templates/faq.html:17
 msgid "Frequently asked questions"
@@ -555,7 +972,7 @@ msgstr ""
 
 #: templates/home.html:139 templates/home.html:189 templates/home.html:211
 #: templates/home.html:252 templates/service_laboratory.html:74
-#: templates/service_logistics.html:97
+#: templates/service_logistics.html:100
 msgid "Discover more"
 msgstr ""
 
@@ -576,15 +993,21 @@ msgstr ""
 msgid "Get in contact"
 msgstr ""
 
-#: templates/home.html:182 templates/product.html:308
+#: templates/home.html:167
+msgid ""
+"Aminol Lubricants produces and packages high-quality oils using premium "
+"imported base oils and additives, formulated by expert engineers."
+msgstr ""
+
+#: templates/home.html:182 templates/product.html:305
 msgid "INNOVATION & TECHNOLOGY"
 msgstr ""
 
-#: templates/home.html:187 templates/product.html:313
+#: templates/home.html:187 templates/product.html:310
 msgid "Hybrid & EV lubricants"
 msgstr ""
 
-#: templates/home.html:188 templates/product.html:314
+#: templates/home.html:188 templates/product.html:311
 msgid "Choose sustainability with our Hybrid & EV lubricants"
 msgstr ""
 
@@ -592,7 +1015,7 @@ msgstr ""
 msgid "Hybrid & EV Lubricants"
 msgstr ""
 
-#: templates/home.html:207 templates/home.html:217 templates/product.html:325
+#: templates/home.html:207 templates/home.html:217 templates/product.html:322
 msgid "Additives"
 msgstr ""
 
@@ -604,12 +1027,12 @@ msgstr ""
 "We use high-quality additives in our production to ensure maximum "
 "performance and protection.\t"
 
-#: templates/home.html:226 templates/news.html:57 templates/news_detail.html:51
-#: templates/service_laboratory.html:48 templates/service_logistics.html:71
+#: templates/home.html:226 templates/news.html:62 templates/news_detail.html:51
+#: templates/service_laboratory.html:48 templates/service_logistics.html:74
 msgid "LATEST NEWS"
 msgstr ""
 
-#: templates/home.html:246 templates/news.html:44 templates/news.html:75
+#: templates/home.html:246 templates/news.html:47 templates/news.html:80
 #: templates/news_detail.html:76
 msgid "Read more"
 msgstr ""
@@ -655,11 +1078,11 @@ msgstr ""
 msgid "ALL ARTICLES"
 msgstr ""
 
-#: templates/news.html:36 templates/news.html:68 templates/news_detail.html:68
+#: templates/news.html:38 templates/news.html:73 templates/news_detail.html:68
 msgid "Default news image"
 msgstr ""
 
-#: templates/news.html:80
+#: templates/news.html:85
 msgid "No latest news articles available."
 msgstr ""
 
@@ -689,11 +1112,11 @@ msgid ""
 "        "
 msgstr ""
 
-#: templates/product.html:55 templates/product.html:186
+#: templates/product.html:55 templates/product.html:183
 msgid "Product group"
 msgstr "Product groups"
 
-#: templates/product.html:74 templates/product.html:205
+#: templates/product.html:74 templates/product.html:202
 msgid "Segments"
 msgstr ""
 
@@ -701,90 +1124,119 @@ msgstr ""
 msgid "Oil Type"
 msgstr ""
 
-#: templates/product.html:112 templates/product.html:243
+#: templates/product.html:112 templates/product.html:240
 msgid "Viscosity"
 msgstr ""
 
-#: templates/product.html:133 templates/product.html:263
+#: templates/product.html:133 templates/product.html:260
 msgid "View Result"
 msgstr ""
 
-#: templates/product.html:151
+#: templates/product.html:152
 msgid "More"
 msgstr ""
 
-#: templates/product.html:159
-msgid "No products found matching your criteria."
-msgstr ""
-
-#: templates/product.html:168
+#: templates/product.html:165
 msgid "Filtering"
 msgstr ""
 
-#: templates/product.html:224
+#: templates/product.html:221
 msgid "Oil type"
 msgstr ""
 
-#: templates/product.html:327
+#: templates/product.html:324
 msgid ""
 "We use high-quality additives in our production to ensure maximum "
 "performance and protection."
 msgstr ""
 
-#: templates/product_detail.html:24
+#: templates/product_detail.html:25
 msgid "Back to the overview"
 msgstr ""
 
-#: templates/product_detail.html:37
+#: templates/product_detail.html:38
 msgid "Featured & Benefits:"
 msgstr ""
 
-#: templates/product_detail.html:42
+#: templates/product_detail.html:43
 msgid "Application:"
 msgstr ""
 
-#: templates/product_detail.html:47
+#: templates/product_detail.html:48
 msgid "Specification:"
 msgstr ""
 
-#: templates/product_detail.html:68
+#: templates/product_detail.html:67
 msgid "Recommendations:"
 msgstr ""
 
-#: templates/product_detail.html:74
-msgid "No specific recommendations available."
-msgstr ""
-
-#: templates/product_detail.html:80 templates/product_detail.html:95
+#: templates/product_detail.html:77 templates/product_detail.html:92
 msgid "Available packages:"
 msgstr ""
 
-#: templates/product_detail.html:114
+#: templates/product_detail.html:113
 msgid "Property"
 msgstr ""
 
-#: templates/product_detail.html:115
+#: templates/product_detail.html:114
 msgid "Unit"
 msgstr ""
 
-#: templates/product_detail.html:116
+#: templates/product_detail.html:115
 msgid "Test method"
 msgstr ""
 
-#: templates/product_detail.html:117
+#: templates/product_detail.html:116
 msgid "Typical value"
 msgstr ""
 
-#: templates/product_detail.html:130
+#: templates/product_detail.html:129
 msgid "This product does not have any available specification information."
+msgstr ""
+
+#: templates/search.html:11 templates/search.html:27
+msgid "Search"
+msgstr ""
+
+#: templates/search.html:16
+msgid "Search..."
+msgstr ""
+
+#: templates/search.html:33
+#, python-format
+msgid ""
+"\n"
+"                %(counter)s result found\n"
+"            "
+msgid_plural ""
+"\n"
+"                %(counter)s results found\n"
+"            "
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/search.html:96
+msgid "No results found for your search."
+msgstr ""
+
+#: templates/search.html:97
+msgid "Try using different keywords or check your spelling."
+msgstr ""
+
+#: templates/search.html:102
+msgid "Enter keywords to search..."
 msgstr ""
 
 #: templates/service_laboratory.html:16
 msgid "Aminol laboratory"
-msgstr ""
+msgstr "Product Development & Lab Analysis"
 
 #: templates/service_logistics.html:15
 msgid "Aminol logistics"
+msgstr "Logistics & Delivery"
+
+#: templates/service_logistics.html:20
+msgid "Global Export Presence"
 msgstr ""
 
 #: venv/lib/python3.12/site-packages/django/contrib/messages/apps.py:16
@@ -1096,10 +1548,6 @@ msgstr ""
 
 #: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1868
 msgid "Duration"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1920
-msgid "Email address"
 msgstr ""
 
 #: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1945
