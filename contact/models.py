@@ -18,7 +18,6 @@ class Contact(models.Model):
     email = models.EmailField(verbose_name=_('Email'))
     phone_number = models.CharField(max_length=20, verbose_name=_('Phone Number'))
     
-    # IP ünvanını saxlamaq üçün bu sahə vacibdir
     ip_address = models.GenericIPAddressField(verbose_name=_('IP Address'), null=True, blank=True)
     
     created_at = models.DateTimeField(default=timezone.now)
