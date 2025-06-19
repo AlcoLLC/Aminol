@@ -23,7 +23,7 @@
             {% trans "Please contact us here." %}
         </p>
 
-        <form action="{% url 'contact' %}" method="POST">
+        <form action="{% url 'contact:contact' %}" method="POST">
             {% csrf_token %}
             
             {# ... formun qalan hissəsi olduğu kimi qalır ... #}

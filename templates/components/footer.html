@@ -4,30 +4,30 @@
 <footer class="container">
   <div class="footer-content">
     <div>
-       <a href="/"><img src="{% static 'logo/aminol-logo.svg' %}" alt="" /></a>
-      <p>
-        {% trans "Reliable Lubricant Manufacturer." %} <br />
-        {% trans "Engineered for Performance, Trusted for Protection." %}
-      </p>
+        <a href="{% url 'home:home' %}"><img src="{% static 'logo/aminol-logo.svg' %}" alt="" /></a>
+        <p>
+            {% trans "Reliable Lubricant Manufacturer." %} <br />
+            {% trans "Engineered for Performance, Trusted for Protection." %}
+        </p>
     </div>
     <div class="footer-row">
-      <ul>
-        <li>
-         <a href="/about">{% trans "About Us" %}</a>
-          <a href="/product">{% trans "Products" %}</a>
-        </li>
-        <li>
-          <a href="/service_aminol_dealer">{% trans "Services" %}</a>
-          <a href="/faq">{% trans "FAQ" %}</a>
-        </li>
-        <li>
-          <a href="/news">{% trans "News" %}</a>
-          <a href="/contact">{% trans "Contact" %}</a>
-        </li>
-      </ul>
-      <button id="scrollToTop"><i class="fa-solid fa-chevron-up"></i></button>
+        <ul>
+            <li>
+                <a href="{% url 'about:about_page' %}">{% trans "About Us" %}</a>
+                <a href="{% url 'products:product_list' %}">{% trans "Products" %}</a>
+            </li>
+            <li>
+                <a href="{% url 'services:aminol_dealer' %}">{% trans "Services" %}</a>
+                <a href="{% url 'faq:faq' %}">{% trans "FAQ" %}</a>
+            </li>
+            <li>
+                <a href="{% url 'news:news_list' %}">{% trans "News" %}</a>
+                <a href="{% url 'contact:contact' %}">{% trans "Contact" %}</a>
+            </li>
+        </ul>
+        <button id="scrollToTop"><i class="fa-solid fa-chevron-up"></i></button>
     </div>
-  </div>
+</div>
   <hr class="custom-hr" />
   <div class="footer-contact">
     <div>
