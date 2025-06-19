@@ -252,17 +252,16 @@ nav {
 }
 
 .navbar .search {
-  border: none;
+  border: 1px solid white;
   color: #fff;
   cursor: pointer;
-
 }
 
 .navbar .search a i{
   color: #fff;
   font-size: 16px;
-    width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   background-color: #f92b3f;
   border-radius: 5px;
   display: flex;
@@ -353,7 +352,7 @@ nav {
   background: none;
   border: none;
   color: #012762;
-  font-size: 1.8rem;
+  font-size: 2rem;
   cursor: pointer;
 }
 
@@ -482,6 +481,13 @@ nav {
   border: none;
   gap: 5px;
   cursor: pointer;
+}
+
+.navbar-dark .language-dropdown button,
+.navbar-dark .mobile-language-dropdown button {
+    background-color: #fff !important;
+  color: #012762 !important;
+
 }
 
 .language-dropdown .dropdown-content{
@@ -719,7 +725,9 @@ nav {
     height: 35px;
   }
   .navbar .search a i{
-  font-size: 13px;
+  font-size: 14px;
+   width: 32px;
+  height: 32px;
 }
 
   .navbar .nav-section {
