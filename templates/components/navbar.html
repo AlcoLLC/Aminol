@@ -18,12 +18,25 @@
               <li><a href="{% if LANGUAGE_CODE == 'az' %}/az/brand_portal{% else %}/brand_portal{% endif %}">{% trans "Brand Portal" %}</a></li>
               <li><a href="{% if LANGUAGE_CODE == 'az' %}/az/career{% else %}/career{% endif %}">{% trans "Career" %}</a></li>
               <li><a href="{% if LANGUAGE_CODE == 'az' %}/az/contact{% else %}/contact{% endif %}">{% trans "Contact" %}</a></li>
-              <li class="lang-btn">
-                <button class="btn-az {% if LANGUAGE_CODE == 'az' %}active{% endif %}"
-                        data-lang="az" type="button">AZ</button>
-                <button class="btn-en {% if LANGUAGE_CODE == 'en' %}active{% endif %}"
-                        data-lang="en" type="button">EN</button>
-              </li>
+              
+              
+              <div class="language-dropdown">
+                <button class="lang-dropdown-btn">
+                  EN
+                  <i class="fa-solid fa-angle-down"></i>
+                </button>
+                <div class="dropdown-content" id="languageDropdown">
+                  <button class="lang-option " data-lang="en">EN</button>
+                  <button class="lang-option " data-lang="az">AZ</button>
+                  <button class="lang-option " data-lang="de">DE</button>
+                  <button class="lang-option " data-lang="fr">FR</button>
+                  <button class="lang-option " data-lang="it">IT</button>
+                  <button class="lang-option " data-lang="es">ES</button>
+                  <button class="lang-option " data-lang="pt">PT</button>
+                  <button class="lang-option " data-lang="zh-hans">汉语</button>
+                </div>
+              </div>
+
             </ul>
           </div>
           <div class="nav-bottom">
@@ -53,13 +66,25 @@
         </div>
 
         <!-- Mobile language buttons -->
-        <div class="mobile-lang-btn">
-          <button class="btn-az {% if LANGUAGE_CODE == 'az' %}active{% endif %}"
-                  data-lang="az" type="button">AZ</button>
-          <button class="btn-en {% if LANGUAGE_CODE == 'en' %}active{% endif %}"
-                  data-lang="en" type="button">EN</button>
+        <div class="mobile-language-dropdown">
+          <button class="lang-dropdown-btn">
+            EN
+            <i class="fa-solid fa-angle-down"></i>
+          </button>
+          <div class="dropdown-content" id="mobileLanguageDropdown">
+            <button class="lang-option " data-lang="en">EN</button>
+            <button class="lang-option " data-lang="az">AZ</button>
+            <button class="lang-option " data-lang="de">DE</button>
+            <button class="lang-option " data-lang="fr">FR</button>
+            <button class="lang-option " data-lang="it">IT</button>
+            <button class="lang-option " data-lang="es">ES</button>
+            <button class="lang-option " data-lang="pt">PT</button>
+            <button class="lang-option " data-lang="zh-hans">汉语</button>
+          </div>
         </div>
 
+
+              
          <button class="search">
           <a href="/search"><i class="fa-solid fa-magnifying-glass"></i></a>
         </button>
