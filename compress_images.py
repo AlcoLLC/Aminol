@@ -35,10 +35,10 @@ else:
     IMAGE_EXTENSIONS = ('.jpg', '.jpeg', '.png', '.webp', '.bmp', '.tiff', '.gif')
 
 # Source directory for original images
-SOURCE_DIR = "/Aminol/mediafiles"
+SOURCE_DIR = "/Aminol/media"
 
 # Target directory for compressed images
-COMPRESSED_OUTPUT_DIR = "/Aminol/mediafile"
+COMPRESSED_OUTPUT_DIR = "/Aminol/media"
 
 
 def get_file_size_kb(buffer):
