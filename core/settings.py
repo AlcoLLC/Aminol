@@ -164,7 +164,7 @@ LANGUAGES = [
     ('it', 'Italian'),  
     ('es', 'Spanish'),      
     ('pt', 'Brazilian Portuguese'),
-    ('zh-hans', 'Chinese'),   
+    ('zh-hans', 'Chinese (Simplified)'),   
 ]
 
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
