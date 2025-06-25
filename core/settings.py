@@ -163,7 +163,7 @@ LANGUAGES = [
     ('fr', 'French'),       
     ('it', 'Italian'),  
     ('es', 'Spanish'),      
-    ('pt', 'Brazilian Portuguese'),
+    ('pt-br', 'Brazilian Portuguese'),
     ('zh-hans', 'Chinese (Simplified)'),   
 ]
 
