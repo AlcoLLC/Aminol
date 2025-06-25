@@ -332,7 +332,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function calculateNewPath(langCode) {
     const currentPath = window.location.pathname;
-    const supportedLangs = ["az", "de", "fr", "it", "es", "pt", "zh-hans"];
+    const supportedLangs = ["az", "de", "fr", "it", "es", "pt-br", "zh-hans"];
 
     let pathWithoutLang = currentPath;
     let currentLang = "en";
@@ -397,7 +397,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentLang = "en";
 
     // Determine current language from URL
-    const supportedLangs = ["az", "de", "fr", "it", "es", "pt", "zh-hans"];
+    const supportedLangs = ["az", "de", "fr", "it", "es", "pt-br", "zh-hans"];
     for (let lang of supportedLangs) {
       if (currentPath.startsWith(`/${lang}/`) || currentPath === `/${lang}`) {
         currentLang = lang;
@@ -425,7 +425,7 @@ document.addEventListener("DOMContentLoaded", function () {
       fr: "FR",
       it: "IT",
       es: "ES",
-      pt: "PT",
+      "pt-br": "PT",
       "zh-hans": "汉语",
     };
 
