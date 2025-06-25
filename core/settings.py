@@ -163,8 +163,8 @@ LANGUAGES = [
     ('fr', 'French'),       
     ('it', 'Italian'),  
     ('es', 'Spanish'),      
-    ('pt-br', 'Russian'),
-    ('zh-hans', 'Brazilian Portuguese'),   
+    ('pt-br', 'Brazilian Portuguese'),
+    ('zh-hans', 'Chinese'),   
 ]
 
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
