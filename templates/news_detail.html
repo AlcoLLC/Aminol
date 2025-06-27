@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %} 
 
 {% block title %} {{ news.title_translate }} {% endblock %}
-
+{% block description %} {{ news.content_translate|truncatechars:160 }} {% endblock %}
 
 {% block content %}
 <div class="non-header-page">

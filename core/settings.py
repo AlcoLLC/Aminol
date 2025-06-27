@@ -71,7 +71,8 @@ INSTALLED_APPS = [
     'django_filters',
     'django_ckeditor_5',
     'rosetta',
-
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     # apps
 
     'home',
@@ -85,6 +86,8 @@ INSTALLED_APPS = [
     'products',
     'career',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

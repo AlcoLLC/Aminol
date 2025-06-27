@@ -8,8 +8,3 @@ app_name = 'about'
 urlpatterns = [
     path('about/', views.about_page_view, name='about_page'),
 ]
-
-urlpatterns += static(settings.MEDIA_URL,
-                      document_root=settings.MEDIA_ROOT)
-urlpatterns += static(settings.STATIC_URL,
-                      document_root=settings.STATIC_ROOT)
