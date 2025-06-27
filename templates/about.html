@@ -2,7 +2,8 @@
 {% load i18n %}
 
 {% block title %}{% trans "About" %}{% endblock %}
-
+{% block description %}{% trans "about_meta_description" %}{% endblock %}
+{% block keywords %}{% trans "about_keywords" %}{% endblock %}
 
 {% block content %}
 {% load custom_filters %}
@@ -53,6 +54,10 @@
 
         <div class="section-content">
           <h2>{% trans "Company Profile" %}</h2>
+          <h1>
+          {% blocktrans %}
+              AMINOL - Professional Lubricant Solutions Provider | High-Performance Motor Oils, Industrial Oils, Greases and Complete Lubrication Systems for Automotive, Heavy Industry and Manufacturing Equipment           {% endblocktrans %}
+          </h1>
           <p>{% trans "Company profile description" %}</p>
         </div>
       </div>
