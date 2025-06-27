@@ -1,4 +1,9 @@
-{% extends 'base.html' %} {% load static %} {% load i18n %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% load i18n %} 
+
+{% block title %} {{ news.title_translate }} {% endblock %}
+
+
+{% block content %}
 <div class="non-header-page">
   {% include 'components/navbar_dark.html' %}
 

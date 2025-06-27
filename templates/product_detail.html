@@ -1,4 +1,7 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %}
+
+{% block title %}{{ product.title_translate }}{% endblock %}
+
  {% block content %}
 
 {% if product.product_group %}
