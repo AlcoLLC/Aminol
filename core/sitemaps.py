@@ -103,7 +103,7 @@ class BrandPortalSitemap(Sitemap):
         return Brand_Portal.objects.all()
     
     def location(self, obj):
-        return reverse('brands:brand_portal_detail', kwargs={'id': obj.id})
+        return reverse('brands:brand_portal_detail', kwargs={'pk': obj.pk})
 
 
 class BrandPortalContentSitemap(Sitemap):
@@ -133,8 +133,7 @@ class JobSitemap(Sitemap):
         return obj.updated_at
     
     def location(self, obj):
-        # Job detail için URL pattern career.urls'de görünmüyor
-        # career_steps kullanıyor gibi görünüyor
+        # career:career_steps job_id parametresi kullanıyor
         return reverse('career:career_steps', kwargs={'job_id': obj.id})
 
 
@@ -273,4 +272,13 @@ sitemaps = {
     'news': NewsSitemap,
     'markets': MarketsSitemap,
     'brand_portal': BrandPortalSitemap,
+    # Aşağıdaki sitemaps için önce URL pattern'ler eklenmeli:
+    # 'faq': FAQSitemap,
+    # 'brand_portal_content': BrandPortalContentSitemap,
+    # 'jobs': JobSitemap,
+    # 'departments': DepartmentSitemap,
+    # 'about': AboutSitemap,
+    # 'we_guarantee': WeGuaranteeSitemap,
+    # 'documents_certification': DocumentsCertificationSitemap,
+    # 'services': ServicesSitemap,
 }
