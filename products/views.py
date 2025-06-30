@@ -94,3 +94,8 @@ def product_properties_ajax(request, product_id):
         })
 
     return JsonResponse({'success': False, 'error': 'Invalid request'})
+
+from django.shortcuts import redirect
+
+def legacy_product_redirect(request, *args, **kwargs):
+    return redirect('/', permanent=True)
