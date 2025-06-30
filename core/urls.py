@@ -14,6 +14,7 @@ def robots_txt(request):
         "Disallow: /admin/",
         "Disallow: /api/",
         "Disallow: /media/private/",
+        "Disallow: /products/",
         "",
         "Sitemap: https://aminol.az/sitemap.xml"
     ]
