@@ -98,4 +98,4 @@ def product_properties_ajax(request, product_id):
 from django.shortcuts import redirect
 
 def legacy_product_redirect(request, *args, **kwargs):
-    return redirect('/', permanent=True)
+    return redirect('/product/', permanent=True)
