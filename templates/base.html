@@ -32,12 +32,31 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{% url 'products:product_list' %}" />
 
+  <link rel="canonical" href="https://aminol.az{{ request.get_full_path }}">
+  <link rel="alternate" hreflang="en" href="https://aminol.az/">
+  <link rel="alternate" hreflang="az" href="https://aminol.az/az/">
+  <link rel="alternate" hreflang="de" href="https://aminol.az/de/">
+  <link rel="alternate" hreflang="fr" href="https://aminol.az/fr/">
+  <link rel="alternate" hreflang="it" href="https://aminol.az/it/">
+  <link rel="alternate" hreflang="es" href="https://aminol.az/es/">
+  <link rel="alternate" hreflang="pt" href="https://aminol.az/pt/">
+  <link rel="alternate" hreflang="zh-hans" href="https://aminol.az/zh-hans/">
+
 
   <meta name="google-site-verification" content="_8tWduXDPsXU6p448Q8qaopDSjUjZDpbeCa1aezh_w0" />
   <meta property="og:title" content="AMINOL">
   <meta property="og:description" content="AMINOL - High-quality oil products">
   <meta property="og:image" content="{% static 'logo/aminol.svg' %}">
   <meta property="og:url" content="https://aminol.az{{ request.path }}">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="{% trans ' Aminol - High-quality oil products' %}">
+
+   <!-- Twitter Card tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@AminolOfficial"> 
+  <meta name="twitter:title" content="AMİNOL">
+  <meta name="twitter:description" content="{% trans 'AMİNOL - High-quality oil products' %}">
+  <meta name="twitter:image" content="https://aminol.az/static/logo/aminol-logo.svg">
 </head>
 
 <body>
