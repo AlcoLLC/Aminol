@@ -437,7 +437,7 @@
       }
 
       function S(e) {
-        return (e.type = (null !== e.getAttribute("type")) + "/" + e.type), e;
+        return (e.type = (null !== e.getAttribute("type")) + "{% url 'home:home' %}" + e.type), e;
       }
 
       function N(e) {

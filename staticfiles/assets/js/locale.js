@@ -345,7 +345,7 @@ document.addEventListener("DOMContentLoaded", function () {
         break;
       } else if (currentPath === `/${lang}`) {
         currentLang = lang;
-        pathWithoutLang = "/";
+        pathWithoutLang = "{% url 'home:home' %}";
         break;
       }
     }
@@ -354,9 +354,9 @@ document.addEventListener("DOMContentLoaded", function () {
     if (langCode === "en") {
       return pathWithoutLang;
     } else {
-      if (pathWithoutLang === "/") {
+      if (pathWithoutLang === "{% url 'home:home' %}") {
         return `/${langCode}/`;
-      } else if (pathWithoutLang.startsWith("/")) {
+      } else if (pathWithoutLang.startsWith("{% url 'home:home' %}")) {
         return `/${langCode}${pathWithoutLang}`;
       } else {
         return `/${langCode}/${pathWithoutLang}`;
@@ -474,7 +474,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (
         linkPath === currentPath ||
-        (linkPath && linkPath !== "/" && currentPath.startsWith(linkPath))
+        (linkPath &&
+          linkPath !== "{% url 'home:home' %}" &&
+          currentPath.startsWith(linkPath))
       ) {
         dropdownLink.classList.add("active");
 
@@ -512,7 +514,7 @@ document.addEventListener("DOMContentLoaded", function () {
           link.classList.add("active");
         } else if (
           linkPath &&
-          linkPath !== "/" &&
+          linkPath !== "{% url 'home:home' %}" &&
           linkPath !== "" &&
           currentPath.startsWith(linkPath)
         ) {

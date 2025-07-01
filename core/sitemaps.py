@@ -95,17 +95,6 @@ class MarketsSitemap(Sitemap):
         return reverse(item)
 
 
-class BrandPortalSitemap(Sitemap):
-    changefreq = 'weekly'
-    priority = 0.6
-    
-    def items(self):
-        return Brand_Portal.objects.all()
-    
-    def location(self, obj):
-        return reverse('brands:brand_portal_detail', kwargs={'pk': obj.pk})
-
-
 class BrandPortalContentSitemap(Sitemap):
     changefreq = 'weekly'
     priority = 0.5
@@ -271,7 +260,6 @@ sitemaps = {
     'products': ProductSitemap,
     'news': NewsSitemap,
     'markets': MarketsSitemap,
-    'brand_portal': BrandPortalSitemap,
     # Aşağıdaki sitemaps için önce URL pattern'ler eklenmeli:
     # 'faq': FAQSitemap,
     # 'brand_portal_content': BrandPortalContentSitemap,
