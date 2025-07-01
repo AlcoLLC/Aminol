@@ -37,7 +37,7 @@
   </div>
   
   <div class="container career-form-section">
-    <div class="step-container" id="step-1" style="display: block;">
+    <div class="step-container" id="step-1">
       <div class="steps-content">
         <p>{{ job.requirements }}</p>
         <h2>{% trans "Submit your application." %}</h2>
@@ -93,7 +93,7 @@
     </div>
 
     <!-- Step 2: CV Upload -->
-    <div class="step-container" id="step-2" style="display: none;">
+    <div class="step-container" id="step-2">
       <div class="steps-content">
         <p>STEP 2</p>
         <h2>{% trans "Upload your CV" %}</h2>
@@ -117,7 +117,7 @@
                 <i class="fa-solid fa-arrow-up-from-bracket"></i>
                 <span id="file-name">{% trans "Click to upload file" %}</span>
               </div>
-              <input type="file" id="cvFile" name="cv_file" accept=".pdf,.doc,.docx" style="display: none;" required />
+              <input type="file" id="cvFile" name="cv_file" accept=".pdf,.doc,.docx" required />
             </div>
           </form>
         </div>
@@ -134,7 +134,7 @@
     </div>
 
     <!-- Step 3: Motivation Letter -->
-    <div class="step-container" id="step-3" style="display: none;">
+    <div class="step-container" id="step-3">
       <div class="steps-content">
         <p>STEP 3</p>
         <h2>{% trans "Motivation letter" %}</h2>
@@ -172,7 +172,7 @@
     </div>
 
     <!-- Confirmation Step -->
-    <div class="step-container" id="confirmation" style="display: none;">
+    <div class="step-container" id="confirmation">
       <div class="career-confirm">
         <div class="career-confirm-modal career-form">
           <h2>{% trans "Attention!" %}</h2>
@@ -204,7 +204,7 @@
     </div>
 
     <!-- Success Step -->
-    <div class="step-container" id="success" style="display: none;">
+    <div class="step-container" id="success">
       <div class="steps-content">
         <h2>{% trans "Thank you! Your application has been successfully submitted." %}</h2>
         <p>{% trans "We will review your application and contact you soon." %}</p>
@@ -222,11 +222,11 @@
 </div>
 
 
-<div id="customAlertModal" class="custom-modal-overlay" style="display: none;">
+<div id="customAlertModal" class="custom-modal-overlay">
     <div class="custom-modal-content">
         <span class="custom-modal-close-btn" onclick="hideCustomAlertModal()">&times;</span>
-        <h3 id="customAlertModalTitle" style="margin-top:0; margin-bottom: 15px;">{% trans "Notification" %}</h3>
-        <p id="customAlertModalMessage" style="margin-bottom: 20px;"></p>
+        <h3 id="customAlertModalTitle">{% trans "Notification" %}</h3>
+        <p id="customAlertModalMessage"></p>
         <button type="button" class="btn btn-modal-close" onclick="hideCustomAlertModal()">{% trans "Close" %}</button>
     </div>
 </div>

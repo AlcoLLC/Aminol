@@ -550,7 +550,8 @@
   margin: 30px auto;
 }
 .aminol-worldwide video {
-  width: 30vw;
+  width: 100%; 
+  height: auto;
 }
 .aminol-worldwide .aminol-worldwide-content {
   display: flex;

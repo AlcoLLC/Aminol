@@ -45,6 +45,21 @@
 .career-content .tab-content.active {
   display: block;
 }
+.career-form-section #step-1 {
+  display: block;
+}
+.career-form-section #step-2 {
+  display: none;
+}
+.career-form-section #step-3 {
+  display: none;
+}
+.career-form-section #confirmation {
+  display: none;
+}
+.career-form-section #success {
+  display: none;
+}
 @media (min-width: 770px) and (max-width: 1024px) {
   .career-section .career-tabs {
     gap: 8px;
@@ -205,6 +220,22 @@
 .career-form .form-group span {
   color: #ec1c31;
 }
+.career-form .form-group #cvFile {
+  display: none;
+}
+#customAlertModal {
+  display: none;
+}
+
+#customAlertModal #customAlertModalTitle {
+  margin-top:0; 
+  margin-bottom: 15px;
+}
+
+#customAlertModal #customAlertModalMessage {
+  margin-bottom: 20px;
+}
+
 .career-form .form-control {
   width: 100%;
   padding: 12px 15px;
