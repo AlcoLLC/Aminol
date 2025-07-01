@@ -22,7 +22,7 @@
 <!-- Breadcrumb -->
 
 <div class="breadcrumb container">
-    <a href="/">{% trans "Home page" %}</a>| <span>{% trans "Markets" %}</span>|
+    <a href="{% url 'home:home' %}">{% trans "Home page" %}</a>| <span>{% trans "Markets" %}</span>|
     <p>{% trans "Shipping & Offshore" %}</p>
 </div>
 
@@ -125,7 +125,7 @@
         <div class="shared-description">
             <h3>{% trans "Knowledge and support" %}</h3>
             <span>{% trans "Our experienced team is ready to assist you with advice, technical and commercial support, and the latest industry developments. Discover our wide range of services and workshop materials on our service page." %}</span>
-            <a href="#" class="button-style">{% trans "Our Services" %}</a>
+            <a href="{% url 'services:aminol_dealer' %}" class="button-style">{% trans "Our Services" %}</a>
         </div>
     </div>
 </div>

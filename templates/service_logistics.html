@@ -14,7 +14,7 @@
 
   <!-- Breadcrumb -->
   <div class="breadcrumb container">
-  <a href="/">{% trans "Home page" %}</a>| <span>{% trans "Services" %}</span>|
+  <a href="{% url 'home:home' %}">{% trans "Home page" %}</a>| <span>{% trans "Services" %}</span>|
   <h1>{% trans "Aminol logistics" %}</h1>
   </div>
 
@@ -100,7 +100,7 @@
         
         {% endfor %}
       </div>
-      <a href="/news/" class="button-style">{% trans "Discover more" %}</a>
+      <a href="{% url 'news:news_list' %}" class="button-style">{% trans "Discover more" %}</a>
     </div>
   </section>
 </div>
