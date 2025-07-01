@@ -63,7 +63,7 @@
               <li><a class="{% if request.resolver_match.url_name == 'products' %}active{% endif %}"
                      href="{% url 'products:product_list' %}">{% trans "Products" %}</a></li>
               <li class="dropdown">
-                <a class="dropdown-head">{% trans "Markets" %}<i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-head">{% trans "Markets" %}<i class="fa-solid fa-chevron-down"></i></div>
                 <div class="dropdown-content">
                   <a href="{% url 'markets:automotive' %}">{% trans "Automotive" %}</a>
                   <a href="{% url 'markets:industrial' %}">{% trans "Industrial" %}</a>
@@ -71,7 +71,7 @@
                 </div>
               </li>
               <li class="dropdown">
-                <a class="dropdown-head">{% trans "Services" %}<i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-head">{% trans "Services" %}<i class="fa-solid fa-chevron-down"></i></div>
                 <div class="dropdown-content">
                   <a href="{% url 'services:aminol_dealer' %}">{% trans "Aminol official dealer" %}</a>
                   <a href="{% url 'services:aminol_laboratory' %}">{% trans "Aminol Laboratory" %}</a>
@@ -142,9 +142,9 @@
       <li><a href="{% url 'about:about_page' %}">{% trans "About us" %}</a></li>
       <li><a href="{% url 'products:product_list' %}">{% trans "Products" %}</a></li>
       <li class="mobile-dropdown">
-        <a class="mobile-dropdown-head">
+        <div class="mobile-dropdown-head">
           {% trans "Markets" %}<i class="fa-solid fa-chevron-down"></i>
-        </a>
+        </div>
         <div class="mobile-dropdown-content">
           <a href="{% url 'markets:automotive' %}">{% trans "Automotive" %}</a>
           <a href="{% url 'markets:industrial' %}">{% trans "Industrial" %}</a>
@@ -152,9 +152,9 @@
         </div>
       </li>
       <li class="mobile-dropdown">
-        <a class="mobile-dropdown-head">
+        <div class="mobile-dropdown-head">
           {% trans "Services" %}<i class="fa-solid fa-chevron-down"></i>
-        </a>
+        </div>
         <div class="mobile-dropdown-content">
           <a href="{% url 'services:aminol_dealer' %}">{% trans "Aminol official dealer" %}</a>
           <a href="{% url 'services:aminol_laboratory' %}">{% trans "Aminol Laboratory" %}</a>
