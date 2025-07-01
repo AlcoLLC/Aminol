@@ -668,3 +668,12 @@
     margin: 40px auto;
   }
 }
+
+.about-company-profile .company-profile {
+      font-weight: 600;
+    font-size: 42px;
+    line-height: 48px;
+    color: #001c5c;
+    text-align: center;
+    letter-spacing: 0;
+}
