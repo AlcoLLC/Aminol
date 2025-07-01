@@ -1,7 +1,7 @@
 .product-content {
   margin: 70px auto;
 }
-.product-content h2 {
+.product-content h1 {
   color: #012762;
   font-weight: 600;
   font-size: 42px;
@@ -280,7 +280,7 @@
     margin: 50px auto;
     padding: 0 15px;
   }
-  .product-content h2 {
+  .product-content h1 {
     font-size: 38px;
     line-height: 40px;
   }
@@ -326,7 +326,7 @@
     margin-bottom: 10px;
     margin: 30px auto;
   }
-  .product-content h2 {
+  .product-content h1 {
     font-size: 30px;
     line-height: 35px;
   }
