@@ -7,6 +7,7 @@
   letter-spacing: 0;
 }
 .navbar .nav-section .nav-bottom ul li a,
+.navbar .nav-section .nav-bottom ul li .dropdown-head,
 .navbar .nav-section .nav-top ul li a {
   line-height: 80%;
   letter-spacing: 0.5px;
@@ -170,11 +171,13 @@ nav {
   a.active:not(.dropdown-content a.active)::after {
   width: 78% !important;
 }
+.navbar .nav-section .nav-bottom ul li .dropdown-head,
 .navbar .nav-section .nav-bottom ul li a {
   color: #012762;
   font-weight: 500;
   font-size: 16px;
 }
+.navbar .nav-section .nav-bottom ul li .dropdown-head i,
 .navbar .nav-section .nav-bottom ul li a i {
   margin-left: 5px;
 }
@@ -438,6 +441,7 @@ nav {
   .navbar .nav-section .nav-bottom ul {
     gap: 35px;
   }
+  .navbar .nav-section .nav-bottom ul li .dropdown-head,
   .navbar .nav-section .nav-bottom ul li a {
     font-size: 14px;
     line-height: 20px;
@@ -1077,8 +1081,18 @@ nav {
   font-weight: 600;
 }
 .footer-content ul li a,
-footer .footer-contact > div:first-of-type a {
+footer .footer-contact > div:first-of-type a, 
+footer .footer-contact > div:first-of-type .phone-number {
   color: #012762;
+}
+footer .footer-contact>div:first-of-type .phone-number {
+ display: flex;
+    flex-direction: column;
+    font-family: Poppins;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
 }
 .footer-content > div:last-of-type button {
   color: #f6f9ff;
@@ -1109,7 +1123,7 @@ footer .footer-contact > div:first-of-type {
 footer .footer-contact > div:first-of-type p:first-of-type {
   max-width: 38%;
 }
-footer .footer-contact > div:first-of-type p {
+footer .footer-contact > div:first-of-type p, footer .footer-contact > div:first-of-type .phonenumbers {
   display: flex;
   flex-direction: column;
   font-family: Poppins;

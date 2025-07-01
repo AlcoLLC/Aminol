@@ -13,7 +13,7 @@
 
   <!-- Breadcrumb -->
   <div class="breadcrumb container">
-    <a href="/">{% trans "Home Page" %}</a> |
+    <a href="{% url 'home:home' %}">{% trans "Home Page" %}</a> |
     <a href="{% url 'career:career' %}">{% trans "Career" %}</a> |
     <p>{% trans "Apply" %}</p>
   </div>
