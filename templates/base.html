@@ -72,7 +72,7 @@
   <script src="{% static 'assets/js/carousel.min.js' %}"></script>
  <script src="{% static 'assets/js/locale.min.js' %}"></script>
  <script src="https://analytics.ahrefs.com/analytics.js" data-key="VCY7krba01QhiJDS2Q8BjQ" async></script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-56M2MVQ89Z"></script>
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-56M2MVQ89Z"></script>
 
  <script>
   var ahrefs_analytics_script = document.createElement('script');
@@ -82,10 +82,9 @@
   document.getElementsByTagName('head')[0].appendChild(ahrefs_analytics_script);
 
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-56M2MVQ89Z');
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-56M2MVQ89Z', { 'send_page_view': false });
 </script>
 
 
