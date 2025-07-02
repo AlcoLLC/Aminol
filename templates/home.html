@@ -51,7 +51,7 @@
             <p>
               {% trans "Manufacturer of Lubricants, Lubricant Additive Packages & Deionised Fluids. Proudly Made in Azerbaijan" %}
             </p>
-            <a href="{% url 'products:product_list' %}?search=&product_group=pcmo&segments=passenger-cars&segments=racing&segments=classic-vintage-vehicles&page=1" class="button-style">{% trans "Discover more" %}</a>
+            <a aria-label="PCMO Page" href="{% url 'products:product_list' %}?search=&product_group=pcmo&segments=passenger-cars&segments=racing&segments=classic-vintage-vehicles&page=1" class="button-style">{% trans "Discover more" %}</a>
           </div>
         </div>
          <div class="swiper-slide swiper-slide_two">
@@ -60,7 +60,7 @@
             <p>
               {% trans "Manufacturer of Lubricants, Lubricant Additive Packages & Deionised Fluids. Proudly Made in Azerbaijan" %}
             </p>
-              <a href="{% url 'products:product_list' %}?search=&product_group=pcmo&segments=trucks-buses&page=1" class="button-style">{% trans "Discover more" %}</a> 
+              <a aria-label="HDEO Page" href="{% url 'products:product_list' %}?search=&product_group=pcmo&segments=trucks-buses&page=1" class="button-style">{% trans "Discover more" %}</a> 
           </div>
         </div>
         <div class="swiper-slide swiper-slide_three">
@@ -69,7 +69,7 @@
             <p>
               {% trans "Manufacturer of Lubricants, Lubricant Additive Packages & Deionised Fluids. Proudly Made in Azerbaijan" %}
             </p>
-              <a href="{% url 'products:product_list' %}?search=&product_group=motorbike&page=1" class="button-style">{% trans "Discover more" %}</a> 
+              <a aria-label="Motorcycle oils Page" href="{% url 'products:product_list' %}?search=&product_group=motorbike&page=1" class="button-style">{% trans "Discover more" %}</a> 
           </div>
         </div>
          <div class="swiper-slide swiper-slide_four">
@@ -78,7 +78,7 @@
             <p>
               {% trans "Manufacturer of Lubricants, Lubricant Additive Packages & Deionised Fluids. Proudly Made in Azerbaijan" %}
             </p>
-              <a href="{% url 'products:product_list' %}?search=&product_group=marine&product_group=greases&product_group=industrial&page=3" class="button-style">{% trans "Discover more" %}</a> 
+              <a aria-label="Transmission & Gear oils Page" href="{% url 'products:product_list' %}?search=&product_group=marine&product_group=greases&product_group=industrial&page=3" class="button-style">{% trans "Discover more" %}</a> 
 
           </div>
         </div>
@@ -88,7 +88,7 @@
             <p>
               {% trans "Manufacturer of Lubricants, Lubricant Additive Packages & Deionised Fluids. Proudly Made in Azerbaijan" %}
             </p>
-              <a href="{% url 'products:product_list' %}?search=&product_group=hydraulic-oils&page=1" class="button-style">{% trans "Discover more" %}</a> 
+              <a aria-label="Hydraulic oils Page" href="{% url 'products:product_list' %}?search=&product_group=hydraulic-oils&page=1" class="button-style">{% trans "Discover more" %}</a> 
 
           </div>
         </div>
@@ -98,7 +98,7 @@
             <p>
               {% trans "Manufacturer of Lubricants, Lubricant Additive Packages & Deionised Fluids. Proudly Made in Azerbaijan" %}
             </p>
-              <a href="{% url 'products:product_list' %}?search=&product_group=gear&page=1" class="button-style">{% trans "Discover more" %}</a> 
+              <a aria-label="Agricultural lubricants Page" href="{% url 'products:product_list' %}?search=&product_group=gear&page=1" class="button-style">{% trans "Discover more" %}</a> 
 
           </div>
         </div>
@@ -108,7 +108,7 @@
             <p>
               {% trans "Manufacturer of Lubricants, Lubricant Additive Packages & Deionised Fluids. Proudly Made in Azerbaijan" %}
             </p>
-              <a href="{% url 'products:product_list' %}?search=&product_group=industrial-gear-oils&product_group=compressor-oils&product_group=circulating-oils&product_group=special-fluids&product_group=slideway-oils&product_group=quench-oils&product_group=mould-oils&page=1" class="button-style">{% trans "Discover more" %}</a> 
+              <a aria-label="Industrial lubricants Page" href="{% url 'products:product_list' %}?search=&product_group=industrial-gear-oils&product_group=compressor-oils&product_group=circulating-oils&product_group=special-fluids&product_group=slideway-oils&product_group=quench-oils&product_group=mould-oils&page=1" class="button-style">{% trans "Discover more" %}</a> 
 
           </div>
         </div>
@@ -118,7 +118,7 @@
             <p>
               {% trans "Manufacturer of Lubricants, Lubricant Additive Packages & Deionised Fluids. Proudly Made in Azerbaijan" %}
             </p>
-              <a href="{% url 'products:product_list' %}?search=&product_group=marine-oils&page=1" class="button-style">{% trans "Discover more" %}</a> 
+              <a aria-label="Marine lubricants Page" href="{% url 'products:product_list' %}?search=&product_group=marine-oils&page=1" class="button-style">{% trans "Discover more" %}</a> 
 
           </div>
         </div>
@@ -128,7 +128,7 @@
             <p>
               {% trans "Manufacturer of Lubricants, Lubricant Additive Packages & Deionised Fluids. Proudly Made in Azerbaijan" %}
             </p>
-              <a href="{% url 'products:product_list' %}?search=&product_group=turbine-oils&page=1" class="button-style">{% trans "Discover more" %}</a> 
+              <a aria-label="Turbine Oils Page" href="{% url 'products:product_list' %}?search=&product_group=turbine-oils&page=1" class="button-style">{% trans "Discover more" %}</a> 
 
           </div>
         </div>
@@ -151,7 +151,7 @@
     <div class="container categories-grid">
       {% for product_group in product_groups %}
       <div class="category-card {% if forloop.counter > 8 %}hidden{% endif %}">
-        <a href="{% url 'products:product_list' %}?product_group={{ product_group.slug }}">
+        <a href="{% url 'products:product_list' %}?product_group={{ product_group.slug }}" aria-label="H{{ product_group.title_translate }}">
           <div class="category-image">
             <img loading="lazy"
               src="{{ product_group.image.url }}"
@@ -188,7 +188,7 @@
         <p>
           {% trans "The modernization of industry and renewal of equipment have increased demand for high-quality lubricants in Azerbaijan. To meet this, AMINOL Lubricants opened on December 15, 2017, in Sumgayit Chemical Industrial Park with a $20 million investment. The plant produces 150,000 tons annually, focusing on motor, hydraulic, transmission, compressor, turbine, and marine oils, along with antifreeze and AdBlue." %}
         </p>
-        <a href="{% url 'about:about_page' %}" class="button-style">{% trans "Discover more" %}</a>
+        <a href="{% url 'about:about_page' %}" class="button-style" aria-label="About Page">{% trans "Discover more" %}</a>
       </div>
     </div>
   </div>
@@ -205,7 +205,7 @@
         {% trans "Sales network in more than 50 countries in four continents." %} <br />
         {% trans "Would you like to buy our products or are you interested in a partnership?" %}
       </p>
-      <a href="{% url 'contact:contact' %}" class="button-style">{% trans "Get in contact" %}</a>
+      <a href="{% url 'contact:contact' %}" aria-label="Contact Page" class="button-style">{% trans "Get in contact" %}</a>
     </div>
   </div>
 
@@ -298,14 +298,14 @@
               {{ news.content_translate|truncatewords:10 }}
             </p>
  
-            <a href="{% url 'news:news_detail' news.pk %}"><h5>{{ news.title_translate|linebreaksbr }}</h5> <span>{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></span></a>
+            <a href="{% url 'news:news_detail' news.pk %}" aria-label="{{ news.title_translate }}"><h5>{{ news.title_translate|linebreaksbr }}</h5> <span>{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></span></a>
              
           </div>
         </div>
         {% empty %}
         {% endfor %}
       </div>
-      <a href="{% url 'news:news_list' %}" class="button-style">{% trans "Discover more" %}</a>
+      <a href="{% url 'news:news_list' %}" aria-label="News Page" class="button-style">{% trans "Discover more" %}</a>
     </div>
     </div>
   </section>
