@@ -1074,6 +1074,13 @@
   align-items: start;
   margin-top: 10px;
 }
+
+.latest-news .news-card a span{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
 @media (max-width: 1024px) {
   .latest-news .news-cards .news-card h5 {
     line-height: 20px;
