@@ -1,20 +1,22 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Element kontrolü ile başla
     const customSelect = document.querySelector('.custom-select');
     const customOptions = document.querySelector('.custom-options');
-    const optionItems = document.querySelectorAll('.custom-option');
     const hiddenInput = document.querySelector('#helpType');
     const contactForm = document.querySelector('form[action*="contact"]');
    
+    // Ana custom select elementleri yoksa, bu sayfa için script'i çalıştırma
     if (!customSelect || !customOptions) {
-        console.error("Custom select elements not found!");
+        console.log("Custom select elements not found - this script may not be needed on this page");
         return;
     }
+
+    const optionItems = document.querySelectorAll('.custom-option');
    
     // Eğer template'den option'lar gelmemişse (fallback için)
     if (optionItems.length === 0) {
         console.warn("No options found from template, creating fallback options");
         
-        // Bu durumda İngilizce fallback kullanın
         const helpChoices = [
             ['buy', 'I would like to buy Aminol products.'],
             ['become_dealer', 'I am interested in becoming a distributor.'],
@@ -47,7 +49,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const selectedValue = option.getAttribute('data-value') || selectedText;
        
         customSelect.textContent = selectedText;
-        hiddenInput.value = selectedValue;
+        if (hiddenInput) {
+            hiddenInput.value = selectedValue;
+        }
        
         document.querySelectorAll('.custom-option').forEach(opt =>
             opt.classList.remove('selected'));
@@ -75,14 +79,15 @@ document.addEventListener('DOMContentLoaded', function () {
         customSelect.classList.remove('open');
     });
    
-    // İlk option'ı default olarak seç (template'den gelen ilk seçenek)
+    // İlk option'ı default olarak seç
     const firstOption = document.querySelector('.custom-option[data-value="buy"]') || 
                        document.querySelector('.custom-option');
     if (firstOption) {
         firstOption.classList.add('selected');
-        // Custom select'in metnini de güncelle
         customSelect.textContent = firstOption.textContent.trim();
-        hiddenInput.value = firstOption.getAttribute('data-value');
+        if (hiddenInput) {
+            hiddenInput.value = firstOption.getAttribute('data-value');
+        }
     }
 
     // reCAPTCHA validation functions
@@ -112,6 +117,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function validateRecaptcha() {
+        // reCAPTCHA yüklü değilse, validasyonu atla
+        if (typeof grecaptcha === 'undefined') {
+            console.warn('reCAPTCHA not loaded');
+            return true; // Bu durumda server-side validasyon yapılmalı
+        }
+        
         const recaptchaResponse = grecaptcha.getResponse();
         
         if (!recaptchaResponse) {
@@ -126,20 +137,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // Form submission handler with reCAPTCHA validation
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            // Check if reCAPTCHA is loaded
-            if (typeof grecaptcha === 'undefined') {
-                e.preventDefault();
-                showRecaptchaError('reCAPTCHA failed to load. Please refresh the page and try again.');
-                return false;
+            // reCAPTCHA kontrolü - sadece yüklüyse
+            if (typeof grecaptcha !== 'undefined') {
+                if (!validateRecaptcha()) {
+                    e.preventDefault();
+                    return false;
+                }
             }
 
-            // Validate reCAPTCHA
-            if (!validateRecaptcha()) {
-                e.preventDefault();
-                return false;
-            }
-
-            // Additional form validations can be added here
+            // Required field validations
             const requiredFields = contactForm.querySelectorAll('[required]');
             let hasEmptyFields = false;
 
@@ -158,52 +164,64 @@ document.addEventListener('DOMContentLoaded', function () {
                 return false;
             }
 
-            // If all validations pass, show loading state
+            // Show loading state
             const submitButton = contactForm.querySelector('button[type="submit"]');
             if (submitButton) {
                 submitButton.disabled = true;
+                const originalText = submitButton.innerHTML;
                 submitButton.innerHTML = 'Sending... <i class="fa-solid fa-spinner fa-spin"></i>';
+                
+                // Store original text for potential reset
+                submitButton.setAttribute('data-original-text', originalText);
             }
         });
     }
 
-    // reCAPTCHA callback functions (global scope)
-    window.onRecaptchaSuccess = function() {
-        clearRecaptchaError();
-        console.log('reCAPTCHA verified successfully');
-    };
+    // reCAPTCHA callback functions (global scope) - sadece reCAPTCHA varsa
+    if (typeof window !== 'undefined') {
+        window.onRecaptchaSuccess = function() {
+            clearRecaptchaError();
+            console.log('reCAPTCHA verified successfully');
+        };
 
-    window.onRecaptchaExpired = function() {
-        showRecaptchaError('reCAPTCHA has expired. Please verify again.');
-        console.log('reCAPTCHA expired');
-    };
+        window.onRecaptchaExpired = function() {
+            showRecaptchaError('reCAPTCHA has expired. Please verify again.');
+            console.log('reCAPTCHA expired');
+        };
 
-    window.onRecaptchaError = function() {
-        showRecaptchaError('reCAPTCHA verification failed. Please try again.');
-        console.log('reCAPTCHA error occurred');
-    };
+        window.onRecaptchaError = function() {
+            showRecaptchaError('reCAPTCHA verification failed. Please try again.');
+            console.log('reCAPTCHA error occurred');
+        };
 
-    // Reset form state if needed
-    window.resetContactForm = function() {
-        if (contactForm) {
-            const submitButton = contactForm.querySelector('button[type="submit"]');
-            if (submitButton) {
-                submitButton.disabled = false;
-                submitButton.innerHTML = 'Send <i class="fa-solid fa-paper-plane"></i>';
+        // Reset form state
+        window.resetContactForm = function() {
+            if (contactForm) {
+                const submitButton = contactForm.querySelector('button[type="submit"]');
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    const originalText = submitButton.getAttribute('data-original-text') || 
+                                       'Send <i class="fa-solid fa-paper-plane"></i>';
+                    submitButton.innerHTML = originalText;
+                }
             }
-        }
-        
-        if (typeof grecaptcha !== 'undefined') { 
-            grecaptcha.reset();
-        }
-        
-        clearRecaptchaError();
-    };
+            
+            if (typeof grecaptcha !== 'undefined') { 
+                try {
+                    grecaptcha.reset();
+                } catch (error) {
+                    console.log('reCAPTCHA reset failed:', error);
+                }
+            }
+            
+            clearRecaptchaError();
+        };
+    }
 
     // Handle form reset on page navigation back
     window.addEventListener('pageshow', function(event) {
-        if (event.persisted) {
-            resetContactForm();
+        if (event.persisted && typeof window.resetContactForm === 'function') {
+            window.resetContactForm();
         }
     });
 });

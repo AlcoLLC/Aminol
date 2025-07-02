@@ -1,41 +1,55 @@
 let currentStep = 1;
 let formData = {};
 
-// Modal elementlerini al
+// Modal elementlerini al - null check ile
 const customAlertModal = document.getElementById('customAlertModal');
 const customAlertModalMessage = document.getElementById('customAlertModalMessage');
-const customAlertModalTitle = document.getElementById('customAlertModalTitle'); // Başlık için
+const customAlertModalTitle = document.getElementById('customAlertModalTitle');
 
-// File upload handler
-document.getElementById('cvFile').addEventListener('change', function(e) {
-    const fileName = e.target.files[0] ? e.target.files[0].name : '{% trans "Click to upload file" %}';
-    document.getElementById('file-name').textContent = fileName;
-});
+// File upload handler - element kontrolü ile
+const cvFileInput = document.getElementById('cvFile');
+const fileNameElement = document.getElementById('file-name');
+
+if (cvFileInput && fileNameElement) {
+    cvFileInput.addEventListener('change', function(e) {
+        const fileName = e.target.files[0] ? e.target.files[0].name : 'Click to upload file';
+        fileNameElement.textContent = fileName;
+    });
+}
 
 // Yeni Modal Fonksiyonları
-function showCustomAlertModal(message, title = '{% trans "Notification" %}') {
+function showCustomAlertModal(message, title = 'Notification') {
+    if (!customAlertModal || !customAlertModalMessage || !customAlertModalTitle) {
+        console.error('Modal elements not found, falling back to alert');
+        alert(title + ': ' + message);
+        return;
+    }
+    
     customAlertModalTitle.textContent = title;
     customAlertModalMessage.textContent = message;
-    customAlertModal.style.display = 'flex'; // Flex ile ortalamak için
-    setTimeout(() => { // CSS geçişi için küçük bir gecikme
+    customAlertModal.style.display = 'flex';
+    setTimeout(() => {
         customAlertModal.classList.add('show');
     }, 10);
 }
 
 function hideCustomAlertModal() {
+    if (!customAlertModal) return;
+    
     customAlertModal.classList.remove('show');
-    setTimeout(() => { // CSS geçişinin bitmesini bekle
+    setTimeout(() => {
         customAlertModal.style.display = 'none';
-    }, 300); // CSS transition süresiyle eşleşmeli
+    }, 300);
 }
 
-// Modalın dışına tıklandığında kapatma
-customAlertModal.addEventListener('click', function(event) {
-    if (event.target === customAlertModal) { // Eğer tıklanan yer overlay ise
-        hideCustomAlertModal();
-    }
-});
-
+// Modalın dışına tıklandığında kapatma - element kontrolü ile
+if (customAlertModal) {
+    customAlertModal.addEventListener('click', function(event) {
+        if (event.target === customAlertModal) {
+            hideCustomAlertModal();
+        }
+    });
+}
 
 function nextStep(step) {
     if (validateStep(step)) {
@@ -64,38 +78,54 @@ function showStep(stepNumber) {
 function validateStep(step) {
     let isValid = true;
     let errorMessage = '';
-    let errorTitle = '{% trans "Validation Error" %}'; // Hata başlığı
+    let errorTitle = 'Validation Error';
     
     if (step === 1) {
-        const firstName = document.getElementById('firstName').value.trim();
-        const lastName = document.getElementById('lastName').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const phone = document.getElementById('phone').value.trim();
+        const firstName = document.getElementById('firstName');
+        const lastName = document.getElementById('lastName');
+        const email = document.getElementById('email');
+        const phone = document.getElementById('phone');
         
+        // Element kontrolü
         if (!firstName || !lastName || !email || !phone) {
             isValid = false;
-            errorMessage = '{% trans "Please fill in all required personal information fields." %}';
-        } else if (!/^\S+@\S+\.\S+$/.test(email)) { // Basit e-posta format kontrolü
-            isValid = false;
-            errorMessage = '{% trans "Please enter a valid email address." %}';
+            errorMessage = 'Required form elements are missing. Please refresh the page.';
+        } else {
+            const firstNameValue = firstName.value.trim();
+            const lastNameValue = lastName.value.trim();
+            const emailValue = email.value.trim();
+            const phoneValue = phone.value.trim();
+            
+            if (!firstNameValue || !lastNameValue || !emailValue || !phoneValue) {
+                isValid = false;
+                errorMessage = 'Please fill in all required personal information fields.';
+            } else if (!/^\S+@\S+\.\S+$/.test(emailValue)) {
+                isValid = false;
+                errorMessage = 'Please enter a valid email address.';
+            }
         }
     } else if (step === 2) {
-        const cvFile = document.getElementById('cvFile').files[0];
-        if (!cvFile) {
+        const cvFileInput = document.getElementById('cvFile');
+        if (!cvFileInput) {
             isValid = false;
-            errorMessage = '{% trans "Please upload your CV file." %}';
+            errorMessage = 'CV upload field is missing. Please refresh the page.';
+        } else if (!cvFileInput.files[0]) {
+            isValid = false;
+            errorMessage = 'Please upload your CV file.';
         }
     } else if (step === 3) {
-        const motivationLetter = document.getElementById('motivationLetter').value.trim();
+        const motivationLetter = document.getElementById('motivationLetter');
         if (!motivationLetter) {
             isValid = false;
-            errorMessage = '{% trans "Please write your motivation letter." %}';
+            errorMessage = 'Motivation letter field is missing. Please refresh the page.';
+        } else if (!motivationLetter.value.trim()) {
+            isValid = false;
+            errorMessage = 'Please write your motivation letter.';
         }
     }
     
     if (!isValid) {
-        // alert(errorMessage); // ESKİ YÖNTEM
-        showCustomAlertModal(errorMessage, errorTitle); // YENİ YÖNTEM
+        showCustomAlertModal(errorMessage, errorTitle);
     }
     
     return isValid;
@@ -103,86 +133,119 @@ function validateStep(step) {
 
 function saveStepData(step) {
     if (step === 1) {
-        formData.first_name = document.getElementById('firstName').value.trim();
-        formData.last_name = document.getElementById('lastName').value.trim();
-        formData.email = document.getElementById('email').value.trim();
-        formData.phone = document.getElementById('phone').value.trim();
+        const firstName = document.getElementById('firstName');
+        const lastName = document.getElementById('lastName');
+        const email = document.getElementById('email');
+        const phone = document.getElementById('phone');
+        
+        if (firstName && lastName && email && phone) {
+            formData.first_name = firstName.value.trim();
+            formData.last_name = lastName.value.trim();
+            formData.email = email.value.trim();
+            formData.phone = phone.value.trim();
+        }
     } else if (step === 2) {
-        formData.cv_file = document.getElementById('cvFile').files[0];
+        const cvFileInput = document.getElementById('cvFile');
+        if (cvFileInput && cvFileInput.files[0]) {
+            formData.cv_file = cvFileInput.files[0];
+        }
     } else if (step === 3) {
-        formData.motivation_letter = document.getElementById('motivationLetter').value.trim();
+        const motivationLetter = document.getElementById('motivationLetter');
+        if (motivationLetter) {
+            formData.motivation_letter = motivationLetter.value.trim();
+        }
     }
 }
 
 function showConfirmation() {
-    if (validateStep(3)) { // Önce 3. adımı doğrula
-        saveStepData(3); // 3. adım verilerini kaydet
-        document.getElementById('confirm-firstName').textContent = formData.first_name;
-        document.getElementById('confirm-lastName').textContent = formData.last_name;
-        document.getElementById('confirm-email').textContent = formData.email;
-        document.getElementById('confirm-phone').textContent = formData.phone;
-        document.getElementById('confirm-cvFile').textContent = formData.cv_file ? formData.cv_file.name : '{% trans "Not uploaded" %}';
+    if (validateStep(3)) {
+        saveStepData(3);
         
-        showStep(4); // Onay adımını göster
+        // Confirmation elementlerini kontrol et
+        const confirmElements = {
+            firstName: document.getElementById('confirm-firstName'),
+            lastName: document.getElementById('confirm-lastName'),
+            email: document.getElementById('confirm-email'),
+            phone: document.getElementById('confirm-phone'),
+            cvFile: document.getElementById('confirm-cvFile')
+        };
+        
+        // Sadece mevcut elementleri güncelle
+        if (confirmElements.firstName) confirmElements.firstName.textContent = formData.first_name || '';
+        if (confirmElements.lastName) confirmElements.lastName.textContent = formData.last_name || '';
+        if (confirmElements.email) confirmElements.email.textContent = formData.email || '';
+        if (confirmElements.phone) confirmElements.phone.textContent = formData.phone || '';
+        if (confirmElements.cvFile) confirmElements.cvFile.textContent = formData.cv_file ? formData.cv_file.name : 'Not uploaded';
+        
+        showStep(4);
     }
 }
 
 function submitApplication() {
     const submitFormData = new FormData();
-    // CSRF token'ını form içinden almak daha güvenli olabilir, ama bu da çalışır.
+    
+    // CSRF token'ını bul
     const csrfTokenInput = document.querySelector('#step1-form [name=csrfmiddlewaretoken]') || 
                            document.querySelector('#step2-form [name=csrfmiddlewaretoken]') ||
-                           document.querySelector('#step3-form [name=csrfmiddlewaretoken]');
+                           document.querySelector('#step3-form [name=csrfmiddlewaretoken]') ||
+                           document.querySelector('[name=csrfmiddlewaretoken]'); // Genel arama
 
     if (csrfTokenInput) {
         submitFormData.append('csrfmiddlewaretoken', csrfTokenInput.value);
     } else {
         console.error('CSRF token not found!');
-        showCustomAlertModal('{% trans "A security token is missing. Please refresh the page and try again." %}', '{% trans "Error" %}');
+        showCustomAlertModal('A security token is missing. Please refresh the page and try again.', 'Error');
         return;
     }
     
-    submitFormData.append('first_name', formData.first_name);
-    submitFormData.append('last_name', formData.last_name);
-    submitFormData.append('email', formData.email);
-    submitFormData.append('phone', formData.phone);
-    if (formData.cv_file) { // CV dosyası varsa ekle
-        submitFormData.append('cv_file', formData.cv_file);
-    }
-    submitFormData.append('motivation_letter', formData.motivation_letter);
+    // Form verilerini ekle
+    if (formData.first_name) submitFormData.append('first_name', formData.first_name);
+    if (formData.last_name) submitFormData.append('last_name', formData.last_name);
+    if (formData.email) submitFormData.append('email', formData.email);
+    if (formData.phone) submitFormData.append('phone', formData.phone);
+    if (formData.cv_file) submitFormData.append('cv_file', formData.cv_file);
+    if (formData.motivation_letter) submitFormData.append('motivation_letter', formData.motivation_letter);
     
-    // Butonu geçici olarak devre dışı bırak ve yükleniyor metni ekle
+    // Butonu güncelle
     const confirmButton = document.querySelector('.btn-confirm');
-    const originalButtonText = confirmButton.innerHTML;
-    confirmButton.disabled = true;
-    confirmButton.innerHTML = '{% trans "Sending..." %}';
+    if (confirmButton) {
+        const originalButtonText = confirmButton.innerHTML;
+        confirmButton.disabled = true;
+        confirmButton.innerHTML = 'Sending...';
 
-    fetch(window.location.href, { // Mevcut sayfanın URL'sine POST yapılıyor
-        method: 'POST',
-        body: submitFormData
-        // 'Content-Type': 'multipart/form-data' başlığı FormData ile otomatik ayarlanır
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            showStep(5); // Başarı adımını göster
-        } else {
-            // alert(data.message); // ESKİ YÖNTEM
-            showCustomAlertModal(data.message || '{% trans "An unknown error occurred. Please check your input." %}', '{% trans "Application Error" %}'); // YENİ YÖNTEM
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        // alert('{% trans "An error occurred while submitting your application. Please try again." %}'); // ESKİ YÖNTEM
-        showCustomAlertModal('{% trans "An error occurred while submitting your application. Please try again later." %}', '{% trans "Submission Failed" %}'); // YENİ YÖNTEM
-    })
-    .finally(() => {
-        // Butonu tekrar etkinleştir ve orijinal metni geri yükle
-        confirmButton.disabled = false;
-        confirmButton.innerHTML = originalButtonText;
-    });
+        fetch(window.location.href, {
+            method: 'POST',
+            body: submitFormData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                showStep(5);
+            } else {
+                showCustomAlertModal(data.message || 'An unknown error occurred. Please check your input.', 'Application Error');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showCustomAlertModal('An error occurred while submitting your application. Please try again later.', 'Submission Failed');
+        })
+        .finally(() => {
+            confirmButton.disabled = false;
+            confirmButton.innerHTML = originalButtonText;
+        });
+    } else {
+        console.error('Confirm button not found');
+        showCustomAlertModal('Submit button not found. Please refresh the page.', 'Error');
+    }
 }
 
+// Sayfa yüklendiğinde çalışacak kod
 document.addEventListener('DOMContentLoaded', function() {
-    showStep(1); // Sayfa yüklendiğinde ilk adımı göster
+    // İlk adımı göster - sadece step container'ları varsa
+    const stepContainers = document.querySelectorAll('.step-container');
+    if (stepContainers.length > 0) {
+        showStep(1);
+    } else {
+        console.warn('No step containers found on this page');
+    }
 });
