@@ -4,8 +4,9 @@ from . import views
 app_name = 'services'
 
 urlpatterns = [
-    path('service_aminol_dealer/', views.aminol_dealer_view, name='aminol_dealer'),
-    path('service_laboratory/', views.aminol_laboratory_view, name='aminol_laboratory'),
-    path('service_logistics/', views.aminol_logistics_view, name='aminol_logistics'),
+    path('services/dealer/', views.aminol_dealer_view, name='aminol_dealer'),
+    path('services/laboratory/', views.aminol_laboratory_view, name='aminol_laboratory'),
+    path('services/logistics/', views.aminol_logistics_view, name='aminol_logistics'),
+
 ]
 
