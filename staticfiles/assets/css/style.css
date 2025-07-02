@@ -127,7 +127,7 @@ nav {
 }
 .mobile-menu .mobile-dropdown-head.active,
 .navbar-dark .hamburger,
-.navbar-dark .nav-section .nav-bottom ul li .dropdown-head:hover,
+.navbar-dark .nav-section .nav-bottom ul li .dropdown-head,
 .navbar-dark .nav-section ul li a.active:hover,
 .navbar-dark ul li a {
   color: #fff !important;
