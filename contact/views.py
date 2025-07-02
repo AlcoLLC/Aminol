@@ -61,13 +61,13 @@ def contact_view(request):
         if not recaptcha_response or not verify_recaptcha(recaptcha_response):
             messages.error(request, _("reCAPTCHA verification failed. Please try again."))
             logger.warning("Form submission with invalid or missing reCAPTCHA.")
-            return redirect(reverse('contact:contact'))
+            return redirect('contact:contact')
 
         client_ip = get_client_ip(request)
         if client_ip and Contact.objects.filter(ip_address=client_ip).exists():
             messages.error(request, _("You have already submitted the form from this IP address."))
             logger.warning(f"Duplicate submission attempt from IP address {client_ip}.")
-            return redirect(reverse('contact:contact'))
+            return redirect('contact:contact')
 
         form_data = {
             'help_type': request.POST.get('helpType'),
@@ -133,13 +133,13 @@ Aminol Support Team
             except Exception as e:
                 logger.error(f"Error processing form or sending email: {str(e)}", exc_info=True)
                 messages.error(request, _("An error occurred while sending your message. Please try again or contact us directly."))
-                return redirect(reverse('contact:contact'))
+                return redirect('contact:contact')
         else:
             logger.warning(f"Form validation errors: {form.errors.as_json()}")
             for field, errors in form.errors.items():
                 for error in errors:
                     messages.error(request, f"{field.replace('_', ' ').title()}: {error}")
-            return redirect(reverse('contact:contact'))
+            return redirect('contact:contact')
 
     contact_info = ContactInfo.objects.last()
     context = {
