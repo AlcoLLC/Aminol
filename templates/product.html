@@ -14,7 +14,7 @@
 
 <!-- Breadcrumb -->
 <div class="breadcrumb container">
-  <a href="{% url 'home:home' %}">{% trans "Home page" %}</a>|
+  <a href="{% url 'home:home' %}" aria-label="Home Page">{% trans "Home page" %}</a>|
   <p>{% trans "Product Range" %}</p>
 </div>
 
@@ -141,7 +141,7 @@
       <div class="product-card">
         <div class="product-image">
           {% if product.image %}
-          <a href="{% url 'products:product_detail' slug=product.slug %}"><img loading="lazy" src="{{ product.image.url }}" alt="{{ product.title_translate }}" />
+          <a href="{% url 'products:product_detail' slug=product.slug %}" aria-label="{{ product.title_translate }}"><img loading="lazy" src="{{ product.image.url }}" alt="{{ product.title_translate }}" />
           </a>
           {% else %}
           {% endif %}
@@ -151,7 +151,7 @@
             <h2 class="product-title">{{ product.title_translate|linebreaksbr }}</h2>
             <div class="product-description">
               <p class="product-id">{{ product.product_id }}</p>
-              <a href="{% url 'products:product_detail' slug=product.slug %}" class="btn-more">
+              <a href="{% url 'products:product_detail' slug=product.slug %}" aria-label="{{ product.title_translate }}" class="btn-more">
                  {% trans "More" %}<i class="fa-solid fa-chevron-right"></i>
               </a>
             </div>
@@ -278,11 +278,11 @@
     <div class="pagination-numbers" id="paginationNumbers">
       {% for num in page_obj.paginator.page_range %}
         {% if page_obj.number == num %}
-          <a href="#" class="page-number active" data-page="{{ num }}">{{ num }}</a>
+          <a href="#" aria-label="Total page number" class="page-number active" data-page="{{ num }}">{{ num }}</a>
         {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-          <a href="#" class="page-number" data-page="{{ num }}">{{ num }}</a>
+          <a href="#" aria-label="Total page number" class="page-number" data-page="{{ num }}">{{ num }}</a>
         {% elif num == 1 %}
-          <a href="#" class="page-number" data-page="{{ num }}">{{ num }}</a>
+          <a href="#" aria-label="Total page number" class="page-number" data-page="{{ num }}">{{ num }}</a>
           {% if page_obj.number > 4 %}
             <span class="ellipsis">...</span>
           {% endif %}
@@ -290,7 +290,7 @@
           {% if page_obj.number < page_obj.paginator.num_pages|add:'-3' %}
             <span class="ellipsis">...</span>
           {% endif %}
-          <a href="#" class="page-number" data-page="{{ num }}">{{ num }}</a>
+          <a href="#" aria-label="Total page number" class="page-number" data-page="{{ num }}">{{ num }}</a>
         {% endif %}
       {% endfor %}
     </div>

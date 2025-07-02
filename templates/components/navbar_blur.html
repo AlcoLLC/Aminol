@@ -7,17 +7,17 @@
 <nav>
   <div class="navbar navbar-blur">
     <div class="container">
-      <a href="{% url 'home:home' %}" class="navbar-left">
+      <a href="{% url 'home:home' %}" aria-label="Home Page" class="navbar-left">
         <img loading="lazy" class="aminol-logo" src="{% static '/logo/aminol-logo.svg' %}" alt="Aminol logo" />
       </a>
       <div class="navbar-right">
         <div class="nav-section">
           <div class="nav-top">
             <ul>
-              <li><a href="{% url 'news:news_list' %}">{% trans "News" %}</a></li>
-              <li><a href="{% url 'brands:brand_portal_list' %}">{% trans "Brand Portal" %}</a></li>
-              <li><a href="{% url 'career:career' %}">{% trans "Career" %}</a></li>
-              <li><a href="{% url 'contact:contact' %}">{% trans "Contact" %}</a></li>
+              <li><a href="{% url 'news:news_list' %}" aria-label="News Page">{% trans "News" %}</a></li>
+              <li><a href="{% url 'brands:brand_portal_list' %}" aria-label="Brands Page">{% trans "Brand Portal" %}</a></li>
+              <li><a href="{% url 'career:career' %}" aria-label="Career Page">{% trans "Career" %}</a></li>
+              <li><a href="{% url 'contact:contact' %}" aria-label="Contact Page">{% trans "Contact" %}</a></li>
               
               <li>
                 <div class="language-dropdown">
@@ -59,23 +59,23 @@
           <div class="nav-bottom">
             <ul>
               <li><a class="{% if request.resolver_match.url_name == 'about:about_page' %}active{% endif %}"
-                     href="{% url 'about:about_page' %}">{% trans "About us" %}</a></li>
+                     href="{% url 'about:about_page' %}" aria-label="About Page">{% trans "About us" %}</a></li>
               <li><a class="{% if request.resolver_match.url_name == 'products' %}active{% endif %}"
-                     href="{% url 'products:product_list' %}">{% trans "Products" %}</a></li>
+                     href="{% url 'products:product_list' %}" aria-label="Products Page">{% trans "Products" %}</a></li>
               <li class="dropdown">
                 <div class="dropdown-head">{% trans "Markets" %}<i class="fa-solid fa-chevron-down"></i></div>
                 <div class="dropdown-content">
-                  <a href="{% url 'markets:automotive' %}">{% trans "Automotive" %}</a>
-                  <a href="{% url 'markets:industrial' %}">{% trans "Industrial" %}</a>
-                  <a href="{% url 'markets:shipping' %}">{% trans "Shipping & Offshore" %}</a>
+                  <a href="{% url 'markets:automotive' %}" aria-label="Automotive Market Page">{% trans "Automotive" %}</a>
+                  <a href="{% url 'markets:industrial' %}" aria-label="Industrial Market Page">{% trans "Industrial" %}</a>
+                  <a href="{% url 'markets:shipping' %}" aria-label="Shipping Market Page">{% trans "Shipping & Offshore" %}</a>
                 </div>
               </li>
               <li class="dropdown">
                 <div class="dropdown-head">{% trans "Services" %}<i class="fa-solid fa-chevron-down"></i></div>
                 <div class="dropdown-content">
-                  <a href="{% url 'services:aminol_dealer' %}">{% trans "Aminol official dealer" %}</a>
-                  <a href="{% url 'services:aminol_laboratory' %}">{% trans "Aminol Laboratory" %}</a>
-                  <a href="{% url 'services:aminol_logistics' %}">{% trans "Aminol Logistics" %}</a>
+                  <a href="{% url 'services:aminol_dealer' %}" aria-label="Aminol Dealer Service Page">{% trans "Aminol official dealer" %}</a>
+                  <a href="{% url 'services:aminol_laboratory' %}" aria-label="Aminol Laboratory Service Page">{% trans "Aminol Laboratory" %}</a>
+                  <a href="{% url 'services:aminol_logistics' %}" aria-label="Aminol Logistics Service Page">{% trans "Aminol Logistics" %}</a>
                 </div>
               </li>
             </ul>
@@ -116,7 +116,7 @@
         </div>
               
         <button class="search">
-          <a href="{% url 'search:search' %}"><i class="fa-solid fa-magnifying-glass"></i></a>
+          <a href="{% url 'search:search' %}" aria-label="Search Page"><i class="fa-solid fa-magnifying-glass"></i></a>
         </button>
 
         <button class="hamburger" id="hamburger">
@@ -131,24 +131,24 @@
 <div class="mobile-menu" id="mobile-menu">
   <div class="mobile-nav-top">
     <ul>
-      <li><a href="{% url 'news:news_list' %}">{% trans "News" %}</a></li>
-      <li><a href="{% url 'brands:brand_portal_list' %}">{% trans "Brand Portal" %}</a></li>
-      <li><a href="{% url 'career:career' %}">{% trans "Career" %}</a></li>
-      <li><a href="{% url 'contact:contact' %}">{% trans "Contact" %}</a></li>
+      <li><a href="{% url 'news:news_list' %}" aria-label="News Page">{% trans "News" %}</a></li>
+      <li><a href="{% url 'brands:brand_portal_list' %}" aria-label="Brands Page">{% trans "Brand Portal" %}</a></li>
+      <li><a href="{% url 'career:career' %}" aria-label="Career Page">{% trans "Career" %}</a></li>
+      <li><a href="{% url 'contact:contact' %}" aria-label="Contact Page">{% trans "Contact" %}</a></li>
     </ul>
   </div>
   <div class="mobile-nav-bottom">
     <ul>
-      <li><a href="{% url 'about:about_page' %}">{% trans "About us" %}</a></li>
-      <li><a href="{% url 'products:product_list' %}">{% trans "Products" %}</a></li>
+      <li><a href="{% url 'about:about_page' %}" aria-label="About Page">{% trans "About us" %}</a></li>
+      <li><a href="{% url 'products:product_list' %}" aria-label="Products Page">{% trans "Products" %}</a></li>
       <li class="mobile-dropdown">
         <div class="mobile-dropdown-head">
           {% trans "Markets" %}<i class="fa-solid fa-chevron-down"></i>
         </div>
         <div class="mobile-dropdown-content">
-          <a href="{% url 'markets:automotive' %}">{% trans "Automotive" %}</a>
-          <a href="{% url 'markets:industrial' %}">{% trans "Industrial" %}</a>
-          <a href="{% url 'markets:shipping' %}">{% trans "Shipping & Offshore" %}</a>
+          <a href="{% url 'markets:automotive' %}" aria-label="Automotive Market Page">{% trans "Automotive" %}</a>
+          <a href="{% url 'markets:industrial' %}" aria-label="Industrial Market Page">{% trans "Industrial" %}</a>
+          <a href="{% url 'markets:shipping' %}" aria-label="Shipping Market Page">{% trans "Shipping & Offshore" %}</a>
         </div>
       </li>
       <li class="mobile-dropdown">
@@ -156,9 +156,9 @@
           {% trans "Services" %}<i class="fa-solid fa-chevron-down"></i>
         </div>
         <div class="mobile-dropdown-content">
-          <a href="{% url 'services:aminol_dealer' %}">{% trans "Aminol official dealer" %}</a>
-          <a href="{% url 'services:aminol_laboratory' %}">{% trans "Aminol Laboratory" %}</a>
-          <a href="{% url 'services:aminol_logistics' %}">{% trans "Aminol Logistics" %}</a>
+          <a href="{% url 'services:aminol_dealer' %}" aria-label="Aminol Dealer Service Page">{% trans "Aminol official dealer" %}</a>
+          <a href="{% url 'services:aminol_laboratory' %}" aria-label="Aminol Laboratory Service Page">{% trans "Aminol Laboratory" %}</a>
+          <a href="{% url 'services:aminol_logistics' %}" aria-label="Aminol Logistics Service Page">{% trans "Aminol Logistics" %}</a>
         </div>
       </li>
     </ul>

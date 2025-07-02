@@ -13,7 +13,7 @@
 
   <!-- Breadcrumb -->
   <div class="breadcrumb container">
-    <a href="{% url 'home:home' %}">{% trans "Home Page" %}</a>|
+    <a href="{% url 'home:home' %}" aria-label="Home Page">{% trans "Home Page" %}</a>|
     <p>{% trans "Career" %}</p>
   </div>
   
@@ -69,7 +69,7 @@
           {% trans "Applied" %}
         </button>
       {% else %}
-        <a href="{% url 'career:career_steps' job.id %}" class="apply-button">
+        <a href="{% url 'career:career_steps' job.id %}" aria-label="Career Step Page" class="apply-button">
           {% trans "Apply" %}
         </a>
       {% endif %}

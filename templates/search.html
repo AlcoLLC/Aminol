@@ -27,7 +27,7 @@
 </div>
 
 <div class="breadcrumb container">
-    <a href="{% url 'home:home' %}">{% trans "Home Page" %}</a> |
+    <a href="{% url 'home:home' %}" aria-label="Home Page">{% trans "Home Page" %}</a> |
     <p>{% trans "Search" %}</p>
 </div>
 
@@ -51,7 +51,7 @@
                             </div>
                         {% endif %}
                         <div class="result-text">
-                            <a href="{{ result.url }}" class="result-type">{{ result.type }} ></a>
+                            <a href="{{ result.url }}" aria-label="Result Page" class="result-type">{{ result.type }} ></a>
                             <h2>{{ result.title }}</h2>
                             {% if result.description %}
                                 <p class="result-description">{{ result.description }}</p>
@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <button class="result-btn">
-                        <a href="{{ result.url }}"><i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="{{ result.url }}" aria-label="Result Page"><i class="fa-solid fa-arrow-right"></i></a>
                     </button>
                 </div>
             {% endfor %}
@@ -73,11 +73,11 @@
                     <div class="pagination-numbers" id="paginationNumbers">
                         {% for num in results.paginator.page_range %}
                             {% if results.number == num %}
-                                <a href="#" class="page-number active" data-page="{{ num }}">{{ num }}</a>
+                                <a href="#" aria-label="Total page number" class="page-number active" data-page="{{ num }}">{{ num }}</a>
                             {% elif num > results.number|add:'-3' and num < results.number|add:'3' %}
-                                <a href="#" class="page-number" data-page="{{ num }}">{{ num }}</a>
+                                <a href="#" aria-label="Total page number" class="page-number" data-page="{{ num }}">{{ num }}</a>
                             {% elif num == 1 %}
-                                <a href="#" class="page-number" data-page="{{ num }}">{{ num }}</a>
+                                <a href="#" aria-label="Total page number" class="page-number" data-page="{{ num }}">{{ num }}</a>
                                 {% if results.number > 4 %}
                                     <span class="ellipsis">...</span>
                                 {% endif %}
@@ -85,7 +85,7 @@
                                 {% if results.number < results.paginator.num_pages|add:'-3' %}
                                     <span class="ellipsis">...</span>
                                 {% endif %}
-                                <a href="#" class="page-number" data-page="{{ num }}">{{ num }}</a>
+                                <a href="#" aria-label="Total page number" class="page-number" data-page="{{ num }}">{{ num }}</a>
                             {% endif %}
                         {% endfor %}
                     </div>

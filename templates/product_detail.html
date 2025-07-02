@@ -26,7 +26,7 @@
 
 
 <div class="breadcrumb container">
-  <a href="{% url 'products:product_list' %}">{% trans "Back to the overview" %} |</a>
+  <a href="{% url 'products:product_list' %}" aria-label="Products Page">{% trans "Back to the overview" %} |</a>
   <p>{{ product.title_translate|linebreaksbr }}</p>
 </div>
 
@@ -138,7 +138,7 @@
   </div> -->
   <div class="table-btns">
     {% if product.pds_url %}
-    <a href="{{ product.pds_url }}" target="_blank">
+    <a href="{{ product.pds_url }}" aria-label="PDS Page" target="_blank">
       PDS <i class="fa-solid fa-download"></i>
     </a>
     {% else %}
@@ -148,7 +148,7 @@
     {% endif %}
 
     {% if product.sds_url %}
-    <a href="{{ product.sds_url }}" target="_blank">
+    <a href="{{ product.sds_url }}" aria-label="SDS Page" target="_blank">
       SDS <i class="fa-solid fa-download"></i>
     </a>
     {% else %}

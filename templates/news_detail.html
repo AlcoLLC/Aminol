@@ -11,7 +11,7 @@
 
   <!-- Breadcrumb -->
   <div class="breadcrumb container">
-    <a href="{% url 'home:home' %}">{% trans "Home page" %}</a>|
+    <a href="{% url 'home:home' %}" aria-label="Home Page">{% trans "Home page" %}</a>|
     <p>{% trans "News" %}</p>
   </div>
 
@@ -77,7 +77,7 @@
           <div class="news-content">
             <h5>{{ news.title_translate|linebreaksbr }}</h5>
             <p>{{ news.content_translate|truncatewords:10 }}</p>
-            <a href="{% url 'news:news_detail' news.pk %}"
+            <a href="{% url 'news:news_detail' news.pk %}" aria-label="{{ news.title_translate }}"
               >{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i
             ></a>
           </div>
