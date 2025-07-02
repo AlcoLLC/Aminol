@@ -12,6 +12,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preload" href="{% static 'images/aminol_cover_(1).webp' %}" as="PCMO">
+    <link rel="preload" href="{% static 'images/truck_(1)_(2).webp' %}" as="HDEO">
+    <link rel="preload" href="{% static 'images/motorcycle_(1)_(2).webp' %}" as="Motorcycle oils">
+    <link rel="preload" href="{% static 'images/home-slider4-new.webp' %}" as="Transmission & Gear oils">
+    <link rel="preload" href="{% static 'images/home-slider5-new.webp' %}" as="Hydraulic oils">
+    <link rel="preload" href="{% static 'images/home-slider6.webp' %}" as="Agricultural lubricants">
+    <link rel="preload" href="{% static 'images/home-slider7.webp' %}" as="Industrial lubricants">
+    <link rel="preload" href="{% static 'images/home-slider8.webp' %}" as="Marine lubricants">
+    <link rel="preload" href="{% static 'images/home-slider9.webp' %}" as="Turbine Oils">
+
 {% endblock %}
 
 {% block page_js %}
@@ -20,6 +30,16 @@
 {% endblock %}
 
 {% block content %}
+<img src="{% static 'images/aminol_cover_(1).webp' %}" alt="PCMO" style="display: none;" aria-hidden="true">
+<img src="{% static 'images/truck_(1)_(2).webp' %}" alt="HDEO" style="display: none;" aria-hidden="true">
+<img src="{% static 'images/motorcycle_(1)_(2).webp' %}" alt="Motorcycle oils" style="display: none;" aria-hidden="true">
+<img src="{% static 'images/home-slider4-new.webp' %}" alt="Transmission & Gear oils" style="display: none;" aria-hidden="true">
+<img src="{% static 'images/home-slider5-new.webp' %}" alt="Hydraulic oils" style="display: none;" aria-hidden="true">
+<img src="{% static 'images/home-slider6.webp' %}" alt="Agricultural lubricants" style="display: none;" aria-hidden="true">
+<img src="{% static 'images/home-slider7.webp' %}" alt="Industrial lubricants" style="display: none;" aria-hidden="true">
+<img src="{% static 'images/home-slider8.webp' %}" alt="Marine lubricants" style="display: none;" aria-hidden="true">
+<img src="{% static 'images/home-slider9.webp' %}" alt="Turbine Oils" style="display: none;" aria-hidden="true">
+
 {% include 'components/navbar.html' %}
 
   <header class="placeholder-header  home-header">
