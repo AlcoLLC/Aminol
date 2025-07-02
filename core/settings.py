@@ -16,10 +16,10 @@ from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-load_dotenv(BASE_DIR / ".env", override=False)
+load_dotenv(BASE_DIR / ".env")
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'dummy-secret')
-DEBUG = os.getenv('DEBUG', 'true').lower() == 'true'
+DEBUG = os.getenv('DEBUG', 'true').strip().lower() in ['true', '1', 'yes']
 ALLOWED_HOSTS = ['*']
 
 USE_POSTGRES = os.getenv('USE_POSTGRES', 'false').lower() == 'true'
