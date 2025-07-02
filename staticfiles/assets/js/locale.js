@@ -526,14 +526,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function handleSpecialDropdownCases(currentPath) {
     const marketsPaths = [
-      "/markets_automotive",
-      "/markets_industrial",
-      "/markets_shipping",
+      "/markets/automotive",
+      "/markets/industrial",
+      "/markets/shipping",
     ];
     const servicesPaths = [
-      "/service_aminol_dealer",
-      "/service_laboratory",
-      "/service_logistics",
+      "/services/dealer",
+      "/services/laboratory",
+      "/services/logistics",
     ];
 
     if (marketsPaths.includes(currentPath)) {

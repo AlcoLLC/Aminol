@@ -237,7 +237,7 @@ def search_view(request):
             results.append({
                 'title': job.title,
                 'description': job.job_description[:200] + '...' if job.job_description and len(job.job_description) > 200 else job.job_description or '',
-                'url': f'/apply/{job.id}/',
+                'url': f'/career/apply/{job.id}/',
                 'type': 'Job',
                 'image': None
             })
@@ -271,7 +271,7 @@ def search_view(request):
             results.append({
                 'title': title,
                 'description': description[:200] + '...' if description and len(description) > 200 else description or '',
-                'url': '/markets_automotive/',
+                'url': '/markets/automotive/',
                 'type': 'Market - Automotive',
                 'image': market.image.url if market.image else None
             })
@@ -290,7 +290,7 @@ def search_view(request):
             results.append({
                 'title': title,
                 'description': description[:200] + '...' if description and len(description) > 200 else description or '',
-                'url': '/markets_automotive/',
+                'url': '/markets/automotive/',
                 'type': 'Market - Automotive',
                 'image': content.image.url if content.image else None
             })
@@ -310,7 +310,7 @@ def search_view(request):
             results.append({
                 'title': title,
                 'description': description[:200] + '...' if description and len(description) > 200 else description or '',
-                'url': '/markets_industrial/',
+                'url': '/markets/industrial/',
                 'type': 'Market - Industrial',
                 'image': market.image.url if market.image else None
             })
@@ -329,7 +329,7 @@ def search_view(request):
             results.append({
                 'title': title,
                 'description': description[:200] + '...' if description and len(description) > 200 else description or '',
-                'url': '/markets_industrial/',
+                'url': '/markets/industrial/',
                 'type': 'Market - Industrial',
                 'image': content.image.url if content.image else None
             })
@@ -347,7 +347,7 @@ def search_view(request):
             results.append({
                 'title': title,
                 'description': f'Industry: {title}',
-                'url': '/markets_industrial/',
+                'url': '/markets/industrial/',
                 'type': 'Industry',
                 'image': None
             })
@@ -367,7 +367,7 @@ def search_view(request):
             results.append({
                 'title': title,
                 'description': description[:200] + '...' if description and len(description) > 200 else description or '',
-                'url': '/markets_shipping/',
+                'url': '/markets/shipping/',
                 'type': 'Market - Shipping',
                 'image': market.image.url if market.image else None
             })
@@ -386,7 +386,7 @@ def search_view(request):
             results.append({
                 'title': title,
                 'description': description[:200] + '...' if description and len(description) > 200 else description or '',
-                'url': '/markets_shipping/',
+                'url': '/markets/shipping/',
                 'type': 'Market - Shipping',
                 'image': content.image.url if content.image else None
             })
@@ -577,7 +577,7 @@ def search_view(request):
             results.append({
                 'title': title,
                 'description': description[:200] + '...' if description and len(description) > 200 else description or '',
-                'url': '/service_aminol_dealer/',
+                'url': '/services/dealer/',
                 'type': 'Service',
                 'image': service.image.url if service.image else None
             })
@@ -596,7 +596,7 @@ def search_view(request):
             results.append({
                 'title': title,
                 'description': description[:200] + '...' if description and len(description) > 200 else description or '',
-                'url': '/service_aminol_dealer/',
+                'url': '/services/dealer/',
                 'type': 'Service',
                 'image': content.image.url if content.image else None
             })
@@ -615,7 +615,7 @@ def search_view(request):
             results.append({
                 'title': title,
                 'description': description[:200] + '...' if description and len(description) > 200 else description or '',
-                'url': '/service_laboratory/',
+                'url': '/services/laboratory/',
                 'type': 'Laboratory Service',
                 'image': service.image.url if service.image else None
             })
@@ -634,7 +634,7 @@ def search_view(request):
             results.append({
                 'title': title,
                 'description': description[:200] + '...' if description and len(description) > 200 else description or '',
-                'url': '/service_logistics/',
+                'url': '/services/logistics/',
                 'type': 'Logistics Service',
                 'image': service.image.url if service.image else None
             })
