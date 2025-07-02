@@ -1068,8 +1068,11 @@
   display: flex;
   gap: 9px;
   align-items: center;
-  margin-top: 7px;
   transition: 0.5s;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-top: 10px;
 }
 @media (max-width: 1024px) {
   .latest-news .news-cards .news-card h5 {
