@@ -6,36 +6,212 @@
 {% block keywords %}{% trans "products_keywords" %}{% endblock %}
 
 {% block extra_schema %}
-<script type="application/ld+json">
+<script type="application/ld+json" data-version="{% now 'U' %}">
 {
   "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "Product Listing",
-  "itemListOrder": "https://schema.org/ItemListOrderAscending",
-  "numberOfItems": {{ products|length }},
-  "itemListElement": [
-    {% for product in products %}
-    {
-      "@type": "Product",
-      "name": "{{ product.title_translate|striptags }}",
-      "sku": "{{ product.product_id }}",
-      {% if product.image %}
-      "image": "{{ product.image.url }}",
-      {% endif %}
-      {% if product.description_translate %}
-      "description": "{{ product.description_translate|striptags|truncatechars:160 }}",
-      {% endif %}
-      "url": "{% url 'products:product_detail' slug=product.slug %}",
-      "brand": {
-        "@type": "Organization",
-        "name": "Aminol"
-      }
-    }{% if not forloop.last %},{% endif %}
-    {% endfor %}
-  ]
+  "@type": "CollectionPage",
+  "name": "{% if selected_product_groups|length == 1 %}{% for group in product_groups %}{% if group.slug in selected_product_groups %}{{ group.title_translate|striptags }}{% endif %}{% endfor %}{% else %}{% trans "All products" %}{% endif %}",
+  "description": "{% trans "products_meta_description" %}",
+  "url": "{{ request.build_absolute_uri }}",
+  "mainEntity": {
+    "@type": "ItemList",
+    "name": "Product Listing",
+    "itemListOrder": "https://schema.org/ItemListOrderAscending",
+    "numberOfItems": {{ products|length }},
+    "itemListElement": [
+      {% for product in products %}
+      {
+        "@type": "Product",
+        "name": "{{ product.title_translate|striptags }}",
+        "sku": "{{ product.product_id }}",
+        {% if product.image %}
+        "image": "{{ product.image.url }}",
+        {% endif %}
+        {% if product.description_translate %}
+        "description": "{{ product.description_translate|striptags|truncatechars:160 }}",
+        {% endif %}
+        "url": "{% url 'products:product_detail' slug=product.slug %}",
+        "brand": {
+          "@type": "Organization",
+          "name": "Aminol"
+        },
+        "category": "{% if product.product_group %}{{ product.product_group.title_translate|striptags }}{% endif %}",
+        "additionalProperty": [
+          {% if product.segments.all %}
+          {
+            "@type": "PropertyValue",
+            "name": "Segment",
+            "value": "{% for segment in product.segments.all %}{{ segment.title_translate|striptags }}{% if not forloop.last %}, {% endif %}{% endfor %}"
+          },
+          {% endif %}
+          {% if product.oil_type %}
+          {
+            "@type": "PropertyValue",
+            "name": "Oil Type",
+            "value": "{{ product.oil_type.title_translate|striptags }}"
+          },
+          {% endif %}
+          {% if product.viscosity %}
+          {
+            "@type": "PropertyValue",
+            "name": "Viscosity",
+            "value": "{{ product.viscosity.title|striptags }}"
+          }
+          {% endif %}
+        ]
+      }{% if not forloop.last %},{% endif %}
+      {% endfor %}
+    ]
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "{{ request.build_absolute_uri }}?search={search_term}",
+      "actionPlatform": [
+        "http://schema.org/DesktopWebPlatform",
+        "http://schema.org/MobileWebPlatform"
+      ]
+    },
+    "query-input": "required name=search_term"
+  },
+  "offers": {
+    "@type": "AggregateOffer",
+    "offerCount": {{ products|length }}
+  }
 }
 </script>
 
+<!-- Faceted Search Schema -->
+<script type="application/ld+json" data-version="{% now 'U' %}">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Product Filters",
+  "description": "Filter products by various criteria",
+  "mainEntity": {
+    "@type": "SearchResultsPage",
+    "potentialAction": [
+      {
+        "@type": "FilterAction",
+        "name": "Filter by Product Group",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "{{ request.build_absolute_uri }}?product_group={product_group}",
+          "actionPlatform": [
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/MobileWebPlatform"
+          ]
+        },
+        "query-input": "required name=product_group"
+      },
+      {
+        "@type": "FilterAction",
+        "name": "Filter by Segments",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "{{ request.build_absolute_uri }}?segments={segments}",
+          "actionPlatform": [
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/MobileWebPlatform"
+          ]
+        },
+        "query-input": "required name=segments"
+      },
+      {
+        "@type": "FilterAction",
+        "name": "Filter by Oil Type",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "{{ request.build_absolute_uri }}?oil_type={oil_type}",
+          "actionPlatform": [
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/MobileWebPlatform"
+          ]
+        },
+        "query-input": "required name=oil_type"
+      },
+      {
+        "@type": "FilterAction",
+        "name": "Filter by Viscosity",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "{{ request.build_absolute_uri }}?viscosity={viscosity}",
+          "actionPlatform": [
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/MobileWebPlatform"
+          ]
+        },
+        "query-input": "required name=viscosity"
+      }
+    ]
+  }
+}
+</script>
+
+<!-- Available Filter Options Schema -->
+<script type="application/ld+json" data-version="{% now 'U' %}">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "Product Filter Options",
+  "description": "Available filter options for products",
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "Product Groups",
+      "value": [
+        {% for group in product_groups %}
+        {
+          "@type": "DefinedTerm",
+          "name": "{{ group.title_translate|striptags }}",
+          "identifier": "{{ group.slug }}"
+        }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+      ]
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Segments",
+      "value": [
+        {% for segment in segments %}
+        {
+          "@type": "DefinedTerm",
+          "name": "{{ segment.title_translate|striptags }}",
+          "identifier": "{{ segment.slug }}"
+        }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+      ]
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Oil Types",
+      "value": [
+        {% for oil_type in oil_types %}
+        {
+          "@type": "DefinedTerm",
+          "name": "{{ oil_type.title_translate|striptags }}",
+          "identifier": "{{ oil_type.slug }}"
+        }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+      ]
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Viscosity Options",
+      "value": [
+        {% for viscosity in viscosity_options %}
+        {
+          "@type": "DefinedTerm",
+          "name": "{{ viscosity.title|striptags }}",
+          "identifier": "{{ viscosity.slug }}"
+        }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+      ]
+    }
+  ]
+}
+</script>
 {% endblock %}
 
 {% block content %}

@@ -6,7 +6,7 @@
 {% block description %}{% trans "contact_meta_description" %}{% endblock %}
 
 {% block extra_schema %}
-<script type="application/ld+json">
+<script type="application/ld+json" data-version="{% now 'U' %}">
 {
   "@context": "https://schema.org",
   "@type": "ContactPage",
