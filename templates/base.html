@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="csrf-token" content="{{ csrf_token }}">
   <link rel="icon" type="image/svg+xml" href="{% static 'logo/aminol.svg' %}">
-  <title>{% block title %}AMINOL{% endblock %}</title>
+  <title>{% block title %}{% trans "AMINOL - High-quality oil products" %}{% endblock %}</title>
   <meta name="description" content="{% block description %}TOMOIL - High-quality oil products{% endblock %}">
   <meta name="keywords" content="{% block keywords %}oil, tomoil, automotive oil, industrial oil{% endblock %}">
   <meta name="robots" content="index, follow">
@@ -53,6 +53,9 @@
   <meta name="twitter:image" content="https://aminol.az/static/logo/aminol-logo.svg">
   <meta name="ahrefs-site-verification" content="9e4cf268be7fc6c2b3be9598e3c023ec7ab0e3f8a6e5ac6884bf3d6fa032897c">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="{% static 'assets/css/style_not_found.min.css' %}" media="all" rel="stylesheet" type="text/css" />
+  <link href="{% static 'assets/css/plugins.min.css' %}" media="all" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body>
@@ -74,7 +77,8 @@
  <script src="{% static 'assets/js/locale.min.js' %}"></script>
  <script src="https://analytics.ahrefs.com/analytics.js" data-key="VCY7krba01QhiJDS2Q8BjQ" async></script>
  <script async src="https://www.googletagmanager.com/gtag/js?id=G-56M2MVQ89Z"></script>
-
+<script src="{% static 'assets/js/plugins.js' %}"></script>
+    <script src="{% static 'assets/js/bigz.min.js' %}"></script>
  <script>
   var ahrefs_analytics_script = document.createElement('script');
   ahrefs_analytics_script.async = true;
