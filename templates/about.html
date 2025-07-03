@@ -5,6 +5,45 @@
 {% block description %}{% trans "about_meta_description" %}{% endblock %}
 {% block keywords %}{% trans "about_keywords" %}{% endblock %}
 
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About Aminol",
+  "url": "https://aminol.az/about",
+  "description": "Learn more about Aminol - Professional Lubricant Solutions Provider. High-Performance Motor Oils, Industrial Oils, Greases and Complete Lubrication Systems for Automotive, Heavy Industry and Manufacturing Equipment.",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://aminol.az"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "About Us",
+        "item": "https://aminol.az/about"
+      }
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Aminol",
+    "url": "https://aminol.az",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://aminol.az/static/logo/aminol-logo.svg"
+    }
+  }
+}
+</script>
+
+{% endblock %}
+
 {% block content %}
 {% load custom_filters %}
 

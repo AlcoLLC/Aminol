@@ -4,6 +4,84 @@
 {% block description %}{{ product.description_translate|truncatechars:160 }}{% endblock %}
 {% block keywords %}{% trans "product_detail_keywords" %}{% endblock %}
 
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "{{ product.title_translate|striptags }}",
+  "description": "{{ product.description_translate|striptags|truncatechars:160 }}",
+  "sku": "{{ product.product_id }}",
+  {% if product.image %}
+  "image": "{{ product.image.url }}",
+  {% endif %}
+  {% if available_liters %}
+  "offers": {
+    "@type": "AggregateOffer",
+    "offerCount": "{{ available_liters|length }}",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition",
+    "priceCurrency": "USD",
+    "lowPrice": "0.0",
+    "highPrice": "0.0"
+  },
+  {% endif %}
+  "brand": {
+    "@type": "Organization",
+    "name": "Aminol"
+  },
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "Aminol"
+  },
+  {% if product.api or product.acea or product.ilsac or product.jaso or product.oem_sertification %}
+  "additionalProperty": [
+    {% if product.api %}
+    {
+      "@type": "PropertyValue",
+      "name": "API",
+      "value": "{{ product.api }}"
+    }{% if product.ilsac or product.acea or product.jaso or product.oem_sertification %},{% endif %}
+    {% endif %}
+    {% if product.ilsac %}
+    {
+      "@type": "PropertyValue",
+      "name": "ILSAC",
+      "value": "{{ product.ilsac }}"
+    }{% if product.acea or product.jaso or product.oem_sertification %},{% endif %}
+    {% endif %}
+    {% if product.acea %}
+    {
+      "@type": "PropertyValue",
+      "name": "ACEA",
+      "value": "{{ product.acea }}"
+    }{% if product.jaso or product.oem_sertification %},{% endif %}
+    {% endif %}
+    {% if product.jaso %}
+    {
+      "@type": "PropertyValue",
+      "name": "JASO",
+      "value": "{{ product.jaso }}"
+    }{% if product.oem_sertification %},{% endif %}
+    {% endif %}
+    {% if product.oem_sertification %}
+    {
+      "@type": "PropertyValue",
+      "name": "OEM Certification",
+      "value": "{{ product.oem_sertification|striptags|linebreaksbr }}"
+    }
+    {% endif %}
+  ],
+  {% endif %}
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ request.build_absolute_uri }}"
+  }
+}
+</script>
+
+{% endblock %}
+
  {% block content %}
 
 {% if product.product_group %}

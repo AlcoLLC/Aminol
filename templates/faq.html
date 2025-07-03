@@ -3,6 +3,28 @@
 {% block title %}{% trans "faq_meta_title" %}{% endblock %}
 {% block description %}{% trans "faq_meta_description" %}{% endblock %}
 
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for faq in faqs %}
+    {
+      "@type": "Question",
+      "name": "{{ faq.question_translate|striptags|escapejs }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ faq.answer_translate|striptags|escapejs }}"
+      }
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+
+{% endblock %}
+
 {% block content %}
 <div class="non-header-page">
     {% include 'components/navbar_dark.html' %}

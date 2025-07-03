@@ -11,6 +11,58 @@
 <script src="{% static 'assets/js/map4.min.js' %}"></script>
 {% endblock %}
 
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Aminol Logistics",
+  "url": "{{ request.scheme }}://{{ request.get_host }}{% url 'services:logistics' %}",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "{{ request.scheme }}://{{ request.get_host }}{% static 'logo/aminol-logo.svg' %}"
+  },
+  "description": "{% trans 'Aminol Logistics provides efficient and global distribution services for lubricants and oil-related products, ensuring timely delivery worldwide.' %}",
+  "image": [
+    {% for logistic in logistics %}
+      "{{ request.scheme }}://{{ request.get_host }}{{ logistic.image.url }}"{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Baku",
+    "addressCountry": "AZ"
+  },
+  "areaServed": {
+    "@type": "Place",
+    "name": "Worldwide"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Logistics Services",
+    "itemListElement": [
+      {% for logistic in logistics %}
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "{{ logistic.title_translate|striptags }}",
+            "description": "{{ logistic.description_translate|striptags }}"
+          }
+        }{% if not forloop.last %},{% endif %}
+      {% endfor %}
+    ]
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Customer Service",
+    "email": "info@aminol.az",
+    "url": "{{ request.scheme }}://{{ request.get_host }}"
+  }
+}
+</script>
+{% endblock %}
+
 
 {% block content %}
 

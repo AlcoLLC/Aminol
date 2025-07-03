@@ -6,6 +6,67 @@
 {% block description %}{% trans "markets_automotive_meta_description" %}{% endblock %}
 {% block keywords %}{% trans "markets_automotive_keywords" %}{% endblock %}
 
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Automotive | Aminol",
+  "description": "Lubricants for passenger cars, trucks, vans, motorcycles. Explore high-quality automotive lubricants and services.",
+  "url": "{{ request.build_absolute_uri }}",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "{% url 'home:home' %}"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Markets",
+        "item": "{{ request.build_absolute_uri|cut:request.get_full_path }}"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Automotive"
+      }
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Aminol",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{% static 'images/logo.svg' %}"
+    }
+  },
+  "image": [
+    {% for content in automotive_contents %}
+      "{{ content.image.url }}"{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ],
+  "mainEntity": {
+    "@type": "Service",
+    "name": "{{ automotive_service.title_translate|striptags }}",
+    "description": "{{ automotive_service.description_translate|striptags }}",
+    "provider": {
+      "@type": "Organization",
+      "name": "Aminol"
+    },
+    "areaServed": {
+      "@type": "Place",
+      "name": "Worldwide"
+    }
+  }
+}
+</script>
+
+{% endblock %}
+
 {% block content %}
 
 {% include 'components/navbar_blur.html' %}

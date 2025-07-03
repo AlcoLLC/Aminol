@@ -5,6 +5,38 @@
 {% block title %}{% trans "service_aminol_dealer_meta_title" %}{% endblock %}
 {% block description %}{% trans "service_aminol_dealer_meta_description" %}{% endblock %}
 
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "{{ dealer.title_translate|escapejs }}",
+  "description": "{{ dealer.description_translate|striptags|truncatechars:200|escapejs }}",
+  "provider": {
+    "@type": "Organization",
+    "name": "Aminol",
+    "url": "{{ request.scheme }}://{{ request.get_host }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ request.scheme }}://{{ request.get_host }}{% static 'logo/aminol-logo.svg' %}"
+    }
+  },
+  {% if dealer.image %}
+  "image": "{{ dealer.image.url }}",
+  {% endif %}
+  "areaServed": {
+    "@type": "Place",
+    "name": "Global"
+  },
+  "brand": {
+    "@type": "Brand",
+    "name": "Aminol"
+  }
+}
+</script>
+{% endblock %}
+
+
 {% block content %}
 
 {% include 'components/navbar_blur.html' %}

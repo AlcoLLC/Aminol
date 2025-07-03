@@ -5,6 +5,46 @@
 {% block title %}{% trans "news_meta_title" %}{% endblock %}
 {% block description %}{% trans "news_meta_description" %}{% endblock %}
 
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "{% trans 'News' %} | Aminol",
+  "description": "{% trans 'Always up to date with our latest news' %}",
+  "url": "{{ request.build_absolute_uri }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Aminol",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{% static 'images/logo.svg' %}"
+    }
+  },
+  "hasPart": [
+    {% for news in all_news %}
+    {
+      "@type": "NewsArticle",
+      "headline": "{{ news.title_translate|striptags }}",
+      "description": "{{ news.content_translate|striptags|truncatechars:160 }}",
+      "image": "{{ news.image.url|default:'' }}",
+      "datePublished": "{{ news.published_date|date:'c' }}",
+      "author": {
+        "@type": "Organization",
+        "name": "Aminol"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{% url 'news:news_detail' news.pk %}"
+      }
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+
+{% endblock %}
+
 {% block content %}
 <div class="non-header-page">
     {% include 'components/navbar_dark.html' %}

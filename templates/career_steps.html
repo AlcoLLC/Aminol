@@ -5,6 +5,49 @@
 {% block title %}{% trans "career_meta_title" %}{% endblock %}
 {% block description %}{% trans "career_meta_description" %}{% endblock %}
 
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "JobPosting",
+  "title": "{{ job.title|striptags }}",
+  "description": "{{ job.job_description|striptags }}",
+  "identifier": {
+    "@type": "PropertyValue",
+    "name": "{{ site_name }}",
+    "value": "{{ job.id }}"
+  },
+  "datePosted": "{{ job.created_at|date:'Y-m-d' }}",
+  "employmentType": "{{ job.get_time_type_display }}",
+  "jobLocation": {
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "{{ job.country }}",
+      "addressLocality": "{{ job.location }}"
+    }
+  },
+  "applicantLocationRequirements": {
+    "@type": "Country",
+    "name": "{{ job.country }}"
+  },
+  "workHours": "{{ job.get_work_type_display }}",
+  "hiringOrganization": {
+    "@type": "Organization",
+    "name": "{{ site_name }}",
+    {% if company_logo_url %}
+    "logo": "{{ company_logo_url }}",
+    {% endif %}
+    "sameAs": "{{ request.build_absolute_uri }}"
+  },
+  "directApply": true,
+  "qualifications": "{{ job.requirements|striptags }}",
+  "url": "{{ request.build_absolute_uri }}"
+}
+</script>
+
+{% endblock %}
+
 {% block content %}
 <div class="non-header-page">
   {% include 'components/navbar_dark.html' %}

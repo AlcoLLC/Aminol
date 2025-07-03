@@ -5,6 +5,39 @@
 {% block description %}{% trans "products_meta_description" %}{% endblock %}
 {% block keywords %}{% trans "products_keywords" %}{% endblock %}
 
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Product Listing",
+  "itemListOrder": "https://schema.org/ItemListOrderAscending",
+  "numberOfItems": {{ products|length }},
+  "itemListElement": [
+    {% for product in products %}
+    {
+      "@type": "Product",
+      "name": "{{ product.title_translate|striptags }}",
+      "sku": "{{ product.product_id }}",
+      {% if product.image %}
+      "image": "{{ product.image.url }}",
+      {% endif %}
+      {% if product.description_translate %}
+      "description": "{{ product.description_translate|striptags|truncatechars:160 }}",
+      {% endif %}
+      "url": "{% url 'products:product_detail' slug=product.slug %}",
+      "brand": {
+        "@type": "Organization",
+        "name": "Aminol"
+      }
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+
+{% endblock %}
+
 {% block content %}
 {% include 'components/navbar_blur.html' %}
 
