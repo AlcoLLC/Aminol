@@ -2150,11 +2150,6 @@ right: 0;
 z-index: 1;
 }
 
-@media only screen and (max-width: 880px) {
-  .side-shadow {
-    border: 100px solid rgba(0, 0, 0, .55);
-  }
-}
 
 @media only screen and (max-width: 640px) {
   .side-shadow {
@@ -3300,6 +3295,21 @@ background-repeat: no-repeat;
         background-size: cover;
 }
 
-@media (max-width: 700px) {
-  
+@media (max-width: 880px) {
+  .side-shadow{
+    bottom: 125px;
+  }
+}
+
+@media (max-width: 600px) {
+  .border-r-line{
+    right: 80px;
+  }
+  .border-l-line{
+  left: 80px;
+  }
+  .border-t-line, .border-b-line{
+    left: 80px;
+    width: calc(100vw - 160px) !important;
+  }
 }
