@@ -3,6 +3,44 @@
 {% block description %}{% trans "brand_portal_meta_description" %}{% endblock %}
 {% block keywords %}{% trans "brand_portal_keywords" %}{% endblock %}
 
+{% block extra_schema %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Brand",
+  "name": "{{ brand.title_translate|striptags }}",
+  "description": "{{ brand.description_translate|striptags }}",
+  "image": "{{ brand.image.url }}",
+  "url": "{{ request.build_absolute_uri }}",
+  "logo": "{{ brand.image.url }}",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "{% trans 'Brand Portal' %} Contents",
+    "itemListElement": [
+      {% for content in brand_contents %}
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "CreativeWork",
+          "name": "{{ content.title_translate|striptags }}",
+          "description": "{{ content.description_translate|striptags }}",
+          "url": "{% url 'brands:view_brand_content_pdf' content.id %}",
+          {% if content.image %}
+          "image": "{{ content.image.url }}"
+          {% else %}
+          "image": "{% static '/images/market-industrial.webp' %}"
+          {% endif %}
+        }
+      }{% if not forloop.last %},{% endif %}
+      {% endfor %}
+    ]
+  }
+}
+</script>
+
+{% endblock %}
+
 {% block content %}
 
 <div class="non-header-page">

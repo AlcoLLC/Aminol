@@ -5,6 +5,43 @@
 {% block title %}{% trans "service_laboratory_meta_title" %}{% endblock %}
 {% block description %}{% trans "service_laboratory_meta_description" %}{% endblock %}
 
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalOrganization",
+  "name": "Aminol Laboratory",
+  "url": "{{ request.scheme }}://{{ request.get_host }}{% url 'services:laboratory' %}",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "{{ request.scheme }}://{{ request.get_host }}{% static 'logo/aminol-logo.svg' % }"
+  },
+  "image": [
+    {% for laboratory in laboratories %}
+      "{{ request.scheme }}://{{ request.get_host }}{{ laboratory.image.url }}"{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ],
+  "description": "{% trans 'Aminol Laboratory provides oil analysis and advanced testing services for lubricant quality and performance evaluation.' %}",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Baku",
+    "addressCountry": "AZ"
+  },
+  "areaServed": {
+    "@type": "Place",
+    "name": "Global"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Customer Service",
+    "email": "info@aminol.az",
+    "url": "{{ request.scheme }}://{{ request.get_host }}"
+  }
+}
+</script>
+{% endblock %}
+
+
 {% block content %}
 
 {% include 'components/navbar_blur.html' %}

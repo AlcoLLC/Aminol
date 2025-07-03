@@ -5,6 +5,73 @@
 {% block title %}{% trans "career_meta_title" %}{% endblock %}
 {% block description %}{% trans "career_meta_description" %}{% endblock %}
 
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Career - {{ site_name }}",
+  "description": "{% trans 'career_meta_description' %}",
+  "url": "{{ request.build_absolute_uri }}",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "{% trans 'Home Page' %}",
+        "item": "{% url 'home:home' %}"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "{% trans 'Career' %}",
+        "item": "{{ request.build_absolute_uri }}"
+      }
+    ]
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ request.build_absolute_uri }}?department={department}",
+    "query-input": "required name=department"
+  },
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": [
+      {% for job in jobs %}
+      {
+        "@type": "JobPosting",
+        "title": "{{ job.title|escapejs }}",
+        "description": "{{ job.job_description|striptags|escapejs }}",
+        "employmentType": "{{ job.get_time_type_display|escapejs }}",
+        "jobLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "{{ job.get_work_type_display|escapejs }}"
+          }
+        },
+        "datePosted": "{{ job.created_at|date:'Y-m-d' }}",
+        {% if job.department %}
+        "hiringOrganization": {
+          "@type": "Organization",
+          "name": "{{ job.department.name|escapejs }}"
+        }
+        {% else %}
+        "hiringOrganization": {
+          "@type": "Organization",
+          "name": "{{ site_name }}"
+        }
+        {% endif %}
+      }{% if not forloop.last %},{% endif %}
+      {% endfor %}
+    ]
+  }
+}
+</script>
+
+{% endblock %}
+
 {% block content %}
 <div class="non-header-page">
   {% include 'components/navbar_dark.html' %}

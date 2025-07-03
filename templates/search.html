@@ -6,6 +6,22 @@
 {% block description %}{% trans "search_meta_description" %}{% endblock %}
 {% block keywords %}{% trans "search_keywords" %}{% endblock %}
 
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Aminol",
+  "url": "{{ request.scheme }}://{{ request.get_host }}",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ request.scheme }}://{{ request.get_host }}{% url 'search:search_results' %}?search={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+{% endblock %}
+
 {% block content %}
 {% include 'components/navbar.html' %}
 

@@ -6,6 +6,72 @@
 {% block description %}{% trans "markets_industrial_meta_description" %}{% endblock %}
 {% block keywords %}{% trans "markets_industrial_keywords" %}{% endblock %}
 
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Industrial | Aminol",
+  "description": "Lubricants for industrial equipments. Discover Aminol's high-performance lubricants and solutions for various industries.",
+  "url": "{{ request.build_absolute_uri }}",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "{% url 'home:home' %}"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Markets",
+        "item": "{{ request.build_absolute_uri|cut:request.get_full_path }}"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Industrial"
+      }
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Aminol",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{% static 'images/logo.svg' %}"
+    }
+  },
+  "image": [
+    {% for content in industrial_contents %}
+      "{{ content.image.url }}"{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ],
+  "mainEntity": {
+    "@type": "Service",
+    "name": "{{ industrial_service.title_translate|striptags }}",
+    "description": "{{ industrial_service.description_translate|striptags }}",
+    "provider": {
+      "@type": "Organization",
+      "name": "Aminol"
+    },
+    "areaServed": {
+      "@type": "Place",
+      "name": "Worldwide"
+    },
+    "industry": [
+      {% for industry in industries %}
+      "{{ industry.title_translate|striptags }}"{% if not forloop.last %},{% endif %}
+      {% endfor %}
+    ]
+  }
+}
+</script>
+
+{% endblock %}
+
 {% block content %}
 
 {% include 'components/navbar_blur.html' %}

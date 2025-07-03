@@ -3,6 +3,39 @@
 {% block title %} {{ news.title_translate }} {% endblock %}
 {% block description %} {{ news.content_translate|truncatechars:160 }} {% endblock %}
 
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "headline": "{{ news.title_translate|striptags }}",
+  "description": "{{ news.content_translate|striptags|truncatechars:160 }}",
+  "image": [
+    "{{ news.image.url }}"
+  ],
+  "datePublished": "{{ news.published_date|date:'c' }}",
+  "dateModified": "{{ news.updated_date|default:news.published_date|date:'c' }}",
+  "author": {
+    "@type": "Organization",
+    "name": "Aminol"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Aminol",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{% static 'images/logo.svg' %}"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ request.build_absolute_uri }}"
+  }
+}
+</script>
+
+{% endblock %}
+
 {% block content %}
 <div class="non-header-page">
   {% include 'components/navbar_dark.html' %}

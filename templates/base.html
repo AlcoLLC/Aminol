@@ -80,7 +80,7 @@
  <script>
   var ahrefs_analytics_script = document.createElement('script');
 
-  
+
   ahrefs_analytics_script.async = true;
   ahrefs_analytics_script.src = 'https://analytics.ahrefs.com/analytics.js';
   ahrefs_analytics_script.setAttribute('data-key', 'VCY7krba01QhiJDS2Q8BjQ');
@@ -91,6 +91,41 @@
     gtag('js', new Date());
     gtag('config', 'G-56M2MVQ89Z', { 'send_page_view': false });
 </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Aminol",
+    "url": "https://aminol.az",
+    "logo": "https://aminol.az/static/logo/aminol-logo.svg",
+    "description": "Manufacturer of Lubricants, Lubricant Additive Packages & Deionised Fluids. Proudly Made in Azerbaijan. Sales network in more than 50 countries in four continents.",
+    "foundingDate": "2017-12-15",
+    "founder": "Aminol",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Sumgayit Chemical Industrial Park",
+      "addressLocality": "Sumgayit",
+      "addressCountry": "AZ"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+994502220607",
+      "contactType": "customer service",
+      "areaServed": "Worldwide",
+      "availableLanguage": ["English", "Azerbaijan", "German", "French", "Italian", "Spanish", "Portuguese", "Chinese"]
+    },
+    "sameAs": [
+      "https://linkedin.com/company/aminol",
+      "https://www.instagram.com/aminol_official?igsh=MTM5bmZnejhxOWhzZw==",
+      "https://www.youtube.com/@aminollubricants7877",
+      "https://www.facebook.com/p/AMINOL-100038067895501/"
+    ]
+  }
+  </script>
+
+
+  {% block extra_schema %}{% endblock %}
 
 
 </body>
