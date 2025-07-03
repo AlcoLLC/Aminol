@@ -4,7 +4,7 @@
 {% block description %} {{ news.content_translate|truncatechars:160 }} {% endblock %}
 
 {% block extra_schema %}
-<script type="application/ld+json">
+<script type="application/ld+json" data-version="{% now 'U' %}">
 {
   "@context": "https://schema.org",
   "@type": "NewsArticle",
