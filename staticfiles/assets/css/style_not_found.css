@@ -2152,9 +2152,6 @@ z-index: 1;
 
 
 @media only screen and (max-width: 640px) {
-  .side-shadow {
-    border: 10px solid rgba(0, 0, 0, .55);
-  }
 }
 
 .side-shadow,
