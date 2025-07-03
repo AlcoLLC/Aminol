@@ -23,9 +23,9 @@ class StaticViewSitemap(Sitemap):
             'markets:automotive',
             'markets:industrial',
             'markets:shipping',
-            'services:aminol_dealer', 
-            'services:aminol_laboratory', 
-            'services:aminol_logistics', 
+            'services:dealer', 
+            'services:laboratory', 
+            'services:logistics', 
             'contact:contact',
             'career:career',
             'news:news_list',
@@ -207,9 +207,9 @@ class ServicesSitemap(Sitemap):
         # Services için sadece ana sayfalar var, detail sayfalar yok
         # Bu sınıfı sadeleştirip ana service sayfalarını döndürebilirsiniz
         services.extend([
-            'services:aminol_dealer',
-            'services:aminol_laboratory', 
-            'services:aminol_logistics'
+            'services:dealer',
+            'services:laboratory', 
+            'services:logistics'
         ])
             
         return services
