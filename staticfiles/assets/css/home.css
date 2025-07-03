@@ -157,6 +157,9 @@
 .home-header .swiper-button-prev::after {
   display: none;
 }
+.preload-class {
+  display: none;
+}
 .home-header .swiper-button-next i,
 .home-header .swiper-button-prev i {
   font-size: 16px;
