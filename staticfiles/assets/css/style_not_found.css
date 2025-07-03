@@ -67,6 +67,7 @@
 .bg-img-SINGLE {
 background-image: url('../../images_folder_1/aminol_broshur.svg');
 height: 86vh !important;
+margin-bottom: 50px;
 }
 
 
@@ -94,149 +95,12 @@ background-image: url(../img/background/parallax-bg.jpg);
 }
 
 
-/* 2. reset */
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-margin: 0;
-padding: 0;
-border: 0;
-font-size: 100%;
-font: inherit;
-vertical-align: baseline;
-}
-
-html, body {
-height: 100%;
-line-height: 170%;
-}
-
-body {
-/* line-height: 1; */
-}
-
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-display: block;
-}
-
-ol, ul {
-list-style: none;
-}
-
-blockquote, q {
-quotes: none;
-}
-
-blockquote:before, blockquote:after, q:before, q:after {
-content: "";
-content: none;
-}
-
-table {
-border-collapse: collapse;
-border-spacing: 0;
-}
-
-*:focus {  
-outline: none;
-}
 
 /* remove dotted outline from links,
 button and input element */
-a:focus, a:active,
-button::-moz-focus-inner,
-input[type="reset"]::-moz-focus-inner,
-input[type="button"]::-moz-focus-inner,
-input[type="submit"]::-moz-focus-inner {
-border: 0;
-outline: 0;
-}
 
 
 /* 3. layout */
-body {
-font-family: 'Open Sans', sans-serif;
-font-size: 14px;
-line-height: 1.5;
-font-style: normal;
-font-weight: 400;
-color: #fff;
-background: #000;
- -webkit-font-smoothing: antialiased;
--moz-osx-font-smoothing: grayscale;
--webkit-text-size-adjust: 100%;
-   -moz-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-width: 100%;
-height: 100%;
-overflow-x: hidden;
-overflow-y: auto;
-margin: 0;
-padding: 0;
-}
-
-a {
-color: #fff;
-text-decoration: none;
-outline: none;
- -webkit-font-smoothing: antialiased;
--moz-osx-font-smoothing: grayscale;
--webkit-text-size-adjust: 100%;
-   -moz-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
--webkit-transition: all 0.5s linear;
-   -moz-transition: all 0.5s linear;
-    -ms-transition: all 0.5s linear;
-     -o-transition: all 0.5s linear;
-        transition: all 0.5s linear;
-}
-
-a:hover,
-a:visited,
-a:active,
-a:focus {
-color: #fff;
-text-decoration: underline;
-outline: none;
--webkit-transition: all 0.5s linear;
-   -moz-transition: all 0.5s linear;
-    -ms-transition: all 0.5s linear;
-     -o-transition: all 0.5s linear;
-        transition: all 0.5s linear;
-}
-
-p {
- -webkit-font-smoothing: antialiased;
--moz-osx-font-smoothing: grayscale;
--webkit-text-size-adjust: 100%;
-   -moz-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-line-height: 2;
-}
-
-p a,
-p a:hover {
-color: #fff;
-text-decoration: underline;
-outline: none;
--webkit-transition: all 0.5s linear;
-   -moz-transition: all 0.5s linear;
-    -ms-transition: all 0.5s linear;
-     -o-transition: all 0.5s linear;
-        transition: all 0.5s linear;
-}
-
-strong {
-font-weight: bold;
-}
-
-::-moz-selection {
-background: #db0018;
-color: #fff;
-}
-
-::selection {
-background: #db0018;
-color: #fff;
-}
 
 .nopadding {
 padding: 0!important;
@@ -291,13 +155,6 @@ padding: 150px 0;
   .sections {
     padding: 150px 30px;
   }
-}
-
-#about,
-#services,
-#works,
-#contact {
-display: none;
 }
 
 .post-txt {
@@ -563,19 +420,15 @@ z-index: 1;
   }
 }
 
-
-/* 6. center container */
 .center-container-home {
 position: absolute;
-display: table;
 height: 100%;
 width: 100%;
 left: 0;
-top: 0;
+top: 40%;
 }
 
 .center-block-home {
-display: table-cell;
 vertical-align: middle;
 }
 
@@ -607,7 +460,6 @@ background: none;
 
 .center-block-contact-modal,
 .center-block-sign-up-modal {
-display: table-cell;
 vertical-align: middle;
 }
 
@@ -1252,7 +1104,6 @@ height: 100%;
 }
 
 .center-block-menu {
-display: table-cell;
 vertical-align: middle;
 }
 
@@ -2346,7 +2197,6 @@ z-index: 999999;
 }
 
 #preloader-status {
-display: table-cell;
 vertical-align: middle;
 }
 
@@ -3448,4 +3298,8 @@ background-repeat: no-repeat;
     -ms-background-size: cover;
      -o-background-size: cover;
         background-size: cover;
+}
+
+@media (max-width: 700px) {
+  
 }
