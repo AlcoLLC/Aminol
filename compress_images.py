@@ -15,17 +15,17 @@ try:
 except ImportError:
     SVG_SUPPORT = False
 
-# Hedef boyut aralığı (KB) - Daha küçük değerler
-TARGET_MIN_KB = 2
-TARGET_MAX_KB = 8
+# Hedef boyut aralığı (KB) - 100KB hedef
+TARGET_MIN_KB = 95
+TARGET_MAX_KB = 105
 
-# WebP kalite aralığı - Daha agresif sıkıştırma
-WEBP_QUALITY_MIN = 10
-WEBP_QUALITY_MAX = 70
+# WebP kalite aralığı - 100KB için daha yüksek kalite
+WEBP_QUALITY_MIN = 50
+WEBP_QUALITY_MAX = 95
 
-# Minimum ve maksimum görsel boyutu (px) - Minimum 100px korunuyor
-MIN_IMAGE_DIMENSION = 100  # Minimum boyut 100px'de kalıyor
-MAX_IMAGE_DIMENSION = 200
+# Minimum ve maksimum görsel boyutu (px) - Boyut sınırlaması kaldırıldı
+MIN_IMAGE_DIMENSION = 50   # Çok küçük boyutları engelle
+MAX_IMAGE_DIMENSION = 2000 # Çok büyük boyutları sınırla
 
 # Desteklenen uzantılar
 if SVG_SUPPORT:
@@ -43,23 +43,22 @@ def get_file_size_kb(buffer):
 def resize_to_max(img, min_dimension=MIN_IMAGE_DIMENSION, max_dimension=MAX_IMAGE_DIMENSION):
     width, height = img.size
     longest_side = max(width, height)
-    shortest_side = min(width, height)
 
-    # Eğer uzun kenar 200'den büyükse küçült
+    # Sadece çok büyük görselleri küçült
     if longest_side > max_dimension:
         scale = max_dimension / longest_side
         new_width = int(width * scale)
         new_height = int(height * scale)
         img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
     
-    # Eğer kısa kenar 100'den küçükse, 100'e kadar büyült
-    elif shortest_side < min_dimension:
-        scale = min_dimension / shortest_side
+    # Çok küçük görselleri büyüt
+    elif longest_side < min_dimension:
+        scale = min_dimension / longest_side
         new_width = int(width * scale)
         new_height = int(height * scale)
         img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
     
-    # 100-200 aralığında ise olduğu gibi bırak
+    # Normal boyuttaki görselleri olduğu gibi bırak
     return img
 
 def compress_webp(img):
@@ -159,9 +158,16 @@ def process_single_image(original_image_path, compressed_image_save_path):
         with open(compressed_image_save_path, "wb") as f_out:
             f_out.write(buffer.getvalue())
 
-        # Dosya boyutunu kontrol et ve rapor et
+        # Dosya boyutunu ve görsel boyutunu kontrol et ve rapor et
         final_size_kb = os.path.getsize(compressed_image_save_path) / 1024
-        print(f"✅ {os.path.basename(original_image_path)} → {final_size_kb:.2f} KB")
+        
+        # Görsel boyutunu kontrol et
+        try:
+            check_img = Image.open(compressed_image_save_path)
+            img_width, img_height = check_img.size
+            print(f"✅ {os.path.basename(original_image_path)} → {final_size_kb:.2f} KB ({img_width}x{img_height}px)")
+        except:
+            print(f"✅ {os.path.basename(original_image_path)} → {final_size_kb:.2f} KB")
 
         return True
 
@@ -229,9 +235,9 @@ def process_source_directory():
         print(f"   Tasarruf: {((total_original_size - total_compressed_size) / 1024):.2f} KB")
 
 if __name__ == "__main__":
-    print("🚀 100px - 200px WebP Dönüştürme Başladı...")
-    print(f"   Hedef boyut: {TARGET_MIN_KB}-{TARGET_MAX_KB} KB")
+    print("🚀 100KB Hedef Boyut WebP Dönüştürme Başladı...")
+    print(f"   Hedef dosya boyutu: {TARGET_MIN_KB}-{TARGET_MAX_KB} KB")
     print(f"   Kalite aralığı: {WEBP_QUALITY_MIN}-{WEBP_QUALITY_MAX}")
-    print(f"   Minimum boyut: {MIN_IMAGE_DIMENSION}px korunuyor")
+    print(f"   Görsel boyutu: Orijinal boyut korunuyor")
     process_source_directory()
     print("✅ İşlem Tamamlandı.")
