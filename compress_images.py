@@ -23,8 +23,8 @@ TARGET_MAX_KB = 8
 WEBP_QUALITY_MIN = 10
 WEBP_QUALITY_MAX = 70
 
-# Minimum ve maksimum görsel boyutu (px) - Daha küçük minimum boyut
-MIN_IMAGE_DIMENSION = 50  # 100'den 50'ye düşürüldü
+# Minimum ve maksimum görsel boyutu (px) - Minimum 100px korunuyor
+MIN_IMAGE_DIMENSION = 100  # Minimum boyut 100px'de kalıyor
 MAX_IMAGE_DIMENSION = 200
 
 # Desteklenen uzantılar
@@ -43,6 +43,7 @@ def get_file_size_kb(buffer):
 def resize_to_max(img, min_dimension=MIN_IMAGE_DIMENSION, max_dimension=MAX_IMAGE_DIMENSION):
     width, height = img.size
     longest_side = max(width, height)
+    shortest_side = min(width, height)
 
     # Eğer uzun kenar 200'den büyükse küçült
     if longest_side > max_dimension:
@@ -51,8 +52,14 @@ def resize_to_max(img, min_dimension=MIN_IMAGE_DIMENSION, max_dimension=MAX_IMAG
         new_height = int(height * scale)
         img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
     
-    # Eğer uzun kenar minimum boyuttan küçükse bile olduğu gibi bırak
-    # Bu sayede çok küçük görseller daha da küçültülmez
+    # Eğer kısa kenar 100'den küçükse, 100'e kadar büyült
+    elif shortest_side < min_dimension:
+        scale = min_dimension / shortest_side
+        new_width = int(width * scale)
+        new_height = int(height * scale)
+        img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
+    
+    # 100-200 aralığında ise olduğu gibi bırak
     return img
 
 def compress_webp(img):
@@ -222,8 +229,9 @@ def process_source_directory():
         print(f"   Tasarruf: {((total_original_size - total_compressed_size) / 1024):.2f} KB")
 
 if __name__ == "__main__":
-    print("🚀 50px - 200px WebP Dönüştürme Başladı...")
+    print("🚀 100px - 200px WebP Dönüştürme Başladı...")
     print(f"   Hedef boyut: {TARGET_MIN_KB}-{TARGET_MAX_KB} KB")
     print(f"   Kalite aralığı: {WEBP_QUALITY_MIN}-{WEBP_QUALITY_MAX}")
+    print(f"   Minimum boyut: {MIN_IMAGE_DIMENSION}px korunuyor")
     process_source_directory()
     print("✅ İşlem Tamamlandı.")
