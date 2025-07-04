@@ -23,7 +23,8 @@ TARGET_MAX_KB = 50
 WEBP_QUALITY_MIN = 30
 WEBP_QUALITY_MAX = 95
 
-# Maksimum görsel boyutu (200px sabit)
+# Minimum ve maksimum görsel boyutu (px)
+MIN_IMAGE_DIMENSION = 100
 MAX_IMAGE_DIMENSION = 200
 
 # Desteklenen uzantılar
@@ -39,19 +40,19 @@ COMPRESSED_OUTPUT_DIR = "/Aminol/mediafile/gallery"
 def get_file_size_kb(buffer):
     return len(buffer.getvalue()) / 1024
 
-def resize_to_max(img, max_dimension=MAX_IMAGE_DIMENSION):
+def resize_to_max(img, min_dimension=MIN_IMAGE_DIMENSION, max_dimension=MAX_IMAGE_DIMENSION):
     width, height = img.size
-    if max(width, height) <= max_dimension:
-        return img
+    longest_side = max(width, height)
 
-    if width > height:
-        new_width = max_dimension
-        new_height = int(height * max_dimension / width)
-    else:
-        new_height = max_dimension
-        new_width = int(width * max_dimension / height)
+    # Eğer uzun kenar 200'den büyükse küçült
+    if longest_side > max_dimension:
+        scale = max_dimension / longest_side
+        new_width = int(width * scale)
+        new_height = int(height * scale)
+        img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
 
-    img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
+    # Uzun kenar 100'den küçükse olduğu gibi bırak
+    # 100 - 200 aralığında ise de olduğu gibi bırak
     return img
 
 def compress_webp(img):
@@ -177,6 +178,6 @@ def process_source_directory():
             process_single_image(original_path, compressed_save_path)
 
 if __name__ == "__main__":
-    print("🚀 200px WebP Dönüştürme Başladı...")
+    print("🚀 100px - 200px WebP Dönüştürme Başladı...")
     process_source_directory()
     print("✅ İşlem Tamamlandı.")
