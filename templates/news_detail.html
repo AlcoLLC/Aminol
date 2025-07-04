@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %} 
 
-{% block title %} {{ news.title_translate }} {% endblock %}
+{% block title %} {{ news.title_translate|truncatechars:60 }} {% endblock %}
 {% block description %} {{ news.content_translate|truncatechars:160 }} {% endblock %}
 
 {% block extra_schema %}
