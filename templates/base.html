@@ -53,7 +53,9 @@
   <meta name="twitter:image" content="https://aminol.az/static/logo/aminol-logo.svg">
   <meta name="ahrefs-site-verification" content="9e4cf268be7fc6c2b3be9598e3c023ec7ab0e3f8a6e5ac6884bf3d6fa032897c">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link href="{% static 'assets/css/style_not_found.min.css' %}" media="all" rel="stylesheet" type="text/css" />
+
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+  <link href="{% static 'assets/css/style_not_found.min.css' %}" rel="stylesheet" media="print" onload="this.media='all'"/>
 
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
@@ -104,19 +106,19 @@
   {% include 'components/footer.html' %}
 
 
-  <script src="{% static 'assets/js/home.min.js' %}"></script>
-  <script src="{% static 'assets/js/about.min.js' %}"></script>
-  <script src="{% static 'assets/js/service.min.js' %}"></script>
-  <script src="{% static 'assets/js/faq.min.js' %}"></script>
-  <script src="{% static 'assets/js/career.min.js' %}"></script>
-  <script src="{% static 'assets/js/search.min.js' %}"></script>
-  <script src="{% static 'assets/js/product.min.js' %}"></script>
+  <script src="{% static 'assets/js/home.min.js' %}" defer></script>
+  <script src="{% static 'assets/js/about.min.js' %}" defer></script>
+  <script src="{% static 'assets/js/service.min.js' %}" defer></script>
+  <script src="{% static 'assets/js/faq.min.js' %}" defer></script>
+  <script src="{% static 'assets/js/career.min.js' %}" defer></script>
+  <script src="{% static 'assets/js/search.min.js' %}" defer></script>
+  <script src="{% static 'assets/js/product.min.js' %}" defer></script>
   <script src="{% static 'assets/js/carousel.min.js' %}"></script>
- <script src="{% static 'assets/js/locale.min.js' %}"></script>
+ <script src="{% static 'assets/js/locale.min.js' %}" defer></script>
  <script src="https://analytics.ahrefs.com/analytics.js" data-key="VCY7krba01QhiJDS2Q8BjQ" async></script>
- <script async src="https://www.googletagmanager.com/gtag/js?id=G-56M2MVQ89Z"></script>
-<script src="{% static 'assets/js/plugins.min.js' %}"></script>
-    <script src="{% static 'assets/js/bigz.min.js' %}"></script>
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-56M2MVQ89Z" defer></script>
+<script src="{% static 'assets/js/plugins.min.js' %}" defer></script>
+    <script src="{% static 'assets/js/bigz.min.js' %}" defer></script>
  <script>
   var ahrefs_analytics_script = document.createElement('script');
 
