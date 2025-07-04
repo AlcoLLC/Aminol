@@ -176,6 +176,7 @@ nav {
   color: #012762;
   font-weight: 500;
   font-size: 16px;
+  white-space: nowrap;
 }
 .navbar .nav-section .nav-bottom ul li .dropdown-head i,
 .navbar .nav-section .nav-bottom ul li a i {
@@ -189,8 +190,8 @@ nav {
 .navbar .search a i {
   color: #fff;
   font-size: 16px;
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   border-radius: 5px;
   display: flex;
   align-items: center;
