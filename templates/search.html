@@ -15,7 +15,7 @@
   "url": "{{ request.scheme }}://{{ request.get_host }}",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "{{ request.scheme }}://{{ request.get_host }}{% url 'search:search_results' %}?search={search_term_string}",
+    "target": "{{ request.scheme }}://{{ request.get_host }}{% url 'search:search' %}?search={search_term_string}",
     "query-input": "required name=search_term_string"
   }
 }
