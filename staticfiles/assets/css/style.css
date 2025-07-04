@@ -1135,11 +1135,17 @@ footer .footer-contact > div:first-of-type p, footer .footer-contact > div:first
 }
 footer .footer-contact > div:last-of-type {
   display: flex;
+  align-items: center;
   gap: 7px;
 }
 footer .footer-contact > div:last-of-type img {
   width: 20px;
   height: 20px;
+  object-fit: cover;
+}
+footer .footer-contact > div:last-of-type .facebook {
+  width: 23px;
+  height: 23px;
 }
 footer .alco-privacy {
   display: flex;
