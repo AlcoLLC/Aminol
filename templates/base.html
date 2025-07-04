@@ -41,7 +41,7 @@
   <meta property="og:title" content="AMINOL">
   <meta property="og:description" content="AMINOL - High-quality oil products">
   <meta property="og:image" content="{% static 'logo/aminol.svg' %}">
-  <meta property="og:url" content="https://aminol.az{{ request.path }}">
+  <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{% url 'products:product_list' %}">
   <meta property="og:type" content="website">
   <meta property="og:description" content="{% trans ' Aminol - High-quality oil products' %}">
 
