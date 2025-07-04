@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %}
 
-{% block title %}{{ product.title_translate }}{% endblock %}
+{% block title %}{{ product.title_translate|truncatechars:1 }}{% endblock %}
 {% block description %}{{ product.description_translate|truncatechars:160 }}{% endblock %}
 {% block keywords %}{% trans "product_detail_keywords" %}{% endblock %}
 
