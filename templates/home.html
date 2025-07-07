@@ -22,8 +22,8 @@
 {% endblock %}
 
 {% block page_js %}
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.js" defer></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.js"></script>
 {% endblock %}
 
 {% block extra_schema %}
@@ -222,8 +222,9 @@
   <div class="aminol-worldwide container">
     <div>
       <video autoplay muted loop playsinline>
-        <source src="{% static 'videos/globe1.mp4' %}" type="video/mp4" />
+        <source src="{% static 'videos/globe.webm' %}" type="video/webm" />
       </video>
+
     </div>
     <div class="aminol-worldwide-content">
       <h2>{% trans "Aminol Is Available Worldwide" %}</h2>

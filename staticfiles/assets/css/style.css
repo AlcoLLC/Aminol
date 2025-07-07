@@ -141,6 +141,11 @@ nav {
 .navbar .nav-section ul li a.active:hover {
   color: #012762 !important;
 }
+
+.navbar-dark .nav-section ul li a.active:hover {
+  color: #fff !important;
+}
+
 .dropdown,
 .language-dropdown,
 .mobile-language-dropdown,
