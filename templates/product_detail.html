@@ -89,7 +89,7 @@
 <div class="product-detail-page">
   <header class="page-header" style="background-image: url('{{ product.product_group.image.url }}');">
       <div class="header-content container">
-        <h2>{{ product.product_group.title_translate|linebreaksbr }}</h2>
+        <div>{{ product.product_group.title_translate|linebreaksbr }}</div>
         {% comment %} <p>{{ product.product_group.description_translate|linebreaksbr}}</p> {% endcomment %}
       </div>
     </header>
@@ -113,9 +113,9 @@
     <div class="product-details">
       <h1>{{ product.title_translate|linebreaksbr }}</h1>
       <p class="product-id">{{ product.product_id }}</p>
-      <p class="product-description">
+      <h2 class="product-description">
         {{ product.description_translate|linebreaksbr }}
-      </p>
+      </h2>
         <div class="featured-benefits">
           <h3>{% trans "Featured & Benefits:" %} </h3>
           <p>{{ product.features_benefits_translate|linebreaksbr }}</p>

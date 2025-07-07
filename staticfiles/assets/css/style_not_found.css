@@ -286,7 +286,7 @@ margin: -19px auto -5px auto;
 }
 
 
-h2.home-page-title {
+p.home-page-title {
 font-family: 'Oswald', sans-serif;
 font-style: normal;
 font-weight: 500;
@@ -299,7 +299,7 @@ margin: 0 0 0 12px;
 }
 
 @media all and (min-width: 1920px) {
-  h2.home-page-title {
+  p.home-page-title {
     font-size: 13px;
   }
 }
