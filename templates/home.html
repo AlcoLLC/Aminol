@@ -192,7 +192,7 @@
       {% empty %}
         <div class="news-card">
           <div class="news-content">
-            <h5>{% trans "No product_group available at the moment" %}</h5>
+            <h3>{% trans "No product_group available at the moment" %}</h3>
           </div>
         </div>
       {% endfor %}
@@ -325,7 +325,7 @@
               {{ news.content_translate|truncatewords:10 }}
             </p>
  
-            <a href="{% url 'news:news_detail' news.pk %}" aria-label="{{ news.title_translate }}"><h5>{{ news.title_translate|linebreaksbr }}</h5> <span>{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></span></a>
+            <a href="{% url 'news:news_detail' news.pk %}" aria-label="{{ news.title_translate }}"><h4>{{ news.title_translate|linebreaksbr }}</h4> <span>{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></span></a>
              
           </div>
         </div>
