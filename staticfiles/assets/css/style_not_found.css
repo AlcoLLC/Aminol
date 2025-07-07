@@ -65,7 +65,7 @@
 /* 1. TEMPLATE BACKGROUNDS */
 /* 1.1. single IMG BACKGROUND */
 .bg-img-SINGLE {
-background-image: url('../../images_folder_1/aminol_broshur.webp');
+background-image: url('../../logo/aminol_broshur.webp');
 height: 86vh !important;
 margin-bottom: 50px;
 }
