@@ -705,12 +705,9 @@
   line-height: 24.03px;
   letter-spacing: 0px;
 }
-.product-detail-section .product-detail-container .product-details h2 {
-  font-weight: 600;
-  font-size: 36px;
-  line-height: 50px;
-  letter-spacing: 0px;
-}
+
+
+
 .product-detail-section .product-detail-container .product-details h1 {
   font-weight: 600;
   font-size: 36px;
@@ -727,6 +724,10 @@
   .product-description {
   font-weight: 300;
   text-align: justify;
+  font-size: 14px;
+    line-height: 24.03px;
+    letter-spacing: 0;
+        color: #012762;
 }
 .product-detail-section
   .product-detail-container
@@ -886,11 +887,7 @@
     text-align: left;
     display: block;
   }
-  .product-detail-section .product-detail-container .product-details h2 {
-    width: 90%;
-    font-size: 26px;
-    line-height: 30px;
-  }
+
   .product-detail-section .product-detail-container .product-details h1 {
     width: 90%;
     font-size: 26px;
@@ -904,10 +901,6 @@
   }
   .product-detail-section .product-detail-container .product-details {
     gap: 15px;
-  }
-  .product-detail-section .product-detail-container .product-details h2 {
-    font-size: 18px;
-    line-height: 20px;
   }
   .product-detail-section .product-detail-container .product-details h1 {
     font-size: 18px;

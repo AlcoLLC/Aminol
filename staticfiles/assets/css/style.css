@@ -579,7 +579,7 @@ nav {
   font-size: 16px;
   line-height: 30px;
 }
-.shared-section .shared-description h3 {
+.shared-section .shared-description h2 {
   font-weight: 600;
   font-size: 24px;
   line-height: 50px;
@@ -619,7 +619,7 @@ nav {
     font-size: 14px;
     line-height: 26px;
   }
-  .shared-section .shared-description h3 {
+  .shared-section .shared-description h2 {
     font-size: 22px;
     line-height: 45px;
   }
@@ -661,7 +661,7 @@ nav {
   .shared-section .shared-description p {
     line-height: 25px;
   }
-  .shared-section .shared-description h3 {
+  .shared-section .shared-description h2 {
     line-height: 40px;
   }
   .about-shared-section img {
@@ -1014,7 +1014,7 @@ nav {
     font-size: 12px;
     line-height: 18px;
   }
-  .shared-section .shared-description h3 {
+  .shared-section .shared-description h2 {
     line-height: 30px;
     font-size: 14px;
   }
@@ -1369,7 +1369,7 @@ footer .alco-privacy p {
   justify-content: center;
 }
 .product-detail-page .page-header h1,
-.product-detail-page .page-header h2 {
+.product-detail-page .page-header div {
   font-size: 42px;
   line-height: 80px;
   letter-spacing: 0;
@@ -1398,7 +1398,7 @@ footer .alco-privacy p {
     padding-left: 10%;
   }
   .product-detail-page .page-header h1,
-  .product-detail-page .page-header h2 {
+  .product-detail-page .page-header div {
     font-size: 38px;
     line-height: 70px;
   }
@@ -1419,7 +1419,7 @@ footer .alco-privacy p {
     font-size: 18px;
   }
   .product-detail-page .page-header h1,
-  .product-detail-page .page-header h2 {
+  .product-detail-page .page-header div {
     font-size: 34px;
     line-height: 60px;
   }
@@ -1449,7 +1449,7 @@ footer .alco-privacy p {
     max-width: 90%;
   }
   .product-detail-page .page-header h1,
-  .product-detail-page .page-header h2 {
+  .product-detail-page .page-header div {
     font-size: 30px;
     line-height: 50px;
   }
@@ -1471,7 +1471,7 @@ footer .alco-privacy p {
     font-size: 14px;
   }
   .product-detail-page .page-header h1,
-  .product-detail-page .page-header h2 {
+  .product-detail-page .page-header div {
     font-size: 28px;
     line-height: 45px;
   }

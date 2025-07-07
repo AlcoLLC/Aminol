@@ -185,14 +185,14 @@
             />
           </div>
           <div class="category-content">
-            <h3 class="category-title">{{ product_group.title_translate|linebreaksbr }}</h3>
+            <h2 class="category-title">{{ product_group.title_translate|linebreaksbr }}</h2>
           </div>
         </a>
       </div>
       {% empty %}
         <div class="news-card">
           <div class="news-content">
-            <h3>{% trans "No product_group available at the moment" %}</h3>
+            <h2>{% trans "No product_group available at the moment" %}</h2>
           </div>
         </div>
       {% endfor %}
@@ -210,7 +210,7 @@
         <img src="{% static 'images/values-format.webp' %}" alt="Value Image" />
       </div>
       <div class="values-content">
-        <h3>{% trans "Our Values" %}</h3>
+        <h2>{% trans "Our Values" %}</h2>
         <p>
           {% trans "The modernization of industry and renewal of equipment have increased demand for high-quality lubricants in Azerbaijan. To meet this, AMINOL Lubricants opened on December 15, 2017, in Sumgayit Chemical Industrial Park with a $20 million investment. The plant produces 150,000 tons annually, focusing on motor, hydraulic, transmission, compressor, turbine, and marine oils, along with antifreeze and AdBlue." %}
         </p>
@@ -325,7 +325,7 @@
               {{ news.content_translate|truncatewords:10 }}
             </p>
  
-            <a href="{% url 'news:news_detail' news.pk %}" aria-label="{{ news.title_translate }}"><h4>{{ news.title_translate|linebreaksbr }}</h4> <span>{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></span></a>
+            <a href="{% url 'news:news_detail' news.pk %}" aria-label="{{ news.title_translate }}"><h2>{{ news.title_translate|linebreaksbr }}</h2> <span>{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></span></a>
              
           </div>
         </div>
