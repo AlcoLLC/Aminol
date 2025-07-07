@@ -1045,7 +1045,7 @@
 .partners-section .section-content h2 {
   color: #012762;
 }
-.latest-news .news-cards .news-card h5 {
+.latest-news .news-cards .news-card h4 {
   font-weight: 600;
   font-size: 15px;
   line-height: 20px;
@@ -1084,7 +1084,7 @@
   gap: 7px;
 }
 @media (max-width: 1024px) {
-  .latest-news .news-cards .news-card h5 {
+  .latest-news .news-cards .news-card h4 {
     line-height: 20px;
   }
   .latest-news .news-cards .news-card p {
@@ -1102,7 +1102,7 @@
   }
 }
 @media (min-width: 571px) and (max-width: 770px) {
-  .latest-news .news-cards .news-card h5 {
+  .latest-news .news-cards .news-card h4 {
     font-size: 14px;
     line-height: 18px;
   }
