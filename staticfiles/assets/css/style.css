@@ -1,6 +1,9 @@
 @import url(https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap);
 .section-content h2,
 .section-content h3,
+.section-content h4,
+.section-content h5,
+.section-content h6,
 .section-content p {
   color: #001c5c;
   text-align: center;
@@ -35,7 +38,11 @@
 .shared-section .shared-description .button-style:hover {
   background-color: #f92b3f;
 }
-.section-content h2 {
+.section-content h2,
+.section-content h3,
+.section-content h4,
+.section-content h5,
+.section-content h6 {
   font-weight: 600;
   font-size: 42px;
   line-height: 48px;
@@ -753,7 +760,11 @@ nav {
   flex-direction: row-reverse;
 }
 @media (max-width: 1024px) {
-  .section-content h2 {
+  .section-content h2,
+.section-content h3,
+.section-content h4,
+.section-content h5,
+.section-content h6 {
     font-size: 28px;
     line-height: 36px;
   }
@@ -957,7 +968,11 @@ nav {
   }
 }
 @media (max-width: 770px) {
-  .section-content h2 {
+  .section-content h2,
+.section-content h3,
+.section-content h4,
+.section-content h5,
+.section-content h6 {
     font-size: 22px;
     line-height: 32px;
   }
@@ -988,7 +1003,11 @@ nav {
   }
 }
 @media (max-width: 520px) {
-  .section-content h2 {
+ .section-content h2,
+.section-content h3,
+.section-content h4,
+.section-content h5,
+.section-content h6 {
     font-size: 20px;
     line-height: 30px;
   }
