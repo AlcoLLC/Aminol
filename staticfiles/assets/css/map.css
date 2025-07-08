@@ -199,3 +199,7 @@
   max-width:780px;
   margin:auto;
 }
+
+.facebook-pixel {
+  display: none;
+}
