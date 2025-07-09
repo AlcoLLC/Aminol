@@ -12,7 +12,7 @@
   "@type": "CollectionPage",
   "name": "{% if selected_product_groups|length == 1 %}{% for group in product_groups %}{% if group.slug in selected_product_groups %}{{ group.title_translate|striptags }}{% endif %}{% endfor %}{% else %}{% trans "All products" %}{% endif %}",
   "description": "{% trans "products_meta_description" %}",
-  "url": "{{ request.build_absolute_uri|slice:":-1" }}{% url 'products:product_detail' slug=product.slug %}",
+  "url": "{{ request.build_absolute_uri }}",
   "mainEntity": {
     "@type": "ItemList",
     "name": "Product Listing",
