@@ -64,10 +64,21 @@ def product_detail(request, slug):
 
     available_liters = product.liters.all().order_by('volume')
 
+    title = product.title_translate or ""
+    full_title = title
+    if len(title) < 60:
+        full_title = title + " " + _("AMINOL - High-quality oil products")
+    
+    description = product.description_translate or ""
+    if len(description) < 160:
+        description += " " + title
+
     context = {
         'product': product,
         'available_liters': available_liters,
         'properties': properties,
+        'meta_title': full_title[:60],
+        'meta_description': description[:160],
     }
 
     return render(request, 'product_detail.html', context)
@@ -123,7 +134,7 @@ def legacy_product_redirect(request, *args, **kwargs):
     product_name = request.GET.get('title')
 
     if not product_name:
-        return redirect('/products/', permanent=True)
+        return redirect('/product/', permanent=True)
 
     possible_slug = slugify(product_name)
 

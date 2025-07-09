@@ -92,7 +92,7 @@ def search_view(request):
             results.append({
                 'title': title,
                 'description': description[:200] + '...' if description and len(description) > 200 else description or '',
-                'url': f'/products/',
+                'url': f'/product/',
                 'type': 'Product Group',
                 'image': group.image.url if group.image else None
             })
@@ -110,7 +110,7 @@ def search_view(request):
             results.append({
                 'title': title,
                 'description': f'Product Segment: {title}',
-                'url': f'/products/?segment={segment.slug}',
+                'url': f'/product/?segment={segment.slug}',
                 'type': 'Product Segment',
                 'image': None
             })
@@ -128,7 +128,7 @@ def search_view(request):
             results.append({
                 'title': title,
                 'description': f'Oil Type: {title}',
-                'url': f'/products/?oil_type={oil_type.slug}',
+                'url': f'/product/?oil_type={oil_type.slug}',
                 'type': 'Oil Type',
                 'image': None
             })
@@ -140,7 +140,7 @@ def search_view(request):
             results.append({
                 'title': viscosity.title,
                 'description': f'Viscosity: {viscosity.title}',
-                'url': f'/products/?viscosity={viscosity.slug}',
+                'url': f'/product/?viscosity={viscosity.slug}',
                 'type': 'Viscosity',
                 'image': None
             })
