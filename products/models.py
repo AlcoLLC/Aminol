@@ -51,7 +51,7 @@ class Product(models.Model):
     description = models.TextField()
     features_benefits = models.TextField(blank=True, null=True)
     application = models.TextField(blank=True, null=True)
-    image = models.ImageField(upload_to='product/')
+    image = models.ImageField(upload_to='product/', blank=True, null=True)
     product_id = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=255, unique=True)
     api = models.CharField(max_length=255, blank=True, null=True)

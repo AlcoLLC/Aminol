@@ -904,14 +904,13 @@
   }
   .product-detail-section .product-detail-container .product-details h1 {
     font-size: 18px;
-    line-height: 20px;
+    line-height: 23px;
   }
   .product-detail-section
     .product-detail-container
     .product-details
     .product-id {
     font-size: 14px;
-    line-height: 10px;
   }
   .product-detail-section .product-detail-container .product-details p {
     font-size: 12px;
