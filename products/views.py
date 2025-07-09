@@ -6,6 +6,10 @@ from django.http import JsonResponse
 from home.models import PartnerLogo, Gallery as GalleryImage, Supplier
 import requests
 
+from django.utils.translation import gettext as _
+import logging
+logger = logging.getLogger(__name__)
+
 def product_list(request):
     products = Product.objects.all()
     search_query = request.GET.get('search', '')
@@ -59,31 +63,33 @@ def product_list(request):
     return render(request, 'product.html', context)
 
 def product_detail(request, slug):
-    product = get_object_or_404(Product, slug=slug)
-    properties = ProductProperty.objects.filter(product=product).order_by('order', 'id')
+    try:
+        product = get_object_or_404(Product, slug=slug)
+        properties = ProductProperty.objects.filter(product=product).order_by('order', 'id')
+        available_liters = product.liters.all().order_by('volume')
 
-    available_liters = product.liters.all().order_by('volume')
+        title = product.title_translate or ""
+        full_title = title
+        if title and len(title) < 60:
+            full_title = title + " " + _("AMINOL - High-quality oil products")
 
-    title = product.title_translate or ""
-    full_title = title
-    if title and len(title) < 60:
-        full_title = title + " " + _("AMINOL - High-quality oil products")
+        description = product.description_translate or ""
+        if description and len(description) < 160:
+            description += " " + (title or "")
 
-    description = product.description_translate or ""
-    if description and len(description) < 160:
-        description += " " + (title or "")
+        context = {
+            'product': product,
+            'available_liters': available_liters,
+            'properties': properties,
+            'meta_title': full_title[:60],
+            'meta_description': description[:160],
+        }
 
-
-
-    context = {
-        'product': product,
-        'available_liters': available_liters,
-        'properties': properties,
-        'meta_title': full_title[:60],
-        'meta_description': description[:160],
-    }
-
-    return render(request, 'product_detail.html', context)
+        return render(request, 'product_detail.html', context)
+    
+    except Exception as e:
+        logger.error(f"[PRODUCT_DETAIL_ERROR] slug={slug} error={str(e)}", exc_info=True)
+        return render(request, '500.html', status=500)
 
 def product_properties_ajax(request, product_id):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
