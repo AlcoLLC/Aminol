@@ -4,6 +4,7 @@ from django.core.paginator import Paginator
 from .models import Product, Product_group, Segments, Oil_Types, Viscosity, ProductProperty
 from django.http import JsonResponse
 from home.models import PartnerLogo, Gallery as GalleryImage, Supplier
+import requests
 
 def product_list(request):
     products = Product.objects.all()
@@ -72,7 +73,7 @@ def product_detail(request, slug):
     return render(request, 'product_detail.html', context)
 
 def product_properties_ajax(request, product_id):
-    if request.is_ajax():
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         product = get_object_or_404(Product, id=product_id)
         properties = ProductProperty.objects.filter(product=product).order_by('order', 'id')
 
@@ -85,15 +86,33 @@ def product_properties_ajax(request, product_id):
                 'typical_value': prop.typical_value,
             })
 
+        def check_url(url):
+            if not url:
+                return ''
+            try:
+                headers = {
+                    "User-Agent": "Mozilla/5.0"
+                }
+                response = requests.head(url, headers=headers, timeout=5)
+                if response.status_code == 200:
+                    return url
+            except requests.exceptions.RequestException:
+                pass
+            return ''
+
+        pds_url = check_url(product.pds_url)
+        sds_url = check_url(product.sds_url)
+
         return JsonResponse({
             'success': True,
             'properties': properties_data,
             'product_title': product.title,
-            'pds_url': product.pds_url or '',
-            'sds_url': product.sds_url or '',
+            'pds_url': pds_url,
+            'sds_url': sds_url,
         })
 
     return JsonResponse({'success': False, 'error': 'Invalid request'})
+
 
 from django.shortcuts import redirect
 
@@ -104,7 +123,7 @@ def legacy_product_redirect(request, *args, **kwargs):
     product_name = request.GET.get('title')
 
     if not product_name:
-        return redirect('/product/', permanent=True)
+        return redirect('/products/', permanent=True)
 
     possible_slug = slugify(product_name)
 
