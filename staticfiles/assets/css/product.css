@@ -539,6 +539,12 @@
   font-weight: 500;
   outline: none;
 }
+
+.product-modal-content .modal-search-input::placeholder, .products-section .search-input::placeholder {
+    color: #01276280;
+  font-size: 14px;
+  font-weight: 500;
+}
 .product-modal-content .modal-search-button {
   position: absolute;
   right: 15px;
