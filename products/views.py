@@ -71,7 +71,7 @@ def product_detail(request, slug):
         title = product.title_translate or ""
         full_title = title
         if title and len(title) < 60:
-            full_title = title + " " + _("AMINOL - High-quality oil products")
+            full_title = title + " " + _(" | AMINOL")
 
         description = product.description_translate or ""
         if description and len(description) < 160:
