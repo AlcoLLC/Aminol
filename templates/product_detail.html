@@ -90,7 +90,6 @@
   <header class="page-header" style="background-image: url('{{ product.product_group.image.url }}');">
       <div class="header-content container">
         <div>{{ product.product_group.title_translate|linebreaksbr }}</div>
-        {% comment %} <p>{{ product.product_group.description_translate|linebreaksbr}}</p> {% endcomment %}
       </div>
     </header>
 </div>
@@ -164,9 +163,12 @@
         {% endif %}
       </div>
     </div>
-    <div class="product-image">
-      <img loading="lazy" src="{{ product.image.url }}" alt="{{ product.title }}" />
-    </div>
+   {% if product.image %}
+  <div class="product-image">
+    <img loading="lazy" src="{{ product.image.url }}" alt="{{ product.title }}" />
+  </div>
+{% endif %}
+
   </div>
 
   {% if available_liters %}
