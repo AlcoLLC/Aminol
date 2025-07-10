@@ -131,21 +131,3 @@ def product_properties_ajax(request, product_id):
         })
 
     return JsonResponse({'success': False, 'error': 'Invalid request'})
-
-
-from django.shortcuts import redirect
-
-from django.shortcuts import redirect, get_object_or_404
-from django.utils.text import slugify
-
-def legacy_product_redirect(request, *args, **kwargs):
-    product_name = request.GET.get('title')
-
-    if not product_name:
-        return redirect('/product/', permanent=True)
-
-    possible_slug = slugify(product_name)
-
-    product = get_object_or_404(Product, slug=possible_slug)
-
-    return redirect(f'/product/{product.slug}/', permanent=True)
