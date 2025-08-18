@@ -177,6 +177,8 @@ MODELTRANSLATION_LANGUAGES = ('en', 'az', 'de', 'fr', 'it', 'es', 'pt-br', 'zh-h
 LANGUAGE_CODE = 'en'
 DEFAULT_LANGUAGE = 1
 
+PREFIX_DEFAULT_LANGUAGE=False
+
 LOCALE_PATHS = [
     BASE_DIR / 'locale',
 ]
