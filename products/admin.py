@@ -3,12 +3,23 @@ from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 from .models import Product_group, Segments, Oil_Types, Viscosity, Liter, Product, ProductProperty, Product_Group_Category
 from django.utils.html import format_html
 from django.db import models
+from django import forms
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
+
+class CategoryInlineForm(forms.ModelForm):
+    # CKEditor widget-lərini açıq şəkildə təyin edirik
+    title = forms.CharField(widget=CKEditorUploadingWidget(), label="Başlıq")
+    description = forms.CharField(widget=CKEditorUploadingWidget(), label="Təsvir", required=False)
+
+    class Meta:
+        model = Product_Group_Category
+        fields = '__all__'
 
 
 class CategoryInline(TranslationTabularInline):
     model = Product_Group_Category
-    extra = 1 
+    form = CategoryInlineForm  # <--- Bu sətri əlavə edin
+    extra = 1
     fields = ('title', 'description')
 
 
