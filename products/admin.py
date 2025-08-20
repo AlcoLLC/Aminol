@@ -23,7 +23,7 @@ class ProductGroupAdmin(TranslationAdmin):
     inlines = [CategoryInline]
     
     def get_queryset(self, request):
-        qs = super().get_queryset(request)
+        qs = super().get_queryset(request)  
         home_count = qs.filter(in_home=True).count()
         return qs
     
