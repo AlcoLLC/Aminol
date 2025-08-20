@@ -117,16 +117,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CKEDITOR_5_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
-
-CKEDITOR_5_CONFIGS = {
-    'default': {
-        'toolbar': ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote'],
-        'language': 'en',
-    },
-}
-
-CKEDITOR5_UPLOAD_PATH = "uploads/ckeditor5/"
 
 
 ROOT_URLCONF = 'core.urls'
