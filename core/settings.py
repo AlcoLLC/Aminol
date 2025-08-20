@@ -69,6 +69,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_filters',
+    'ckeditor',
+    'ckeditor_uploader',
     'django_ckeditor_5',
     'rosetta',
     'django.contrib.sites',
@@ -88,6 +90,21 @@ INSTALLED_APPS = [
 ]
 
 SITE_ID = 1
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_IMAGE_BACKEND = "pillow"
+CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': '100%',
+        'removePlugins': 'stylesheetparser',
+        'allowedContent': True,
+        'extraAllowedContent': '*(*);*{*}',
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
