@@ -6,21 +6,12 @@ from django.db import models
 from django import forms
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
-class CategoryInlineForm(forms.ModelForm):
-    # CKEditor widget-lərini açıq şəkildə təyin edirik
-    title = forms.CharField(widget=CKEditorUploadingWidget(), label="Başlıq")
-    description = forms.CharField(widget=CKEditorUploadingWidget(), label="Təsvir", required=False)
 
-    class Meta:
-        model = Product_Group_Category
-        fields = '__all__'
-
-
-class CategoryInline(TranslationTabularInline):
-    model = Product_Group_Category
-    form = CategoryInlineForm  # <--- Bu sətri əlavə edin
-    extra = 1
-    fields = ('title', 'description')
+@admin.register(Product_Group_Category)
+class CategoryInline(TranslationAdmin):
+    list_display = ('title', 'description')
+    prepopulated_fields = {'slug': ('title',)}
+    search_fields = ('title',)
 
 
 @admin.register(Product_group)
@@ -28,7 +19,7 @@ class ProductGroupAdmin(TranslationAdmin):
     list_display = ('title', 'slug', 'image', 'in_home')
     prepopulated_fields = {'slug': ('title',)}
     search_fields = ('title',)
-    inlines = [CategoryInline]
+    # inlines = [CategoryInline]
     
     def get_queryset(self, request):
         qs = super().get_queryset(request)  
@@ -51,6 +42,15 @@ class ProductGroupAdmin(TranslationAdmin):
         
         super().save_model(request, obj, form, change)
     
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
 
 @admin.register(Segments)
 class SegmentsAdmin(TranslationAdmin):
