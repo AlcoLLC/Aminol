@@ -1,13 +1,27 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
-from .models import Product_group, Segments, Oil_Types, Viscosity, Liter, Product, ProductProperty
+from .models import Product_group, Segments, Oil_Types, Viscosity, Liter, Product, ProductProperty, Product_Group_Category
 from django.utils.html import format_html
+from django.db import models
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
+
+
+class CategoryInline(TranslationTabularInline):
+    model = Product_Group_Category
+    extra = 1 
+    fields = ('title', 'description')
+
+    formfield_overrides = {
+        models.TextField: {'widget': CKEditorUploadingWidget},
+        models.CharField: {'widget': CKEditorUploadingWidget},
+    }
 
 @admin.register(Product_group)
 class ProductGroupAdmin(TranslationAdmin):
     list_display = ('title', 'slug', 'image', 'in_home')
     prepopulated_fields = {'slug': ('title',)}
     search_fields = ('title',)
+    inlines = [CategoryInline]
     
     def get_queryset(self, request):
         qs = super().get_queryset(request)

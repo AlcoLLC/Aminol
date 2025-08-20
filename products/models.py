@@ -14,6 +14,17 @@ class Product_group(models.Model):
     def __str__(self):
         return self.title
     
+class Product_Group_Category(models.Model):
+    product_group = models.ForeignKey(Product_group, on_delete=models.CASCADE, related_name="categories")
+    title = models.CharField(max_length=255, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    slug = models.SlugField(max_length=255, unique=True)
+
+    def __str__(self):
+        return f"{self.product_group.title} → {self.title}"
+
+
+    
 class Segments(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True)
