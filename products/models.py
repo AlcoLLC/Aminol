@@ -16,7 +16,7 @@ class Product_group(models.Model):
     
 class Product_Group_Category(models.Model):
     product_group = models.ForeignKey(Product_group, on_delete=models.CASCADE, related_name="categories")
-    title = models.CharField(max_length=255, blank=True, null=True)
+    title = models.TextField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     slug = models.SlugField(max_length=255, unique=True)
 

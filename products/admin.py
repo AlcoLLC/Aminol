@@ -13,7 +13,6 @@ class CategoryInline(TranslationTabularInline):
 
     formfield_overrides = {
         models.TextField: {'widget': CKEditorUploadingWidget},
-        models.CharField: {'widget': CKEditorUploadingWidget},
     }
 
 @admin.register(Product_group)
