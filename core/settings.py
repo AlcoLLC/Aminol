@@ -71,7 +71,6 @@ INSTALLED_APPS = [
     'django_filters',
     'ckeditor',
     'ckeditor_uploader',
-    'django_ckeditor_5',
     'rosetta',
     'django.contrib.sites',
     'django.contrib.sitemaps',
