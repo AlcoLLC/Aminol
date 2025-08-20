@@ -227,14 +227,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafile')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CKEditor
-CKEDITOR_5_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
-CKEDITOR5_UPLOAD_PATH = "uploads/ckeditor5/"
-CKEDITOR_5_CONFIGS = {
-    'default': {
-        'toolbar': ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote'],
-        'language': 'en',
-    },
-}
 
 DIRECTORIES_TO_PROCESS = [
     {'source': 'staticfiles/images_1', 'target': 'staticfiles/images'},
