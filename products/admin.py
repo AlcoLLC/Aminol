@@ -11,9 +11,6 @@ class CategoryInline(TranslationTabularInline):
     extra = 1 
     fields = ('title', 'description')
 
-    formfield_overrides = {
-        models.TextField: {'widget': CKEditorUploadingWidget},
-    }
 
 @admin.register(Product_group)
 class ProductGroupAdmin(TranslationAdmin):
