@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="{% static 'assets/css/career&search.min.css' %}" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin <link rel="canonical" href="https://aminol.az{{ request.path }}" /> />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin <link rel="canonical" href="https://aminol.az{{ request.path }}" /> 
  
   
   <link rel="alternate" hreflang="en" href="https://aminol.az/">
@@ -129,18 +129,17 @@
   fbq('track', 'PageView');
   </script>
   <noscript><img height="1" alt="facebook pixel" width="1" class="facebook-pixel"
-  src="https://www.facebook.com/tr?id=10009823562446845&ev=PageView&noscript=1"
-  /></noscript>
+  src="https://www.facebook.com/tr?id=10009823562446845&ev=PageView&noscript=1"/></noscript>
 
 </head>
 
 <body>
   {% block content %} {% endblock %}
-<a href="https://wa.me/994502220607" aria-label="Whatsapp" class="fixed-whatsapp" target="_blank">
-  <i class="fab fa-whatsapp"></i>
-</a>
-  {% include 'components/footer.html' %}
 
+  <a href="https://wa.me/994502220607" aria-label="Whatsapp" class="fixed-whatsapp" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  {% include 'components/footer.html' %}
 
   <script src="{% static 'assets/js/home.min.js' %}" defer></script>
   <script src="{% static 'assets/js/about.min.js' %}" defer></script>
@@ -157,8 +156,6 @@
     <script src="{% static 'assets/js/bigz.min.js' %}" defer></script>
  <script>
   var ahrefs_analytics_script = document.createElement('script');
-
-
   ahrefs_analytics_script.async = true;
   ahrefs_analytics_script.src = 'https://analytics.ahrefs.com/analytics.js';
   ahrefs_analytics_script.setAttribute('data-key', 'VCY7krba01QhiJDS2Q8BjQ');
