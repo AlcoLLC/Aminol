@@ -9,9 +9,8 @@ from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 @admin.register(Product_Group_Category)
 class ProductGroupCategoryAdmin(TranslationAdmin):
-    list_display = ('get_category_name', 'product_group', 'slug')
+    list_display = ('get_category_name', 'product_group')
     list_filter = ('product_group',)
-    prepopulated_fields = {'slug': ('title',)}
     search_fields = ('title', 'description')
 
     def get_category_name(self, obj):
@@ -21,6 +20,19 @@ class ProductGroupCategoryAdmin(TranslationAdmin):
         return "No Title"
     get_category_name.short_description = "Category Title"
 
+class ProductGroupCategoryInline(TranslationTabularInline):
+    model = Product_Group_Category
+    extra = 1
+    
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
 
 
 @admin.register(Product_group)
@@ -28,7 +40,7 @@ class ProductGroupAdmin(TranslationAdmin):
     list_display = ('title', 'slug', 'image', 'in_home')
     prepopulated_fields = {'slug': ('title',)}
     search_fields = ('title',)
-    # inlines = [CategoryInline]
+    inlines = [ProductGroupCategoryInline]
     
     def get_queryset(self, request):
         qs = super().get_queryset(request)  
