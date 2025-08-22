@@ -13,14 +13,14 @@ class ProductGroupCategoryAdmin(TranslationAdmin):
     list_filter = ('product_group',)
     prepopulated_fields = {'slug': ('title',)}
     search_fields = ('title', 'description')
-    
+
     def get_category_name(self, obj):
-        # RichTextField için text extraction
         from django.utils.html import strip_tags
         if obj.title:
             return strip_tags(obj.title)[:50]
         return "No Title"
     get_category_name.short_description = "Category Title"
+
 
 
 @admin.register(Product_group)
