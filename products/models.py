@@ -16,14 +16,14 @@ class Product_group(models.Model):
     def __str__(self):
         return self.title
     
-# class Product_Group_Category(models.Model):
-#     product_group = models.ForeignKey(Product_group, on_delete=models.CASCADE, related_name="categories")
-#     title = RichTextUploadingField(blank=True, null=True) 
-#     description = RichTextUploadingField(blank=True, null=True) 
-#     slug = models.SlugField(max_length=255, unique=True)
+class Product_Group_Category(models.Model):
+    product_group = models.ForeignKey(Product_group, on_delete=models.CASCADE, related_name="categories")
+    title = RichTextUploadingField(blank=True, null=True) 
+    description = RichTextUploadingField(blank=True, null=True) 
+    slug = models.SlugField(max_length=255, unique=True)
 
-#     def __str__(self):
-#         return f"{self.product_group.title} → {self.title}"
+    def __str__(self):
+        return f"{self.product_group.title} → {self.title}"
 
 
     
