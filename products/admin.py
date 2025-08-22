@@ -22,7 +22,7 @@ class ProductGroupCategoryAdmin(TranslationAdmin):
 
 class ProductGroupCategoryInline(TranslationTabularInline):
     model = Product_Group_Category
-    extra = 0
+    extra = 1
     
 
 @admin.register(Product_group)
