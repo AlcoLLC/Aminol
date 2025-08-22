@@ -23,7 +23,7 @@ class Product_Group_Category(models.Model):
     slug = models.SlugField(max_length=255, unique=True)
 
     def __str__(self):
-        return f"{self.product_group.title} → {self.title}"
+        return f"{self.product_group.title}"
 
 
     

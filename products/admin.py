@@ -9,8 +9,7 @@ from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 @admin.register(Product_Group_Category)
 class CategoryAdmin(TranslationAdmin):
-    list_display = ('title', 'description')
-    prepopulated_fields = {'slug': ('title',)}
+    list_display = ('title', 'description', 'slug')
     search_fields = ('title',)
 
 
