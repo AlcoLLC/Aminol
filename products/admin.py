@@ -1,17 +1,17 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
-from .models import Product_group, Segments, Oil_Types, Viscosity, Liter, Product, ProductProperty
+from .models import Product_group, Segments, Oil_Types, Viscosity, Liter, Product, ProductProperty, Product_Group_Category
 from django.utils.html import format_html
 from django.db import models
 from django import forms
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 
-# @admin.register(Product_Group_Category)
-# class CategoryInline(TranslationAdmin):
-#     list_display = ('title', 'description')
-#     prepopulated_fields = {'slug': ('title',)}
-#     search_fields = ('title',)
+@admin.register(Product_Group_Category)
+class CategoryAdmin(TranslationAdmin):
+    list_display = ('title', 'description')
+    prepopulated_fields = {'slug': ('title',)}
+    search_fields = ('title',)
 
 
 @admin.register(Product_group)
