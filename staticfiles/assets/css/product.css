@@ -1077,3 +1077,21 @@
   color: #012762;
   font-weight: 400;
 }
+
+.product-group-content {
+  padding: 30px;
+  box-shadow: 0px 4px 6.7px 0px #00000014;
+}
+
+ .product-group-content h2 {
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 40px;
+  letter-spacing: -1%;
+  color: #28315e;
+}
+
+.product-group-content p {
+    color: #28315e;
+    margin-top: 20px;
+}

@@ -113,7 +113,7 @@
   line-height: 28px;
   letter-spacing: 0;
 }
-.news-detail-top-content h2, .news-detail-top-content h1 {
+.news-detail-top-content h2, .news-detail-top-content h1{
   font-weight: 600;
   font-size: 42px;
   line-height: 48px;
@@ -346,7 +346,7 @@
     line-height: 18px;
   }
   .news-detail-top-content h2,
-  .news-detail-top-content h1,
+  .news-detail-top-content h1, 
   .news-top-content h1 {
     font-size: 30px;
     line-height: 42px;

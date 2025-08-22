@@ -1,6 +1,8 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.utils.text import slugify
+from django.utils.html import strip_tags
 
 class Product_group(models.Model):
     title = models.CharField(max_length=255)
@@ -20,7 +22,14 @@ class Product_Group_Category(models.Model):
     product_group = models.ForeignKey(Product_group, on_delete=models.CASCADE, related_name="categories")
     title = RichTextUploadingField(blank=True, null=True) 
     description = RichTextUploadingField(blank=True, null=True) 
-    slug = models.SlugField(max_length=255, unique=True)
+    slug = models.SlugField(max_length=255, unique=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug and self.title:
+            # HTML tag-ları sil və slug yarat
+            clean_title = strip_tags(self.title)
+            self.slug = slugify(clean_title)[:255]
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.product_group.title}"
