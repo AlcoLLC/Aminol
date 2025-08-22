@@ -98,8 +98,7 @@ CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'full',
         'height': 300,
-        'width': '600px',
-        'width': '100%',
+        'width': '400px',
         'removePlugins': 'stylesheetparser',
         'allowedContent': True,
         'extraAllowedContent': '*(*);*{*}',
