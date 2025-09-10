@@ -52,4 +52,4 @@ class ContactInfo(models.Model):
     contact_address_translate = models.TextField(blank=True, null=True)
     
     def __str__(self):
-        return f"{self.title}"
+        return f"{self.title_translate}"

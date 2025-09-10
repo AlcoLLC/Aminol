@@ -17,4 +17,4 @@ class FAQ(models.Model):
         verbose_name_plural = "FAQs"
 
     def __str__(self):
-        return self.question
+        return self.question_translate

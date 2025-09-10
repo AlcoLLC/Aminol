@@ -27,24 +27,24 @@ class ContactAdmin(admin.ModelAdmin):
 
 @admin.register(ContactInfo)
 class ContactInfoAdmin(TranslationAdmin):
-    list_display = ('title', 'contact_email', 'contact_phone')
-    search_fields = ('title', 'description', 'contact_email')
+    list_display = ('title_translate', 'contact_email', 'contact_phone')
+    search_fields = ('title_translate', 'description_translate', 'contact_email')
     fieldsets = (
         ('General Information', {
-            'fields': ('title', 'description', 'title_translate', 'description_translate')
+            'fields': ('title_translate', 'description_translate')
         }),
         ('Headquarters Information', {
-            'fields': ('aminol_headquarters', 'aminol_headquarters_location', 'aminol_headquarters_image',
-                        'aminol_headquarters_translate', 'aminol_factory_translate')
+            'fields': ('aminol_headquarters_location', 'aminol_headquarters_image',
+                        'aminol_headquarters_translate')
         }),
         ('Factory Information', {
-            'fields': ('aminol_factory', 'aminol_factory_location', 'aminol_factory_image')
+            'fields': ('aminol_factory_translate', 'aminol_factory_location', 'aminol_factory_image')
         }),
         ('Registration Information', {
-            'fields': ('registers','registers_translate')
+            'fields': ('registers_translate',)
         }),
         ('Contact Details', {
-            'fields': ('contact_address', 'contact_address_translate', 'contact_phone', 'contact_email')
+            'fields': ('contact_address_translate', 'contact_phone', 'contact_email')
         }),
     )
 

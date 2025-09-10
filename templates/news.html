@@ -2,9 +2,9 @@
 {% load static %}
 {% load i18n %}  
 
-{% block title %} {{ news.meta_title|safe }} {% endblock %}
-{% block description %} {{ news.meta_description|safe }} {% endblock %}
-{% block keywords %} {{ news.meta_keywords|safe }} {% endblock %}
+{% block title %}{% trans "news_meta_title" %}{% endblock %}
+{% block description %}{% trans "news_meta_description" %}{% endblock %}
+{% block keywords %}{% trans "news_keywords" %}{% endblock %}
 
 {% block extra_schema %}
 <script type="application/ld+json" data-version="{% now 'U' %}">

@@ -9,7 +9,7 @@ class Brand_Portal(models.Model):
     description_translate = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return f"{self.title}"
+        return f"{self.title_translate}"
 
 
 class Brand_Portal_Content(models.Model):
@@ -27,4 +27,4 @@ class Brand_Portal_Content(models.Model):
     order = models.IntegerField(default=0)
 
     def __str__(self):
-        return f"{self.title}"
+        return f"{self.title_translate}"

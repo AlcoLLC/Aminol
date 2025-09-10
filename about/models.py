@@ -29,7 +29,7 @@ class AboutSectionContent(models.Model):
     title_translate = models.CharField(max_length=255, blank=True, null=True)
     description_translate = models.TextField(blank=True, null=True)
     def __str__(self):
-        return f"{self.title}"
+        return f"{self.title_translate}"
 
 
 class Quality(models.Model):
@@ -48,7 +48,7 @@ class QualityContent(models.Model):
     description_translate = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return f"{self.title}"
+        return f"{self.title_translate}"
 
 
 class WeGuarantee(models.Model):
@@ -73,7 +73,7 @@ class WeGuarantee(models.Model):
     sub_description_four_translate = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return self.title
+        return self.title_translate
 
 
 class Production(models.Model):
@@ -92,7 +92,7 @@ class ProductionContent(models.Model):
     description_translate = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return f"{self.title}"
+        return f"{self.title_translate}"
 
 
 class DocumentsCertification(models.Model):
@@ -103,7 +103,7 @@ class DocumentsCertification(models.Model):
     description_translate = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return self.title
+        return self.title_translate
 
 
 class Sustainability(models.Model):
@@ -112,7 +112,7 @@ class Sustainability(models.Model):
     main_description_translate = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return "Sustainability Section"
+        return self.main_description
 
 
 class SustainabilityContent(models.Model):
@@ -127,4 +127,4 @@ class SustainabilityContent(models.Model):
     description_translate = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return f"{self.title}"
+        return f"{self.title_translate}"
