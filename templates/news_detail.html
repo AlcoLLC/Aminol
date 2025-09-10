@@ -8,8 +8,8 @@
 {
   "@context": "https://schema.org",
   "@type": "NewsArticle",
-  "headline": "{{ news.title_translate|striptags }}",
-  "description": "{{ news.content_translate|striptags|truncatechars:160 }}",
+  "headline": "{{ news.title_translate|safe|striptags }}",
+  "description": "{{ news.content_translate|safe|striptags|truncatechars:160 }}",
   "image": [
     "{{ news.image.url }}"
   ],
@@ -50,31 +50,31 @@
 
   <div class="container">
     <div class="news-detail-top-content">
-      <h1>{{ news.title_translate|linebreaksbr }}</h1>
+      <h1>{{ news.title_translate|safe|linebreaksbr }}</h1>
       <p>{{ news.published_date|date:"F d, Y" }}</p>
     </div>
   </div>
-  <div class="services-offer-section brand-portal-section-tab container">
+  <div class="services-offer-section news-content-section brand-portal-section-tab container">
     {% if news.image %}
     <div class="services-offer-image news-d">
       <img
         loading="lazy"
         src="{{ news.image.url }}"
-        alt="{{ news.title_translate }}"
+        alt="{{ news.title_translate|safe }}"
       />
     </div>
     {% endif %}
     <div class="text-container text-left">
-      <p>{{ news.content_translate|linebreaksbr }}</p>
+      <div>{{ news.content_translate|safe|linebreaksbr }}</div>
     </div>
   </div>
 
   {% for content in contents %}
   <div
-    class="services-offer-section {% if forloop.counter|divisibleby:2 %}reverse{% endif %} brand-portal-section container"
+    class="services-offer-section news-content-section {% if forloop.counter|divisibleby:2 %}reverse{% endif %} brand-portal-section container"
   >
     <div class="text-container text-left">
-      <p>{{ content.description_translate|linebreaksbr }}</p>
+      <div>{{ content.description_translate|safe|linebreaksbr }}</div>
     </div>
     {% if content.image %}
     <div class="services-offer-image news-d">
@@ -101,13 +101,13 @@
             <img
               loading="lazy"
               src="{{ news.image.url }}"
-              alt="{{ news.title_translate }}"
+              alt="{{ news.title_translate|safe }}"
             />
             {% endif %}
           </div>
           <div class="news-content">
-            <p>{{ news.content_translate|truncatewords:10 }}</p>
-             <a href="{% url 'news:news_detail' news.pk %}" aria-label="{{ news.title_translate }}"><h2>{{ news.title_translate|linebreaksbr }}</h2> <span>{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></span></a>
+            <p>{{ news.content_translate|safe|truncatewords:10 }}</p>
+             <a href="{% url 'news:news_detail' news.pk %}" aria-label="{{ news.title_translate|safe }}"><h2>{{ news.title_translate|safe|linebreaksbr }}</h2> <span>{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></span></a>
           </div>
         </div>
         {% empty %} {% endfor %}
