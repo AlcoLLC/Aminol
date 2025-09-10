@@ -8,6 +8,7 @@ from .models import News, News_Content
 class NewsContentInline(TranslationTabularInline):
     model = News_Content
     extra = 1
+    exclude = ('description',)
 
 @admin.register(News)
 class NewsAdmin(TranslationAdmin):
@@ -20,7 +21,10 @@ class NewsAdmin(TranslationAdmin):
     
     fieldsets = (
         ('News Information', {
-            'fields': ('title', 'content', 'is_active', 'title_translate', 'content_translate')
+            'fields': ('slug', 'is_active', 'title_translate', 'content_translate')
+        }),
+        ('SEO', {
+            'fields': ('meta_title', 'meta_description', 'meta_keywords'),
         }),
         ('Media', {
             'fields': ('image', 'image_preview')
@@ -30,6 +34,7 @@ class NewsAdmin(TranslationAdmin):
             'classes': ('collapse',)
         }),
     )
+
     
     def image_preview(self, obj):
         if obj.image:
