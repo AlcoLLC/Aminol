@@ -26,7 +26,7 @@
     {
       "@type": "NewsArticle",
       "headline": "{{ news.title_translate|striptags }}",
-      "description": "{{ news.content_translate|striptags|truncatechars:160 }}",
+      "description": "{{ news.content_translate|safe|striptags|truncatechars:160 }}",
       "image": "{{ news.image.url|default:'' }}",
       "datePublished": "{{ news.published_date|date:'c' }}",
       "author": {
@@ -75,15 +75,15 @@
                     <div class="news-card">
                         <div class="news-image">
                             {% if news.image %}
-                                <img loading="lazy" src="{{ news.image.url }}" alt="{{ news.title }}" />
+                                <img loading="lazy" src="{{ news.image.url }}" alt="{{ news.title_translate|safe }}" />
                             {% else %}
                                 <img loading="lazy" src="{% static 'images_folder/zavod.webp' %}" alt="{% trans 'Default news image' %}" />
                             {% endif %}
                         </div>
                         <div class="news-content">
-                            <p>{{ news.content_translate|truncatewords:10 }}</p>
+                            <p>{{ news.content_translate|safe|truncatewords:10 }}</p>
 
-                            <a href="{% url 'news:news_detail' news.pk %}" aria-label="{{ news.title_translate }}"><h2>{{ news.title_translate|linebreaksbr }}</h2> <span>{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></span></a>
+                            <a href="{% url 'news:news_detail' news.pk %}" aria-label="{{ news.title_translate|safe }}"><h2>{{ news.title_translate|safe|linebreaksbr }}</h2> <span>{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></span></a>
                         </div>
                     </div>
                 {% empty %}
@@ -104,14 +104,14 @@
                         <div class="news-card">
                             <div class="news-image">
                                 {% if news.image %}
-                                    <img loading="lazy" src="{{ news.image.url }}" alt="{{ news.title_translate }}" />
+                                    <img loading="lazy" src="{{ news.image.url }}" alt="{{ news.title_translate|safe }}" />
                                 {% else %}
                                     <img loading="lazy" src="{% static 'images_folder/zavod.webp' %}" alt="{% trans 'Default news image' %}" />
                                 {% endif %}
                             </div>
                             <div class="news-content">
-                                <p>{{ news.content_translate|truncatewords:10 }}</p>
-                            <a href="{% url 'news:news_detail' news.pk %}" aria-label="{{ news.title_translate }}"><h2>{{ news.title_translate|linebreaksbr }}</h2> <span>{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></span></a>
+                                <p>{{ news.content_translate|safe|truncatewords:10 }}</p>
+                            <a href="{% url 'news:news_detail' news.pk %}" aria-label="{{ news.title_translate|safe }}"><h2>{{ news.title_translate|safe|linebreaksbr }}</h2> <span>{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></span></a>
 
                             
                             </div>
