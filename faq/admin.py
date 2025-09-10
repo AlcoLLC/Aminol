@@ -4,13 +4,13 @@ from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 
 @admin.register(FAQ)
 class FAQAdmin(TranslationAdmin):
-    list_display = ('question', 'order', 'is_active', 'created_at', 'updated_at')
+    list_display = ('question_translate', 'order', 'is_active', 'created_at', 'updated_at')
     list_filter = ('is_active',)
-    search_fields = ('question', 'answer')
+    search_fields = ('question_translate', 'answer_translate')
     list_editable = ('order', 'is_active')
     fieldsets = (
         (None, {
-            'fields': ('question', 'answer', 'question_translate', 'answer_translate')
+            'fields': ('question_translate', 'answer_translate')
         }),
         ('Settings', {
             'fields': ('order', 'is_active')

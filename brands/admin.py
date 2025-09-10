@@ -5,6 +5,7 @@ from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 class Brand_Portal_ContentInline(TranslationTabularInline):
     model = Brand_Portal_Content
     extra = 1
+    exclude=('title', 'description')
 
     class Media:
         js = (
@@ -19,9 +20,10 @@ class Brand_Portal_ContentInline(TranslationTabularInline):
 
 @admin.register(Brand_Portal)
 class Brand_PortalAdmin(TranslationAdmin):
-    list_display = ('title', 'description')
-    search_fields = ('title',)
+    list_display = ('title_translate', 'description_translate')
+    search_fields = ('title_translate',)
     inlines = [Brand_Portal_ContentInline]
+    exclude=('title', 'description')
 
     class Media:
         js = (
@@ -36,10 +38,11 @@ class Brand_PortalAdmin(TranslationAdmin):
 
 @admin.register(Brand_Portal_Content)
 class Brand_Portal_ContentAdmin(TranslationAdmin):
-    list_display = ('title', 'brand_portal', 'created_at', 'updated_at')
+    list_display = ('title_translate', 'brand_portal', 'created_at', 'updated_at')
     list_filter = ('brand_portal', 'created_at', 'updated_at')
-    search_fields = ('title', 'description')
+    search_fields = ('title_translate', 'description_translate')
     readonly_fields = ('created_at', 'updated_at')
+    exclude=('title', 'description')
 
     class Media:
         js = (

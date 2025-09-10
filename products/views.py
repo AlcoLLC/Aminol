@@ -78,21 +78,10 @@ def product_detail(request, slug):
         properties = ProductProperty.objects.filter(product=product).order_by('order', 'id')
         available_liters = product.liters.all().order_by('volume')
 
-        title = product.title_translate or ""
-        full_title = title
-        if title and len(title) < 60:
-            full_title = title + " " + _(" | AMINOL")
-
-        description = product.description_translate or ""
-        if description and len(description) < 160:
-            description += " " + (title or "")
-
         context = {
             'product': product,
             'available_liters': available_liters,
             'properties': properties,
-            'meta_title': full_title[:60],
-            'meta_description': description[:160],
         }
 
         return render(request, 'product_detail.html', context)
