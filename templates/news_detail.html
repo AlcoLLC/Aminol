@@ -55,6 +55,7 @@
     </div>
   </div>
   <div class="services-offer-section brand-portal-section-tab container">
+    {% if news.image %}
     <div class="services-offer-image news-d">
       <img
         loading="lazy"
@@ -62,6 +63,7 @@
         alt="{{ news.title_translate }}"
       />
     </div>
+    {% endif %}
     <div class="text-container text-left">
       <p>{{ news.content_translate|linebreaksbr }}</p>
     </div>
@@ -74,6 +76,7 @@
     <div class="text-container text-left">
       <p>{{ content.description_translate|linebreaksbr }}</p>
     </div>
+    {% if content.image %}
     <div class="services-offer-image news-d">
       <img
         loading="lazy"
@@ -81,6 +84,7 @@
         alt="{% trans 'News Content Image' %}"
       />
     </div>
+    {% endif %}
   </div>
   {% endfor %}
 
@@ -98,12 +102,6 @@
               loading="lazy"
               src="{{ news.image.url }}"
               alt="{{ news.title_translate }}"
-            />
-            {% else %}
-            <img
-              loading="lazy"
-              src="{% static 'images_folder/zavod.webp' %}"
-              alt="{% trans 'Default news image' %}"
             />
             {% endif %}
           </div>
