@@ -14,7 +14,7 @@ def news_list(request):
 
 def news_detail(request, slug):
     news = get_object_or_404(News, slug=slug, is_active=True)
-    contents = getattr(news, "contents", None)
+    contents = contents = news.contents.all()
     latest_news = News.objects.filter(is_active=True).exclude(pk=news.pk)[:3]
     
     context = {
