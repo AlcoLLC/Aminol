@@ -11,7 +11,6 @@ class News(models.Model):
 
     title_translate = models.CharField(max_length=255, blank=True, null=True)
     content_translate = RichTextUploadingField(blank=True, null=True) 
-
     slug = models.SlugField(max_length=255, unique=True, blank=True, null=True)
 
     meta_title = models.CharField(max_length=255, blank=True, null=True)
