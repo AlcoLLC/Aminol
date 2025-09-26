@@ -22,6 +22,11 @@
   color: #28315e;
   align-items: start;
 }
+
+.contact-grid-content .button-style:hover, .footer-content > div:last-of-type button:hover {
+   border: 1px solid #d40108 !important;
+  background-color: #d40108 !important;
+}
 .contact-flex-content {
   margin-bottom: 70px;
   display: flex;
