@@ -2421,3 +2421,11 @@
   border: 1px solid #d40108 !important;
   background-color: #d40108 !important;
 }
+
+.product-categories .section-header h1 {
+  margin: 40px 0;
+}
+
+.news-section .section-header h2 {
+  margin-bottom: 35px;
+}
