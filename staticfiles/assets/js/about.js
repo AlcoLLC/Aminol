@@ -195,4 +195,33 @@ document.addEventListener("DOMContentLoaded", function () {
     // Hər bir elementi izləməyə başlayırıq
     observer.observe(row);
   });
+
+   const certificationsSwiper = new Swiper('.certifications-carousel', {
+    // === Temel Ayarlar ===
+    // Slaytların tek tek gösterilmesini sağlar
+    slidesPerView: 1, 
+    // Slaytlar arası boşluk
+    spaceBetween: 30, 
+    // Carousel'in sonsuz döngüde çalışmasını sağlar
+    loop: true, 
+
+    // === Otomatik Oynatma ===
+    autoplay: {
+      delay: 5000, // 5 saniyede bir sonraki slayta geçer
+      disableOnInteraction: false, // Kullanıcı etkileşiminden sonra durmamasını sağlar
+    },
+
+    // === Sayfalama (Noktalar) ===
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true, // Noktalara tıklanarak geçiş yapılmasını sağlar
+    },
+
+    // === İleri/Geri Butonları ===
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+  
 });
