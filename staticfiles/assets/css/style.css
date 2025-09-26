@@ -1132,6 +1132,11 @@ footer .footer-contact>div:first-of-type .phone-number {
   border-radius: 3px;
   border: none;
   cursor: pointer;
+  transition: .5s;
+  -webkit-transition: .5s;
+  -moz-transition: .5s;
+  -ms-transition: .5s;
+  -o-transition: .5s;
 }
 footer .custom-hr {
   border: none;
