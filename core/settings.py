@@ -121,6 +121,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'core.urls'
 
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
