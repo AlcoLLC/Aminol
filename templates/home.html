@@ -7,7 +7,7 @@
 {% block keywords %}{% trans "home_keywords" %}{% endblock %}
 
 {% block page_css %}
-      <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}" />
+      <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.css' %}" />
 
     <link rel="preload" href="{% static 'images/aminol_cover_(1).webp' %}" as="PCMO">
     <link rel="preload" href="{% static 'images/truck_(1)_(2).webp' %}" as="HDEO">
@@ -249,7 +249,8 @@
           </p>
         </div>
         <div class="play-button" id="playButton">
-          <i>►</i>
+         <img src="{% static 'images/Polygon2.png' %}" alt="">
+          
         </div>
         <div class="video-container" id="videoContainer">
            <iframe width="560" loading="lazy" height="315" src="https://www.youtube-nocookie.com/embed/7NdBMqxDMrE?rel=0&showinfo=0&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>       
