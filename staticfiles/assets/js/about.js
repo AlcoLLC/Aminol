@@ -165,5 +165,34 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 300);
     }
   });
-  
+
+   const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      // Əgər element ekrana daxil olubsa...
+      if (entry.isIntersecting) {
+        // 'show' klasını əlavə edərək animasiyanı başladırıq
+        entry.target.classList.add('show');
+        // Animasiya bir dəfə işlədikdən sonra observer-i dayandırırıq (performans üçün)
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1 // Elementin 10%-i göründükdə animasiya başlasın
+  });
+
+  // Bütün .section-row elementlərini seçirik
+  const sectionRows = document.querySelectorAll('.section-row');
+
+  sectionRows.forEach((row) => {
+    // Sizin HTML kodunuzdakı məntiqə əsasən:
+    // Əgər elementdə 'row-reverse' klası varsa, sağdan gəlsin
+    if (row.classList.contains('row-reverse')) {
+      row.classList.add('from-right');
+    } else {
+      // Yoxdursa, soldan gəlsin
+      row.classList.add('from-left');
+    }
+    // Hər bir elementi izləməyə başlayırıq
+    observer.observe(row);
+  });
 });
