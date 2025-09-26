@@ -131,13 +131,18 @@
           <div class="section-content" id="textContent">
             <h2>{% trans "Learn more" %}<br />{% trans "about production" %}</h2>
             <p>
-              {% trans "Aminol Lubricants produces and packages high-quality oils using premium imported base oils and
-              additives, formulated by expert engineers." %}
+              
+              {% blocktrans %}
+                Aminol Lubricants produces and packages high-quality oils using premium imported base oils and
+              additives, formulated by expert engineers.
+              {% endblocktrans %}
+              
             </p>
           </div>
           <div class="play-button" id="playButton">
-            <i>►</i>
-          </div>
+         <img src="{% static 'images/Polygon2.png' %}" alt="">
+          
+        </div>
           <div class="video-container" id="videoContainer">
             <iframe src="https://www.youtube-nocookie.com/embed/nUTMgwKPOuo?rel=0&showinfo=0&modestbranding=1" 
               title="AMINOL - SPECIAL GENERATION" frameborder="0" loading="lazy"
