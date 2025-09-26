@@ -677,3 +677,22 @@
     text-align: center;
     letter-spacing: 0;
 }
+
+/* Animasiya üçün başlanğıc vəziyyət */
+.section-row {
+  /* Elementləri başlanğıcda ekran xaricində və şəffaf et */
+  opacity: 0;
+  transform: translateX(-100%); /* Standart olaraq soldan gələcək */
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+}
+
+/* Sağdan gəlməli olan elementlər üçün (.row-reverse klassı olanlar) */
+.section-row.row-reverse {
+  transform: translateX(100%);
+}
+
+/* Element ekrana daxil olduqda bu klass əlavə ediləcək */
+.section-row.visible {
+  opacity: 1;
+  transform: translateX(0); /* Öz orijinal mövqeyinə qayıt */
+}
