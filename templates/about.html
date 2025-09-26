@@ -280,14 +280,25 @@
 
 
     <div class="container">
-      {% for documents_cert in documents_certs %}
+     <div class="swiper certifications-carousel" id="certifications-carousel">
+  <div class="swiper-wrapper">
+    
+    {% for documents_cert in documents_certs %}
+    <div class="swiper-slide">
       <div class="certifications-container">
-        <img loading="lazy" src="{% static '/images/certifications.webp' %}" alt="Certifications Image" />
+        <img loading="lazy" src="{% static '/images/certifications.webp' %}" alt="{{ documents_cert.title_translate }}" />
         <h3>{{ documents_cert.title_translate|linebreaksbr }}</h3>
         <p>{{ documents_cert.description_translate|linebreaksbr }}</p>
       </div>
-      <div class="hidden-description">{{ documents_cert.description|safe_linebreaksbr }}</div>
-      {% endfor %}
+      <div class="hidden-description" style="display: none;">{{ documents_cert.description|safe_linebreaksbr }}</div>
+    </div>
+    {% endfor %}
+    </div>
+  <div class="swiper-button-next" id="swiper-button-next"></div>
+  <div class="swiper-button-prev" id="swiper-button-prev"></div>
+
+  <div class="swiper-pagination"></div>
+</div>
 
       <div class=" logos-section">
         <div id="wrapper2">
