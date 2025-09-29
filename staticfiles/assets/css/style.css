@@ -1558,3 +1558,40 @@ footer .alco-privacy p {
     gap: 0;
     max-width: 60%;
 }
+
+@media (max-width: 1500px) {
+ .products-dropdown-content {
+    max-width: 70%;
+ }
+}
+
+@media (max-width: 1250px) {
+ .products-dropdown-content {
+    max-width: 80%;
+ }
+}
+
+@media (max-width: 1130px) {
+ .products-dropdown-content {
+    max-width: 80%;
+ }
+}
+
+@media (max-width: 1100px) {
+ .products-dropdown-content a {
+    width: 34%;
+}
+}
+
+@media (max-width: 1000px) {
+ .dropdown-content a {
+    padding: 11px;
+}
+}
+
+@media (max-width: 650px) {
+ .navbar .search {
+    width: 40px;
+    height: 40px;
+}
+}
