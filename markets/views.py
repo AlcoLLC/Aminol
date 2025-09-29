@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import (
     Markets_Automotive, Markets_Automotive_Content,
     Markets_Industrial, Markets_Industrial_Content, Industries_Content,
-    Markets_Shipping, Markets_Shipping_Content
+    Markets_Shipping, Markets_Shipping_Content, Market_Shipping_Logos
 )
 from home.models import PartnerLogo, Gallery as GalleryImage, MarketLogo, Supplier
 
@@ -68,6 +68,7 @@ def shipping(request):
     images = GalleryImage.objects.all().order_by('order')
     market_logos = MarketLogo.objects.all()
     partner_logos = PartnerLogo.objects.all()
+    market_shipping_logos = Market_Shipping_Logos.objects.all().order_by('order')
     
     if shipping_service:
         shipping_contents = Markets_Shipping_Content.objects.filter(
@@ -82,5 +83,6 @@ def shipping(request):
         'market_logos': market_logos,
         'partner_logos': partner_logos,
         'supplier_logos': supplier_logos,
+        'market_shipping_logos': market_shipping_logos,
     }
     return render(request, 'markets_shipping.html', context)
