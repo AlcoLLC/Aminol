@@ -92,3 +92,10 @@ class Markets_Shipping_Content(models.Model):
 
     def __str__(self):
         return f"{self.title_translate}"
+    
+class Market_Shipping_Logos(models.Model):
+    logo = models.ImageField(upload_to='markets_shipping_logos/')
+    order = models.IntegerField(default=0)
+
+    def __str__(self):
+        return f"Logo {self.id}"

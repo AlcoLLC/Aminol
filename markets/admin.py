@@ -3,7 +3,7 @@ from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 from .models import (
     Markets_Automotive, Markets_Automotive_Content,
     Markets_Industrial, Markets_Industrial_Content, Industries_Content,
-    Markets_Shipping, Markets_Shipping_Content
+    Markets_Shipping, Markets_Shipping_Content, Market_Shipping_Logos
 )
 
 class Markets_Automotive_ContentInline(TranslationTabularInline):
@@ -76,3 +76,8 @@ class Markets_ShippingAdmin(TranslationAdmin):
         css = {
             'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
         }
+
+@admin.register(Market_Shipping_Logos)
+class MarketShippingLogosAdmin(admin.ModelAdmin):
+    list_display = ('id', 'order')
+    ordering = ('order',)
