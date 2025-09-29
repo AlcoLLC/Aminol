@@ -38,7 +38,7 @@
 .services-offer-section .text-container {
   width: 100%;
   color: #28315e;
-  padding: 15px;
+  margin-bottom: 15px;
 }
 
 .services-offer-section.reverse .text-container {
@@ -580,10 +580,9 @@
 }
 
 .news-content-section .services-offer-image {
-  padding: 15px;
+  margin-bottom: 33px;
 }
 .news-content-section{
-  padding: 15px;
   flex-direction: column;
 }
 
