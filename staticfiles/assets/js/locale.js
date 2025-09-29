@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
             dropdownBackground.style.height = "385px";
         } else if (window.innerWidth > 1100) {
             // width > 1100
-            dropdownBackground.style.height = "350px";
+            dropdownBackground.style.height = "300px";
         } 
         } else {
     // width ≤ 1000
