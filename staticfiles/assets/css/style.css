@@ -1586,6 +1586,7 @@ footer .alco-privacy p {
 @media (max-width: 1100px) {
  .dropdown-content a {
     padding: 11px;
+    line-height: 20px;
 }
 }
 
