@@ -1553,7 +1553,7 @@ footer .alco-privacy p {
 
 .products-dropdown-content {
  display: flex !important;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
     gap: 0;
     max-width: 60%;
@@ -1583,7 +1583,7 @@ footer .alco-privacy p {
 }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
  .dropdown-content a {
     padding: 11px;
 }
