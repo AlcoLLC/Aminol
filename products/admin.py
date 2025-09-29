@@ -30,7 +30,7 @@ class ProductGroupAdmin(TranslationAdmin):
     list_display = ('title_translate', 'slug', 'image', 'in_home', 'in_navbar', 'order')
     prepopulated_fields = {'slug': ('title_translate',)}
     search_fields = ('title_translate',)
-    list_editable = ('in_home',)
+    list_editable = ('in_navbar',)
     inlines = [ProductGroupCategoryInline]
     exclude=('title', 'description')
     
