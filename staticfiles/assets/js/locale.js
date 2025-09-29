@@ -132,6 +132,17 @@ document.addEventListener("DOMContentLoaded", function () {
   if (dropdownBackground) {
     dropdowns.forEach((dropdown) => {
       dropdown.addEventListener("mouseenter", function () {
+        // YENİ EKLENEN KOD BAŞLANGICI
+        // Üzerine gelinen dropdown'un "products-dropdown" class'ına sahip olup olmadığını kontrol et
+        if (this.classList.contains('products-dropdown')) {
+          // Eğer evetse, arkaplan yüksekliğini 350px yap
+          dropdownBackground.style.height = "300px";
+        } else {
+          // Değilse, yüksekliği sıfırla (veya varsayılan bir değere ayarla)
+          dropdownBackground.style.height = "";
+        }
+        // YENİ EKLENEN KOD SONU
+
         dropdownBackground.style.display = "block";
         dropdownBackground.style.visibility = "visible";
         dropdownBackground.style.opacity = "1";
