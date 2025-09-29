@@ -310,7 +310,7 @@
 }
 
 .certifications-container p {
-  width: 63%;
+  width: 55%;
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
@@ -810,6 +810,13 @@
     width: 100%;
     height: 490px; 
     z-index: 1; 
+}
+
+.certifications-carousel .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 /* GÜNCELLENDİ: Slider'ın kendisi */
