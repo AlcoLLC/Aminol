@@ -136,11 +136,17 @@ document.addEventListener("DOMContentLoaded", function () {
         // Üzerine gelinen dropdown'un "products-dropdown" class'ına sahip olup olmadığını kontrol et
         if (this.classList.contains('products-dropdown')) {
           // Eğer evetse, arkaplan yüksekliğini 350px yap
-          dropdownBackground.style.height = "300px";
+          if (window.innerWidth <= 1100 && window.innerWidth > 1000) {
+            // 1000 < width ≤ 1100
+            dropdownBackground.style.height = "385px";
+        } else if (window.innerWidth > 1100) {
+            // width > 1100
+            dropdownBackground.style.height = "350px";
+        } 
         } else {
-          // Değilse, yüksekliği sıfırla (veya varsayılan bir değere ayarla)
-          dropdownBackground.style.height = "";
-        }
+    // width ≤ 1000
+    dropdownBackground.style.height = "320px";
+}
         // YENİ EKLENEN KOD SONU
 
         dropdownBackground.style.display = "block";

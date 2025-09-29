@@ -75,6 +75,11 @@
                         {{ group.title_translate }}
                       </a>
                     {% endfor %}
+
+                    <a href="{% url 'products:product_list' %}"
+                        aria-label="Products Page">
+                         {% trans "All Products" %}
+                      </a>
                   </div>
                 </li>
 
