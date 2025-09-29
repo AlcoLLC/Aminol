@@ -17,6 +17,11 @@
   vertical-align: middle;
   transition: color 0.3s !important;
 }
+
+#productsDropdown a.active:not(.dropdown-content a.active)::after {
+  width: 100% !important;
+}
+
 .dropdown-background,
 .dropdown-content {
   transition: opacity 0.3s, visibility 0.3s;
@@ -128,10 +133,17 @@ nav {
   font-weight: 400;
   font-size: 12px;
 }
+/* Bu sizin mövcud kodunuzdur, ikonun və digər menyuların rəngini dəyişir */
 .navbar .nav-section .nav-bottom ul li .dropdown-head:hover {
   color: #f92b3f !important;
   cursor: default;
 }
+
+/* Bu yeni koddur, "Products" yazısının da eyni anda qırmızı olmasını təmin edir */
+.navbar .nav-section .nav-bottom ul li .dropdown-head:hover a {
+  color: #f92b3f !important;
+}
+
 .mobile-menu .mobile-dropdown-head.active,
 .navbar-dark .hamburger,
 .navbar-dark .nav-section .nav-bottom ul li .dropdown-head,
@@ -566,7 +578,7 @@ nav {
 }
 .shared-section {
   position: relative;
-  margin: 70px auto;
+  margin: 125px auto;
 }
 .shared-section .container {
   display: flex;
@@ -1532,4 +1544,10 @@ footer .alco-privacy p {
   color: #155724;
   background-color: #d4edda;
   border-color: #c3e6cb;
+}
+
+.products-dropdown-content {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }

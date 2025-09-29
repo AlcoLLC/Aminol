@@ -1207,6 +1207,10 @@
   margin: 100px auto !important;
 }
 
+.news-page-section {
+  margin: 50px auto !important;
+}
+
 .latest-news {
   padding: 100px 0 0;
   display: flex;

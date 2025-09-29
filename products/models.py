@@ -11,6 +11,7 @@ class Product_group(models.Model):
     slug = models.SlugField(max_length=255, unique=True)
     in_home = models.BooleanField(default=False, verbose_name="In Home")
     order = models.IntegerField(default=0)
+    in_navbar = models.BooleanField(default=False, verbose_name="In Navbar")
 
     title_translate = models.CharField(max_length=255, blank=True, null=True)
     description_translate = models.TextField(blank=True, null=True)
