@@ -585,6 +585,7 @@ nav {
   display: flex;
   align-items: center;
   gap: 30px;
+  justify-content: end;
 }
 .shared-section img {
     width: 380px;
@@ -603,6 +604,7 @@ nav {
 }
 .shared-section .shared-description {
   color: #fff;
+      width: 46%;
 }
 .shared-section .shared-description p {
   font-weight: 400;
@@ -680,6 +682,9 @@ nav {
     align-items: center;
     justify-content: center;
     text-align: center;
+  }
+  .shared-section .shared-description{
+    width: 100%;
   }
   .shared-section img {
     width: 100%;
