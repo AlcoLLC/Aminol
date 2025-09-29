@@ -1842,7 +1842,7 @@
 .logos-section #content2,
 .logos-section #content3 {
   display: grid;
-  grid-gap: 115px;
+  grid-gap: 65px;
   grid-auto-flow: column;
   margin: auto;
   box-sizing: border-box;
