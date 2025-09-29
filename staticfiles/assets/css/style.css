@@ -571,12 +571,12 @@ nav {
 .shared-section .container {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: 30px;
 }
 .shared-section img {
   width: 380px;
-  max-height: 380px;
-  object-fit: contain;
+      height: 400px;
+    object-fit: cover;
 }
 .about-shared-section img {
   width: 500px;
@@ -622,7 +622,7 @@ nav {
   }
   .shared-section img {
     width: 350px;
-    max-height: 350px;
+    /* max-height: 350px; */
   }
   .shared-section .container {
     gap: 25px;
@@ -651,7 +651,7 @@ nav {
 }
 @media (max-width: 790px) {
   .shared-background {
-    height: 400px;
+    height: 440px;
     top: 60%;
   }
   .shared-section {
@@ -665,7 +665,7 @@ nav {
   }
   .shared-section img {
     width: 100%;
-    max-height: 250px;
+        height: 320px;
   }
   .shared-section .shared-description .button-style {
     margin: 20px auto;
@@ -1024,7 +1024,7 @@ nav {
     line-height: 30px;
   }
   .shared-background {
-    height: 310px;
+    height: 340px;
     top: 60%;
   }
   .shared-section .container {
@@ -1032,7 +1032,7 @@ nav {
     text-align: center;
   }
   .shared-section img {
-    max-height: 20vh;
+    max-height: 250px;
   }
   .shared-section .shared-description p {
     font-size: 12px;

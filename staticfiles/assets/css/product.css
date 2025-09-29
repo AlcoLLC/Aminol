@@ -731,7 +731,7 @@
   .product-detail-container
   .product-details
   .product-description {
-  font-weight: 300;
+  font-weight: 400;
   text-align: justify;
   font-size: 14px;
   line-height: 24.03px;
@@ -766,7 +766,7 @@
   .product-detail-container
   .product-details.featured-benefits
   p {
-  font-weight: 300;
+  font-weight: 400;
 }
 .product-detail-section .product-detail-container .product-image {
   width: 40%;
