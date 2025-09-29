@@ -1924,7 +1924,7 @@
   .logos-section #content1,
   .logos-section #content2,
   .logos-section #content3 {
-    grid-gap: 50px;
+    grid-gap: 50px !important;
   }
 
   .logos-section .item {
@@ -1976,7 +1976,7 @@
   .logos-section #content1,
   .logos-section #content2,
   .logos-section #content3 {
-    grid-gap: 40px;
+    grid-gap: 40px !important;
   }
 
   .logos-section .item {
@@ -2005,7 +2005,7 @@
   .logos-section #content1,
   .logos-section #content2,
   .logos-section #content3 {
-    grid-gap: 30px;
+    grid-gap: 30px !important;
   }
 
   .partners-section .section-content:not(:first-child) h2,
@@ -2025,7 +2025,7 @@
   .logos-section #content1,
   .logos-section #content2,
   .logos-section #content3 {
-    grid-gap: 28px;
+    grid-gap: 28px !important;
   }
 
   .logos-section .item {

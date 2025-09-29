@@ -476,11 +476,7 @@ nav {
   .navbar .nav-section .nav-bottom ul {
     gap: 35px;
   }
-  .navbar .nav-section .nav-bottom ul li .dropdown-head,
-  .navbar .nav-section .nav-bottom ul li a {
-    font-size: 14px;
-    line-height: 20px;
-  }
+ 
   .navbar .nav-section .nav-top ul li a {
     font-size: 12px;
     line-height: 16px;
@@ -1590,19 +1586,41 @@ footer .alco-privacy p {
 }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
  .products-dropdown-content a {
     width: 42%;
 }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 680px) {
+     .products-dropdown-content a {
+        width: 46%;
+    }
+}
+
+@media (max-width: 750px) {
  .navbar .search {
     width: 40px;
     height: 40px;
 }
+.navbar .search i {
+        font-size: 14px;
+}
+    .aminol-logo {
+        width: 115px;
+    }
 }
 
 .dropdown-content a.bold {
   font-weight: bold !important;
+}
+
+.logos-section #content2 {
+  grid-gap: 60px !important;
+}
+
+@media (max-width: 1200px) { .logos-section #content2
+ {
+        grid-gap: 60px !important;
+    }
 }

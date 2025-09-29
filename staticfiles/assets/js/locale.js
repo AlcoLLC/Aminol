@@ -135,7 +135,14 @@ document.addEventListener("DOMContentLoaded", function () {
         // YENİ EKLENEN KOD BAŞLANGICI
         // Üzerine gelinen dropdown'un "products-dropdown" class'ına sahip olup olmadığını kontrol et
         if (this.classList.contains('products-dropdown')) {
+          // Eğer evetse, arkaplan yüksekliğini 350px yap
+          if (window.innerWidth >= 1100) {
+            // Eğer ekran 1100px veya daha darsa, yüksekliği 385px yap
+            dropdownBackground.style.height = "360px";
+        } else {
+            // Daha geniş ekranlar için yüksekliği 350px yap
             dropdownBackground.style.height = "300px";
+        }
         } else {
           // Değilse, yüksekliği sıfırla (veya varsayılan bir değere ayarla)
           dropdownBackground.style.height = "";
