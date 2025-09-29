@@ -27,9 +27,10 @@ class ProductGroupCategoryInline(TranslationTabularInline):
 
 @admin.register(Product_group)
 class ProductGroupAdmin(TranslationAdmin):
-    list_display = ('title_translate', 'slug', 'image', 'in_home')
+    list_display = ('title_translate', 'slug', 'image', 'in_home', 'in_navbar', 'order')
     prepopulated_fields = {'slug': ('title_translate',)}
     search_fields = ('title_translate',)
+    list_editable = ('in_home',)
     inlines = [ProductGroupCategoryInline]
     exclude=('title', 'description')
     
