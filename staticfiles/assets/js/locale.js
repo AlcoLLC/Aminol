@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
           // Eğer evetse, arkaplan yüksekliğini 350px yap
           if (window.innerWidth >= 1100) {
             // Eğer ekran 1100px veya daha darsa, yüksekliği 385px yap
-            dropdownBackground.style.height = "360px";
+            dropdownBackground.style.height = "300px";
         } else {
             // Daha geniş ekranlar için yüksekliği 350px yap
             dropdownBackground.style.height = "300px";
