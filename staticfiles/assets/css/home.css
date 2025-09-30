@@ -1024,7 +1024,7 @@
 }
 
 .square-img {
-      height: 415px !important;
+      height: 359px !important;
 }
 
 .innovation-technology h2 {
@@ -1061,6 +1061,9 @@
     width: 300px;
     height: 300px;
   }
+  .innovation-technology .image-container .innovation-image.square-img {
+    height: 250px !important;
+  }
 
   .innovation-technology h2 {
     font-weight: 600;
@@ -1085,6 +1088,10 @@
   .innovation-technology .image-container .innovation-image {
     width: 250px;
     height: 250px;
+  }
+
+  .innovation-technology .image-container .innovation-image.square-img {
+    height: 210px !important;
   }
 
   .innovation-technology h2 {
@@ -1139,6 +1146,10 @@
     height: 300px;
   }
 
+  .innovation-technology .image-container .innovation-image.square-img {
+    height: 245px !important;
+  }
+
   .innovation-technology h2 {
     font-size: 24px;
     line-height: 25px;
@@ -1162,6 +1173,10 @@
     height: 250px;
   }
 
+  .innovation-technology .image-container .innovation-image.square-img {
+    height: 210px !important;
+  }
+
   .innovation-technology .section .content {
     width: 80%;
   }
@@ -1171,6 +1186,10 @@
   .innovation-technology .image-container .innovation-image {
     width: 220px;
     height: 220px;
+  }
+
+  .innovation-technology .image-container .innovation-image.square-img {
+    height: 180px !important;
   }
 
   .slide-under-img {
@@ -1184,6 +1203,10 @@
   .innovation-technology .image-container .innovation-image {
     width: 200px;
     height: 200px;
+  }
+
+  .innovation-technology .image-container .innovation-image.square-img {
+    height: 165px !important;
   }
 
   .slide-under-img {
@@ -1203,6 +1226,9 @@
     width: 180px;
     height: 180px;
   }
+      .innovation-technology .image-container .innovation-image.square-img {
+        height: 150px !important;
+    }
 
   .slide-under-img {
     width: 80px;
@@ -1516,7 +1542,7 @@
 .brochure {
   position: relative;
   z-index: -5;
-  width: 50%;
+  width: 100%;
   margin-top: -50px;
 }
 
