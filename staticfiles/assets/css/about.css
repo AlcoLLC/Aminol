@@ -73,6 +73,15 @@
     padding: 8px 4px;
     font-size: 11px;
   }
+  .navbar .nav-section .nav-bottom ul li .dropdown-head, .navbar .nav-section .nav-bottom ul li a {
+    font-size: 14px;
+}
+}
+
+@media screen and (max-width: 770px) {
+  .navbar .nav-section .nav-bottom ul li .dropdown-head, .navbar .nav-section .nav-bottom ul li a {
+    font-size: 14px;
+}
 }
 
 @media (max-width: 650px) {

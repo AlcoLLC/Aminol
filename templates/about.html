@@ -73,14 +73,28 @@
     </div>
 
     <!-- Shared Section -->
-    {% if about_aminol %}
-    <div class="shared-section about-shared-section">
-      <div class="shared-background"></div>
       <div class="container">
-        <img src="{{ about_aminol.shared_image.url }}" alt="About Aminol" />
+        <div class="about-map-section">
+        <div class="about-map-images-container">
+          <div class="about-map-image-section">
+          <img src="{% static 'images/MAP.webp' %}" alt="About Aminol" />
+        </div>
+        <div class="about-map-count-image-section">
+          <img src="{% static 'images/MAP2.png' %}" alt="">
+        </div>
+        </div>
+        <div class="about-map-text-section">
+          <p class="about-map-text-header-text-section">Export <br> Markets</p>
+          <p class="about-map-text-content-section">Powered by <br>
+            Global Industrial Leaders</p>
+          <p class="about-map-text-logos">In partnership with:</p>
+          <img class="logos-image" src="{% static 'images/MAP3.png' %}" alt="">
+          <p class="about-map-text-logos">100+ OEM Approvals on key products:</p>
+          <img class="logos-image" src="{% static 'images/MAP4.png' %}" alt="">
+
+        </div>
       </div>
-    </div>
-    {% endif %}
+      </div>
 
     <div class="shared-images-section">
       <div class="section-header">
