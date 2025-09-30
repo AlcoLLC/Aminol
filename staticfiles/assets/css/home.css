@@ -1015,8 +1015,16 @@
   height: 427px;
   object-fit: cover;
   display: block;
+
+}
+
+.circle-img {
   border-radius: 50%;
   max-width: calc(100vw - 40px);
+}
+
+.square-img {
+      height: 415px !important;
 }
 
 .innovation-technology h2 {
@@ -1731,7 +1739,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("../../images/shutterstock.webp");
+  background-image: url("../../images/shutterstock1.webp");
   background-size: 100%;
   background-repeat: no-repeat;
   z-index: 0;
