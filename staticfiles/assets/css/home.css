@@ -64,40 +64,40 @@
 }
 
 .home-header .swiper-slide_one {
-  background-image: url("../../images/aminol_cover_(1).webp");
+  background-image: url("../../images/BAN9.webp");
 }
 
 .home-header .swiper-slide_two {
-  background-image: url("../../images/truck_(1)_(2).webp");
+  background-image: url("../../images/BAN8.webp");
   background-position: center;
 }
 
 .home-header .swiper-slide_three {
-  background-image: url("../../images/motorcycle_(1)_(2).webp");
+  background-image: url("../../images/BAN2.webp");
 }
 
 .home-header .swiper-slide_four {
-  background-image: url("../../images/home-slider4-new.webp");
+  background-image: url("../../images/BAN7.webp");
 }
 
 .home-header .swiper-slide_five {
-  background-image: url("../../images/home-slider5-new.webp");
+  background-image: url("../../images/BAN4.webp");
 }
 
 .home-header .swiper-slide_six {
-  background-image: url("../../images/home-slider6.webp");
+  background-image: url("../../images/BAN3.webp");
 }
 
 .home-header .swiper-slide_seven {
-  background-image: url("../../images/home-slider7.webp");
+  background-image: url("../../images/BAN1.webp");
 }
 
 .home-header .swiper-slide_eight {
-  background-image: url("../../images/home-slider8.webp");
+  background-image: url("../../images/BAN6.webp");
 }
 
 .home-header .swiper-slide_nine {
-  background-image: url("../../images/home-slider9.webp");
+  background-image: url("../../images/BAN5.webp");
 }
 
 .home-header .swiper-slide::after {
@@ -743,7 +743,7 @@
   margin: 50px auto;
   height: 435px;
   overflow: hidden;
-  background-image: url("../../images_folder/FR4A9403.webp");
+  background-image: url("../../images/youtube cover.webp");
   background-repeat: no-repeat;
 }
 
@@ -1753,7 +1753,7 @@
   margin-top: 30px;
   margin-bottom: 0 !important;
   width: 100%;
-  height: 1100px;
+  height: 820px;
   position: relative;
   overflow: hidden;
 }
@@ -1765,10 +1765,16 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("../../images/shutterstock1.webp");
+  background-image: url("../../images/oil.webp");
   background-size: 100%;
   background-repeat: no-repeat;
   z-index: 0;
+}
+
+@media (max-width: 1350px) {
+  .partners-section {
+    height: 790px;
+  }
 }
 
 .partners-section .section-content {
@@ -1904,7 +1910,7 @@
   }
 
   .partners-section {
-    height: 900px;
+            height: 710px;
   }
 
   .partners-section::before {
@@ -1971,9 +1977,6 @@
 }
 
 @media (max-width: 768px) {
-  .partners-section {
-    height: 750px;
-  }
 
   .partners-section::before {
     top: 450px;
@@ -2068,9 +2071,6 @@
 }
 
 @media (max-width: 1200px) {
-  .partners-section {
-    height: 900px;
-  }
 
   .partners-section::before {
     top: 500px;
@@ -2083,9 +2083,21 @@
   }
 }
 
+@media (max-width: 1050px) {
+     .partners-section {
+        height: 681px;
+    }
+}
+
+@media (max-width: 900px) {
+    .partners-section {
+        height: 663px;
+    }
+}
+
 @media (max-width: 770px) {
   .partners-section {
-    height: 750px;
+    height: 590px;
   }
 
   .partners-section::before {
@@ -2274,6 +2286,12 @@
     }
   }
 
+  @media (max-width: 680px) {
+    .partners-section {
+        height: 570px;
+    }
+}
+
   @media (max-width: 600px) {
     .shared-images-section .circular-image {
       width: 200px;
@@ -2295,6 +2313,9 @@
     .shared-images-section .shared-images-container p {
       font-size: 13px;
       line-height: 1.4;
+    }
+      .partners-section {
+        height: 557px;
     }
   }
 
@@ -2402,7 +2423,7 @@
 
 @media (max-width: 550px) {
   .partners-section {
-    height: 550px;
+    height: 495px;
   }
 
   .partners-section::before {
@@ -2426,6 +2447,12 @@
   .product-categories .category-card {
     height: 194px;
   }
+}
+
+@media (max-width: 445px) {
+    .partners-section {
+        height: 482px;
+    }
 }
 
 .product-categories .section-header h1,
