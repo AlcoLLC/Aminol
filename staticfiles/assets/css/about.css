@@ -104,7 +104,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("../../images/shutterstock.webp");
+  background-image: url("../../images/shutterstock1.webp");
   background-size: 120%;
   background-repeat: no-repeat;
   transform: scaleX(-1);
@@ -310,7 +310,7 @@
 }
 
 .certifications-container p {
-  width: 55%;
+  width: 63%;
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
@@ -791,61 +791,68 @@
 }
 
 .certifications-wrapper {
-    position: relative; /* İçindeki mutlak konumlandırılmış arka plan için gereklidir */
-    width: 100%;
-    /* Orijinal .certifications-container yüksekliğiniz neyse onu verin */
-    height: 100%; /* Ana sarmalayıcıyı doldurur */
-    margin-top: 40px;
-    margin-bottom: 100px;
-    display: flex; /* Swiper'ı dikey ve yatayda ortalamak için */
-    align-items: center;
-    justify-content: center;
+  position: relative;
+  /* İçindeki mutlak konumlandırılmış arka plan için gereklidir */
+  width: 100%;
+  /* Orijinal .certifications-container yüksekliğiniz neyse onu verin */
+  height: 100%;
+  /* Ana sarmalayıcıyı doldurur */
+  margin-top: 40px;
+  margin-bottom: 100px;
+  display: flex;
+  /* Swiper'ı dikey ve yatayda ortalamak için */
+  align-items: center;
+  justify-content: center;
 }
 
 /* YENİ: Sabit arka plan resminin stili */
 .certifications-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 490px; 
-    z-index: 1; 
+  position: absolute;
+  top: 0;
+  left: 44px;
+  width: 89%;
+  height: 560px;
+  z-index: 1;
 }
 
 .certifications-carousel .swiper-slide {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    height: 490px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 490px;
 }
 
 /* GÜNCELLENDİ: Slider'ın kendisi */
 .certifications-carousel {
-    position: relative; /* z-index'in çalışması için */
-    z-index: 2; /* Arka plan resminin ÖNÜNDE görünmesini sağlar */
-    width: 100%;
-    height: 100%; /* Ana sarmalayıcıyı doldurur */
+  position: relative;
+  /* z-index'in çalışması için */
+  z-index: 2;
+  /* Arka plan resminin ÖNÜNDE görünmesini sağlar */
+  width: 100%;
+  height: 100%;
+  /* Ana sarmalayıcıyı doldurur */
 }
 
 
 /* GÜNCELLENDİ: Artık sadece metinleri içeren konteyner */
 .certifications-container {
-    display: flex;
-    flex-direction: column;
-    row-gap: 20px;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #fff;
-    width: 100%;
-    height: 100%; /* Ana sarmalayıcıyı doldurur */
-      /* position: relative; */
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  /* Ana sarmalayıcıyı doldurur */
+  /* position: relative; */
   z-index: 1;
-    margin-top: 40px;
+  margin-top: 80px;
   margin-bottom: 60px;
-    
-    /* Artık position, z-index gibi özelliklere ihtiyacı yok */
+
+  /* Artık position, z-index gibi özelliklere ihtiyacı yok */
 }
 
 
@@ -879,6 +886,7 @@
 }
 
 @media (max-width: 710px) {
+
   #certifications-carousel #swiper-button-next,
   #certifications-carousel #swiper-button-prev {
     width: 50px;
@@ -899,7 +907,167 @@
     height: 40px;
   }
 
-  #certifications-carousel #swiper-button-next:after, #certifications-carousel #swiper-button-prev:after {
+  #certifications-carousel #swiper-button-next:after,
+  #certifications-carousel #swiper-button-prev:after {
     font-size: 20px !important;
+  }
 }
+
+@media (max-width: 950px) {
+  .certifications-container h3 {
+    font-size: 26px;
+  }
+
+  .certifications-container p {
+    font-size: 15px;
+    line-height: 20px;
+  }
+
+  .certifications-background {
+    height: 528px;
+  }
+}
+
+@media (max-width: 860px) {
+  .certifications-container p {
+    font-size: 14px;
+    line-height: 18px;
+    width: 64%;
+  }
+
+  .certifications-container h3 {
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .certifications-background {
+    height: 489px;
+  }
+
+  .certifications-container {
+    margin-top: 45px;
+  }
+}
+
+@media (max-width: 790px) {
+  .certifications-container p {
+    font-size: 13px;
+    line-height: 17px;
+  }
+
+  .certifications-container h3 {
+    font-size: 22px;
+    line-height: 25px;
+    padding-top: 3%;
+  }
+
+  .certifications-container {
+    margin-top: 0;
+  }
+
+  .certifications-background {
+    height: 450px;
+  }
+}
+
+@media (max-width: 700px) {
+  .certifications-container p {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .certifications-container h3 {
+    font-size: 20px;
+    line-height: 22px;
+    padding-top: 2%;
+  }
+
+  .certifications-background {
+    height: 435px;
+  }
+
+  #certifications-carousel #swiper-button-next,
+  #certifications-carousel #swiper-button-prev {
+    width: 40px;
+    height: 40px;
+  }
+
+  #certifications-carousel #swiper-button-next:after,
+  #certifications-carousel #swiper-button-prev:after {
+    font-size: 16px !important;
+  }
+}
+
+@media (max-width: 650px) {
+
+  #certifications-carousel #swiper-button-next,
+  #certifications-carousel #swiper-button-prev {
+    display: none;
+  }
+
+  .certifications-background {
+    left: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .certifications-container p {
+    font-size: 10px;
+    line-height: 15px;
+  }
+
+  .certifications-container h3 {
+    font-size: 18px;
+    line-height: 20px;
+    padding-top: 0%;
+  }
+
+  .certifications-background {
+    height: 410px;
+  }
+
+  .certifications-container {
+    margin-bottom: 85px;
+  }
+
+  .certifications-container h3 {
+    font-size: 16px;
+    line-height: 19px;
+  }
+}
+
+@media (max-width: 540px) {
+  .certifications-container p {
+    font-size: 9px;
+    line-height: 14px;
+  }
+
+  .certifications-container h3 {
+    font-size: 14px;
+    line-height: 17px;
+  }
+  .certifications-background {
+        height: 385px;
+    }
+    .certifications-container {
+        margin-bottom: 106px;
+    }
+}
+
+@media (max-width: 500px) {
+    .certifications-container p {
+        font-size: 8px;
+        line-height: 12px;
+    }
+        .certifications-container h3 {
+        font-size: 11px;
+        line-height: 13px;
+    }
+        .certifications-background {
+        height: 335px;
+    }
+        .certifications-container {
+        margin-bottom: 143px;
+    }
 }
