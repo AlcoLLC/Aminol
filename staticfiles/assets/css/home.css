@@ -223,7 +223,7 @@
 .section-header h2,
 .section-header h3,
 .section-header h2,
-.section-header h1 {
+.section-header h1, .about-aminol-text {
   position: relative;
   text-align: center;
 }
@@ -348,7 +348,7 @@
 .section-header h2,
 .section-header h3,
 .section-header h2,
-.section-header h1 {
+.section-header h1, .about-aminol-text {
   font-weight: 600;
   font-size: 42px;
   line-height: 48px;
@@ -390,6 +390,7 @@
   .section-header h2,
   .section-header h3,
   .section-header h2,
+  .about-aminol-text,
   .section-header h1 {
     font-size: 30px !important;
     line-height: 40px !important;
@@ -409,6 +410,7 @@
   .section-header h2,
   .section-header h3,
   .section-header h2,
+  .about-aminol-text,
   .section-header h1 {
     font-size: 24px !important;
     line-height: 30px !important;
@@ -1574,9 +1576,7 @@
     font-size: 14px;
   }
 
-  .brochure {
-    width: 60%;
-  }
+
 }
 
 @media (max-width: 520px) {
@@ -1637,6 +1637,7 @@
   .section-header h2,
   .section-header h3,
   .section-header h2,
+  .about-aminol-text,
   .section-header h1 {
     font-size: 18px !important;
     line-height: 25px !important;
@@ -1744,9 +1745,7 @@
     font-size: 10px;
   }
 
-  .brochure {
-    width: 75%;
-  }
+
 }
 
 .partners-section {
@@ -1970,10 +1969,6 @@
   .logos-section .item {
     width: 130px;
   }
-
-  .brochure {
-    margin-top: -50px;
-  }
 }
 
 @media (max-width: 768px) {
@@ -2019,10 +2014,6 @@
   .logos-section .item {
     width: 100px;
     max-height: 42px;
-  }
-
-  .brochure {
-    margin-top: 0;
   }
 }
 
