@@ -2156,3 +2156,7 @@ footer .alco-privacy p {
     margin-top: 0;
   }
 }
+
+.shared-images-container {
+  overflow: hidden;
+}
