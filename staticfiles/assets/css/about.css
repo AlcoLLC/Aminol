@@ -1,3 +1,6 @@
+body {
+  overflow-x: hidden;
+}
 .about-company-profile .section-content p {
   text-align: left;
 }
