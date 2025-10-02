@@ -77,9 +77,9 @@
                             {% endif %}
                         </div>
                         <div class="news-content">
-                            <p>{{ news.content_translate|safe|truncatewords:10 }}</p>
+                            <p>{{ news.content_translate|safe|truncatechars:100 }}</p>
 
-                            <a href="{% url 'news:news_detail' news.slug %}" aria-label="{{ news.title_translate|safe }}"><h2>{{ news.title_translate|safe|linebreaksbr }}</h2> <span>{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></span></a>
+                            <a href="{% url 'news:news_detail' news.slug %}" aria-label="{{ news.title_translate|safe }}"><h2>{{ news.title_translate|safe|linebreaksbr|truncatechars:100 }}</h2> <span>{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></span></a>
                         </div>
                     </div>
                 {% empty %}
