@@ -274,7 +274,12 @@ LOGGING = {
         },
     },
     'loggers': {
-        'yourapp.views': { 
+        'django': {
+        'handlers': ['console'],
+        'level': 'INFO',
+        'propagate': True,
+    },
+        'news.views': { 
             'handlers': ['file', 'console'],
             'level': 'INFO',
             'propagate': True,
