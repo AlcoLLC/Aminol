@@ -23,12 +23,12 @@ class News(models.Model):
         verbose_name_plural = "News"
 
     def __str__(self):
-        return self.title
+        return self.title_translate
 
     def save(self, *args, **kwargs):
-        if not self.slug and self.title:
+        if not self.slug and self.title_translate:
             from django.utils.text import slugify
-            base_slug = slugify(self.title)
+            base_slug = slugify(self.title_translate)
             slug = base_slug
             counter = 1
             while News.objects.filter(slug=slug).exclude(pk=self.pk).exists():
@@ -36,11 +36,11 @@ class News(models.Model):
                 counter += 1
             self.slug = slug
 
-        if not self.meta_title and self.title:
-            self.meta_title = self.title
+        if not self.meta_title and self.title_translate:
+            self.meta_title = self.title_translate
 
-        if not self.meta_description and self.content:
-            self.meta_description = self.content[:160]
+        if not self.meta_description and self.content_translate:
+            self.meta_description = self.content_translate[:160]
 
         super().save(*args, **kwargs)
 
@@ -54,4 +54,4 @@ class News_Content(models.Model):
     description_translate = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return f"{self.news.title} Content"
+        return f"{self.news.title_translate} Content"
