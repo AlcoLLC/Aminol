@@ -12,9 +12,9 @@ class NewsContentInline(TranslationTabularInline):
 
 @admin.register(News)
 class NewsAdmin(TranslationAdmin):
-    list_display = ['title', 'published_date', 'is_active', 'image_preview']
+    list_display = ['title_translate', 'published_date', 'is_active', 'image_preview']
     list_filter = ['is_active', 'published_date']
-    search_fields = ['title', 'content']
+    search_fields = ['title_translate', 'content_translate']
     list_editable = ['is_active']
     readonly_fields = ['image_preview']
     inlines = [NewsContentInline]
