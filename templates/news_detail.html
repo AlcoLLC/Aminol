@@ -51,7 +51,7 @@
 
   <div class="container">
     <div class="news-detail-top-content">
-      <h1>{{ news.title_translate|safe|linebreaksbr }}</h1>
+      <h1>{{ news.title_translate|safe }}</h1>
       <p>{{ news.published_date|date:"F d, Y" }}</p>
     </div>
   </div>
@@ -66,7 +66,7 @@
     </div>
     {% endif %}
     <div class="text-container text-left">
-      <div>{{ news.content_translate|safe|linebreaksbr }}</div>
+      <div>{{ news.content_translate|safe }}</div>
     </div>
   </div>
 
@@ -75,7 +75,7 @@
     class="services-offer-section news-content-section {% if forloop.counter|divisibleby:2 %}reverse{% endif %} brand-portal-section container"
   >
     <div class="text-container text-left">
-      <div>{{ content.description_translate|safe|linebreaksbr }}</div>
+      <div>{{ content.description_translate|safe }}</div>
     </div>
     {% if content.image %}
     <div class="services-offer-image news-d">
@@ -108,7 +108,7 @@
           </div>
           <div class="news-content">
             <p>{{ news.content_translate|safe|truncatewords:10 }}</p>
-             <a href="{% url 'news:news_detail' news.slug %}" aria-label="{{ news.title_translate|safe }}"><h2>{{ news.title_translate|safe|linebreaksbr }}</h2> <span>{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></span></a>
+             <a href="{% url 'news:news_detail' news.slug %}" aria-label="{{ news.title_translate|safe }}"><h2>{{ news.title_translate|safe }}</h2> <span>{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></span></a>
           </div>
         </div>
         {% empty %} {% endfor %}
