@@ -34,7 +34,7 @@ def create_search_queries(query):
     return queries
 
 def build_search_q(query, fields):
-    search_words = create_search_queries(query)
+    search_words = [word.strip() for word in query.split() if len(word.strip()) >= 2]
 
     if not search_words:
         return Q()
@@ -50,13 +50,12 @@ def build_search_q(query, fields):
     
     return final_q
 
-
 def search_view(request):
     query = request.GET.get('search', '').strip()
     results = []
     total_results = 0
     
-    if query and len(query) >= 2:  # Minimum 2 characters for search
+    if query and len(query) >= 2: 
         current_language = get_language()
         is_english = current_language == 'en'
         
