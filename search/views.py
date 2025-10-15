@@ -33,19 +33,22 @@ def create_search_queries(query):
     
     return queries
 
-
 def build_search_q(query, fields):
-    """
-    Build a Q object for searching across multiple fields with partial matching
-    """
-    q_objects = Q()
-    search_queries = create_search_queries(query)
-    
+    search_words = create_search_queries(query)
+
+    if not search_words:
+        return Q()
+
+    final_q = Q()
+
     for field in fields:
-        for search_term in search_queries:
-            q_objects |= Q(**{f"{field}__icontains": search_term})
+        field_q = Q()
+        for word in search_words:
+            field_q &= Q(**{f"{field}__icontains": word})
+        
+        final_q |= field_q
     
-    return q_objects
+    return final_q
 
 
 def search_view(request):
