@@ -470,12 +470,11 @@ def search_view(request):
                 'image': content.image.url if content.image else None
             })
 
-        # Search Documents & Certifications
         if is_english:
             cert_fields = ['title', 'description']
         else:
             cert_fields = ['title_translate', 'description_translate', 'title', 'description']
-        
+
         certifications_contents = DocumentsCertification.objects.filter(build_search_q(query, cert_fields)).distinct()
 
         for content in certifications_contents:
@@ -486,10 +485,9 @@ def search_view(request):
                 'description': description[:200] + '...' if description and len(description) > 200 else description or '',
                 'url': '/about/?tab=documents/',
                 'type': 'Documents & Certifications',
-                'image': content.image.url if content.image else None
+                'image': None 
             })
-        
-        # Search Production Content
+
         if is_english:
             production_fields = ['title', 'description']
         else:
