@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Filter header toggle functionality
   const filterHeaders = document.querySelectorAll(".filter-header");
-
   filterHeaders.forEach((header) => {
     header.addEventListener("click", function () {
       this.classList.toggle("active");
@@ -17,8 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
-
-  // Desktop filter - checkbox functionality without auto-submit
   const desktopCheckboxes = document.querySelectorAll(
     '.filter-container .checkbox-group input[type="checkbox"]'
   );
@@ -35,56 +31,189 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         label.classList.remove("selected-item");
       }
-      // Do NOT auto-submit form anymore
     });
   });
-
-  // Search input - only submit on Enter key press
   if (searchInput) {
     searchInput.addEventListener("keydown", function (e) {
       if (e.key === "Enter") {
-        e.preventDefault(); // Prevent default form submission
-        submitFilterForm();
+        e.preventDefault();
+        handleSearchSubmit();
       }
     });
   }
-
-  // Search button click handler
   const searchButton = document.querySelector(
     ".filter-container .search-button"
   );
   if (searchButton) {
     searchButton.addEventListener("click", function (e) {
       e.preventDefault();
-      submitFilterForm();
+      handleSearchSubmit();
     });
   }
-
-  // Desktop Filter Results Button
   const filterResultsBtn = document.getElementById("filterResultsBtn");
   if (filterResultsBtn) {
     filterResultsBtn.addEventListener("click", function () {
-      submitFilterForm();
+      handleFilterSubmit();
     });
   }
+  function handleSearchSubmit() {
+    const searchInput = document.querySelector(
+      '.filter-container input[name="search"]'
+    );
+    const searchTerm = searchInput.value.trim();
 
-  // Function to submit the filter form
-  function submitFilterForm() {
-    const form = document.getElementById("filterForm");
-    const pageInput = document.querySelector('input[name="page"]');
-    if (pageInput) {
-      pageInput.value = 1;
-    }
-    if (form) {
-      form.submit();
+    if (searchTerm) {
+      const searchUrl = `/products/search/${encodeURIComponent(searchTerm)}/`;
+      window.location.href = searchUrl;
+    } else {
+      handleFilterSubmit();
     }
   }
+  function handleFilterSubmit() {
+    const selectedFilters = getSelectedFilters();
+    const seoUrl = generateSeoFriendlyUrl(selectedFilters);
+    if (seoUrl) {
+      window.location.href = seoUrl;
+    } else {
+      window.location.href = "/products/";
+    }
+  }
+  function getSelectedFilters() {
+    const form = document.getElementById("filterForm");
+    const filters = {
+      product_groups: [],
+      segments: [],
+      oil_types: [],
+      viscosities: [],
+    };
+    const productGroupCheckboxes = form.querySelectorAll(
+      'input[name="product_group"]:checked'
+    );
+    const segmentCheckboxes = form.querySelectorAll(
+      'input[name="segments"]:checked'
+    );
+    const oilTypeCheckboxes = form.querySelectorAll(
+      'input[name="oil_type"]:checked'
+    );
+    const viscosityCheckboxes = form.querySelectorAll(
+      'input[name="viscosity"]:checked'
+    );
+    productGroupCheckboxes.forEach((cb) =>
+      filters.product_groups.push(cb.value)
+    );
+    segmentCheckboxes.forEach((cb) => filters.segments.push(cb.value));
+    oilTypeCheckboxes.forEach((cb) => filters.oil_types.push(cb.value));
+    viscosityCheckboxes.forEach((cb) => filters.viscosities.push(cb.value));
 
-  // Pagination functionality
+    return filters;
+  }
+  function generateSeoFriendlyUrl(filters) {
+    const { product_groups, segments, oil_types, viscosities } = filters;
+    if (
+      product_groups.length === 1 &&
+      segments.length === 0 &&
+      oil_types.length === 0 &&
+      viscosities.length === 0
+    ) {
+      return `/products/category/${product_groups[0]}/`;
+    }
+    if (
+      segments.length === 1 &&
+      product_groups.length === 0 &&
+      oil_types.length === 0 &&
+      viscosities.length === 0
+    ) {
+      return `/products/segment/${segments[0]}/`;
+    }
+    if (
+      oil_types.length === 1 &&
+      product_groups.length === 0 &&
+      segments.length === 0 &&
+      viscosities.length === 0
+    ) {
+      return `/products/oil-type/${oil_types[0]}/`;
+    }
+    if (
+      viscosities.length === 1 &&
+      product_groups.length === 0 &&
+      segments.length === 0 &&
+      oil_types.length === 0
+    ) {
+      return `/products/viscosity/${viscosities[0]}/`;
+    }
+    if (
+      product_groups.length === 1 &&
+      segments.length === 1 &&
+      oil_types.length === 0 &&
+      viscosities.length === 0
+    ) {
+      return `/products/category/${product_groups[0]}/${segments[0]}/`;
+    }
+    if (
+      product_groups.length === 1 &&
+      oil_types.length === 1 &&
+      segments.length === 0 &&
+      viscosities.length === 0
+    ) {
+      return `/products/category/${product_groups[0]}/oil-type/${oil_types[0]}/`;
+    }
+    if (
+      product_groups.length === 1 &&
+      viscosities.length === 1 &&
+      segments.length === 0 &&
+      oil_types.length === 0
+    ) {
+      return `/products/category/${product_groups[0]}/viscosity/${viscosities[0]}/`;
+    }
+    if (
+      segments.length === 1 &&
+      oil_types.length === 1 &&
+      product_groups.length === 0 &&
+      viscosities.length === 0
+    ) {
+      return `/products/segment/${segments[0]}/oil-type/${oil_types[0]}/`;
+    }
+    if (
+      segments.length === 1 &&
+      viscosities.length === 1 &&
+      product_groups.length === 0 &&
+      oil_types.length === 0
+    ) {
+      return `/products/segment/${segments[0]}/viscosity/${viscosities[0]}/`;
+    }
+    if (
+      product_groups.length > 0 ||
+      segments.length > 0 ||
+      oil_types.length > 0 ||
+      viscosities.length > 0
+    ) {
+      let queryParams = [];
+
+      if (product_groups.length > 0) {
+        product_groups.forEach((group) =>
+          queryParams.push(`product_group=${group}`)
+        );
+      }
+      if (segments.length > 0) {
+        segments.forEach((segment) => queryParams.push(`segments=${segment}`));
+      }
+      if (oil_types.length > 0) {
+        oil_types.forEach((oil_type) =>
+          queryParams.push(`oil_type=${oil_type}`)
+        );
+      }
+      if (viscosities.length > 0) {
+        viscosities.forEach((viscosity) =>
+          queryParams.push(`viscosity=${viscosity}`)
+        );
+      }
+      return `/products/?${queryParams.join("&")}`;
+    }
+    return "/products/";
+  }
   const prevButton = document.getElementById("prevPage");
   const nextButton = document.getElementById("nextPage");
   const pageNumbers = document.querySelectorAll(".page-number");
-
   if (prevButton) {
     prevButton.addEventListener("click", function () {
       if (!this.disabled) {
@@ -100,7 +229,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-
   if (nextButton) {
     nextButton.addEventListener("click", function () {
       if (!this.disabled) {
@@ -114,7 +242,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-
   pageNumbers.forEach((number) => {
     number.addEventListener("click", function (e) {
       e.preventDefault();
@@ -124,20 +251,16 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
-
   function navigateToPage(pageNum) {
-    const form = document.getElementById("filterForm");
-    const pageInput = document.querySelector('input[name="page"]');
-    if (pageInput && form) {
-      pageInput.value = pageNum;
-      form.submit();
-    }
-  }
+    const currentUrl = window.location.pathname;
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set("page", pageNum);
+    const newUrl = `${currentUrl}?${urlParams.toString()}`;
 
-  // Animation on scroll for sections
+    window.location.href = newUrl;
+  }
   checkScroll();
   window.addEventListener("scroll", checkScroll);
-
   function checkScroll() {
     const sections = document.querySelectorAll(".section");
     sections.forEach((section) => {
@@ -151,8 +274,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
-
-// Modal overlay functionality
 document.addEventListener("DOMContentLoaded", function () {
   const mobileFilterBtn = document.getElementById("filterMobileBtn");
   const productFilterModal = document.getElementById("productFilterModal");
@@ -160,8 +281,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const productSearchResultsBtn = document.getElementById(
     "productSearchResultsBtn"
   );
-
-  // Open modal
   if (mobileFilterBtn) {
     mobileFilterBtn.addEventListener("click", function () {
       productFilterModal.classList.add("show-modal");
@@ -188,8 +307,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-
-  // Close modal on escape key
   document.addEventListener("keydown", function (e) {
     if (
       e.key === "Escape" &&
@@ -198,8 +315,6 @@ document.addEventListener("DOMContentLoaded", function () {
       closeProductModal();
     }
   });
-
-  // Modal filter header toggle functionality - accordion style (only one open at a time)
   const modalFilterHeaders = document.querySelectorAll(".modal-filter-header");
   modalFilterHeaders.forEach((header) => {
     header.addEventListener("click", function () {
@@ -207,30 +322,23 @@ document.addEventListener("DOMContentLoaded", function () {
       const currentIcon = this.querySelector(".modal-filter-icon i");
       const isCurrentlyOpen =
         currentContent.classList.contains("modal-content-open");
-
-      // Close all other sections first
       modalFilterHeaders.forEach((otherHeader) => {
         if (otherHeader !== this) {
           const otherContent = otherHeader.nextElementSibling;
           const otherIcon = otherHeader.querySelector(".modal-filter-icon i");
 
-          // Close other sections
           otherHeader.classList.remove("modal-header-active");
           otherContent.classList.remove("modal-content-open");
           otherIcon.classList.remove("fa-chevron-up");
           otherIcon.classList.add("fa-chevron-down");
         }
       });
-
-      // Toggle current section
       if (!isCurrentlyOpen) {
-        // Open current section
         this.classList.add("modal-header-active");
         currentContent.classList.add("modal-content-open");
         currentIcon.classList.remove("fa-chevron-down");
         currentIcon.classList.add("fa-chevron-up");
       } else {
-        // Close current section if it was already open
         this.classList.remove("modal-header-active");
         currentContent.classList.remove("modal-content-open");
         currentIcon.classList.remove("fa-chevron-up");
@@ -238,14 +346,11 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
-
-  // Modal checkbox functionality
   const modalCheckboxes = document.querySelectorAll(
     '.modal-checkbox-group input[type="checkbox"]'
   );
   modalCheckboxes.forEach((checkbox) => {
     const label = checkbox.nextElementSibling;
-
     checkbox.addEventListener("change", function () {
       if (this.checked) {
         label.classList.add("modal-selected-item");
@@ -254,87 +359,186 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+  function getModalSelectedFilters() {
+    const modalForm = document.getElementById("modalFilterForm");
+    const filters = {
+      product_groups: [],
+      segments: [],
+      oil_types: [],
+      viscosities: [],
+    };
+    const productGroupCheckboxes = modalForm.querySelectorAll(
+      'input[name="product_group"]:checked'
+    );
+    const segmentCheckboxes = modalForm.querySelectorAll(
+      'input[name="segments"]:checked'
+    );
+    const oilTypeCheckboxes = modalForm.querySelectorAll(
+      'input[name="oil_type"]:checked'
+    );
+    const viscosityCheckboxes = modalForm.querySelectorAll(
+      'input[name="viscosity"]:checked'
+    );
+    productGroupCheckboxes.forEach((cb) =>
+      filters.product_groups.push(cb.value)
+    );
+    segmentCheckboxes.forEach((cb) => filters.segments.push(cb.value));
+    oilTypeCheckboxes.forEach((cb) => filters.oil_types.push(cb.value));
+    viscosityCheckboxes.forEach((cb) => filters.viscosities.push(cb.value));
 
-  // Search results button - collect form data and submit
+    return filters;
+  }
+  function generateModalSeoFriendlyUrl(filters) {
+    const { product_groups, segments, oil_types, viscosities } = filters;
+
+    if (
+      product_groups.length === 1 &&
+      segments.length === 0 &&
+      oil_types.length === 0 &&
+      viscosities.length === 0
+    ) {
+      return `/products/category/${product_groups[0]}/`;
+    }
+    if (
+      segments.length === 1 &&
+      product_groups.length === 0 &&
+      oil_types.length === 0 &&
+      viscosities.length === 0
+    ) {
+      return `/products/segment/${segments[0]}/`;
+    }
+    if (
+      oil_types.length === 1 &&
+      product_groups.length === 0 &&
+      segments.length === 0 &&
+      viscosities.length === 0
+    ) {
+      return `/products/oil-type/${oil_types[0]}/`;
+    }
+    if (
+      viscosities.length === 1 &&
+      product_groups.length === 0 &&
+      segments.length === 0 &&
+      oil_types.length === 0
+    ) {
+      return `/products/viscosity/${viscosities[0]}/`;
+    }
+    if (
+      product_groups.length === 1 &&
+      segments.length === 1 &&
+      oil_types.length === 0 &&
+      viscosities.length === 0
+    ) {
+      return `/products/category/${product_groups[0]}/${segments[0]}/`;
+    }
+    if (
+      product_groups.length === 1 &&
+      oil_types.length === 1 &&
+      segments.length === 0 &&
+      viscosities.length === 0
+    ) {
+      return `/products/category/${product_groups[0]}/oil-type/${oil_types[0]}/`;
+    }
+    if (
+      product_groups.length === 1 &&
+      viscosities.length === 1 &&
+      segments.length === 0 &&
+      oil_types.length === 0
+    ) {
+      return `/products/category/${product_groups[0]}/viscosity/${viscosities[0]}/`;
+    }
+    if (
+      segments.length === 1 &&
+      oil_types.length === 1 &&
+      product_groups.length === 0 &&
+      viscosities.length === 0
+    ) {
+      return `/products/segment/${segments[0]}/oil-type/${oil_types[0]}/`;
+    }
+    if (
+      segments.length === 1 &&
+      viscosities.length === 1 &&
+      product_groups.length === 0 &&
+      oil_types.length === 0
+    ) {
+      return `/products/segment/${segments[0]}/viscosity/${viscosities[0]}/`;
+    }
+    if (
+      product_groups.length > 0 ||
+      segments.length > 0 ||
+      oil_types.length > 0 ||
+      viscosities.length > 0
+    ) {
+      let queryParams = [];
+      if (product_groups.length > 0) {
+        product_groups.forEach((group) =>
+          queryParams.push(`product_group=${group}`)
+        );
+      }
+      if (segments.length > 0) {
+        segments.forEach((segment) => queryParams.push(`segments=${segment}`));
+      }
+      if (oil_types.length > 0) {
+        oil_types.forEach((oil_type) =>
+          queryParams.push(`oil_type=${oil_type}`)
+        );
+      }
+      if (viscosities.length > 0) {
+        viscosities.forEach((viscosity) =>
+          queryParams.push(`viscosity=${viscosity}`)
+        );
+      }
+      return `/products/?${queryParams.join("&")}`;
+    }
+    return "/products/";
+  }
   if (productSearchResultsBtn) {
     productSearchResultsBtn.addEventListener("click", function () {
-      // Get the main form
-      const mainForm = document.getElementById("filterForm");
-      if (mainForm) {
-        // Sync modal form data with main form
-        const modalForm = document.getElementById("modalFilterForm");
-        if (modalForm) {
-          // Clear existing selections in main form
-          const mainCheckboxes = mainForm.querySelectorAll(
-            'input[type="checkbox"]'
-          );
-          mainCheckboxes.forEach((cb) => (cb.checked = false));
-
-          // Copy modal selections to main form
-          const modalCheckboxes = modalForm.querySelectorAll(
-            'input[type="checkbox"]:checked'
-          );
-          modalCheckboxes.forEach((modalCb) => {
-            const mainCb = mainForm.querySelector(
-              `input[name="${modalCb.name}"][value="${modalCb.value}"]`
-            );
-            if (mainCb) {
-              mainCb.checked = true;
-              // Update visual state
-              const label = mainCb.nextElementSibling;
-              if (label) {
-                label.classList.add("selected-item");
-              }
-            }
-          });
-
-          // Copy search input
-          const modalSearchInput = modalForm.querySelector(
-            'input[name="search"]'
-          );
-          const mainSearchInput = mainForm.querySelector(
-            'input[name="search"]'
-          );
-          if (modalSearchInput && mainSearchInput) {
-            mainSearchInput.value = modalSearchInput.value;
-          }
-
-          // Reset to page 1
-          const pageInput = mainForm.querySelector('input[name="page"]');
-          if (pageInput) {
-            pageInput.value = 1;
-          }
-
-          // Submit main form
-          mainForm.submit();
-        }
+      const modalSearchInput = document.querySelector(".modal-search-input");
+      const searchTerm = modalSearchInput ? modalSearchInput.value.trim() : "";
+      if (searchTerm) {
+        const searchUrl = `/products/search/${encodeURIComponent(searchTerm)}/`;
+        window.location.href = searchUrl;
+      } else {
+        const selectedFilters = getModalSelectedFilters();
+        const seoUrl = generateModalSeoFriendlyUrl(selectedFilters);
+        window.location.href = seoUrl;
       }
-
-      // Close modal
       closeProductModal();
     });
   }
 
-  // Modal search button
   const modalSearchButton = document.querySelector(".modal-search-button");
   const modalSearchInput = document.querySelector(".modal-search-input");
-
   if (modalSearchButton) {
     modalSearchButton.addEventListener("click", function () {
-      // Trigger search results
-      if (productSearchResultsBtn) {
-        productSearchResultsBtn.click();
+      const searchTerm = modalSearchInput ? modalSearchInput.value.trim() : "";
+      if (searchTerm) {
+        const searchUrl = `/products/search/${encodeURIComponent(searchTerm)}/`;
+        window.location.href = searchUrl;
+        closeProductModal();
+      } else {
+        if (productSearchResultsBtn) {
+          productSearchResultsBtn.click();
+        }
       }
     });
   }
-
   if (modalSearchInput) {
     modalSearchInput.addEventListener("keydown", function (e) {
       if (e.key === "Enter") {
         e.preventDefault();
-        // Trigger search results
-        if (productSearchResultsBtn) {
-          productSearchResultsBtn.click();
+        const searchTerm = this.value.trim();
+        if (searchTerm) {
+          const searchUrl = `/products/search/${encodeURIComponent(
+            searchTerm
+          )}/`;
+          window.location.href = searchUrl;
+          closeProductModal();
+        } else {
+          if (productSearchResultsBtn) {
+            productSearchResultsBtn.click();
+          }
         }
       }
     });
