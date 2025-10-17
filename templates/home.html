@@ -7,8 +7,7 @@
 {% block keywords %}{% trans "home_keywords" %}{% endblock %}
 
 {% block page_css %}
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.css">
+
     <link rel="preload" href="{% static 'images/aminol_cover_(1).webp' %}" as="PCMO">
     <link rel="preload" href="{% static 'images/truck_(1)_(2).webp' %}" as="HDEO">
     <link rel="preload" href="{% static 'images/motorcycle_(1)_(2).webp' %}" as="Motorcycle oils">
@@ -22,8 +21,7 @@
 {% endblock %}
 
 {% block page_js %}
-  <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.js"></script>
+
 {% endblock %}
 
 {% block extra_schema %}
@@ -32,22 +30,22 @@
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "Aminol Lubricants",
-  "url": "https://www.sitenizinadresi.com/",
+  "url": "https://www.aminol.az/",
   "description": "Manufacturer of Lubricants, Lubricant Additive Packages & Deionised Fluids. Proudly Made in Azerbaijan.",
   "publisher": {
     "@type": "Organization",
     "name": "Aminol Lubricants",
-    "url": "https://www.sitenizinadresi.com/",
+    "url": "https://www.aminol.az/",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.sitenizinadresi.com/static/images/logo.png"
+      "url": "https://aminol.az/static/logo/aminol-logo.svg"
     }
   },
-  "image": "https://www.sitenizinadresi.com/static/images/aminol_cover_(1).webp",
+  "image": "https://www.aminol.az/static/images/aminol_cover_(1).webp",
   "inLanguage": "en",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://www.sitenizinadresi.com/products/?search={search_term_string}",
+    "target": "https://www.aminol.az/product/?search={search_term_string}",
     "query-input": "required name=search_term_string"
   }
 }
@@ -249,7 +247,8 @@
           </p>
         </div>
         <div class="play-button" id="playButton">
-          <i>►</i>
+         <img src="{% static 'images/Polygon2.png' %}" alt="">
+          
         </div>
         <div class="video-container" id="videoContainer">
            <iframe width="560" loading="lazy" height="315" src="https://www.youtube-nocookie.com/embed/7NdBMqxDMrE?rel=0&showinfo=0&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>       
@@ -272,12 +271,12 @@
         <div class="image-container">
           <img loading="lazy"
             class="slide-under-img"
-            src="{% static 'images_folder/Mask_group.webp' %}"
+            src="{% static 'images/EV1.webp' %}"
             alt="Mask Group"
           />
           <img loading="lazy"
-            class="innovation-image"
-            src="{% static 'images_folder/image123.webp' %}"
+            class="innovation-image circle-img"
+            src="{% static 'images/EV2.webp' %}"
             alt="{% trans 'Hybrid Lubricants' %}"
           />
         </div>
@@ -293,8 +292,8 @@
         </div>
         <div class="image-container">
           <img loading="lazy"
-            class="innovation-image"
-            src="{% static 'logos.webp' %}"
+            class="innovation-image square-img"
+            src="{% static 'images/ADDITIVESLOGO.png' %}"
             alt="{% trans 'Additives' %}"
           />
         </div>
@@ -322,10 +321,10 @@
           <div class="news-content">
            
             <p>
-              {{ news.content_translate|truncatewords:10 }}
+              {{ news.content_translate|safe|truncatewords:10 }}
             </p>
  
-            <a href="{% url 'news:news_detail' news.pk %}" aria-label="{{ news.title_translate }}"><h2>{{ news.title_translate|linebreaksbr }}</h2> <span>{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></span></a>
+            <a href="{% url 'news:news_detail' news.slug %}" aria-label="{{ news.title_translate }}"><h2>{{ news.title_translate|safe }}</h2> <span>{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></span></a>
              
           </div>
         </div>

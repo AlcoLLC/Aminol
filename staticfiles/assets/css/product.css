@@ -290,6 +290,10 @@
     font-size: 14px;
     line-height: 20px;
   }
+  .product-group-content h2 {
+    font-size: 25px;
+    line-height: 37px;
+  }
 }
 @media (max-width: 670px) {
   .products-section .filter-container {
@@ -539,6 +543,13 @@
   font-weight: 500;
   outline: none;
 }
+
+.product-modal-content .modal-search-input::placeholder,
+.products-section .search-input::placeholder {
+  color: #01276280;
+  font-size: 14px;
+  font-weight: 500;
+}
 .product-modal-content .modal-search-button {
   position: absolute;
   right: 15px;
@@ -706,8 +717,6 @@
   letter-spacing: 0px;
 }
 
-
-
 .product-detail-section .product-detail-container .product-details h1 {
   font-weight: 600;
   font-size: 36px;
@@ -722,12 +731,12 @@
   .product-detail-container
   .product-details
   .product-description {
-  font-weight: 300;
+  font-weight: 400;
   text-align: justify;
   font-size: 14px;
-    line-height: 24.03px;
-    letter-spacing: 0;
-        color: #012762;
+  line-height: 24.03px;
+  letter-spacing: 0;
+  color: #012762;
 }
 .product-detail-section
   .product-detail-container
@@ -757,7 +766,7 @@
   .product-detail-container
   .product-details.featured-benefits
   p {
-  font-weight: 300;
+  font-weight: 400;
 }
 .product-detail-section .product-detail-container .product-image {
   width: 40%;
@@ -904,14 +913,13 @@
   }
   .product-detail-section .product-detail-container .product-details h1 {
     font-size: 18px;
-    line-height: 20px;
+    line-height: 23px;
   }
   .product-detail-section
     .product-detail-container
     .product-details
     .product-id {
     font-size: 14px;
-    line-height: 10px;
   }
   .product-detail-section .product-detail-container .product-details p {
     font-size: 12px;
@@ -1071,4 +1079,33 @@
 .search-section .search-placeholder p {
   color: #012762;
   font-weight: 400;
+}
+
+.product-group-content {
+  padding: 30px;
+  box-shadow: 0px 4px 6.7px 0px #00000014;
+}
+
+.product-group-content h2 {
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 40px;
+  letter-spacing: -1%;
+  color: #28315e;
+}
+
+.product-group-content p {
+  color: #28315e;
+  margin-top: 20px;
+}
+
+@media (max-width: 770px) {
+  .product-group-content h2 {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .product-group-content > p {
+    font-size: 14px;
+  }
 }

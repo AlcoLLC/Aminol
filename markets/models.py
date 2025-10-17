@@ -9,7 +9,7 @@ class Markets_Automotive(models.Model):
     description_translate = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return f"{self.title}"
+        return f"{self.title_translate}"
 
 
 class Markets_Automotive_Content(models.Model):
@@ -23,7 +23,7 @@ class Markets_Automotive_Content(models.Model):
     description_translate = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return f"{self.title}"
+        return f"{self.title_translate}"
     
 class Markets_Industrial(models.Model):
     title = models.CharField(max_length=255)
@@ -38,7 +38,7 @@ class Markets_Industrial(models.Model):
     industries_description_translate = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return f"{self.title}"
+        return f"{self.title_translate}"
 
 
 class Markets_Industrial_Content(models.Model):
@@ -52,7 +52,7 @@ class Markets_Industrial_Content(models.Model):
     description_translate = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return f"{self.title}"
+        return f"{self.title_translate}"
     
 class Industries_Content(models.Model):
     markets_industrial = models.ForeignKey(
@@ -62,7 +62,7 @@ class Industries_Content(models.Model):
     title_translate = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
-        return f"{self.title}"
+        return f"{self.title_translate}"
 
 class Markets_Shipping(models.Model):
     title = models.CharField(max_length=255)
@@ -77,7 +77,7 @@ class Markets_Shipping(models.Model):
     industries_description_translate = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return f"{self.title}"
+        return f"{self.title_translate}"
 
 
 class Markets_Shipping_Content(models.Model):
@@ -91,4 +91,11 @@ class Markets_Shipping_Content(models.Model):
     description_translate = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return f"{self.title}"
+        return f"{self.title_translate}"
+    
+class Market_Shipping_Logos(models.Model):
+    logo = models.ImageField(upload_to='markets_shipping_logos/')
+    order = models.IntegerField(default=0)
+
+    def __str__(self):
+        return f"Logo {self.id}"

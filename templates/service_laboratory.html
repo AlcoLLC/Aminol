@@ -94,16 +94,16 @@
         <div class="news-card">
           <div class="news-image">
             {% if news.image %}
-            <img loading="lazy" src="{{ news.image.url }}" alt="{{ news.title_translate }}" />
+            <img loading="lazy" src="{{ news.image.url }}" alt="{{ news.title_translate|safe }}" />
             {% else %}
-            <img loading="lazy" src="{% static 'images_folder/default-news.webp' %}" alt="{{ news.title_translate }}" />
+            <img loading="lazy" src="{% static 'images_folder/default-news.webp' %}" alt="{{ news.title_translate|safe }}" />
             {% endif %}
           </div>
           <div class="news-content">
             <p>
-              {{ news.content_translate|truncatewords:10 }}
+              {{ news.content_translate|safe|truncatewords:10 }}
             </p>
-            <a href="{% url 'news:news_detail' news.pk %}" aria-label="{{ news.title_translate }}"><h2>{{ news.title_translate|linebreaksbr }}</h2> <span>{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></span></a>
+            <a href="{% url 'news:news_detail' news.slug %}" aria-label="{{ news.title_translate|safe }}"><h2>{{ news.title_translate|safe }}</h2> <span>{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></span></a>
           </div>
         </div>
         {% empty %}

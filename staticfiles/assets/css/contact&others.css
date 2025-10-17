@@ -22,6 +22,11 @@
   color: #28315e;
   align-items: start;
 }
+
+.contact-grid-content .button-style:hover, .footer-content > div:last-of-type button:hover {
+   border: 1px solid #d40108 !important;
+  background-color: #d40108 !important;
+}
 .contact-flex-content {
   margin-bottom: 70px;
   display: flex;
@@ -113,7 +118,7 @@
   line-height: 28px;
   letter-spacing: 0;
 }
-.news-detail-top-content h2, .news-detail-top-content h1 {
+.news-detail-top-content h2, .news-detail-top-content h1{
   font-weight: 600;
   font-size: 42px;
   line-height: 48px;
@@ -346,7 +351,7 @@
     line-height: 18px;
   }
   .news-detail-top-content h2,
-  .news-detail-top-content h1,
+  .news-detail-top-content h1, 
   .news-top-content h1 {
     font-size: 30px;
     line-height: 42px;

@@ -60,8 +60,28 @@
             <ul>
               <li><a class="{% if request.resolver_match.url_name == 'about:about_page' %}active{% endif %}"
                      href="{% url 'about:about_page' %}" aria-label="About Page">{% trans "About us" %}</a></li>
-              <li><a class="{% if request.resolver_match.url_name == 'products' %}active{% endif %}"
-                     href="{% url 'products:product_list' %}" aria-label="Products Page">{% trans "Products" %}</a></li>
+               <li class="dropdown products-dropdown" id="productsDropdown">
+                  <div class="dropdown-head">
+                    <a class="{% if request.resolver_match.url_name == 'product_list' %}active{% endif %}"
+                      href="{% url 'products:product_list' %}" aria-label="Products Page">
+                      {% trans "Products" %}
+                    </a>
+                    <i class="fa-solid fa-chevron-down"></i>
+                  </div>
+                  <div class="dropdown-content products-dropdown-content">
+                    {% for group in product_groups_navbar %}
+                      <a href="{% url 'products:product_list' %}?product_group={{ group.slug }}"
+                        aria-label="{{ group.title_translate }}">
+                        {{ group.title_translate }}
+                      </a>
+                    {% endfor %}
+
+                    <a class="bold" href="{% url 'products:product_list' %}"
+                        aria-label="Products Page">
+                         {% trans "All Products" %}
+                      </a>
+                  </div>
+                </li>
               <li class="dropdown">
                 <div class="dropdown-head">{% trans "Markets" %}<i class="fa-solid fa-chevron-down"></i></div>
                 <div class="dropdown-content">

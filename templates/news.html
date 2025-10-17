@@ -4,6 +4,7 @@
 
 {% block title %}{% trans "news_meta_title" %}{% endblock %}
 {% block description %}{% trans "news_meta_description" %}{% endblock %}
+{% block keywords %}{% trans "news_keywords" %}{% endblock %}
 
 {% block extra_schema %}
 <script type="application/ld+json" data-version="{% now 'U' %}">
@@ -18,7 +19,7 @@
     "name": "Aminol",
     "logo": {
       "@type": "ImageObject",
-      "url": "{% static 'images/logo.svg' %}"
+      "url": "https://aminol.az/static/logo/aminol-logo.svg"
     }
   },
   "hasPart": [
@@ -26,7 +27,7 @@
     {
       "@type": "NewsArticle",
       "headline": "{{ news.title_translate|striptags }}",
-      "description": "{{ news.content_translate|striptags|truncatechars:160 }}",
+      "description": "{{ news.content_translate|safe|striptags|truncatechars:160 }}",
       "image": "{{ news.image.url|default:'' }}",
       "datePublished": "{{ news.published_date|date:'c' }}",
       "author": {
@@ -35,7 +36,7 @@
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "{% url 'news:news_detail' news.pk %}"
+        "@id": "{% url 'news:news_detail' news.slug %}"
       }
     }{% if not forloop.last %},{% endif %}
     {% endfor %}
@@ -57,14 +58,9 @@
         <a href="{% url 'home:home' %}" aria-label="Home Page">{% trans "Home page" %}</a>|<p>{% trans "News" %}</p>
     </div>
 
-    <div class="container">
-        <div class="news-top-content">
-            <h1>{% trans "News" %}</h1>
-            <p>{% trans "Always up to date with our latest news" %}</p>
-        </div>
-    </div>
+    
 
-    <section class="news-section">
+    <section class="news-section news-page-section">
         <div class="section-header">
             <h2>{% trans "ALL ARTICLES" %}</h2>
         </div>
@@ -75,15 +71,15 @@
                     <div class="news-card">
                         <div class="news-image">
                             {% if news.image %}
-                                <img loading="lazy" src="{{ news.image.url }}" alt="{{ news.title }}" />
+                                <img loading="lazy" src="{{ news.image.url }}" alt="{{ news.title_translate|safe }}" />
                             {% else %}
                                 <img loading="lazy" src="{% static 'images_folder/zavod.webp' %}" alt="{% trans 'Default news image' %}" />
                             {% endif %}
                         </div>
                         <div class="news-content">
-                            <p>{{ news.content_translate|truncatewords:10 }}</p>
+                            <p>{{ news.content_translate|safe|truncatechars:100 }}</p>
 
-                            <a href="{% url 'news:news_detail' news.pk %}" aria-label="{{ news.title_translate }}"><h2>{{ news.title_translate|linebreaksbr }}</h2> <span>{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></span></a>
+                            <a href="{% url 'news:news_detail' news.slug %}" aria-label="{{ news.title_translate|safe }}"><h2>{{ news.title_translate|safe|truncatechars:100 }}</h2> <span>{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></span></a>
                         </div>
                     </div>
                 {% empty %}
@@ -104,14 +100,14 @@
                         <div class="news-card">
                             <div class="news-image">
                                 {% if news.image %}
-                                    <img loading="lazy" src="{{ news.image.url }}" alt="{{ news.title_translate }}" />
+                                    <img loading="lazy" src="{{ news.image.url }}" alt="{{ news.title_translate|safe }}" />
                                 {% else %}
                                     <img loading="lazy" src="{% static 'images_folder/zavod.webp' %}" alt="{% trans 'Default news image' %}" />
                                 {% endif %}
                             </div>
                             <div class="news-content">
-                                <p>{{ news.content_translate|truncatewords:10 }}</p>
-                            <a href="{% url 'news:news_detail' news.pk %}" aria-label="{{ news.title_translate }}"><h2>{{ news.title_translate|linebreaksbr }}</h2> <span>{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></span></a>
+                                <p>{{ news.content_translate|safe|truncatewords:10 }}</p>
+                            <a href="{% url 'news:news_detail' news.slug %}" aria-label="{{ news.title_translate|safe }}"><h2>{{ news.title_translate|safe }}</h2> <span>{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></span></a>
 
                             
                             </div>

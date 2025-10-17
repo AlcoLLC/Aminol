@@ -87,7 +87,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (dropdownHead) {
       dropdownHead.addEventListener("click", function (e) {
-        e.preventDefault();
+       if (e.target.tagName.toLowerCase() !== 'a') {
+            e.preventDefault();
+        } else {
+            // Əgər birbaşa linkə kliklənibsə, heç nə etmə və səhifəyə yönlənməsinə icazə ver.
+            return; 
+        }
+
         e.stopPropagation();
 
         const isAlreadyActive = dropdown.classList.contains("active");
@@ -102,11 +108,16 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         // Eğer tıklanan dropdown zaten aktif değilse, onu aktif yap
-        if (!isAlreadyActive) {
-          dropdown.classList.add("active");
-          if (dropdownIcon) {
-            dropdownIcon.className = "fa-solid fa-chevron-up";
-          }
+       if (!isAlreadyActive) {
+            dropdown.classList.add("active");
+            if (dropdownIcon) {
+                dropdownIcon.className = "fa-solid fa-chevron-up";
+            }
+        } else {
+             dropdown.classList.remove("active");
+             if (dropdownIcon) {
+                dropdownIcon.className = "fa-solid fa-chevron-down";
+            }
         }
       });
     }
@@ -121,6 +132,23 @@ document.addEventListener("DOMContentLoaded", function () {
   if (dropdownBackground) {
     dropdowns.forEach((dropdown) => {
       dropdown.addEventListener("mouseenter", function () {
+        // YENİ EKLENEN KOD BAŞLANGICI
+        // Üzerine gelinen dropdown'un "products-dropdown" class'ına sahip olup olmadığını kontrol et
+        if (this.classList.contains('products-dropdown')) {
+          // Eğer evetse, arkaplan yüksekliğini 350px yap
+          if (window.innerWidth >= 1100) {
+            // Eğer ekran 1100px veya daha darsa, yüksekliği 385px yap
+            dropdownBackground.style.height = "300px";
+        } else {
+            // Daha geniş ekranlar için yüksekliği 350px yap
+            dropdownBackground.style.height = "300px";
+        }
+        } else {
+          // Değilse, yüksekliği sıfırla (veya varsayılan bir değere ayarla)
+          dropdownBackground.style.height = "";
+        }
+        // YENİ EKLENEN KOD SONU
+
         dropdownBackground.style.display = "block";
         dropdownBackground.style.visibility = "visible";
         dropdownBackground.style.opacity = "1";
@@ -159,19 +187,25 @@ document.addEventListener("DOMContentLoaded", function () {
     const dropdownHead = dropdown.querySelector(".dropdown-head");
     const dropdownContent = dropdown.querySelector(".dropdown-content");
 
-    if (dropdownHead && dropdownContent) {
+    if (dropdownHead) {
       dropdownHead.addEventListener("click", function (e) {
-        e.preventDefault();
+        // Əgər kliklənən element ox işarəsi (icon) VƏ YA menyu "products-dropdown" DEYİLSƏ,
+        // standart davranışı dayandır və menyunu aç/bağla.
+        if (e.target.tagName.toLowerCase() === 'i' || !dropdown.classList.contains('products-dropdown')) {
+          e.preventDefault();
 
-        // Close other dropdowns
-        dropdowns.forEach((otherDropdown) => {
-          if (otherDropdown !== dropdown) {
-            otherDropdown.classList.remove("active");
-          }
-        });
+          // Digər menyuları bağla
+          dropdowns.forEach((otherDropdown) => {
+            if (otherDropdown !== dropdown) {
+              otherDropdown.classList.remove("active");
+            }
+          });
 
-        // Toggle current dropdown
-        dropdown.classList.toggle("active");
+          // Mövcud menyunu aç/bağla
+          dropdown.classList.toggle("active");
+        }
+        // Əks halda (yəni 'products-dropdown'-a kliklənibsə və bu, icon deyilsə),
+        // <a> teqinin standart davranışı (səhifəyə yönləndirmə) işə düşəcək.
       });
     }
   });
@@ -296,12 +330,15 @@ document.addEventListener("DOMContentLoaded", function () {
     let csrfValue = getCsrfToken();
     const newPath = calculateNewPath(langCode);
 
+    const currentQueryString = window.location.search;
+    const nextUrl = newPath + currentQueryString;
+
     if (csrfValue) {
-      submitLanguageForm(langCode, newPath, csrfValue);
+      submitLanguageForm(langCode, nextUrl, csrfValue);
     } else {
-      window.location.href = newPath;
-    }
-  }
+      window.location.href = nextUrl;
+    }
+  } 
 
   function getCsrfToken() {
     // First try meta tag

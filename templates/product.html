@@ -511,6 +511,17 @@
 
  </section>
 
+ {% if selected_product_groups|length == 1 and product_group_categories %}
+<section class="container">   
+  <div class="product-group-content">
+    {% for category in product_group_categories %}
+      <h2>{{ category.title|safe }}</h2>
+      <p>{{ category.description|safe }}</p>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
 <!-- Innovation section -->
 <div class="innovation">
     <div class="section-header">
@@ -524,7 +535,7 @@
           <!-- <a href="#" class="button-style">Discover more</a> -->
         </div>
         <div class="image-container">
-          <img loading="lazy" class="slide-under-img" src="{% static 'images_folder/Mask group.webp' %}" alt="" />
+          <img loading="lazy" class="slide-under-img" src="{% static 'images_folder/Mask group.webp' %}" alt="Mask group" />
           <img loading="lazy" class="innovation-image" src="{% static 'images_folder/image.webp' %}" alt="Hybrid & EV Lubricants" />
         </div>
       </div>

@@ -1,16 +1,41 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
-from .models import Product_group, Segments, Oil_Types, Viscosity, Liter, Product, ProductProperty
+from .models import Product_group, Segments, Oil_Types, Viscosity, Liter, Product, ProductProperty, Product_Group_Category
 from django.utils.html import format_html
+from django.db import models
+from django import forms
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
+
+
+@admin.register(Product_Group_Category)
+class ProductGroupCategoryAdmin(TranslationAdmin):
+    list_display = ('get_category_name', 'product_group')
+    list_filter = ('product_group',)
+    search_fields = ('title', 'description')
+
+    def get_category_name(self, obj):
+        from django.utils.html import strip_tags
+        if obj.title:
+            return strip_tags(obj.title)[:50]
+        return "No Title"
+    get_category_name.short_description = "Category Title"
+
+class ProductGroupCategoryInline(TranslationTabularInline):
+    model = Product_Group_Category
+    extra = 1
+    
 
 @admin.register(Product_group)
 class ProductGroupAdmin(TranslationAdmin):
-    list_display = ('title', 'slug', 'image', 'in_home')
-    prepopulated_fields = {'slug': ('title',)}
-    search_fields = ('title',)
+    list_display = ('title_translate', 'slug', 'image', 'in_home', 'in_navbar', 'order')
+    prepopulated_fields = {'slug': ('title_translate',)}
+    search_fields = ('title_translate',)
+    list_editable = ('in_navbar',)
+    inlines = [ProductGroupCategoryInline]
+    exclude=('title', 'description')
     
     def get_queryset(self, request):
-        qs = super().get_queryset(request)
+        qs = super().get_queryset(request)  
         home_count = qs.filter(in_home=True).count()
         return qs
     
@@ -29,23 +54,14 @@ class ProductGroupAdmin(TranslationAdmin):
                     obj.in_home = False
         
         super().save_model(request, obj, form, change)
-    
-    class Media:
-        js = (
-            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
-            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
-            'modeltranslation/js/tabbed_translation_fields.js',
-        )
-        css = {
-            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
-        }
-
+   
 
 @admin.register(Segments)
 class SegmentsAdmin(TranslationAdmin):
-    list_display = ('title', 'slug')
-    prepopulated_fields = {'slug': ('title',)}
-    search_fields = ('title',)
+    list_display = ('title_translate', 'slug')
+    prepopulated_fields = {'slug': ('title_translate',)}
+    search_fields = ('title_translate',)
+    exclude=('title',)
     
     class Media:
         js = (
@@ -60,9 +76,10 @@ class SegmentsAdmin(TranslationAdmin):
 
 @admin.register(Oil_Types)
 class OilTypesAdmin(TranslationAdmin):
-    list_display = ('title', 'slug')
-    prepopulated_fields = {'slug': ('title',)}
-    search_fields = ('title',)
+    list_display = ('title_translate', 'slug')
+    prepopulated_fields = {'slug': ('title_translate',)}
+    search_fields = ('title_translate',)
+    exclude=('title',)
     
     class Media:
         js = (
@@ -91,18 +108,18 @@ class LiterAdmin(admin.ModelAdmin):
 class ProductPropertyInline(TranslationTabularInline):
     model = ProductProperty
     extra = 1
-    fields = ['property_name', 'unit', 'test_method', 'typical_value', 'order',
-              'property_name_translate', 'unit_translate', 'test_method_translate', 'typical_value_translate',]
+    fields = ['order', 'property_name_translate', 'unit_translate', 'test_method_translate', 'typical_value_translate']
     ordering = ['order']
 
 
 @admin.register(ProductProperty)
 class ProductPropertyAdmin(TranslationAdmin):
-    list_display = ['product', 'property_name', 'unit', 'test_method', 'typical_value', 'order']
-    list_filter = ['product', 'unit']
-    search_fields = ['property_name', 'test_method', 'product__title']
+    list_display = ['product', 'property_name_translate', 'unit_translate', 'test_method_translate', 'typical_value_translate', 'order']
+    list_filter = ['product', 'unit_translate']
+    search_fields = ['property_name_translate', 'test_method_translate', 'product__title_translate']
     list_editable = ['order']
     ordering = ['product', 'order']
+    exclude=('property_name', 'unit', 'test_method', 'typical_value')
     
     class Media:
         js = (
@@ -117,19 +134,21 @@ class ProductPropertyAdmin(TranslationAdmin):
 
 @admin.register(Product)
 class ProductAdmin(TranslationAdmin):
-    list_display = ['title', 'product_id', 'product_group', 'oil_type', 'has_pds', 'has_sds']
+    list_display = ['title_translate', 'product_id', 'product_group', 'oil_type', 'has_pds', 'has_sds']
     list_filter = ['product_group', 'segments', 'oil_type', 'viscosity']
-    search_fields = ['title', 'product_id', 'description']
-    prepopulated_fields = {'slug': ('title',)}
+    search_fields = ['title_translate', 'product_id', 'description_translate']
+    prepopulated_fields = {'slug': ('title_translate',)}
     inlines = [ProductPropertyInline]
     
     fieldsets = (
         ('Basic Information', {
-            'fields': ('title', 'slug', 'product_id', 'description', 'image', 'features_benefits', 'application',
-                       'title_translate', 'description_translate', 'features_benefits_translate', 'application_translate', 'order')
+            'fields': ('slug', 'product_id', 'image', 'title_translate', 'description_translate', 'features_benefits_translate', 'application_translate', 'order')
+        }),
+        ('SEO', {
+            'fields': ('meta_title', 'meta_description', 'meta_keywords'),
         }),
         ('Specifications', {
-            'fields': ('api', 'ilsac', 'acea', 'jaso', 'oem_sertification', 'recommendations', 'recommendations_translate')
+            'fields': ('api', 'ilsac', 'acea', 'jaso', 'oem_sertification', 'recommendations_translate')
         }),
         ('Categories', {
             'fields': ('product_group', 'segments', 'oil_type', 'viscosity', 'liters')

@@ -1,4 +1,8 @@
 from django.db import models
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
+from django.utils.text import slugify
+from django.utils.html import strip_tags
 
 class Product_group(models.Model):
     title = models.CharField(max_length=255)
@@ -7,12 +11,24 @@ class Product_group(models.Model):
     slug = models.SlugField(max_length=255, unique=True)
     in_home = models.BooleanField(default=False, verbose_name="In Home")
     order = models.IntegerField(default=0)
+    in_navbar = models.BooleanField(default=False, verbose_name="In Navbar")
 
     title_translate = models.CharField(max_length=255, blank=True, null=True)
     description_translate = models.TextField(blank=True, null=True)
     
     def __str__(self):
-        return self.title
+        return self.title_translate
+    
+class Product_Group_Category(models.Model):
+    product_group = models.ForeignKey(Product_group, on_delete=models.CASCADE, related_name="categories")
+    title = RichTextUploadingField(blank=True, null=True) 
+    description = RichTextUploadingField(blank=True, null=True) 
+
+
+    def __str__(self):
+        return f"{self.product_group.title_translate}"
+
+
     
 class Segments(models.Model):
     title = models.CharField(max_length=255)
@@ -21,7 +37,7 @@ class Segments(models.Model):
     title_translate = models.CharField(max_length=255, blank=True, null=True)
     
     def __str__(self):
-        return self.title
+        return self.title_translate
     
 class Oil_Types(models.Model):
     title = models.CharField(max_length=255)
@@ -31,7 +47,7 @@ class Oil_Types(models.Model):
 
     
     def __str__(self):
-        return self.title
+        return self.title_translate
     
 class Viscosity(models.Model):
     title = models.CharField(max_length=255)
@@ -51,7 +67,7 @@ class Product(models.Model):
     description = models.TextField()
     features_benefits = models.TextField(blank=True, null=True)
     application = models.TextField(blank=True, null=True)
-    image = models.ImageField(upload_to='product/')
+    image = models.ImageField(upload_to='product/', blank=True, null=True)
     product_id = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=255, unique=True)
     api = models.CharField(max_length=255, blank=True, null=True)
@@ -76,9 +92,32 @@ class Product(models.Model):
     recommendations_translate = models.TextField(blank=True, null=True)
     order = models.IntegerField(default=0)
     
+    meta_title = models.CharField(max_length=255, blank=True, null=True)
+    meta_description = models.TextField(blank=True, null=True)
+    meta_keywords = models.CharField(max_length=500, blank=True, null=True)
     
     def __str__(self):
-        return self.title
+        return self.title_translate
+    
+    def save(self, *args, **kwargs):
+        from django.utils.text import slugify
+
+        if not self.slug and self.title_translate:
+            base_slug = slugify(self.title_translate)
+            slug = base_slug
+            counter = 1
+            while Product.objects.filter(slug=slug).exclude(pk=self.pk).exists():
+                slug = f"{base_slug}-{counter}"
+                counter += 1
+            self.slug = slug
+
+        if not self.meta_title and self.title_translate:
+            self.meta_title = self.title_translate
+
+        if not self.meta_description and self.description:
+            self.meta_description = self.description[:160]
+
+        super().save(*args, **kwargs)
 
 class ProductProperty(models.Model):
     product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='properties')
@@ -99,4 +138,4 @@ class ProductProperty(models.Model):
         verbose_name_plural = 'Product Properties'
     
     def __str__(self):
-        return f"{self.product.title} - {self.property_name}"
+        return f"{self.product.title_translate} - {self.property_name}"

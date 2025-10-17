@@ -1,14 +1,16 @@
 {% load static %}
 {% load i18n %}
 
-<div class="container brochure">
-  <img loading="lazy" src="{% static 'logo/aminol_broshur.webp' %}" alt="Aminol Broshur" />
+<div class="container">
+ <div class="brochure">
+   <img loading="lazy" src="{% static 'images/PRODUCTS.webp' %}" alt="Aminol Broshur" />
+ </div>
 </div>
 
 <div class="partners-section">
   <div class="container partners-section-content">
     <div class="section-content">
-      <h2>{% trans "Power. Protection. Performance." %}</h2>
+      <h4>{% trans "Power. Protection. Performance." %}</h4>
       <p>
         {% trans "Aminol delivers the strength your machines need, the protection they rely on, and the performance you expect—every time." %}
       </p>
@@ -57,7 +59,7 @@
     </div> -->
 
     <div class="section-content">
-      <h2>{% trans "Our Partners" %}</h2>
+      <h5>{% trans "Our Partners" %}</h5>
     </div>
     <div class=" logos-section">
         <div id="wrapper3">
@@ -103,7 +105,7 @@
 </div>
 
 <div class="whatsapp-section">
-  <a href="https://wa.me/994502220607" aria-label="Whatsapp number"
+  <a href="https://wa.me/994502377555" aria-label="Whatsapp number"
     >{% trans "Ask your question on Whatsapp" %}
     <img loading="lazy" src="{% static 'images_folder/Vector.svg' %}" alt="Whatsapp icon" />
   </a>

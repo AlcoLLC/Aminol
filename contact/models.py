@@ -15,7 +15,7 @@ class Contact(models.Model):
     question = models.TextField(verbose_name=_('Question'))
     first_name = models.CharField(max_length=100, verbose_name=_('First Name'))
     last_name = models.CharField(max_length=100, verbose_name=_('Last Name'))
-    email = models.EmailField(verbose_name=_('Email'))
+    email = models.EmailField(verbose_name=_('Email')) 
     phone_number = models.CharField(max_length=20, verbose_name=_('Phone Number'))
     
     ip_address = models.GenericIPAddressField(verbose_name=_('IP Address'), null=True, blank=True)
@@ -52,4 +52,4 @@ class ContactInfo(models.Model):
     contact_address_translate = models.TextField(blank=True, null=True)
     
     def __str__(self):
-        return f"{self.title}"
+        return f"{self.title_translate}"

@@ -165,4 +165,63 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 300);
     }
   });
+
+   const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      // Əgər element ekrana daxil olubsa...
+      if (entry.isIntersecting) {
+        // 'show' klasını əlavə edərək animasiyanı başladırıq
+        entry.target.classList.add('show');
+        // Animasiya bir dəfə işlədikdən sonra observer-i dayandırırıq (performans üçün)
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1 // Elementin 10%-i göründükdə animasiya başlasın
+  });
+
+  // Bütün .section-row elementlərini seçirik
+  const sectionRows = document.querySelectorAll('.section-row');
+
+  sectionRows.forEach((row) => {
+    // Sizin HTML kodunuzdakı məntiqə əsasən:
+    // Əgər elementdə 'row-reverse' klası varsa, sağdan gəlsin
+    if (row.classList.contains('row-reverse')) {
+      row.classList.add('from-right');
+    } else {
+      // Yoxdursa, soldan gəlsin
+      row.classList.add('from-left');
+    }
+    // Hər bir elementi izləməyə başlayırıq
+    observer.observe(row);
+  });
+
+   const certificationsSwiper = new Swiper('.certifications-carousel', {
+    // === Temel Ayarlar ===
+    // Slaytların tek tek gösterilmesini sağlar
+    slidesPerView: 1, 
+    // Slaytlar arası boşluk
+    spaceBetween: 30, 
+    // Carousel'in sonsuz döngüde çalışmasını sağlar
+    loop: true, 
+
+    // === Otomatik Oynatma ===
+    autoplay: {
+      delay: 5000, // 5 saniyede bir sonraki slayta geçer
+      disableOnInteraction: false, // Kullanıcı etkileşiminden sonra durmamasını sağlar
+    },
+
+    // === Sayfalama (Noktalar) ===
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true, // Noktalara tıklanarak geçiş yapılmasını sağlar
+    },
+
+    // === İleri/Geri Butonları ===
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+  
 });

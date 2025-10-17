@@ -33,27 +33,29 @@ def create_search_queries(query):
     
     return queries
 
-
 def build_search_q(query, fields):
-    """
-    Build a Q object for searching across multiple fields with partial matching
-    """
-    q_objects = Q()
-    search_queries = create_search_queries(query)
-    
-    for field in fields:
-        for search_term in search_queries:
-            q_objects |= Q(**{f"{field}__icontains": search_term})
-    
-    return q_objects
+    search_words = [word.strip() for word in query.split() if len(word.strip()) >= 2]
 
+    if not search_words:
+        return Q()
+
+    final_q = Q()
+
+    for field in fields:
+        field_q = Q()
+        for word in search_words:
+            field_q &= Q(**{f"{field}__icontains": word})
+        
+        final_q |= field_q
+    
+    return final_q
 
 def search_view(request):
     query = request.GET.get('search', '').strip()
     results = []
     total_results = 0
     
-    if query and len(query) >= 2:  # Minimum 2 characters for search
+    if query and len(query) >= 2: 
         current_language = get_language()
         is_english = current_language == 'en'
         
@@ -470,12 +472,11 @@ def search_view(request):
                 'image': content.image.url if content.image else None
             })
 
-        # Search Documents & Certifications
         if is_english:
             cert_fields = ['title', 'description']
         else:
             cert_fields = ['title_translate', 'description_translate', 'title', 'description']
-        
+
         certifications_contents = DocumentsCertification.objects.filter(build_search_q(query, cert_fields)).distinct()
 
         for content in certifications_contents:
@@ -486,10 +487,9 @@ def search_view(request):
                 'description': description[:200] + '...' if description and len(description) > 200 else description or '',
                 'url': '/about/?tab=documents/',
                 'type': 'Documents & Certifications',
-                'image': content.image.url if content.image else None
+                'image': None 
             })
-        
-        # Search Production Content
+
         if is_english:
             production_fields = ['title', 'description']
         else:

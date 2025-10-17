@@ -621,3 +621,16 @@
   object-fit: cover;
   border-radius: 6px;
 }
+
+.no-jobs-message {
+  margin-bottom: 40px;
+}
+
+.no-jobs-message p {
+  color: #012762;
+    max-width: 82%;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24.03px;
+    letter-spacing: 0;
+}

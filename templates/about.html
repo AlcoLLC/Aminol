@@ -47,10 +47,9 @@
 {% block content %}
 {% load custom_filters %}
 
-{% include 'components/navbar_dark.html' %}
-<div class="non-header-page">
-
-    <header class="page-header"></header>
+{% include 'components/navbar_blur.html' %}
+<div class="about-page">
+  <header class="page-header"></header>
 </div>
 
 <!-- About Us Section -->
@@ -74,14 +73,28 @@
     </div>
 
     <!-- Shared Section -->
-    {% if about_aminol %}
-    <div class="shared-section about-shared-section">
-      <div class="shared-background"></div>
       <div class="container">
-        <img src="{{ about_aminol.shared_image.url }}" alt="About Aminol" />
+        <div class="about-map-section">
+        <div class="about-map-images-container">
+          <div class="about-map-image-section">
+          <img src="{% static 'images/MAP.webp' %}" alt="About Aminol" />
+        </div>
+        <div class="about-map-count-image-section">
+          <img src="{% static 'images/MAP2.png' %}" alt="">
+        </div>
+        </div>
+        <div class="about-map-text-section">
+          <p class="about-map-text-header-text-section">Export <br> Markets</p>
+          <p class="about-map-text-content-section">Powered by <br>
+            Global Industrial Leaders</p>
+          <p class="about-map-text-logos">In partnership with:</p>
+          <img class="logos-image" src="{% static 'images/MAP3.png' %}" alt="">
+          <p class="about-map-text-logos">100+ OEM Approvals on key products:</p>
+          <img class="logos-image" src="{% static 'images/MAP4.png' %}" alt="">
+
+        </div>
       </div>
-    </div>
-    {% endif %}
+      </div>
 
     <div class="shared-images-section">
       <div class="section-header">
@@ -132,13 +145,18 @@
           <div class="section-content" id="textContent">
             <h2>{% trans "Learn more" %}<br />{% trans "about production" %}</h2>
             <p>
-              {% trans "Aminol Lubricants produces and packages high-quality oils using premium imported base oils and
-              additives, formulated by expert engineers." %}
+              
+              {% blocktrans %}
+                Aminol Lubricants produces and packages high-quality oils using premium imported base oils and
+              additives, formulated by expert engineers.
+              {% endblocktrans %}
+              
             </p>
           </div>
           <div class="play-button" id="playButton">
-            <i>►</i>
-          </div>
+         <img src="{% static 'images/Polygon2.png' %}" alt="">
+          
+        </div>
           <div class="video-container" id="videoContainer">
             <iframe src="https://www.youtube-nocookie.com/embed/nUTMgwKPOuo?rel=0&showinfo=0&modestbranding=1" 
               title="AMINOL - SPECIAL GENERATION" frameborder="0" loading="lazy"
@@ -263,7 +281,7 @@
   </div>
 
   <!-- Documents & Certifications Tab -->
-  <div class="tab-content  " id="documents">
+ <div class="tab-content  " id="documents">
     <!-- Breadcrumb -->
     <div class="breadcrumb container">
       <a href="{% url 'home:home' %}" aria-label="Home Page">{% trans "Home page" %}</a>| <span>{% trans "About Aminol" %}</span>|
@@ -276,16 +294,31 @@
 
 
     <div class="container">
-      {% for documents_cert in documents_certs %}
-      <div class="certifications-container">
-        <img loading="lazy" src="{% static '/images/certifications.webp' %}" alt="Certifications Image" />
-        <h3>{{ documents_cert.title_translate|linebreaksbr }}</h3>
-        <p>{{ documents_cert.description_translate|linebreaksbr }}</p>
-      </div>
-      <div class="hidden-description">{{ documents_cert.description|safe_linebreaksbr }}</div>
-      {% endfor %}
+        <div class="certifications-wrapper">
+        
+        <img loading="lazy" src="{% static '/images/certificate2.png' %}" class="certifications-background" alt="Sertifikalar Arka Plan" />
 
-      <div class=" logos-section">
+        <div class="swiper certifications-carousel" id="certifications-carousel">
+            <div class="swiper-wrapper">
+                
+                {% for documents_cert in documents_certs %}
+                <div class="swiper-slide">
+                    <div class="certifications-container">
+                        <h3>{{ documents_cert.title_translate|linebreaksbr }}</h3>
+                        <p>{{ documents_cert.description_translate|linebreaksbr }}</p>
+                    </div>
+                    <div class="hidden-description" style="display: none;">{{ documents_cert.description|safe_linebreaksbr }}</div>
+                </div>
+                {% endfor %}
+
+            </div>
+            <div class="swiper-button-next" id="swiper-button-next"></div>
+            <div class="swiper-button-prev" id="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+        
+    </div>
+     <div class=" logos-section">
         <div id="wrapper2">
           <div id="carousel2">
             <div id="content2">
@@ -312,8 +345,7 @@
       <div class="certifications-logos">
         <img loading="lazy" src="{% static '/images/certifications-logos-2.webp' %}" alt="Certifications Image" />
       </div>
-    </div>
-  </div>
+</div>
 
   <!-- Sustainability Tab -->
   <div class="tab-content " id="sustainability">

@@ -1,15 +1,16 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %} 
 
-{% block title %} {{ news.title_translate|truncatechars:57 }} {% endblock %}
-{% block description %} {{ news.content_translate|truncatechars:160 }} {% endblock %}
+{% block title %} {{ news.meta_title|safe }} {% endblock %}
+{% block description %} {{ news.meta_description|safe }} {% endblock %}
+{% block keywords %} {{ news.meta_keywords|safe }} {% endblock %}
 
 {% block extra_schema %}
 <script type="application/ld+json" data-version="{% now 'U' %}">
 {
   "@context": "https://schema.org",
   "@type": "NewsArticle",
-  "headline": "{{ news.title_translate|striptags }}",
-  "description": "{{ news.content_translate|striptags|truncatechars:160 }}",
+  "headline": "{{ news.title_translate|safe|striptags }}",
+  "description": "{{ news.content_translate|safe|striptags|truncatechars:160 }}",
   "image": [
     "{{ news.image.url }}"
   ],
@@ -24,7 +25,7 @@
     "name": "Aminol",
     "logo": {
       "@type": "ImageObject",
-      "url": "{% static 'images/logo.svg' %}"
+      "url": "https://aminol.az/static/logo/aminol-logo.svg"
     }
   },
   "mainEntityOfPage": {
@@ -50,30 +51,33 @@
 
   <div class="container">
     <div class="news-detail-top-content">
-      <h1>{{ news.title_translate|linebreaksbr }}</h1>
+      <h1>{{ news.title_translate|safe }}</h1>
       <p>{{ news.published_date|date:"F d, Y" }}</p>
     </div>
   </div>
-  <div class="services-offer-section brand-portal-section-tab container">
+  <div class="services-offer-section news-content-section brand-portal-section-tab container">
+    {% if news.image %}
     <div class="services-offer-image news-d">
       <img
         loading="lazy"
         src="{{ news.image.url }}"
-        alt="{{ news.title_translate }}"
+        alt="{{ news.title_translate|safe }}"
       />
     </div>
+    {% endif %}
     <div class="text-container text-left">
-      <p>{{ news.content_translate|linebreaksbr }}</p>
+      <div>{{ news.content_translate|safe }}</div>
     </div>
   </div>
 
   {% for content in contents %}
   <div
-    class="services-offer-section {% if forloop.counter|divisibleby:2 %}reverse{% endif %} brand-portal-section container"
+    class="services-offer-section news-content-section {% if forloop.counter|divisibleby:2 %}reverse{% endif %} brand-portal-section container"
   >
     <div class="text-container text-left">
-      <p>{{ content.description_translate|linebreaksbr }}</p>
+      <div>{{ content.description_translate|safe }}</div>
     </div>
+    {% if content.image %}
     <div class="services-offer-image news-d">
       <img
         loading="lazy"
@@ -81,6 +85,7 @@
         alt="{% trans 'News Content Image' %}"
       />
     </div>
+    {% endif %}
   </div>
   {% endfor %}
 
@@ -97,19 +102,13 @@
             <img
               loading="lazy"
               src="{{ news.image.url }}"
-              alt="{{ news.title_translate }}"
-            />
-            {% else %}
-            <img
-              loading="lazy"
-              src="{% static 'images_folder/zavod.webp' %}"
-              alt="{% trans 'Default news image' %}"
+              alt="{{ news.title_translate|safe }}"
             />
             {% endif %}
           </div>
           <div class="news-content">
-            <p>{{ news.content_translate|truncatewords:10 }}</p>
-             <a href="{% url 'news:news_detail' news.pk %}" aria-label="{{ news.title_translate }}"><h2>{{ news.title_translate|linebreaksbr }}</h2> <span>{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></span></a>
+            <p>{{ news.content_translate|safe|truncatewords:10 }}</p>
+             <a href="{% url 'news:news_detail' news.slug %}" aria-label="{{ news.title_translate|safe }}"><h2>{{ news.title_translate|safe }}</h2> <span>{% trans "Read more" %} <i class="fa-solid fa-chevron-right"></i></span></a>
           </div>
         </div>
         {% empty %} {% endfor %}

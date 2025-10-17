@@ -41,7 +41,7 @@
     "name": "Aminol",
     "logo": {
       "@type": "ImageObject",
-      "url": "{% static 'images/logo.svg' %}"
+      "url": "https://aminol.az/static/logo/aminol-logo.svg"
     }
   },
   "image": [
@@ -121,7 +121,7 @@
         <div id="wrapper2">
           <div id="carousel2">
             <div id="content2">
-              {% for market in market_logos %}
+              {% for market in market_shipping_logos %}
               <img loading="lazy" src="{{ market.logo.url }}" class="item" alt="Market Logo" />
             {% endfor %}
             </div>

@@ -14,7 +14,6 @@ def robots_txt(request):
         "Disallow: /admin/",
         "Disallow: /api/",
         "Disallow: /media/private/",
-        "Disallow: /products/",
         "",
         "Sitemap: https://aminol.az/sitemap.xml"
     ]
@@ -23,11 +22,11 @@ def robots_txt(request):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('ckeditor5/', include('django_ckeditor_5.urls')),
     path('i18n/', include('django.conf.urls.i18n')),  
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('robots.txt', robots_txt),
-]
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 urlpatterns += i18n_patterns(
@@ -42,9 +41,7 @@ urlpatterns += i18n_patterns(
     path('', include('products.urls')),
     path('', include('career.urls')),
     path('', include('search.urls')),
-
-
-    prefix_default_language=False 
+    prefix_default_language=False
 )
 
 urlpatterns += [
