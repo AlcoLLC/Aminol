@@ -15,6 +15,9 @@ class Product_group(models.Model):
 
     title_translate = models.CharField(max_length=255, blank=True, null=True)
     description_translate = models.TextField(blank=True, null=True)
+
+    meta_title = models.CharField(max_length=255, blank=True, null=True)
+    meta_description = models.TextField(blank=True, null=True, verbose_name="Meta Description")
     
     def __str__(self):
         return self.title_translate
@@ -27,14 +30,15 @@ class Product_Group_Category(models.Model):
 
     def __str__(self):
         return f"{self.product_group.title_translate}"
-
-
     
 class Segments(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True)
 
     title_translate = models.CharField(max_length=255, blank=True, null=True)
+
+    meta_title = models.CharField(max_length=255, blank=True, null=True)
+    meta_description = models.TextField(blank=True, null=True, verbose_name="Meta Description")
     
     def __str__(self):
         return self.title_translate
@@ -45,6 +49,9 @@ class Oil_Types(models.Model):
 
     title_translate = models.CharField(max_length=255, blank=True, null=True)
 
+    meta_title = models.CharField(max_length=255, blank=True, null=True)
+    meta_description = models.TextField(blank=True, null=True, verbose_name="Meta Description")
+
     
     def __str__(self):
         return self.title_translate
@@ -52,6 +59,9 @@ class Oil_Types(models.Model):
 class Viscosity(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True)
+
+    meta_title = models.CharField(max_length=255, blank=True, null=True)
+    meta_description = models.TextField(blank=True, null=True, verbose_name="Meta Description")
     
     def __str__(self):
         return self.title
