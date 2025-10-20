@@ -5,17 +5,17 @@ from .models import (Product_group, Segments,
 
 @register(Product_group)
 class ProductGroupTranslationOptions(TranslationOptions):
-    fields = ('title_translate', 'description_translate')
+    fields = ('title_translate', 'description_translate', 'meta_title', 'meta_description')
 
 
 @register(Segments)
 class SegmentsTranslationOptions(TranslationOptions):
-    fields = ('title_translate',)
+    fields = ('title_translate', 'meta_title', 'meta_description')
 
 
 @register(Oil_Types)
 class OilTypesTranslationOptions(TranslationOptions):
-    fields = ('title_translate',)
+    fields = ('title_translate', 'meta_title', 'meta_description')
 
 
 @register(Product)
