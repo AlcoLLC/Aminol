@@ -2,7 +2,6 @@
 {% load i18n %}
 
 {% block title %}
-    {% comment %} Eğer view'dan özel bir meta_title geldiyse onu kullan, yoksa genel çeviriyi kullan {% endcomment %}
     {% if meta_title %}
         {{ meta_title }}
     {% else %}
@@ -11,7 +10,6 @@
 {% endblock %}
 
 {% block description %}
-    {% comment %} Eğer view'dan özel bir meta_description geldiyse onu kullan, yoksa genel çeviriyi kullan {% endcomment %}
     {% if meta_description %}
         {{ meta_description }}
     {% else %}
