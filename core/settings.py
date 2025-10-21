@@ -74,6 +74,7 @@ INSTALLED_APPS = [
     'rosetta',
     'django.contrib.sites',
     'django.contrib.sitemaps',
+    
     # apps
 
     'home',
@@ -82,10 +83,10 @@ INSTALLED_APPS = [
     'contact',
     'markets',
     'faq',
-    'news',
     'brands',
-    'products',
     'career',
+    'news.apps.NewsConfig', 
+    'products.apps.ProductsConfig', 
 ]
 
 SITE_ID = 1
