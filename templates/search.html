@@ -42,6 +42,8 @@
     </header>
 </div>
 
+<main>
+
 <div class="breadcrumb container">
     <a href="{% url 'home:home' %}" aria-label="Home Page">{% trans "Home Page" %}</a> |
     <p>{% trans "Search" %}</p>
@@ -125,4 +127,7 @@
 </section>
 
 {% include 'components/whatsapp.html' %}
+
+</main>
+
 {% endblock %}

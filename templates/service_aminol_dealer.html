@@ -45,6 +45,8 @@
   <header class="page-header"></header>
 </div>
 
+<main>
+
 <!-- Breadcrumb -->
 <div class="breadcrumb container">
   <a href="{% url 'home:home' %}" aria-label="Home Page">{% trans "Home page" %}</a>| <span>{% trans "Services" %}</span>|
@@ -121,5 +123,7 @@
 {% include 'components/contactcomponent.html' %}
 
 {% include 'components/brochure.html' %}
+
+</main>
 
 {% endblock %}

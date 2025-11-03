@@ -43,6 +43,8 @@
 
   <header class="page-header"></header>
 
+  <main>
+
   <!-- Breadcrumb -->
   <div class="breadcrumb container">
     <a href="{% url 'home:home' %}" aria-label="Home Page">{% trans "Home page" %}</a>|
@@ -115,5 +117,8 @@
       </div>
     </div>
   </section>
-  {% include 'components/whatsapp.html' %} {% endblock %}
+  {% include 'components/whatsapp.html' %}
+  </main>
+  {% endblock %}
+
 </div>

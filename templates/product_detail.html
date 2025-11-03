@@ -101,6 +101,8 @@
 </div>
 {% endif %}
 
+<main>
+
 
 <div class="breadcrumb container">
   <a href="{% url 'products:product_list' %}" aria-label="Products Page">{% trans "Back to the overview" %} |</a>
@@ -238,6 +240,8 @@
     {% endif %}
   </div>
 </section>
+
+</main>
 
 {% include 'components/whatsapp.html' %}
 {% endblock %}
