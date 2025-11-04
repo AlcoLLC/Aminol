@@ -819,6 +819,11 @@
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
+.production-section .play-button img {
+  width: max-content;
+  height: auto;
+}
+
 .production-section .play-button:hover {
   transform: translate(0, -50%) scale(1.05);
 }
@@ -1550,6 +1555,7 @@
 
 .brochure img {
   width: 100%;
+  height: auto;
 }
 
 @media (min-width: 521px) and (max-width: 1024px) {

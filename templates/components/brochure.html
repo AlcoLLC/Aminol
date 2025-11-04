@@ -3,7 +3,7 @@
 
 <div class="container">
  <div class="brochure">
-   <img loading="lazy" src="{% static 'images/PRODUCTS.webp' %}" alt="Aminol Broshur" />
+   <img loading="lazy" src="{% static 'images/PRODUCTS.webp' %}" alt="Aminol Broshur" width="900" height="575" />
  </div>
 </div>
 
@@ -66,7 +66,7 @@
           <div id="carousel3">
             <div id="content3">
               {% for partner in partner_logos %}
-              <img loading="lazy" src="{{ partner.logo.url }}" class="item" alt="{% trans 'Partner Logo' %}" />
+              <img loading="lazy" src="{{ partner.logo.url }}" class="item" alt="{% trans 'Partner Logo' %}" width="155" height="70"/>
             {% endfor %}
             </div>
           </div>

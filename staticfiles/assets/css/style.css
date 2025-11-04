@@ -127,6 +127,7 @@ nav {
 
 .navbar img {
   width: 146px;
+  height: auto;
 }
 
 .navbar .navbar-right {
@@ -1861,6 +1862,8 @@ footer .alco-privacy p {
   gap: 0;
   max-width: 60%;
 }
+
+
 
 @media (max-width: 1500px) {
   .products-dropdown-content {
