@@ -265,6 +265,7 @@
 .aminol-contact-form .custom-select:after {
   content: "\f078";
   font-family: "Font Awesome 5 Free";
+  font-display: swap;
   font-weight: 900;
   position: absolute;
   right: 15px;
