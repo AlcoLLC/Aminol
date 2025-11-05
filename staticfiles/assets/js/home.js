@@ -1,4 +1,6 @@
 const swiper = new Swiper(".home-header .mySwiper", {
+  preloadImages: true,
+  lazy: false,
   loop: true,
   effect: "fade",
   lazy: {
