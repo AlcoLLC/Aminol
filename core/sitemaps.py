@@ -61,7 +61,7 @@ class NewsSitemap(Sitemap):
         return obj.published_date
     
     def location(self, obj):
-        return reverse('news:news_detail', kwargs={'pk': obj.pk})
+        return reverse('news:news_detail', kwargs={'slug': obj.slug})
 
 
 class FAQSitemap(Sitemap):

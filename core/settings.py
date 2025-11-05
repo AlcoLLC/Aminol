@@ -261,28 +261,50 @@ CONTACT_FORM_SETTINGS = {
     'RESET_PERIOD_HOURS': 24,  
 }
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'file': {
+if DEBUG:
+        LOGGING = {
+            'version': 1,
+            'disable_existing_loggers': False,
+            'handlers': {
+                'file': {
+                    'level': 'ERROR',
+                    'class': 'logging.FileHandler',
+                    'filename': os.path.join(BASE_DIR, 'logs', 'django_error.log'),
+                },
+            },
+            'loggers': {
+                'django': {
+                    'handlers': ['file'],
+                    'level': 'ERROR',
+                    'propagate': True,
+                },
+            },
+        }
+else:
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'handlers': {
+            'file': {
+                'level': 'INFO',
+                'class': 'logging.FileHandler',
+                'filename': 'contact_form.log',
+            },
+            'console': {
+                'level': 'DEBUG',
+                'class': 'logging.StreamHandler',
+            },
+        },
+        'loggers': {
+            'django': {
+            'handlers': ['console'],
             'level': 'INFO',
-            'class': 'logging.FileHandler',
-            'filename': 'contact_form.log',
+            'propagate': True,
         },
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
         },
-    },
-    'loggers': {
-        'django': {
-        'handlers': ['console'],
-        'level': 'INFO',
-        'propagate': True,
-    },
-    },
-}
+    }
+
+
 
 GOOGLE_INDEXING_KEY_FILE = BASE_DIR / 'aminol-475711-79dbe02c04cf.json'
 SITE_DOMAIN = 'https://aminol.az'
