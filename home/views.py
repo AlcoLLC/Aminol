@@ -49,6 +49,3 @@ def handler400(request, exception):
     """
     return render(request, '400.html', status=400)
 
-def handler405(request, exception=None):
-    response = render(request, "405.html", status=405)
-    return response
