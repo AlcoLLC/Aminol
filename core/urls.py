@@ -7,6 +7,7 @@ from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib.sitemaps.views import sitemap
 from .sitemaps import sitemaps
+from django.shortcuts import redirect
 
 def robots_txt(request):
     lines = [
@@ -46,6 +47,10 @@ urlpatterns += i18n_patterns(
 
 urlpatterns += [
     re_path(r'^rosetta/', include('rosetta.urls'))
+]
+
+urlpatterns += [
+    re_path(r'^en/(?P<path>.*)$', lambda request, path: redirect(f'/{path}', permanent=True)),
 ]
 
 if settings.DEBUG:
