@@ -18,8 +18,13 @@
   <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-P43MP7VKV9'); </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" as="style">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+  <link rel="stylesheet" 
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" 
+      media="print" 
+      onload="this.media='all'">
+<noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+</noscript>
   <link rel="stylesheet" href="{% static 'assets/css/bundle.min.css' %}" />
   
 
@@ -121,25 +126,7 @@
 }
 </script>
 
-
-
   {% block extra_schema %}{% endblock %}
-
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '10009823562446845');
-  fbq('track', 'PageView');
-  </script>
-
-  <noscript><img height="1" alt="facebook pixel" width="1" class="facebook-pixel"
-  src="https://www.facebook.com/tr?id=10009823562446845&ev=PageView&noscript=1"/></noscript>
 
 </head>
 
@@ -155,13 +142,21 @@
 
   <script src="{% static 'assets/js/bundle.min.js' %}" defer></script>
 
- <script>
-  var ahrefs_analytics_script = document.createElement('script');
-  ahrefs_analytics_script.async = true;
-  ahrefs_analytics_script.src = 'https://analytics.ahrefs.com/analytics.js';
-  ahrefs_analytics_script.setAttribute('data-key', 'VCY7krba01QhiJDS2Q8BjQ');
-  document.getElementsByTagName('head')[0].appendChild(ahrefs_analytics_script);
-</script>
+<script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '10009823562446845');
+    fbq('track', 'PageView');
+    </script>
+
+    <noscript><img height="1" alt="facebook pixel" width="1" class="facebook-pixel"
+    src="https://www.facebook.com/tr?id=10009823562446845&ev=PageView&noscript=1"/></noscript>
 
 
 </body>
