@@ -183,7 +183,7 @@ def search_view(request):
             results.append({
                 'title': title,
                 'description': content[:200] + '...' if content and len(content) > 200 else content or '',
-                'url': f'/news/{news.id}/',
+                'url': f'/news/{news.slug}/',
                 'type': 'News',
                 'image': news.image.url if news.image else None
             })
@@ -202,7 +202,7 @@ def search_view(request):
             results.append({
                 'title': news_title,
                 'description': description[:200] + '...' if description and len(description) > 200 else description or '',
-                'url': f'/news/{content.news.id}/',
+                'url': f'/news/{content.news.slug}/',
                 'type': 'News',
                 'image': content.image.url if content.image else None
             })

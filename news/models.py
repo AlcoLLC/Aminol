@@ -28,12 +28,9 @@ class News(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug and self.title_translate:
             from django.utils.text import slugify
-            base_slug = slugify(self.title_translate)
+            
+            base_slug = slugify(self.title_translate.strip()) 
             slug = base_slug
-            counter = 1
-            while News.objects.filter(slug=slug).exclude(pk=self.pk).exists():
-                slug = f"{base_slug}-{counter}"
-                counter += 1
             self.slug = slug
 
         if not self.meta_title and self.title_translate:
