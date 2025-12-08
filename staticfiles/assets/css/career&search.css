@@ -634,3 +634,23 @@
     line-height: 24.03px;
     letter-spacing: 0;
 }
+
+.career-content {
+  margin: 70px auto;
+}
+.career-content h1 {
+  color: #012762;
+  font-weight: 600;
+  font-size: 42px;
+  line-height: 50px;
+  margin: 20px auto;
+  letter-spacing: -1%;
+}
+.career-content h2 {
+  color: #012762;
+  max-width: 82%;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24.03px;
+  letter-spacing: 0px;
+}

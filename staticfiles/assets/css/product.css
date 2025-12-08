@@ -1109,3 +1109,14 @@
     font-size: 14px;
   }
 }
+
+
+.featured-benefits h2, .application h2, .specification h2, .recommendations h2 {
+font-size: 18px;
+}
+
+
+.featured-benefits p, .application p, .specification p, .recommendations p {
+    font-weight: 400;
+    font-size: 16px;
+}
